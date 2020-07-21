@@ -2,10 +2,14 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Grants Prototypes
 {% endblock %}
 
 {% block content %}
+
+  <style>
+    dd {margin-inline-start: 0}
+  </style>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -13,24 +17,12 @@
       <h1 class="govuk-heading-xl">
         Grants
       </h1>
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
-      </p>
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
+      <dl class="govuk-list">
+        <dt><a href="/v01">Version 01</a></dt>
+        <dd>Start of alpha.</dd>
+      </dl>
 
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/docs/tutorials-and-examples">Example pages and documentation</a>
-        </li>
-        <li>
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
-        </li>
-      </ul>
     </div>
   </div>
 
