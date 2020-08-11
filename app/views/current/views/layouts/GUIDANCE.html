@@ -1,0 +1,179 @@
+{% set tocPage = true %}
+
+{% extends "../layout.html" %}
+
+{% block head %}
+
+<link href="/public/stylesheets/govuk-template.css" media="screen" rel="stylesheet" type="text/css">
+<link href="/public/stylesheets/core-layout.css" media="screen" rel="stylesheet" type="text/css">
+<link href="/public/stylesheets/publisher.css" media="screen" rel="stylesheet" type="text/css">
+
+{% endblock %}
+
+{% block pageTitle %}
+Countryside Productivity Scheme
+{% endblock %}
+
+{% block header %}
+{% include "../includes/header-publisher.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+
+<div id="global-header-bar"></div>
+
+
+  <div class="global-bar-message govuk-width-container">
+    <div class="global-bar-covid-wrapper">
+      <div class="gem-c-action-link gem-c-action-link--light-text gem-c-action-link--with-subtext govuk-!-margin-bottom-0">
+        <span class="gem-c-action-link__contents-wrapper"> <span class="gem-c-action-link__link-wrapper">
+            <a class="govuk-link gem-c-action-link__link js-call-to-action" href="/coronavirus">
+              Coronavirus (COVID-19)
+            </a>
+          </span>
+          <span class="gem-c-action-link__subtext-wrapper">
+            <span class="gem-c-action-link__subtext">Guidance and support</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+<div class="gem-c-contextual-breadcrumbs">
+
+  <div class="gem-c-breadcrumbs govuk-breadcrumbs " data-module="track-click">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item" aria-current="false">
+        <a data-track-category="homeLinkClicked" data-track-action="homeBreadcrumb" data-track-label="" data-track-options="{}" class="govuk-breadcrumbs__link" aria-current="false" href="/">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item" aria-current="false">
+        <a data-track-category="breadcrumbClicked" data-track-action="2" data-track-label="/topic/farming-food-grants-payments/rural-grants-payments" data-track-options="{}" class="govuk-breadcrumbs__link" aria-current="false"
+          href="/topic/farming-food-grants-payments/rural-grants-payments">Rural grants and payments </a>
+      </li>
+    </ol>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="gem-c-title govuk-x!-margin-top-8 govuk-!-margin-bottom-8">
+      <p class="gem-c-title__context">
+        Guidance
+      </p>
+      <h1 class="gem-c-title__text gem-c-title__text--long">
+        Countryside Productivity Scheme
+      </h1>
+    </div>
+
+    <p class="gem-c-lead-paragraph ">
+      How to apply for grants and submit an application under the Countryside Productivity Scheme
+    </p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="metadata-logo-wrapper">
+    <div class="govuk-grid-column-two-thirds metadata-column">
+      <div class="app-c-publisher-metadata" lang="en">
+        <div class="app-c-published-dates " lang="en">
+          Published 31 July 2017
+          <br>Last updated 27 March 2020
+          — <a href="#history">see all updates</a>
+        </div>
+
+        <div class="app-c-publisher-metadata__other">
+          <dl data-module="track-click">
+            <dt class="app-c-publisher-metadata__term">
+              From:
+            </dt>
+            <dd class="app-c-publisher-metadata__definition" data-module="gem-toggle">
+              <span class="app-c-publisher-metadata__definition-sentence">
+                <a class="govuk-link" href="/government/organisations/department-for-environment-food-rural-affairs">Department for Environment, Food &amp; Rural Affairs</a>, <a class="govuk-link"
+                  href="/government/organisations/rural-payments-agency">Rural Payments Agency</a>, and <a class="govuk-link" href="/government/organisations/rural-development-programme-for-england-network">Rural Development Programme for England
+                  Network</a>
+              </span>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div id="toc" class="toc"></div>
+
+    <!-- start of guidance specific block -->
+    {% block guidance %}Guidance content goes here, override this by overriding the block{% endblock %}
+    <!-- end guidance specific block-->
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+
+    <div class="gem-c-contextual-sidebar">
+
+      <div class="gem-c-related-navigation">
+
+        <h2 class="gem-c-related-navigation__main-heading" data-track-count="sidebarRelatedItemSection">
+          Related content
+        </h2>
+
+        <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-related_items-2dae1b11" data-module="gem-toggle">
+
+          <ul class="gem-c-related-navigation__link-list" data-module="track-click">
+
+            <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked"
+                data-track-action="1.1 Related content" data-track-label="/guidance/rural-development-programme-for-england-leader-funding"
+                data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;Rural Development Programme for England: LEADER funding&quot;}" href="/guidance/rural-development-programme-for-england-leader-funding">Rural
+                Development Programme for England: LEADER funding</a></li>
+            <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked"
+                data-track-action="1.2 Related content" data-track-label="/guidance/small-grant-scheme-livestock-handling-items-in-short-supply"
+                data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;Small Grant scheme - livestock handling items in short supply&quot;}"
+                href="/guidance/small-grant-scheme-livestock-handling-items-in-short-supply">Small Grant scheme - livestock handling items in short supply</a></li>
+            <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked"
+                data-track-action="1.3 Related content" data-track-label="/guidance/check-if-youre-eligible-for-the-coronavirus-small-business-grant-fund"
+                data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;Check if you're eligible for the coronavirus Small Business Grant Fund&quot;}"
+                href="/guidance/check-if-youre-eligible-for-the-coronavirus-small-business-grant-fund">Check if you're eligible for the coronavirus Small Business Grant Fund</a></li>
+            <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked"
+                data-track-action="1.4 Related content" data-track-label="/government/publications/water-environment-grant-weg-handbooks-guidance-and-forms"
+                data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;Water Environment Grant (WEG) handbooks: guidance and forms&quot;}"
+                href="/government/publications/water-environment-grant-weg-handbooks-guidance-and-forms">Water Environment Grant (WEG) handbooks: guidance and forms</a></li>
+            <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar gem-c-related-navigation__section-link--inline  gem-c-related-navigation__section-link--other"
+                data-track-category="relatedLinkClicked" data-track-action="1.5 Related content" data-track-label="/government/publications/rdpe-growth-programme"
+                data-track-options="{&quot;dimension28&quot;:&quot;5&quot;,&quot;dimension29&quot;:&quot;RDPE Growth Programme&quot;}" href="/government/publications/rdpe-growth-programme">RDPE Growth Programme</a></li>
+
+          </ul>
+        </nav>
+
+        <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-collections-2dae1b11" data-module="gem-toggle">
+
+          <h3 id="related-nav-collections-2dae1b11" class="gem-c-related-navigation__sub-heading gem-c-related-navigation__sub-heading--sidebar" data-track-count="sidebarRelatedItemSection">Collection</h3>
+
+          <ul class="gem-c-related-navigation__link-list" data-module="track-click">
+
+            <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar" data-track-category="relatedLinkClicked" data-track-action="2.1 Collection"
+                data-track-label="/government/collections/rural-payments-and-grants" data-track-options="{&quot;dimension28&quot;:&quot;1&quot;,&quot;dimension29&quot;:&quot;Rural payments and grants&quot;}"
+                href="/government/collections/rural-payments-and-grants">Rural payments and grants</a></li>
+
+          </ul>
+        </nav>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
