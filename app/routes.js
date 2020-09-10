@@ -19,10 +19,17 @@ console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subf
 // Route index page
 router.get('/', function (req, res) {
   res.render('./index')
-})
+});
+
+// Set service name based on sub folders for different prototypes
+router.get('/current/*', function(req, res, next){
+  res.locals['serviceName'] = 'Express interest in receiving a large grant'
+
+  next()
+});
 
 // Start folder specific routes
-// router.use('/sprint-1', require('./views/sprint-1/_routes'));
+router.use('/v1', require('./views/v1/routes/_routes'));
 
 // current sprint, remember to add older sprint when adding a new folder!
 router.use('/current', require('./views/current/routes/_routes'));
