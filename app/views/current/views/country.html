@@ -24,13 +24,13 @@
             </legend>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="country" name="country" type="radio" value="yes">
+                <input class="govuk-radios__input" id="country" name="country" type="radio" value="yes" {{ checked("country", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="country">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="country-2" name="country" type="radio" value="no">
+                <input class="govuk-radios__input" id="country-2" name="country" type="radio" value="no" {{ checked("country", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="country-2">
                   No
                 </label>

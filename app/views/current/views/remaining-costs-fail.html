@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You're not eligible for a large countryside productivity grant
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="remaining-costs">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        You're not eligible for a large countryside productivity grant
+      </h1>
+
+      {% if data['remaining-costs'] == "no" %}
+      <p>Only projects which can pay 60% of the total project costs will be considered for a large countryside productivity grant.</p>
+      {% elif data['public-money'] == "yes" %}
+      <p>It is not possible to use public money towards the project costs when applying for a large countryside productivity grant.</p>
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}
