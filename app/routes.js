@@ -27,10 +27,50 @@ router.get('/current/*', function(req, res, next){
   next()
 });
 
-// Start folder specific routes
-router.use('/v1', require('./views/v1/routes/_routes'));
+// Start folder specific route
+router.use('/views/current', require('./views/current/routes/_routes'));
+router.use('/views/v1', require('./views/v1/routes/_routes'));
 
-// current sprint, remember to add older sprint when adding a new folder!
-router.use('/current', require('./views/current/routes/_routes'));
+// Question routing
+
+router.post('/farming-type-answer', function (req, res) {
+
+  var farmingType = req.session.data['farming-type']
+
+  if (farmingType == "none"){res.redirect('current/views/farming-type-fail')}
+  else {res.redirect('current/views/legal-status')}
+});
+
+router.post('/legal-status-answer', function (req, res) {
+
+  var legalStatus = req.session.data['legal-status']
+
+  if (legalStatus == "none"){res.redirect('current/views/legal-status-fail')}
+  else {res.redirect('current/views/country')}
+});
+
+router.post('/country-answer', function (req, res) {
+
+  var country = req.session.data['country']
+
+  if (country == "no"){res.redirect('current/views/country-fail')}
+  else {res.redirect('current/views/tenancy')}
+});
+
+router.post('/tenancy-answer', function (req, res) {
+
+  var tenant = req.session.data['tenancy']
+
+  if (tenant == "no"){res.redirect('current/views/project-cost')}
+  else {res.redirect('current/views/tenancy-length')}
+});
+
+router.post('/tenancy-length-answer', function (req, res) {
+
+  var tenancyLength = req.session.data['tenancy-length']
+
+  if (tenancyLength == "no"){res.redirect('current/views/tenancy-length-fail')}
+  else {res.redirect('current/views/project-cost')}
+});
 
 module.exports = router
