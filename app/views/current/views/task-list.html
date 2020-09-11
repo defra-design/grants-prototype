@@ -13,54 +13,74 @@
       </h1>
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application in progress</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed X of Y sections.</p>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 1 of 4 sections.</p>
 
       <ol class="app-task-list">
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">1. </span> Part 1
+            <span class="app-task-list__section-number">1. </span> Expression of interest
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="part0101status">
-                  Part 1 Section 1
+                <a href="scheme-check-your-answers" aria-describedby="scheme-eligibility-status">
+                  Scheme eligiblity
                 </a>
               </span>
-              <strong class="govuk-tag {{ part0101statusClass }} app-task-list__tag" id="part0101status">{{ part0101status }}</strong>
+              <strong class="govuk-tag {{ scheme_eligibility_status_class }} app-task-list__tag" id="scheme-eligibility-status">{{ scheme_eligibility_status }}</strong>
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="part0102status">
-                  Part 1 Section 2
+                <a href="theme-q1" aria-describedby="theme-eligibility-status">
+                  Theme eligiblity
                 </a>
               </span>
-              <strong class="govuk-tag {{ part0102statusClass }} app-task-list__tag" id="part0102status">{{ part0102status }}</strong>
+              <strong class="govuk-tag {{ theme_eligibility_status_class }} app-task-list__tag" id="theme-eligibility-status">{{ theme_eligibility_status }}</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {% if contact_details_available %}
+                <a href="#" aria-describedby="contact-details-status">
+                  Contact details
+                </a>
+                {% else %}
+                  Contact details
+                {% endif %}
+              </span>
+              <strong class="govuk-tag {{ contact_details_status_class }} app-task-list__tag" id="contact-details-status">{{ contact_details_status }}</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {% if project_benefits_available %}
+                <a href="#" aria-describedby="project-benefits-status">
+                  Project benefits
+                </a>
+                {% else %}
+                  Project benefits
+                {% endif %}
+              </span>
+              <strong class="govuk-tag {{ project_benefits_status_class }} app-task-list__tag" id="project-benefits-status">{{ project_benefits_status }}</strong>
             </li>
           </ul>
         </li>
 
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span> Part 2
+            <span class="app-task-list__section-number">2. </span> Full application
           </h2>
 
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="part0201status">
-                  Part 2 Section 1
+                {% if final_project_details_available %}
+                <a href="#" aria-describedby="final-project-details">
+                  Final project details
                 </a>
+                {% else %}
+                  Final project details
+                {% endif %}
               </span>
-              <strong class="govuk-tag {{ part0201statusClass }} app-task-list__tag" id="part0201status">{{ part0201status }}</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="part0202status">
-                  Part 2 Section 2
-                </a>
-              </span>
-              <strong class="govuk-tag {{ part0202statusClass }} app-task-list__tag" id="part0202status">{{ part0202status }}</strong>
+              <strong class="govuk-tag {{ final_project_details_status_class }} app-task-list__tag" id="final-project-details">{{ final_project_details_status }}</strong>
             </li>
           </ul>
 
