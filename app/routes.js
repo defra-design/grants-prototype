@@ -11,7 +11,7 @@ router.use('/', (req, res, next) => {
   req.subfolder = req.originalUrl.split('/')[2]; //sub-folder e.g. 'service'
   res.locals.folder = req.folder; // what folder the url is
   res.locals.subfolder = req.subfolder; // what subfolder the URL is in
-console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subfolder  );
+  console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subfolder  );
   console.log('previous page is: ' + res.locals.prevURL + " and current page is " + req.url + " " + res.locals.currentURL );
   next();
 });
@@ -23,8 +23,7 @@ router.get('/', function (req, res) {
 
 // Set service name based on sub folders for different prototypes
 router.get('/current/*', function(req, res, next){
-  res.locals['serviceName'] = 'Express interest in receiving a large grant'
-
+  res.locals['serviceName'] = 'Apply for a large countryside productivity grant'
   next()
 });
 
