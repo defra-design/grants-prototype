@@ -24,13 +24,13 @@
             </legend>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="yes">
+                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="yes" {{ checked("tenancy-length", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="tenancy-length">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="no">
+                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="no" {{ checked("tenancy-length", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="tenancy-length-2">
                   No
                 </label>

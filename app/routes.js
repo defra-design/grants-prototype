@@ -34,16 +34,15 @@ router.get('/current/*', function(req, res, next){
 
 
 // Start folder specific route
-router.use('./views/current', require('./views/current/routes/_routes'));
-router.use('/views/v1', require('./views/v1/routes/_routes'));
-
+router.use('/current', require('./views/current/routes/_routes'));
+router.use('/v1', require('./views/v1/routes/_routes'));
 
 
 
 
 // Question routing
 
-router.post('/farming-type-answer', function (req, res) {
+router.post('*/farming-type-answer', function (req, res) {
 
   var farmingType = req.session.data['farming-type']
 
@@ -83,17 +82,33 @@ router.post('/tenancy-length-answer', function (req, res) {
   else {res.redirect('current/views/project-cost')}
 });
 
+router.post('/project-cost-answer', function (req, res) {
 
+  var projectCost = req.session.data['project-cost']
 
+  if (projectCost < 87500 ){res.redirect('/current/views/project-cost-fail')}
+  else {res.redirect('/current/views/remaining-costs')}
 
+})
 
+router.post('/remaining-costs-answer', function (req, res) {
 
+  var remainingCosts = req.session.data['remaining-costs']
+  var publicMoney = req.session.data['public-money']
 
+  if (remainingCosts == "no" ){res.redirect('/current/views/remaining-costs-fail')}
+  if (publicMoney == "yes" ){res.redirect('/current/views/remaining-costs-fail')}
+  else {res.redirect('/current/views/project-start')}
 
+})
 
+router.post('/project-start-answer', function (req, res) {
 
+  var projectStart = req.session.data['project-start']
 
-
+  if (projectStart == "yes"){res.redirect('current/views/project-start-fail')}
+  else {res.redirect('current/views/check-answers')}
+});
 
 
 
@@ -145,10 +160,6 @@ router.get('*/task-list', function (req, res) {
 })
 
 // TASK LIST PAGE END //
-
-
-
-
 
 
 module.exports = router

@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Are your land or premises rented, leased or tenanted?
+  Question page
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="country">Back</a>
+  <a class="govuk-back-link" href="remaining-costs">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,25 +13,25 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/tenancy-answer" method="post">
+      <form class="form" action="/project-start-answer" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Are your land or premises rented, leased or tenanted?
+                Have you already started work on the project?
               </h1>
             </legend>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy" name="tenancy" type="radio" value="yes" {{ checked("tenancy", "yes") }}>
-                <label class="govuk-label govuk-radios__label" for="tenancy">
+                <input class="govuk-radios__input" id="project-start" name="project-start" type="radio" value="yes" {{ checked("project-start", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="project-start">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-2" name="tenancy" type="radio" value="no" {{ checked("tenancy", "no") }}>
-                <label class="govuk-label govuk-radios__label" for="tenancy-2">
+                <input class="govuk-radios__input" id="project-start-2" name="project-start" type="radio" value="no" {{ checked("project-start", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="project-start-2">
                   No
                 </label>
               </div>

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="country">Back</a>
+  <a class="govuk-back-link" href="project-cost">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -17,9 +17,11 @@
         You're not eligible for a large countryside productivity grant
       </h1>
 
-      <p>The large countryside productivity grant scheme is only open to businesses located in England.</p>
+      <p>To be eligible, the funding sought (40% of your total project costs) must be greater than £35,000.</p>
 
-      <p>Farming businesses in other UK countries may be eligible for a similar grant through their equivalent domestic schemes. See <a href="">The large countryside productivity grant guidance</a> for further information.</p>
+      {% set grantAmount = data['project-cost'] * 0.4 %}
+
+      <p>Your total project costs of £{{ data['project-cost'] | toFixed(2) | commafy }} would result in £{{ grantAmount | toFixed(2) | commafy }} of funding sought.</p>
 
     </div>
   </div>

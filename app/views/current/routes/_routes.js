@@ -3,13 +3,10 @@ const router = express.Router()
 
 const serviceName = 'Apply for a large countryside productivity grant'
 
-
 console.log( 'This is the _routes file' );
 console.log( serviceName );
 
-
 // Add your routes here - above the module.exports line
-
 
 //*****************************************************
 // TASK LIST PAGE START //
