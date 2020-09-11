@@ -16,10 +16,14 @@ router.use('/', (req, res, next) => {
   next();
 });
 
+
+
 // Route index page
 router.get('/', function (req, res) {
   res.render('./index')
 });
+
+
 
 // Set service name based on sub folders for different prototypes
 router.get('/current/*', function(req, res, next){
@@ -27,9 +31,14 @@ router.get('/current/*', function(req, res, next){
   next()
 });
 
+
+
 // Start folder specific route
 router.use('/current', require('./views/current/routes/_routes'));
 router.use('/v1', require('./views/v1/routes/_routes'));
+
+
+
 
 // Question routing
 
@@ -100,5 +109,57 @@ router.post('/project-start-answer', function (req, res) {
   if (projectStart == "yes"){res.redirect('current/views/project-start-fail')}
   else {res.redirect('current/views/check-answers')}
 });
+
+
+
+//*****************************************************
+// TASK LIST PAGE START //
+router.get('*/task-list', function (req, res) {
+
+  console.log( 'This is the task list' );
+
+  // Cannot start yet = 'govuk-tag--grey'
+  // Not started = 'govuk-tag--grey'
+  // In progress = 'govuk-tag--blue'
+  // Completed = ''
+
+    //part0101status = req.session.data['part0101status']
+
+    scheme_eligibility_status = 'Completed'
+    scheme_eligibility_status_class = ''
+
+    theme_eligibility_status = 'Cannot start yet'
+    theme_eligibility_status_class = 'govuk-tag--grey'
+
+    contact_details_status = 'Cannot start yet'
+    contact_details_status_class = 'govuk-tag--grey'
+
+    project_benefits_status = 'Cannot start yet'
+    project_benefits_status_class = 'govuk-tag--grey'
+
+    final_project_details_status = 'Cannot start yet'
+    final_project_details_status_class = 'govuk-tag--grey'
+
+
+
+
+  res.render( './' + req.originalUrl, {
+
+    scheme_eligibility_status: scheme_eligibility_status,
+    scheme_eligibility_status_class: scheme_eligibility_status_class,
+    theme_eligibility_status: theme_eligibility_status,
+    theme_eligibility_status_class: theme_eligibility_status_class,
+    contact_details_status: contact_details_status,
+    contact_details_status_class: contact_details_status_class,
+    project_benefits_status: project_benefits_status,
+    project_benefits_status_class: project_benefits_status_class,
+    final_project_details_status: final_project_details_status,
+    final_project_details_status_class: final_project_details_status_class
+
+  })
+})
+
+// TASK LIST PAGE END //
+
 
 module.exports = router

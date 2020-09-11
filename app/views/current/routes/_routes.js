@@ -3,21 +3,21 @@ const router = express.Router()
 
 const serviceName = 'Apply for a large countryside productivity grant'
 
-// console.log( 'This is the _routes file' );
-// console.log( serviceName );
+console.log( 'This is the _routes file' );
+console.log( serviceName );
 
+// Add your routes here - above the module.exports line
 
 //*****************************************************
 // TASK LIST PAGE START //
-router.get('*/task-list', function (req, res) {
+router.get('*/XXXtask-list', function (req, res) {
 
+  console.log( 'This is the task list' );
 
   // Cannot start yet = 'govuk-tag--grey'
   // Not started = 'govuk-tag--grey'
   // In progress = 'govuk-tag--blue'
   // Completed = ''
-
-
 
     //part0101status = req.session.data['part0101status']
     part0101status = 'Completed'
