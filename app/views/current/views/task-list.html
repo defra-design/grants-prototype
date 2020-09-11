@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Task list - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{serviceName}}
+      </h1>
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application in progress</h2>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed X of Y sections.</p>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> Part 1
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="part0101status">
+                  Part 1 Section 1
+                </a>
+              </span>
+              <strong class="govuk-tag {{ part0101statusClass }} app-task-list__tag" id="part0101status">{{ part0101status }}</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="part0102status">
+                  Part 1 Section 2
+                </a>
+              </span>
+              <strong class="govuk-tag {{ part0102statusClass }} app-task-list__tag" id="part0102status">{{ part0102status }}</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Part 2
+          </h2>
+
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="part0201status">
+                  Part 2 Section 1
+                </a>
+              </span>
+              <strong class="govuk-tag {{ part0201statusClass }} app-task-list__tag" id="part0201status">{{ part0201status }}</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="#" aria-describedby="part0202status">
+                  Part 2 Section 2
+                </a>
+              </span>
+              <strong class="govuk-tag {{ part0202statusClass }} app-task-list__tag" id="part0202status">{{ part0202status }}</strong>
+            </li>
+          </ul>
+
+
+
+        </li>
+
+      </ol>
+    </div>
+  </div>
+
+{% endblock %}
