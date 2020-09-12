@@ -150,6 +150,38 @@ router.post('/abstraction-variation-answer', function (req, res) {
   else {res.redirect('current/views/check-answers-theme-eligibility')}
 });
 
+router.post('/business-answer', function (req, res) {
+
+  var businessAnswer = req.session.data['new-business']
+
+  if (businessAnswer == "yes"){res.redirect('current/views/new-business-condition')}
+  else {res.redirect('current/views/applying')}
+});
+
+router.post('/applying-answer', function (req, res) {
+
+  var applyingAnswer = req.session.data['applying']
+
+  if (applyingAnswer == "other"){res.redirect('current/views/preferred-contact')}
+  else {res.redirect('current/views/your-details')}
+});
+
+router.post('/your-details-answer', function (req, res) {
+
+  var applyingAnswer = req.session.data['applying']
+
+  if (applyingAnswer == "other"){res.redirect('current/views/applicant-details')}
+  else {res.redirect('current/views/check-answers-contact-details')}
+});
+
+router.post('/preferred-contact-answer', function (req, res) {
+
+  var preferredContact = req.session.data['preferred-contact']
+
+  if (preferredContact == "just the applicant"){res.redirect('current/views/applicant-details')}
+  else {res.redirect('current/views/your-details')}
+});
+
 //*****************************************************
 // TASK LIST PAGE START //
 router.get('*/task-list', function (req, res) {
