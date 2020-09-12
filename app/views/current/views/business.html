@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Your project
+  Your business
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,61 +13,31 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/business-answer" method="post">
+      <form class="form" action="new-business" method="post">
 
-        <h1 class="govuk-heading-xl">
+        <h1 class="govuk-heading-l">
           Your business
         </h1>
 
         <div class="govuk-form-group">
-          <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="business-name">
+          <label class="govuk-label" for="business-name">
               Business name
             </label>
-          </h2>
           <input class="govuk-input" id="business-name" name="business-name" type="text" value="{{ data['business-name'] }}">
         </div>
 
         <div class="govuk-form-group">
-          <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="employees">
+          <label class="govuk-label" for="employees">
               Number of employees
             </label>
-          </h2>
-          <input class="govuk-input govuk-input--width-10" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}"><span class="govuk-body govuk-!-margin-left-2" >employees</span>
+          <input class="govuk-input govuk-input--width-10" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">
         </div>
 
         <div class="govuk-form-group">
-          <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="turnover">
+          <label class="govuk-label" for="turnover">
               Business turnover
             </label>
-          </h2>
           <span class="govuk-body govuk-!-margin-right-2">£</span> <input class="govuk-input govuk-input--width-10" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
-        </div>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="new-business-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
-                Are you a new business?
-              </h1>
-            </legend>
-            <div id="new-business-hint" class="govuk-hint">
-              A new business has been trading for less than two years
-            </div>
-            <div class="govuk-radios govuk-radios--inline">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="new-business" name="new-business" type="radio" value="yes" {{ checked("new-business", "yes") }}>
-                <label class="govuk-label govuk-radios__label" for="new-business">
-                  Yes
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="new-business-2" name="new-business" type="radio" value="no" {{ checked("new-business", "no") }}>
-                <label class="govuk-label govuk-radios__label" for="new-business-2">
-                  No
-                </label>
-              </div>
-            </div>
-          </fieldset>
         </div>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>

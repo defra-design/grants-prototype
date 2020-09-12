@@ -15,25 +15,23 @@
 
       <form class="form" action="planning-required" method="post">
 
-        <h1 class="govuk-heading-xl">
+        <h1 class="govuk-heading-l">
           Your project
         </h1>
 
         <div class="govuk-form-group">
-          <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="project-name">
+          <label class="govuk-label" for="project-name">
               Project name
             </label>
-          </h2>
           <input class="govuk-input" id="project-name" name="project-name" type="text" value="{{ data['project-name'] }}">
         </div>
 
         <div class="govuk-form-group">
-          <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="project-summary">
+          <label class="govuk-label" for="project-summary">
               Project summary
             </label>
-          </h2>
           <div id="project-summary-hint" class="govuk-hint">
-            Include details of what the project is, what it will do and what it is aiming to achieve.
+            What the project is, what it will do and what it is aiming to achieve.
           </div>
           <textarea class="govuk-textarea" id="project-summary" name="project-summary" rows="8" aria-describedby="project-summary-hint">{{ data['project-summary'] }}</textarea>
         </div>

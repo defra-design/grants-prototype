@@ -182,6 +182,14 @@ router.post('/preferred-contact-answer', function (req, res) {
   else {res.redirect('current/views/your-details')}
 });
 
+router.post('/irrigation-answer', function (req, res) {
+
+  var irrigationAnswer = req.session.data['irrigation']
+
+  if (irrigationAnswer == "improve"){res.redirect('current/views/current-irrigation')}
+  else {res.redirect('current/views/planned-irrigation')}
+});
+
 //*****************************************************
 // TASK LIST PAGE START //
 router.get('*/task-list', function (req, res) {
