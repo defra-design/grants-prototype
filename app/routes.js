@@ -40,6 +40,34 @@ router.use('/v1', require('./views/v1/routes/_routes'));
 
 
 
+
+router.get('*/start', function (req, res) {
+
+console.log( 'This is the start page' );
+
+req.session.data['scheme_eligibility_status'] = 'Completed'
+req.session.data['scheme_eligibility_status_class'] = ''
+
+req.session.data['theme_eligibility_status'] = 'Not started'
+req.session.data['theme_eligibility_status_class'] = 'govuk-tag--grey'
+
+req.session.data['contact_details_status'] = 'Cannot start yet'
+req.session.data['contact_details_status_class'] = 'govuk-tag--grey'
+
+req.session.data['project_benefits_status'] = 'Cannot start yet'
+req.session.data['project_benefits_status_class'] = 'govuk-tag--grey'
+
+req.session.data['final_project_details_status'] = 'Cannot start yet'
+req.session.data['final_project_details_status_class'] = 'govuk-tag--grey'
+
+res.render( './' + req.originalUrl )
+
+});
+
+
+
+
+
 // Question routing
 
 router.post('*/farming-type-answer', function (req, res) {
@@ -125,21 +153,20 @@ router.get('*/task-list', function (req, res) {
 
     //part0101status = req.session.data['part0101status']
 
-    scheme_eligibility_status = 'Completed'
-    scheme_eligibility_status_class = ''
+    scheme_eligibility_status = req.session.data['scheme_eligibility_status']
+    scheme_eligibility_status_class = req.session.data['scheme_eligibility_status_class']
 
-    theme_eligibility_status = 'Cannot start yet'
-    theme_eligibility_status_class = 'govuk-tag--grey'
+    theme_eligibility_status = req.session.data['theme_eligibility_status']
+    theme_eligibility_status_class = req.session.data['theme_eligibility_status_class']
 
-    contact_details_status = 'Cannot start yet'
-    contact_details_status_class = 'govuk-tag--grey'
+    contact_details_status = req.session.data['contact_details_status']
+    contact_details_status_class = req.session.data['contact_details_status_class']
 
-    project_benefits_status = 'Cannot start yet'
-    project_benefits_status_class = 'govuk-tag--grey'
+    project_benefits_status = req.session.data['project_benefits_status']
+    project_benefits_status_class = req.session.data['project_benefits_status_class']
 
-    final_project_details_status = 'Cannot start yet'
-    final_project_details_status_class = 'govuk-tag--grey'
-
+    final_project_details_status = req.session.data['final_project_details_status']
+    final_project_details_status_class = req.session.data['final_project_details_status_class']
 
 
 
