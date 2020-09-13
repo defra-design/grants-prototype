@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="project-start">Back</a>
+  <a class="govuk-back-link" onclick="history.back()" href="#">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -28,12 +28,12 @@
             {% if item == "water reservoir" %}
               <li>Water reservoir</li>
               {% for item in data['reservoir-items'] %}
-              <li style="margin-left:20px;">{{ item | capitalize }}</li>
+              <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
               {% endfor %}
             {% elif item == "reservoir infrastructure" %}
               <li>Reservoir infrastructure</li>
               {% for item in data['infrastructure-items'] %}
-              <li style="margin-left:20px;">{{ item | capitalize }}</li>
+              <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
               {% endfor %}
               {% else %}
               <li>{{ item | capitalize }}</li>{% endif %}

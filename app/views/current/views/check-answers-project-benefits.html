@@ -5,7 +5,7 @@ Check your answers
 {% endblock %}
 
 {% block beforeContent %}
-<a class="govuk-back-link" href="project-start">Back</a>
+<a class="govuk-back-link" href="environment">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -15,210 +15,245 @@ Check your answers
 
     <h1 class="govuk-heading-l">Check your answers</h1>
 
-    <h2 class="govuk-heading-m">Business details</h2>
+    <h2 class="govuk-heading-m">Irrigation</h2>
 
+    {% if data['irrigation'] == "introduce" %}
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-half">
-          Business name
+          Irrigation benefits
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['business-name'] }}
+          Introducing irrigation
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="business">
-            Change<span class="govuk-visually-hidden"> business name</span>
+          <a class="govuk-link" href="irrigation">
+            Change<span class="govuk-visually-hidden"> irrigation benefits</span>
           </a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Employees
+          Land to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['employees'] }}
+          {{ data['new-land-irrigated'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="business">
-            Change<span class="govuk-visually-hidden"> number of employees</span>
+          <a class="govuk-link" href="new-irrigation">
+            Change<span class="govuk-visually-hidden"> land irrigated</span>
           </a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Turnover
+          Crops to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['turnover'] }}
+          {{ data['new-crops-irrigated'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="business">
-            Change<span class="govuk-visually-hidden"> turnover</span>
+          <a class="govuk-link" href="new-irrigation">
+            Change<span class="govuk-visually-hidden"> crops to be irrigated</span>
           </a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          New business
+          Water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['new-business'] | capitalize }}
+          {{ data['new-water-source'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="business">
-            Change<span class="govuk-visually-hidden"> planning permission required</span>
+          <a class="govuk-link" href="new-irrigation">
+            Change<span class="govuk-visually-hidden"> water source</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Irrigation systems
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-irrigation-systems'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="new-irrigation">
+            Change<span class="govuk-visually-hidden"> irrigation systems</span>
           </a>
         </dd>
       </div>
     </dl>
-
-    {% if data['new-business'] == "yes" %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
-        As a new business, you will need to provide additional evidence of your finances in your full application.
-      </strong>
-    </div>
     {% endif %}
 
-    {% if (data['applying'] == "own") or (data['preferred-contact'] == "contact me and the applicant") %}
+    {% if data['irrigation'] == "improve" %}
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          Irrigation benefits
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Increase and/or improve irrigation
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="irrigation">
+            Change<span class="govuk-visually-hidden"> irrigation benefits</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Current land irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['land-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="current-irrigation">
+            Change<span class="govuk-visually-hidden"> land irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Current crops irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['crops-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="current-irrigation">
+            Change<span class="govuk-visually-hidden"> crops irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Current water source for irrigation
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['water-source'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="current-irrigation">
+            Change<span class="govuk-visually-hidden"> water source</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Current irrigation systems
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['irrigation-systems'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="current-irrigation">
+            Change<span class="govuk-visually-hidden"> irrigation systems</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Proposed land to be irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['improved-land-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="proposed-irrigation">
+            Change<span class="govuk-visually-hidden"> land irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Proposed crops to be irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['improved-crops-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="proposed-irrigation">
+            Change<span class="govuk-visually-hidden"> crops to be irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Proposed water source for irrigation
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['improved-water-source'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="proposed-irrigation">
+            Change<span class="govuk-visually-hidden"> proposed water source</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Proposed irrigation systems
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['improved-irrigation-systems'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="proposed-irrigation">
+            Change<span class="govuk-visually-hidden"> proposed irrigation systems</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+    {% endif %}
 
-    <h2 class="govuk-heading-m">Your details</h2>
+    <h2 class="govuk-heading-m">Other benefits</h2>
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Full name
+          Collaboration
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['full-name'] }}
+          {{ data['collaboration'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="your-details">
-            Change<span class="govuk-visually-hidden"> full name</span>
+          <a class="govuk-link" href="collaboration">
+            Change<span class="govuk-visually-hidden"> collaboration</span>
           </a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Email
+          Productivity
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['email'] }}
+          {{ data['productivity'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="your-details">
-            Change<span class="govuk-visually-hidden"> email</span>
+          <a class="govuk-link" href="productivity">
+            Change<span class="govuk-visually-hidden"> productivity</span>
           </a>
         </dd>
       </div>
-      {% for item in data['contact-preferences'] %}
-      {% if item == "phone" %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Phone
+          Environment
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['telephone-number'] }}
+          {{ data['environment'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="your-details">
-            Change<span class="govuk-visually-hidden"> telephone number</span>
+          <a class="govuk-link" href="environment">
+            Change<span class="govuk-visually-hidden"> environment</span>
           </a>
         </dd>
       </div>
-      {% endif %}
-      {% endfor %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Contact preferences
-        </dt>
-        <dd class="govuk-summary-list__value">
-          <ul class="govuk-list govuk-list--bullet">
-            {% for item in data['contact-preferences'] %}
-            <li>{{ item  | capitalize }}</li>
-            {% endfor %}
-          </ul>
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="your-details">
-            Change<span class="govuk-visually-hidden"> contact preferences</span>
-          </a>
-        </dd>
-      </div>
-      {% endif %}
     </dl>
 
-    {% if (data['applying'] == "other") %}
-
-    <h2 class="govuk-heading-m">Applicant details</h2>
-
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Applicant name
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['applicant-name'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="applicant-details">
-            Change<span class="govuk-visually-hidden"> applicant name</span>
-          </a>
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Applicant email
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['applicant-email'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="applicant-details">
-            Change<span class="govuk-visually-hidden"> applicant email</span>
-          </a>
-        </dd>
-      </div>
-      {% for item in data['applicant-contact-preferences'] %}
-      {% if item == "phone" %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Applicant phone
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['applicant-telephone-number'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="applicant-details">
-            Change<span class="govuk-visually-hidden"> applicant telephone number</span>
-          </a>
-        </dd>
-      </div>
-      {% endif %}
-      {% endfor %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Applicant contact preferences
-        </dt>
-        <dd class="govuk-summary-list__value">
-          <ul class="govuk-list govuk-list--bullet">
-            {% for item in data['applicant-contact-preferences'] %}
-            <li>{{ item  | capitalize }}</li>
-            {% endfor %}
-          </ul>
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="applicant-details">
-            Change<span class="govuk-visually-hidden"> applicant contact preferences</span>
-          </a>
-        </dd>
-      </div>
-      {% endif %}
-    </dl>
-
-    <form action="irrigation" method="post" novalidate>
+    <form action="" method="post" novalidate>
 
       <input type="hidden" name="answers-checked" value="true">
 

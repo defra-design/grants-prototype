@@ -14,13 +14,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Meeting the remaining project costs
+        Your grant funding
       </h1>
 
       {% set grantAmount = data['project-cost'] * 0.4 %}
       {% set remainingCosts = data['project-cost'] * 0.6 %}
 
-      <p>Based on your estimate total project costs of £{{ data['project-cost'] | toFixed(2) | commafy }} you would be eligible for £{{ grantAmount | toFixed(2) | commafy }} of grant funding.</p>
+      <p class="govuk-!-margin-bottom-9">Based on your estimate total project costs of £{{ data['project-cost'] | toFixed(2) | commafy }} you would be eligible for a large countryside productivity grant of up to <strong>£{{ grantAmount | toFixed(2) | commafy }}</strong>.</p>
 
       <form class="form" action="/remaining-costs-answer" method="post">
 
@@ -28,7 +28,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                Are you able to meet the remaining costs?
+                Would you be able to meet the remaining costs?
               </h1>
             </legend>
             <div id="remaining-costs-hint" class="govuk-hint">
@@ -55,7 +55,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h1 class="govuk-fieldset__heading">
-                Will any of the remaining costs come from public money?
+                Will any of these costs be paid for using public money?
               </h1>
             </legend>
             <div class="govuk-radios govuk-radios--inline">

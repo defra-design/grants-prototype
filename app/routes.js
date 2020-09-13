@@ -187,7 +187,7 @@ router.post('/irrigation-answer', function (req, res) {
   var irrigationAnswer = req.session.data['irrigation']
 
   if (irrigationAnswer == "improve"){res.redirect('current/views/current-irrigation')}
-  else {res.redirect('current/views/planned-irrigation')}
+  else {res.redirect('current/views/new-irrigation')}
 });
 
 //*****************************************************

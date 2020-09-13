@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Your current irrigation
+  Proposed irrigation resulting from your project
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="check-answers-theme-eligibility">Back</a>
+  <a class="govuk-back-link" href="irrigation">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,10 +13,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/business-answer" method="post">
+      <form class="form" action="collaboration" method="post">
 
         <h1 class="govuk-heading-l">
-          Proposed irrigation resulting from the project
+          Proposed irrigation resulting from your project
         </h1>
 
         <div class="govuk-form-group">
@@ -28,7 +28,7 @@
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="new-crops-irrigated">
-              What crops will you irrigate if the project goes ahead?
+              Which crops will you irrigate if the project goes ahead?
             </label>
           <textarea class="govuk-textarea" id="new-crops-irrigated" name="new-crops-irrigated" rows="2" aria-describedby="new-crops-irrigated-hint">{{ data['new-crops-irrigated'] }}</textarea>
         </div>

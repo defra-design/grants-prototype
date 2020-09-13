@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applicant contact details
+  Applicants contact details
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,14 +21,14 @@
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="applicant-name">
-            Applicant full name
+            Applicants full name
           </label>
           <input class="govuk-input" id="applicant-name" name="applicant-name" type="text" spellcheck="false" autocomplete="name" value="{{ data['applicant-name'] }}">
         </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="applicant-email">
-            Applicant applicant-email address
+            Applicants email address
           </label>
           <div id="applicant-email-hint" class="govuk-hint">
             We’ll only use this to contact the applicant about their application
@@ -40,7 +40,7 @@
           <fieldset class="govuk-fieldset" aria-describedby="applicant-contact-preferences-conditional-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
               <h2 class="govuk-fieldset__heading">
-                Applicant contact preferences
+                Applicants contact preferences
               </h2>
             </legend>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
