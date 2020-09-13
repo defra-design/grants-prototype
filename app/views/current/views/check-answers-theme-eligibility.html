@@ -1,0 +1,172 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" onclick="history.back()" href="#">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Check your answers</h1>
+
+    <h2 class="govuk-heading-m">Theme eligibility checks</h2>
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+          Project items
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in data['project-items'] %}
+            {% if item == "water reservoir" %}
+              <li>Water reservoir</li>
+              {% for item in data['reservoir-items'] %}
+              <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
+              {% endfor %}
+            {% elif item == "reservoir infrastructure" %}
+              <li>Reservoir infrastructure</li>
+              {% for item in data['infrastructure-items'] %}
+              <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
+              {% endfor %}
+              {% else %}
+              <li>{{ item | capitalize }}</li>{% endif %}
+            {% endfor %}
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="project-items">
+            Change<span class="govuk-visually-hidden"> project items</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Project name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['project-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="project">
+            Change<span class="govuk-visually-hidden"> project name</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Project summary
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['project-summary'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="project">
+            Change<span class="govuk-visually-hidden"> project summary</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Planning permission required
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['planning-required'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="planning-required">
+            Change<span class="govuk-visually-hidden"> planning permission required</span>
+          </a>
+        </dd>
+      </div>
+      {% if data['planning-required'] == "yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Planning permission obtained
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['planning-permission'] | capitalize }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="planning-permission">
+            Change<span class="govuk-visually-hidden"> planning permission obtained</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Abstraction licence required
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['abstraction-required'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="abstraction-required">
+            Change<span class="govuk-visually-hidden"> abstraction licence required</span>
+          </a>
+        </dd>
+      </div>
+      {% if data['abstraction-required'] == "yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Abstraction licence obtained
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['abstraction-licence'] | capitalize }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="abstraction-licence">
+            Change<span class="govuk-visually-hidden"> abstraction licence obtained</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+      {% if data['abstraction-variation'] == "yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Abstraction variation required
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['abstraction-variation'] | capitalize }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="abstraction-variation">
+            Change<span class="govuk-visually-hidden"> abstraction variation required</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+
+    {% if (data['abstraction-licence'] == "yes") and (data['abstraction-variation'] == "yes") %}
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">Important</span>
+        You will need to secure a variation to your abstraction licence prior to submitting a full application.
+      </strong>
+    </div>
+    {% endif %}
+
+    <form action="business" method="post" novalidate>
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

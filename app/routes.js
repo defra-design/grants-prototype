@@ -106,7 +106,7 @@ router.post('/tenancy-length-answer', function (req, res) {
 
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength == "no"){res.redirect('current/views/tenancy-length-fail')}
+  if (tenancyLength == "no"){res.redirect('current/views/tenancy-length-condition')}
   else {res.redirect('current/views/project-cost')}
 });
 
@@ -135,10 +135,88 @@ router.post('/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
   if (projectStart == "yes"){res.redirect('current/views/project-start-fail')}
-  else {res.redirect('current/views/check-answers')}
+  else {res.redirect('current/views/check-answers-project-eligibility')}
 });
 
+router.post('/planning-required-answer', function (req, res) {
 
+  var planningRequired = req.session.data['planning-required']
+
+  if (planningRequired == "yes"){res.redirect('current/views/planning-permission')}
+  else {res.redirect('current/views/abstraction-required')}
+});
+
+router.post('/planning-permission-answer', function (req, res) {
+
+  var planningPermission = req.session.data['planning-permission']
+
+  if (planningPermission == "yes"){res.redirect('current/views/abstraction-required')}
+  else {res.redirect('current/views/planning-permission-fail')}
+});
+
+router.post('/abstraction-required-answer', function (req, res) {
+
+  var abstractionRequired = req.session.data['abstraction-required']
+
+  if (abstractionRequired == "yes"){res.redirect('current/views/abstraction-licence')}
+  else {res.redirect('current/views/check-answers-theme-eligibility')}
+});
+
+router.post('/abstraction-licence-answer', function (req, res) {
+
+  var abstractionLicence = req.session.data['abstraction-licence']
+
+  if (abstractionLicence == "yes"){res.redirect('current/views/abstraction-variation')}
+  else {res.redirect('current/views/abstraction-licence-fail')}
+});
+
+router.post('/abstraction-variation-answer', function (req, res) {
+
+  var abstractionVariation = req.session.data['abstraction-variation']
+
+  if (abstractionVariation == "yes"){res.redirect('current/views/abstraction-variation-condition')}
+  else {res.redirect('current/views/check-answers-theme-eligibility')}
+});
+
+router.post('/business-answer', function (req, res) {
+
+  var businessAnswer = req.session.data['new-business']
+
+  if (businessAnswer == "yes"){res.redirect('current/views/new-business-condition')}
+  else {res.redirect('current/views/applying')}
+});
+
+router.post('/applying-answer', function (req, res) {
+
+  var applyingAnswer = req.session.data['applying']
+
+  if (applyingAnswer == "other"){res.redirect('current/views/preferred-contact')}
+  else {res.redirect('current/views/your-details')}
+});
+
+router.post('/your-details-answer', function (req, res) {
+
+  var applyingAnswer = req.session.data['applying']
+
+  if (applyingAnswer == "other"){res.redirect('current/views/applicant-details')}
+  else {res.redirect('current/views/check-answers-contact-details')}
+});
+
+router.post('/preferred-contact-answer', function (req, res) {
+
+  var preferredContact = req.session.data['preferred-contact']
+
+  if (preferredContact == "just the applicant"){res.redirect('current/views/applicant-details')}
+  else {res.redirect('current/views/your-details')}
+});
+
+router.post('/irrigation-answer', function (req, res) {
+
+  var irrigationAnswer = req.session.data['irrigation']
+
+  if (irrigationAnswer == "improve"){res.redirect('current/views/current-irrigation')}
+  else {res.redirect('current/views/new-irrigation')}
+});
 
 //*****************************************************
 // TASK LIST PAGE START //

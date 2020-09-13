@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Does your tenancy extend beyond six years?
+  Are you a new business?
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="tenancy">Back</a>
+  <a class="govuk-back-link" href="business">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,25 +13,28 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/tenancy-length-answer" method="post">
+      <form class="form" action="/business-answer" method="post">
 
         <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
+          <fieldset class="govuk-fieldset" aria-describedby="new-business-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Does your tenancy extend beyond six years?
+                Are you a new business?
               </h1>
             </legend>
+            <div id="new-business-hint" class="govuk-hint">
+              A new business has been trading for less than two years
+            </div>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="yes" {{ checked("tenancy-length", "yes") }}>
-                <label class="govuk-label govuk-radios__label" for="tenancy-length">
+                <input class="govuk-radios__input" id="new-business" name="new-business" type="radio" value="yes" {{ checked("new-business", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="new-business">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="no" {{ checked("tenancy-length", "no") }}>
-                <label class="govuk-label govuk-radios__label" for="tenancy-length-2">
+                <input class="govuk-radios__input" id="new-business-2" name="new-business" type="radio" value="no" {{ checked("new-business", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="new-business-2">
                   No
                 </label>
               </div>

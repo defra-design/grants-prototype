@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Does your tenancy extend beyond six years?
+  Who is applying for this grant?
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="tenancy">Back</a>
+  <a class="govuk-back-link" href="business">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,26 +13,26 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/tenancy-length-answer" method="post">
+      <form class="form" action="/applying-answer" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Does your tenancy extend beyond six years?
+                Who is applying for this grant?
               </h1>
             </legend>
-            <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="yes" {{ checked("tenancy-length", "yes") }}>
-                <label class="govuk-label govuk-radios__label" for="tenancy-length">
-                  Yes
+                <input class="govuk-radios__input" id="applying" name="applying" type="radio" value="own" {{ checked("applying", "own") }}>
+                <label class="govuk-label govuk-radios__label" for="applying">
+                  I am applying for my business
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="no" {{ checked("tenancy-length", "no") }}>
-                <label class="govuk-label govuk-radios__label" for="tenancy-length-2">
-                  No
+                <input class="govuk-radios__input" id="applying-2" name="applying" type="radio" value="other" {{ checked("applying", "other") }}>
+                <label class="govuk-label govuk-radios__label" for="applying-2">
+                  I am applying on behalf of someone else's business
                 </label>
               </div>
             </div>
