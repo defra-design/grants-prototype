@@ -161,9 +161,22 @@ if ( req.session.data['project_benefits_status'] != 'Completed' ){
   req.session.data['project_benefits_status'] = 'Not started'
 }
 
-res.render( './' + req.originalUrl )
+var backUrl
+
+if (req.session.data['applying'] == 'own') {
+  backUrl = 'your-details' }
+else {
+  backUrl = 'applicant-details'
+  }
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl
+  })
 
 });
+
+
+
 
 router.get('*/irrigation', function (req, res) {
 
@@ -322,6 +335,26 @@ router.post('/applying-answer', function (req, res) {
   else {res.redirect('current/views/your-details')}
 });
 
+
+router.get('*/your-details', function (req, res) {
+
+  var backUrl
+
+  if (req.session.data['applying'] == 'own') {
+    backUrl = 'applying' }
+  else {
+    backUrl = 'preferred-contact'
+    }
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl
+  })
+
+})
+
+
+
+
 router.post('/your-details-answer', function (req, res) {
 
   var applyingAnswer = req.session.data['applying']
@@ -337,6 +370,31 @@ router.post('/preferred-contact-answer', function (req, res) {
   if (preferredContact == "just the applicant"){res.redirect('current/views/applicant-details')}
   else {res.redirect('current/views/your-details')}
 });
+
+
+router.get('*/applicant-details', function (req, res) {
+
+  var backUrl
+
+  if (req.session.data['preferred-contact'] == 'just the applicant') {
+    backUrl = 'preferred-contact' }
+  else {
+    backUrl = 'your-details'
+    }
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl
+  })
+
+})
+
+
+
+
+
+
+
+
 
 router.post('/irrigation-answer', function (req, res) {
 
