@@ -331,7 +331,7 @@ router.post('/business-answer', function (req, res) {
 
   var businessAnswer = req.session.data['new-business']
 
-  if (businessAnswer == "yes"){res.redirect('current/views/new-business-condition')}
+  if (businessAnswer == "no"){res.redirect('current/views/new-business-condition')}
   else {res.redirect('current/views/applying')}
 });
 

@@ -17,7 +17,7 @@
 
     <h2 class="govuk-heading-m">Project eligibility</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Type of business
@@ -146,9 +146,9 @@
     </div>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Theme eligibility checks</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Theme eligibility</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Project items
@@ -298,9 +298,9 @@
     </div>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Business details</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Business details</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Business name
@@ -363,9 +363,9 @@
 
     {% if (data['applying'] == "own") or (data['preferred-contact'] == "contact me and the applicant") %}
 
-    <h2 class="govuk-heading-m">Your details</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Your details</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Full name
@@ -431,9 +431,9 @@
 
     {% if (data['applying'] == "other") %}
 
-    <h2 class="govuk-heading-m">Applicant details</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Applicant details</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant name
@@ -497,10 +497,10 @@
       {% endif %}
     </dl>
 
-    <h2 class="govuk-heading-m">Irrigation</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Irrigation</h2>
 
     {% if data['irrigation'] == "introduce" %}
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
@@ -570,7 +570,7 @@
     {% endif %}
 
     {% if data['irrigation'] == "improve" %}
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
@@ -691,9 +691,9 @@
     </dl>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Other benefits</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Other benefits</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Other farms supplied with water
@@ -739,8 +739,8 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <div class="govuk-form-group govuk-!-margin-bottom-9">
-      <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <div class="govuk-form-group govuk-!-margin-bottom-9 govuk-!-margin-top-7">
+      <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
           <h2 class="govuk-fieldset__heading">
             Terms and conditions
