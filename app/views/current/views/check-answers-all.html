@@ -11,7 +11,7 @@ Review your application
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">Review your application</h1>
 
@@ -19,7 +19,7 @@ Review your application
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Type of business
         </dt>
         <dd class="govuk-summary-list__value">
@@ -32,7 +32,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Legal status
         </dt>
         <dd class="govuk-summary-list__value">
@@ -45,7 +45,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Located in England
         </dt>
         <dd class="govuk-summary-list__value">
@@ -58,7 +58,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Rented, leased or tenanted
         </dt>
         <dd class="govuk-summary-list__value">
@@ -72,7 +72,7 @@ Review your application
       </div>
       {% if data['tenancy'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Tenancy extends beyond six years
         </dt>
         <dd class="govuk-summary-list__value">
@@ -87,7 +87,7 @@ Review your application
 
       {% endif %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Estimated project costs
         </dt>
         <dd class="govuk-summary-list__value">
@@ -100,7 +100,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Able to pay remaining costs
         </dt>
         <dd class="govuk-summary-list__value">
@@ -113,7 +113,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Will pay with public money
         </dt>
         <dd class="govuk-summary-list__value">
@@ -126,7 +126,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project started
         </dt>
         <dd class="govuk-summary-list__value">
@@ -154,7 +154,7 @@ Review your application
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Project items
         </dt>
         <dd class="govuk-summary-list__value">
@@ -182,7 +182,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -195,7 +195,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project summary
         </dt>
         <dd class="govuk-summary-list__value">
@@ -208,7 +208,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Planning permission required
         </dt>
         <dd class="govuk-summary-list__value">
@@ -222,7 +222,7 @@ Review your application
       </div>
       {% if data['planning-required'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Planning permission obtained
         </dt>
         <dd class="govuk-summary-list__value">
@@ -237,7 +237,7 @@ Review your application
       {% endif %}
 
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction licence required
         </dt>
         <dd class="govuk-summary-list__value">
@@ -251,7 +251,7 @@ Review your application
       </div>
       {% if data['abstraction-required'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction licence obtained
         </dt>
         <dd class="govuk-summary-list__value">
@@ -266,7 +266,7 @@ Review your application
       {% endif %}
       {% if data['abstraction-variation'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction variation required
         </dt>
         <dd class="govuk-summary-list__value">
@@ -295,7 +295,7 @@ Review your application
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Business name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -308,7 +308,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Employees
         </dt>
         <dd class="govuk-summary-list__value">
@@ -321,7 +321,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Turnover
         </dt>
         <dd class="govuk-summary-list__value">
@@ -334,7 +334,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           New business
         </dt>
         <dd class="govuk-summary-list__value">
@@ -364,7 +364,7 @@ Review your application
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Full name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -377,7 +377,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Email
         </dt>
         <dd class="govuk-summary-list__value">
@@ -392,7 +392,7 @@ Review your application
       {% for item in data['contact-preferences'] %}
       {% if item == "phone" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Phone
         </dt>
         <dd class="govuk-summary-list__value">
@@ -407,7 +407,7 @@ Review your application
       {% endif %}
       {% endfor %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Contact preferences
         </dt>
         <dd class="govuk-summary-list__value">
@@ -432,7 +432,7 @@ Review your application
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -445,7 +445,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant email
         </dt>
         <dd class="govuk-summary-list__value">
@@ -460,7 +460,7 @@ Review your application
       {% for item in data['applicant-contact-preferences'] %}
       {% if item == "phone" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant phone
         </dt>
         <dd class="govuk-summary-list__value">
@@ -475,7 +475,7 @@ Review your application
       {% endif %}
       {% endfor %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant contact preferences
         </dt>
         <dd class="govuk-summary-list__value">
@@ -499,7 +499,7 @@ Review your application
     {% if data['irrigation'] == "introduce" %}
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
         </dt>
         <dd class="govuk-summary-list__value">
@@ -512,7 +512,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Land to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -525,7 +525,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Crops to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -538,7 +538,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
@@ -551,7 +551,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
@@ -569,7 +569,7 @@ Review your application
     {% if data['irrigation'] == "improve" %}
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
         </dt>
         <dd class="govuk-summary-list__value">
@@ -582,7 +582,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current land irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -595,7 +595,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current crops irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -608,7 +608,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
@@ -621,7 +621,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
@@ -634,7 +634,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed land to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -647,7 +647,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed crops to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -660,7 +660,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
@@ -673,7 +673,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
@@ -692,20 +692,20 @@ Review your application
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Collaboration
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Other farms supplied with water
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['collaboration'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="collaboration">
-            Change<span class="govuk-visually-hidden"> collaboration</span>
+            Change<span class="govuk-visually-hidden"> other farms supplied with water</span>
           </a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Productivity
         </dt>
         <dd class="govuk-summary-list__value">
@@ -718,7 +718,7 @@ Review your application
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Environment
         </dt>
         <dd class="govuk-summary-list__value">
@@ -731,7 +731,11 @@ Review your application
         </dd>
       </div>
     </dl>
+  </div>
+</div>
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
     <div class="govuk-form-group govuk-!-margin-bottom-9">
       <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">

@@ -11,7 +11,7 @@ Check your answers
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">Check your answers</h1>
 
@@ -19,7 +19,7 @@ Check your answers
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Business name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -32,7 +32,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Employees
         </dt>
         <dd class="govuk-summary-list__value">
@@ -45,7 +45,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Turnover
         </dt>
         <dd class="govuk-summary-list__value">
@@ -58,7 +58,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           New business
         </dt>
         <dd class="govuk-summary-list__value">
@@ -88,7 +88,7 @@ Check your answers
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Full name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -101,7 +101,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Email
         </dt>
         <dd class="govuk-summary-list__value">
@@ -116,7 +116,7 @@ Check your answers
       {% for item in data['contact-preferences'] %}
       {% if item == "phone" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Phone
         </dt>
         <dd class="govuk-summary-list__value">
@@ -131,7 +131,7 @@ Check your answers
       {% endif %}
       {% endfor %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Contact preferences
         </dt>
         <dd class="govuk-summary-list__value">
@@ -156,7 +156,7 @@ Check your answers
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -169,7 +169,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant email
         </dt>
         <dd class="govuk-summary-list__value">
@@ -184,7 +184,7 @@ Check your answers
       {% for item in data['applicant-contact-preferences'] %}
       {% if item == "phone" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant phone
         </dt>
         <dd class="govuk-summary-list__value">
@@ -199,7 +199,7 @@ Check your answers
       {% endif %}
       {% endfor %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant contact preferences
         </dt>
         <dd class="govuk-summary-list__value">
