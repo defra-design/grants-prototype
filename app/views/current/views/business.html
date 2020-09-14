@@ -16,7 +16,7 @@
       <form class="form" action="new-business" method="post">
 
         <h1 class="govuk-heading-l">
-          Your business
+          Business details
         </h1>
 
         <div class="govuk-form-group">
@@ -35,9 +35,9 @@
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="turnover">
-              Business turnover
+              Business turnover (£)
             </label>
-          <span class="govuk-body govuk-!-margin-right-2">£</span> <input class="govuk-input govuk-input--width-10" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
+          <input class="govuk-input govuk-input--width-10" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
         </div>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>

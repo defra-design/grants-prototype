@@ -17,11 +17,11 @@
 
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="project-cost">
-              What are your estimate total project costs?
+              What is the estimated total project cost?
             </label>
           </h1>
           <div id="account-number-hint" class="govuk-hint">
-             Your costs should be net of VAT (unless VAT is non-recoverable)
+             Do not include VAT <!--(unless it cannot be recovered)-->
           </div>
           <span class="govuk-body govuk-!-margin-right-2">£</span> <input class="govuk-input govuk-input--width-10" id="project-cost" name="project-cost" type="text" spellcheck="false" aria-describedby="project-cost-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['project-cost'] }}">
         </div>

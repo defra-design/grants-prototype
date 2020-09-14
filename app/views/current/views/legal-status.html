@@ -24,9 +24,27 @@
             </legend>
             <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="legal-status" name="legal-status" type="radio" value="sole trader" {{ checked("legal-status", "sole trader") }}>
-                <label class="govuk-label govuk-radios__label" for="legal-status">
-                  Sole Trader
+                <input class="govuk-radios__input" id="legal-status-6" name="legal-status" type="radio" value="charity" {{ checked("legal-status", "charity") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-6">
+                  Charity
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-7" name="legal-status" type="radio" value="community interest organisation" {{ checked("legal-status", "community interest organisation") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-7">
+                  Community interest organisation
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-3" name="legal-status" type="radio" value="limited company" {{ checked("legal-status", "limited company") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-3">
+                  Limited company
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-5" name="legal-status" type="radio" value="limited liability partnership" {{ checked("legal-status", "limited liability partnership") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-5">
+                  Limited liability partnership
                 </label>
               </div>
               <div class="govuk-radios__item">
@@ -36,9 +54,15 @@
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="legal-status-3" name="legal-status" type="radio" value="limited company" {{ checked("legal-status", "limited company") }}>
-                <label class="govuk-label govuk-radios__label" for="legal-status-3">
-                  Limited Company
+                <input class="govuk-radios__input" id="legal-status-8" name="legal-status" type="radio" value="public organisation" {{ checked("legal-status", "public organisation") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-8">
+                  Public organisation
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status" name="legal-status" type="radio" value="sole trader" {{ checked("legal-status", "sole trader") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status">
+                  Sole trader
                 </label>
               </div>
               <div class="govuk-radios__item">
@@ -48,34 +72,9 @@
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="legal-status-5" name="legal-status" type="radio" value="limited liability partnership" {{ checked("legal-status", "limited liability partnership") }}>
-                <label class="govuk-label govuk-radios__label" for="legal-status-5">
-                  Limited Liability Partnership
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="legal-status-6" name="legal-status" type="radio" value="charity" {{ checked("legal-status", "charity") }}>
-                <label class="govuk-label govuk-radios__label" for="legal-status-6">
-                  Charity
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="legal-status-7" name="legal-status" type="radio" value="community interest organisation" {{ checked("legal-status", "community interest organisation") }}>
-                <label class="govuk-label govuk-radios__label" for="legal-status-7">
-                  Community Interest Organisation
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="legal-status-8" name="legal-status" type="radio" value="public organisation" {{ checked("legal-status", "public organisation") }}>
-                <label class="govuk-label govuk-radios__label" for="legal-status-8">
-                  Public Organisation
-                </label>
-              </div>
-              <div class="govuk-radios__divider">or</div>
-              <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="legal-status-9" name="legal-status" type="radio" value="none" {{ checked("legal-status", "none") }}>
                 <label class="govuk-label govuk-radios__label" for="legal-status-9">
-                  None of the above
+                  Other
                 </label>
               </div>
             </div>

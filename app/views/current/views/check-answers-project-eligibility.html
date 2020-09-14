@@ -15,7 +15,7 @@
 
     <h1 class="govuk-heading-l">Check your answers</h1>
 
-    <h2 class="govuk-heading-m">Project eligibility checks</h2>
+    <h2 class="govuk-heading-m">Project eligibility</h2>
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
@@ -46,7 +46,7 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          Located in England
+          Location
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['country'] | capitalize }}
@@ -141,12 +141,8 @@
     </dl>
 
     {% if (data['tenancy'] == "yes") and (data['tenancy-length'] == "no") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
-        You will need to secure an extension to your tenancy agreement prior to submitting a full application.
-      </strong>
+    <div class="govuk-inset-text">
+        To make a full application, you will need to extend your tenancy beyond 2026.
     </div>
     {% endif %}
 

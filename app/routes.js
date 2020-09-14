@@ -231,8 +231,8 @@ router.post('/country-answer', function (req, res) {
 
   var country = req.session.data['country']
 
-  if (country == "no"){res.redirect('current/views/country-fail')}
-  else {res.redirect('current/views/tenancy')}
+  if (country == "england"){res.redirect('current/views/tenancy')}
+  else {res.redirect('current/views/country-fail')}
 });
 
 router.post('/tenancy-answer', function (req, res) {
@@ -292,6 +292,14 @@ router.post('/planning-permission-answer', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
 
   if (planningPermission == "yes"){res.redirect('current/views/abstraction-required')}
+  else {res.redirect('current/views/planning-progress')}
+});
+
+router.post('/planning-progress-answer', function (req, res) {
+
+  var planningProgress = req.session.data['planning-progress']
+
+  if (planningProgress == "yes"){res.redirect('current/views/abstraction-required')}
   else {res.redirect('current/views/planning-permission-fail')}
 });
 

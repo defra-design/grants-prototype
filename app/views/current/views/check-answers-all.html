@@ -235,6 +235,21 @@ Review your application
         </dd>
       </div>
       {% endif %}
+      {% if data['planning-permission'] == "no" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Planning permission to be granted in next six months
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['planning-progress'] | capitalize }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="planning-progress">
+            Change<span class="govuk-visually-hidden"> planning permission to be granted in next six months</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
