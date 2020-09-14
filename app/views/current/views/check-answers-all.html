@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check your answers
+Review your application
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" onclick="history.back()" href="#">Back</a>
+<a class="govuk-back-link" onclick="history.back()" href="#">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Check your answers</h1>
+    <h1 class="govuk-heading-l">Review your application</h1>
 
     <h2 class="govuk-heading-m">Project eligibility checks</h2>
 
@@ -161,17 +161,17 @@
           <ul class="govuk-list govuk-list--bullet">
             {% for item in data['project-items'] %}
             {% if item == "water reservoir" %}
-              <li>Water reservoir</li>
-              {% for item in data['reservoir-items'] %}
-              <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
-              {% endfor %}
+            <li>Water reservoir</li>
+            {% for item in data['reservoir-items'] %}
+            <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
+            {% endfor %}
             {% elif item == "reservoir infrastructure" %}
-              <li>Reservoir infrastructure</li>
-              {% for item in data['infrastructure-items'] %}
-              <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
-              {% endfor %}
-              {% else %}
-              <li>{{ item | capitalize }}</li>{% endif %}
+            <li>Reservoir infrastructure</li>
+            {% for item in data['infrastructure-items'] %}
+            <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
+            {% endfor %}
+            {% else %}
+            <li>{{ item | capitalize }}</li>{% endif %}
             {% endfor %}
           </ul>
         </dd>
@@ -732,12 +732,33 @@
       </div>
     </dl>
 
-    <form action="" method="post" novalidate>
+    <div class="govuk-form-group govuk-!-margin-bottom-9">
+      <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h2 class="govuk-fieldset__heading">
+            Terms and conditions
+          </h2>
+        </legend>
+        <div id="waste-hint" class="govuk-hint">
+          I consent to the terms and conditions as outlined in the <a href="">large countryside productivity grant guidance</a>.
+        </div>
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="consent-to-terms" name="consent-to-terms" type="checkbox" value="consent-given">
+            <label class="govuk-label govuk-checkboxes__label" for="consent-to-terms">
+              I consent <span class="govuk-visually-hidden"> to the terms and conditions as outlined in the large countryside productivity grant guidance.
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <form action="confirmation" method="post" novalidate>
 
       <input type="hidden" name="answers-checked" value="true">
 
       <button class="govuk-button" data-module="govuk-button">
-        Save and continue
+        Submit your application
       </button>
 
     </form>
