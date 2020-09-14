@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Review your application
+  Check all your answers
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,9 +13,9 @@ Review your application
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Review your application</h1>
+    <h1 class="govuk-heading-l">Check all your answers</h1>
 
-    <h2 class="govuk-heading-m">Project eligibility checks</h2>
+    <h2 class="govuk-heading-m">Project eligibility</h2>
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
@@ -46,7 +46,7 @@ Review your application
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          Located in England
+          Location
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['country'] | capitalize }}
@@ -141,12 +141,8 @@ Review your application
     </dl>
 
     {% if (data['tenancy'] == "yes") and (data['tenancy-length'] == "no") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         You will need to secure an extension to your tenancy agreement prior to submitting a full application.
-      </strong>
     </div>
     {% endif %}
 
@@ -297,12 +293,8 @@ Review your application
     </dl>
 
     {% if (data['abstraction-licence'] == "yes") and (data['abstraction-variation'] == "yes") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         You will need to secure a variation to your abstraction licence prior to submitting a full application.
-      </strong>
     </div>
     {% endif %}
 
@@ -364,12 +356,8 @@ Review your application
     </dl>
 
     {% if data['new-business'] == "yes" %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         As a new business, you will need to provide additional evidence of your finances in your full application.
-      </strong>
     </div>
     {% endif %}
 
@@ -777,7 +765,7 @@ Review your application
       <input type="hidden" name="answers-checked" value="true">
 
       <button class="govuk-button" data-module="govuk-button">
-        Submit your application
+        Send the expression of interest
       </button>
 
     </form>

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Your current irrigation
+  Current irrigation
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,33 +16,33 @@ Your current irrigation
     <form class="form" action="proposed-irrigation" method="post">
 
       <h1 class="govuk-heading-l">
-        Your current irrigation
+        Current irrigation
       </h1>
 
       <div class="govuk-form-group">
         <label class="govuk-label" for="land-irrigated">
-          How much land do you currently irrigate?
+          How much land is currently irrigated?
         </label>
         <textarea class="govuk-textarea" id="land-irrigated" name="land-irrigated" rows="2" aria-describedby="land-irrigated-hint">{{ data['land-irrigated'] }}</textarea>
       </div>
 
       <div class="govuk-form-group">
         <label class="govuk-label" for="crops-irrigated">
-          What types of crops do you currently irrigate?
+          What crops are currently irrigated?
         </label>
         <textarea class="govuk-textarea" id="crops-irrigated" name="crops-irrigated" rows="2" aria-describedby="crops-irrigated-hint">{{ data['crops-irrigated'] }}</textarea>
       </div>
 
       <div class="govuk-form-group">
         <label class="govuk-label" for="water-source">
-          Where does the water you currently use to irrigate come from?
+          Where does the water used for irrigation come from?
         </label>
         <textarea class="govuk-textarea" id="water-source" name="water-source" rows="4" aria-describedby="water-source-hint">{{ data['water-source'] }}</textarea>
       </div>
 
       <div class="govuk-form-group">
         <label class="govuk-label" for="irrigation-systems">
-          What systems do you currently use to irrigate?
+          What systems are currently used to irrigate?
         </label>
         <textarea class="govuk-textarea" id="irrigation-systems" name="irrigation-systems" rows="4" aria-describedby="irrigation-systems-hint">{{ data['irrigation-systems'] }}</textarea>
       </div>

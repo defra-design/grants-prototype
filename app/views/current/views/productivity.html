@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  How would the project improve productivity?
+  How would this project improve productivity?
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,8 +16,8 @@
       <form class="form" action="environment" method="post">
 
         <div class="govuk-form-group">
-          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="productivity">
-              How would your project improve productivity?
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="productivity">
+              How will this project improve productivity?
             </label>
           </h1>
           <textarea class="govuk-textarea" id="productivity" name="productivity" rows="8" aria-describedby="productivity-hint">{{ data['productivity'] }}</textarea>

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Proposed irrigation resulting from your project
+  New irrigation
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,33 +16,33 @@
       <form class="form" action="collaboration" method="post">
 
         <h1 class="govuk-heading-l">
-          Proposed irrigation resulting from your project
+          New irrigation
         </h1>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="new-land-irrigated">
-              How much land will you irrigate if the project goes ahead?
+              How much land will be irrigated?
             </label>
           <textarea class="govuk-textarea" id="new-land-irrigated" name="new-land-irrigated" rows="2" aria-describedby="new-land-irrigated-hint">{{ data['new-land-irrigated'] }}</textarea>
         </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="new-crops-irrigated">
-              Which crops will you irrigate if the project goes ahead?
+              What crops will be irrigated?
             </label>
           <textarea class="govuk-textarea" id="new-crops-irrigated" name="new-crops-irrigated" rows="2" aria-describedby="new-crops-irrigated-hint">{{ data['new-crops-irrigated'] }}</textarea>
         </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="new-water-source">
-              Where will the water to irrigate come from if the project goes ahead?
+              Where will the water used for irrigation come from?
             </label>
           <textarea class="govuk-textarea" id="new-water-source" name="new-water-source" rows="4" aria-describedby="new-water-source-hint">{{ data['new-water-source'] }}</textarea>
         </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="new-irrigation-systems">
-              What systems will you use to irrigate if the project goes ahead?
+              What systems will be used to irrigate?
             </label>
           <textarea class="govuk-textarea" id="new-irrigation-systems" name="new-irrigation-systems" rows="4" aria-describedby="new-irrigation-systems-hint">{{ data['new-irrigation-systems'] }}</textarea>
         </div>
