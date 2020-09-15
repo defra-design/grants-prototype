@@ -27,7 +27,7 @@ router.get('/', function (req, res) {
 
 // Set service name based on sub folders for different prototypes
 router.get('/current/*', function(req, res, next){
-  res.locals['serviceName'] = 'Apply for a large countryside productivity grant'
+  res.locals['serviceName'] = 'Apply for a large countryside productivity grant for water'
   next()
 });
 
@@ -629,7 +629,7 @@ router.post('/business-answer', function (req, res) {
 
   var businessAnswer = req.session.data['new-business']
 
-  if (businessAnswer == "yes"){res.redirect('current/views/new-business-condition')}
+  if (businessAnswer == "no"){res.redirect('current/views/new-business-condition')}
   else {res.redirect('current/views/applying')}
 });
 
@@ -719,23 +719,23 @@ router.get('*/task-list', function (req, res) {
 
     switch (req.session.data['completed_sections']) {
         case '0':
-          application_status = 'Application not started'
+          application_status = 'Expression of interest not started'
           completed_sections = 'You have completed 0 of 4 sections.'
           break
         case '1':
-        application_status = 'Application in progress'
+        application_status = 'Expression of interest in progress'
         completed_sections = 'You have completed 1 of 4 sections.'
           break
         case '2':
-        application_status = 'Application in progress'
+        application_status = 'Expression of interest in progress'
         completed_sections = 'You have completed 2 of 4 sections.'
           break
         case '3':
-        application_status = 'Application in progress'
+        application_status = 'Expression of interest in progress'
         completed_sections = 'You have completed 3 of 4 sections.'
           break
         case '4':
-        application_status = 'Application completed'
+        application_status = 'Expression of interest completed'
         completed_sections = 'You have completed 4 of 4 sections.'
           break
       }

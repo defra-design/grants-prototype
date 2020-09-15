@@ -31,42 +31,37 @@
             Email address
           </label>
           <div id="email-hint" class="govuk-hint">
-            We will only use this to contact you about this application
+            We will only use this to contact you about this expression of interest
           </div>
           <input class="govuk-input" id="email" name="email" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email" value="{{ data['email'] }}">
         </div>
 
         <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="contact-preferences-conditional-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h2 class="govuk-fieldset__heading">
-                How would you prefer to be contacted?
-              </h2>
-            </legend>
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="contact-preferences-conditional" name="contact-preferences" type="checkbox" value="email" data-aria-controls="conditional-contact-preferences-conditional" {{ checked("contact-preferences", "email") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="contact-preferences-conditional">
-                  Email
+          <label class="govuk-label govuk-!-margin-bottom-3" for="contact-preferences">
+            How would you prefer to be contacted?
+          </label>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="contact-preferences-conditional" name="contact-preferences" type="checkbox" value="email" data-aria-controls="conditional-contact-preferences-conditional" {{ checked("contact-preferences", "email") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="contact-preferences-conditional">
+                Email
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="contact-preferences-conditional-2" name="contact-preferences" type="checkbox" value="phone" data-aria-controls="conditional-contact-preferences-conditional-2" {{ checked("contact-preferences", "phone") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="contact-preferences-conditional-2">
+                  Phone
                 </label>
               </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="contact-preferences-conditional-2" name="contact-preferences" type="checkbox" value="phone" data-aria-controls="conditional-contact-preferences-conditional-2" {{ checked("contact-preferences", "phone") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="contact-preferences-conditional-2">
-                    Phone
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-preferences-conditional-2">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="telephone-number">
+                    UK telephone number
                   </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-preferences-conditional-2">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="telephone-number">
-                      UK telephone number
-                    </label>
-                    <input class="govuk-input govuk-input--width-20" id="telephone-number" name="telephone-number" type="tel" autocomplete="tel" value="{{ data['telephone-number'] }}">
-                  </div>
-
+                  <input class="govuk-input govuk-input--width-20" id="telephone-number" name="telephone-number" type="tel" autocomplete="tel" value="{{ data['telephone-number'] }}">
                 </div>
               </div>
-            </fieldset>
+            </div>
           </div>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>

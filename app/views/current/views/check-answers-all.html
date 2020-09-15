@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Review your application
+  Check all your answers
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,11 +13,11 @@ Review your application
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Review your application</h1>
+    <h1 class="govuk-heading-l">Check all your answers</h1>
 
-    <h2 class="govuk-heading-m">Project eligibility checks</h2>
+    <h2 class="govuk-heading-m">Project eligibility</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Type of business
@@ -46,7 +46,7 @@ Review your application
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          Located in England
+          Location
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['country'] | capitalize }}
@@ -141,18 +141,14 @@ Review your application
     </dl>
 
     {% if (data['tenancy'] == "yes") and (data['tenancy-length'] == "no") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         You will need to secure an extension to your tenancy agreement prior to submitting a full application.
-      </strong>
     </div>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Theme eligibility checks</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Theme eligibility</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Project items
@@ -297,18 +293,14 @@ Review your application
     </dl>
 
     {% if (data['abstraction-licence'] == "yes") and (data['abstraction-variation'] == "yes") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         You will need to secure a variation to your abstraction licence prior to submitting a full application.
-      </strong>
     </div>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Business details</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Business details</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Business name
@@ -364,20 +356,16 @@ Review your application
     </dl>
 
     {% if data['new-business'] == "yes" %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         As a new business, you will need to provide additional evidence of your finances in your full application.
-      </strong>
     </div>
     {% endif %}
 
     {% if (data['applying'] == "own") or (data['preferred-contact'] == "contact me and the applicant") %}
 
-    <h2 class="govuk-heading-m">Your details</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Your details</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Full name
@@ -443,9 +431,9 @@ Review your application
 
     {% if (data['applying'] == "other") %}
 
-    <h2 class="govuk-heading-m">Applicant details</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Applicant details</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant name
@@ -509,10 +497,10 @@ Review your application
       {% endif %}
     </dl>
 
-    <h2 class="govuk-heading-m">Irrigation</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Irrigation</h2>
 
     {% if data['irrigation'] == "introduce" %}
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
@@ -582,7 +570,7 @@ Review your application
     {% endif %}
 
     {% if data['irrigation'] == "improve" %}
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
@@ -703,9 +691,9 @@ Review your application
     </dl>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Other benefits</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Other benefits</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Other farms supplied with water
@@ -751,8 +739,8 @@ Review your application
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <div class="govuk-form-group govuk-!-margin-bottom-9">
-      <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <div class="govuk-form-group govuk-!-margin-bottom-9 govuk-!-margin-top-7">
+      <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
           <h2 class="govuk-fieldset__heading">
             Terms and conditions
@@ -777,7 +765,7 @@ Review your application
       <input type="hidden" name="answers-checked" value="true">
 
       <button class="govuk-button" data-module="govuk-button">
-        Submit your application
+        Send the expression of interest
       </button>
 
     </form>

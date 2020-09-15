@@ -17,7 +17,7 @@
 
     <h2 class="govuk-heading-m">Theme eligibility</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project items
@@ -162,12 +162,8 @@
     </dl>
 
     {% if (data['abstraction-licence'] == "yes") and (data['abstraction-variation'] == "yes") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         You will need to secure a variation to your abstraction licence prior to submitting a full application.
-      </strong>
     </div>
     {% endif %}
 
@@ -175,7 +171,7 @@
 
       <input type="hidden" name="answers-checked" value="true">
 
-      <button class="govuk-button" data-module="govuk-button">
+      <button class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">
         Save and continue
       </button>
 
