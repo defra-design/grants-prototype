@@ -1,11 +1,14 @@
 {% extends "layout.html" %}
 
+{% set thisPageTitle = 'Which items eligible for grant funding are you including in your project?' %}
+
 {% block pageTitle %}
-  Which items eligible for grant funding are you including in your project?
+  {{ thisPageTitle }} - {{ serviceName }} - GOV.UK
 {% endblock %}
 
+
 {% block beforeContent %}
-  <a class="govuk-back-link" href="check-answers-project-eligibility">Back</a>
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,13 +16,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="project" method="post">
+      <form class="form" action="{{ nextUrl }}" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="project-items-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Which items eligible for grant funding are you including in your project?
+                {{ thisPageTitle }}
               </h1>
             </legend>
             <span id="project-items-hint" class="govuk-hint">

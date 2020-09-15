@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
 
+{% set thisPageTitle = 'Check your answers for section 1' %}
+
 {% block pageTitle %}
-  Check your answers
+  {{ thisPageTitle }} - {{ serviceName }} - GOV.UK
 {% endblock %}
+
 
 {% block beforeContent %}
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
@@ -13,7 +16,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Check your answers</h1>
+    <h1 class="govuk-heading-l">{{ thisPageTitle }}</h1>
 
     <h2 class="govuk-heading-m">Project eligibility</h2>
 

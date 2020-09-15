@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
+{% set thisPageTitle = 'You may be able to apply for a large countryside productivity grant' %}
+
 {% block pageTitle %}
-  You may be able to apply for a large countryside productivity grant
+  {{ thisPageTitle }} - {{ serviceName }} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,7 +16,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        You may be able to apply for a large countryside productivity grant
+        {{ thisPageTitle }}
       </h1>
 
       <p>To apply for a grant, you would need to secure an extension to your tenancy agreement prior to submitting a full application.</p>

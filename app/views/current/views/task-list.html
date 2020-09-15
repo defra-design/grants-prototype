@@ -23,7 +23,7 @@
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                {% if data['project_eligibility_status'] == 'Completed' %}
+                {% if project_eligibility_status == 'completed' %}
                 <a href="check-answers-project-eligibility" aria-describedby="project-eligibility-status">
                   Project eligiblity
                 </a>
@@ -37,8 +37,8 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                {% if data['project_eligibility_status'] == 'Completed' %}
-                  {% if data['theme_eligibility_status'] == 'Completed' %}
+                {% if project_eligibility_status == 'completed' %}
+                  {% if theme_eligibility_status == 'completed' %}
                 <a href="check-answers-theme-eligibility" aria-describedby="theme-eligibility-status">
                   Theme eligiblity
                 </a>
@@ -48,15 +48,15 @@
                 </a>
                   {% endif %}
                 {% else %}
-                  Theme eligiblity
+                  Theme eligiblity x
                 {% endif %}
               </span>
               <strong class="govuk-tag {{ theme_eligibility_status_class }} app-task-list__tag" id="theme-eligibility-status">{{ theme_eligibility_status }}</strong>
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                {% if data['theme_eligibility_status'] == 'Completed' %}
-                  {% if data['contact_details_status'] == 'Completed' %}
+                {% if theme_eligibility_status == 'completed' %}
+                  {% if contact_details_status == 'completed' %}
                   <a href="check-answers-contact-details" aria-describedby="contact-details-status">
                     Contact details
                   </a>
@@ -73,8 +73,8 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                {% if data['contact_details_status'] == 'Completed' %}
-                  {% if data['project_benefits_status'] == 'Completed' %}
+                {% if contact_details_status == 'completed' %}
+                  {% if project_benefits_status == 'completed' %}
                   <a href="check-answers-project-benefits" aria-describedby="project-benefits-status">
                     Project benefits
                   </a>

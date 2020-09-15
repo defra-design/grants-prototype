@@ -52,19 +52,19 @@ router.get('*/start', function (req, res) {
 
 req.session.data['completed_sections'] = '0'
 
-req.session.data['project_eligibility_status'] = 'Not started'
+req.session.data['project_eligibility_status'] = 'not started'
 req.session.data['project_eligibility_status_class'] = ''
 
-req.session.data['theme_eligibility_status'] = 'Cannot start yet'
+req.session.data['theme_eligibility_status'] = 'cannot start yet'
 req.session.data['theme_eligibility_status_class'] = 'govuk-tag--grey'
 
-req.session.data['contact_details_status'] = 'Cannot start yet'
+req.session.data['contact_details_status'] = 'cannot start yet'
 req.session.data['contact_details_status_class'] = 'govuk-tag--grey'
 
-req.session.data['project_benefits_status'] = 'Cannot start yet'
+req.session.data['project_benefits_status'] = 'cannot start yet'
 req.session.data['project_benefits_status_class'] = 'govuk-tag--grey'
 
-req.session.data['final_project_details_status'] = 'Cannot start yet'
+req.session.data['final_project_details_status'] = 'cannot start yet'
 req.session.data['final_project_details_status_class'] = 'govuk-tag--grey'
 
 res.render( './' + req.originalUrl )
@@ -86,9 +86,9 @@ router.get('*/farming-type', function (req, res) {
     backUrl = 'check-answers-project-eligibility'
   }
 
-if ( req.session.data['project_eligibility_status'] != 'Completed' ){
+  if ( req.session.data['project_eligibility_status'] != 'completed' ){
 
-    req.session.data['project_eligibility_status'] = 'In progress'
+    req.session.data['project_eligibility_status'] = 'in progress'
     req.session.data['project_eligibility_status_class'] = 'govuk-tag--blue'
     }
 
@@ -97,6 +97,7 @@ if ( req.session.data['project_eligibility_status'] != 'Completed' ){
   } )
 
 });
+
 
 router.post('*/farming-type-answer', function (req, res) {
 
@@ -116,20 +117,6 @@ router.post('*/farming-type-answer', function (req, res) {
     }
 
   }
-});
-
-
-// FARMING TYPE
-
-router.get('*/legal-status', function (req, res) {
-  var backUrl = 'farming-type'
-  if ( req.session.data['cya-project-eligibility'] == 'hub' ){
-    backUrl = 'check-answers-project-eligibility'
-  }
-  res.render( './' + req.originalUrl, {
-    backUrl: backUrl
-  } )
-
 });
 
 
@@ -253,22 +240,14 @@ router.get('*/tenancy-length-condition', function (req, res) {
   var nextUrl = 'project-cost'
 
   if ( req.session.data['cya-project-eligibility'] == 'hub' ){
-
     nextUrl = 'check-answers-project-eligibility'
-
   }
 
   res.render( './' + req.originalUrl, {
     nextUrl: nextUrl
   } )
 
-
 });
-
-
-
-
-
 
 
 // PROJECT COST
@@ -385,62 +364,65 @@ router.post('/project-start-answer', function (req, res) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// CHECK ANSWERS - SECTION 1
 
 
 router.get('*/check-answers-project-eligibility', function (req, res) {
+
+
 
 req.session.data['cya-project-eligibility'] = 'hub'
 
 req.session.data['completed_sections'] = '1'
 
-req.session.data['project_eligibility_status'] = 'Completed'
+req.session.data['project_eligibility_status'] = 'completed'
 req.session.data['project_eligibility_status_class'] = ''
 
-if ( req.session.data['theme_eligibility_status'] != 'Completed' ){
-  req.session.data['theme_eligibility_status'] = 'Not started'
+if ( req.session.data['theme_eligibility_status'] != 'completed' ){
+  req.session.data['theme_eligibility_status'] = 'not started'
 }
 
 res.render( './' + req.originalUrl, {
-
   backUrl : res.locals.prevURL
-
 } )
 
 });
 
 
+
+
+
+
+// SECTION 2...
+
+
+// PROJECT ITEMS
+
 router.get('*/project-items', function (req, res) {
 
-if ( req.session.data['theme_eligibility_status'] != 'Completed' ){
+  // test to check this section isn't completed...
 
-req.session.data['theme_eligibility_status'] = 'In progress'
-req.session.data['theme_eligibility_status_class'] = 'govuk-tag--blue'
+  var backUrl = 'task-list'
+  var nextUrl = 'project'
+  if ( req.session.data['cya-theme-eligibility'] == 'hub' ){
+    backUrl = 'check-answers-theme-eligibility'
+    nextUrl = 'check-answers-theme-eligibility'
+  }
 
-}
+  if ( req.session.data['theme_eligibility_status'] != 'completed' ){
 
-res.render( './' + req.originalUrl )
+    req.session.data['theme_eligibility_status'] = 'in progress'
+    req.session.data['theme_eligibility_status_class'] = 'govuk-tag--blue'
+  }
+
+  res.render( './' + req.originalUrl, {
+    backUrl : backUrl,
+    nextUrl : nextUrl
+  } )
 
 });
+
+
 
 
 router.post('/planning-required-answer', function (req, res) {
@@ -515,11 +497,11 @@ router.get('*/check-answers-theme-eligibility', function (req, res) {
 
 req.session.data['completed_sections'] = '2'
 
-req.session.data['theme_eligibility_status'] = 'Completed'
+req.session.data['theme_eligibility_status'] = 'completed'
 req.session.data['theme_eligibility_status_class'] = ''
 
-if ( req.session.data['contact_details_status'] != 'Completed' ){
-  req.session.data['contact_details_status'] = 'Not started'
+if ( req.session.data['contact_details_status'] != 'completed' ){
+  req.session.data['contact_details_status'] = 'not started'
 }
 
 res.render( './' + req.originalUrl )
@@ -530,9 +512,9 @@ res.render( './' + req.originalUrl )
 router.get('*/business', function (req, res) {
 
 
-  if ( req.session.data['contact_details_status'] != 'Completed' ){
+  if ( req.session.data['contact_details_status'] != 'completed' ){
 
-req.session.data['contact_details_status'] = 'In progress'
+req.session.data['contact_details_status'] = 'in progress'
 req.session.data['contact_details_status_class'] = 'govuk-tag--blue'
 
 }
@@ -546,11 +528,11 @@ router.get('*/check-answers-contact-details', function (req, res) {
 
 req.session.data['completed_sections'] = '3'
 
-req.session.data['contact_details_status'] = 'Completed'
+req.session.data['contact_details_status'] = 'completed'
 req.session.data['contact_details_status_class'] = ''
 
-if ( req.session.data['project_benefits_status'] != 'Completed' ){
-  req.session.data['project_benefits_status'] = 'Not started'
+if ( req.session.data['project_benefits_status'] != 'completed' ){
+  req.session.data['project_benefits_status'] = 'not started'
 }
 
 var backUrl
@@ -588,9 +570,9 @@ else {
 
 router.get('*/irrigation', function (req, res) {
 
-  if ( req.session.data['project_benefits_status'] != 'Completed' ){
+  if ( req.session.data['project_benefits_status'] != 'completed' ){
 
-  req.session.data['project-benefits-status'] = 'In progress'
+  req.session.data['project-benefits-status'] = 'in progress'
   req.session.data['project-benefits-status-class'] = 'govuk-tag--blue'
 
 }
@@ -604,7 +586,7 @@ router.get('*/check-answers-project-benefits', function (req, res) {
 
 req.session.data['completed_sections'] = '4'
 
-req.session.data['project_benefits_status'] = 'Completed'
+req.session.data['project_benefits_status'] = 'completed'
 req.session.data['project_benefits_status_class'] = ''
 
 res.render( './' + req.originalUrl )
@@ -710,9 +692,55 @@ router.post('/irrigation-answer', function (req, res) {
   else {res.redirect('current/views/new-irrigation')}
 });
 
+
+
+
+
+
+
+
+
 //*****************************************************
 // TASK LIST PAGE START //
 router.get('*/task-list', function (req, res) {
+
+    var prefill = req.query.p
+
+    if ( prefill == '1' ){
+
+      // Prefill the first section
+
+      req.session.data['farming-type'] = 'horticulture'
+      req.session.data['legal-status'] = 'limited company'
+      req.session.data['country'] = 'england'
+      req.session.data['tenancy'] = 'no'
+      req.session.data['project-cost'] = 400000
+      req.session.data['remaining-costs'] = 'yes'
+      req.session.data['public-money'] = 'no'
+      req.session.data['project-start'] = 'no'
+
+      req.session.data['cya-project-eligibility'] = 'hub'
+
+      // Set up the task list statuses
+
+      req.session.data['completed_sections'] = '1'
+
+      req.session.data['project_eligibility_status'] = 'completed'
+      req.session.data['project_eligibility_status_class'] = ''
+
+      req.session.data['theme_eligibility_status'] = 'not started'
+      req.session.data['theme_eligibility_status_class'] = 'govuk-tag--grey'
+
+      req.session.data['contact_details_status'] = 'cannot start yet'
+      req.session.data['contact_details_status_class'] = 'govuk-tag--grey'
+
+      req.session.data['project_benefits_status'] = 'cannot start yet'
+      req.session.data['project_benefits_status_class'] = 'govuk-tag--grey'
+
+      req.session.data['final_project_details_status'] = 'cannot start yet'
+      req.session.data['final_project_details_status_class'] = 'govuk-tag--grey'
+
+    }
 
     var application_status
     var completed_sections
@@ -757,7 +785,7 @@ router.get('*/task-list', function (req, res) {
 
 
 
-  res.render( './' + req.originalUrl, {
+  res.render( './' + req.originalUrl.split("?").shift(), {
 
     application_status: application_status,
     completed_sections: completed_sections,
