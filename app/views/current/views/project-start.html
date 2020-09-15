@@ -1,11 +1,13 @@
 {% extends "layout.html" %}
 
+{% set thisPageTitle = 'Have you already started work on the project?' %}
+
 {% block pageTitle %}
-  Question page
+  {{ thisPageTitle }} - {{ serviceName }} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="remaining-costs">Back</a>
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -19,7 +21,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Have you already started work on the project?
+                {{ thisPageTitle }}
               </h1>
             </legend>
             <div class="govuk-radios govuk-radios--inline">

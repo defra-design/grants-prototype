@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
+{% set thisPageTitle = 'Is the business on land or premises that is rented, leased or tenanted?' %}
+
 {% block pageTitle %}
-  Are your land or premises rented, leased or tenanted?
+  {{ thisPageTitle }} - {{ serviceName }} - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,7 +21,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Is the business on land or premises that is rented, leased or tenanted?
+                {{ thisPageTitle }}
               </h1>
             </legend>
             <div class="govuk-radios govuk-radios--inline">

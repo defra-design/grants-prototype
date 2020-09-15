@@ -1,11 +1,14 @@
 {% extends "layout.html" %}
 
+{% set thisPageTitle = 'Where is the ' + data['farming-type'] + ' business located?' %}
+
 {% block pageTitle %}
-  Is your {{ data['farming-type'] }} business located in England?
+  {{ thisPageTitle }} - {{ serviceName }} - GOV.UK
 {% endblock %}
 
+
 {% block beforeContent %}
-  <a class="govuk-back-link" href="legal-status">Back</a>
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -19,7 +22,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Where is the {{ data['farming-type'] }} business located?
+                {{ thisPageTitle }}
               </h1>
             </legend>
             <div class="govuk-radios">

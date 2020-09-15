@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
 
+{% set thisPageTitle = 'Does the tenancy last until 2026 or after?' %}
+
 {% block pageTitle %}
-  Does your tenancy extend beyond six years?
+  {{ thisPageTitle }} - {{ serviceName }} - GOV.UK
 {% endblock %}
+
 
 {% block beforeContent %}
   <a class="govuk-back-link" href="tenancy">Back</a>
@@ -19,7 +22,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Does the tenancy last until 2026 or after?
+                {{ thisPageTitle }}
               </h1>
             </legend>
             <div class="govuk-radios govuk-radios--inline">
