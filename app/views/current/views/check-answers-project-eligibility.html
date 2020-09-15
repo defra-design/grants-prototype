@@ -11,15 +11,15 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">Check your answers</h1>
 
-    <h2 class="govuk-heading-m">Project eligibility checks</h2>
+    <h2 class="govuk-heading-m">Project eligibility</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Type of business
         </dt>
         <dd class="govuk-summary-list__value">
@@ -32,7 +32,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Legal status
         </dt>
         <dd class="govuk-summary-list__value">
@@ -45,8 +45,8 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Located in England
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Location
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['country'] | capitalize }}
@@ -58,7 +58,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Rented, leased or tenanted
         </dt>
         <dd class="govuk-summary-list__value">
@@ -72,7 +72,7 @@
       </div>
       {% if data['tenancy'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Tenancy extends beyond six years
         </dt>
         <dd class="govuk-summary-list__value">
@@ -87,7 +87,7 @@
 
       {% endif %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Estimated project costs
         </dt>
         <dd class="govuk-summary-list__value">
@@ -100,7 +100,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Able to pay remaining costs
         </dt>
         <dd class="govuk-summary-list__value">
@@ -113,7 +113,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Will pay with public money
         </dt>
         <dd class="govuk-summary-list__value">
@@ -126,7 +126,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project started
         </dt>
         <dd class="govuk-summary-list__value">
@@ -141,12 +141,8 @@
     </dl>
 
     {% if (data['tenancy'] == "yes") and (data['tenancy-length'] == "no") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
-        You will need to secure an extension to your tenancy agreement prior to submitting a full application.
-      </strong>
+    <div class="govuk-inset-text">
+        To make a full application, you will need to extend your tenancy beyond 2026.
     </div>
     {% endif %}
 
@@ -154,7 +150,7 @@
 
       <input type="hidden" name="answers-checked" value="true">
 
-      <button class="govuk-button" data-module="govuk-button">
+      <button class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">
         Save and continue
       </button>
 

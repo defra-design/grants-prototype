@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Is your {{ data['farming-type'] }} business located in England?
+  Where is the {{ data['farming-type'] }} business located?
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,20 +19,38 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Is your {{ data['farming-type'] }} business located in England?
+                Where is the {{ data['farming-type'] }} business located?
               </h1>
             </legend>
-            <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="country" name="country" type="radio" value="yes" {{ checked("country", "yes") }}>
+                <input class="govuk-radios__input" id="country" name="country" type="radio" value="england" {{ checked("country", "england") }}>
                 <label class="govuk-label govuk-radios__label" for="country">
-                  Yes
+                  England
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="country-2" name="country" type="radio" value="no" {{ checked("country", "no") }}>
+                <input class="govuk-radios__input" id="country-2" name="country" type="radio" value="scotland" {{ checked("country", "scotland") }}>
                 <label class="govuk-label govuk-radios__label" for="country-2">
-                  No
+                  Scotland
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="country-3" name="country" type="radio" value="wales" {{ checked("country", "wales") }}>
+                <label class="govuk-label govuk-radios__label" for="country-3">
+                  Wales
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="country-4" name="country" type="radio" value="northern-ireland" {{ checked("country", "northern-ireland") }}>
+                <label class="govuk-label govuk-radios__label" for="country-4">
+                  Northern Ireland
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="country-5" name="country" type="radio" value="other" {{ checked("country", "other") }}>
+                <label class="govuk-label govuk-radios__label" for="country-5">
+                  Other
                 </label>
               </div>
             </div>

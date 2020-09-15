@@ -11,15 +11,15 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">Check your answers</h1>
 
-    <h2 class="govuk-heading-m">Theme eligibility checks</h2>
+    <h2 class="govuk-heading-m">Theme eligibility</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project items
         </dt>
         <dd class="govuk-summary-list__value">
@@ -47,7 +47,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -60,7 +60,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project summary
         </dt>
         <dd class="govuk-summary-list__value">
@@ -73,7 +73,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Planning permission required
         </dt>
         <dd class="govuk-summary-list__value">
@@ -87,7 +87,7 @@
       </div>
       {% if data['planning-required'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Planning permission obtained
         </dt>
         <dd class="govuk-summary-list__value">
@@ -100,9 +100,24 @@
         </dd>
       </div>
       {% endif %}
+      {% if data['planning-permission'] == "no" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Planning permission to be granted in next six months
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['planning-progress'] | capitalize }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="planning-progress">
+            Change<span class="govuk-visually-hidden"> planning permission to be granted in next six months</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
 
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction licence required
         </dt>
         <dd class="govuk-summary-list__value">
@@ -116,7 +131,7 @@
       </div>
       {% if data['abstraction-required'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction licence obtained
         </dt>
         <dd class="govuk-summary-list__value">
@@ -131,7 +146,7 @@
       {% endif %}
       {% if data['abstraction-variation'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction variation required
         </dt>
         <dd class="govuk-summary-list__value">
@@ -147,12 +162,8 @@
     </dl>
 
     {% if (data['abstraction-licence'] == "yes") and (data['abstraction-variation'] == "yes") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         You will need to secure a variation to your abstraction licence prior to submitting a full application.
-      </strong>
     </div>
     {% endif %}
 
@@ -160,7 +171,7 @@
 
       <input type="hidden" name="answers-checked" value="true">
 
-      <button class="govuk-button" data-module="govuk-button">
+      <button class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">
         Save and continue
       </button>
 

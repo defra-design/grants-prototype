@@ -1,25 +1,25 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check your answers
+  Check all your answers
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" onclick="history.back()" href="#">Back</a>
+<a class="govuk-back-link" onclick="history.back()" href="#">Back</a>
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Check your answers</h1>
+    <h1 class="govuk-heading-l">Check all your answers</h1>
 
-    <h2 class="govuk-heading-m">Project eligibility checks</h2>
+    <h2 class="govuk-heading-m">Project eligibility</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Type of business
         </dt>
         <dd class="govuk-summary-list__value">
@@ -32,7 +32,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Legal status
         </dt>
         <dd class="govuk-summary-list__value">
@@ -45,8 +45,8 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Located in England
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Location
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['country'] | capitalize }}
@@ -58,7 +58,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Rented, leased or tenanted
         </dt>
         <dd class="govuk-summary-list__value">
@@ -72,7 +72,7 @@
       </div>
       {% if data['tenancy'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Tenancy extends beyond six years
         </dt>
         <dd class="govuk-summary-list__value">
@@ -87,7 +87,7 @@
 
       {% endif %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Estimated project costs
         </dt>
         <dd class="govuk-summary-list__value">
@@ -100,7 +100,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Able to pay remaining costs
         </dt>
         <dd class="govuk-summary-list__value">
@@ -113,7 +113,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Will pay with public money
         </dt>
         <dd class="govuk-summary-list__value">
@@ -126,7 +126,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project started
         </dt>
         <dd class="govuk-summary-list__value">
@@ -141,37 +141,33 @@
     </dl>
 
     {% if (data['tenancy'] == "yes") and (data['tenancy-length'] == "no") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         You will need to secure an extension to your tenancy agreement prior to submitting a full application.
-      </strong>
     </div>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Theme eligibility checks</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Theme eligibility</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Project items
         </dt>
         <dd class="govuk-summary-list__value">
           <ul class="govuk-list govuk-list--bullet">
             {% for item in data['project-items'] %}
             {% if item == "water reservoir" %}
-              <li>Water reservoir</li>
-              {% for item in data['reservoir-items'] %}
-              <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
-              {% endfor %}
+            <li>Water reservoir</li>
+            {% for item in data['reservoir-items'] %}
+            <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
+            {% endfor %}
             {% elif item == "reservoir infrastructure" %}
-              <li>Reservoir infrastructure</li>
-              {% for item in data['infrastructure-items'] %}
-              <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
-              {% endfor %}
-              {% else %}
-              <li>{{ item | capitalize }}</li>{% endif %}
+            <li>Reservoir infrastructure</li>
+            {% for item in data['infrastructure-items'] %}
+            <li style="margin-left:20px; list-style-type:circle;">{{ item | capitalize }}</li>
+            {% endfor %}
+            {% else %}
+            <li>{{ item | capitalize }}</li>{% endif %}
             {% endfor %}
           </ul>
         </dd>
@@ -182,7 +178,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -195,7 +191,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project summary
         </dt>
         <dd class="govuk-summary-list__value">
@@ -208,7 +204,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Planning permission required
         </dt>
         <dd class="govuk-summary-list__value">
@@ -222,7 +218,7 @@
       </div>
       {% if data['planning-required'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Planning permission obtained
         </dt>
         <dd class="govuk-summary-list__value">
@@ -235,9 +231,24 @@
         </dd>
       </div>
       {% endif %}
+      {% if data['planning-permission'] == "no" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Planning permission to be granted in next six months
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['planning-progress'] | capitalize }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="planning-progress">
+            Change<span class="govuk-visually-hidden"> planning permission to be granted in next six months</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
 
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction licence required
         </dt>
         <dd class="govuk-summary-list__value">
@@ -251,7 +262,7 @@
       </div>
       {% if data['abstraction-required'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction licence obtained
         </dt>
         <dd class="govuk-summary-list__value">
@@ -266,7 +277,7 @@
       {% endif %}
       {% if data['abstraction-variation'] == "yes" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction variation required
         </dt>
         <dd class="govuk-summary-list__value">
@@ -282,20 +293,16 @@
     </dl>
 
     {% if (data['abstraction-licence'] == "yes") and (data['abstraction-variation'] == "yes") %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         You will need to secure a variation to your abstraction licence prior to submitting a full application.
-      </strong>
     </div>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Business details</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Business details</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Business name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -308,7 +315,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Employees
         </dt>
         <dd class="govuk-summary-list__value">
@@ -321,7 +328,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Turnover
         </dt>
         <dd class="govuk-summary-list__value">
@@ -334,7 +341,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           New business
         </dt>
         <dd class="govuk-summary-list__value">
@@ -349,22 +356,18 @@
     </dl>
 
     {% if data['new-business'] == "yes" %}
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Important</span>
+    <div class="govuk-inset-text">
         As a new business, you will need to provide additional evidence of your finances in your full application.
-      </strong>
     </div>
     {% endif %}
 
     {% if (data['applying'] == "own") or (data['preferred-contact'] == "contact me and the applicant") %}
 
-    <h2 class="govuk-heading-m">Your details</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Your details</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Full name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -377,7 +380,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Email
         </dt>
         <dd class="govuk-summary-list__value">
@@ -392,7 +395,7 @@
       {% for item in data['contact-preferences'] %}
       {% if item == "phone" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Phone
         </dt>
         <dd class="govuk-summary-list__value">
@@ -407,7 +410,7 @@
       {% endif %}
       {% endfor %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Contact preferences
         </dt>
         <dd class="govuk-summary-list__value">
@@ -428,11 +431,11 @@
 
     {% if (data['applying'] == "other") %}
 
-    <h2 class="govuk-heading-m">Applicant details</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Applicant details</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -445,7 +448,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant email
         </dt>
         <dd class="govuk-summary-list__value">
@@ -460,7 +463,7 @@
       {% for item in data['applicant-contact-preferences'] %}
       {% if item == "phone" %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant phone
         </dt>
         <dd class="govuk-summary-list__value">
@@ -475,7 +478,7 @@
       {% endif %}
       {% endfor %}
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Applicant contact preferences
         </dt>
         <dd class="govuk-summary-list__value">
@@ -494,12 +497,12 @@
       {% endif %}
     </dl>
 
-    <h2 class="govuk-heading-m">Irrigation</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Irrigation</h2>
 
     {% if data['irrigation'] == "introduce" %}
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
         </dt>
         <dd class="govuk-summary-list__value">
@@ -512,7 +515,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Land to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -525,7 +528,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Crops to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -538,7 +541,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
@@ -551,7 +554,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
@@ -567,9 +570,9 @@
     {% endif %}
 
     {% if data['irrigation'] == "improve" %}
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
         </dt>
         <dd class="govuk-summary-list__value">
@@ -582,7 +585,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current land irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -595,7 +598,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current crops irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -608,7 +611,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
@@ -621,7 +624,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
@@ -634,7 +637,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed land to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -647,7 +650,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed crops to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -660,7 +663,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
@@ -673,7 +676,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
@@ -688,24 +691,24 @@
     </dl>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Other benefits</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Other benefits</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Collaboration
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Other farms supplied with water
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['collaboration'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="collaboration">
-            Change<span class="govuk-visually-hidden"> collaboration</span>
+            Change<span class="govuk-visually-hidden"> other farms supplied with water</span>
           </a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Productivity
         </dt>
         <dd class="govuk-summary-list__value">
@@ -718,7 +721,7 @@
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Environment
         </dt>
         <dd class="govuk-summary-list__value">
@@ -731,13 +734,38 @@
         </dd>
       </div>
     </dl>
+  </div>
+</div>
 
-    <form action="" method="post" novalidate>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group govuk-!-margin-bottom-9 govuk-!-margin-top-7">
+      <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h2 class="govuk-fieldset__heading">
+            Terms and conditions
+          </h2>
+        </legend>
+        <div id="waste-hint" class="govuk-hint">
+          I consent to the terms and conditions as outlined in the <a href="">large countryside productivity grant guidance</a>.
+        </div>
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="consent-to-terms" name="consent-to-terms" type="checkbox" value="consent-given">
+            <label class="govuk-label govuk-checkboxes__label" for="consent-to-terms">
+              I consent <span class="govuk-visually-hidden"> to the terms and conditions as outlined in the large countryside productivity grant guidance.
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <form action="confirmation" method="post" novalidate>
 
       <input type="hidden" name="answers-checked" value="true">
 
       <button class="govuk-button" data-module="govuk-button">
-        Save and continue
+        Send the expression of interest
       </button>
 
     </form>

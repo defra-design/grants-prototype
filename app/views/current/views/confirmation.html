@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Confirmation page example
+  Expression of interest sent
 {% endblock %}
 
 {% block content %}
@@ -10,19 +10,40 @@
     <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">Expression of interest complete</h1>
+        <h1 class="govuk-panel__title">Expression of interest sent</h1>
         <div class="govuk-panel__body">
-          Your reference number<br><strong>HDJ2123F</strong>
+          Reference number<br><strong>EOIJ2123F</strong>
         </div>
       </div>
 
       <p>
-        We have sent you a confirmation email.
+        We have sent you an email to confirm that we have your expression of interest.
       </p>
 
       <h2 class="govuk-heading-m">What happens next</h2>
-      <p>We've sent your application to Hackney Electoral Register Office.</p>
-      <p>They will contact you either to confirm your registration, or to ask for more information.</p>
+
+      <p>We will:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>assess the expression of interest against the others</li>
+      <li>consider how well it fits the priorities for funding</li>
+      <li>identify projects that provide the best value for taxpayers' money</li>
+      <li>send an email to invite you to make a full application or explain why you were not successful</li>
+      </ul>
+
+      <p>You will find out if you need to do a full application before DD MONTH YYYY.</p>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">You must not start the project</span>
+          You must not start the project<br><br>
+          You will need to make a full application and complete a grant funding agreement before you can start the project.
+        </strong>
+      </div>
+
+    <!--<h2 class="govuk-heading-m"></h2>
+      <p></p>-->
+
       <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
 
 

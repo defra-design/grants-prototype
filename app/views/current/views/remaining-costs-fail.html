@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  You're not eligible for a large countryside productivity grant
+  You cannot apply for a large countryside productivity grant
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,13 +14,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        You're not eligible for a large countryside productivity grant
+        You cannot apply for a large countryside productivity grant
       </h1>
 
       {% if data['remaining-costs'] == "no" %}
-      <p>Only projects which can pay 60% of the total project costs will be considered for a large countryside productivity grant.</p>
+      <p>Only projects which can pay 60% of the total project costs will be considered for a grant.</p>
       {% elif data['public-money'] == "yes" %}
-      <p>It is not possible to use public money towards the project costs when applying for a large countryside productivity grant.</p>
+      <p>It is not possible to use public money towards the project costs when applying for a grant.</p>
       {% endif %}
 
     </div>

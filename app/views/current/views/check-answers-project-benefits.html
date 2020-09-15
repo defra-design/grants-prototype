@@ -11,16 +11,16 @@ Check your answers
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">Check your answers</h1>
 
     <h2 class="govuk-heading-m">Irrigation</h2>
 
     {% if data['irrigation'] == "introduce" %}
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Irrigation benefits
         </dt>
         <dd class="govuk-summary-list__value">
@@ -33,7 +33,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Land to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -46,7 +46,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Crops to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -59,7 +59,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
@@ -72,7 +72,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
@@ -88,9 +88,9 @@ Check your answers
     {% endif %}
 
     {% if data['irrigation'] == "improve" %}
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-half">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
         </dt>
         <dd class="govuk-summary-list__value">
@@ -103,7 +103,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current land irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -116,7 +116,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current crops irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -129,7 +129,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
@@ -142,7 +142,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Current irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
@@ -155,7 +155,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed land to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -168,7 +168,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed crops to be irrigated
         </dt>
         <dd class="govuk-summary-list__value">
@@ -181,7 +181,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed water source for irrigation
         </dt>
         <dd class="govuk-summary-list__value">
@@ -194,7 +194,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Proposed irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
@@ -209,24 +209,24 @@ Check your answers
     </dl>
     {% endif %}
 
-    <h2 class="govuk-heading-m">Other benefits</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Other benefits</h2>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Collaboration
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Other farms supplied with water
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['collaboration'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="collaboration">
-            Change<span class="govuk-visually-hidden"> collaboration</span>
+            Change<span class="govuk-visually-hidden"> other farms supplied with water</span>
           </a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Productivity
         </dt>
         <dd class="govuk-summary-list__value">
@@ -239,7 +239,7 @@ Check your answers
         </dd>
       </div>
       <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Environment
         </dt>
         <dd class="govuk-summary-list__value">
@@ -257,7 +257,7 @@ Check your answers
 
       <input type="hidden" name="answers-checked" value="true">
 
-      <button class="govuk-button" data-module="govuk-button">
+      <button class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">
         Save and continue
       </button>
 

@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Applicants contact details
+  Applicant contact details
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" onclick="history.back()" href="#">Back</a>
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -31,42 +31,37 @@
             Applicants email address
           </label>
           <div id="applicant-email-hint" class="govuk-hint">
-            We’ll only use this to contact the applicant about their application
+            We will only use this to contact the applicant about this expression of interest
           </div>
           <input class="govuk-input" id="applicant-email" name="applicant-email" type="applicant-email" spellcheck="false" aria-describedby="applicant-email-hint" autocomplete="applicant-email" value="{{ data['applicant-email'] }}">
         </div>
 
         <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="applicant-contact-preferences-conditional-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h2 class="govuk-fieldset__heading">
-                Applicants contact preferences
-              </h2>
-            </legend>
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="applicant-contact-preferences-conditional" name="applicant-contact-preferences" type="checkbox" value="email" data-aria-controls="conditional-applicant-contact-preferences-conditional" {{ checked("applicant-contact-preferences", "email") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="applicant-contact-preferences-conditional">
-                  Email
+          <label class="govuk-label govuk-!-margin-bottom-3" for="applicant-contact-preferences">
+            How would the applicant prefer to be contacted?
+          </label>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="applicant-contact-preferences-conditional" name="applicant-contact-preferences" type="checkbox" value="email" data-aria-controls="conditional-applicant-contact-preferences-conditional" {{ checked("applicant-contact-preferences", "email") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="applicant-contact-preferences-conditional">
+                Email
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="applicant-contact-preferences-conditional-2" name="applicant-contact-preferences" type="checkbox" value="phone" data-aria-controls="conditional-applicant-contact-preferences-conditional-2" {{ checked("applicant-contact-preferences", "phone") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="applicant-contact-preferences-conditional-2">
+                  Phone
                 </label>
               </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="applicant-contact-preferences-conditional-2" name="applicant-contact-preferences" type="checkbox" value="phone" data-aria-controls="conditional-applicant-contact-preferences-conditional-2" {{ checked("applicant-contact-preferences", "phone") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="applicant-contact-preferences-conditional-2">
-                    Phone
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-applicant-contact-preferences-conditional-2">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="applicant-telephone-number">
+                    UK telephone number
                   </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-applicant-contact-preferences-conditional-2">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="applicant-telephone-number">
-                      UK telephone number
-                    </label>
-                    <input class="govuk-input govuk-input--width-20" id="applicant-telephone-number" name="applicant-telephone-number" type="tel" autocomplete="tel" value="{{ data['applicant-telephone-number'] }}">
-                  </div>
-
+                  <input class="govuk-input govuk-input--width-20" id="applicant-telephone-number" name="applicant-telephone-number" type="tel" autocomplete="tel" value="{{ data['applicant-telephone-number'] }}">
                 </div>
               </div>
-            </fieldset>
+            </div>
           </div>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>

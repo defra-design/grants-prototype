@@ -92,6 +92,18 @@
           </ul>
         </li>
 
+        {% if data['completed_sections'] == '4' %}
+        <form action="check-answers-all" method="post" novalidate>
+
+          <input type="hidden" name="answers-checked" value="true">
+
+          <button class="govuk-button" data-module="govuk-button">
+            Check all your answers
+          </button>
+
+        </form>
+        {% endif %}
+
         <!-- <li>
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">2. </span> Full application

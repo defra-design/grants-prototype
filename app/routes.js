@@ -27,7 +27,7 @@ router.get('/', function (req, res) {
 
 // Set service name based on sub folders for different prototypes
 router.get('/current/*', function(req, res, next){
-  res.locals['serviceName'] = 'Apply for a large countryside productivity grant'
+  res.locals['serviceName'] = 'Apply for a large countryside productivity grant for water'
   next()
 });
 
@@ -161,9 +161,22 @@ if ( req.session.data['project_benefits_status'] != 'Completed' ){
   req.session.data['project_benefits_status'] = 'Not started'
 }
 
-res.render( './' + req.originalUrl )
+var backUrl
+
+if (req.session.data['applying'] == 'own') {
+  backUrl = 'your-details' }
+else {
+  backUrl = 'applicant-details'
+  }
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl
+  })
 
 });
+
+
+
 
 router.get('*/irrigation', function (req, res) {
 
@@ -218,8 +231,8 @@ router.post('/country-answer', function (req, res) {
 
   var country = req.session.data['country']
 
-  if (country == "no"){res.redirect('current/views/country-fail')}
-  else {res.redirect('current/views/tenancy')}
+  if (country == "england"){res.redirect('current/views/tenancy')}
+  else {res.redirect('current/views/country-fail')}
 });
 
 router.post('/tenancy-answer', function (req, res) {
@@ -279,6 +292,14 @@ router.post('/planning-permission-answer', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
 
   if (planningPermission == "yes"){res.redirect('current/views/abstraction-required')}
+  else {res.redirect('current/views/planning-progress')}
+});
+
+router.post('/planning-progress-answer', function (req, res) {
+
+  var planningProgress = req.session.data['planning-progress']
+
+  if (planningProgress == "yes"){res.redirect('current/views/abstraction-required')}
   else {res.redirect('current/views/planning-permission-fail')}
 });
 
@@ -310,7 +331,7 @@ router.post('/business-answer', function (req, res) {
 
   var businessAnswer = req.session.data['new-business']
 
-  if (businessAnswer == "yes"){res.redirect('current/views/new-business-condition')}
+  if (businessAnswer == "no"){res.redirect('current/views/new-business-condition')}
   else {res.redirect('current/views/applying')}
 });
 
@@ -321,6 +342,26 @@ router.post('/applying-answer', function (req, res) {
   if (applyingAnswer == "other"){res.redirect('current/views/preferred-contact')}
   else {res.redirect('current/views/your-details')}
 });
+
+
+router.get('*/your-details', function (req, res) {
+
+  var backUrl
+
+  if (req.session.data['applying'] == 'own') {
+    backUrl = 'applying' }
+  else {
+    backUrl = 'preferred-contact'
+    }
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl
+  })
+
+})
+
+
+
 
 router.post('/your-details-answer', function (req, res) {
 
@@ -337,6 +378,31 @@ router.post('/preferred-contact-answer', function (req, res) {
   if (preferredContact == "just the applicant"){res.redirect('current/views/applicant-details')}
   else {res.redirect('current/views/your-details')}
 });
+
+
+router.get('*/applicant-details', function (req, res) {
+
+  var backUrl
+
+  if (req.session.data['preferred-contact'] == 'just the applicant') {
+    backUrl = 'preferred-contact' }
+  else {
+    backUrl = 'your-details'
+    }
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl
+  })
+
+})
+
+
+
+
+
+
+
+
 
 router.post('/irrigation-answer', function (req, res) {
 
@@ -355,23 +421,23 @@ router.get('*/task-list', function (req, res) {
 
     switch (req.session.data['completed_sections']) {
         case '0':
-          application_status = 'Application not started'
+          application_status = 'Expression of interest not started'
           completed_sections = 'You have completed 0 of 4 sections.'
           break
         case '1':
-        application_status = 'Application in progress'
+        application_status = 'Expression of interest in progress'
         completed_sections = 'You have completed 1 of 4 sections.'
           break
         case '2':
-        application_status = 'Application in progress'
+        application_status = 'Expression of interest in progress'
         completed_sections = 'You have completed 2 of 4 sections.'
           break
         case '3':
-        application_status = 'Application in progress'
+        application_status = 'Expression of interest in progress'
         completed_sections = 'You have completed 3 of 4 sections.'
           break
         case '4':
-        application_status = 'Application completed'
+        application_status = 'Expression of interest completed'
         completed_sections = 'You have completed 4 of 4 sections.'
           break
       }
