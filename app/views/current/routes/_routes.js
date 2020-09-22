@@ -184,59 +184,66 @@ router.get('*/farming-type-answer', function (req, res) {
 
   var farmingType = req.session.data['farming-type']
 
-  if (farmingType == "none"){res.redirect('../views/farming-type-fail')}
-  else {res.redirect('../views/legal-status')}
+  if (farmingType == "no"){res.redirect('../water/farming-type-fail')}
+  else {res.redirect('../water/legal-status')}
 });
 
 router.post('*/legal-status-answer', function (req, res) {
 
   var legalStatus = req.session.data['legal-status']
 
-  if (legalStatus == "none"){res.redirect('../views/legal-status-fail')}
-  else {res.redirect('../views/country')}
+  if (legalStatus == "none"){res.redirect('../water/legal-status-fail')}
+  else {res.redirect('../water/country')}
 });
 
 router.post('*/country-answer', function (req, res) {
 
   var country = req.session.data['country']
 
-  if (country == "england"){res.redirect('../views/tenancy')}
-  else {res.redirect('../views/country-fail')}
+  if (country == "yes"){res.redirect('../water/tenancy')}
+  else {res.redirect('../water/country-fail')}
 });
 
 router.post('*/tenancy-answer', function (req, res) {
 
   var tenant = req.session.data['tenancy']
 
-  if (tenant == "no"){res.redirect('../views/project-cost')}
-  else {res.redirect('../views/tenancy-length')}
+  if (tenant == "yes"){res.redirect('../water/project-items')}
+  else {res.redirect('../water/tenancy-length')}
 });
 
 router.post('*/tenancy-length-answer', function (req, res) {
 
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength == "no"){res.redirect('../views/tenancy-length-condition')}
-  else {res.redirect('../views/project-cost')}
+  if (tenancyLength == "no"){res.redirect('../water/tenancy-length-condition')}
+  else {res.redirect('../water/project-cost')}
 });
 
 router.post('*/project-cost-answer', function (req, res) {
 
   var projectCost = req.session.data['project-cost']
 
-  if (projectCost < 87500 ){res.redirect('../views/project-cost-fail')}
-  else {res.redirect('../views/remaining-costs')}
+  if (projectCost < 87500 ){res.redirect('../water/project-cost-fail')}
+  else {res.redirect('../water/remaining-costs')}
 
 })
 
 router.post('*/remaining-costs-answer', function (req, res) {
 
   var remainingCosts = req.session.data['remaining-costs']
+
+  if (remainingCosts == "no" ){res.redirect('../water/remaining-costs-fail')}
+  else {res.redirect('../water/public-money')}
+
+})
+
+router.post('*/public-money-answer', function (req, res) {
+
   var publicMoney = req.session.data['public-money']
 
-  if (remainingCosts == "no" ){res.redirect('../views/remaining-costs-fail')}
-  if (publicMoney == "yes" ){res.redirect('../views/remaining-costs-fail')}
-  else {res.redirect('../views/project-start')}
+  if (publicMoney == "yes" ){res.redirect('../water/public-money-fail')}
+  else {res.redirect('../water/project-start')}
 
 })
 
@@ -244,72 +251,72 @@ router.post('*/project-start-answer', function (req, res) {
 
   var projectStart = req.session.data['project-start']
 
-  if (projectStart == "yes"){res.redirect('../views/project-start-fail')}
-  else {res.redirect('../views/check-answers-project-eligibility')}
+  if (projectStart == "yes"){res.redirect('../water/project-start-fail')}
+  else {res.redirect('../water/check-answers-project-eligibility')}
 });
 
 router.post('*/planning-required-answer', function (req, res) {
 
   var planningRequired = req.session.data['planning-required']
 
-  if (planningRequired == "yes"){res.redirect('../views/planning-permission')}
-  else {res.redirect('../views/abstraction-required')}
+  if (planningRequired == "yes"){res.redirect('../water/planning-permission')}
+  else {res.redirect('../water/abstraction-required')}
 });
 
 router.post('*/planning-permission-answer', function (req, res) {
 
   var planningPermission = req.session.data['planning-permission']
 
-  if (planningPermission == "yes"){res.redirect('../views/abstraction-required')}
-  else {res.redirect('../views/planning-progress')}
+  if (planningPermission == "yes"){res.redirect('../water/abstraction-required')}
+  else {res.redirect('../water/planning-progress')}
 });
 
 router.post('*/planning-progress-answer', function (req, res) {
 
   var planningProgress = req.session.data['planning-progress']
 
-  if (planningProgress == "yes"){res.redirect('../views/abstraction-required')}
-  else {res.redirect('../views/planning-permission-fail')}
+  if (planningProgress == "yes"){res.redirect('../water/abstraction-required')}
+  else {res.redirect('../water/planning-permission-fail')}
 });
 
 router.post('*/abstraction-required-answer', function (req, res) {
 
   var abstractionRequired = req.session.data['abstraction-required']
 
-  if (abstractionRequired == "yes"){res.redirect('../views/abstraction-licence')}
-  else {res.redirect('../views/check-answers-theme-eligibility')}
+  if (abstractionRequired == "yes"){res.redirect('../water/abstraction-licence')}
+  else {res.redirect('../water/check-answers-theme-eligibility')}
 });
 
 router.post('*/abstraction-licence-answer', function (req, res) {
 
   var abstractionLicence = req.session.data['abstraction-licence']
 
-  if (abstractionLicence == "yes"){res.redirect('../views/abstraction-variation')}
-  else {res.redirect('../views/abstraction-licence-fail')}
+  if (abstractionLicence == "yes"){res.redirect('../water/abstraction-variation')}
+  else {res.redirect('../water/abstraction-licence-fail')}
 });
 
 router.post('*/abstraction-variation-answer', function (req, res) {
 
   var abstractionVariation = req.session.data['abstraction-variation']
 
-  if (abstractionVariation == "yes"){res.redirect('../views/abstraction-variation-condition')}
-  else {res.redirect('../views/check-answers-theme-eligibility')}
+  if (abstractionVariation == "yes"){res.redirect('../water/abstraction-variation-condition')}
+  else {res.redirect('../water/check-answers-theme-eligibility')}
 });
 
 router.post('*/business-answer', function (req, res) {
 
   var businessAnswer = req.session.data['new-business']
 
-  if (businessAnswer == "no"){res.redirect('../views/new-business-condition')}
-  else {res.redirect('../views/applying')}
+  if (businessAnswer == "no"){res.redirect('../water/new-business-condition')}
+  else {res.redirect('../water/applying')}
 });
 
 router.post('*/applying-answer', function (req, res) {
 
   var applyingAnswer = req.session.data['applying']
 
-  if (applyingAnswer == "other"){res.redirect('../views/preferred-contact')}
-  else {res.redirect('../views/your-details')}
+  if (applyingAnswer == "other"){res.redirect('../water/preferred-contact')}
+  else {res.redirect('../water/your-details')}
 });
 
 router.get('*/your-details', function (req, res) {
@@ -332,16 +339,16 @@ router.post('*/your-details-answer', function (req, res) {
 
   var applyingAnswer = req.session.data['applying']
 
-  if (applyingAnswer == "other"){res.redirect('../views/applicant-details')}
-  else {res.redirect('../views/check-answers-contact-details')}
+  if (applyingAnswer == "other"){res.redirect('../water/applicant-details')}
+  else {res.redirect('../water/check-answers-contact-details')}
 });
 
 router.post('*/preferred-contact-answer', function (req, res) {
 
   var preferredContact = req.session.data['preferred-contact']
 
-  if (preferredContact == "just the applicant"){res.redirect('../views/applicant-details')}
-  else {res.redirect('../views/your-details')}
+  if (preferredContact == "just the applicant"){res.redirect('../water/applicant-details')}
+  else {res.redirect('../water/your-details')}
 });
 
 
@@ -365,8 +372,8 @@ router.post('*/irrigation-answer', function (req, res) {
 
   var irrigationAnswer = req.session.data['irrigation']
 
-  if (irrigationAnswer == "improve"){res.redirect('../views/current-irrigation')}
-  else {res.redirect('../views/new-irrigation')}
+  if (irrigationAnswer == "improve"){res.redirect('../water/current-irrigation')}
+  else {res.redirect('../water/new-irrigation')}
 });
 
 module.exports = router

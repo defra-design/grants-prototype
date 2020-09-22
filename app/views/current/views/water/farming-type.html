@@ -19,26 +19,20 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                What type of farming do you do?
+                Does the farm grow arable or horticultural crops?
               </h1>
             </legend>
-            <div class="govuk-radios">
+            <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="farming-type" name="farming-type" type="radio" value="arable farming" {{ checked("farming-type", "arable farming") }}>
+                <input class="govuk-radios__input" id="farming-type" name="farming-type" type="radio" value="yes" {{ checked("farming-type", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="farming-type">
-                  Arable
+                  Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="farming-type-2" name="farming-type" type="radio" value="horticultural" {{ checked("farming-type", "horticultural") }}>
+                <input class="govuk-radios__input" id="farming-type-2" name="farming-type" type="radio" value="no" {{ checked("farming-type", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="farming-type-2">
-                  Horticulture
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="farming-type-3" name="farming-type" type="radio" value="none" {{ checked("farming-type", "none") }}>
-                <label class="govuk-label govuk-radios__label" for="farming-type-3">
-                  Other
+                  No
                 </label>
               </div>
             </div>

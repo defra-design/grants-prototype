@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="remaining-costs">Back</a>
+  <a class="govuk-back-link" href="public-money">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -17,11 +17,7 @@
         You cannot apply for a large countryside productivity grant
       </h1>
 
-      {% if data['remaining-costs'] == "no" %}
-      <p>Only projects which can pay 60% of the total project costs will be considered for a grant.</p>
-      {% elif data['public-money'] == "yes" %}
       <p>It is not possible to use public money towards the project costs when applying for a grant.</p>
-      {% endif %}
 
     </div>
   </div>
