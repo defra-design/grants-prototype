@@ -21,7 +21,7 @@ Meeting the remaining project costs
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Will you use public money to pay any of the remaining project costs of £{{ remainingCosts | toFixed(2) | commafy }}?
+              Will you use public money towards the remaining project costs of £{{ remainingCosts | toFixed(2) | commafy }}?
             </h1>
           </legend>
           <div class="govuk-radios govuk-radios--inline">
@@ -39,6 +39,17 @@ Meeting the remaining project costs
             </div>
           </div>
       </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Help with public money
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Public money is defined as any other grant funding, with the exception of payments recieved through basic payment or stewardship schemes.
+        </div>
+      </details>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 

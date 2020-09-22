@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Does this project need planning permission?
+  Does the project need planning permission?
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,10 +19,10 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Does this project need planning permission?
+                Does the project need planning permission?
               </h1>
             </legend>
-            <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="planning-required" name="planning-required" type="radio" value="yes" {{ checked("planning-required", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="planning-required">
@@ -35,20 +35,15 @@
                   No
                 </label>
               </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-required-3" name="planning-required" type="radio" value="not sure" {{ checked("planning-required", "not sure") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-required-3">
+                  Not sure
+                </label>
+              </div>
             </div>
           </fieldset>
         </div>
-
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Help deciding if you need planning permission
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            ...
-          </div>
-        </details>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 

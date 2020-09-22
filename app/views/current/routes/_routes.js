@@ -217,7 +217,7 @@ router.post('*/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
   if (tenancyLength == "no"){res.redirect('../water/tenancy-length-condition')}
-  else {res.redirect('../water/project-cost')}
+  else {res.redirect('../water/project-items')}
 });
 
 router.post('*/project-cost-answer', function (req, res) {
@@ -225,7 +225,7 @@ router.post('*/project-cost-answer', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
   if (projectCost < 87500 ){res.redirect('../water/project-cost-fail')}
-  else {res.redirect('../water/remaining-costs')}
+  else {res.redirect('../water/grant')}
 
 })
 
@@ -252,7 +252,7 @@ router.post('*/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
   if (projectStart == "yes"){res.redirect('../water/project-start-fail')}
-  else {res.redirect('../water/check-answers-project-eligibility')}
+  else {res.redirect('../water/planning-required')}
 });
 
 router.post('*/planning-required-answer', function (req, res) {

@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Have you already started work on this project?
+  Have you already started work on the project?
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="remaining-costs">Back</a>
+  <a class="govuk-back-link" href="public-money">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,7 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Have you already started work on this project?
+                Have you already started work on the project?
               </h1>
             </legend>
             <div class="govuk-radios govuk-radios--inline">
@@ -38,6 +38,17 @@
             </div>
           </fieldset>
         </div>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with starting the project
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            The project is considered to have started once there has been a commitment to major expenditure, such as paying a deposit. When constructing, the project has started when any activities beyond oversight have occurred.
+          </div>
+        </details>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 

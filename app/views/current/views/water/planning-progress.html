@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Is this project likely to be granted planning permission within the next six months?
+  Is the project likely to be granted planning permission within the next six months?
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,10 +19,10 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Is this project likely to be granted planning permission within the next six months?
+                Will the project have planning permission in the next six months?
               </h1>
             </legend>
-            <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="planning-progress" name="planning-progress" type="radio" value="yes" {{ checked("planning-progress", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="planning-progress">
@@ -33,6 +33,12 @@
                 <input class="govuk-radios__input" id="planning-progress-2" name="planning-progress" type="radio" value="no" {{ checked("planning-progress", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="planning-progress-2">
                   No
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-progress-3" name="planning-progress" type="radio" value="not sure" {{ checked("planning-progress", "not sure") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-progress-3">
+                  Not sure
                 </label>
               </div>
             </div>

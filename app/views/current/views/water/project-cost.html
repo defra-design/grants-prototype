@@ -35,10 +35,10 @@
 
       <aside class="app-related-items" role="complementary">
         <h2 class="govuk-heading-m" id="subsection-title">
-          Project items eligible for grant funding
+          Items in the project eligible for grant funding
         </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
+          <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
             {% for item in data['project-items'] %}
             <li>
                 {{ item | capitalize }}
