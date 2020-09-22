@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your project
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="project-items">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="planning-required" method="post">
+
+        <h1 class="govuk-heading-l">
+          Project details
+        </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="project-name">
+              Project name
+            </label>
+          <input class="govuk-input" id="project-name" name="project-name" type="text" value="{{ data['project-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="project-summary">
+              Project summary
+            </label>
+          <div id="project-summary-hint" class="govuk-hint">
+            What this project is, what it will do and what it is aiming to achieve.
+          </div>
+          <textarea class="govuk-textarea" id="project-summary" name="project-summary" rows="8" aria-describedby="project-summary-hint">{{ data['project-summary'] }}</textarea>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

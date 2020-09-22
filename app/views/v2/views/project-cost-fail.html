@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a large countryside productivity grant
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="project-cost">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot apply for a large countryside productivity grant
+      </h1>
+
+      <p>To be eligible, the funding sought (40% of your total project costs) must be greater than £35,000.</p>
+
+      {% set grantAmount = data['project-cost'] * 0.4 %}
+
+      <p>Your total project costs of £{{ data['project-cost'] | toFixed(2) | commafy }} would result in £{{ grantAmount | toFixed(2) | commafy }} of funding sought.</p>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a large countryside productivity grant
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="new-business">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You may be eligible for a large countryside productivity grant
+      </h1>
+
+      <p>As a new business, to be considered eligible for a large countryside productivity grant scheme, you will need to provide additional evidence of your finances in your full application.</p>
+
+      <form class="form" action="applying" method="post">
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
