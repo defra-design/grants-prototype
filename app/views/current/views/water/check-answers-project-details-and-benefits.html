@@ -15,10 +15,36 @@ Check your answers
 
     <h1 class="govuk-heading-l">Check your answers</h1>
 
-    <h2 class="govuk-heading-m">Irrigation</h2>
+    <h2 class="govuk-heading-m">Project details and benefits</h2>
 
-    {% if data['irrigation'] == "introduce" %}
     <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Project name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['project-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="irrigation">
+            Change<span class="govuk-visually-hidden"> project name</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Project summary
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['project-summary'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="new-irrigation">
+            Change<span class="govuk-visually-hidden"> project summary</span>
+          </a>
+        </dd>
+      </div>
+      {% if data['irrigation'] == "introduce" %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Irrigation benefits
@@ -84,11 +110,8 @@ Check your answers
           </a>
         </dd>
       </div>
-    </dl>
-    {% endif %}
-
-    {% if data['irrigation'] == "improve" %}
-    <dl class="govuk-summary-list">
+      {% endif %}
+      {% if data['irrigation'] == "improve" %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Irrigation benefits
@@ -206,12 +229,7 @@ Check your answers
           </a>
         </dd>
       </div>
-    </dl>
-    {% endif %}
-
-    <h2 class="govuk-heading-m govuk-!-margin-top-9">Other benefits</h2>
-
-    <dl class="govuk-summary-list">
+      {% endif %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Other farms supplied with water

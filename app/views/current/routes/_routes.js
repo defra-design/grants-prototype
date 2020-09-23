@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const serviceName = 'Apply for a large countryside productivity grant for water'
+const serviceName = 'Apply for a large grant for a water resource management project'
 
 // console.log( 'This is the _routes file' );
 // console.log( serviceName );
@@ -260,6 +260,7 @@ router.post('*/planning-required-answer', function (req, res) {
   var planningRequired = req.session.data['planning-required']
 
   if (planningRequired == "yes"){res.redirect('../water/planning-permission')}
+  if (planningRequired == "not sure"){res.redirect('../water/planning-required-condition')}
   else {res.redirect('../water/abstraction-required')}
 });
 
@@ -276,6 +277,7 @@ router.post('*/planning-progress-answer', function (req, res) {
   var planningProgress = req.session.data['planning-progress']
 
   if (planningProgress == "yes"){res.redirect('../water/abstraction-required')}
+  if (planningProgress == "not sure"){res.redirect('../water/planning-progress-condition')}
   else {res.redirect('../water/planning-permission-fail')}
 });
 
@@ -284,7 +286,8 @@ router.post('*/abstraction-required-answer', function (req, res) {
   var abstractionRequired = req.session.data['abstraction-required']
 
   if (abstractionRequired == "yes"){res.redirect('../water/abstraction-licence')}
-  else {res.redirect('../water/check-answers-theme-eligibility')}
+  if (abstractionRequired == "not sure"){res.redirect('../water/abstraction-required-condition')}
+  else {res.redirect('../water/check-answers-can-i-apply')}
 });
 
 router.post('*/abstraction-licence-answer', function (req, res) {
@@ -300,7 +303,7 @@ router.post('*/abstraction-variation-answer', function (req, res) {
   var abstractionVariation = req.session.data['abstraction-variation']
 
   if (abstractionVariation == "yes"){res.redirect('../water/abstraction-variation-condition')}
-  else {res.redirect('../water/check-answers-theme-eligibility')}
+  else {res.redirect('../water/check-answers-can-i-apply')}
 });
 
 router.post('*/business-answer', function (req, res) {
