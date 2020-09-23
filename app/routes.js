@@ -45,7 +45,13 @@ router.use('/v2', require('./views/v2/routes/_routes'));
 // Task list status settings
 
 
-router.get('*/start', function (req, res) {
+router.get('*/v1/start', function (req, res) {
+
+res.render( './' + req.originalUrl )
+
+});
+
+router.get('*/v2/views/start', function (req, res) {
 
 // Set up all the section statuses
 
@@ -77,7 +83,7 @@ res.render( './' + req.originalUrl )
 
 //*****************************************************
 // TASK LIST PAGE START //
-router.get('*/task-list', function (req, res) {
+router.get('*/v2/views/task-list', function (req, res) {
 
     var application_status
     var completed_sections

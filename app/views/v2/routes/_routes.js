@@ -10,7 +10,7 @@ const serviceName = 'Apply for a large countryside productivity grant for water'
 
 //*****************************************************
 // TASK LIST PAGE START //
-router.get('*/XXXtask-list', function (req, res) {
+router.get('*XXX/task-list', function (req, res) {
 
   console.log( 'This is the task list' );
 
