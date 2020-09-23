@@ -31,7 +31,10 @@ router.get('/current/*', function(req, res, next){
   next()
 });
 
-
+router.get('/v2/*', function(req, res, next){
+  res.locals['serviceName'] = 'Apply for a large countryside productivity grant for water'
+  next()
+});
 
 // Start folder specific route
 router.use('/current', require('./views/current/routes/_routes'));
