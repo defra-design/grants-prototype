@@ -98,23 +98,19 @@ router.get('*/task-list', function (req, res) {
   switch (req.session.data['completed_sections']) {
       case '0':
         application_status = 'Expression of interest not started'
-        completed_sections = 'You have completed 0 of 4 sections.'
+        completed_sections = 'You have completed 0 of 3 sections.'
         break
       case '1':
       application_status = 'Expression of interest in progress'
-      completed_sections = 'You have completed 1 of 4 sections.'
+      completed_sections = 'You have completed 1 of 3 sections.'
         break
       case '2':
       application_status = 'Expression of interest in progress'
-      completed_sections = 'You have completed 2 of 4 sections.'
+      completed_sections = 'You have completed 2 of 3 sections.'
         break
       case '3':
       application_status = 'Expression of interest in progress'
-      completed_sections = 'You have completed 3 of 4 sections.'
-        break
-      case '4':
-      application_status = 'Expression of interest completed'
-      completed_sections = 'You have completed 4 of 4 sections.'
+      completed_sections = 'You have completed 3 of 3 sections.'
         break
     }
 
@@ -211,6 +207,7 @@ res.render( './' + req.originalUrl )
 
 router.get('*/check-answers-project-details-and-benefits', function (req, res) {
 
+
 req.session.data['completed_sections'] = '2'
 
 req.session.data['s02_status'] = 'Completed'
@@ -220,7 +217,11 @@ if ( req.session.data['s03_status'] != 'Completed' ){
   req.session.data['s03_status'] = 'Not started'
 }
 
-res.render( './' + req.originalUrl )
+res.render( './' + req.originalUrl,{
+
+  backUrl : res.locals.prevURL
+
+} )
 
 });
 
@@ -247,20 +248,8 @@ req.session.data['completed_sections'] = '3'
 req.session.data['s03_status'] = 'Completed'
 req.session.data['s03_status_class'] = ''
 
-var backUrl
-
-
-
-
-
-if (req.session.data['applying'] == 'own') {
-  backUrl = 'your-details' }
-else {
-  backUrl = 'applicant-details'
-  }
-
   res.render( './' + req.originalUrl, {
-    backUrl: backUrl
+    backUrl: res.locals.prevURL
   })
 
 });
