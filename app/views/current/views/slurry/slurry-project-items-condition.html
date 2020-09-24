@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You may not be able to apply for a large grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="abstraction-required">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Select additional items
+    </h1>
+
+    {% for item in data['project-items'] %}
+    {% if (item == "deep or shallow injection") or (item == "trailing shoe") or (item == "dribble bar") %}
+    <p>You selected {{ item }}</p>
+    <p>All low emission precision application equipment must include all 5 following items:
+      <ul>
+<li>Inline nutrient sensors<li>
+<li>Flow meters<li>
+<li>Adjustable flow control valves<li>
+<li>GPS receiver<li>
+<li>In cab display/control unit<li>
+  </ul>
+<p>(If you are not including any or all of these items as you already have them, you must provide photographs and serial numbers to prove this)</p>
+    {% endif %}
+
+    {% if item == "umbilical system" %}
+    <p>All umbilical systems must include all 3 following items:
+      (If you are not including any or all of these items as you already have them, you must provide photographs and serial numbers to prove this)
+    </p>
+    {% endif %}
+
+    {% if (item == "umbilical system") or (item == "tanker") %}
+    <p>All umbilical systems and tankers must include all 6 following items:
+      (If you are not including any or all of these items as you already have them, you must provide photographs and serial numbers to prove this)
+    </p>
+    {% endif %}
+
+    {% if item == "mild acidification equipment" %}
+    <p>All acidification equipment must include all 3 following items:
+      (If you are not including any or all of these items as you already have them, you must provide photographs and serial numbers to prove this)
+    </p>
+    {% endif %}
+
+    {% endfor %}
+
+    <form class="form" action="check-answers-check-you-can-apply" method="post">
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
