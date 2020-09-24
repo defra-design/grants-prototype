@@ -14,48 +14,96 @@ You may not be able to apply for a large grant from this scheme
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      Select additional items
+      Your selected items
     </h1>
 
     {% for item in data['project-items'] %}
-    {% if (item == "deep or shallow injection") or (item == "trailing shoe") or (item == "dribble bar") %}
-    <p>You selected {{ item }}</p>
-    <p>All low emission precision application equipment must include all 5 following items:
-      <ul>
-<li>Inline nutrient sensors<li>
-<li>Flow meters<li>
-<li>Adjustable flow control valves<li>
-<li>GPS receiver<li>
-<li>In cab display/control unit<li>
-  </ul>
-<p>(If you are not including any or all of these items as you already have them, you must provide photographs and serial numbers to prove this)</p>
-    {% endif %}
+    {% if item == "deep or shallow injection" %}
+    {% elif item == "trailing shoe" %}
+    {% elif item == "dribble bar" %}
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">Low emission precision application equipment</h2>
+    <p>All low emission precision application equipment must also include the following items:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Inline nutrient sensors</li>
+    <li>Flow meters</li>
+    <li>Adjustable flow control valves</li>
+    <li>GPS receiver</li>
+    <li>In cab display/control unit</li>
+    </ul>
+    {% endif %}{% endfor %}
 
     {% if item == "umbilical system" %}
-    <p>All umbilical systems must include all 3 following items:
-      (If you are not including any or all of these items as you already have them, you must provide photographs and serial numbers to prove this)
-    </p>
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">Umbilical systems</h2>
+    <p>All umbilical systems must also include the following items:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Pump</li>
+    <li>Macerator</li>
+    <li>Reeler</li>
+    </ul>
     {% endif %}
 
-    {% if (item == "umbilical system") or (item == "tanker") %}
-    <p>All umbilical systems and tankers must include all 6 following items:
-      (If you are not including any or all of these items as you already have them, you must provide photographs and serial numbers to prove this)
-    </p>
-    {% endif %}
+    {% for item in data['project-items'] %}
+    {% elif item == "umbilical system" %}
+    {% elif item == "tanker" %}
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">Umbilical systems and tankers</h2>
+    <p>All umbilical systems and tankers must also include the following items:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Inline nutrient sensors</li>
+    <li>Flow meters</li>
+    <li>Adjustable flow control valves</li>
+    <li>GPS receiver</li>
+    <li>In cab display/control unit</li>
+    <li>Injection application equipment/trailing shoe or dribble bar</li>
+    </ul>
+    {% endif %}{% endfor %}
 
     {% if item == "mild acidification equipment" %}
-    <p>All acidification equipment must include all 3 following items:
-      (If you are not including any or all of these items as you already have them, you must provide photographs and serial numbers to prove this)
-    </p>
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">Acidification equipment</h2>
+    <p>All acidification equipment must also include the following items:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Mixing tank</li>
+    <li>Acid storage</li>
+    <li>Dosing equipment</li>
+    </ul>
     {% endif %}
 
     {% endfor %}
+
+    {% for item in data['project-items'] %}
+    {% if item == "deep or shallow injection" %}
+    {% elif item == "trailing shoe" %}
+    {% elif item == "dribble bar" %}
+    {% elif item == "umbilical system" %}
+    {% elif item == "tanker" %}
+    {% elif item == "mild acidification equipment" %}
+    <div class="govuk-inset-text">
+      If you are not including any or all of these items as you already have them, you must provide photographs and serial numbers with your full application to prove this.
+    </div>
+    {% endif %}{% endfor %}
 
     <form class="form" action="check-answers-check-you-can-apply" method="post">
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 
     </form>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+
+    <aside class="app-related-items" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        Items selected
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+          {% for item in data['project-items'] %}
+          <li>
+              {{ item | capitalize }}
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
 
   </div>
 </div>
