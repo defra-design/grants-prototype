@@ -52,6 +52,24 @@ router.get('*/start', function (req, res) {
 
 
 
+router.get('*/task-list-prefilled', function (req, res) {
+
+  req.session.data['s01_status'] = 'Completed'
+  req.session.data['s01_status_class'] = ''
+
+  req.session.data['s02_status'] = 'Not started'
+  req.session.data['s02_status_class'] = 'govuk-tag--grey'
+
+  req.session.data['s03_status'] = 'Cannot start yet'
+  req.session.data['s03_status_class'] = 'govuk-tag--grey'
+
+  req.session.data['s04_status'] = 'Cannot start yet'
+  req.session.data['s04_status_class'] = 'govuk-tag--grey'
+
+  res.redirect( './task-list' )
+})
+
+
 
 
 
@@ -159,6 +177,9 @@ router.get('*/task-list', function (req, res) {
 
 
 
+// SECTION 1
+
+
 
 router.get('*/farming-type', function (req, res) {
 
@@ -186,7 +207,7 @@ router.get('*/farming-type-answer', function (req, res) {
   if (farmingType == "no"){res.redirect('../water/farming-type-fail')}
   else {
     if ( req.session.data['s01_status'] == 'Completed'){
-      res.redirect('../water/check-answers-check-you-can-apply')  
+      res.redirect('../water/check-answers-check-you-can-apply')
     }else{
       res.redirect('../water/legal-status')
     }
@@ -194,28 +215,13 @@ router.get('*/farming-type-answer', function (req, res) {
 });
 
 
+router.get('*/legal-status', function (req, res) {
 
+  var backUrl = res.locals.prevURL
 
-
-
-
-
-
-
-
-
-router.get('*/check-answers-check-you-can-apply', function (req, res) {
-
-var backUrl = res.locals.prevURL
-
-req.session.data['completed_sections'] = '1'
-
-req.session.data['s01_status'] = 'Completed'
-req.session.data['s01_status_class'] = ''
-
-if ( req.session.data['s02_status'] != 'Completed' ){
-  req.session.data['s02_status'] = 'Not started'
-}
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  }
 
 res.render( './' + req.originalUrl,{
   backUrl: backUrl
@@ -224,179 +230,273 @@ res.render( './' + req.originalUrl,{
 });
 
 
-router.get('*/project-items', function (req, res) {
-
-  var backUrl = res.locals.prevURL
-
-  if( req.session.data['s01_status'] == 'completed' ){
-    backUrl = 'check-answers-check-you-can-apply'
-  }
-
-  res.render( './' + req.originalUrl,{
-    backUrl: backUrl
-  } )
-
-});
-
-
-router.get('*/check-answers-project-details-and-benefits', function (req, res) {
-
-
-req.session.data['completed_sections'] = '2'
-
-req.session.data['s02_status'] = 'Completed'
-req.session.data['s02_status_class'] = ''
-
-if ( req.session.data['s03_status'] != 'Completed' ){
-  req.session.data['s03_status'] = 'Not started'
-}
-
-res.render( './' + req.originalUrl,{
-
-  backUrl : res.locals.prevURL
-
-} )
-
-});
-
-
-router.get('*/business', function (req, res) {
-
-
-  if ( req.session.data['s02_status'] != 'Completed' ){
-
-  req.session.data['s02_status'] = 'In progress'
-  req.session.data['s02_status_class'] = 'govuk-tag--blue'
-
-  }
-
-  res.render( './' + req.originalUrl,{
-    backUrl: res.locals.prevURL
-  } )
-
-});
-
-
-router.get('*/check-answers-contact-details', function (req, res) {
-
-req.session.data['completed_sections'] = '3'
-
-req.session.data['s03_status'] = 'Completed'
-req.session.data['s03_status_class'] = ''
-
-  res.render( './' + req.originalUrl, {
-    backUrl: res.locals.prevURL
-  })
-
-});
-
-router.get('*/irrigation', function (req, res) {
-
-  if ( req.session.data['project_benefits_status'] != 'Completed' ){
-
-  req.session.data['project-benefits-status'] = 'In progress'
-  req.session.data['project-benefits-status-class'] = 'govuk-tag--blue'
-
-}
-
-res.render( './' + req.originalUrl )
-
-});
-
-
-router.get('*/check-answers-project-benefits', function (req, res) {
-
-req.session.data['completed_sections'] = '4'
-
-req.session.data['project_benefits_status'] = 'Completed'
-req.session.data['project_benefits_status_class'] = ''
-
-res.render( './' + req.originalUrl )
-
-});
-
-
-
-// Question routing
-
 router.post('*/legal-status-answer', function (req, res) {
 
   var legalStatus = req.session.data['legal-status']
 
   if (legalStatus == "none"){res.redirect('../water/legal-status-fail')}
-  else {res.redirect('../water/country')}
+  else {
+
+    if ( req.session.data['s01_status'] == 'Completed'){
+      res.redirect('../water/check-answers-check-you-can-apply')
+    }else{
+      res.redirect('../water/country')}
+    }
 });
+
+
+
+router.get('*/country', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  }
+
+res.render( './' + req.originalUrl,{
+  backUrl: backUrl
+} )
+
+});
+
 
 router.post('*/country-answer', function (req, res) {
 
   var country = req.session.data['country']
 
-  if (country == "yes"){res.redirect('../water/tenancy')}
+  if (country == "yes"){
+
+    if ( req.session.data['s01_status'] == 'Completed'){
+      res.redirect('../water/check-answers-check-you-can-apply')
+    }else{
+      res.redirect('../water/tenancy')}
+    }
   else {res.redirect('../water/country-fail')}
 });
 
 
-
 router.get('*/tenancy', function (req, res) {
 
-  res.render( './' + req.originalUrl, {
-    backUrl: res.locals.prevURL
-  })
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  }
+
+res.render( './' + req.originalUrl,{
+  backUrl: backUrl
+} )
 
 });
-
 
 
 router.post('*/tenancy-answer', function (req, res) {
 
   var tenant = req.session.data['tenancy']
 
-  if (tenant == "yes"){res.redirect('../water/project-items')}
+  if (tenant == "yes"){
+
+
+    if ( req.session.data['s01_status'] == 'Completed'){
+      res.redirect('../water/check-answers-check-you-can-apply')
+    }else{
+      res.redirect('../water/project-items')
+    }
+
+  }
   else {res.redirect('../water/tenancy-length')}
 });
+
 
 router.post('*/tenancy-length-answer', function (req, res) {
 
   var tenancyLength = req.session.data['tenancy-length']
 
   if (tenancyLength == "no"){res.redirect('../water/tenancy-length-condition')}
-  else {res.redirect('../water/project-items')}
+  else {
+    if ( req.session.data['s01_status'] == 'Completed'){
+      res.redirect('../water/check-answers-check-you-can-apply')
+    }else{
+      res.redirect('../water/project-items')
+    }
+  }
 });
+
+
+
+router.get('*/project-items', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = 'project-cost'
+
+  if( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = 'check-answers-check-you-can-apply'
+    nextUrl = 'check-answers-check-you-can-apply'
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  } )
+
+});
+
+
+
+router.get('*/project-cost', function (req, res) {
+
+  req.session.data['currentProjectCost'] = req.session.data['project-cost']
+
+  console.log( req.session.data['currentProjectCost'] )
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  }
+
+res.render( './' + req.originalUrl,{
+  backUrl: backUrl
+} )
+
+});
+
 
 router.post('*/project-cost-answer', function (req, res) {
 
   var projectCost = req.session.data['project-cost']
 
   if (projectCost < 87500 ){res.redirect('../water/project-cost-fail')}
-  else {res.redirect('../water/grant')}
+  else {
+
+    if ( req.session.data['s01_status'] == 'Completed'){
+      if ( projectCost == req.session.data['currentProjectCost']){
+        res.redirect('../water/check-answers-check-you-can-apply')
+      }else{
+        res.redirect('../water/grant')
+      }
+    }else{
+      res.redirect('../water/grant')
+    }
+
+  }
 
 })
+
+
+router.get('*/remaining-costs', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  }
+
+res.render( './' + req.originalUrl,{
+  backUrl: backUrl
+} )
+
+});
+
+
 
 router.post('*/remaining-costs-answer', function (req, res) {
 
   var remainingCosts = req.session.data['remaining-costs']
 
   if (remainingCosts == "no" ){res.redirect('../water/remaining-costs-fail')}
-  else {res.redirect('../water/public-money')}
+  else {
+
+    if ( req.session.data['s01_status'] == 'Completed'){
+      res.redirect('../water/check-answers-check-you-can-apply')
+    }else{
+      res.redirect('../water/public-money')
+    }
+
+  }
 
 })
+
+
+router.get('*/public-money', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  }
+
+res.render( './' + req.originalUrl,{
+  backUrl: backUrl
+} )
+
+});
 
 router.post('*/public-money-answer', function (req, res) {
 
   var publicMoney = req.session.data['public-money']
 
   if (publicMoney == "yes" ){res.redirect('../water/public-money-fail')}
-  else {res.redirect('../water/project-start')}
+  else {
+    if ( req.session.data['s01_status'] == 'Completed'){
+      res.redirect('../water/check-answers-check-you-can-apply')
+    }else{
+      res.redirect('../water/project-start')
+    }
+  }
 
 })
+
+
+// PROJECT START
+
+router.get('*/project-start', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+  })
+
+});
+
 
 router.post('*/project-start-answer', function (req, res) {
 
   var projectStart = req.session.data['project-start']
 
   if (projectStart == "yes"){res.redirect('../water/project-start-fail')}
-  else {res.redirect('../water/planning-required')}
+  else {
+    if ( req.session.data['s01_status'] == 'Completed'){
+      res.redirect('../water/check-answers-check-you-can-apply')
+    }else{
+      res.redirect('../water/planning-required')
+    }
+  }
 });
+
+// PLANNING PERMISSION
+
+router.get('*/planning-required', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+  })
+
+});
+
+
 
 router.post('*/planning-required-answer', function (req, res) {
 
@@ -404,8 +504,31 @@ router.post('*/planning-required-answer', function (req, res) {
 
   if (planningRequired == "yes"){res.redirect('../water/planning-permission')}
   if (planningRequired == "not sure"){res.redirect('../water/planning-required-condition')}
-  else {res.redirect('../water/abstraction-required')}
+  else {
+    if ( req.session.data['s01_status'] == 'Completed'){
+      res.redirect('../water/check-answers-check-you-can-apply')
+    }else{
+      res.redirect('../water/abstraction-required')
+    }
+  }
 });
+
+
+
+router.get('*/planning-required-condition', function (req, res) {
+
+  var nextUrl = 'abstraction-required'
+
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    nextUrl = "check-answers-check-you-can-apply"
+  }
+
+  res.render( './' + req.originalUrl,{
+    nextUrl: nextUrl
+  })
+
+});
+
 
 router.post('*/planning-permission-answer', function (req, res) {
 
@@ -423,6 +546,26 @@ router.post('*/planning-progress-answer', function (req, res) {
   if (planningProgress == "not sure"){res.redirect('../water/planning-progress-condition')}
   else {res.redirect('../water/planning-permission-fail')}
 });
+
+
+
+// ABSTRACTION LICENCE
+
+router.get('*/abstraction-required', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+  })
+
+});
+
+
 
 router.post('*/abstraction-required-answer', function (req, res) {
 
@@ -457,6 +600,229 @@ router.post('*/abstraction-variation-answer', function (req, res) {
   if (abstractionVariation == "yes"){res.redirect('../water/abstraction-variation-condition')}
   else {res.redirect('../water/check-answers-check-you-can-apply')}
 });
+
+
+
+router.get('*/check-answers-check-you-can-apply', function (req, res) {
+
+var backUrl = res.locals.prevURL
+
+req.session.data['completed_sections'] = '1'
+
+req.session.data['s01_status'] = 'Completed'
+req.session.data['s01_status_class'] = ''
+
+if ( req.session.data['s02_status'] != 'Completed' ){
+  req.session.data['s02_status'] = 'Not started'
+}
+
+res.render( './' + req.originalUrl,{
+  backUrl: backUrl
+} )
+
+});
+
+
+
+
+
+
+
+
+
+// SECTION 2
+
+
+router.get('*/check-answers-project-details-and-benefits', function (req, res) {
+
+
+req.session.data['completed_sections'] = '2'
+
+req.session.data['s02_status'] = 'Completed'
+req.session.data['s02_status_class'] = ''
+
+if ( req.session.data['s03_status'] != 'Completed' ){
+  req.session.data['s03_status'] = 'Not started'
+}
+
+res.render( './' + req.originalUrl,{
+
+  backUrl : res.locals.prevURL
+
+} )
+
+});
+
+
+router.get('*/project', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = 'irrigation'
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    nextUrl = "check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+
+});
+
+
+router.get('*/irrigation', function (req, res) {
+
+  req.session.data['tempIrrigation'] = req.session.data['irrigation']
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    backUrl = "check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+    })
+
+});
+
+
+router.post('*/irrigation-answer', function (req, res) {
+
+  var irrigationAnswer = req.session.data['irrigation']
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+
+    if( irrigationAnswer == req.session.data['tempIrrigation']){
+      res.redirect('../water/check-answers-project-details-and-benefits')
+    }
+  }
+
+  if (irrigationAnswer == "improve"){res.redirect('../water/current-irrigation')}
+  else {res.redirect('../water/new-irrigation')}
+});
+
+
+
+router.get('*/collaboration', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = 'productivity'
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    backUrl = "check-answers-project-details-and-benefits"
+    nextUrl = "check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+    })
+
+});
+
+router.get('*/productivity', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = 'environment'
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    backUrl = "check-answers-project-details-and-benefits"
+    nextUrl = "check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+    })
+
+});
+
+router.get('*/environment', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    backUrl = "check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+  })
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// SECTION 3
+
+
+router.get('*/check-answers-contact-details', function (req, res) {
+
+req.session.data['completed_sections'] = '3'
+
+req.session.data['s03_status'] = 'Completed'
+req.session.data['s03_status_class'] = ''
+
+  res.render( './' + req.originalUrl, {
+    backUrl: res.locals.prevURL
+  })
+
+});
+
+
+router.get('*/business', function (req, res) {
+
+  if ( req.session.data['s03_status'] != 'Completed' ){
+    req.session.data['s03_status'] = 'In progress'
+    req.session.data['s03_status_class'] = 'govuk-tag--blue'
+  }
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s03_status'] == 'Completed' ){
+    backUrl = "check-answers-contact-details"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+  })
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 router.post('*/business-answer', function (req, res) {
 
@@ -523,12 +889,5 @@ router.get('*/applicant-details', function (req, res) {
 
 })
 
-router.post('*/irrigation-answer', function (req, res) {
-
-  var irrigationAnswer = req.session.data['irrigation']
-
-  if (irrigationAnswer == "improve"){res.redirect('../water/current-irrigation')}
-  else {res.redirect('../water/new-irrigation')}
-});
 
 module.exports = router
