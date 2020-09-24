@@ -14,7 +14,7 @@ console.log( 'Service name: ' + serviceName );
 // START PAGE //
 router.get('*/start', function (req, res) {
 
-  console.log( 'This is the start page' );
+  // console.log( 'This is the start page' );
 
   // Cannot start yet = 'govuk-tag--grey'
   // Not started = 'govuk-tag--grey'
@@ -36,8 +36,12 @@ router.get('*/start', function (req, res) {
   req.session.data['s02_status_class'] = 'govuk-tag--grey'
 
   // Section 3 = 'Give contact details'
-  req.session.data['s03_status'] = 'Not started'
-  req.session.data['s01_status_class'] = 'govuk-tag--grey'
+  req.session.data['s03_status'] = 'Cannot start yet'
+  req.session.data['s03_status_class'] = 'govuk-tag--grey'
+
+  // Section 4 = 'Full application'
+  req.session.data['s04_status'] = 'Cannot start yet'
+  req.session.data['s04_status_class'] = 'govuk-tag--grey'
 
   res.render( './' + req.originalUrl, {
   })
@@ -66,7 +70,7 @@ router.get('*/task-list', function (req, res) {
   // In progress = 'govuk-tag--blue'
   // Completed = ''
 
-
+  var backUrl = res.locals.prevURL
 
   if( req.session.data['s01_status'] != 'Completed'){
 
@@ -115,8 +119,6 @@ router.get('*/task-list', function (req, res) {
     }
 
 
-
-
   var s01_status = req.session.data['s01_status']
   var s01_status_class = req.session.data['s01_status_class']
 
@@ -139,6 +141,7 @@ router.get('*/task-list', function (req, res) {
 
 
   res.render( './' + req.originalUrl, {
+    backUrl: backUrl,
     application_status: application_status,
     completed_sections: completed_sections,
     s01_status: s01_status,
@@ -155,20 +158,50 @@ router.get('*/task-list', function (req, res) {
 // TASK LIST PAGE END //
 
 
+
+
 router.get('*/farming-type', function (req, res) {
+
+  var backUrl = res.locals.prevURL
 
   // test to check this section isn't completed...
 
-if ( req.session.data['project_eligibility_status'] != 'Completed' ){
+  if ( req.session.data['s01_status'] == 'Completed' ){
+    backUrl = "check-answers-check-you-can-apply"
+  } else {
+    req.session.data['s01_status'] = 'In progress'
+    req.session.data['s01_status_class'] = 'govuk-tag--blue'
+  }
 
-  req.session.data['project_eligibility_status'] = 'In progress'
-  req.session.data['project_eligibility_status_class'] = 'govuk-tag--blue'
-
-}
-
-res.render( './' + req.originalUrl )
+res.render( './' + req.originalUrl,{
+  backUrl: backUrl
+} )
 
 });
+
+router.get('*/farming-type-answer', function (req, res) {
+
+  var farmingType = req.session.data['farming-type']
+
+  if (farmingType == "no"){res.redirect('../water/farming-type-fail')}
+  else {
+    if ( req.session.data['s01_status'] == 'Completed'){
+      res.redirect('../water/check-answers-check-you-can-apply')  
+    }else{
+      res.redirect('../water/legal-status')
+    }
+  }
+});
+
+
+
+
+
+
+
+
+
+
 
 
 router.get('*/check-answers-check-you-can-apply', function (req, res) {
@@ -193,14 +226,15 @@ res.render( './' + req.originalUrl,{
 
 router.get('*/project-items', function (req, res) {
 
-if ( req.session.data['s02_status'] != 'Completed' ){
+  var backUrl = res.locals.prevURL
 
-req.session.data['s02_status'] = 'In progress'
-req.session.data['s02_status_class'] = 'govuk-tag--blue'
+  if( req.session.data['s01_status'] == 'completed' ){
+    backUrl = 'check-answers-check-you-can-apply'
+  }
 
-}
-
-res.render( './' + req.originalUrl )
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+  } )
 
 });
 
@@ -229,14 +263,16 @@ res.render( './' + req.originalUrl,{
 router.get('*/business', function (req, res) {
 
 
-  if ( req.session.data['contact_details_status'] != 'Completed' ){
+  if ( req.session.data['s02_status'] != 'Completed' ){
 
-req.session.data['contact_details_status'] = 'In progress'
-req.session.data['contact_details_status_class'] = 'govuk-tag--blue'
+  req.session.data['s02_status'] = 'In progress'
+  req.session.data['s02_status_class'] = 'govuk-tag--blue'
 
-}
+  }
 
-res.render( './' + req.originalUrl )
+  res.render( './' + req.originalUrl,{
+    backUrl: res.locals.prevURL
+  } )
 
 });
 
@@ -283,14 +319,6 @@ res.render( './' + req.originalUrl )
 
 // Question routing
 
-router.get('*/farming-type-answer', function (req, res) {
-
-  var farmingType = req.session.data['farming-type']
-
-  if (farmingType == "no"){res.redirect('../water/farming-type-fail')}
-  else {res.redirect('../water/legal-status')}
-});
-
 router.post('*/legal-status-answer', function (req, res) {
 
   var legalStatus = req.session.data['legal-status']
@@ -306,6 +334,18 @@ router.post('*/country-answer', function (req, res) {
   if (country == "yes"){res.redirect('../water/tenancy')}
   else {res.redirect('../water/country-fail')}
 });
+
+
+
+router.get('*/tenancy', function (req, res) {
+
+  res.render( './' + req.originalUrl, {
+    backUrl: res.locals.prevURL
+  })
+
+});
+
+
 
 router.post('*/tenancy-answer', function (req, res) {
 

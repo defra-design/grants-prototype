@@ -4,6 +4,10 @@
   Task list - {{serviceName}} - GOV.UK
 {% endblock %}
 
+{% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -20,7 +24,7 @@
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">1. </span> Check if you can apply
           </h2>
-          <ul class="app-task-list__items">
+          <ul class="app-task-list__items govuk-!-margin-bottom-5">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 {% if data['s01_status'] == 'Completed' %}
@@ -36,12 +40,25 @@
               <strong class="govuk-tag {{ s01_status_class }} app-task-list__tag" id="s01-status">{{ s01_status }}</strong>
             </li>
           </ul>
+
+          {% if data['s01_status'] == 'Completed' %}
+
+          <p class="govuk-body govuk-!-margin-left-6">
+            You can apply. Based on the answers you have given this project could get a grant.
+          </p>
+
+          {% endif %}
+
         </li>
 
-        <li>
+        <li class="govuk-!-margin-top-7">
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">2. </span> Express interest
           </h2>
+
+          <p class="govuk-body govuk-!-margin-left-6">
+            Take time to write your answers. They will be assessed against other projects.
+          </p>
 
           <ul class="app-task-list__items">
 
