@@ -17,10 +17,7 @@ You may not be able to apply for a large grant from this scheme
       Your selected items
     </h1>
 
-    {% for item in data['project-items'] %}
-    {% if item == "deep or shallow injection" %}
-    {% elif item == "trailing shoe" %}
-    {% elif item == "dribble bar" %}
+    {% for item in data['project-items'] %}{% if item == "deep or shallow injection" %}
     <h2 class="govuk-heading-m govuk-!-margin-top-6">Low emission precision application equipment</h2>
     <p>All low emission precision application equipment must also include the following items:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -32,7 +29,7 @@ You may not be able to apply for a large grant from this scheme
     </ul>
     {% endif %}{% endfor %}
 
-    {% if item == "umbilical system" %}
+    {% for item in data['project-items'] %}{% if item == "umbilical system" %}
     <h2 class="govuk-heading-m govuk-!-margin-top-6">Umbilical systems</h2>
     <p>All umbilical systems must also include the following items:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -40,10 +37,9 @@ You may not be able to apply for a large grant from this scheme
     <li>Macerator</li>
     <li>Reeler</li>
     </ul>
-    {% endif %}
+    {% endif %}{% endfor %}
 
-    {% for item in data['project-items'] %}
-    {% elif item == "umbilical system" %}
+    {% for item in data['project-items'] %}{% if item == "umbilical system" %}
     {% elif item == "tanker" %}
     <h2 class="govuk-heading-m govuk-!-margin-top-6">Umbilical systems and tankers</h2>
     <p>All umbilical systems and tankers must also include the following items:</p>
@@ -57,7 +53,7 @@ You may not be able to apply for a large grant from this scheme
     </ul>
     {% endif %}{% endfor %}
 
-    {% if item == "mild acidification equipment" %}
+    {% for item in data['project-items'] %}{% if item == "mild acidification equipment" %}
     <h2 class="govuk-heading-m govuk-!-margin-top-6">Acidification equipment</h2>
     <p>All acidification equipment must also include the following items:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -65,9 +61,7 @@ You may not be able to apply for a large grant from this scheme
     <li>Acid storage</li>
     <li>Dosing equipment</li>
     </ul>
-    {% endif %}
-
-    {% endfor %}
+    {% endif %}{% endfor %}
 
     {% for item in data['project-items'] %}
     {% if item == "deep or shallow injection" %}
