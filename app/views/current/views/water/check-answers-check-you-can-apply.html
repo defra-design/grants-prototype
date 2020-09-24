@@ -15,7 +15,7 @@
 
     <h1 class="govuk-heading-l">Check your answers</h1>
 
-    <h2 class="govuk-heading-m">Check you can apply</h2>
+    <h2 class="govuk-heading-m">Check if you can apply</h2>
 
     <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
@@ -226,6 +226,21 @@
         </dd>
       </div>
       {% endif %}
+      {% if data['abstraction-licence'] == "no" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Abstraction licence to be granted in next six months
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['abstraction-progress'] | capitalize }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="abstraction-licence">
+            Change<span class="govuk-visually-hidden"> abstraction licence to be granted in next six months</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
       {% if data['abstraction-variation'] == "yes" %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -245,23 +260,46 @@
 
     {% if (data['tenancy'] == "yes") and (data['tenancy-length'] == "no") %}
     <div class="govuk-inset-text">
-        To make a full application, you will need to extend your tenancy beyond 2026.
+        You will need to extend your tenancy beyond 2026 before you make a full application.
+    </div>
+    {% endif %}
+
+    {% if data['planning-required'] == "not sure" %}
+    <div class="govuk-inset-text">
+        You will need to check if you need planning permission and secure it before you make a full application.
+    </div>
+    {% endif %}
+
+    {% if (data['planning-permission'] == "no") and (data['planning-progress'] == "not sure") %}
+    <div class="govuk-inset-text">
+        You will need to secure planning permission prior to submitting a full application.
+    </div>
+    {% endif %}
+
+    {% if data['abstraction-required'] == "not sure" %}
+    <div class="govuk-inset-text">
+        You will need to check if you need an abstraction licence and secure it before you make a full application.
+    </div>
+    {% endif %}
+
+    {% if (data['abstraction-licence'] == "no") and (data['abstraction-progress'] == "not sure") %}
+    <div class="govuk-inset-text">
+        You will need to secure an abstraction licence before you make a full application.
     </div>
     {% endif %}
 
     {% if (data['abstraction-licence'] == "yes") and (data['abstraction-variation'] == "yes") %}
     <div class="govuk-inset-text">
-        You will need to secure a variation to your abstraction licence prior to submitting a full application.
+        You will need to secure a variation to your abstraction licence before you make a full application.
     </div>
     {% endif %}
-
 
     <form action="task-list" method="post" novalidate>
 
       <input type="hidden" name="answers-checked" value="true">
 
       <button class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">
-        Save and continue
+        Continue
       </button>
 
     </form>

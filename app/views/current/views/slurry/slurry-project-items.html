@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which items eligible for grant funding are included in the project?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="slurry-project-items-condition" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="project-items-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Which items available through grant funding does the project need?
+              </h1>
+            </legend>
+            <!--<span id="project-items-hint" class="govuk-hint">
+              Select all that apply
+            </span>-->
+            <h2 class="govuk-heading-m govuk-!-margin-top-6">Low emission precision application equipment</h2>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-items" name="project-items" type="checkbox" value="deep or shallow injection" {{ checked("project-items", "deep or shallow injection") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-items">
+                  Deep or shallow injection
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-items-2" name="project-items" type="checkbox" value="trailing shoe" {{ checked("project-items", "trailing shoe") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-items-2">
+                  Trailing shoe
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-items-3" name="project-items" type="checkbox" value="dribble bar" {{ checked("project-items", "dribble bar") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-items-3">
+                  Dribble bar
+                </label>
+              </div>
+              <h2 class="govuk-heading-m govuk-!-margin-top-6">Slurry / digestate</h2>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-items-4" name="project-items" type="checkbox" value="umbilical system" {{ checked("project-items", "umbilical system") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-items-4">
+                  Umbilical system
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-items-5" name="project-items" type="checkbox" value="tanker" {{ checked("project-items", "tanker") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-items-5">
+                  Tanker
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-items-6" name="project-items" type="checkbox" value="bags" {{ checked("project-items", "bags") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-items-6">
+                  Bags
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-items-7" name="project-items" type="checkbox" value="advanced processing equipment" {{ checked("project-items", "advanced processing equipment") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-items-7">
+                  Advanced processing equipment, such as multi-stage digestate separation
+                </label>
+              </div>
+              <h2 class="govuk-heading-m govuk-!-margin-top-6">Acidification</h2>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-items-8" name="project-items" type="checkbox" value="mild acidification equipment" {{ checked("project-items", "mild acidification equipment") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-items-8">
+                  Mild acidification equipment
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -22,6 +22,9 @@
                 Does the farm grow crops to supply the food industry?
               </h1>
             </legend>
+            <div id="farming-type-hint" class="govuk-hint">
+              By food industry we mean crops grown for human consumption, not animal feed or biofuel.
+            </div>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="farming-type" name="farming-type" type="radio" value="yes" {{ checked("farming-type", "yes") }}>
@@ -38,17 +41,6 @@
             </div>
           </fieldset>
         </div>
-
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Help with food industry
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            Does not include crops grown solely for animal feed or biofuel.
-          </div>
-        </details>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 
