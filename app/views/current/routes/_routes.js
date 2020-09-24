@@ -52,6 +52,24 @@ router.get('*/start', function (req, res) {
 
 
 
+router.get('*/task-list-prefilled', function (req, res) {
+
+  req.session.data['s01_status'] = 'Completed'
+  req.session.data['s01_status_class'] = ''
+
+  req.session.data['s02_status'] = 'Not started'
+  req.session.data['s02_status_class'] = 'govuk-tag--grey'
+
+  req.session.data['s03_status'] = 'Cannot start yet'
+  req.session.data['s03_status_class'] = 'govuk-tag--grey'
+
+  req.session.data['s04_status'] = 'Cannot start yet'
+  req.session.data['s04_status_class'] = 'govuk-tag--grey'
+
+  res.redirect( './task-list' )
+})
+
+
 
 
 
@@ -636,20 +654,105 @@ res.render( './' + req.originalUrl,{
 });
 
 
+router.get('*/project', function (req, res) {
 
+  var backUrl = res.locals.prevURL
+  var nextUrl = 'irrigation'
 
-router.get('*/business', function (req, res) {
-
-  if ( req.session.data['s02_status'] != 'Completed' ){
-    req.session.data['s02_status'] = 'In progress'
-    req.session.data['s02_status_class'] = 'govuk-tag--blue'
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    nextUrl = "check-answers-project-details-and-benefits"
   }
 
   res.render( './' + req.originalUrl,{
-    backUrl: res.locals.prevURL
-  } )
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
 
 });
+
+
+router.get('*/irrigation', function (req, res) {
+
+  req.session.data['tempIrrigation'] = req.session.data['irrigation']
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    backUrl = "check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+    })
+
+});
+
+
+router.post('*/irrigation-answer', function (req, res) {
+
+  var irrigationAnswer = req.session.data['irrigation']
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+
+    if( irrigationAnswer == req.session.data['tempIrrigation']){
+      res.redirect('../water/check-answers-project-details-and-benefits')
+    }
+  }
+
+  if (irrigationAnswer == "improve"){res.redirect('../water/current-irrigation')}
+  else {res.redirect('../water/new-irrigation')}
+});
+
+
+
+router.get('*/collaboration', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = 'productivity'
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    backUrl = "check-answers-project-details-and-benefits"
+    nextUrl = "check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+    })
+
+});
+
+router.get('*/productivity', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = 'environment'
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    backUrl = "check-answers-project-details-and-benefits"
+    nextUrl = "check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+    })
+
+});
+
+router.get('*/environment', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+
+  if ( req.session.data['s02_status'] == 'Completed' ){
+    backUrl = "check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+  })
+
+});
+
 
 
 
@@ -690,18 +793,31 @@ req.session.data['s03_status_class'] = ''
 
 });
 
-router.get('*/irrigation', function (req, res) {
 
-  if ( req.session.data['project_benefits_status'] != 'Completed' ){
+router.get('*/business', function (req, res) {
 
-  req.session.data['project-benefits-status'] = 'In progress'
-  req.session.data['project-benefits-status-class'] = 'govuk-tag--blue'
+  if ( req.session.data['s03_status'] != 'Completed' ){
+    req.session.data['s03_status'] = 'In progress'
+    req.session.data['s03_status_class'] = 'govuk-tag--blue'
+  }
 
-}
+  var backUrl = res.locals.prevURL
 
-res.render( './' + req.originalUrl )
+  if ( req.session.data['s03_status'] == 'Completed' ){
+    backUrl = "check-answers-contact-details"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl
+  })
 
 });
+
+
+
+
+
+
 
 
 
@@ -773,12 +889,5 @@ router.get('*/applicant-details', function (req, res) {
 
 })
 
-router.post('*/irrigation-answer', function (req, res) {
-
-  var irrigationAnswer = req.session.data['irrigation']
-
-  if (irrigationAnswer == "improve"){res.redirect('../water/current-irrigation')}
-  else {res.redirect('../water/new-irrigation')}
-});
 
 module.exports = router
