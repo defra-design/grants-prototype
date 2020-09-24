@@ -18,81 +18,78 @@
       <ul class="app-task-list">
         <li>
           <h2 class="app-task-list__section">
-            Expression of interest
+            <span class="app-task-list__section-number">1. </span> Check if you can apply
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                {% if data['project_eligibility_status'] == 'Completed' %}
-                <a href="check-answers-project-eligibility" aria-describedby="project-eligibility-status">
-                  Project eligiblity
+                {% if data['s01_status'] == 'Completed' %}
+                <a href="check-answers-check-you-can-apply" aria-describedby="s01-status">
+                  Check now
                 </a>
                 {% else %}
-                <a href="farming-type" aria-describedby="project-eligibility-status">
-                  Project eligiblity
+                <a href="farming-type" aria-describedby="s01-status">
+                  Check now
                 </a>
                 {% endif %}
               </span>
-              <strong class="govuk-tag {{ project_eligibility_status_class }} app-task-list__tag" id="project-eligibility-status">{{ project_eligibility_status }}</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                {% if data['project_eligibility_status'] == 'Completed' %}
-                  {% if data['theme_eligibility_status'] == 'Completed' %}
-                <a href="check-answers-theme-eligibility" aria-describedby="theme-eligibility-status">
-                  Theme eligiblity
-                </a>
-                  {% else %}
-                <a href="project-items" aria-describedby="theme-eligibility-status">
-                  Theme eligiblity
-                </a>
-                  {% endif %}
-                {% else %}
-                  Theme eligiblity
-                {% endif %}
-              </span>
-              <strong class="govuk-tag {{ theme_eligibility_status_class }} app-task-list__tag" id="theme-eligibility-status">{{ theme_eligibility_status }}</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                {% if data['theme_eligibility_status'] == 'Completed' %}
-                  {% if data['contact_details_status'] == 'Completed' %}
-                  <a href="check-answers-contact-details" aria-describedby="contact-details-status">
-                    Contact details
-                  </a>
-                  {% else %}
-                <a href="business" aria-describedby="contact-details-status">
-                  Contact details
-                </a>
-                  {% endif %}
-                {% else %}
-                  Contact details
-                {% endif %}
-              </span>
-              <strong class="govuk-tag {{ contact_details_status_class }} app-task-list__tag" id="contact-details-status">{{ contact_details_status }}</strong>
-            </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                {% if data['contact_details_status'] == 'Completed' %}
-                  {% if data['project_benefits_status'] == 'Completed' %}
-                  <a href="check-answers-project-benefits" aria-describedby="project-benefits-status">
-                    Project benefits
-                  </a>
-                  {% else %}
-                <a href="irrigation" aria-describedby="project-benefits-status">
-                  Project benefits
-                </a>
-                  {% endif %}
-                {% else %}
-                  Project benefits
-                {% endif %}
-              </span>
-              <strong class="govuk-tag {{ project_benefits_status_class }} app-task-list__tag" id="project-benefits-status">{{ project_benefits_status }}</strong>
+              <strong class="govuk-tag {{ s01_status_class }} app-task-list__tag" id="s01-status">{{ s01_status }}</strong>
             </li>
           </ul>
         </li>
 
-        {% if data['completed_sections'] == '4' %}
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Express interest
+          </h2>
+
+          <ul class="app-task-list__items">
+
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {% if data['s01_status'] == 'Completed' %}
+                  {% if data['s02_status'] == 'Completed' %}
+                <a href="check-answers-project-details-and-benefits" aria-describedby="s02-status">
+                  Provide project details and benefits
+                </a>
+                  {% else %}
+                <a href="project" aria-describedby="s02-status">
+                  Provide project details and benefits
+                </a>
+                  {% endif %}
+                {% else %}
+                  Provide project details and benefits
+                {% endif %}
+              </span>
+              <strong class="govuk-tag {{ s02_status_class }} app-task-list__tag" id="s02-status">{{ s02_status }}</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {% if data['s02_status'] == 'Completed' %}
+                  {% if data['s03_status'] == 'Completed' %}
+                  <a href="check-answers-contact-details" aria-describedby="s03-status">
+                    Give contact details
+                  </a>
+                  {% else %}
+                <a href="business" aria-describedby="s03-status">
+                  Give contact details
+                </a>
+                  {% endif %}
+                {% else %}
+                  Give contact details
+                {% endif %}
+              </span>
+              <strong class="govuk-tag {{ s03_status_class }} app-task-list__tag" id="s03-status">{{ s03_status }}</strong>
+            </li>
+
+          </ul>
+
+        </li>
+
+
+
+        {% if data['completed_sections'] == '3' %}
         <form action="check-answers-all" method="post" novalidate>
 
           <input type="hidden" name="answers-checked" value="true">
@@ -104,9 +101,9 @@
         </form>
         {% endif %}
 
-        <!-- <li>
+        <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span> Full application
+            <span class="app-task-list__section-number">3. </span> Apply in full
           </h2>
 
           <ul class="app-task-list__items">
@@ -114,18 +111,18 @@
               <span class="app-task-list__task-name">
                 {% if final_project_details_available %}
                 <a href="#" aria-describedby="final-project-details">
-                  Final project details
+                  Complete the full application
                 </a>
                 {% else %}
-                  Final project details
+                  Complete the full application
                 {% endif %}
               </span>
-              <strong class="govuk-tag {{ final_project_details_status_class }} app-task-list__tag" id="final-project-details">{{ final_project_details_status }}</strong>
+              <strong class="govuk-tag {{ s04_status_class }} app-task-list__tag" id="s04-status">{{ s04_status }}</strong>
             </li>
 
           </ul>
 
-        </li> -->
+        </li>
 
       </ul>
     </div>

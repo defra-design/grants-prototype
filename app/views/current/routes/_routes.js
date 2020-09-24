@@ -4,13 +4,60 @@ const router = express.Router()
 const serviceName = 'Apply for a large grant for a water resource management project'
 
 // console.log( 'This is the _routes file' );
-// console.log( serviceName );
+console.log( 'Service name: ' + serviceName );
 
 // Add your routes here - above the module.exports line
 
+
+
+//*****************************************************
+// START PAGE //
+router.get('*/start', function (req, res) {
+
+  console.log( 'This is the start page' );
+
+  // Cannot start yet = 'govuk-tag--grey'
+  // Not started = 'govuk-tag--grey'
+  // In progress = 'govuk-tag--blue'
+  // Completed = ''
+
+  // We only count the sections (weird part of the pattern tbh nicprice comment)
+
+  // Part 1: Check if you can apply
+
+  // Section 1: Check now
+  req.session.data['s01_status'] = 'Not started'
+  req.session.data['s01_status_class'] = 'govuk-tag--grey'
+
+  // Part 2: Express interest
+
+  // Section 2: Provide project details and benefits
+  req.session.data['s02_status'] = 'Cannot start yet'
+  req.session.data['s02_status_class'] = 'govuk-tag--grey'
+
+  // Section 3 = 'Give contact details'
+  req.session.data['s03_status'] = 'Not started'
+  req.session.data['s01_status_class'] = 'govuk-tag--grey'
+
+  res.render( './' + req.originalUrl, {
+  })
+})
+
+// START PAGE END //
+
+
+
+
+
+
+
+
+
+
+
 //*****************************************************
 // TASK LIST PAGE START //
-router.get('*/XXXtask-list', function (req, res) {
+router.get('*/task-list', function (req, res) {
 
   console.log( 'This is the task list' );
 
@@ -19,30 +66,89 @@ router.get('*/XXXtask-list', function (req, res) {
   // In progress = 'govuk-tag--blue'
   // Completed = ''
 
-    //part0101status = req.session.data['part0101status']
-    part0101status = 'Completed'
-    part0101statusClass = ''
 
-    part0102status = 'In progress'
-    part0102statusClass = 'govuk-tag--blue'
 
-    part0201status = 'Not started'
-    part0201statusClass = 'govuk-tag--grey'
+  if( req.session.data['s01_status'] != 'Completed'){
 
-    part0202status = 'Cannot start yet'
-    part0202statusClass = 'govuk-tag--grey'
+    // Part 1: Check if you can apply
+    // Section 1: Check now
+    req.session.data['s01_status'] = 'Not started'
+    req.session.data['s01_status_class'] = 'govuk-tag--grey'
+
+    // Part 2: Express interest
+    // Section 2: Provide project details and benefits
+    req.session.data['s02_status'] = 'Cannot start yet'
+    req.session.data['s02_status_class'] = 'govuk-tag--grey'
+
+    // Section 3 = 'Give contact details'
+    req.session.data['s03_status'] = 'Cannot start yet'
+    req.session.data['s03_status_class'] = 'govuk-tag--grey'
+
+    // Part 3: Apply in full
+    // Section 4: Complete the full application
+    req.session.data['s04_status'] = 'Cannot start yet'
+    req.session.data['s04_status_class'] = 'govuk-tag--grey'
+
+  }
+
+
+  var application_status
+  var completed_sections
+
+  switch (req.session.data['completed_sections']) {
+      case '0':
+        application_status = 'Expression of interest not started'
+        completed_sections = 'You have completed 0 of 3 sections.'
+        break
+      case '1':
+      application_status = 'Expression of interest in progress'
+      completed_sections = 'You have completed 1 of 3 sections.'
+        break
+      case '2':
+      application_status = 'Expression of interest in progress'
+      completed_sections = 'You have completed 2 of 3 sections.'
+        break
+      case '3':
+      application_status = 'Expression of interest in progress'
+      completed_sections = 'You have completed 3 of 3 sections.'
+        break
+    }
+
+
+
+
+  var s01_status = req.session.data['s01_status']
+  var s01_status_class = req.session.data['s01_status_class']
+
+  // Part 2: Express interest
+
+  // Section 2: Provide project details and benefits
+  var s02_status = req.session.data['s02_status']
+  var s02_status_class = req.session.data['s02_status_class']
+
+  // Section 3 = 'Give contact details'
+  var s03_status = req.session.data['s03_status']
+  var s03_status_class = req.session.data['s03_status_class']
+
+  // Part 3: Apply in full
+
+  // Section 4: Complete the full application
+  var s04_status = req.session.data['s04_status']
+  var s04_status_class = req.session.data['s04_status_class']
+
 
 
   res.render( './' + req.originalUrl, {
-    serviceName: serviceName,
-    part0101status: part0101status,
-    part0101statusClass: part0101statusClass,
-    part0102status: part0102status,
-    part0102statusClass: part0102statusClass,
-    part0201status: part0201status,
-    part0201statusClass: part0201statusClass,
-    part0202status: part0202status,
-    part0202statusClass: part0202statusClass
+    application_status: application_status,
+    completed_sections: completed_sections,
+    s01_status: s01_status,
+    s01_status_class: s01_status_class,
+    s02_status: s02_status,
+    s02_status_class: s02_status_class,
+    s03_status: s03_status,
+    s03_status_class: s03_status_class,
+    s04_status: s04_status,
+    s04_status_class: s04_status_class
   })
 })
 
@@ -65,28 +171,32 @@ res.render( './' + req.originalUrl )
 });
 
 
-router.get('*/check-answers-project-eligibility', function (req, res) {
+router.get('*/check-answers-check-you-can-apply', function (req, res) {
+
+var backUrl = res.locals.prevURL
 
 req.session.data['completed_sections'] = '1'
 
-req.session.data['project_eligibility_status'] = 'Completed'
-req.session.data['project_eligibility_status_class'] = ''
+req.session.data['s01_status'] = 'Completed'
+req.session.data['s01_status_class'] = ''
 
-if ( req.session.data['theme_eligibility_status'] != 'Completed' ){
-  req.session.data['theme_eligibility_status'] = 'Not started'
+if ( req.session.data['s02_status'] != 'Completed' ){
+  req.session.data['s02_status'] = 'Not started'
 }
 
-res.render( './' + req.originalUrl )
+res.render( './' + req.originalUrl,{
+  backUrl: backUrl
+} )
 
 });
 
 
 router.get('*/project-items', function (req, res) {
 
-if ( req.session.data['theme_eligibility_status'] != 'Completed' ){
+if ( req.session.data['s02_status'] != 'Completed' ){
 
-req.session.data['theme_eligibility_status'] = 'In progress'
-req.session.data['theme_eligibility_status_class'] = 'govuk-tag--blue'
+req.session.data['s02_status'] = 'In progress'
+req.session.data['s02_status_class'] = 'govuk-tag--blue'
 
 }
 
@@ -95,18 +205,23 @@ res.render( './' + req.originalUrl )
 });
 
 
-router.get('*/check-answers-theme-eligibility', function (req, res) {
+router.get('*/check-answers-project-details-and-benefits', function (req, res) {
+
 
 req.session.data['completed_sections'] = '2'
 
-req.session.data['theme_eligibility_status'] = 'Completed'
-req.session.data['theme_eligibility_status_class'] = ''
+req.session.data['s02_status'] = 'Completed'
+req.session.data['s02_status_class'] = ''
 
-if ( req.session.data['contact_details_status'] != 'Completed' ){
-  req.session.data['contact_details_status'] = 'Not started'
+if ( req.session.data['s03_status'] != 'Completed' ){
+  req.session.data['s03_status'] = 'Not started'
 }
 
-res.render( './' + req.originalUrl )
+res.render( './' + req.originalUrl,{
+
+  backUrl : res.locals.prevURL
+
+} )
 
 });
 
@@ -130,23 +245,11 @@ router.get('*/check-answers-contact-details', function (req, res) {
 
 req.session.data['completed_sections'] = '3'
 
-req.session.data['contact_details_status'] = 'Completed'
-req.session.data['contact_details_status_class'] = ''
-
-if ( req.session.data['project_benefits_status'] != 'Completed' ){
-  req.session.data['project_benefits_status'] = 'Not started'
-}
-
-var backUrl
-
-if (req.session.data['applying'] == 'own') {
-  backUrl = 'your-details' }
-else {
-  backUrl = 'applicant-details'
-  }
+req.session.data['s03_status'] = 'Completed'
+req.session.data['s03_status_class'] = ''
 
   res.render( './' + req.originalUrl, {
-    backUrl: backUrl
+    backUrl: res.locals.prevURL
   })
 
 });
@@ -287,7 +390,7 @@ router.post('*/abstraction-required-answer', function (req, res) {
 
   if (abstractionRequired == "yes"){res.redirect('../water/abstraction-licence')}
   if (abstractionRequired == "not sure"){res.redirect('../water/abstraction-required-condition')}
-  else {res.redirect('../water/check-answers-can-i-apply')}
+  else {res.redirect('../water/check-answers-check-you-can-apply')}
 });
 
 router.post('*/abstraction-licence-answer', function (req, res) {
@@ -303,7 +406,7 @@ router.post('*/abstraction-variation-answer', function (req, res) {
   var abstractionVariation = req.session.data['abstraction-variation']
 
   if (abstractionVariation == "yes"){res.redirect('../water/abstraction-variation-condition')}
-  else {res.redirect('../water/check-answers-can-i-apply')}
+  else {res.redirect('../water/check-answers-check-you-can-apply')}
 });
 
 router.post('*/business-answer', function (req, res) {
