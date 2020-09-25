@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Potential grant funding
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="project-cost">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Potential grant funding
+    </h1>
+
+    {% set grantAmount = data['project-cost'] * 0.4 %}
+
+    <p class="govuk-body">Based on the estimated total project cost of £{{ data['project-cost'] | toFixed(2) | commafy }} you may be able to apply for a grant of up to <strong>£{{ grantAmount | toFixed(2) | commafy }}</strong>.</p>
+    <div class="govuk-inset-text  govuk-!-margin-bottom-9">
+      The project is not guaranteed to receive a grant.
+    </div>
+
+    <form class="form" action="remaining-costs" method="post">
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

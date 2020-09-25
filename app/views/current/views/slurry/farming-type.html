@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Does the farm grow arable or horticultural crops?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../routes/farming-type-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Does the farm grow crops to supply the food industry?
+              </h1>
+            </legend>
+            <div id="farming-type-hint" class="govuk-hint">
+              By food industry we mean crops grown for human consumption, not animal feed or biofuel.
+            </div>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="farming-type" name="farming-type" type="radio" value="yes" {{ checked("farming-type", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="farming-type">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="farming-type-2" name="farming-type" type="radio" value="no" {{ checked("farming-type", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="farming-type-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

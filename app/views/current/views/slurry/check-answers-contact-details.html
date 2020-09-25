@@ -1,0 +1,230 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">Check your answers</h1>
+
+    <h2 class="govuk-heading-m">Business details</h2>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Business name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['business-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="business">
+            Change<span class="govuk-visually-hidden"> business name</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Employees
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['employees'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="business">
+            Change<span class="govuk-visually-hidden"> number of employees</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Turnover
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £{{ data['turnover'] | toFixed(2) | commafy }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="business">
+            Change<span class="govuk-visually-hidden"> turnover</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          New business
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-business'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="business">
+            Change<span class="govuk-visually-hidden"> planning permission required</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    {% if data['new-business'] == "no" %}
+    <div class="govuk-inset-text">
+        You will need to provide additional financial evidence when you make a full application.
+    </div>
+    {% endif %}
+
+    {% if (data['applying'] == "own") or (data['preferred-contact'] == "contact me and the applicant") %}
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Your details</h2>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Full name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['full-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="your-details">
+            Change<span class="govuk-visually-hidden"> full name</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Email
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['email'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="your-details">
+            Change<span class="govuk-visually-hidden"> email</span>
+          </a>
+        </dd>
+      </div>
+      {% for item in data['contact-preferences'] %}
+      {% if item == "phone" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Phone
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['telephone-number'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="your-details">
+            Change<span class="govuk-visually-hidden"> telephone number</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Contact preferences
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in data['contact-preferences'] %}
+            <li>{{ item  | capitalize }}</li>
+            {% endfor %}
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="your-details">
+            Change<span class="govuk-visually-hidden"> contact preferences</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+
+    {% if (data['applying'] == "other") %}
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Applicant details</h2>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Applicant name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['applicant-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="applicant-details">
+            Change<span class="govuk-visually-hidden"> applicant name</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Applicant email
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['applicant-email'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="applicant-details">
+            Change<span class="govuk-visually-hidden"> applicant email</span>
+          </a>
+        </dd>
+      </div>
+      {% for item in data['applicant-contact-preferences'] %}
+      {% if item == "phone" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Applicant phone
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['applicant-telephone-number'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="applicant-details">
+            Change<span class="govuk-visually-hidden"> applicant telephone number</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Applicant contact preferences
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in data['applicant-contact-preferences'] %}
+            <li>{{ item  | capitalize }}</li>
+            {% endfor %}
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="applicant-details">
+            Change<span class="govuk-visually-hidden"> applicant contact preferences</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+
+    <form action="task-list" method="post" novalidate>
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      <button class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

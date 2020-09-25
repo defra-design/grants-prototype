@@ -28,23 +28,36 @@
             <h2 class="govuk-heading-m govuk-!-margin-top-6">Low emission precision application equipment</h2>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items" name="project-items" type="checkbox" value="deep or shallow injection" {{ checked("project-items", "deep or shallow injection") }}>
+                <input class="govuk-checkboxes__input" id="project-items" name="project-items" type="checkbox" value="deep or shallow injection" data-aria-controls="conditional-precision-conditional" {{ checked("project-items", "deep or shallow injection") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="project-items">
                   Deep or shallow injection
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-2" name="project-items" type="checkbox" value="trailing shoe" {{ checked("project-items", "trailing shoe") }}>
+                <input class="govuk-checkboxes__input" id="project-items-2" name="project-items" type="checkbox" value="trailing shoe" data-aria-controls="conditional-precision-conditional" {{ checked("project-items", "trailing shoe") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="project-items-2">
                   Trailing shoe
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-3" name="project-items" type="checkbox" value="dribble bar" {{ checked("project-items", "dribble bar") }}>
+                <input class="govuk-checkboxes__input" id="project-items-3" name="project-items" type="checkbox" value="dribble bar" data-aria-controls="conditional-precision-conditional" {{ checked("project-items", "dribble bar") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="project-items-3">
                   Dribble bar
                 </label>
               </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-precision-conditional">
+                <div class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+                <p>All low emission precision application equipment must also include the following items:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                <li>Inline nutrient sensors</li>
+                <li>Flow meters</li>
+                <li>Adjustable flow control valves</li>
+                <li>GPS receiver</li>
+                <li>In cab display/control unit</li>
+                </ul>
+                </div>
+              </div>
+
               <h2 class="govuk-heading-m govuk-!-margin-top-6">Slurry / digestate</h2>
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="project-items-4" name="project-items" type="checkbox" value="umbilical system" {{ checked("project-items", "umbilical system") }}>
