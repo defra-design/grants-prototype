@@ -37,7 +37,8 @@ router.get('/v2/*', function(req, res, next){
 });
 
 // Start folder specific route
-router.use('/current', require('./views/current/routes/_routes'));
+router.use('/current', require('./views/current/routes/_routes-water'));
+router.use('/current', require('./views/current/routes/_routes-slurry'));
 router.use('/v1', require('./views/v1/routes/_routes'));
 router.use('/v2', require('./views/v2/routes/_routes'));
 
