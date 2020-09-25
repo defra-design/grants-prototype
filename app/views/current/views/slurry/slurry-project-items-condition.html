@@ -29,6 +29,18 @@ You may not be able to apply for a large grant from this scheme
     </ul>
     {% endif %}{% endfor %}
 
+    {% for item in data['project-items'] %}{% if item =! "deep or shallow injection" %}
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">Low emission precision application equipment</h2>
+    <p>All low emission precision application equipment must also include the following items:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Inline nutrient sensors</li>
+    <li>Flow meters</li>
+    <li>Adjustable flow control valves</li>
+    <li>GPS receiver</li>
+    <li>In cab display/control unit</li>
+    </ul>
+    {% endif %}{% endfor %}
+
     {% for item in data['project-items'] %}{% if item == "umbilical system" %}
     <h2 class="govuk-heading-m govuk-!-margin-top-6">Umbilical systems</h2>
     <p>All umbilical systems must also include the following items:</p>
