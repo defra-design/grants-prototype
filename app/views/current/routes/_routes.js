@@ -52,7 +52,7 @@ router.get('*/water/start', function (req, res) {
 
 
 
-router.get('*/water/task-list-prefilled', function (req, res) {
+router.get('*/task-list-prefilled', function (req, res) {
 
   req.session.data['water_s01_status'] = 'Completed'
   req.session.data['water__s01_status_class'] = ''
@@ -79,7 +79,7 @@ router.get('*/water/task-list-prefilled', function (req, res) {
 
 //*****************************************************
 // TASK LIST PAGE START //
-router.get('*/water/task-list', function (req, res) {
+router.get('*/task-list', function (req, res) {
 
   // console.log( 'This is the task list' );
 
@@ -458,7 +458,7 @@ router.post('*/water/remaining-costs-answer', function (req, res) {
 
 // PUBLIC MONEY
 
-router.get('*/water/public-money', function (req, res) {
+router.get('*/public-money', function (req, res) {
 
   var backUrl = res.locals.prevURL
   var nextUrl = '../water/public-money-answer'

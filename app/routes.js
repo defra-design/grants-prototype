@@ -31,6 +31,12 @@ router.get('/current/views/water/*', function(req, res, next){
   next()
 });
 
+// Set service name based on sub folders for different prototypes
+router.get('/current/views/slurry/*', function(req, res, next){
+  res.locals['serviceName'] = 'Apply for a large grant slurry management'
+  next()
+});
+
 router.get('/v2/*', function(req, res, next){
   res.locals['serviceName'] = 'Apply for a large countryside productivity grant for water'
   next()

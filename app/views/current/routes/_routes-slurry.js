@@ -52,10 +52,10 @@ router.get('*/slurry/start', function (req, res) {
 
 
 
-router.get('*/task-list-prefilled', function (req, res) {
+router.get('*/slurry/task-list-prefilled', function (req, res) {
 
   req.session.data['slurry_s01_status'] = 'Completed'
-  req.session.data['slurry__s01_status_class'] = ''
+  req.session.data['slurry_s01_status_class'] = ''
 
   req.session.data['slurry_s02_status'] = 'Not started'
   req.session.data['slurry_s02_status_class'] = 'govuk-tag--grey'
@@ -79,7 +79,7 @@ router.get('*/task-list-prefilled', function (req, res) {
 
 //*****************************************************
 // TASK LIST PAGE START //
-router.get('*/task-list', function (req, res) {
+router.get('*/slurry/task-list', function (req, res) {
 
   // console.log( 'This is the task list' );
 
@@ -189,7 +189,7 @@ router.get('*/slurry/farming-type', function (req, res) {
   // test to check this section isn't completed...
 
   if ( req.session.data['slurry_s01_status'] == 'Completed' ){
-    backUrl = "check-answers-check-you-can-apply"
+    backUrl = "../check-answers-check-you-can-apply"
   } else {
     req.session.data['slurry_s01_status'] = 'In progress'
     req.session.data['slurry_s01_status_class'] = 'govuk-tag--blue'
@@ -458,7 +458,7 @@ router.post('*/slurry/remaining-costs-answer', function (req, res) {
 
 // PUBLIC MONEY
 
-router.get('*/public-money', function (req, res) {
+router.get('*/slurry/public-money', function (req, res) {
 
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/public-money-answer'

@@ -16,8 +16,8 @@
         {{serviceName}}
       </h1>
 
-      <!-- <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{ water_application_status }}</h2> -->
-      <p class="govuk-body govuk-!-margin-bottom-7">{{ water_completed_sections }}</p>
+      <!-- <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{ slurry_application_status }}</h2> -->
+      <p class="govuk-body govuk-!-margin-bottom-7">{{ slurry_completed_sections }}</p>
 
       <ul class="app-task-list">
         <li>
@@ -27,7 +27,7 @@
           <ul class="app-task-list__items govuk-!-margin-bottom-5">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                {% if data['water_s01_status'] == 'Completed' %}
+                {% if data['slurry_s01_status'] == 'Completed' %}
                 <a href="check-answers-check-you-can-apply" aria-describedby="s01-status">
                   Check now
                 </a>
@@ -37,11 +37,11 @@
                 </a>
                 {% endif %}
               </span>
-              <strong class="govuk-tag {{ water_s01_status_class }} app-task-list__tag" id="s01-status">{{ water_s01_status }}</strong>
+              <strong class="govuk-tag {{ slurry_s01_status_class }} app-task-list__tag" id="s01-status">{{ slurry_s01_status }}</strong>
             </li>
           </ul>
 
-          {% if data['water_s01_status'] == 'Completed' %}
+          {% if data['slurry_s01_status'] == 'Completed' %}
 
           <p class="govuk-body govuk-!-margin-left-6">
             You can apply. Based on the answers you have given this project could get a grant.
@@ -65,8 +65,8 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                {% if data['water_s01_status'] == 'Completed' %}
-                  {% if data['water_s02_status'] == 'Completed' %}
+                {% if data['slurry_s01_status'] == 'Completed' %}
+                  {% if data['slurry_s02_status'] == 'Completed' %}
                 <a href="check-answers-project-details-and-benefits" aria-describedby="s02-status">
                   Provide project details and benefits
                 </a>
@@ -79,12 +79,12 @@
                   Provide project details and benefits
                 {% endif %}
               </span>
-              <strong class="govuk-tag {{ water_s02_status_class }} app-task-list__tag" id="s02-status">{{ water_s02_status }}</strong>
+              <strong class="govuk-tag {{ slurry_s02_status_class }} app-task-list__tag" id="s02-status">{{ slurry_s02_status }}</strong>
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                {% if data['water_s02_status'] == 'Completed' %}
-                  {% if data['water_s03_status'] == 'Completed' %}
+                {% if data['slurry_s02_status'] == 'Completed' %}
+                  {% if data['slurry_s03_status'] == 'Completed' %}
                   <a href="check-answers-contact-details" aria-describedby="s03-status">
                     Give contact details
                   </a>
@@ -97,7 +97,7 @@
                   Give contact details
                 {% endif %}
               </span>
-              <strong class="govuk-tag {{ water_s03_status_class }} app-task-list__tag" id="s03-status">{{ water_s03_status }}</strong>
+              <strong class="govuk-tag {{ slurry_s03_status_class }} app-task-list__tag" id="s03-status">{{ slurry_s03_status }}</strong>
             </li>
 
           </ul>
@@ -106,7 +106,7 @@
 
 
 
-        {% if data['completed_sections'] == '3' %}
+        {% if data['slurry_completed_sections'] == '3' %}
         <form action="check-answers-all" method="post" novalidate>
 
           <input type="hidden" name="answers-checked" value="true">
@@ -134,7 +134,7 @@
                   Complete the full application
                 {% endif %}
               </span>
-              <strong class="govuk-tag {{ water_s04_status_class }} app-task-list__tag" id="s04-status">{{ water_s04_status }}</strong>
+              <strong class="govuk-tag {{ slurry_s04_status_class }} app-task-list__tag" id="s04-status">{{ slurry_s04_status }}</strong>
             </li>
 
           </ul>
