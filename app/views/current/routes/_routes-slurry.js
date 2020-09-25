@@ -54,6 +54,18 @@ router.get('*/slurry/start', function (req, res) {
 
 router.get('*/slurry/task-list-prefilled', function (req, res) {
 
+  req.session.data['farming-type'] = 'yes'
+  req.session.data['legal-status'] = 'limited liability partnership'
+  req.session.data['country'] = 'yes'
+  req.session.data['tenancy'] = 'yes'
+  req.session.data['project-items'] = ['trailing shoe']
+  req.session.data['project-cost'] = 500000
+  req.session.data['remaining-costs'] = 'yes'
+  req.session.data['public-money'] = 'no'
+  req.session.data['project-start'] = 'no'
+  req.session.data['planning-required'] = 'yes'
+  req.session.data['planning-permission'] = 'yes'
+
   req.session.data['slurry_s01_status'] = 'Completed'
   req.session.data['slurry_s01_status_class'] = ''
 
