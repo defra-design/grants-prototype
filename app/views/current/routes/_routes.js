@@ -26,8 +26,8 @@ router.get('*/water/start', function (req, res) {
   // Part 1: Check if you can apply
 
   // Section 1: Check now
-  req.session.data['water_water_s01_status'] = 'Not started'
-  req.session.data['water_water_s01_status_class'] = 'govuk-tag--grey'
+  req.session.data['water_s01_status'] = 'Not started'
+  req.session.data['water_s01_status_class'] = 'govuk-tag--grey'
 
   // Part 2: Express interest
 
@@ -54,8 +54,8 @@ router.get('*/water/start', function (req, res) {
 
 router.get('*/task-list-prefilled', function (req, res) {
 
-  req.session.data['water_water_s01_status'] = 'Completed'
-  req.session.data['water_water_s01_status_class'] = ''
+  req.session.data['water_s01_status'] = 'Completed'
+  req.session.data['water__s01_status_class'] = ''
 
   req.session.data['water_s02_status'] = 'Not started'
   req.session.data['water_s02_status_class'] = 'govuk-tag--grey'
