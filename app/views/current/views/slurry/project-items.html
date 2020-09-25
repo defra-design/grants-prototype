@@ -1,144 +1,123 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Which items eligible for grant funding are included in the project?
+Which items eligible for grant funding are included in the project?
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="{{ nextUrl }}" method="post">
+    <form class="form" action="project-cost" method="post">
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="project-items-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Which items available through grant funding does the project need?
-              </h1>
-            </legend>
-            <!--<span id="project-items-hint" class="govuk-hint">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="project-items-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Which items available through grant funding does the project need?
+            </h1>
+          </legend>
+          <!--<span id="project-items-hint" class="govuk-hint">
               Select all that apply
             </span>-->
-            <h2 class="govuk-heading-m govuk-!-margin-top-6">Water metering</h2>
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items" name="project-items" type="checkbox" value="water meter" aria-describedby="project-item-hint" {{ checked("project-items", "water meter") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items">
-                  Water meter
-                </label>
-                <div id="project-item-hint" class="govuk-hint govuk-checkboxes__hint">
-                  You must have a water meter or be able to use an existing meter for this project to get a grant.
-                </div>
+            <h2 class="govuk-heading-m govuk-!-margin-top-6">Slurry and digestate management equipment</h2>
+
+            <div id="project-items-hint" class="govuk-hint">
+                All slurry and digestate management equipment must include inline nutrient sensors, flow meters, adjustable flow control valves, a GPS receiver and an in-cab display / control unit.
               </div>
-              <h2 class="govuk-heading-m govuk-!-margin-top-6">Reservoir construction and infrastructure</h2>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-2" name="project-items" type="checkbox" value="dam walls" {{ checked("project-items", "dam walls") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-2">
-                  Construction of dam walls
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-3" name="project-items" type="checkbox" value="overflow / spillway" {{ checked("project-items", "overflow / spillway") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-3">
-                  Overflow / spillway
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-4" name="project-items" type="checkbox" value="synthetic liner" {{ checked("project-items", "synthetic liner") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-4">
-                  Synthetic liner
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-5" name="project-items" type="checkbox" value="abstraction point including pump" {{ checked("project-items", "abstraction point including pump") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-5">
-                  Abstraction point including pump
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-6" name="project-items" type="checkbox" value="engineer fees" {{ checked("project-items", "engineer fees") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-6">
-                  Engineer fees (construction engineers only)
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-7" name="project-items" type="checkbox" value="fencing" {{ checked("project-items", "fencing") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-7">
-                  Fencing for synthetically lined reservoir
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-8" name="project-items" type="checkbox" value="filtration equipment" {{ checked("project-items", "filtration equipment") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-8">
-                  Filtration equipment
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-9" name="project-items" type="checkbox" value="irrigation pump and controls" {{ checked("project-items", "irrigation pump and controls") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-9">
-                  Irrigation pump(s) and controls
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-10" name="project-items" type="checkbox" value="pipework" {{ checked("project-items", "pipework") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-10">
-                  Pipework to fill the reservoir
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-11" name="project-items" type="checkbox" value="pumphouse" value="irrigation pump and controls" {{ checked("project-items", "pumphouse") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-11">
-                  Pumphouse
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-12" name="project-items" type="checkbox" value="underground water distribution main and hydrants"
-                  {{ checked("project-items", "underground water distribution main and hydrants") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-12">
-                  Underground water distribution main and hydrants
-                </label>
-              </div>
-              <h2 class="govuk-heading-m govuk-!-margin-top-6">Irrigation equipment</h2>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-13" name="project-items" type="checkbox" value="boom irrigators" {{ checked("project-items", "boom irrigators") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-13">
-                  Boom
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-14" name="project-items" type="checkbox" value="trickle irrigation equipment" {{ checked("project-items", "trickle irrigation equipment") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-14">
-                  Trickle
-                </label>
-              </div>
-              <h2 class="govuk-heading-m govuk-!-margin-top-6">Technology</h2>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-15" name="project-items" type="checkbox" value="computer software" {{ checked("project-items", "computer software") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-15">
-                  Software to monitor soil moisture levels and schedule irrigation
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-16" name="project-items" type="checkbox" value="software and sensors" {{ checked("project-items", "software and sensors") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-16">
-                  Software and sensors to optimise water application
-                </label>
+
+              <h3 class="govuk-heading-s govuk-!-margin-top-5">Low emission precision application equipment</h3>
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items" name="project-items" type="checkbox" value="deep or shallow injection" data-aria-controls="conditional-precision-conditional"
+                {{ checked("project-items", "deep or shallow injection") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items">
+                Deep or shallow injection
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-2" name="project-items" type="checkbox" value="trailing shoe" data-aria-controls="conditional-precision-conditional" {{ checked("project-items", "trailing shoe") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-2">
+                Trailing shoe
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-3" name="project-items" type="checkbox" value="dribble bar" data-aria-controls="conditional-precision-conditional" {{ checked("project-items", "dribble bar") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-3">
+                Dribble bar
+              </label>
+            </div>
+
+            <h3 class="govuk-heading-s govuk-!-margin-top-5">Umbilical systems and tankers</h3>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-4" name="project-items" type="checkbox" value="umbilical system" data-aria-controls="conditional-umbilical-conditional conditional-digestate-conditional"
+                {{ checked("project-items", "umbilical system") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-4">
+                Slurry / digestate umbilical system
+              </label>
+              <div id="project-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                Must include a pump, macerator and reeler
               </div>
             </div>
-          </fieldset>
-        </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-5" name="project-items" type="checkbox" value="tanker" data-aria-controls="conditional-digestate-conditional" {{ checked("project-items", "tanker") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-5">
+                Slurry / digestate tanker
+              </label>
+            </div>
 
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
+            <h2 class="govuk-heading-m govuk-!-margin-top-8">Slurry / digestate storage bags</h2>
 
-      </form>
+            <div id="project-items-hint" class="govuk-hint">
+                Storage bags provide additional storage capacity over and above the statutory slurry storage requirement.
+              </div>
 
-    </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-6" name="project-items" type="checkbox" value="bags" {{ checked("project-items", "bags") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-6">
+                Storage bags
+              </label>
+              <div id="project-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                May include site preparation and associated pumps and stirrers.
+              </div>
+            </div>
+
+            <h2 class="govuk-heading-m govuk-!-margin-top-8">Advanced processing equipment</h2>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-7" name="project-items" type="checkbox" value="slurry separation systems" {{ checked("project-items", "slurry separation systems") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-7">
+                Slurry separation systems
+              </label>
+            </div>
+
+            <h2 class="govuk-heading-m govuk-!-margin-top-8">Acidification</h2>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-8" name="project-items" type="checkbox" value="mild acidification equipment" {{ checked("project-items", "mild acidification equipment") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-8">
+                Mild acidification equipment
+              </label>
+              <div id="project-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                Must include a mixing tank, acid storage and dosing equipment.
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
   </div>
+</div>
 
 {% endblock %}

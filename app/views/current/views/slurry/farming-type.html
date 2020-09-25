@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Does the farm grow arable or horticultural crops?
+  Is the project for a livestock, dairy, arable or horticultural farm business?
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,12 +19,9 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Does the farm grow crops to supply the food industry?
+                Is the project for a livestock, dairy, arable or horticultural farm business?
               </h1>
             </legend>
-            <div id="farming-type-hint" class="govuk-hint">
-              By food industry we mean crops grown for human consumption, not animal feed or biofuel.
-            </div>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="farming-type" name="farming-type" type="radio" value="yes" {{ checked("farming-type", "yes") }}>
