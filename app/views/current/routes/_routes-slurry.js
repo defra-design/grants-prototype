@@ -280,7 +280,7 @@ router.post('*/slurry/country-answer', function (req, res) {
     if ( req.session.data['slurry_s01_status'] == 'Completed'){
       res.redirect('../slurry/check-answers-check-you-can-apply')
     }else{
-      res.redirect('../slurry/tenancy')}
+      res.redirect('../slurry/project-items')}
     }
   else {res.redirect('../slurry/country-fail')}
 });
@@ -314,7 +314,7 @@ router.post('*/slurry/tenancy-answer', function (req, res) {
     if ( req.session.data['slurry_s01_status'] == 'Completed'){
       res.redirect('../slurry/check-answers-check-you-can-apply')
     }else{
-      res.redirect('../slurry/project-items')
+      res.redirect('../slurry/project-start')
     }
 
   }
@@ -331,7 +331,7 @@ router.post('*/slurry/tenancy-length-answer', function (req, res) {
     if ( req.session.data['slurry_s01_status'] == 'Completed'){
       res.redirect('../slurry/check-answers-check-you-can-apply')
     }else{
-      res.redirect('../slurry/project-items')
+      res.redirect('../slurry/project-start')
     }
   }
 });
@@ -340,6 +340,7 @@ router.post('*/slurry/tenancy-length-answer', function (req, res) {
 
 router.get('*/slurry/project-items', function (req, res) {
 
+  var projectItems = req.session.data['project-items']
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/project-cost'
 
@@ -477,15 +478,22 @@ res.render( './' + req.originalUrl,{
 router.post('*/slurry/public-money-answer', function (req, res) {
 
   var publicMoney = req.session.data['public-money']
+  var projectItems = req.session.data['project-items']
 
   if (publicMoney == "yes" ){res.redirect('../slurry/public-money-fail')}
   else {
     if ( req.session.data['slurry_s01_status'] == 'Completed'){
       res.redirect('../slurry/check-answers-check-you-can-apply')
     }else{
-      res.redirect('../slurry/project-start')
+      if( projectItems == undefined){res.redirect('../slurry/project-start')}
+      if( projectItems.includes('storage bags') == true){res.redirect('../slurry/tenancy')}
+      if( projectItems.includes('slurry separation systems') == true){res.redirect('../slurry/tenancy')}
+      if( projectItems.includes('mild acidification equipment') == true){res.redirect('../slurry/tenancy')}
+      else{
+        res.redirect('../slurry/project-start')
     }
   }
+}
 
 })
 
@@ -562,7 +570,7 @@ router.post('*/slurry/planning-required-answer', function (req, res) {
 
 router.get('*/slurry/planning-required-condition', function (req, res) {
 
-  var nextUrl = '../slurry/abstraction-required'
+  var nextUrl = '../slurry/check-answers-check-you-can-apply'
 
   if ( req.session.data['slurry_s01_status'] == 'Completed' ){
     nextUrl = "../slurry/check-answers-check-you-can-apply"
