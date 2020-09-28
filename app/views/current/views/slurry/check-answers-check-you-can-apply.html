@@ -20,7 +20,7 @@
     <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          Farm grows crops for food
+          Livestock, dairy, arable or horticultural farm business
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['farming-type'] | capitalize }}
@@ -57,34 +57,6 @@
           </a>
         </dd>
       </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          Project on own land
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['tenancy'] | capitalize }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="tenancy">
-            Change<span class="govuk-visually-hidden"> on own land</span>
-          </a>
-        </dd>
-      </div>
-      {% if data['tenancy'] == "no" %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          Tenancy extends beyond six years
-        </dt>
-        <dd class="govuk-summary-list__value">
-          <p class="govuk-body">{{ data['tenancy-length'] | capitalize }}</p>
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="tenancy-length">
-            Change<span class="govuk-visually-hidden"> tenancy length</span>
-          </a>
-        </dd>
-      </div>
-      {% endif %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project items
@@ -141,6 +113,36 @@
           </a>
         </dd>
       </div>
+      {% if data['tenancy'] != undefined %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Project on own land
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['tenancy'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="tenancy">
+            Change<span class="govuk-visually-hidden"> on own land</span>
+          </a>
+        </dd>
+      </div>
+      {% if data['tenancy'] == "no" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Tenancy extends beyond six years
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['tenancy-length'] | capitalize }}</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="tenancy-length">
+            Change<span class="govuk-visually-hidden"> tenancy length</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+      {% endif %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Project started
