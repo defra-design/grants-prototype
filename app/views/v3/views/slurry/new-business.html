@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Has the business been trading for less than two years?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="business">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../slurry/business-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="new-business-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Has the business been trading for more than two years?
+              </h1>
+            </legend>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="new-business" name="new-business" type="radio" value="yes" {{ checked("new-business", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="new-business">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="new-business-2" name="new-business" type="radio" value="no" {{ checked("new-business", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="new-business-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Save and continue
+        </button>
+
+        <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button">
+          Save and return
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

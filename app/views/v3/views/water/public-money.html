@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Meeting the remaining project costs
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="{{ nextUrl }}" method="post">
+
+      {% set remainingCosts = data['project-cost'] * 0.6 %}
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Will you use any public money to fund the remaining project costs of £{{ remainingCosts | toFixed(2) | commafy }}?
+            </h1>
+          </legend>
+          <div id="public-money-hint" class="govuk-hint">
+            Public money is any other capital grant funding from government or local authorities. It is not funds from the Basic Payment Scheme or other stewardship schemes.
+          </div>
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="public-money" name="public-money" type="radio" value="yes" {{ checked("public-money", "yes") }}>
+              <label class="govuk-label govuk-radios__label" for="public-money">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="public-money-2" name="public-money" type="radio" value="no" {{ checked("public-money", "no") }}>
+              <label class="govuk-label govuk-radios__label" for="public-money-2">
+                No
+              </label>
+            </div>
+          </div>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

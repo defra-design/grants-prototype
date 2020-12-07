@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Have you already started work on the project?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="public-money">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="../slurry/project-start-answer" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Have you already started work on the project?
+            </h1>
+          </legend>
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="project-start" name="project-start" type="radio" value="yes" {{ checked("project-start", "yes") }}>
+              <label class="govuk-label govuk-radios__label" for="project-start">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="project-start-2" name="project-start" type="radio" value="no" {{ checked("project-start", "no") }}>
+              <label class="govuk-label govuk-radios__label" for="project-start-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Help with when a project starts
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>You have started if you have committed to major expenditure, like buying equipment or paying a deposit.</p>
+
+          <p>You can:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>start gathering quotes from suppliers and apply for planning permission</li>
+            <li>start construction to retain planning, like putting in foundations and hardcore</li>
+            <li>complete works that are not included in the estimated project costs</li>
+          </ul>
+
+          <p>You cannot ask for grant funding for work already done.</p>
+
+        </div>
+      </details>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

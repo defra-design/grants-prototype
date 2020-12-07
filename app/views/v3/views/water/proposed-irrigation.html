@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Outcomes if irrigation project goes ahead
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="current-irrigation">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../water/collaboration" method="post">
+
+        <h1 class="govuk-heading-l">
+          Outcomes if irrigation project goes ahead
+        </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="improved-land-irrigated">
+              How much land will be irrigated in total?
+            </label>
+          <textarea class="govuk-textarea" id="improved-land-irrigated" name="improved-land-irrigated" rows="2" aria-describedby="improved-land-irrigated-hint">{{ data['improved-land-irrigated'] }}</textarea>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="improved-crops-irrigated">
+              What crops will be irrigated?
+            </label>
+          <textarea class="govuk-textarea" id="improved-crops-irrigated" name="improved-crops-irrigated" rows="2" aria-describedby="improved-crops-irrigated-hint">{{ data['improved-crops-irrigated'] }}</textarea>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="improved-water-source">
+              Where will the water used for irrigation come from?
+            </label>
+          <textarea class="govuk-textarea" id="improved-water-source" name="improved-water-source" rows="4" aria-describedby="improved-water-source-hint">{{ data['improved-water-source'] }}</textarea>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="improved-irrigation-systems">
+              What systems will be used to irrigate?
+            </label>
+          <textarea class="govuk-textarea" id="improved-irrigation-systems" name="improved-irrigation-systems" rows="4" aria-describedby="improved-irrigation-systems-hint">{{ data['improved-irrigation-systems'] }}</textarea>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Save and continue
+        </button>
+
+        <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button">
+          Save and return
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
