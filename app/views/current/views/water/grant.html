@@ -19,7 +19,7 @@ Potential grant funding
 
     {% set grantAmount = data['project-cost'] * 0.4 %}
 
-    <p class="govuk-body">Based on the estimated total project cost of £{{ data['project-cost'] | toFixed(2) | commafy }} you may be able to apply for a grant of up to <strong>£{{ grantAmount | toFixed(2) | commafy }}</strong>.</p>
+    <p class="govuk-body">You may be able to apply for a grant of up to <strong>£{{ grantAmount | toFixed(2) | commafy }}</strong>, based on the estimated total project cost of £{{ data['project-cost'] | toFixed(2) | commafy }}.</p>
     <div class="govuk-inset-text  govuk-!-margin-bottom-9">
       The project is not guaranteed to receive a grant.
     </div>
