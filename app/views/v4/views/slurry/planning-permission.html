@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Has the project been granted planning permission?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="planning-required">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../slurry/planning-permission-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Does the project have planning permission?
+              </h1>
+            </legend>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission" name="planning-permission" type="radio" value="yes" {{ checked("planning-permission", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-2" name="planning-permission" type="radio" value="no" {{ checked("planning-permission", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

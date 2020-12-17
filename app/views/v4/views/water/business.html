@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Business details
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../water/new-business" method="post">
+
+        <h1 class="govuk-heading-l">
+          Business details
+        </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="business-name">
+              Business name
+            </label>
+          <input class="govuk-input" id="business-name" name="business-name" type="text" value="{{ data['business-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="employees">
+              Number of employees
+            </label>
+          <input class="govuk-input govuk-input--width-10" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="turnover">
+              Business turnover (£)
+            </label>
+          <input class="govuk-input govuk-input--width-10" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Save and continue
+        </button>
+
+        <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button">
+          Save and come back later
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
