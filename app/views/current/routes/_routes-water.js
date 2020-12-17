@@ -447,7 +447,7 @@ router.post('*/water/remaining-costs-answer', function (req, res) {
     if ( req.session.data['water_s01_status'] == 'Completed'){
       res.redirect('../water/check-answers-check-you-can-apply')
     }else{
-      res.redirect('../water/public-money')
+      res.redirect('../water/project-start')
     }
 
   }
@@ -456,7 +456,9 @@ router.post('*/water/remaining-costs-answer', function (req, res) {
 
 
 
-// PUBLIC MONEY
+// PUBLIC MONEY 
+// -- UNREACHABLE VIA LINK
+// -- REACHABLE ONLY VIA URL
 
 router.get('*/water/public-money', function (req, res) {
 
