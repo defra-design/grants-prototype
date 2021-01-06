@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would the project improve productivity?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="productivity">
+              How will the project improve productivity?
+            </label>
+          </h1>
+          <textarea class="govuk-textarea" id="productivity" name="productivity" rows="8" aria-describedby="productivity-hint">{{ data['productivity'] }}</textarea>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Save and continue
+        </button>
+
+        <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button">
+          Save and come back later
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
