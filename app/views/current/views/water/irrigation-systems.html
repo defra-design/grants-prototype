@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Irrigation systems
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What systems will be used to irrigate?
+              </h1>
+            </legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="irrigation-systems" name="irrigation-systems" type="radio" value="trickle" {{ checked("irrigation-systems", "trickle") }}>
+                <label class="govuk-label govuk-radios__label" for="irrigation-systems">
+                  Trickle
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="irrigation-systems-2" name="irrigation-systems" type="radio" value="boom-irrigator" {{ checked("irrigation-systems", "boom-irrigator") }}>
+                <label class="govuk-label govuk-radios__label" for="irrigation-systems-2">
+                  Boom irrigator
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="irrigation-systems-3" name="irrigation-systems" type="radio" value="ebb-flood" {{ checked("irrigation-systems", "ebb-flood") }}>
+                <label class="govuk-label govuk-radios__label" for="irrigation-systems-3">
+                  Ebb and flood
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="irrigation-systems-4" name="irrigation-systems" type="radio" value="sprinklers" {{ checked("irrigation-systems", "sprinklers") }}>
+                <label class="govuk-label govuk-radios__label" for="irrigation-systems-4">
+                  Sprinklers
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="irrigation-systems-5" name="irrigation-systems" type="radio" value="rain-gun" {{ checked("irrigation-systems", "rain-gun") }}>
+                <label class="govuk-label govuk-radios__label" for="irrigation-systems-5">
+                  Rain gun
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Save and continue
+        </button>
+
+        <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button">
+          Save and come back later
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

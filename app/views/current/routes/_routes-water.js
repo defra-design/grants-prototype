@@ -732,7 +732,7 @@ router.get('*/water/check-answers-project-details-and-benefits', function (req, 
 
 
 
-
+// DELETED ------------
 router.get('*/water/project', function (req, res) {
 
   var backUrl = res.locals.prevURL
@@ -748,7 +748,6 @@ router.get('*/water/project', function (req, res) {
   })
 
 });
-
 
 router.get('*/water/irrigation', function (req, res) {
 
@@ -782,7 +781,106 @@ router.post('*/water/irrigation-answer', function (req, res) {
   else {res.redirect('../water/new-irrigation')}
 });
 
+// ------------------------
 
+
+router.get('*/water/project-details', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = '../water/irrigated-land'
+
+  if ( req.session.data['water_s02_status'] == 'Completed' ){
+    nextUrl = "../water/check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+
+});
+
+router.get('*/water/irrigated-land', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = '../water/irrigated-crops'
+
+  if ( req.session.data['water_s02_status'] == 'Completed' ){
+    nextUrl = "../water/check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+
+});
+
+router.get('*/water/irrigated-crops', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = '../water/irrigation-water-source'
+
+  if ( req.session.data['water_s02_status'] == 'Completed' ){
+    nextUrl = "../water/check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+
+});
+
+router.get('*/water/irrigation-water-source', function (req, res) {
+
+  req.session.data['tempIrrigationAnswer'] = req.session.data['irrigationAnswer']
+  var backUrl = res.locals.prevURL
+  var nextUrl = '../water/irrigation-water-source-answer'
+
+  if ( req.session.data['water_s02_status'] == 'Completed' ){
+    // nextUrl = "../water/check-answers-project-details-and-benefits"
+    backUrl = "../water/check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    // nextUrl: nextUrl
+  })
+
+});
+
+router.post('*/water/irrigation-water-source-answer', function (req, res) {
+
+  var irrigationAnswer = req.session.data['irrigation'];
+
+  if ( req.session.data['water_s02_status'] == 'Completed' ){
+
+    if( irrigationAnswer == req.session.data['tempIrrigationAnswer']){
+      res.redirect('../water/check-answers-project-details-and-benefits')
+    }
+  }
+
+  if (irrigationAnswer == "mains"){res.redirect('../water/irrigation-water-source-fail')}
+  else {res.redirect('../water/irrigation-systems')}
+
+});
+
+router.get('*/water/irrigation-systems', function (req, res) {
+
+  var backUrl = res.locals.prevURL
+  var nextUrl = '../water/collaboration'
+
+  if ( req.session.data['water_s02_status'] == 'Completed' ){
+    nextUrl = "../water/check-answers-project-details-and-benefits"
+  }
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+
+});
 
 router.get('*/water/collaboration', function (req, res) {
 
