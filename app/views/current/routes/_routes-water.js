@@ -1000,16 +1000,6 @@ router.post('*/water/business-answer', function (req, res) {
   if (businessAnswer == "no"){res.redirect('../water/new-business-condition')}
   else {res.redirect('../water/applying')}
 });
-// -----------------
-
-router.post('*/water/applying-answer', function (req, res) {
-
-  var applyingAnswer = req.session.data['applying']
-
-  if (applyingAnswer == "agent"){res.redirect('../water/agent-details')}
-  else if (applyingAnswer == "farm-manager") {res.redirect('../water/farm-manager-details')}
-  else {res.redirect('../water/farmer-details')}
-});
 
 router.get('*/water/your-details', function (req, res) {
 
@@ -1026,14 +1016,6 @@ router.get('*/water/your-details', function (req, res) {
   })
 
 })
-
-router.post('*/water/your-details-answer', function (req, res) {
-
-  var applyingAnswer = req.session.data['applying']
-
-  if (applyingAnswer == "other"){res.redirect('../water/applicant-details')}
-  else {res.redirect('../water/check-answers-contact-details')}
-});
 
 router.post('*/water/preferred-contact-answer', function (req, res) {
 
@@ -1059,6 +1041,27 @@ router.get('*/water/applicant-details', function (req, res) {
   })
 
 })
+
+// -----------------
+
+router.post('*/water/applying-answer', function (req, res) {
+
+  var applyingAnswer = req.session.data['applying']
+
+  if (applyingAnswer == "agent"){res.redirect('../water/agent-details')}
+  else if (applyingAnswer == "farm-manager") {res.redirect('../water/farm-manager-details')}
+  else {res.redirect('../water/farmer-details')}
+});
+
+router.post('*/water/your-details-answer', function (req, res) {
+
+  var applyingAnswer = req.session.data['applying']
+
+  if (applyingAnswer == "other"){res.redirect('../water/applicant-details')}
+  else {res.redirect('../water/check-answers-all')}
+});
+
+
 
 
 module.exports = router

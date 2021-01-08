@@ -17,9 +17,12 @@
 
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land">
-            How much land (in hectares) will be irrigated in total? 
+            How much land will be irrigated in total? 
             </label>
           </h1>
+          <div id="irrigated-land-hint" class="govuk-hint">
+            Irrigated land in hectares
+          </div>
           <input class="govuk-input govuk-input--width-10" id="irrigated-land" name="irrigated-land" type="text" spellcheck="false" aria-describedby="irrigated-land-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land'] }}">
         </div>
 
