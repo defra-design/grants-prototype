@@ -979,7 +979,7 @@ router.get('*/water/business', function (req, res) {
   }
 
   var backUrl = res.locals.prevURL
-  var nextUrl = '../water/business-answer'
+  var nextUrl = '../water/applying'
 
   if ( req.session.data['water_s03_status'] == 'Completed' ){
     backUrl = "../water/check-answers-contact-details"
@@ -992,6 +992,7 @@ router.get('*/water/business', function (req, res) {
 
 });
 
+// DELETED ---------
 router.post('*/water/business-answer', function (req, res) {
 
   var businessAnswer = req.session.data['new-business']
@@ -999,13 +1000,15 @@ router.post('*/water/business-answer', function (req, res) {
   if (businessAnswer == "no"){res.redirect('../water/new-business-condition')}
   else {res.redirect('../water/applying')}
 });
+// -----------------
 
 router.post('*/water/applying-answer', function (req, res) {
 
   var applyingAnswer = req.session.data['applying']
 
-  if (applyingAnswer == "other"){res.redirect('../water/preferred-contact')}
-  else {res.redirect('../water/your-details')}
+  if (applyingAnswer == "agent"){res.redirect('../water/agent-details')}
+  else if (applyingAnswer == "farm-manager") {res.redirect('../water/farm-manager-details')}
+  else {res.redirect('../water/farmer-details')}
 });
 
 router.get('*/water/your-details', function (req, res) {
