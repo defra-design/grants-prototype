@@ -1065,6 +1065,17 @@ router.post('*/water/your-details-answer', function (req, res) {
 });
 
 
+router.get('*/water/survey', function (req, res) {
 
+  req.session.data['water_completed_sections'] = '3'
+  
+  req.session.data['water_s03_status'] = 'Completed'
+  req.session.data['water_s03_status_class'] = ''
+  
+    res.render( './' + req.originalUrl, {
+      backUrl: res.locals.prevURL
+    })
+  
+  });
 
 module.exports = router
