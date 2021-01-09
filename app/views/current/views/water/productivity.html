@@ -16,11 +16,48 @@
       <form class="form" action="{{ nextUrl }}" method="post">
 
         <div class="govuk-form-group">
-          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="productivity">
-              How will the project improve productivity?
-            </label>
-          </h1>
-          <textarea class="govuk-textarea" id="productivity" name="productivity" rows="8" aria-describedby="productivity-hint">{{ data['productivity'] }}</textarea>
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                How will the project improve productivity?
+              </h1>
+            </legend>
+			<div id="email-hint" class="govuk-hint">
+				Productivity is about how much is produced relative to inputs (eg increased yield for the same inputs or the same yield with lower inputs).
+			</div>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="productivity" name="productivity" type="radio" value="Increase yield" {{ checked("productivity", "increase-yield") }}>
+                <label class="govuk-label govuk-radios__label" for="productivity">
+                  Increase yield
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="productivity-2" name="productivity" type="radio" value="Improve quality" {{ checked("productivity", "improve-quality") }}>
+                <label class="govuk-label govuk-radios__label" for="productivity-2">
+                  Improve quality
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="productivity-3" name="productivity" type="radio" value="Introduce high value crops" {{ checked("productivity", "high-value-crops") }}>
+                <label class="govuk-label govuk-radios__label" for="productivity-3">
+                  Introduce high-value crops
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="productivity-4" name="productivity" type="radio" value="Introduce protected crops" {{ checked("productivity", "protected-crops") }}>
+                <label class="govuk-label govuk-radios__label" for="productivity-4">
+                  Introduce protected crops
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="productivity-5" name="productivity" type="radio" value="No improvement" {{ checked("productivity", "no-improvement") }}>
+                <label class="govuk-label govuk-radios__label" for="productivity-5">
+                  It does not improve productivity
+                </label>
+              </div>
+            </div>
+          </fieldset>
         </div>
 
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
