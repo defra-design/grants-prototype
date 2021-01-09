@@ -19,26 +19,20 @@
           <fieldset class="govuk-fieldset" aria-describedby="collaboration-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                How many other farms will be supplied with water?
+                Will water be supplied to other farms?
               </h1>
             </legend>
             <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="collaboration" name="collaboration" type="radio" value="none" {{ checked("collaboration", "none") }}>
+                <input class="govuk-radios__input" id="collaboration" name="collaboration" type="radio" value="yes" {{ checked("collaboration", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="collaboration">
-                  None
+                  Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="collaboration-2" name="collaboration" type="radio" value="1 - 3" {{ checked("collaboration", "1 - 3") }}>
+                <input class="govuk-radios__input" id="collaboration-2" name="collaboration" type="radio" value="no" {{ checked("collaboration", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="collaboration-2">
-                  1 - 3
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="collaboration-3" name="collaboration" type="radio" value="4 or more" {{ checked("collaboration", "4 or more") }}>
-                <label class="govuk-label govuk-radios__label" for="collaboration-3">
-                  4 or more
+                  No
                 </label>
               </div>
             </div>
