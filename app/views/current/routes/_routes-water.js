@@ -667,9 +667,10 @@ router.post('*/water/abstraction-licence-answer', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
 
   if (abstractionLicence == "yes"){res.redirect('../water/abstraction-variation')}
-  else {res.redirect('../water/abstraction-progress')}
+  else {res.redirect('../water/abstraction-progress-condition')}
 });
 
+// DELETED ---------
 router.post('*/water/abstraction-progress-answer', function (req, res) {
 
   var abstractionProgress = req.session.data['abstraction-progress']
@@ -678,6 +679,8 @@ router.post('*/water/abstraction-progress-answer', function (req, res) {
   if (abstractionProgress == "not sure"){res.redirect('../water/abstraction-progress-condition')}
   else {res.redirect('../water/abstraction-licence-fail')}
 });
+
+// --------------------
 
 router.post('*/water/abstraction-variation-answer', function (req, res) {
 
