@@ -596,13 +596,14 @@ router.get('*/water/planning-permission', function (req, res) {
 router.post('*/water/planning-permission-answer', function (req, res) {
 
   var planningPermission = req.session.data['planning-permission']
-
+  
   if (planningPermission == "yes"){res.redirect('../water/abstraction-required')}
-  else {res.redirect('../water/planning-progress')}
+  else {res.redirect('../water/planning-progress-condition')}
 });
 
 
 
+// DELETED --------------
 
 router.get('*/water/planning-progress', function (req, res) {
 
@@ -630,6 +631,7 @@ router.post('*/water/planning-progress-answer', function (req, res) {
   else {res.redirect('../water/planning-permission-fail')}
 });
 
+// --------------------
 
 
 // ABSTRACTION LICENCE
