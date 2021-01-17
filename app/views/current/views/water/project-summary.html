@@ -14,27 +14,27 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form class="form" action="{{ nextUrl }}" method="post">
-        <h1 class="govuk-heading-l">Project details</h1>
+        <h1 class="govuk-heading-l">Project summary</h1>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <p>The project will:</p>
             <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="project-details" name="project-details" type="radio" value="introduce" {{ checked("project-details", "introduce") }}>
-                <label class="govuk-label govuk-radios__label" for="project-details">
+                <input class="govuk-radios__input" id="project-summary" name="project-summary" type="radio" value="introduce" {{ checked("project-summary", "introduce") }}>
+                <label class="govuk-label govuk-radios__label" for="project-summary">
                   Introduce irrigation
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="project-details-2" name="project-details" type="radio" value="increase" {{ checked("project-details", "increase") }}>
-                <label class="govuk-label govuk-radios__label" for="project-details-2">
+                <input class="govuk-radios__input" id="project-summary-2" name="project-summary" type="radio" value="increase" {{ checked("project-summary", "increase") }}>
+                <label class="govuk-label govuk-radios__label" for="project-summary-2">
                   Increase irrigation
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="project-details-3" name="project-details" type="radio" value="improve" {{ checked("project-details", "improve") }}>
-                <label class="govuk-label govuk-radios__label" for="project-details-2">
+                <input class="govuk-radios__input" id="project-summary-3" name="project-summary" type="radio" value="improve" {{ checked("project-summary", "improve") }}>
+                <label class="govuk-label govuk-radios__label" for="project-summary-2">
                   Improve irrigation efficiency
                 </label>
               </div>

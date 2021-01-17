@@ -68,15 +68,15 @@
                 {% if data['water_s01_status'] == 'Completed' %}
                   {% if data['water_s02_status'] == 'Completed' %}
                 <a href="check-answers-project-details-and-benefits" aria-describedby="s02-status">
-                  Provide project details and benefits
+                  Provide project summary and benefits
                 </a>
                   {% else %}
-                <a href="project-details" aria-describedby="s02-status">
-                  Provide project details and benefits
+                <a href="project-summary" aria-describedby="s02-status">
+                  Provide project summary and benefits
                 </a>
                   {% endif %}
                 {% else %}
-                  Provide project details and benefits
+                  Provide project summary and benefits
                 {% endif %}
               </span>
               <strong class="govuk-tag {{ water_s02_status_class }} app-task-list__tag" id="s02-status">{{ water_s02_status }}</strong>

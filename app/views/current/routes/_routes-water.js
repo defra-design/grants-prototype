@@ -659,7 +659,7 @@ router.post('*/water/abstraction-required-answer', function (req, res) {
 
   if (abstractionRequired == "yes"){res.redirect('../water/abstraction-licence')}
   if (abstractionRequired == "not sure"){res.redirect('../water/abstraction-required-condition')}
-  else {res.redirect('../water/project-details')}
+  else {res.redirect('../water/project-summary')}
 });
 
 router.post('*/water/abstraction-licence-answer', function (req, res) {
@@ -687,7 +687,7 @@ router.post('*/water/abstraction-variation-answer', function (req, res) {
   var abstractionVariation = req.session.data['abstraction-variation']
 
   if (abstractionVariation == "yes"){res.redirect('../water/abstraction-variation-condition')}
-  else {res.redirect('../water/project-details')}
+  else {res.redirect('../water/project-summary')}
 });
 
 
@@ -789,7 +789,7 @@ router.post('*/water/irrigation-answer', function (req, res) {
 // ------------------------
 
 
-router.get('*/water/project-details', function (req, res) {
+router.get('*/water/project-summary', function (req, res) {
 
   var backUrl = res.locals.prevURL
   var nextUrl = '../water/irrigated-land'
