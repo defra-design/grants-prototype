@@ -44,7 +44,14 @@ module.exports = function (env) {
 
   filters.toFixed = function(num, digits) {
       return parseFloat(num).toFixed(digits).replace(/\.00$/,'');
-  }
+  },
+
+  filters.joinArray = function(array) {
+    if (!array || array.length === 0) {
+      return '';
+    }
+    return array.join(', ');
+}
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app

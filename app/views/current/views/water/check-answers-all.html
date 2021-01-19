@@ -315,7 +315,7 @@
           Irrigated crops
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['irrigated-crops'].join(', ') }}
+          {{ data['irrigated-crops'] | joinArray }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="irrigated-crops">
@@ -328,7 +328,7 @@
           Irrigation water source
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['irrigation'].join(', ') }}
+          {{ data['irrigation'] | joinArray }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="irrigation-water-source">
@@ -341,7 +341,7 @@
           Irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['irrigation-systems'].join(', ') }}
+          {{ data['irrigation-systems'] | joinArray }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="irrigation-systems">
@@ -354,7 +354,7 @@
           Productivity
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['productivity'].join(', ') }}
+          {{ data['productivity'] | joinArray }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="productivity">
@@ -367,7 +367,7 @@
           Environment
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['environment'].join(', ') }}
+          {{ data['environment'] | joinArray }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="environment">
