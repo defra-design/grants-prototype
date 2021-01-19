@@ -866,7 +866,7 @@ router.post('*/water/irrigation-water-source-answer', function (req, res) {
     }
   }
 
-  if (irrigationAnswer == "mains"){res.redirect('../water/irrigation-water-source-fail')}
+  if (irrigationAnswer.includes("mains")){res.redirect('../water/irrigation-water-source-fail')}
   else {res.redirect('../water/irrigation-systems')}
 
 });
