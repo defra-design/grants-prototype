@@ -1054,10 +1054,11 @@ router.get('*/water/applicant-details', function (req, res) {
 
 router.post('*/water/applying-answer', function (req, res) {
 
-  var applyingAnswer = req.session.data['applicant'];
+  var applicant = req.session.data['applicant'];
 
-  if (applyingAnswer == "agent"){res.redirect('../water/agent-details')}
-  else if (applyingAnswer == "farm-manager") {res.redirect('../water/farm-manager-details')}
+  if (applicant == "Agent" || applicant == "Farm manager"){
+    res.redirect('../water/other-applicant-details');
+  }
   else {res.redirect('../water/farmer-details')}
 });
 
