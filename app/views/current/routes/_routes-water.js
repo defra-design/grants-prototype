@@ -1054,20 +1054,13 @@ router.get('*/water/applicant-details', function (req, res) {
 
 router.post('*/water/applying-answer', function (req, res) {
 
-  var applyingAnswer = req.session.data['applying']
+  var applyingAnswer = req.session.data['applicant'];
 
   if (applyingAnswer == "agent"){res.redirect('../water/agent-details')}
   else if (applyingAnswer == "farm-manager") {res.redirect('../water/farm-manager-details')}
   else {res.redirect('../water/farmer-details')}
 });
 
-router.post('*/water/your-details-answer', function (req, res) {
-
-  var applyingAnswer = req.session.data['applying']
-
-  if (applyingAnswer == "other"){res.redirect('../water/applicant-details')}
-  else {res.redirect('../water/check-answers-all')}
-});
 
 
 router.get('*/water/survey', function (req, res) {
