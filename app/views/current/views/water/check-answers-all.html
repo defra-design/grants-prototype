@@ -332,7 +332,46 @@
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="irrigation-water-source">
-            Change<span class="govuk-visually-hidden"> irrigated water source</span>
+            Change<span class="govuk-visually-hidden"> irrigation water source</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Irrigation systems
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['irrigation-systems'].join(', ') }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="irrigation-systems">
+            Change<span class="govuk-visually-hidden"> irrigation systems</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Productivity
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['productivity'].join(', ') }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="productivity">
+            Change<span class="govuk-visually-hidden"> productivity</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Environment
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['environment'].join(', ') }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="environment">
+            Change<span class="govuk-visually-hidden"> environment</span>
           </a>
         </dd>
       </div>
@@ -346,32 +385,6 @@
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="collaboration">
             Change<span class="govuk-visually-hidden"> other farms supplied with water</span>
-          </a>
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          Productivity
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['productivity'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="productivity">
-            Change<span class="govuk-visually-hidden"> productivity</span>
-          </a>
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          Environment
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['environment'] }}
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="environment">
-            Change<span class="govuk-visually-hidden"> environment</span>
           </a>
         </dd>
       </div>
