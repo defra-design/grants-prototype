@@ -228,7 +228,7 @@
         </dd>
       </div>
       {% endif %}
-      {% if data['abstraction-variation'] == "yes" %}
+      {% if (data['abstraction-required'] == "yes") and (data['abstraction-licence'] == "yes") %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
           Abstraction variation required
