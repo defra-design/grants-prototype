@@ -43,16 +43,32 @@
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="environment-4" name="environment" type="checkbox" value="Design of the reservoir: Create a wetland area" {{ checked("environment", "reservoir-design-create-wetland-area") }}>
+                <input class="govuk-checkboxes__input" id="environment-4" name="environment" type="checkbox" value="Reservoir design" {{ checked("environment", "reservoir-design") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="environment-4">
-                  Design of the reservoir: Create a wetland area
+                  Design of the reservoir
                 </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="environment-5" name="environment" type="checkbox" value="Design of the reservoir: Planting" {{ checked("environment", "reservoir-design-planting") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="environment-5">
-                  Design of the reservoir: Planting
-                </label>
+
+                <!--
+                  <div class="govuk-details__text">
+
+                    <div class="govuk-inset-text">
+                  -->
+                <div class="govuk-checkboxes" style="margin: 20px">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="environment-reservoir-options-1" name="environment-reservoir-options" type="checkbox" value="Create a wetland area" {{ checked("environment-reservoir-options", "wetland-area") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="environment-reservoir-options-1">
+                      Create a wetland area
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="environment-reservoir-options-2" name="environment-reservoir-options" type="checkbox" value="Planting" {{ checked("environment-reservoir-options", "planting") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="environment-reservoir-options-2">
+                      Planting
+                    </label>
+                  </div>
+
+                </div>
               </div>
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="environment-6" name="environment" type="checkbox" value="Reduce energy use" {{ checked("environment", "reduce-energy-use") }}>
