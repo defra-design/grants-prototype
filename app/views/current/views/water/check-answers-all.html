@@ -523,7 +523,8 @@
             </a>
           </dd>
         </div>
-      {% else %}
+      {% endif %}
+      {% if (data['applicant'] == "Farm manager") or (data['applicant'] == "Agent") %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
           Farmer name
