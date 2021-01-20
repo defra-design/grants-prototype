@@ -315,7 +315,11 @@
           Irrigated crops
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['irrigated-crops'] | joinArray }}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in data['irrigated-crops'] %}
+              <li>{{ item | capitalize }}</li>
+            {% endfor %}
+          </ul>
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="irrigated-crops">
@@ -328,7 +332,11 @@
           Irrigation water source
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['irrigation'] | joinArray }}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in data['irrigation'] %}
+              <li>{{ item | capitalize }}</li>
+            {% endfor %}
+          </ul>
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="irrigation-water-source">
@@ -341,7 +349,11 @@
           Irrigation systems
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['irrigation-systems'] | joinArray }}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in data['irrigation-systems'] %}
+              <li>{{ item | capitalize }}</li>
+            {% endfor %}
+          </ul>
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="irrigation-systems">
@@ -354,7 +366,11 @@
           Productivity
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['productivity'] | joinArray }}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in data['productivity'] %}
+              <li>{{ item | capitalize }}</li>
+            {% endfor %}
+          </ul>
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="productivity">
@@ -367,7 +383,11 @@
           Environment
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['environment'] | joinArray }}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in data['environment-summary'] %}
+              <li>{{ item | capitalize }}</li>
+            {% endfor %}
+          </ul>
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="environment">

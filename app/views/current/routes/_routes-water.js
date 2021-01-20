@@ -1065,6 +1065,25 @@ router.post('*/water/applying-answer', function (req, res) {
 
 
 router.post('*/water/final-page', function (req, res) {
+
+  var tempEnvironmentData = req.session.data['environment'];
+  var tempReservoirData = req.session.data['environment-reservoir-options'];
+
+  if (!!tempReservoirData && tempReservoirData.length > 0) {
+    var addEnvData = 'Reservoir design: ['+ tempReservoirData.join(', ') +']';
+
+    if (tempEnvironmentData.includes('Reservoir design')) {
+      tempEnvironmentData = tempEnvironmentData.map(x => (
+        x === 'Reservoir design' ?
+          addEnvData : x
+      ))
+    } else {
+      tempEnvironmentData.push(addEnvData);
+    }
+  }
+
+  req.session.data['environment-summary'] = tempEnvironmentData;
+
   res.redirect('../water/check-answers-all');
 });
 
