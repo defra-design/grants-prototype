@@ -1064,6 +1064,10 @@ router.post('*/water/applying-answer', function (req, res) {
 });
 
 
+router.post('*/water/final-page', function (req, res) {
+  res.redirect('../water/check-answers-all');
+});
+
 
 router.get('*/water/survey', function (req, res) {
 
