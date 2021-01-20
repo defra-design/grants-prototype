@@ -183,7 +183,7 @@ router.get('*/water/task-list', function (req, res) {
 
 router.get('*/water/farming-type', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'start'
   var nextUrl = '../water/farming-type-answer'
 
   // test to check this section isn't completed...
@@ -223,11 +223,11 @@ router.get('*/water/farming-type-answer', function (req, res) {
 
 router.get('*/water/legal-status', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'farming-type'
   var nextUrl = '../water/legal-status-answer'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "check-answers-all"
+    // backUrl = "check-answers-all"
   }
 
 res.render( './' + req.originalUrl,{
@@ -256,11 +256,11 @@ router.post('*/water/legal-status-answer', function (req, res) {
 
 router.get('*/water/country', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'legal-status'
   var nextUrl = '../water/country-answer'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
 res.render( './' + req.originalUrl,{
@@ -288,12 +288,12 @@ router.post('*/water/country-answer', function (req, res) {
 
 router.get('*/water/tenancy', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'country'
   var nextUrl = '../water/tenancy-answer'
 
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
 res.render( './' + req.originalUrl,{
@@ -340,11 +340,11 @@ router.post('*/water/tenancy-length-answer', function (req, res) {
 
 router.get('*/water/project-items', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'tenancy'
   var nextUrl = '../water/project-cost'
 
   if( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = '../water/check-answers-all'
+    // backUrl = '../water/check-answers-all'
     nextUrl = backUrl
   }
 
@@ -363,11 +363,11 @@ router.get('*/water/project-cost', function (req, res) {
 
   console.log( req.session.data['currentProjectCost'] )
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'project-items'
   var nextUrl = '../water/project-cost-answer'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
 res.render( './' + req.originalUrl,{
@@ -402,11 +402,11 @@ router.post('*/water/project-cost-answer', function (req, res) {
 
 router.get('*/water/grant', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'project-cost'
   var nextUrl = 'remaining-costs'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
 res.render( './' + req.originalUrl,{
@@ -422,11 +422,11 @@ res.render( './' + req.originalUrl,{
 
 router.get('*/water/remaining-costs', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'grant'
   var nextUrl = '../water/remaining-costs-answer'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
 res.render( './' + req.originalUrl,{
@@ -455,7 +455,7 @@ router.post('*/water/remaining-costs-answer', function (req, res) {
 })
 
 
-
+// -- DELETED ----------------------------
 // PUBLIC MONEY 
 // -- UNREACHABLE VIA LINK
 // -- REACHABLE ONLY VIA URL
@@ -490,17 +490,18 @@ router.post('*/water/public-money-answer', function (req, res) {
   }
 
 })
+// ----------------------------------------------
 
 
 // PROJECT START
 
 router.get('*/water/project-start', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'remaining-costs'
   var nextUrl = '../water/project-start-answer'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
   res.render( './' + req.originalUrl,{
@@ -529,11 +530,11 @@ router.post('*/water/project-start-answer', function (req, res) {
 
 router.get('*/water/planning-required', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'project-start'
   var nextUrl = '../water/planning-required-answer'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
   res.render( './' + req.originalUrl,{
@@ -567,7 +568,7 @@ router.get('*/water/planning-required-condition', function (req, res) {
   var nextUrl = '../water/abstraction-required'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    nextUrl = "../water/check-answers-all"
+    // nextUrl = "../water/check-answers-all"
   }
 
   res.render( './' + req.originalUrl,{
@@ -579,11 +580,11 @@ router.get('*/water/planning-required-condition', function (req, res) {
 
 router.get('*/water/planning-permission', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'planning-required'
   var nextUrl = '../water/planning-permission-answer'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
   res.render( './' + req.originalUrl,{
@@ -642,7 +643,7 @@ router.get('*/water/abstraction-required', function (req, res) {
   var nextUrl = '../water/abstraction-required-answer'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
   res.render( './' + req.originalUrl,{
@@ -795,7 +796,7 @@ router.get('*/water/project-summary', function (req, res) {
   var nextUrl = '../water/irrigated-land'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
-    nextUrl = "../water/check-answers-all"
+    // nextUrl = "../water/check-answers-all"
   }
 
   res.render( './' + req.originalUrl,{
@@ -807,11 +808,11 @@ router.get('*/water/project-summary', function (req, res) {
 
 router.get('*/water/irrigated-land', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'project-summary'
   var nextUrl = '../water/irrigated-crops'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
-    nextUrl = "../water/check-answers-all"
+    // nextUrl = "../water/check-answers-all"
   }
 
   res.render( './' + req.originalUrl,{
@@ -823,11 +824,11 @@ router.get('*/water/irrigated-land', function (req, res) {
 
 router.get('*/water/irrigated-crops', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'irrigated-land'
   var nextUrl = '../water/irrigation-water-source'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
-    nextUrl = "../water/check-answers-all"
+    // nextUrl = "../water/check-answers-all"
   }
 
   res.render( './' + req.originalUrl,{
@@ -840,12 +841,12 @@ router.get('*/water/irrigated-crops', function (req, res) {
 router.get('*/water/irrigation-water-source', function (req, res) {
 
   req.session.data['tempIrrigationAnswer'] = req.session.data['irrigationAnswer']
-  var backUrl = res.locals.prevURL
+  var backUrl = 'irrigated-crops'
   var nextUrl = '../water/irrigation-water-source-answer'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
     // nextUrl = "../water/check-answers-all"
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
   }
 
   res.render( './' + req.originalUrl,{
@@ -873,7 +874,7 @@ router.post('*/water/irrigation-water-source-answer', function (req, res) {
 
 router.get('*/water/irrigation-systems', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'irrigation-water-source'
   var nextUrl = '../water/productivity'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
@@ -889,11 +890,11 @@ router.get('*/water/irrigation-systems', function (req, res) {
 
 router.get('*/water/productivity', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'irrigation-systems'
   var nextUrl = 'environment'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
     nextUrl = backUrl
   }
 
@@ -906,11 +907,11 @@ router.get('*/water/productivity', function (req, res) {
 
 router.get('*/water/environment', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'productivity'
   var nextUrl = 'collaboration'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
     nextUrl = backUrl
   }
 
@@ -923,11 +924,11 @@ router.get('*/water/environment', function (req, res) {
 
 router.get('*/water/collaboration', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'environment'
   var nextUrl = 'business'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
+    // backUrl = "../water/check-answers-all"
     nextUrl = backUrl
   }
 
@@ -986,11 +987,11 @@ router.get('*/water/business', function (req, res) {
     req.session.data['water_s03_status_class'] = 'govuk-tag--blue'
   }
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'collaboration'
   var nextUrl = '../water/applying'
 
   if ( req.session.data['water_s03_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-contact-details"
+    // backUrl = "../water/check-answers-contact-details"
   }
 
   res.render( './' + req.originalUrl,{
