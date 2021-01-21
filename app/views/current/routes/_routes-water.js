@@ -927,17 +927,15 @@ router.post('*/water/environment-answer', function (req, res) {
   var tempEnvironmentData = req.session.data['environment'];
   var tempReservoirData = req.session.data['environment-reservoir-options'];
 
-  if (!!tempReservoirData && tempReservoirData.length > 0) {
+  if (  !!tempEnvironmentData && tempEnvironmentData.includes('Reservoir design') &&
+        !!tempReservoirData && tempReservoirData.length > 0
+  ) {
     var addEnvData = 'Reservoir design: ['+ tempReservoirData.join(', ') +']';
 
-    if (tempEnvironmentData.includes('Reservoir design')) {
-      tempEnvironmentData = tempEnvironmentData.map(x => (
-        x === 'Reservoir design' ?
-          addEnvData : x
-      ))
-    } else {
-      tempEnvironmentData.push(addEnvData);
-    }
+    tempEnvironmentData = tempEnvironmentData.map(x => (
+      x === 'Reservoir design' ?
+        addEnvData : x
+    ))
   }
 
   req.session.data['environment-summary'] = tempEnvironmentData;
