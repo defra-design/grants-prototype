@@ -43,31 +43,25 @@
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="environment-4" name="environment" type="checkbox" value="Reservoir design" {{ checked("environment", "Reservoir design") }}>
+                <input class="govuk-checkboxes__input" id="environment-4" name="environment" type="checkbox" value="Reservoir design" data-aria-controls="conditional-contact-preferences-conditional-2" {{ checked("environment", "Reservoir design") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="environment-4">
                   Design of the reservoir
                 </label>
 
-                <!--
-                  <div class="govuk-details__text">
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-preferences-conditional-2">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="environment-reservoir-options-1" name="environment-reservoir-options" type="checkbox" value="Create a wetland area" {{ checked("environment-reservoir-options", "Create a wetland area") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="environment-reservoir-options-1">
+                    Create a wetland area
+                  </label>
+                </div>
 
-                    <div class="govuk-inset-text">
-                  -->
-                <div class="govuk-checkboxes" style="margin: 20px">
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="environment-reservoir-options-1" name="environment-reservoir-options" type="checkbox" value="Create a wetland area" {{ checked("environment-reservoir-options", "Create a wetland area") }}>
-                    <label class="govuk-label govuk-checkboxes__label" for="environment-reservoir-options-1">
-                      Create a wetland area
-                    </label>
-                  </div>
-
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="environment-reservoir-options-2" name="environment-reservoir-options" type="checkbox" value="Planting" {{ checked("environment-reservoir-options", "Planting") }}>
-                    <label class="govuk-label govuk-checkboxes__label" for="environment-reservoir-options-2">
-                      Planting
-                    </label>
-                  </div>
-
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="environment-reservoir-options-2" name="environment-reservoir-options" type="checkbox" value="Planting" {{ checked("environment-reservoir-options", "Planting") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="environment-reservoir-options-2">
+                    Planting
+                  </label>
                 </div>
               </div>
               <div class="govuk-checkboxes__item">
