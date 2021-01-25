@@ -36,6 +36,18 @@ router.get('/current/views/slurry/*', function(req, res, next){
 });
 
 // Set service name based on sub folders for different prototypes
+router.get('/v5/views/water/*', function(req, res, next){
+  res.locals['serviceName'] = 'Apply for a Farming Transformation Fund water resource management grant'
+  next()
+});
+
+// Set service name based on sub folders for different prototypes
+router.get('/v5/views/slurry/*', function(req, res, next){
+  res.locals['serviceName'] = 'Apply for a large grant for slurry equipment'
+  next()
+});
+
+// Set service name based on sub folders for different prototypes
 router.get('/v4+/views/water/*', function(req, res, next){
   res.locals['serviceName'] = 'Apply for a large grant for a water resource management project'
   next()
@@ -87,7 +99,8 @@ router.use('/v4', require('./views/v4/routes/_routes-water'));
 router.use('/v4', require('./views/v4/routes/_routes-slurry'));
 router.use('/v4+', require('./views/v4+/routes/_routes-water'));
 router.use('/v4+', require('./views/v4+/routes/_routes-slurry'));
-
+router.use('/v5', require('./views/v5/routes/_routes-water'));
+router.use('/v5', require('./views/v5/routes/_routes-slurry'));
 
 // Task list status settings
 

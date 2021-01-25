@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Irrigation water source
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../water/irrigation-water-source-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Where will the water used for irrigation come from?
+              </h1>
+            </legend>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-1" name="irrigation" type="checkbox" value="Peak flow" {{ checked("irrigation", "Peak flow") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-1">
+                  Peak-flow surface water
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-2" name="irrigation" type="checkbox" value="Bore hole" {{ checked("irrigation", "Bore hole") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-2">
+                  Bore hole/aquifer
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-3" name="irrigation" type="checkbox" value="Surface abstraction" {{ checked("irrigation", "Surface abstraction") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-3">
+                  Summer water surface abstraction
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-4" name="irrigation" type="checkbox" value="Rain water" {{ checked("irrigation", "Rain water") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-4">
+                  Rain water harvesting
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-5" name="irrigation" type="checkbox" value="mains" {{ checked("irrigation", "mains") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-5">
+                  Mains
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

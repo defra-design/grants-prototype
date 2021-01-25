@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Which items eligible for grant funding are included in the project?
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="../slurry/project-cost" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="project-items-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Which items available through grant funding does the project need?
+            </h1>
+          </legend>
+          <!--<span id="project-items-hint" class="govuk-hint">
+              Select all that apply
+            </span>-->
+            <h2 class="govuk-heading-m govuk-!-margin-top-6">Slurry and digestate management equipment</h2>
+
+            <div id="project-items-hint" class="govuk-hint">
+                All slurry and digestate management equipment must include:
+                <ul>
+                <li>inline nutrient sensors</li>
+                <li>flow meters</li>
+                <li>adjustable flow control valves</li>
+                <li>GPS receiver</li>
+                <li>in-cab display/control unit</li>
+                </ul>
+              </div>
+
+              <h3 class="govuk-heading-s govuk-!-margin-top-5">Low emission precision application equipment</h3>
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items" name="project-items" type="checkbox" value="deep or shallow injection" data-aria-controls="conditional-precision-conditional"
+                {{ checked("project-items", "deep or shallow injection") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items">
+                Deep or shallow injection
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-2" name="project-items" type="checkbox" value="trailing shoe" data-aria-controls="conditional-precision-conditional" {{ checked("project-items", "trailing shoe") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-2">
+                Trailing shoe
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-3" name="project-items" type="checkbox" value="dribble bar" data-aria-controls="conditional-precision-conditional" {{ checked("project-items", "dribble bar") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-3">
+                Dribble bar
+              </label>
+            </div>
+
+            <h3 class="govuk-heading-s govuk-!-margin-top-5">Umbilical systems and tankers</h3>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-4" name="project-items" type="checkbox" value="umbilical system" data-aria-controls="conditional-umbilical-conditional conditional-digestate-conditional"
+                {{ checked("project-items", "umbilical system") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-4">
+                Slurry/digestate umbilical system
+              </label>
+              <div id="project-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                Must include a:
+                <ul class="govuk-!-margin-top-1">
+                <li>pump</li>
+                <li>macerator</li>
+                <li>reeler</li>
+                </ul>
+            </div>
+          </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-5" name="project-items" type="checkbox" value="tanker" data-aria-controls="conditional-digestate-conditional" {{ checked("project-items", "tanker") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-5">
+                Slurry/digestate tanker
+              </label>
+            </div>
+
+            <h2 class="govuk-heading-m govuk-!-margin-top-8">Slurry/digestate storage bags</h2>
+
+            <div id="project-items-hint" class="govuk-hint">
+                Storage bags provide additional storage capacity over and above the statutory slurry storage requirement.
+              </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-6" name="project-items" type="checkbox" value="storage bags" {{ checked("project-items", "storage bags") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-6">
+                Storage bags
+              </label>
+              <div id="project-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                May include site preparation and associated pumps and stirrers.
+              </div>
+            </div>
+
+            <h2 class="govuk-heading-m govuk-!-margin-top-8">Advanced processing equipment</h2>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-7" name="project-items" type="checkbox" value="slurry separation systems" {{ checked("project-items", "slurry separation systems") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-7">
+                Slurry separation systems
+              </label>
+            </div>
+
+            <h2 class="govuk-heading-m govuk-!-margin-top-8">Acidification</h2>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-items-8" name="project-items" type="checkbox" value="mild acidification equipment" {{ checked("project-items", "mild acidification equipment") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-items-8">
+                Mild acidification equipment
+              </label>
+              <div id="project-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                Must include a:
+                <ul class="govuk-!-margin-top-1">
+                <li>mixing tank</li>
+                <li>acid storage</li>
+                <li>dosing equipment</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
