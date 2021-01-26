@@ -455,44 +455,6 @@ router.post('*/water/remaining-costs-answer', function (req, res) {
 })
 
 
-// -- DELETED ----------------------------
-// PUBLIC MONEY 
-// -- UNREACHABLE VIA LINK
-// -- REACHABLE ONLY VIA URL
-
-router.get('*/water/public-money', function (req, res) {
-
-  var backUrl = res.locals.prevURL
-  var nextUrl = '../water/public-money-answer'
-
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
-  }
-
-res.render( './' + req.originalUrl,{
-  backUrl: backUrl,
-  nextUrl: nextUrl
-} )
-
-});
-
-router.post('*/water/public-money-answer', function (req, res) {
-
-  var publicMoney = req.session.data['public-money']
-
-  if (publicMoney == "yes" ){res.redirect('../water/public-money-fail')}
-  else {
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      res.redirect('../water/check-answers-all')
-    }else{
-      res.redirect('../water/project-start')
-    }
-  }
-
-})
-// ----------------------------------------------
-
-
 // PROJECT START
 
 router.get('*/water/project-start', function (req, res) {
@@ -604,37 +566,6 @@ router.post('*/water/planning-permission-answer', function (req, res) {
 
 
 
-// DELETED --------------
-
-router.get('*/water/planning-progress', function (req, res) {
-
-  var backUrl = '../water/planning-permission'
-  var nextUrl = '../water/planning-progress-answer'
-
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-all"
-  }
-
-  res.render( './' + req.originalUrl,{
-    backUrl: backUrl,
-    nextUrl: nextUrl
-  })
-
-});
-
-
-router.post('*/water/planning-progress-answer', function (req, res) {
-
-  var planningProgress = req.session.data['planning-progress']
-
-  if (planningProgress == "yes"){res.redirect('../water/abstraction-required')}
-  if (planningProgress == "not sure"){res.redirect('../water/planning-progress-condition')}
-  else {res.redirect('../water/planning-permission-fail')}
-});
-
-// --------------------
-
-
 // ABSTRACTION LICENCE
 
 router.get('*/water/abstraction-required', function (req, res) {
@@ -671,18 +602,6 @@ router.post('*/water/abstraction-licence-answer', function (req, res) {
   else {res.redirect('../water/abstraction-progress-condition')}
 });
 
-// DELETED ---------
-router.post('*/water/abstraction-progress-answer', function (req, res) {
-
-  var abstractionProgress = req.session.data['abstraction-progress']
-
-  if (abstractionProgress == "yes"){res.redirect('../water/abstraction-variation')}
-  if (abstractionProgress == "not sure"){res.redirect('../water/abstraction-progress-condition')}
-  else {res.redirect('../water/abstraction-licence-fail')}
-});
-
-// --------------------
-
 router.post('*/water/abstraction-variation-answer', function (req, res) {
 
   var abstractionVariation = req.session.data['abstraction-variation']
@@ -691,28 +610,6 @@ router.post('*/water/abstraction-variation-answer', function (req, res) {
   else {res.redirect('../water/project-summary')}
 });
 
-
-//-- DELETED ----------------------
-router.get('*/water/check-answers-check-you-can-apply', function (req, res) {
-
-var backUrl = res.locals.prevURL
-
-req.session.data['water_completed_sections'] = '1'
-
-req.session.data['water_s01_status'] = 'Completed'
-req.session.data['water_s01_status_class'] = ''
-
-if ( req.session.data['water_s02_status'] != 'Completed' ){
-  req.session.data['water_s02_status'] = 'Not started'
-}
-
-res.render( './' + req.originalUrl,{
-  backUrl: backUrl
-} )
-
-});
-
-// --------------------------------------
 
 // WATER SECTION 2
 
@@ -735,59 +632,6 @@ router.get('*/water/check-answers-project-details-and-benefits', function (req, 
   } )
 
 });
-
-
-
-// DELETED ------------
-router.get('*/water/project', function (req, res) {
-
-  var backUrl = res.locals.prevURL
-  var nextUrl = '../water/irrigation'
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    nextUrl = "../water/check-answers-project-details-and-benefits"
-  }
-
-  res.render( './' + req.originalUrl,{
-    backUrl: backUrl,
-    nextUrl: nextUrl
-  })
-
-});
-
-router.get('*/water/irrigation', function (req, res) {
-
-  req.session.data['tempIrrigation'] = req.session.data['irrigation']
-
-  var backUrl = res.locals.prevURL
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    backUrl = "../water/check-answers-project-details-and-benefits"
-  }
-
-  res.render( './' + req.originalUrl,{
-    backUrl: backUrl
-    })
-
-});
-
-
-router.post('*/water/irrigation-answer', function (req, res) {
-
-  var irrigationAnswer = req.session.data['irrigation']
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-
-    if( irrigationAnswer == req.session.data['tempIrrigation']){
-      res.redirect('../water/check-answers-project-details-and-benefits')
-    }
-  }
-
-  if (irrigationAnswer == "improve"){res.redirect('../water/current-irrigation')}
-  else {res.redirect('../water/new-irrigation')}
-});
-
-// ------------------------
 
 
 router.get('*/water/project-summary', function (req, res) {
@@ -1022,57 +866,6 @@ router.get('*/water/business', function (req, res) {
 
 });
 
-// DELETED ---------
-router.post('*/water/business-answer', function (req, res) {
-
-  var businessAnswer = req.session.data['new-business']
-
-  if (businessAnswer == "no"){res.redirect('../water/new-business-condition')}
-  else {res.redirect('../water/applying')}
-});
-
-router.get('*/water/your-details', function (req, res) {
-
-  var backUrl
-
-  if (req.session.data['applying'] == 'own') {
-    backUrl = 'applying' }
-  else {
-    backUrl = 'preferred-contact'
-    }
-
-  res.render( './' + req.originalUrl, {
-    backUrl: backUrl
-  })
-
-})
-
-router.post('*/water/preferred-contact-answer', function (req, res) {
-
-  var preferredContact = req.session.data['preferred-contact']
-
-  if (preferredContact == "just the applicant"){res.redirect('../water/applicant-details')}
-  else {res.redirect('../water/your-details')}
-});
-
-
-router.get('*/water/applicant-details', function (req, res) {
-
-  var backUrl
-
-  if (req.session.data['preferred-contact'] == 'just the applicant') {
-    backUrl = 'preferred-contact' }
-  else {
-    backUrl = 'your-details'
-    }
-
-  res.render( './' + req.originalUrl, {
-    backUrl: backUrl
-  })
-
-})
-
-// -----------------
 
 router.post('*/water/applying-answer', function (req, res) {
 
