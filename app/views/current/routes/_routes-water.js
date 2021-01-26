@@ -946,7 +946,7 @@ router.post('*/water/environment-answer', function (req, res) {
 router.get('*/water/collaboration', function (req, res) {
 
   var backUrl = 'environment'
-  var nextUrl = 'business'
+  var nextUrl = 'check-answers-all'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
     // backUrl = "../water/check-answers-all"
@@ -1008,7 +1008,7 @@ router.get('*/water/business', function (req, res) {
     req.session.data['water_s03_status_class'] = 'govuk-tag--blue'
   }
 
-  var backUrl = 'collaboration'
+  var backUrl = 'check-answers-all'
   var nextUrl = '../water/applying'
 
   if ( req.session.data['water_s03_status'] == 'Completed' ){
@@ -1085,8 +1085,29 @@ router.post('*/water/applying-answer', function (req, res) {
 });
 
 
-router.post('*/water/final-page', function (req, res) {
-  res.redirect('../water/check-answers-all');
+router.get('*/water/consent', function (req, res) {
+  var nextUrl = "reference-number";
+  var backUrl;
+
+  var applicant = req.session.data['applicant'];
+
+  if (applicant == "Agent" || applicant == "Farm manager"){
+    backUrl = "other-applicant-details";
+  }
+  else {backUrl = "farmer-details";}
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+});
+
+router.get('*/water/reference-number', function (req, res) {
+  var backUrl = "consent";
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl
+  })
 });
 
 
@@ -1102,5 +1123,13 @@ router.get('*/water/survey', function (req, res) {
     })
   
   });
+
+
+  router.get('*/water/email', function (req, res) {
+    res.render( './' + req.originalUrl, {
+      backUrl: res.locals.prevURL
+    })
+  });
+
 
 module.exports = router
