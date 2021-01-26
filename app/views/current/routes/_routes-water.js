@@ -868,26 +868,13 @@ router.get('*/water/business', function (req, res) {
 
 
 router.post('*/water/applying-answer', function (req, res) {
-
-  var applicant = req.session.data['applicant'];
-
-  if (applicant == "Agent" || applicant == "Farm manager"){
-    res.redirect('../water/other-applicant-details');
-  }
-  else {res.redirect('../water/farmer-details')}
+  res.redirect('../water/your-details');
 });
 
 
 router.get('*/water/consent', function (req, res) {
   var nextUrl = "reference-number";
-  var backUrl;
-
-  var applicant = req.session.data['applicant'];
-
-  if (applicant == "Agent" || applicant == "Farm manager"){
-    backUrl = "other-applicant-details";
-  }
-  else {backUrl = "farmer-details";}
+  var backUrl = "your-details";
 
   res.render( './' + req.originalUrl, {
     backUrl: backUrl,
