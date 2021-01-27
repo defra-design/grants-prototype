@@ -11,19 +11,18 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <div class="govuk-panel govuk-panel--confirmation">
-      <h1 class="govuk-panel__title">MEDIUM FIT</h1>
+      <h1 class="govuk-panel__title">HIGH FIT</h1>
     </div>
 
-    <p>
-      Your project seems a medium fit with Defra’s funding priorities and value for taxpayers’ money
-    </p>
+    <p>Based on your answers, your project is a high fit with the funding priorities.</p>
+    <p>The grant is highly competitive and you are competing against other projects.</p>
 
     <h3 class="govuk-heading-m">What happens next</h3>
 
-    <p>Depending on how well your project has scored, you may want to submit a full application.</p>
+    <p>We will email you with a link to the full application form.</p>
 
     <p>If you submit a full application, we will:</p>
     
@@ -33,7 +32,7 @@
     <li>identify projects that provide the best value for taxpayers' money</li>
     </ul>
 
-    <p>If your project receives a grant, we will send you a grant funding agreement to sign.</p>
+    <p>If your application is successful, you’ll be sent a funding agreement and can begin work on the project.</p>
 
     <div class="govuk-warning-text">
       <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -43,12 +42,6 @@
         You will need to make a full application and complete a grant funding agreement before you can start the project.
       </strong>
     </div>
-
-  <!--<h2 class="govuk-heading-m"></h2>
-    <p></p>-->
-
-    <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
-
 
   </div>
 </div>
@@ -458,49 +451,12 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <div class="govuk-form-group govuk-!-margin-bottom-9 govuk-!-margin-top-7">
-      <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-          <h2 class="govuk-fieldset__heading">
-            Terms and conditions
-          </h2>
-        </legend>
-        <div id="waste-hint" class="govuk-hint">
-          I consent to the terms and conditions as outlined in <a href="">Farming Transformation Fund water resource management grant guidance</a>.
-        </div>
-        <div class="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="consent-to-terms" name="consent-to-terms" type="checkbox" value="consent-given">
-            <label class="govuk-label govuk-checkboxes__label" for="consent-to-terms">
-              I consent <span class="govuk-visually-hidden"> to the terms and conditions as outlined in the large countryside productivity grant guidance.
-            </label>
-          </div>
-        </div>
-      </fieldset>
-    </div>
-
-    <!--
-      <h2 class="govuk-heading-m">Now submit your details to get your score</h2>
-
-      <p class="govuk-body">By submitting this you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-
-      <form action="../water/confirmation" method="post" novalidate>
-
-        <input type="hidden" name="answers-checked" value="true">
-
-        <button class="govuk-button" data-module="govuk-button">
-          Get your score
-        </button>
-
-      </form>
-    -->
 
     <form class="form" action="{{ nextUrl }}" method="post">
       <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
         Continue
       </button>
     </form>
-
 
   </div>
 </div>
