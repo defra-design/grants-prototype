@@ -783,7 +783,17 @@ router.get('*/water/collaboration', function (req, res) {
 });
 
 
+router.get('*/water/check-answers-all', function (req, res) {
 
+  var backUrl = 'collaboration'
+  var nextUrl = 'business'
+
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+
+});
 
 
 
