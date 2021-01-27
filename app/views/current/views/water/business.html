@@ -22,21 +22,23 @@
         <div class="govuk-form-group">
           <label class="govuk-label" for="project-name">
               Project name
-            </label>
+          </label>
+          <span id="project-name-hint" class="govuk-hint">eg Brown Hill Farm reservoir</span>
           <input class="govuk-input" id="project-name" name="project-name" type="text" value="{{ data['project-name'] }}">
         </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="business-name">
               Business name
-            </label>
+          </label>
           <input class="govuk-input" id="business-name" name="business-name" type="text" value="{{ data['business-name'] }}">
         </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="employees">
               Number of employees
-            </label>
+          </label>
+          <span id="employees-hint" class="govuk-hint">Full-time employees, including the owner</span>
           <input class="govuk-input govuk-input--width-10" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">
         </div>
 
@@ -45,6 +47,13 @@
               Business turnover (£)
             </label>
           <input class="govuk-input govuk-input--width-10" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sbi">
+              SBI
+            </label>
+          <input class="govuk-input govuk-input--width-10" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
         </div>
 
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
