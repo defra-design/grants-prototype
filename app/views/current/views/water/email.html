@@ -33,11 +33,6 @@
             <dd class="govuk-summary-list__value">
               {{ data['farming-type'] | capitalize }}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="farming-type">
-                Change<span class="govuk-visually-hidden"> grows crops for food</span>
-              </a>
-            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -45,11 +40,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['legal-status'] | capitalize }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="legal-status">
-                Change<span class="govuk-visually-hidden"> legal status of business</span>
-              </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -59,11 +49,6 @@
             <dd class="govuk-summary-list__value">
               {{ data['country'] | capitalize }}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="country">
-                Change<span class="govuk-visually-hidden"> in England</span>
-              </a>
-            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -71,11 +56,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['tenancy'] | capitalize }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="tenancy">
-                Change<span class="govuk-visually-hidden"> on own land</span>
-              </a>
             </dd>
           </div>
           {% if data['tenancy'] == "no" %}
@@ -85,11 +65,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">{{ data['tenancy-length'] | capitalize }}</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="tenancy-length">
-                Change<span class="govuk-visually-hidden"> tenancy length</span>
-              </a>
             </dd>
           </div>
           {% endif %}
@@ -104,11 +79,6 @@
                 {% endfor %}
               </ul>
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="project-items">
-                Change<span class="govuk-visually-hidden"> project items</span>
-              </a>
-            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -116,11 +86,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               £{{ data['project-cost'] | toFixed(2) | commafy }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="project-cost">
-                Change<span class="govuk-visually-hidden"> project costs</span>
-              </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -130,11 +95,6 @@
             <dd class="govuk-summary-list__value">
               {{ data['remaining-costs'] | capitalize }}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="remaining-costs">
-                Change<span class="govuk-visually-hidden"> remaining costs</span>
-              </a>
-            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -142,11 +102,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['project-start'] | capitalize }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="project-start">
-                Change<span class="govuk-visually-hidden"> project started</span>
-              </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -156,11 +111,6 @@
             <dd class="govuk-summary-list__value">
               {{ data['planning-required'] | capitalize }}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="planning-required">
-                Change<span class="govuk-visually-hidden"> planning permission required</span>
-              </a>
-            </dd>
           </div>
           {% if data['planning-required'] == "yes" %}
           <div class="govuk-summary-list__row">
@@ -169,11 +119,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">{{ data['planning-permission'] | capitalize }}</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="planning-permission">
-                Change<span class="govuk-visually-hidden"> planning permission obtained</span>
-              </a>
             </dd>
           </div>
           {% endif %}
@@ -185,11 +130,6 @@
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">{{ data['planning-progress'] | capitalize }}</p>
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="planning-progress">
-                Change<span class="govuk-visually-hidden"> planning permission to be granted in next six months</span>
-              </a>
-            </dd>
           </div>
           {% endif %}
     
@@ -200,11 +140,6 @@
             <dd class="govuk-summary-list__value">
               {{ data['abstraction-required'] | capitalize }}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="abstraction-required">
-                Change<span class="govuk-visually-hidden"> abstraction licence required</span>
-              </a>
-            </dd>
           </div>
           {% if data['abstraction-required'] == "yes" %}
           <div class="govuk-summary-list__row">
@@ -213,11 +148,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">{{ data['abstraction-licence'] | capitalize }}</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="abstraction-licence">
-                Change<span class="govuk-visually-hidden"> abstraction licence obtained</span>
-              </a>
             </dd>
           </div>
           {% endif %}
@@ -229,11 +159,6 @@
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">{{ data['abstraction-progress'] | capitalize }}</p>
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="abstraction-licence">
-                Change<span class="govuk-visually-hidden"> abstraction licence to be granted in next six months</span>
-              </a>
-            </dd>
           </div>
           {% endif %}
           {% if (data['abstraction-required'] == "yes") and (data['abstraction-licence'] == "yes") %}
@@ -243,11 +168,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <p class="govuk-body">{{ data['abstraction-variation'] | capitalize }}</p>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="abstraction-variation">
-                Change<span class="govuk-visually-hidden"> abstraction variation required</span>
-              </a>
             </dd>
           </div>
           {% endif %}
@@ -299,11 +219,6 @@
             <dd class="govuk-summary-list__value">
               {{ data['project-summary'] }}
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="project-summary">
-                Change<span class="govuk-visually-hidden"> project summary</span>
-              </a>
-            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -311,11 +226,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['irrigated-land'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="irrigated-land">
-                Change<span class="govuk-visually-hidden"> irrigated land</span>
-              </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -329,11 +239,6 @@
                 {% endfor %}
               </ul>
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="irrigated-crops">
-                Change<span class="govuk-visually-hidden"> irrigated crops</span>
-              </a>
-            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -345,11 +250,6 @@
                   <li>{{ item | capitalize }}</li>
                 {% endfor %}
               </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="irrigation-water-source">
-                Change<span class="govuk-visually-hidden"> irrigation water source</span>
-              </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -363,11 +263,6 @@
                 {% endfor %}
               </ul>
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="irrigation-systems">
-                Change<span class="govuk-visually-hidden"> irrigation systems</span>
-              </a>
-            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -379,11 +274,6 @@
                   <li>{{ item | capitalize }}</li>
                 {% endfor %}
               </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="productivity">
-                Change<span class="govuk-visually-hidden"> productivity</span>
-              </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -397,11 +287,6 @@
                 {% endfor %}
               </ul>
             </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="environment">
-                Change<span class="govuk-visually-hidden"> environment</span>
-              </a>
-            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -409,11 +294,6 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['collaboration'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="collaboration">
-                Change<span class="govuk-visually-hidden"> other farms supplied with water</span>
-              </a>
             </dd>
           </div>
         </dl>
