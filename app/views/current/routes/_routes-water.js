@@ -611,28 +611,6 @@ router.post('*/water/abstraction-variation-answer', function (req, res) {
 });
 
 
-// WATER SECTION 2
-
-
-router.get('*/water/check-answers-project-details-and-benefits', function (req, res) {
-
-  req.session.data['water_completed_sections'] = '2'
-
-  req.session.data['water_s02_status'] = 'Completed'
-  req.session.data['water_s02_status_class'] = ''
-
-  if ( req.session.data['water_s03_status'] != 'Completed' ){
-    req.session.data['water_s03_status'] = 'Not started'
-  }
-
-  res.render( './' + req.originalUrl,{
-
-    backUrl : res.locals.prevURL
-
-  } )
-
-});
-
 
 router.get('*/water/project-summary', function (req, res) {
 
@@ -826,23 +804,6 @@ router.get('*/water/collaboration', function (req, res) {
 
 
 
-
-
-// WATER SECTION 3
-
-
-router.get('*/water/check-answers-contact-details', function (req, res) {
-
-req.session.data['water_completed_sections'] = '3'
-
-req.session.data['water_s03_status'] = 'Completed'
-req.session.data['water_s03_status_class'] = ''
-
-  res.render( './' + req.originalUrl, {
-    backUrl: res.locals.prevURL
-  })
-
-});
 
 
 router.get('*/water/business', function (req, res) {
