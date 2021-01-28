@@ -340,14 +340,27 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          Irrigated land (hectares)
+          Current irrigated land (hectares)
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['irrigated-land'] }}
+          {{ data['irrigated-land-current'] }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="irrigated-land">
-            Change<span class="govuk-visually-hidden"> irrigated land</span>
+            Change<span class="govuk-visually-hidden"> current irrigated land</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Projected irrigated land (hectares)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['irrigated-land-target'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="irrigated-land">
+            Change<span class="govuk-visually-hidden"> projected irrigated land</span>
           </a>
         </dd>
       </div>

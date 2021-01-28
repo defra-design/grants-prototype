@@ -11,20 +11,32 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
       <form class="form" action="{{ nextUrl }}" method="post">
 
         <div class="govuk-form-group">
-          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land">
-            How much land will be irrigated in total? 
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land-current">
+            How much land is currently irrigated per year? 
             </label>
           </h1>
-          <div id="irrigated-land-hint" class="govuk-hint">
-            Irrigated land in hectares
+          <div id="irrigated-land-current-hint" class="govuk-hint">
+            Enter figure in hectares
           </div>
-          <input class="govuk-input govuk-input--width-10" id="irrigated-land" name="irrigated-land" type="text" spellcheck="false" aria-describedby="irrigated-land-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land'] }}">
+          <input class="govuk-input govuk-input--width-10" id="irrigated-land-current" name="irrigated-land-current" type="text" spellcheck="false" aria-describedby="irrigated-land-current-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land-current'] }}">
         </div>
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land-target">
+            How much land will be irrigated per year after the project? 
+            </label>
+          </h1>
+          <div id="irrigated-land-target-hint" class="govuk-hint">
+            Enter figure in hectares
+          </div>
+          <input class="govuk-input govuk-input--width-10" id="irrigated-land-target" name="irrigated-land-target" type="text" spellcheck="false" aria-describedby="irrigated-land-target-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land-target'] }}">
+        </div>
+
 
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
