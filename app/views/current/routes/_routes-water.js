@@ -205,15 +205,21 @@ res.render( './' + req.originalUrl,{
 router.get('*/water/farming-type-answer', function (req, res) {
 
   var farmingType = req.session.data['farming-type']
+  var farmingTypeOther = req.session.data['farming-type-other-options']
 
-  if (farmingType == "no"){res.redirect('../water/farming-type-fail')}
-  else {
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      res.redirect('../water/answers')
-    }else{
-      res.redirect('../water/legal-status')
+  if ( !!farmingType && farmingType == "no" && !!farmingTypeOther ) {
+
+    if (farmingTypeOther == 'something else') {
+      res.redirect('../water/farming-type-fail')
+    } else {
+      farmingType = "no: [" + farmingTypeOther + "]";
     }
+    
   }
+
+  req.session.data['summary-farming-type'] = farmingType;
+  res.redirect('../water/legal-status')
+
 });
 
 
