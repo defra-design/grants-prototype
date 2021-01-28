@@ -326,7 +326,11 @@
           Project summary
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['project-summary'] }}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for item in data['project-summary'] %}
+              <li>{{ item | capitalize }}</li>
+            {% endfor %}
+          </ul>
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="project-summary">
