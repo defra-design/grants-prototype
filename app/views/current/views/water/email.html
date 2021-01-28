@@ -254,17 +254,29 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Irrigation water source
+              Current irrigation water source
             </dt>
             <dd class="govuk-summary-list__value">
               <ul class="govuk-list govuk-list--bullet">
-                {% for item in data['irrigation'] %}
+                {% for item in data['irrigation-current'] %}
                   <li>{{ item | capitalize }}</li>
                 {% endfor %}
               </ul>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Projected irrigation water source
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['irrigation-target'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-width-one-third">
               Irrigation systems
             </dt>

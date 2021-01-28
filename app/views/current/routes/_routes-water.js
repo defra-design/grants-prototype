@@ -680,17 +680,14 @@ router.get('*/water/irrigation-water-source', function (req, res) {
 
 router.post('*/water/irrigation-water-source-answer', function (req, res) {
 
-  var irrigationAnswer = req.session.data['irrigation'];
+  var irrigationTargetAnswer = req.session.data['irrigation-target'];
 
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-
-    if( irrigationAnswer == req.session.data['tempIrrigationAnswer']){
-      res.redirect('../water/answers')
-    }
+  if (!!irrigationTargetAnswer && irrigationTargetAnswer.includes("mains")){
+    res.redirect('../water/irrigation-water-source-fail')
   }
-
-  if (irrigationAnswer.includes("mains")){res.redirect('../water/irrigation-water-source-fail')}
-  else {res.redirect('../water/irrigation-systems')}
+  else {
+    res.redirect('../water/irrigation-systems')
+  }
 
 });
 
