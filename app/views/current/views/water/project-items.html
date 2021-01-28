@@ -22,9 +22,9 @@
                 Which items does your project need?
               </h1>
             </legend>
-            <!--<span id="project-items-hint" class="govuk-hint">
-              Select all that apply
-            </span>-->
+            <span id="project-items-hint" class="govuk-hint">
+              These are the items the grant will pay for.
+            </span>
 <h2 class="govuk-heading-m govuk-!-margin-top-6">Reservoir construction and infrastructure</h2>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
@@ -40,9 +40,15 @@
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-3" name="project-items" type="checkbox" value="overflow / spillway" {{ checked("project-items", "overflow / spillway") }}>
+                <input class="govuk-checkboxes__input" id="project-items-2" name="project-items" type="checkbox" value="reservoir" {{ checked("project-items", "reservoir") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-items-2">
+                  Construction of reservoir
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-items-3" name="project-items" type="checkbox" value="overflow/spillway" {{ checked("project-items", "overflow/spillway") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="project-items-3">
-                  Overflow / spillway
+                  Overflow/spillway
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
