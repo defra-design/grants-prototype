@@ -11,9 +11,51 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
       <form class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What systems are currently used to irrigate?
+              </h1>
+            </legend>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-1" name="irrigation-systems-current" type="checkbox" value="Trickle" {{ checked("irrigation-systems-current", "Trickle") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-1">
+                  Trickle
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-2" name="irrigation-systems-current" type="checkbox" value="Boom irrigator" {{ checked("irrigation-systems-current", "Boom irrigator") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-2">
+                  Boom irrigator
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-3" name="irrigation-systems-current" type="checkbox" value="Ebb and flood or capillary bed" {{ checked("irrigation-systems-current", "Ebb and flood or capillary bed") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-3">
+                  Ebb and flood or capillary bed
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-4" name="irrigation-systems-current" type="checkbox" value="Sprinklers" {{ checked("irrigation-systems-current", "Sprinklers") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-4">
+                  Sprinklers
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-5" name="irrigation-systems-current" type="checkbox" value="Rain gun" {{ checked("irrigation-systems-current", "Rain gun") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-5">
+                  Rain gun
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -24,32 +66,32 @@
             </legend>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-1" name="irrigation-systems" type="checkbox" value="Trickle" {{ checked("irrigation-systems", "Trickle") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-1">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-target-1" name="irrigation-systems-target" type="checkbox" value="Trickle" {{ checked("irrigation-systems-target", "Trickle") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-1">
                   Trickle
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-2" name="irrigation-systems" type="checkbox" value="Boom irrigator" {{ checked("irrigation-systems", "Boom irrigator") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-2">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-target-2" name="irrigation-systems-target" type="checkbox" value="Boom irrigator" {{ checked("irrigation-systems-target", "Boom irrigator") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-2">
                   Boom irrigator
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-3" name="irrigation-systems" type="checkbox" value="Ebb and flood" {{ checked("irrigation-systems", "Ebb and flood") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-3">
-                  Ebb and flood
+                <input class="govuk-checkboxes__input" id="irrigation-systems-target-3" name="irrigation-systems-target" type="checkbox" value="Ebb and flood or capillary bed" {{ checked("irrigation-systems-target", "Ebb and flood or capillary bed") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-3">
+                  Ebb and flood or capillary bed
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-4" name="irrigation-systems" type="checkbox" value="Sprinklers" {{ checked("irrigation-systems", "Sprinklers") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-4">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-target-4" name="irrigation-systems-target" type="checkbox" value="Sprinklers" {{ checked("irrigation-systems-target", "Sprinklers") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-4">
                   Sprinklers
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-5" name="irrigation-systems" type="checkbox" value="Rain gun" {{ checked("irrigation-systems", "Rain gun") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-5">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-target-5" name="irrigation-systems-target" type="checkbox" value="Rain gun" {{ checked("irrigation-systems-target", "Rain gun") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-5">
                   Rain gun
                 </label>
               </div>
