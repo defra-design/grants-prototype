@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Does the project need planning permission?
+  Has the project been granted planning permission?
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,32 +19,26 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Does the project need planning permission?
+                Does the project have planning permission or will have it before XX October 2021?
               </h1>
             </legend>
-            <div class="govuk-radios">
+            <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="planning-permission" name="planning-permission" type="radio" value="not needed" {{ checked("planning-permission", "not needed") }}>
+                <input class="govuk-radios__input" id="planning-permission" name="planning-permission" type="radio" value="yes" {{ checked("planning-permission", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="planning-permission">
-                  Not needed
+                  Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="planning-permission-2" name="planning-permission" type="radio" value="secured" {{ checked("planning-permission", "secured") }}>
+                <input class="govuk-radios__input" id="planning-permission-2" name="planning-permission" type="radio" value="no" {{ checked("planning-permission", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="planning-permission-2">
-                  Secured
+                  No
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="expected by 21 October 2021" {{ checked("planning-permission", "expected by 21 October 2021") }}>
+                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="not sure" {{ checked("planning-permission", "not-sure") }}>
                 <label class="govuk-label govuk-radios__label" for="planning-permission-3">
-                  Expected to have by 21 October 2021
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="won’t have by 21 October 2021" {{ checked("planning-permission", "won’t have by 21 October 2021") }}>
-                <label class="govuk-label govuk-radios__label" for="planning-permission-3">
-                  Won’t have by 21 October 2021
+                  Not sure
                 </label>
               </div>
             </div>

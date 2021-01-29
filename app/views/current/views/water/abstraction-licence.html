@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Does the project have an abstraction licence?
+  Does the project need an abstraction licence?
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="abstraction-required">Back</a>
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,35 +13,38 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="../water/abstraction-licence-answer" method="post">
+      <form class="form" action="{{ nextUrl }}" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Does the project have an abstraction licence or will have it before XX October 2021?
+                Does the project need an abstraction licence or a variation of one?
               </h1>
             </legend>
             <div class="govuk-radios">
-              <div id="email-hint" class="govuk-hint">
-                Contact the Environment Agency if you have questions about abstraction licences
-              </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="yes" {{ checked("abstraction-licence", "yes") }}>
+                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="not needed" {{ checked("abstraction-licence", "not needed") }}>
                 <label class="govuk-label govuk-radios__label" for="abstraction-licence">
-                  Yes
+                  Not needed
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="no" {{ checked("abstraction-licence", "no") }}>
+                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="secured" {{ checked("abstraction-licence", "secured") }}>
                 <label class="govuk-label govuk-radios__label" for="abstraction-licence-2">
-                  No
+                  Secured
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="not sure" {{ checked("abstraction-licence", "not-sure") }}>
+                <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="expected by 21 October 2021" {{ checked("abstraction-licence", "expected by 21 October 2021") }}>
                 <label class="govuk-label govuk-radios__label" for="abstraction-licence-3">
-                  Not sure
+                  Expected to have by 21 October 2021
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="won’t have by 21 October 2021" {{ checked("abstraction-licence", "won’t have by 21 October 2021") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence-3">
+                  Won’t have by 21 October 2021
                 </label>
               </div>
             </div>

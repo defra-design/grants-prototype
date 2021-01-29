@@ -494,67 +494,17 @@ router.post('*/water/project-start-answer', function (req, res) {
     if ( req.session.data['water_s01_status'] == 'Completed'){
       res.redirect('../water/answers')
     }else{
-      res.redirect('../water/planning-required')
+      res.redirect('../water/planning-permission')
     }
   }
 });
 
 // PLANNING PERMISSION
 
-router.get('*/water/planning-required', function (req, res) {
-
-  var backUrl = 'project-start'
-  var nextUrl = '../water/planning-required-answer'
-
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-  }
-
-  res.render( './' + req.originalUrl,{
-    backUrl: backUrl,
-    nextUrl: nextUrl
-  })
-
-});
-
-
-
-router.post('*/water/planning-required-answer', function (req, res) {
-
-  var planningRequired = req.session.data['planning-required']
-
-  if (planningRequired == "yes"){res.redirect('../water/planning-permission')}
-  if (planningRequired == "not sure"){res.redirect('../water/planning-required-condition')}
-  else {
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      res.redirect('../water/answers')
-    }else{
-      res.redirect('../water/abstraction-required')
-    }
-  }
-});
-
-
-
-router.get('*/water/planning-required-condition', function (req, res) {
-
-  var nextUrl = '../water/abstraction-required'
-
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // nextUrl = "../water/answers"
-  }
-
-  res.render( './' + req.originalUrl,{
-    nextUrl: nextUrl
-  })
-
-});
-
-
 router.get('*/water/planning-permission', function (req, res) {
 
-  var backUrl = 'planning-required'
-  var nextUrl = '../water/planning-permission-answer'
+  var backUrl = 'project-start'
+  var nextUrl = 'abstraction-licence'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
     // backUrl = "../water/answers"
@@ -566,23 +516,13 @@ router.get('*/water/planning-permission', function (req, res) {
   })
 
 });
-
-router.post('*/water/planning-permission-answer', function (req, res) {
-
-  var planningPermission = req.session.data['planning-permission']
-  
-  if (planningPermission == "yes"){res.redirect('../water/abstraction-required')}
-  else {res.redirect('../water/planning-progress-condition')}
-});
-
-
 
 // ABSTRACTION LICENCE
 
-router.get('*/water/abstraction-required', function (req, res) {
+router.get('*/water/abstraction-licence', function (req, res) {
 
-  var backUrl = res.locals.prevURL
-  var nextUrl = '../water/abstraction-required-answer'
+  var backUrl = 'planning-permission'
+  var nextUrl = 'project-summary'
 
   if ( req.session.data['water_s01_status'] == 'Completed' ){
     // backUrl = "../water/answers"
@@ -593,32 +533,6 @@ router.get('*/water/abstraction-required', function (req, res) {
     nextUrl: nextUrl
   })
 
-});
-
-
-router.post('*/water/abstraction-required-answer', function (req, res) {
-
-  var abstractionRequired = req.session.data['abstraction-required']
-
-  if (abstractionRequired == "yes"){res.redirect('../water/abstraction-licence')}
-  if (abstractionRequired == "not sure"){res.redirect('../water/abstraction-required-condition')}
-  else {res.redirect('../water/project-summary')}
-});
-
-router.post('*/water/abstraction-licence-answer', function (req, res) {
-
-  var abstractionLicence = req.session.data['abstraction-licence']
-
-  if (abstractionLicence == "yes"){res.redirect('../water/abstraction-variation')}
-  else {res.redirect('../water/abstraction-progress-condition')}
-});
-
-router.post('*/water/abstraction-variation-answer', function (req, res) {
-
-  var abstractionVariation = req.session.data['abstraction-variation']
-
-  if (abstractionVariation == "yes"){res.redirect('../water/abstraction-variation-condition')}
-  else {res.redirect('../water/project-summary')}
 });
 
 
