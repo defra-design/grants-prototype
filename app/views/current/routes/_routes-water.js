@@ -280,15 +280,20 @@ res.render( './' + req.originalUrl,{
 router.post('*/water/country-answer', function (req, res) {
 
   var country = req.session.data['country']
+  var postcode = req.session.data['postcode']
 
-  if (country == "yes"){
+  if (!!country && country == "yes"){
 
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      res.redirect('../water/answers')
-    }else{
-      res.redirect('../water/tenancy')}
+    if (!!postcode && postcode.length > 0){
+      country = "yes: [ Postcode: " + postcode + " ]";
     }
-  else {res.redirect('../water/country-fail')}
+
+    req.session.data['summary-country'] = country;
+    res.redirect('../water/tenancy')
+  }
+  else {
+    res.redirect('../water/country-fail')
+  }
 });
 
 
