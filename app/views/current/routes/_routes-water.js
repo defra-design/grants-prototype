@@ -667,16 +667,13 @@ router.get('*/water/environment', function (req, res) {
 
   var backUrl = 'productivity'
   var nextUrl = 'environment-answer'
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-    nextUrl = backUrl
-  }
+  var completedUrl = 'environment-answer-completed'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
-    })
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
@@ -698,6 +695,27 @@ router.post('*/water/environment-answer', function (req, res) {
 
   req.session.data['environment-summary'] = tempEnvironmentData;
   res.redirect('../water/collaboration');
+
+});
+
+router.post('*/water/environment-answer-completed', function (req, res) {
+
+  var tempEnvironmentData = req.session.data['environment'];
+  var tempReservoirData = req.session.data['environment-reservoir-options'];
+
+  if (  !!tempEnvironmentData && tempEnvironmentData.includes('Reservoir design') &&
+        !!tempReservoirData && tempReservoirData.length > 0
+  ) {
+    var addEnvData = 'Reservoir design: ['+ tempReservoirData.join(', ') +']';
+
+    tempEnvironmentData = tempEnvironmentData.map(x => (
+      x === 'Reservoir design' ?
+        addEnvData : x
+    ))
+  }
+
+  req.session.data['environment-summary'] = tempEnvironmentData;
+  res.redirect('../water/answers');
 
 });
 
