@@ -468,14 +468,12 @@ router.get('*/water/project-start', function (req, res) {
 
   var backUrl = 'remaining-costs'
   var nextUrl = '../water/project-start-answer'
-
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-  }
+  var completedUrl = 'project-start-answer-completed'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 
 });
@@ -486,13 +484,16 @@ router.post('*/water/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
   if (projectStart == "yes"){res.redirect('../water/project-start-fail')}
-  else {
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      res.redirect('../water/answers')
-    }else{
-      res.redirect('../water/planning-permission')
-    }
-  }
+  else { res.redirect('../water/planning-permission') }
+});
+
+
+router.post('*/water/project-start-answer-completed', function (req, res) {
+
+  var projectStart = req.session.data['project-start']
+
+  if (projectStart == "yes"){res.redirect('../water/project-start-fail')}
+  else { res.redirect('../water/answers') }
 });
 
 // PLANNING PERMISSION
