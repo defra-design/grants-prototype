@@ -368,16 +368,13 @@ router.get('*/water/project-items', function (req, res) {
 
   var backUrl = 'tenancy'
   var nextUrl = '../water/project-cost'
-
-  if( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = '../water/answers'
-    nextUrl = backUrl
-  }
+  var completedUrl = 'answers'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
-  } )
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
