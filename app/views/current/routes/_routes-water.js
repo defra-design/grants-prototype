@@ -502,14 +502,12 @@ router.get('*/water/planning-permission', function (req, res) {
 
   var backUrl = 'project-start'
   var nextUrl = 'abstraction-licence'
-
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-  }
+  var completedUrl = 'answers'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 
 });
