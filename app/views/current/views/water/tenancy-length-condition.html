@@ -19,9 +19,18 @@
 
       <p>You will need to extend your tenancy agreement before you can complete a full application.</p>
 
-      <form class="form" action="../water/project-items" method="post">
+      <form id="mainForm" class="form" action="../water/project-items" method="post">
 
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='answers'"
+            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to summary page
+          </button>
+        {% endif %}
+
 
       </form>
 

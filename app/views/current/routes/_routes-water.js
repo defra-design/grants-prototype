@@ -328,16 +328,13 @@ router.get('*/water/tenancy', function (req, res) {
 
   var backUrl = 'country'
   var nextUrl = '../water/tenancy-answer'
+  var completedUrl = 'answers'
 
-
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-  }
-
-res.render( './' + req.originalUrl,{
-  backUrl: backUrl,
-  nextUrl: nextUrl
-} )
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
@@ -347,14 +344,7 @@ router.post('*/water/tenancy-answer', function (req, res) {
   var tenant = req.session.data['tenancy']
 
   if (tenant == "yes"){
-
-
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      res.redirect('../water/answers')
-    }else{
-      res.redirect('../water/project-items')
-    }
-
+    res.redirect('../water/project-items')
   }
   else {res.redirect('../water/tenancy-length')}
 });
@@ -365,15 +355,13 @@ router.post('*/water/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
   if (tenancyLength == "no"){res.redirect('../water/tenancy-length-condition')}
-  else {
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      res.redirect('../water/answers')
-    }else{
-      res.redirect('../water/project-items')
-    }
-  }
+  else { res.redirect('../water/project-items') }
 });
 
+
+router.post('*/water/tenancy-length-answer-completed', function (req, res) {
+  res.redirect('../water/answers')
+});
 
 
 router.get('*/water/project-items', function (req, res) {
