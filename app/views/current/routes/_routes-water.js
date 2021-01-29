@@ -539,7 +539,7 @@ router.get('*/water/abstraction-licence', function (req, res) {
 
 router.get('*/water/project-summary', function (req, res) {
 
-  var backUrl = res.locals.prevURL
+  var backUrl = 'abstraction-licence'
   var nextUrl = '../water/irrigated-land'
 
   if ( req.session.data['water_s02_status'] == 'Completed' ){
@@ -792,7 +792,7 @@ router.get('*/water/survey', function (req, res) {
   req.session.data['water_s03_status_class'] = ''
   
     res.render( './' + req.originalUrl, {
-      backUrl: res.locals.prevURL
+      // backUrl: res.locals.prevURL
     })
   
   });
@@ -800,7 +800,7 @@ router.get('*/water/survey', function (req, res) {
 
   router.get('*/water/email', function (req, res) {
     res.render( './' + req.originalUrl, {
-      backUrl: res.locals.prevURL
+      // backUrl: res.locals.prevURL
     })
   });
 
