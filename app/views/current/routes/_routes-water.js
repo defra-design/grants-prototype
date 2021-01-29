@@ -185,20 +185,14 @@ router.get('*/water/farming-type', function (req, res) {
 
   var backUrl = 'start'
   var nextUrl = '../water/farming-type-answer'
+  var completedUrl = 'farming-type-answer-completed'
 
-  // test to check this section isn't completed...
 
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    backUrl = "start"
-  } else {
-    req.session.data['water_s01_status'] = 'In progress'
-    req.session.data['water_s01_status_class'] = 'govuk-tag--blue'
-  }
-
-res.render( './' + req.originalUrl,{
-  backUrl: backUrl,
-  nextUrl: nextUrl
-} )
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
@@ -221,6 +215,27 @@ router.get('*/water/farming-type-answer', function (req, res) {
   res.redirect('../water/legal-status')
 
 });
+
+router.get('*/water/farming-type-answer-completed', function (req, res) {
+
+  var farmingType = req.session.data['farming-type']
+  var farmingTypeOther = req.session.data['farming-type-other-options']
+
+  if ( !!farmingType && farmingType == "no" && !!farmingTypeOther ) {
+
+    if (farmingTypeOther == 'something else') {
+      res.redirect('../water/farming-type-fail')
+    } else {
+      farmingType = "no: [" + farmingTypeOther + "]";
+    }
+    
+  }
+
+  req.session.data['summary-farming-type'] = farmingType;
+  res.redirect('../water/answers')
+
+});
+
 
 
 
