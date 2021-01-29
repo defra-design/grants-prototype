@@ -534,14 +534,12 @@ router.get('*/water/project-summary', function (req, res) {
 
   var backUrl = 'abstraction-licence'
   var nextUrl = '../water/irrigated-land'
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    // nextUrl = "../water/answers"
-  }
+  var completedUrl = 'answers'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 
 });
@@ -550,14 +548,12 @@ router.get('*/water/irrigated-land', function (req, res) {
 
   var backUrl = 'project-summary'
   var nextUrl = '../water/irrigated-crops'
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    // nextUrl = "../water/answers"
-  }
+  var completedUrl = 'answers'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 
 });
@@ -566,14 +562,12 @@ router.get('*/water/irrigated-crops', function (req, res) {
 
   var backUrl = 'irrigated-land'
   var nextUrl = '../water/irrigation-water-source'
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    // nextUrl = "../water/answers"
-  }
+  var completedUrl = 'answers'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 
 });
