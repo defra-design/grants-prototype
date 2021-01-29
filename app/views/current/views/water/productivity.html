@@ -13,7 +13,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -63,6 +63,15 @@
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
         </button>
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to summary page
+          </button>
+        {% endif %}
+
 
       </form>
 

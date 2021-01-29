@@ -610,14 +610,12 @@ router.get('*/water/irrigation-systems', function (req, res) {
 
   var backUrl = 'irrigation-water-source'
   var nextUrl = '../water/productivity'
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    nextUrl = "../water/answers"
-  }
+  var completedUrl = 'answers'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 
 });
@@ -626,16 +624,13 @@ router.get('*/water/productivity', function (req, res) {
 
   var backUrl = 'irrigation-systems'
   var nextUrl = 'environment'
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-    nextUrl = backUrl
-  }
+  var completedUrl = 'answers'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
-    })
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
