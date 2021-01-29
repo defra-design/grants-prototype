@@ -13,7 +13,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="project-cost">
@@ -26,7 +26,16 @@
           <span class="govuk-body govuk-!-margin-right-2">£</span> <input class="govuk-input govuk-input--width-10" id="project-cost" name="project-cost" type="text" spellcheck="false" aria-describedby="project-cost-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['project-cost'] }}">
         </div>
 
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to summary page
+          </button>
+        {% endif %}
+
 
       </form>
 

@@ -384,42 +384,32 @@ router.get('*/water/project-cost', function (req, res) {
 
   req.session.data['currentProjectCost'] = req.session.data['project-cost']
 
-  console.log( req.session.data['currentProjectCost'] )
-
   var backUrl = 'project-items'
   var nextUrl = '../water/project-cost-answer'
+  var completedUrl = 'project-cost-answer-completed'
 
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-  }
-
-res.render( './' + req.originalUrl,{
-  backUrl: backUrl,
-  nextUrl: nextUrl
-} )
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
 
 router.post('*/water/project-cost-answer', function (req, res) {
-
   var projectCost = req.session.data['project-cost']
 
   if (projectCost < 87500 ){res.redirect('../water/project-cost-fail')}
-  else {
+  else { res.redirect('../water/grant') }
+})
 
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      if ( projectCost == req.session.data['currentProjectCost']){
-        res.redirect('../water/answers')
-      }else{
-        res.redirect('../water/grant')
-      }
-    }else{
-      res.redirect('../water/grant')
-    }
 
-  }
+router.post('*/water/project-cost-answer-completed', function (req, res) {
+  var projectCost = req.session.data['project-cost']
 
+  if (projectCost < 87500 ){res.redirect('../water/project-cost-fail')}
+  else { res.redirect('answers') }
 })
 
 
@@ -427,15 +417,13 @@ router.get('*/water/grant', function (req, res) {
 
   var backUrl = 'project-cost'
   var nextUrl = 'remaining-costs'
+  var completedUrl = 'answers'
 
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-  }
-
-res.render( './' + req.originalUrl,{
-  backUrl: backUrl,
-  nextUrl: nextUrl
-} )
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
