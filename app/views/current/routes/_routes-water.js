@@ -264,15 +264,13 @@ router.get('*/water/country', function (req, res) {
 
   var backUrl = 'legal-status'
   var nextUrl = '../water/country-answer'
+  var completedUrl = 'country-answer-completed'
 
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-  }
-
-res.render( './' + req.originalUrl,{
-  backUrl: backUrl,
-  nextUrl: nextUrl
-} )
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
@@ -296,6 +294,24 @@ router.post('*/water/country-answer', function (req, res) {
   }
 });
 
+router.post('*/water/country-answer-completed', function (req, res) {
+
+  var country = req.session.data['country']
+  var postcode = req.session.data['postcode']
+
+  if (!!country && country == "yes"){
+
+    if (!!postcode && postcode.length > 0){
+      country = "yes: [ Postcode: " + postcode + " ]";
+    }
+
+    req.session.data['summary-country'] = country;
+    res.redirect('../water/answers')
+  }
+  else {
+    res.redirect('../water/country-fail')
+  }
+});
 
 router.get('*/water/tenancy', function (req, res) {
 
@@ -523,14 +539,12 @@ router.get('*/water/abstraction-licence', function (req, res) {
 
   var backUrl = 'planning-permission'
   var nextUrl = 'project-summary'
-
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-  }
+  var completedUrl = 'answers'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 
 });
@@ -691,25 +705,23 @@ router.get('*/water/collaboration', function (req, res) {
 
   var backUrl = 'environment'
   var nextUrl = 'answers'
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-    nextUrl = backUrl
-  }
+  var completedUrl = 'answers'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 
 });
 
 
 router.get('*/water/answers', function (req, res) {
-
+  req.session.data['COMPLETED'] = true;
+  
   var backUrl = 'collaboration'
   var nextUrl = 'business'
-
+  
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
     nextUrl: nextUrl
