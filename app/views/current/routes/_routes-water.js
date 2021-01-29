@@ -576,32 +576,35 @@ router.get('*/water/irrigation-water-source', function (req, res) {
 
   req.session.data['tempIrrigationAnswer'] = req.session.data['irrigationAnswer']
   var backUrl = 'irrigated-crops'
-  var nextUrl = '../water/irrigation-water-source-answer'
-
-  if ( req.session.data['water_s02_status'] == 'Completed' ){
-    // nextUrl = "../water/answers"
-    // backUrl = "../water/answers"
-  }
+  var nextUrl = 'irrigation-water-source-answer'
+  var completedUrl = 'irrigation-water-source-answer-completed'
 
   res.render( './' + req.originalUrl,{
     backUrl: backUrl,
-    // nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 
 });
 
 router.post('*/water/irrigation-water-source-answer', function (req, res) {
-
   var irrigationTargetAnswer = req.session.data['irrigation-target'];
 
   if (!!irrigationTargetAnswer && irrigationTargetAnswer.includes("mains")){
     res.redirect('../water/irrigation-water-source-fail')
   }
-  else {
-    res.redirect('../water/irrigation-systems')
-  }
-
+  else { res.redirect('../water/irrigation-systems') }
 });
+
+router.post('*/water/irrigation-water-source-answer-completed', function (req, res) {
+  var irrigationTargetAnswer = req.session.data['irrigation-target'];
+
+  if (!!irrigationTargetAnswer && irrigationTargetAnswer.includes("mains")){
+    res.redirect('../water/irrigation-water-source-fail')
+  }
+  else { res.redirect('answers') }
+});
+
 
 router.get('*/water/irrigation-systems', function (req, res) {
 
