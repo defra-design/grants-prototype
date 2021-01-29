@@ -435,34 +435,30 @@ router.get('*/water/remaining-costs', function (req, res) {
 
   var backUrl = 'grant'
   var nextUrl = '../water/remaining-costs-answer'
+  var completedUrl = 'remaining-costs-answer-completed'
 
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "../water/answers"
-  }
-
-res.render( './' + req.originalUrl,{
-  backUrl: backUrl,
-  nextUrl: nextUrl
-} )
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
 
 router.post('*/water/remaining-costs-answer', function (req, res) {
-
   var remainingCosts = req.session.data['remaining-costs']
 
   if (remainingCosts == "no" ){res.redirect('../water/remaining-costs-fail')}
-  else {
+  else {  res.redirect('../water/project-start') }
+})
 
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      res.redirect('../water/answers')
-    }else{
-      res.redirect('../water/project-start')
-    }
 
-  }
+router.post('*/water/remaining-costs-answer-completed', function (req, res) {
+  var remainingCosts = req.session.data['remaining-costs']
 
+  if (remainingCosts == "no" ){res.redirect('../water/remaining-costs-fail')}
+  else {  res.redirect('../water/answers') }
 })
 
 
