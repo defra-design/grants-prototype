@@ -246,34 +246,30 @@ router.get('*/water/legal-status', function (req, res) {
 
   var backUrl = 'farming-type'
   var nextUrl = '../water/legal-status-answer'
+  var completedUrl = 'legal-status-answer-completed'
 
-  if ( req.session.data['water_s01_status'] == 'Completed' ){
-    // backUrl = "answers"
-  }
-
-res.render( './' + req.originalUrl,{
-  backUrl: backUrl,
-  nextUrl: nextUrl
-} )
+  res.render( './' + req.originalUrl,{
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
 
 });
 
 
 router.post('*/water/legal-status-answer', function (req, res) {
-
   var legalStatus = req.session.data['legal-status']
 
   if (legalStatus == "none"){res.redirect('../water/legal-status-fail')}
-  else {
-
-    if ( req.session.data['water_s01_status'] == 'Completed'){
-      res.redirect('../water/answers')
-    }else{
-      res.redirect('../water/country')}
-    }
+  else {res.redirect('../water/country')}
 });
 
+router.post('*/water/legal-status-answer-completed', function (req, res) {
+  var legalStatus = req.session.data['legal-status']
 
+  if (legalStatus == "none"){res.redirect('../water/legal-status-fail')}
+  else {res.redirect('../water/answers')}
+});
 
 router.get('*/water/country', function (req, res) {
 
