@@ -43,6 +43,10 @@ router.get('*/water/start', function (req, res) {
   req.session.data['water_s04_status'] = 'Cannot start yet'
   req.session.data['water_s04_status_class'] = 'govuk-tag--grey'
 
+  // ------------------------------------------
+    req.session.data['COMPLETED'] = false;
+  // ------------------------------------------
+
   res.render( './' + req.originalUrl, {
   })
 })
