@@ -1,0 +1,315 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Email
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">Reference number:</h1>
+    <h1 class="govuk-heading-l">GDA54X</h1>
+
+    <p>
+      As you’re eligible to apply, here is the 
+      <a href="answers.html">full application form.</a>
+    </p>
+    <p>The grant is highly competitive and you are competing against other projects.</p>
+    <p>You answered:</p>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+    
+        <h2 class="govuk-heading-m">Eligibility</h2>
+    
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Farm grows crops for food
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['summary-farming-type'] | capitalize }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Legal status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['legal-status'] | capitalize }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Project in England
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['summary-country'] | capitalize }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Project on own land
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['tenancy'] | capitalize }}
+            </dd>
+          </div>
+          {% if data['tenancy'] == "no" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Tenancy extends beyond six years
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">{{ data['tenancy-length'] | capitalize }}</p>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Project items
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['project-items'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Estimated project costs
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £{{ data['project-cost'] | toFixed(2) | commafy }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Able to pay remaining costs
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['remaining-costs'] | capitalize }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Project started
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['project-start'] | capitalize }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Planning permission
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['planning-permission'] | capitalize }}
+            </dd>
+          </div>
+    
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Abstraction licence
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['abstraction-licence'] | capitalize }}
+            </dd>
+          </div>
+        </dl>
+    
+        {% if (data['tenancy'] == "yes") and (data['tenancy-length'] == "no") %}
+        <div class="govuk-inset-text">
+            You will need to extend your tenancy beyond 2026 before you make a full application.
+        </div>
+        {% endif %}
+  <!--  
+        {% if data['planning-required'] == "not sure" %}
+        <div class="govuk-inset-text">
+            You will need to check if you need planning permission and secure it before you make a full application.
+        </div>
+        {% endif %}
+    
+        {% if (data['planning-permission'] == "no") and (data['planning-progress'] == "not sure") %}
+        <div class="govuk-inset-text">
+            You will need to secure planning permission prior to submitting a full application.
+        </div>
+        {% endif %}
+    
+        {% if data['abstraction-required'] == "not sure" %}
+        <div class="govuk-inset-text">
+            You will need to check if you need an abstraction licence and secure it before you make a full application.
+        </div>
+        {% endif %}
+    
+        {% if (data['abstraction-licence'] == "no") and (data['abstraction-progress'] == "not sure") %}
+        <div class="govuk-inset-text">
+            You will need to secure an abstraction licence before you make a full application.
+        </div>
+        {% endif %}
+    
+        {% if (data['abstraction-licence'] == "yes") and (data['abstraction-variation'] == "yes") %}
+        <div class="govuk-inset-text">
+            You will need to secure a variation to your abstraction licence before you make a full application.
+        </div>
+        {% endif %}
+  -->
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Project details and benefits</h2>
+    
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Project summary
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['project-summary'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Current irrigated land (hectares)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['irrigated-land-current'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Projected irrigated land (hectares)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['irrigated-land-target'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Irrigated crops
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['irrigated-crops'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Current irrigation water source
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['irrigation-current'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Projected irrigation water source
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['irrigation-target'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Current irrigation systems
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['irrigation-systems-current'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Projected irrigation systems
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['irrigation-systems-target'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Productivity
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['productivity'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Environment
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <ul class="govuk-list govuk-list--bullet">
+                {% for item in data['environment-summary'] %}
+                  <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+              Other farms supplied with water
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['collaboration'] }}
+            </dd>
+          </div>
+        </dl>
+
+      </div>
+    </div>
+
+    <h3 class="govuk-heading-m">What happens next</h3>
+
+    <p>If you submit a full application, we will:</p>
+    
+    <ul class="govuk-list govuk-list--bullet">
+    <li>assess the application against the others</li>
+    <li>consider how well it fits the priorities for funding </li>
+    <li>identify projects that provide the best value for taxpayers' money</li>
+    </ul>
+
+    <p>If your application is successful, you’ll be sent a funding agreement and can begin work on the project.</p>
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">You must not start the project</span>
+        You must not start the project<br><br>
+        You will need to make a full application and complete a grant funding agreement before you can start the project.
+      </strong>
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}

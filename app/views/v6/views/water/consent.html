@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check all your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-form-group govuk-!-margin-bottom-9">
+      <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
+        <p>I confirm that, to the best of my knowledge, the details I have provided are correct.</p>
+        <p>I understand the score was based on the answers I provided.</p>
+        <p>I am aware the information I submit will be checked.</p>
+        <p>I am happy to be contacted by Defra and RPA (or a third-party on their behalf).</p>
+
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="consent-to-terms" name="consent-to-terms" type="checkbox" value="consent-given">
+            <label class="govuk-label govuk-checkboxes__label" for="consent-to-terms">
+              I consent <span class="govuk-visually-hidden"> to the terms and conditions as outlined in the large countryside productivity grant guidance.
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <form class="form" action="{{ nextUrl }}" method="post">
+      <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+        Submit
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

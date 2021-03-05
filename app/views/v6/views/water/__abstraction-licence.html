@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Does the project have an abstraction licence?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="abstraction-required">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../water/abstraction-licence-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Does the project have an abstraction licence or will have it before XX October 2021?
+              </h1>
+            </legend>
+            <div class="govuk-radios">
+              <div id="email-hint" class="govuk-hint">
+                Contact the Environment Agency if you have questions about abstraction licences
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="yes" {{ checked("abstraction-licence", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="no" {{ checked("abstraction-licence", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence-2">
+                  No
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="not sure" {{ checked("abstraction-licence", "not-sure") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence-3">
+                  Not sure
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
