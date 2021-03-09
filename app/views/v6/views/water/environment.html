@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How will the project improve the environment?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                How will the project improve the environment?
+              </h1>
+            </legend>
+            
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="environment-1" name="environment" type="checkbox" value="Stop or reduce summer abstraction" {{ checked("environment", "Stop or reduce summer abstraction") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="environment-1">
+                  Stop or reduce summer abstraction
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="environment-2" name="environment" type="checkbox" value="More efficient use of water" {{ checked("environment", "More efficient use of water") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="environment-2">
+                   More efficient use of water
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="environment-3" name="environment" type="checkbox" value="Reduce soil erosion" {{ checked("environment", "Reduce soil erosion") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="environment-3">
+                  Reduce soil erosion
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="environment-4" name="environment" type="checkbox" value="Reservoir design" data-aria-controls="conditional-contact-preferences-conditional-2" {{ checked("environment", "Reservoir design") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="environment-4">
+                  Design of the reservoir
+                </label>
+
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-preferences-conditional-2">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="environment-reservoir-options-1" name="environment-reservoir-options" type="checkbox" value="Create a wetland area" {{ checked("environment-reservoir-options", "Create a wetland area") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="environment-reservoir-options-1">
+                    Create a wetland area
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="environment-reservoir-options-2" name="environment-reservoir-options" type="checkbox" value="Planting" {{ checked("environment-reservoir-options", "Planting") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="environment-reservoir-options-2">
+                    Planting
+                  </label>
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="environment-6" name="environment" type="checkbox" value="Reduce energy use" {{ checked("environment", "Reduce energy use") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="environment-6">
+                  Reduce energy use
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="environment-6" name="environment" type="checkbox" value="Improve environmental landscaping" {{ checked("environment", "Improve environmental landscaping") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="environment-6">
+                  Improve environmental landscaping
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="environment-7" name="environment" type="checkbox" value="No improvement" {{ checked("environment", "No improvement") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="environment-7">
+                  It does not improve the environment
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% if data['COMPLETED'] == true %}
+        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+          class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+        >
+          Back to summary page
+        </button>
+        {% endif %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Farm manager details
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../water/check-answers-all" method="post">
+	  
+	    <h1 class="govuk-heading-l"> Farm manager details </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farm-manager-full-name">
+            Full name
+          </label>
+          <input class="govuk-input" id="farm-manager-full-name" name="farm-manager-full-name" type="text" spellcheck="false" autocomplete="name" value="{{ data['farm-manager-full-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farm-manager-email">
+            Email address
+          </label>
+          <input class="govuk-input" id="farm-manager-email" name="farm-manager-email" type="farm-manager-email" spellcheck="false" aria-describedby="farm-manager-email-hint" autocomplete="farm-manager-email" value="{{ data['farm-manager-email'] }}">
+        </div>
+		
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farm-manager-phone">
+            UK telephone number
+          </label>
+          <input class="govuk-input" id="farm-manager-phone" name="farm-manager-phone" type="farm-manager-phone" spellcheck="false" aria-describedby="farm-manager-phone-hint" autocomplete="farm-manager-phone" value="{{ data['farm-manager-phone'] }}">
+        </div>
+
+        <h1 class="govuk-heading-l"> Farmer details </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-full-name">
+            Full name
+          </label>
+          <input class="govuk-input" id="farmer-full-name" name="farmer-full-name" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-full-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-email">
+            Email address
+          </label>
+          <input class="govuk-input" id="farmer-email" name="farmer-email" type="farmer-email" spellcheck="false" aria-describedby="farmer-email-hint" autocomplete="farmer-email" value="{{ data['farmer-email'] }}">
+        </div>
+		
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-phone">
+            UK telephone number
+          </label>
+          <input class="govuk-input" id="farmer-phone" name="farmer-phone" type="farmer-phone" spellcheck="false" aria-describedby="farmer-phone-hint" autocomplete="farmer-phone" value="{{ data['farmer-phone'] }}">
+        </div>
+
+
+		  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+			  Continue
+		  </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

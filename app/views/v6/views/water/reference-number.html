@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check all your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Reference number:</h1>
+    <h1 class="govuk-heading-l">GDA54X</h1>
+
+
+    <p>We have emailed you a link to the full application form.</p>
+    <p>The grant is highly competitive and you are competing against other projects.</p>
+
+    <h3 class="govuk-heading-m">What happens next</h3>
+
+    <p>If you submit a full application, we will:</p>
+    
+    <ul class="govuk-list govuk-list--bullet">
+    <li>assess the application against the others</li>
+    <li>consider how well it fits the priorities for funding </li>
+    <li>identify projects that provide the best value for taxpayers' money</li>
+    </ul>
+
+    <p>If your application is successful, you’ll be sent a funding agreement and can begin work on the project.</p>
+
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-warning-text__assistive">You must not start the project</span>
+        You must not start the project<br><br>
+        You will need to make a full application and complete a grant funding agreement before you can start the project.
+      </strong>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is the legal status of the {{ data['farming-type'] }} business?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What is the legal status of the farm business?
+              </h1>
+            </legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-6" name="legal-status" type="radio" value="charity" {{ checked("legal-status", "charity") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-6">
+                  Charity
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-7" name="legal-status" type="radio" value="community interest organisation" {{ checked("legal-status", "community interest organisation") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-7">
+                  Community interest organisation
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-3" name="legal-status" type="radio" value="limited company" {{ checked("legal-status", "limited company") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-3">
+                  Limited company
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-5" name="legal-status" type="radio" value="limited liability partnership" {{ checked("legal-status", "limited liability partnership") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-5">
+                  Limited liability partnership
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-2" name="legal-status" type="radio" value="partnership" {{ checked("legal-status", "partnership") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-2">
+                  Partnership
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-8" name="legal-status" type="radio" value="public organisation" {{ checked("legal-status", "public organisation") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-8">
+                  Public organisation
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status" name="legal-status" type="radio" value="sole trader" {{ checked("legal-status", "sole trader") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status">
+                  Sole trader
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-4" name="legal-status" type="radio" value="trust" {{ checked("legal-status", "trust") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-4">
+                  Trust
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-9" name="legal-status" type="radio" value="none" {{ checked("legal-status", "none") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-9">
+                  Other
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to summary page
+          </button>
+        {% endif %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
