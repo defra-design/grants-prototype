@@ -205,6 +205,9 @@ router.get('*/water/farming-type-answer', function (req, res) {
   var farmingType = req.session.data['farming-type']
   var farmingTypeOther = req.session.data['farming-type-other-options']
 
+  if (!!farmingType && farmingType == "Something else") {
+    res.redirect('../water/farming-type-fail') 
+  }
   if ( !!farmingType && farmingType == "no" && !!farmingTypeOther ) {
 
     if (farmingTypeOther == 'something else') {
@@ -225,8 +228,12 @@ router.get('*/water/farming-type-answer-completed', function (req, res) {
   var farmingType = req.session.data['farming-type']
   var farmingTypeOther = req.session.data['farming-type-other-options']
 
-  if ( !!farmingType && farmingType == "no" && !!farmingTypeOther ) {
+  if (!!farmingType && farmingType == "Something else") {
+    res.redirect('../water/farming-type-fail')
+  }
 
+  if ( !!farmingType && farmingType == "no" && !!farmingTypeOther ) {
+    
     if (farmingTypeOther == 'something else') {
       res.redirect('../water/farming-type-fail')
     } else {
