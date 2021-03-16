@@ -14,16 +14,17 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-        <h1 class="govuk-heading-l">Project summary</h1>
+        <h1 class="govuk-heading-l">Project details</h1>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <p>The project will:</p>
+            <h2 class="govuk-heading-m">The project will:</h2>
+            <p><span class="govuk-caption-m">Please select only one or two details</span></p>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-summary-1" name="project-summary" type="checkbox" value="introduce irrigation" {{ checked("project-summary", "introduce irrigation") }}>
+                <input class="govuk-checkboxes__input" id="project-summary-1" name="project-summary" type="checkbox" value="Change water source" {{ checked("project-summary", "Change water source") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="project-summary-1">
-                  Introduce irrigation
+                  Change water source 
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
@@ -36,6 +37,12 @@
                 <input class="govuk-checkboxes__input" id="project-summary-3" name="project-summary" type="checkbox" value="improve irrigation efficiency" {{ checked("project-summary", "improve irrigation efficiency") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="project-summary-3">
                   Improve irrigation efficiency
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-summary-4" name="project-summary" type="checkbox" value="introduce irrigation" {{ checked("project-summary", "introduce irrigation") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-summary-4">
+                  Introduce irrigation
                 </label>
               </div>
             </div>
