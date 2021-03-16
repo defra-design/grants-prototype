@@ -294,11 +294,7 @@
           Irrigated crops
         </dt>
         <dd class="govuk-summary-list__value">
-          <ul class="govuk-list govuk-list--bullet">
-            {% for item in data['irrigated-crops'] %}
-              <li>{{ item | capitalize }}</li>
-            {% endfor %}
-          </ul>
+          {{ data['irrigated-crops'] | capitalize }}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="irrigated-crops">
