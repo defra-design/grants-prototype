@@ -19,20 +19,26 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                What crops will be irrigated?
+                What main crops will be irrigated?
               </h1>
             </legend>
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigated-crops-1" name="irrigated-crops" type="checkbox" value="field-scale crops" {{ checked("irrigated-crops", "field-scale crops") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigated-crops-1">
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="irrigated-crops-1" name="irrigated-crops" type="radio" value="field-scale crops" {{ checked("irrigated-crops", "field-scale crops") }}>
+                <label class="govuk-label govuk-radios__label" for="irrigated-crops-1">
                   Field-scale crops (eg potatoes, onions, carrots)
                 </label>
               </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigated-crops-2" name="irrigated-crops" type="checkbox" value="protected cropping" {{ checked("irrigated-crops", "protected cropping") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigated-crops-2">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="irrigated-crops-2" name="irrigated-crops" type="radio" value="protected cropping" {{ checked("irrigated-crops", "protected cropping") }}>
+                <label class="govuk-label govuk-radios__label" for="irrigated-crops-2">
                   Protected cropping (eg glasshouse, poly tunnel)
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="irrigated-crops-3" name="irrigated-crops" type="radio" value="Fruit" {{ checked("irrigated-crops", "Fruit") }}>
+                <label class="govuk-label govuk-radios__label" for="irrigated-crops-3">
+                  Fruit(e.g. fruit,bush fruit)
                 </label>
               </div>
             </div>
