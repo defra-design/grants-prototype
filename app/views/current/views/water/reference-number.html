@@ -12,10 +12,11 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-    <h1 class="govuk-heading-l">Reference number:</h1>
-    <h1 class="govuk-heading-l">GDA54X</h1>
-
+    {% from "govuk/components/panel/macro.njk" import govukPanel %}
+    {{ govukPanel({
+      titleText: "Details submitted",
+      html: "Your reference number<br><strong>GDAA54X</strong>"
+    }) }}
 
     <p>We have emailed you a link to the full application form.</p>
     <p>The grant is highly competitive and you are competing against other projects.</p>
