@@ -12,11 +12,14 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {% from "govuk/components/panel/macro.njk" import govukPanel %}
-    {{ govukPanel({
-      titleText: "Details submitted",
-      html: "Your reference number<br><strong>GDAA54X</strong>"
-    }) }}
+    <div class="govuk-panel govuk-panel--confirmation">
+       <h1 class="govuk-panel__title">
+        Details submitted
+       </h1>
+    <div class="govuk-panel__body">
+      Your reference number<br><strong>GDAA54X</strong>
+    </div>
+   </div>
     <br>
     <div class="govuk-body">
       <p>You will get an email with a record of your answers.</p>
