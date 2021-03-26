@@ -15,9 +15,10 @@
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
+        {# first input #}
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land-current">
-            How much land is currently irrigated per year? 
+            How much land is currently irrigated per year?
             </label>
           </h1>
           <div id="irrigated-land-current-hint" class="govuk-hint">
@@ -25,7 +26,9 @@
           </div>
           <input class="govuk-input govuk-input--width-10" id="irrigated-land-current" name="irrigated-land-current" type="text" spellcheck="false" aria-describedby="irrigated-land-current-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land-current'] }}">
         </div>
+        {# first input #}
 
+        {# second input #}
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land-current">
             How much land will be irrigated per year after the project?
@@ -36,7 +39,19 @@
           </div>
           <input class="govuk-input govuk-input--width-10" id="irrigated-land-target" name="irrigated-land-target" type="text" spellcheck="false" aria-describedby="irrigated-land-target-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land-target'] }}">
         </div>
+        {# second input #}
 
+        {# new input just for checking it #}
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="weight">
+            What is the weight in kilograms?
+          </label>
+          </h1>
+          <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="weight" type="text" spellcheck="false">
+              <div class="govuk-input__suffix" aria-hidden="true">kg</div>
+          </div>
+        </div>
+        {# new input just for checking it #}
 
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
