@@ -15,6 +15,7 @@
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
+          {# 1 #}
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land-current">
             How much land is currently irrigated per year? 
@@ -25,7 +26,23 @@
           </div>
           <input class="govuk-input govuk-input--width-10" id="irrigated-land-current" name="irrigated-land-current" type="text" spellcheck="false" aria-describedby="irrigated-land-current-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land-current'] }}">
         </div>
+        {# 1 #}
 
+        {# 3 #}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="weight">
+            Weight, in kilograms
+          </label>
+          <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="weight" type="text" spellcheck="false">
+            <div class="govuk-input__suffix" aria-hidden="true">kg</div>
+          </div>
+        </div>
+
+
+        {# 3 #}
+        
+        
+        {# 2 #}
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land-current">
             How much land will be irrigated per year after the project?
@@ -36,7 +53,7 @@
           </div>
           <input class="govuk-input govuk-input--width-10" id="irrigated-land-target" name="irrigated-land-target" type="text" spellcheck="false" aria-describedby="irrigated-land-target-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land-target'] }}">
         </div>
-
+        {# 2 #}
 
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
