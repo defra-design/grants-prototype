@@ -14,29 +14,41 @@
     <div class="govuk-grid-column-full">
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land-current">
-            How much land is currently irrigated per year? 
+              How much land is currently irrigated per year? 
             </label>
           </h1>
-          <div id="irrigated-land-current-hint" class="govuk-hint">
-            Enter figure in hectares
+          <br>
+          <div class="govuk-body govuk-!-margin-bottom-0">
+          <strong>Hectares</strong>
+          <p id="irrigated-land-current-hint" class="govuk-hint">
+            Enter figure in hectares, for example 543.5
+          </p>
           </div>
-          <input class="govuk-input govuk-input--width-10" id="irrigated-land-current" name="irrigated-land-current" type="text" spellcheck="false" aria-describedby="irrigated-land-current-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land-current'] }}">
+          <div class="govuk-input__wrapper">
+          <input class="govuk-input govuk-!-width-one-quarter" id="irrigated-land-current" name="irrigated-land-current" type="text" spellcheck="false" aria-describedby="irrigated-land-current-hint"  value="{{ data['irrigated-land-current'] }}">
+          <div class="govuk-input__suffix" aria-hidden="true">ha</div>
+          </div>
         </div>
-
+       
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land-current">
             How much land will be irrigated per year after the project?
             </label>
           </h1>
-          <div id="irrigated-land-target-hint" class="govuk-hint">
-            Enter figure in hectares
+          <div class="govuk-body govuk-!-margin-bottom-0">
+          <strong>Hectares</strong>
+          <p id="irrigated-land-target-hint" class="govuk-hint">
+            Enter figure in hectares, for example 543.5
+          </p>
           </div>
-          <input class="govuk-input govuk-input--width-10" id="irrigated-land-target" name="irrigated-land-target" type="text" spellcheck="false" aria-describedby="irrigated-land-target-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['irrigated-land-target'] }}">
+          <div class="govuk-input__wrapper">
+          <input class="govuk-input govuk-!-width-one-quarter" id="irrigated-land-target" name="irrigated-land-target" type="text" spellcheck="false" aria-describedby="irrigated-land-target-hint" value="{{ data['irrigated-land-target'] }}">
+          <div class="govuk-input__suffix" aria-hidden="true">ha</div>
         </div>
-
+        <br><br>
+       
 
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
