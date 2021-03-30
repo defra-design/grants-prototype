@@ -777,8 +777,19 @@ router.post('*/water/applying-answer', function (req, res) {
 });
 
 
-router.get('*/water/consent', function (req, res) {
-  var nextUrl = "reference-number";
+router.get('*/water/your-details', function (req, res) {
+  var nextUrl = "contact-details";
+  var backUrl = "applying-answer";
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+});
+
+
+router.get('*/water/contact-details', function (req, res) {
+  var nextUrl = "address-details";
   var backUrl = "your-details";
 
   res.render( './' + req.originalUrl, {
@@ -786,6 +797,30 @@ router.get('*/water/consent', function (req, res) {
     nextUrl: nextUrl
   })
 });
+
+
+router.get('*/water/address-details', function (req, res) {
+  var nextUrl = "consent";
+  var backUrl = "contact-details";
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+});
+
+
+router.get('*/water/consent', function (req, res) {
+  var nextUrl = "reference-number";
+  var backUrl = "address-details";
+
+  res.render( './' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+});
+
+
 
 router.get('*/water/reference-number', function (req, res) {
   var backUrl = "consent";
