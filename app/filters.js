@@ -38,20 +38,20 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
-  filters.commafy = function(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  filters.commafy = function (number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   },
 
-  filters.toFixed = function(num, digits) {
-      return parseFloat(num).toFixed(digits).replace(/\.00$/,'');
+  filters.toFixed = function (num, digits) {
+    return parseFloat(num).toFixed(digits).replace(/\.00$/, '')
   },
 
-  filters.joinArray = function(array) {
+  filters.joinArray = function (array) {
     if (!array || array.length === 0) {
-      return '';
+      return ''
     }
-    return array.join(', ');
-}
+    return array.join(', ')
+  }
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
