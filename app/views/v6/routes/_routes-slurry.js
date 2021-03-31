@@ -163,7 +163,7 @@ router.get('*/slurry/farming-type', function (req, res) {
 
   // test to check this section isn't completed...
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../check-answers-check-you-can-apply'
   } else {
     req.session.data.slurry_s01_status = 'In progress'
@@ -179,8 +179,8 @@ router.get('*/slurry/farming-type', function (req, res) {
 router.get('*/slurry/farming-type-answer', function (req, res) {
   var farmingType = req.session.data['farming-type']
 
-  if (farmingType == 'no') { res.redirect('../slurry/farming-type-fail') } else {
-    if (req.session.data.slurry_s01_status == 'Completed') {
+  if (farmingType === 'no') { res.redirect('../slurry/farming-type-fail') } else {
+    if (req.session.data.slurry_s01_status === 'Completed') {
       res.redirect('../slurry/check-answers-check-you-can-apply')
     } else {
       res.redirect('../slurry/legal-status')
@@ -194,7 +194,7 @@ router.get('*/slurry/legal-status', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/legal-status-answer'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = 'check-answers-check-you-can-apply'
   }
 
@@ -207,8 +207,8 @@ router.get('*/slurry/legal-status', function (req, res) {
 router.post('*/slurry/legal-status-answer', function (req, res) {
   var legalStatus = req.session.data['legal-status']
 
-  if (legalStatus == 'none') { res.redirect('../slurry/legal-status-fail') } else {
-    if (req.session.data.slurry_s01_status == 'Completed') {
+  if (legalStatus === 'none') { res.redirect('../slurry/legal-status-fail') } else {
+    if (req.session.data.slurry_s01_status === 'Completed') {
       res.redirect('../slurry/check-answers-check-you-can-apply')
     } else {
       res.redirect('../slurry/country')
@@ -220,7 +220,7 @@ router.get('*/slurry/country', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/country-answer'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -233,8 +233,8 @@ router.get('*/slurry/country', function (req, res) {
 router.post('*/slurry/country-answer', function (req, res) {
   var country = req.session.data.country
 
-  if (country == 'yes') {
-    if (req.session.data.slurry_s01_status == 'Completed') {
+  if (country === 'yes') {
+    if (req.session.data.slurry_s01_status === 'Completed') {
       res.redirect('../slurry/check-answers-check-you-can-apply')
     } else {
       res.redirect('../slurry/project-items')
@@ -246,7 +246,7 @@ router.get('*/slurry/tenancy', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/tenancy-answer'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -259,8 +259,8 @@ router.get('*/slurry/tenancy', function (req, res) {
 router.post('*/slurry/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
-  if (tenant == 'yes') {
-    if (req.session.data.slurry_s01_status == 'Completed') {
+  if (tenant === 'yes') {
+    if (req.session.data.slurry_s01_status === 'Completed') {
       res.redirect('../slurry/check-answers-check-you-can-apply')
     } else {
       res.redirect('../slurry/project-start')
@@ -271,8 +271,8 @@ router.post('*/slurry/tenancy-answer', function (req, res) {
 router.post('*/slurry/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength == 'no') { res.redirect('../slurry/tenancy-length-condition') } else {
-    if (req.session.data.slurry_s01_status == 'Completed') {
+  if (tenancyLength === 'no') { res.redirect('../slurry/tenancy-length-condition') } else {
+    if (req.session.data.slurry_s01_status === 'Completed') {
       res.redirect('../slurry/check-answers-check-you-can-apply')
     } else {
       res.redirect('../slurry/project-start')
@@ -285,7 +285,7 @@ router.get('*/slurry/project-items', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/project-cost'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
     nextUrl = backUrl
   }
@@ -304,7 +304,7 @@ router.get('*/slurry/project-cost', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/project-cost-answer'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -318,8 +318,8 @@ router.post('*/slurry/project-cost-answer', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
   if (projectCost < 87500) { res.redirect('../slurry/project-cost-fail') } else {
-    if (req.session.data.slurry_s01_status == 'Completed') {
-      if (projectCost == req.session.data.currentProjectCost) {
+    if (req.session.data.slurry_s01_status === 'Completed') {
+      if (projectCost === req.session.data.currentProjectCost) {
         res.redirect('../slurry/check-answers-check-you-can-apply')
       } else {
         res.redirect('../slurry/grant')
@@ -334,7 +334,7 @@ router.get('*/slurry/grant', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = 'remaining-costs'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -348,7 +348,7 @@ router.get('*/slurry/remaining-costs', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/remaining-costs-answer'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -361,8 +361,8 @@ router.get('*/slurry/remaining-costs', function (req, res) {
 router.post('*/slurry/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts == 'no') { res.redirect('../slurry/remaining-costs-fail') } else {
-    if (req.session.data.slurry_s01_status == 'Completed') {
+  if (remainingCosts === 'no') { res.redirect('../slurry/remaining-costs-fail') } else {
+    if (req.session.data.slurry_s01_status === 'Completed') {
       res.redirect('../slurry/check-answers-check-you-can-apply')
     } else {
       res.redirect('../slurry/public-money')
@@ -376,7 +376,7 @@ router.get('*/slurry/public-money', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/public-money-answer'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -390,14 +390,14 @@ router.post('*/slurry/public-money-answer', function (req, res) {
   var publicMoney = req.session.data['public-money']
   var projectItems = req.session.data['project-items']
 
-  if (publicMoney == 'yes') { res.redirect('../slurry/public-money-fail') } else {
-    if (req.session.data.slurry_s01_status == 'Completed') {
+  if (publicMoney === 'yes') { res.redirect('../slurry/public-money-fail') } else {
+    if (req.session.data.slurry_s01_status === 'Completed') {
       res.redirect('../slurry/check-answers-check-you-can-apply')
     } else {
-      if (projectItems == undefined) { res.redirect('../slurry/project-start') }
-      if (projectItems.includes('storage bags') == true) { res.redirect('../slurry/tenancy') }
-      if (projectItems.includes('slurry separation systems') == true) { res.redirect('../slurry/tenancy') }
-      if (projectItems.includes('mild acidification equipment') == true) { res.redirect('../slurry/tenancy') } else {
+      if (projectItems === undefined) { res.redirect('../slurry/project-start') }
+      if (projectItems.includes('storage bags') === true) { res.redirect('../slurry/tenancy') }
+      if (projectItems.includes('slurry separation systems') === true) { res.redirect('../slurry/tenancy') }
+      if (projectItems.includes('mild acidification equipment') === true) { res.redirect('../slurry/tenancy') } else {
         res.redirect('../slurry/project-start')
       }
     }
@@ -423,8 +423,8 @@ router.get('*/slurry/project-start', function (req, res) {
 router.post('*/slurry/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart == 'yes') { res.redirect('../slurry/project-start-fail') } else {
-    if (req.session.data.slurry_s01_status == 'Completed') {
+  if (projectStart === 'yes') { res.redirect('../slurry/project-start-fail') } else {
+    if (req.session.data.slurry_s01_status === 'Completed') {
       res.redirect('../slurry/check-answers-check-you-can-apply')
     } else {
       res.redirect('../slurry/planning-required')
@@ -438,7 +438,7 @@ router.get('*/slurry/planning-required', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/planning-required-answer'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -451,9 +451,9 @@ router.get('*/slurry/planning-required', function (req, res) {
 router.post('*/slurry/planning-required-answer', function (req, res) {
   var planningRequired = req.session.data['planning-required']
 
-  if (planningRequired == 'yes') { res.redirect('../slurry/planning-permission') }
-  if (planningRequired == 'not sure') { res.redirect('../slurry/planning-required-condition') } else {
-    if (req.session.data.slurry_s01_status == 'Completed') {
+  if (planningRequired === 'yes') { res.redirect('../slurry/planning-permission') }
+  if (planningRequired === 'not sure') { res.redirect('../slurry/planning-required-condition') } else {
+    if (req.session.data.slurry_s01_status === 'Completed') {
       res.redirect('../slurry/check-answers-check-you-can-apply')
     } else {
       res.redirect('../slurry/check-answers-check-you-can-apply')
@@ -464,7 +464,7 @@ router.post('*/slurry/planning-required-answer', function (req, res) {
 router.get('*/slurry/planning-required-condition', function (req, res) {
   var nextUrl = '../slurry/check-answers-check-you-can-apply'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     nextUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -477,7 +477,7 @@ router.get('*/slurry/planning-permission', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/planning-permission-answer'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -490,14 +490,14 @@ router.get('*/slurry/planning-permission', function (req, res) {
 router.post('*/slurry/planning-permission-answer', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
 
-  if (planningPermission == 'yes') { res.redirect('../slurry/check-answers-check-you-can-apply') } else { res.redirect('../slurry/planning-progress') }
+  if (planningPermission === 'yes') { res.redirect('../slurry/check-answers-check-you-can-apply') } else { res.redirect('../slurry/planning-progress') }
 })
 
 router.get('*/slurry/planning-progress', function (req, res) {
   var backUrl = '../slurry/planning-permission'
   var nextUrl = '../slurry/planning-progress-answer'
 
-  if (req.session.data.slurry_s01_status == 'Completed') {
+  if (req.session.data.slurry_s01_status === 'Completed') {
     backUrl = '../slurry/check-answers-check-you-can-apply'
   }
 
@@ -510,8 +510,8 @@ router.get('*/slurry/planning-progress', function (req, res) {
 router.post('*/slurry/planning-progress-answer', function (req, res) {
   var planningProgress = req.session.data['planning-progress']
 
-  if (planningProgress == 'yes') { res.redirect('../slurry/check-answers-check-you-can-apply') }
-  if (planningProgress == 'not sure') { res.redirect('../slurry/planning-progress-condition') } else { res.redirect('../slurry/planning-permission-fail') }
+  if (planningProgress === 'yes') { res.redirect('../slurry/check-answers-check-you-can-apply') }
+  if (planningProgress === 'not sure') { res.redirect('../slurry/planning-progress-condition') } else { res.redirect('../slurry/planning-permission-fail') }
 })
 
 router.get('*/slurry/check-answers-check-you-can-apply', function (req, res) {
@@ -522,7 +522,7 @@ router.get('*/slurry/check-answers-check-you-can-apply', function (req, res) {
   req.session.data.slurry_s01_status = 'Completed'
   req.session.data.slurry_s01_status_class = ''
 
-  if (req.session.data.slurry_s02_status != 'Completed') {
+  if (req.session.data.slurry_s02_status !== 'Completed') {
     req.session.data.slurry_s02_status = 'Not started'
   }
 
@@ -539,7 +539,7 @@ router.get('*/slurry/check-answers-project-details-and-benefits', function (req,
   req.session.data.slurry_s02_status = 'Completed'
   req.session.data.slurry_s02_status_class = ''
 
-  if (req.session.data.slurry_s03_status != 'Completed') {
+  if (req.session.data.slurry_s03_status !== 'Completed') {
     req.session.data.slurry_s03_status = 'Not started'
   }
 
@@ -554,7 +554,7 @@ router.get('*/slurry/project', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/new-slurry'
 
-  if (req.session.data.slurry_s02_status == 'Completed') {
+  if (req.session.data.slurry_s02_status === 'Completed') {
     nextUrl = '../slurry/check-answers-project-details-and-benefits'
   }
 
@@ -568,7 +568,7 @@ router.get('*/slurry/new-slurry', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = 'collaboration'
 
-  if (req.session.data.slurry_s02_status == 'Completed') {
+  if (req.session.data.slurry_s02_status === 'Completed') {
     backUrl = '../slurry/check-answers-project-details-and-benefits'
     nextUrl = backUrl
   }
@@ -583,7 +583,7 @@ router.get('*/slurry/collaboration', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = 'productivity'
 
-  if (req.session.data.slurry_s02_status == 'Completed') {
+  if (req.session.data.slurry_s02_status === 'Completed') {
     backUrl = '../slurry/check-answers-project-details-and-benefits'
     nextUrl = backUrl
   }
@@ -598,7 +598,7 @@ router.get('*/slurry/productivity', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = 'environment'
 
-  if (req.session.data.slurry_s02_status == 'Completed') {
+  if (req.session.data.slurry_s02_status === 'Completed') {
     backUrl = '../slurry/check-answers-project-details-and-benefits'
     nextUrl = backUrl
   }
@@ -612,7 +612,7 @@ router.get('*/slurry/productivity', function (req, res) {
 router.get('*/slurry/environment', function (req, res) {
   var backUrl = res.locals.prevURL
 
-  if (req.session.data.slurry_s02_status == 'Completed') {
+  if (req.session.data.slurry_s02_status === 'Completed') {
     backUrl = '../slurry/check-answers-project-details-and-benefits'
   }
 
@@ -635,7 +635,7 @@ router.get('*/slurry/check-answers-contact-details', function (req, res) {
 })
 
 router.get('*/slurry/business', function (req, res) {
-  if (req.session.data.slurry_s03_status != 'Completed') {
+  if (req.session.data.slurry_s03_status !== 'Completed') {
     req.session.data.slurry_s03_status = 'In progress'
     req.session.data.slurry_s03_status_class = 'govuk-tag--blue'
   }
@@ -643,7 +643,7 @@ router.get('*/slurry/business', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../slurry/business-answer'
 
-  if (req.session.data.slurry_s03_status == 'Completed') {
+  if (req.session.data.slurry_s03_status === 'Completed') {
     backUrl = '../slurry/check-answers-contact-details'
   }
 
@@ -656,19 +656,19 @@ router.get('*/slurry/business', function (req, res) {
 router.post('*/slurry/business-answer', function (req, res) {
   var businessAnswer = req.session.data['new-business']
 
-  if (businessAnswer == 'no') { res.redirect('../slurry/new-business-condition') } else { res.redirect('../slurry/applying') }
+  if (businessAnswer === 'no') { res.redirect('../slurry/new-business-condition') } else { res.redirect('../slurry/applying') }
 })
 
 router.post('*/slurry/applying-answer', function (req, res) {
   var applyingAnswer = req.session.data.applying
 
-  if (applyingAnswer == 'other') { res.redirect('../slurry/preferred-contact') } else { res.redirect('../slurry/your-details') }
+  if (applyingAnswer === 'other') { res.redirect('../slurry/preferred-contact') } else { res.redirect('../slurry/your-details') }
 })
 
 router.get('*/slurry/your-details', function (req, res) {
   var backUrl
 
-  if (req.session.data.applying == 'own') {
+  if (req.session.data.applying === 'own') {
     backUrl = 'applying'
   } else {
     backUrl = 'preferred-contact'
@@ -682,19 +682,19 @@ router.get('*/slurry/your-details', function (req, res) {
 router.post('*/slurry/your-details-answer', function (req, res) {
   var applyingAnswer = req.session.data.applying
 
-  if (applyingAnswer == 'other') { res.redirect('../slurry/applicant-details') } else { res.redirect('../slurry/check-answers-contact-details') }
+  if (applyingAnswer === 'other') { res.redirect('../slurry/applicant-details') } else { res.redirect('../slurry/check-answers-contact-details') }
 })
 
 router.post('*/slurry/preferred-contact-answer', function (req, res) {
   var preferredContact = req.session.data['preferred-contact']
 
-  if (preferredContact == 'just the applicant') { res.redirect('../slurry/applicant-details') } else { res.redirect('../slurry/your-details') }
+  if (preferredContact === 'just the applicant') { res.redirect('../slurry/applicant-details') } else { res.redirect('../slurry/your-details') }
 })
 
 router.get('*/slurry/applicant-details', function (req, res) {
   var backUrl
 
-  if (req.session.data['preferred-contact'] == 'just the applicant') {
+  if (req.session.data['preferred-contact'] === 'just the applicant') {
     backUrl = 'preferred-contact'
   } else {
     backUrl = 'your-details'

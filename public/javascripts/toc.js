@@ -11,7 +11,7 @@ $('h2').each(function () {
   title = el.text()
   link = '#' + el.attr('id')
 
-  if (link != '#undefined') {
+  if (link !== '#undefined') {
     newLine =
       '<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">' +
         '<a class="gem-c-contents-list__link " href="' + link + '">' +

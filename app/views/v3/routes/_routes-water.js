@@ -681,7 +681,7 @@ router.get('*/water/check-answers-contact-details', function (req, res) {
 })
 
 router.get('*/water/business', function (req, res) {
-  if (req.session.data.water_s03_status != 'Completed') {
+  if (req.session.data.water_s03_status !== 'Completed') {
     req.session.data.water_s03_status = 'In progress'
     req.session.data.water_s03_status_class = 'govuk-tag--blue'
   }
@@ -689,7 +689,7 @@ router.get('*/water/business', function (req, res) {
   var backUrl = res.locals.prevURL
   var nextUrl = '../water/business-answer'
 
-  if (req.session.data.water_s03_status == 'Completed') {
+  if (req.session.data.water_s03_status === 'Completed') {
     backUrl = '../water/check-answers-contact-details'
   }
 
@@ -702,19 +702,19 @@ router.get('*/water/business', function (req, res) {
 router.post('*/water/business-answer', function (req, res) {
   var businessAnswer = req.session.data['new-business']
 
-  if (businessAnswer == 'no') { res.redirect('../water/new-business-condition') } else { res.redirect('../water/applying') }
+  if (businessAnswer === 'no') { res.redirect('../water/new-business-condition') } else { res.redirect('../water/applying') }
 })
 
 router.post('*/water/applying-answer', function (req, res) {
   var applyingAnswer = req.session.data.applying
 
-  if (applyingAnswer == 'other') { res.redirect('../water/preferred-contact') } else { res.redirect('../water/your-details') }
+  if (applyingAnswer === 'other') { res.redirect('../water/preferred-contact') } else { res.redirect('../water/your-details') }
 })
 
 router.get('*/water/your-details', function (req, res) {
   var backUrl
 
-  if (req.session.data.applying == 'own') {
+  if (req.session.data.applying === 'own') {
     backUrl = 'applying'
   } else {
     backUrl = 'preferred-contact'
@@ -728,19 +728,19 @@ router.get('*/water/your-details', function (req, res) {
 router.post('*/water/your-details-answer', function (req, res) {
   var applyingAnswer = req.session.data.applying
 
-  if (applyingAnswer == 'other') { res.redirect('../water/applicant-details') } else { res.redirect('../water/check-answers-contact-details') }
+  if (applyingAnswer === 'other') { res.redirect('../water/applicant-details') } else { res.redirect('../water/check-answers-contact-details') }
 })
 
 router.post('*/water/preferred-contact-answer', function (req, res) {
   var preferredContact = req.session.data['preferred-contact']
 
-  if (preferredContact == 'just the applicant') { res.redirect('../water/applicant-details') } else { res.redirect('../water/your-details') }
+  if (preferredContact === 'just the applicant') { res.redirect('../water/applicant-details') } else { res.redirect('../water/your-details') }
 })
 
 router.get('*/water/applicant-details', function (req, res) {
   var backUrl
 
-  if (req.session.data['preferred-contact'] == 'just the applicant') {
+  if (req.session.data['preferred-contact'] === 'just the applicant') {
     backUrl = 'preferred-contact'
   } else {
     backUrl = 'your-details'
