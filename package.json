@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node start.js",
     "lint": "standard",
+    "lint-fix": "standard --fix",
     "test": "npm run lint && gulp generate-assets && jest"
   },
   "dependencies": {
@@ -57,5 +58,10 @@
     "node-sass": "^4.14.1",
     "standard": "^14.3.3",
     "supertest": "^4.0.2"
+  },
+  "standard": {
+    "globals": [
+      "$"
+    ]
   }
 }

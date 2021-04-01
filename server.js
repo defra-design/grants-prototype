@@ -209,7 +209,7 @@ if (useAutoStoreData === 'true') {
 }
 
 // Logging session data
- if (useLogging !== 'false') {
+if (useLogging !== 'false') {
   app.use((req, res, next) => {
     const all = (useLogging === 'true')
     const post = (useLogging === 'post' && req.method === 'POST')
