@@ -519,7 +519,7 @@ router.get('*/water/irrigation-systems', function (req, res) {
 
 router.get('*/water/productivity', function (req, res) {
   var backUrl = 'irrigation-systems'
-  var nextUrl = 'environment'
+  var nextUrl = 'collaboration'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -529,8 +529,10 @@ router.get('*/water/productivity', function (req, res) {
   })
 })
 
-router.get('*/water/environment', function (req, res) {
-  var backUrl = 'productivity'
+// enviroment codes
+
+// router.get('*/water/environment', function (req, res) {
+/* var backUrl = 'productivity'
   var nextUrl = 'environment-answer'
   var completedUrl = 'environment-answer-completed'
 
@@ -540,9 +542,10 @@ router.get('*/water/environment', function (req, res) {
     completedUrl: completedUrl
   })
 })
+*/
 
-router.post('*/water/environment-answer', function (req, res) {
-  var tempEnvironmentData = req.session.data.environment
+// router.post('*/water/environment-answer', function (req, res) {
+/* var tempEnvironmentData = req.session.data.environment
   var tempReservoirData = req.session.data['environment-reservoir-options']
 
   if (!!tempEnvironmentData && tempEnvironmentData.includes('Reservoir design') &&
@@ -559,9 +562,10 @@ router.post('*/water/environment-answer', function (req, res) {
   req.session.data['environment-summary'] = tempEnvironmentData
   res.redirect('../water/collaboration')
 })
+*/
 
-router.post('*/water/environment-answer-completed', function (req, res) {
-  var tempEnvironmentData = req.session.data.environment
+// router.post('*/water/environment-answer-completed', function (req, res) {
+/* var tempEnvironmentData = req.session.data.environment
   var tempReservoirData = req.session.data['environment-reservoir-options']
 
   if (!!tempEnvironmentData && tempEnvironmentData.includes('Reservoir design') &&
@@ -579,8 +583,10 @@ router.post('*/water/environment-answer-completed', function (req, res) {
   res.redirect('../water/answers')
 })
 
+end of the enviroment codes */
+
 router.get('*/water/collaboration', function (req, res) {
-  var backUrl = 'environment'
+  var backUrl = 'productivity'
   var nextUrl = 'answers'
   var completedUrl = 'answers'
 
