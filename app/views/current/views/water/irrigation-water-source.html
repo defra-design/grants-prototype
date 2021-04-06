@@ -22,6 +22,8 @@
                 Where does your current irrigation water come from?
               </h1>
             </legend>
+            <span class="govuk-caption-m">Select one or two options</span>
+            <br>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="irrigation-current-1" name="irrigation-current" type="checkbox" value="Peak flow" {{ checked("irrigation-current", "Peak flow") }}>
@@ -70,6 +72,8 @@
                 Where will the irrigation water come from?
               </h1>
             </legend>
+            <span class="govuk-caption-m">Select one or two options</span>
+            <br>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="irrigation-target-1" name="irrigation-target" type="checkbox" value="Peak flow" {{ checked("irrigation-target", "Peak flow") }}>
@@ -84,14 +88,20 @@
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-target-3" name="irrigation-target" type="checkbox" value="Surface abstraction" {{ checked("irrigation-target", "Surface abstraction") }}>
+                <input class="govuk-checkboxes__input" id="irrigation-target-3" name="irrigation-target" type="checkbox" value="Rain water harvesting" {{ checked("irrigation-target", "Rain water harvesting") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="irrigation-target-3">
+                  Rain water harvesting
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-target-4" name="irrigation-target" type="checkbox" value="Surface abstraction" {{ checked("irrigation-target", "Surface abstraction") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-target-4">
                   Summer water surface abstraction
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-target-4" name="irrigation-target" type="checkbox" value="mains" {{ checked("irrigation-target", "mains") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-target-4">
+                <input class="govuk-checkboxes__input" id="irrigation-target-5" name="irrigation-target" type="checkbox" value="mains" {{ checked("irrigation-target", "mains") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-target-5">
                   Mains
                 </label>
               </div>
