@@ -17,15 +17,21 @@
 
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="project-cost">
-              What is the estimated cost of the items? 
+              What is the estimated cost of the items?
             </label>
           </h1>
           <div id="account-number-hint" class="govuk-hint">
-             Do not include VAT.
+             You can only apply for a grant of up to 40% of the estimated costs.Do not include VAT.
           </div>
-          <span class="govuk-body govuk-!-margin-right-2">£</span> <input class="govuk-input govuk-input--width-10" id="project-cost" name="project-cost" type="text" spellcheck="false" aria-describedby="project-cost-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['project-cost'] }}">
+          <div class="govuk-body">
+           Pounds
+          <span class="govuk-caption-m">For example 95000</span>
+          <div class="govuk-input__wrapper">
+          <span  class="govuk-input__prefix" aria-hidden="true">£</span> <input class="govuk-input govuk-input--width-10" id="project-cost" name="project-cost" type="text" spellcheck="false" aria-describedby="project-cost-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['project-cost'] }}">
+          </div>
+          </div>
         </div>
-
+        <br>
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
         {% if data['COMPLETED'] == true %}
