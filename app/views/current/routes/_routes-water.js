@@ -601,6 +601,16 @@ router.get('*/water/answers', function (req, res) {
   req.session.data.COMPLETED = true
 
   var backUrl = 'collaboration'
+  var nextUrl = 'next-steps'
+
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+})
+
+router.get('*/water/next-steps', function (req, res) {
+  var backUrl = 'answers'
   var nextUrl = 'business'
 
   res.render('./' + req.originalUrl, {
@@ -615,7 +625,7 @@ router.get('*/water/business', function (req, res) {
     req.session.data.water_s03_status_class = 'govuk-tag--blue'
   }
 
-  var backUrl = 'answers'
+  var backUrl = 'next-steps'
   var nextUrl = '../water/applying'
 
   if (req.session.data.water_s03_status === 'Completed') {
