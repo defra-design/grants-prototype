@@ -22,6 +22,7 @@
                 Is the planned project on land the farm business owns?
               </h1>
             </legend>
+            <br><br>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="tenancy" name="tenancy" type="radio" value="yes" {{ checked("tenancy", "yes") }}>
@@ -38,7 +39,7 @@
             </div>
           </fieldset>
         </div>
-
+        <br><br>
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
         {% if data['COMPLETED'] == true %}
