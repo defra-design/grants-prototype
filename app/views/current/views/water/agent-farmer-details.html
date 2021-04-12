@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Agent-Farmer-Details
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="../water/address-details">Back</a>
+{% endblock %}
+
+{% block content %}
+     <div class="govuk-grid-row">
+         <div class="govuk-grid-column-two-thirds">
+             <form class="form" action="../water/agent-farmer-contact-details" method="post">
+                <h1 class="govuk-heading-l"> Farmer's details</h1>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="farmer-title">
+                            Title(optional)
+                        </label>
+                        <input class="govuk-input govuk-!-width-one-quarter" id="farmer-title" name="farmer-title" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-title'] }}">
+                    </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="farmer-firstname">
+                                First name
+                            </label>
+                            <input class="govuk-input govuk-!-width-one-half" id="farmer-firstname" name="farmer-firstname" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-firstname'] }}">
+                        </div>
+
+                         <div class="govuk-form-group">
+                            <label class="govuk-label" for="farmer-lastname">
+                                Last name
+                            </label>
+                            <input class="govuk-input govuk-!-width-one-half" id="farmer-lastname" name="farmer-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-lastname'] }}">
+                        </div>
+
+		        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+			        Continue
+		        </button>
+             </form>
+          </div>   
+     </div>
+{% endblock %}     
