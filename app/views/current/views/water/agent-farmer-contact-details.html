@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Agent-Farmer-Contact-Details
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="../water/agent-farmer-details">Back</a>
+{% endblock %}
+
+{% block content %}
+     <div class="govuk-grid-row">
+         <div class="govuk-grid-column-two-thirds">
+             <form class="form" action="../water/agent-farmer-address" method="post">
+                <h1 class="govuk-heading-l">Farmer's contact details</h1>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-email">
+                        Email address
+                        <div id="event-name-hint" class="govuk-hint">
+                            We'll only use this to send you confirmation
+                        </div>
+                    </label>
+                    <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-email" name="farmer-email" type="farmer-email" spellcheck="false" aria-describedby="farmer-email-hint" autocomplete="farmer-email" value="{{ data['farmer-email'] }}">
+                </div>
+		
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-landline">
+                        Landline number(optional)
+                    </label>
+                    <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-landline" name="farmer-landline" type="farmer-landline" spellcheck="false" aria-describedby="farmer-landline-hint" autocomplete="farmer-landline" value="{{ data['farmer-landline'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-mobile">
+                        Mobile number
+                    </label>
+                    <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-mobile" name="farmer-mobile" type="farmer-mobile" spellcheck="false" aria-describedby="farmer-mobile-hint" autocomplete="farmer-mobile" value="{{ data['farmer-mobile'] }}">
+                 </div>
+
+                <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>
+        </div>
+    </div>   
+{% endblock %}     

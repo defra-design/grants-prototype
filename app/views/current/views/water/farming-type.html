@@ -22,6 +22,7 @@
                 What crops are you growing?
               </h1>
             </legend>
+            <br><br>
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="farming-type-1" name="farming-type" type="radio" value="Crops for the food industry" {{ checked("farming-type", "Crops for the food industry") }}>
@@ -44,7 +45,7 @@
               </div>
           </fieldset>
         </div>
-
+        <br><br>
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
         {% if data['COMPLETED'] == true %}
