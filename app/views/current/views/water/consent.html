@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block beforeContent %}
-<a class="govuk-back-link" href="../water/address-details">Back</a>
+{% if (data['applicant'] == "Agent")%}
+  <a class="govuk-back-link" href="../water/agent-farmer-address">Back</a>
+{%else%}
+  <a class="govuk-back-link" href="../water/address-details">Back</a>
+{%endif%}
 {% endblock %}
 
 {% block content %}

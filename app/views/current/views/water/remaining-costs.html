@@ -24,9 +24,11 @@ Meeting the remaining project costs
               Can you pay the remaining costs of £{{ remainingCosts | toFixed(2) | commafy }}?
             </h1>
           </legend>
+          <br>
           <div id="public-money-hint" class="govuk-hint">
             You cannot use any grant funding from government or local authorities. You can use money from the Basic Payment Scheme or agri-environment schemes such as Countryside Stewardship Scheme.
           </div>
+          <br>
           <div class="govuk-radios govuk-radios--inline">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="remaining-costs" name="remaining-costs" type="radio" value="yes" {{ checked("remaining-costs", "yes") }}>
@@ -42,7 +44,7 @@ Meeting the remaining project costs
             </div>
           </div>
       </div>
-
+      <br>
       <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
       {% if data['COMPLETED'] == true %}
