@@ -11,8 +11,8 @@
 {% block content %}
     <div class="govuk-grid-row">
          <div class="govuk-grid-column-two-thirds">
-             <form class="form" action="../water/consent" method="post">
-              {% if (data['applicant'] == "Agent")%}
+            {% if (data['applicant'] == "Agent")%}
+             <form class="form" action="../water/agent-farmer-details" method="post">
               <h1 class="govuk-heading-l">Agent's address details</h1>
                 <div class="govuk-form-group">
                     <label class="govuk-label" for="other-applicant-address1">
@@ -52,9 +52,9 @@
                 <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
                     Continue
                 </button>
-
+            </form>    
               {% else %}
-
+             <form class="form" action="../water/consent" method="post">
                 <h1 class="govuk-heading-l">Farmer's address details</h1>
                 <div class="govuk-form-group">
                     <label class="govuk-label" for="farmer-address1">
