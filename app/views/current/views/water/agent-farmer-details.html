@@ -13,12 +13,18 @@
          <div class="govuk-grid-column-two-thirds">
              <form class="form" action="../water/agent-farmer-contact-details" method="post">
                 <h1 class="govuk-heading-l"> Farmer's details</h1>
-                    <div class="govuk-form-group">
-                        <label class="govuk-label" for="farmer-title">
+                    <div class="govuk-!-margin-bottom-6">
+                        <label class="govuk-label" for="other-applicant-title">
                             Title(optional)
                         </label>
-                        <input class="govuk-input govuk-!-width-one-quarter" id="farmer-title" name="farmer-title" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-title'] }}">
-                    </div>
+                        <select class="govuk-select" id="other-applicant-title" name="other-applicant-title">
+                            <option id="Mr" name="Mr" value="Mr"        {% if( data["other-applicant-title"] === "Mr" ) %} selected {% endif %} >Mr</option>
+                            <option id="Mrs" name="Mrs" value="Mrs"     {% if( data["other-applicant-title"] === "Mrs" ) %} selected {% endif %} >Mrs</option>
+                            <option id="Ms" name="Ms" value="Ms"        {% if( data["other-applicant-title"] === "Ms" ) %} selected {% endif %} >Ms</option>
+                            <option id="Miss" name="Miss"  value="Miss" {% if( data["other-applicant-title"] === "Miss" ) %} selected {% endif %} >Miss</option>
+                            <option id="Dr" name="Dr" value="Dr"        {% if( data["other-applicant-title"] === "Dr" ) %} selected {% endif %} >Dr</option>
+                        </select>
+                     </div>
 
                         <div class="govuk-form-group">
                             <label class="govuk-label" for="farmer-firstname">
@@ -38,6 +44,12 @@
 			        Continue
 		        </button>
              </form>
-          </div>   
+          </div>  
+          <script>
+          function functionValue(){
+              let x = document.getElementById("other-applicant-title").value;
+              console.log(x);
+          } 
+      </script> 
      </div>
 {% endblock %}     
