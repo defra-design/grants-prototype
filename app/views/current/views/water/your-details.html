@@ -22,11 +22,11 @@
               Title(optional)
             </label>
             <select class="govuk-select" id="other-applicant-title" name="other-applicant-title"  onchange="functionValue()">
-              <option id="Mr" name="Mr" value="Mr" >Mr</option>
-              <option id="Miss" name="Miss"  value="Miss">Miss</option>
-              <option id="Ms" name="Ms" value="Ms">Ms</option>
-              <option id="Mrs" name="Mrs" value="Mrs">Mrs</option>
-              <option id="Dr" name="Dr" value="Dr">Dr</option>
+              <option id="Mr" name="Mr" value="Mr"        {% if( data["other-applicant-title"] === "Mr" ) %} selected {% endif %} >Mr</option>
+              <option id="Miss" name="Miss"  value="Miss" {% if( data["other-applicant-title"] === "Miss" ) %} selected {% endif %} >Miss</option>
+              <option id="Ms" name="Ms" value="Ms"        {% if( data["other-applicant-title"] === "Ms" ) %} selected {% endif %} >Ms</option>
+              <option id="Mrs" name="Mrs" value="Mrs"     {% if( data["other-applicant-title"] === "Mrs" ) %} selected {% endif %} >Mrs</option>
+              <option id="Dr" name="Dr" value="Dr"        {% if( data["other-applicant-title"] === "Dr" ) %} selected {% endif %} >Dr</option>
             </select>
           </div>
         <div class="govuk-form-group">
