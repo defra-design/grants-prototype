@@ -13,12 +13,18 @@
          <div class="govuk-grid-column-two-thirds">
              <form class="form" action="../water/agent-farmer-contact-details" method="post">
                 <h1 class="govuk-heading-l"> Farmer's details</h1>
-                    <div class="govuk-form-group">
-                        <label class="govuk-label" for="farmer-title">
+                    <div class="govuk-!-margin-bottom-6">
+                        <label class="govuk-label" for="other-applicant-title">
                             Title(optional)
                         </label>
-                        <input class="govuk-input govuk-!-width-one-quarter" id="farmer-title" name="farmer-title" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-title'] }}">
-                    </div>
+                        <select class="govuk-select" id="other-applicant-title" name="other-applicant-title"  onchange="functionValue()">
+                            <option id="Mr" name="Mr" value="Mr" >Mr</option>
+                            <option id="Miss" name="Miss"  value="Miss">Miss</option>
+                            <option id="Ms" name="Ms" value="Ms">Ms</option>
+                            <option id="Mrs" name="Mrs" value="Mrs">Mrs</option>
+                            <option id="Dr" name="Dr" value="Dr">Dr</option>
+                        </select>
+                     </div>
 
                         <div class="govuk-form-group">
                             <label class="govuk-label" for="farmer-firstname">
@@ -38,6 +44,13 @@
 			        Continue
 		        </button>
              </form>
-          </div>   
+          </div>  
+          <script>
+          function functionValue(){
+              let x = document.getElementById("other-applicant-title").value;
+              
+              console.log(x);
+          } 
+      </script> 
      </div>
 {% endblock %}     
