@@ -17,13 +17,18 @@
         {% if (data['applicant'] == "Agent") %}
 
         <h1 class="govuk-heading-l">Agent's details </h1>
-         <div class="govuk-form-group">
-          <label class="govuk-label" for="other-applicant-title">
-            Title(optional)
-          </label>
-          <input class="govuk-input govuk-!-width-one-quarter" id="other-applicant-title" name="other-applicant-title" type="text" spellcheck="false" autocomplete="name" value="{{ data['other-applicant-title'] }}">
-        </div>
-
+          <div class="govuk-!-margin-bottom-6">
+            <label class="govuk-label" for="other-applicant-title">
+              Title(optional)
+            </label>
+            <select class="govuk-select" id="other-applicant-title" name="other-applicant-title"  onchange="functionValue()">
+              <option id="Mr" name="Mr" value="Mr" >Mr</option>
+              <option id="Miss" name="Miss"  value="Miss">Miss</option>
+              <option id="Ms" name="Ms" value="Ms">Ms</option>
+              <option id="Mrs" name="Mrs" value="Mrs">Mrs</option>
+              <option id="Dr" name="Dr" value="Dr">Dr</option>
+            </select>
+          </div>
         <div class="govuk-form-group">
           <label class="govuk-label" for="other-applicant-firstname">
             First name
@@ -41,17 +46,22 @@
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
 			  Continue
 		    </button>
+    
 
         {% else %}
-
         <h1 class="govuk-heading-l"> Farmer's details</h1>
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="farmer-title">
+        <div class="govuk-!-margin-bottom-6">
+          <label class="govuk-label" for="other-applicant-title">
             Title(optional)
           </label>
-          <input class="govuk-input govuk-!-width-one-quarter" id="farmer-title" name="farmer-title" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-title'] }}">
+          <select class="govuk-select" id="other-applicant-title" name="other-applicant-title"  onchange="functionValue()">
+            <option id="Mr" name="Mr" value="Mr" >Mr</option>
+            <option id="Miss" name="Miss"  value="Miss">Miss</option>
+            <option id="Ms" name="Ms" value="Ms">Ms</option>
+            <option id="Mrs" name="Mrs" value="Mrs">Mrs</option>
+            <option id="Dr" name="Dr" value="Dr">Dr</option>
+           </select>
         </div>
-
         <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-firstname">
             First name
@@ -66,13 +76,19 @@
           <input class="govuk-input govuk-!-width-one-half" id="farmer-lastname" name="farmer-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-lastname'] }}">
         </div>
 
-		  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+		  <button class="govuk-button govuk-!-margin-top-6 govuk-!-margin-right-1" data-module="govuk-button">
 			  Continue
 		  </button>
 
       </form>
-
     </div>
+     <script>
+          function functionValue(){
+              let x = document.getElementById("other-applicant-title").value;
+              
+              console.log(x);
+          } 
+      </script>
   </div>
 
     {% endif %}
