@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Next steps
+{% endblock %}
+
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">    
+    <div class="govuk-grid-column-full">
+        <div class="govuk-body">
+            <h1 class="govuk-heading-xl govuk-!-padding-left-2">Next steps</h1>
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon govuk-!-font-size-19" aria-hidden="true">1</span>
+                <strong class="govuk-warning-text__text govuk-!-font-size-27">
+                     Submit your details
+                </strong>
+            </div>
+            <div class="govuk-body ">
+                <p class="govuk-!-padding-left-9 ">Submit your details to the RPA (you should only do this once).<br>
+                You’ll get an email with your score and answers, and a reference<br> number.
+            </div><br>
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon govuk-!-font-size-19" aria-hidden="true">2</span>
+                <strong class="govuk-warning-text__text govuk-!-font-size-27">
+                     RPA will email you when applications open
+                </strong>
+            </div>
+            <div class="govuk-body ">
+                <p class="govuk-!-padding-left-9 ">RPA will be in touch when the full application period opens.<br>
+                They’ll tell you about the application form and any guidance<br> you need to submit a full application.
+            </div><br>
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text govuk-!-font-size-27">
+                     You must not start the project
+                </strong>
+            </div>
+            <div class="govuk-body ">
+                <p class="govuk-!-padding-left-9 ">Starting the project or committing to any costs (such as<br> placing orders)
+                before you receive a funding agreement<br> will invalidate your application.<br><br>
+                Before you start the project, you can:
+                <br>
+                <ul class="govuk-!-margin-left-9">
+                    <li>get quotes from suppliers</li>
+                    <li>apply for planning permission or an abstraction licence</li>
+                </ul>
+                <p class="govuk-!-padding-left-9 govuk-!-margin-bottom-9">
+                    You will not automatically get a grant. The grant is<br>expected to be highly competitive and you are competing<br>against other projects.
+                </p>
+            </div>
+
+            <form class="form  govuk-!-padding-left-9" action="{{ nextUrl }}" method="post">
+                <button class="govuk-button" data-module="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>
+        </div>  
+    </div>
+</div>
+
+{% endblock %}
