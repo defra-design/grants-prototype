@@ -14,12 +14,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <span class="govuk-caption-m govuk-!-padding-bottom-1">Question 12 of 18 </span>
         <h1 class="govuk-heading-l">Project details</h1>
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
+            <p><span class="govuk-caption-m">Select one or two options</span></p>
             <h2 class="govuk-heading-m">The project will:</h2>
-            <p><span class="govuk-caption-m">Please select only one or two details</span></p>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="project-summary-1" name="project-summary" type="checkbox" value="Change water source" {{ checked("project-summary", "Change water source") }}>
@@ -45,6 +46,27 @@
                   Introduce irrigation
                 </label>
               </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="project-summary-5" name="project-summary" type="checkbox" value="None of the above" {{ checked("project-summary", "None of the above") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="project-summary-5">
+                  None of the above
+                </label>
+              </div>
+              <details class="govuk-details govuk-!-margin-top-9" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        Funding  priorities 
+                    </span>
+                </summary>
+                <div class="govuk-details__text">
+                   RPA wants to fund projects that: 
+                   <ul>
+                    <li>improve productivity</li>
+                    <li>improve the environment  </li>
+                    <li>improve water sustainability</li>
+                   </ul>
+                </div>
+              </details>
             </div>
           </fieldset>
         </div>
