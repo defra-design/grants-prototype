@@ -18,6 +18,7 @@ Have you already started work on the project?
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-m govuk-!-padding-bottom-1">Question 4 of 18 </span>
             <h1 class="govuk-fieldset__heading">
               Have you already started work on the project?
             </h1>
@@ -40,10 +41,10 @@ Have you already started work on the project?
         </fieldset>
       </div>
 
-      <details class="govuk-details" data-module="govuk-details" open>
+      <details class="govuk-details  govuk-!-margin-top-9" data-module="govuk-details" open>
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            Help
+            Eligibility
           </span>
         </summary>
         <div class="govuk-details__text">
@@ -57,7 +58,7 @@ Have you already started work on the project?
         </div>
       </details>
 
-      <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+      <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">Continue</button>
 
       {% if data['COMPLETED'] == true %}
         <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
