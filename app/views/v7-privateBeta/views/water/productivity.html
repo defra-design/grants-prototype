@@ -1,0 +1,109 @@
+{% extends "layout.html" %} {% block pageTitle %} How would the project improve
+productivity? {% endblock %} {% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %} {% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              How will the project improve productivity?
+            </h1>
+          </legend>
+          <br>
+          <div class="govuk-body">
+          <p>
+            Productivity is about how much is produced relative to<br> inputs (eg
+            increased yield for the same inputs or the same<br> yield with lower
+            inputs).
+          </p>
+          <p class="govuk-caption-m">Select one or two options</p>
+          </div>
+          <br>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="productivity-1"
+              name="productivity" type="checkbox" value="Introduce or expand
+              high-value crops" {{ checked("productivity", "Introduce or expand
+              high-value crops") }}>
+              <label
+                class="govuk-label govuk-checkboxes__label"
+                for="productivity-1"
+              >
+                Introduce or expand high-value crops
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="productivity-2"
+              name="productivity" type="checkbox" value="Introduce or expand
+              protected crops" {{ checked("productivity", "Introduce or expand
+              protected crops") }}>
+              <label
+                class="govuk-label govuk-checkboxes__label"
+                for="productivity-2"
+              >
+                Introduce or expand protected crops
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="productivity-3"
+              name="productivity" type="checkbox" value="Increase yield per
+              hectare" {{ checked("productivity", "Increase yield per hectare")
+              }}>
+              <label
+                class="govuk-label govuk-checkboxes__label"
+                for="productivity-3"
+              >
+                Increase yield per hectare
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="productivity-4"
+              name="productivity" type="checkbox" value="Improve quality" {{
+              checked("productivity", "Improve quality") }}>
+              <label
+                class="govuk-label govuk-checkboxes__label"
+                for="productivity-4"
+              >
+                Improve quality
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="productivity-5"
+              name="productivity" type="checkbox" value="Maintain productivity"
+              {{ checked("productivity", "Maintain productivity") }}>
+              <label
+                class="govuk-label govuk-checkboxes__label"
+                for="productivity-5"
+              >
+                Maintain productivity
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <br><br>
+      <button
+        class="govuk-button govuk-!-margin-right-1"
+        data-module="govuk-button"
+      >
+        Continue
+      </button>
+
+      {% if data['COMPLETED'] == true %}
+      <button
+        onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+        class="govuk-button govuk-!-margin-right-1"
+        data-module="govuk-button"
+      >
+        Back to summary page
+      </button>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Contact Details
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="../water/your-details">Back</a>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+         <div class="govuk-grid-column-two-thirds">
+                <form class="form" action="../water/address-details" method="post">
+                 {% if (data['applicant'] == "Agent")%}
+                    <h1 class="govuk-heading-l">Agent's contact details</h1>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="other-applicant-email">
+                            Email address
+                        <div id="event-name-hint" class="govuk-hint">
+                            We'll only use this to send you confirmation
+                        </div>
+                    </label>
+                    <input class="govuk-input  govuk-!-width-two-thirds" id="other-applicant-email" name="other-applicant-email" type="other-applicant-email" spellcheck="false" aria-describedby="other-applicant-email-hint" autocomplete="other-applicant-email" value="{{ data['other-applicant-email'] }}">
+                    </div>
+		
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="other-applicant-landline">
+                            Landline number(optional)
+                        </label>
+                        <input class="govuk-input  govuk-!-width-two-thirds" id="other-applicant-landline" name="other-applicant-landline" type="other-applicant-landline" spellcheck="false" aria-describedby="other-applicant-landline-hint" autocomplete="other-applicant-landline" value="{{ data['other-applicant-landline'] }}">
+                    </div>
+
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="other-applicant-mobile">
+                            Mobile number
+                        </label>
+                        <input class="govuk-input  govuk-!-width-two-thirds" id="other-applicant-mobile" name="other-applicant-mobile" type="other-applicant-mobile" spellcheck="false" aria-describedby="other-applicant-mobile-hint" autocomplete="other-applicant-mobile" value="{{ data['other-applicant-mobile'] }}">
+                    </div>
+
+                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                        Continue
+                    </button>
+                 {% else %}
+                <h1 class="govuk-heading-l">Farmer's contact details</h1>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-email">
+                        Email address
+                        <div id="event-name-hint" class="govuk-hint">
+                            We'll only use this to send you confirmation
+                        </div>
+                    </label>
+                    <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-email" name="farmer-email" type="farmer-email" spellcheck="false" aria-describedby="farmer-email-hint" autocomplete="farmer-email" value="{{ data['farmer-email'] }}">
+                </div>
+		
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-landline">
+                        Landline number(optional)
+                    </label>
+                    <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-landline" name="farmer-landline" type="farmer-landline" spellcheck="false" aria-describedby="farmer-landline-hint" autocomplete="farmer-landline" value="{{ data['farmer-landline'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-mobile">
+                        Mobile number
+                    </label>
+                    <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-mobile" name="farmer-mobile" type="farmer-mobile" spellcheck="false" aria-describedby="farmer-mobile-hint" autocomplete="farmer-mobile" value="{{ data['farmer-mobile'] }}">
+                 </div>
+
+                <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>
+        </div>
+    </div>
+     </form>
+     {% endif %}
+{% endblock %}

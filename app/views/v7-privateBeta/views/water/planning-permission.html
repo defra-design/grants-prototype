@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Does the project need planning permission?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Does the project need planning permission?
+              </h1>
+            </legend>
+            <br>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission" name="planning-permission" type="radio" value="not needed" {{ checked("planning-permission", "not needed") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission">
+                  Not needed
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-2" name="planning-permission" type="radio" value="secured" {{ checked("planning-permission", "secured") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission-2">
+                  Secured
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="expected by 21 October 2021" {{ checked("planning-permission", "expected by 21 October 2021") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission-3">
+                  Expected to have by 31st December 2021
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="won’t have by 21 October 2021" {{ checked("planning-permission", "won’t have by 21 October 2021") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission-3">
+                  Won't have by 31st December 2021
+                </label>
+              </div>
+            </div>
+            <br><br>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Help
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                Any planning permission required must be in place to submit a full application.
+              </div>
+            </details>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to summary page
+          </button>
+        {% endif %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
