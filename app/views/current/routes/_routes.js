@@ -74,7 +74,7 @@ router.get('*/task-list', function (req, res) {
 
   var backUrl = res.locals.prevURL
 
-  if (req.session.data.water_s01_status != 'Completed') {
+  if (req.session.data.water_s01_status !== 'Completed') {
     // Part 1: Check if you can apply
     // Section 1: Check now
     req.session.data.water_s01_status = 'Not started'
