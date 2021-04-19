@@ -18,6 +18,7 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-m">Question 1 of 18 </span>
               <h1 class="govuk-fieldset__heading">
                 What crops are you growing?
               </h1>
@@ -36,16 +37,30 @@
                   Horticulture (including ornamentals)
                 </label>
               </div>
-              <div class="govuk-radios__item">
+              <div class="govuk-radios__item govuk-!-padding-bottom-9">
                 <input class="govuk-radios__input" id="farming-type-3" name="farming-type" type="radio" value="Something else" {{ checked("farming-type", "Something else") }}>
                 <label class="govuk-label govuk-radios__label" for="farming-type-3">
                   Something else
                 </label>
               </div>
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        Eligibility
+                    </span>
+                </summary>
+                <div class="govuk-details__text">
+                    This grant is for:
+                    <ul>
+                      <li>arable and horticultural farming businesses<br>supplying the food industry</li>
+                      <li>nurseries growing flowers </li>
+                      <li>forestry nurseries </li>
+                    </ul>
+                </div>
+              </details>
               </div>
           </fieldset>
         </div>
-        <br><br>
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
         {% if data['COMPLETED'] == true %}
