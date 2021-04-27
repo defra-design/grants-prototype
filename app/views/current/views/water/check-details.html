@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+   Check Your Details
+{% endblock %}
+
+{% block beforeContent %}
+    {% if (data['applicant'] == "Agent")%}
+        <a class="govuk-back-link" href="../water/agent-farmer-address">Back</a>
+    {%else%}
+        <a class="govuk-back-link" href="../water/address-details">Back</a>
+    {%endif%} 
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l govuk-!-margin-top-9 govuk-!-margin-bottom-9">Check your details </h1>
+                {#bussiness details #}
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row--no-border">
+                        <dt class="govuk-summary-list__key">
+                            <p class="govuk-body govuk-!-font-size-24"><strong>Business details</strong></p>
+                        </dt>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="business">
+                                    Change<span class="govuk-visually-hidden">business details</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <hr>
+                    <div class="govuk-summary-list__row--no-border">
+                        <dt class="govuk-summary-list__key">
+                            <p class="govuk-body govuk-!-font-size-19"><strong>Project name</strong></p>
+                        </dt>
+                        <dd class="govuk-summary-list__actions">
+                            <span class="govuk-!-padding-left-9">Project X</span>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row--no-border">
+                        <dt class="govuk-summary-list__key">
+                            <p class="govuk-body govuk-!-font-size-19"><strong>Business name</strong></p>
+                        </dt>
+                        <dd class="govuk-summary-list__actions">
+                            <span class="govuk-!-padding-left-5">Business name X</span>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row--no-border">
+                        <dt class="govuk-summary-list__key">
+                            <p class="govuk-body govuk-!-font-size-19"><strong>Number of employees</strong></p>
+                        </dt>
+                        <dd class="govuk-summary-list__actions">
+                            <span class="govuk-!-padding-left-9"> 20</span>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row--no-border">
+                        <dt class="govuk-summary-list__key govuk-!-padding-right-9">
+                            <p class="govuk-body govuk-!-font-size-19"><strong>Business turnover</strong></p>
+                        </dt>
+                        <dd class="govuk-summary-list__actions">
+                             <span class="govuk-!-padding-left-9"> 9000</span>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row--no-border">
+                        <dt class="govuk-summary-list__key">
+                            <p class="govuk-body govuk-!-font-size-19"><strong>Single Business Identifier (SBI)</strong></p>
+                        </dt>
+                        <dd class="govuk-summary-list__actions">
+                              200
+                        </dd>
+                    </div>
+                </dl>
+                <hr>
+                <br><br><br>
+                {#Farmer details #}
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                                <h1 class="govuk-!-font-size-24"><strong> Farmer's details</strong></h1>
+                        </tr>
+                        <hr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <th  scope="row" class="govuk-table__header">
+                                <strong>Name</strong>
+                            </th>
+                            <td class="govuk-table__cell">
+                                <p> John Smith</p>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="#nowhere">
+                                    Change<span class="govuk-visually-hidden">business details</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th  scope="row" class="govuk-table__header">
+                                <strong>Home address</strong>
+                            </th>
+                            <td class="govuk-table__cell">
+                                <p>House No, Address first line</p>
+                                <p>Address second line</p>
+                                <p>GU22 9HG</p>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="#nowhere">
+                                    Change<span class="govuk-visually-hidden">Home address</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th  scope="row" class="govuk-table__header">
+                                <strong> Contact datails</strong>
+                            </th>
+                            <td class="govuk-table__cell">
+                                <p>Johns@email.com</p>
+                                <p>07896567516</p>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="#nowhere">
+                                    Change<span class="govuk-visually-hidden">Contact datails</span>
+                                </a>
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+        </div>        
+    </div>    
+    <div class="govuk-grid-row govuk-!-padding-top-8">
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="../water/consent" method="post">  
+                 <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                     Continue
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
