@@ -644,8 +644,18 @@ router.get('*/water/contact-details', function (req, res) {
 })
 
 router.get('*/water/address-details', function (req, res) {
-  var nextUrl = 'consent'
+  var nextUrl = 'check-details'
   var backUrl = 'contact-details'
+
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+})
+
+router.get('*/water/check-details', function (req, res) {
+  var nextUrl = 'consent'
+  var backUrl = 'address-details'
 
   res.render('./' + req.originalUrl, {
     backUrl: backUrl,
@@ -655,7 +665,7 @@ router.get('*/water/address-details', function (req, res) {
 
 router.get('*/water/consent', function (req, res) {
   var nextUrl = 'reference-number'
-  var backUrl = 'address-details'
+  var backUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
     backUrl: backUrl,
