@@ -619,12 +619,13 @@ router.get('*/water/business', function (req, res) {
 })
 
 // applying
+
 router.post('*/water/applying-answer', function (req, res) {
   res.redirect('../water/your-details')
 })
 
 router.get('*/water/your-details', function (req, res) {
-  var nextUrl = 'contact-details'
+  var nextUrl = 'check-details'
   var backUrl = 'applying-answer'
 
   res.render('./' + req.originalUrl, {
@@ -633,8 +634,10 @@ router.get('*/water/your-details', function (req, res) {
   })
 })
 
-router.get('*/water/contact-details', function (req, res) {
-  var nextUrl = 'address-details'
+// check-details
+
+router.get('*/water/check-details', function (req, res) {
+  var nextUrl = 'consent'
   var backUrl = 'your-details'
 
   res.render('./' + req.originalUrl, {
@@ -643,25 +646,7 @@ router.get('*/water/contact-details', function (req, res) {
   })
 })
 
-router.get('*/water/address-details', function (req, res) {
-  var nextUrl = 'check-details'
-  var backUrl = 'contact-details'
-
-  res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
-  })
-})
-
-router.get('*/water/check-details', function (req, res) {
-  var nextUrl = 'consent'
-  var backUrl = 'address-details'
-
-  res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
-  })
-})
+// consent
 
 router.get('*/water/consent', function (req, res) {
   var nextUrl = 'reference-number'
@@ -672,6 +657,7 @@ router.get('*/water/consent', function (req, res) {
     nextUrl: nextUrl
   })
 })
+// reference-number
 
 router.get('*/water/reference-number', function (req, res) {
   var backUrl = 'consent'
