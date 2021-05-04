@@ -22,17 +22,21 @@
         <p>I confirm that, to the best of my knowledge, the details I have provided are correct.</p>
         <p>I understand the score was based on the answers I provided.</p>
         <p>I am aware the information I submit will be checked.</p>
-        <p>So that we can continue to improve our services and schemes, we may wish to contact you in the future.</p>
-        <p>Please confirm if you are happy for us, or a third party working for us, to contact you.</p>
-        <br>
         <div class="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="consent-to-terms" name="consent-to-terms" type="checkbox" value="consent-given" {{ checked("consent-to-terms", "consent-given") }}>
-            <label class="govuk-label govuk-checkboxes__label" for="consent-to-terms">
-              I confirm <span class="govuk-visually-hidden"> to the terms and conditions as outlined in the large countryside productivity grant guidance.
+          <div class="govuk-checkboxes__item govuk-!-margin-top-7">
+            <input class="govuk-checkboxes__input" id="confirm" name="confirmation" type="checkbox" value="carcasses">
+            <label class="govuk-label govuk-checkboxes__label govuk-!-padding-bottom-5" for="confirm">
+              I am happy to be contacted by Defra and RPA (or a third-party on their behalf) about my application  
             </label>
           </div>
-        </div>
+           <div class="govuk-checkboxes__item govuk-!-margin-top-4">
+            <input class="govuk-checkboxes__input" class="govuk-!-padding-bottom-6" id="confirm-2" name="confirmation" type="checkbox" value="mines">
+            <label class="govuk-label govuk-checkboxes__label govuk-!-padding-bottom-2" for="confirm-2">
+              So that we can continue to improve our services and schemes, we may wish to contact you in the future. 
+              Please confirm if you are happy for us, or a third-party working for us, to contact you. 
+            </label>
+          </div>
+       </div>
       </fieldset>
     </div>
 
