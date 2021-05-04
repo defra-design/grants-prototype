@@ -607,14 +607,15 @@ router.get('*/water/business', function (req, res) {
 
   var backUrl = 'next-steps'
   var nextUrl = '../water/applying'
-
+  var completedUrl = 'check-details'
   if (req.session.data.water_s03_status === 'Completed') {
-    // backUrl = "../water/check-answers-contact-details"
+    backUrl = '../water/next-steps'
   }
 
   res.render('./' + req.originalUrl, {
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 })
 
@@ -637,6 +638,7 @@ router.get('*/water/your-details', function (req, res) {
 // check-details
 
 router.get('*/water/check-details', function (req, res) {
+  req.session.data.COMPLETED = true
   var nextUrl = 'consent'
   var backUrl = 'your-details'
 
