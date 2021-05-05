@@ -229,13 +229,13 @@ router.get('*/water/legal-status', function (req, res) {
 router.post('*/water/legal-status-answer', function (req, res) {
   var legalStatus = req.session.data['legal-status']
 
-  if (legalStatus === 'none') { res.redirect('../water/legal-status-fail') } else { res.redirect('../water/country') }
+  if (legalStatus === 'None') { res.redirect('../water/legal-status-fail') } else { res.redirect('../water/country') }
 })
 
 router.post('*/water/legal-status-answer-completed', function (req, res) {
   var legalStatus = req.session.data['legal-status']
 
-  if (legalStatus === 'none') { res.redirect('../water/legal-status-fail') } else { res.redirect('../water/answers') }
+  if (legalStatus === 'None') { res.redirect('../water/legal-status-fail') } else { res.redirect('../water/answers') }
 })
 
 // Q : Country
