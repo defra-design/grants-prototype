@@ -26,15 +26,15 @@ Have you already started work on the project?
           <br><br>
           <div class="govuk-radios govuk-radios--inline">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="project-start" name="project-start" type="radio" value="yes" {{ checked("project-start", "yes") }}>
-              <label class="govuk-label govuk-radios__label" for="project-start">
-                Yes
-              </label>
-            </div>
-            <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="project-start-2" name="project-start" type="radio" value="no" {{ checked("project-start", "no") }}>
               <label class="govuk-label govuk-radios__label" for="project-start-2">
                 No
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="project-start" name="project-start" type="radio" value="yes" {{ checked("project-start", "yes") }}>
+              <label class="govuk-label govuk-radios__label" for="project-start">
+                Yes
               </label>
             </div>
           </div>
@@ -48,12 +48,12 @@ Have you already started work on the project?
           </span>
         </summary>
         <div class="govuk-details__text">
-          <p>Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement will invalidate your application.</p>
+          <p>You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.</p>
 
           <p>Before you start the project, you can:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>get quotes from suppliers</li>
-            <li>apply for planning permission or an abstraction licence</li>
+            <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
           </ul>
         </div>
       </details>
@@ -62,7 +62,7 @@ Have you already started work on the project?
 
       {% if data['COMPLETED'] == true %}
         <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-          class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+          class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
         >
           Back to summary page
         </button>
