@@ -342,7 +342,7 @@ router.post('*/water/tenancy-length-answer-completed', function (req, res) {
 })
 
 router.get('*/water/project-items', function (req, res) {
-  var backUrl = 'tenancy'
+  var backUrl = 'tenancy-length'
   var nextUrl = '../water/project-cost'
   var completedUrl = 'answers'
 
