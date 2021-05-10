@@ -342,7 +342,7 @@ router.post('*/water/tenancy-length-answer-completed', function (req, res) {
 })
 
 router.get('*/water/project-items', function (req, res) {
-  var backUrl = 'tenancy'
+  var backUrl = 'tenancy-length'
   var nextUrl = '../water/project-cost'
   var completedUrl = 'answers'
 
@@ -515,19 +515,11 @@ router.get('*/water/irrigation-water-source', function (req, res) {
 })
 
 router.post('*/water/irrigation-water-source-answer', function (req, res) {
-  var irrigationTargetAnswer = req.session.data['irrigation-target']
-
-  if (!!irrigationTargetAnswer && irrigationTargetAnswer.includes('mains')) {
-    res.redirect('../water/irrigation-water-source-fail')
-  } else { res.redirect('../water/irrigation-systems') }
+  res.redirect('../water/irrigation-systems')
 })
 
 router.post('*/water/irrigation-water-source-answer-completed', function (req, res) {
-  var irrigationTargetAnswer = req.session.data['irrigation-target']
-
-  if (!!irrigationTargetAnswer && irrigationTargetAnswer.includes('mains')) {
-    res.redirect('../water/irrigation-water-source-fail')
-  } else { res.redirect('answers') }
+  res.redirect('answers')
 })
 
 // irrigation-systems
