@@ -9,303 +9,55 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-
-    <h1 class="govuk-heading-l">Reference number:</h1>
-    <h1 class="govuk-heading-l">GDA54X</h1>
-
-    <p>
-      As you’re eligible to apply, here is the 
-      <a href="answers.html">full application form.</a>
-    </p>
-    <p>The grant is highly competitive and you are competing against other projects.</p>
-    <p>You answered:</p>
-
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-    
-        <h2 class="govuk-heading-m">Eligibility</h2>
-    
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Farm grows crops for food
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['summary-farming-type'] | capitalize }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Legal status
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['legal-status'] | capitalize }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Project in England
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['summary-country'] | capitalize }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Project on own land
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['tenancy'] | capitalize }}
-            </dd>
-          </div>
-          {% if data['tenancy'] == "no" %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Tenancy extends beyond six years
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <p class="govuk-body">{{ data['tenancy-length'] | capitalize }}</p>
-            </dd>
-          </div>
-          {% endif %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Project items
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet">
-                {% for item in data['project-items'] %}
-                  <li>{{ item | capitalize }}</li>
-                {% endfor %}
-              </ul>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Estimated project costs
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £{{ data['project-cost'] | toFixed(2) | commafy }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Able to pay remaining costs
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['remaining-costs'] | capitalize }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Project started
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['project-start'] | capitalize }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Planning permission
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['planning-permission'] | capitalize }}
-            </dd>
-          </div>
-    
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Abstraction licence
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['abstraction-licence'] | capitalize }}
-            </dd>
-          </div>
-        </dl>
-    
-        {% if (data['tenancy'] == "yes") and (data['tenancy-length'] == "no") %}
+    <div class="govuk-body">
+        <h1 class="govuk-heading-l">Farming Transformation Fund water grant </h1>
+        <p>Dear First name Last name,</p>
         <div class="govuk-inset-text">
-            You will need to extend your tenancy beyond 2026 before you make a full application.
+            Your reference number : 122345678 
         </div>
-        {% endif %}
-  <!--  
-        {% if data['planning-required'] == "not sure" %}
+        <p>Thanks for using the Farming Transformation Fund water grant checker and submitting your details to the Rural Payments Agency (RPA).</p>
+        <p>Based on the answers you have provided, your project appears eligible.</p>
+        <p>RPA will be in touch when the full application period opens.</p>
+        <p>They’ll tell you about the application form and any guidance you need to submit a full application.</p>
+
         <div class="govuk-inset-text">
-            You will need to check if you need planning permission and secure it before you make a full application.
+          <h1 class="govuk-heading-m">You must not start the project</h1>
+          <p>Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement will invalidate your application.</p> 
+          <p>Before you start the project, you can: </p>
+          <ul>
+            <li>get quotes from suppliers </li>
+            <li>apply for planning permission or an abstraction licence</li>
+          </ul>
         </div>
-        {% endif %}
-    
-        {% if (data['planning-permission'] == "no") and (data['planning-progress'] == "not sure") %}
-        <div class="govuk-inset-text">
-            You will need to secure planning permission prior to submitting a full application.
+        <hr/>
+        <div class="govuk-inset-text govuk-!-padding-bottom-4">
+          Based on your answers, your project’s score is: 
+          <p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-3 govuk-!-padding-bottom-3">Average</p>
+           This means your project might be successful.
         </div>
-        {% endif %}
-    
-        {% if data['abstraction-required'] == "not sure" %}
-        <div class="govuk-inset-text">
-            You will need to check if you need an abstraction licence and secure it before you make a full application.
-        </div>
-        {% endif %}
-    
-        {% if (data['abstraction-licence'] == "no") and (data['abstraction-progress'] == "not sure") %}
-        <div class="govuk-inset-text">
-            You will need to secure an abstraction licence before you make a full application.
-        </div>
-        {% endif %}
-    
-        {% if (data['abstraction-licence'] == "yes") and (data['abstraction-variation'] == "yes") %}
-        <div class="govuk-inset-text">
-            You will need to secure a variation to your abstraction licence before you make a full application.
-        </div>
-        {% endif %}
-  -->
-        <h2 class="govuk-heading-m govuk-!-margin-top-9">Project details and benefits</h2>
-    
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Project summary
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet">
-                {% for item in data['project-summary'] %}
-                  <li>{{ item | capitalize }}</li>
-                {% endfor %}
-              </ul>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Current irrigated land (hectares)
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['irrigated-land-current'] }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Projected irrigated land (hectares)
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['irrigated-land-target'] }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Irrigated crops
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['irrigated-crops'] | capitalize }}
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Current irrigation water source
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet">
-                {% for item in data['irrigation-current'] %}
-                  <li>{{ item | capitalize }}</li>
-                {% endfor %}
-              </ul>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Projected irrigation water source
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet">
-                {% for item in data['irrigation-target'] %}
-                  <li>{{ item | capitalize }}</li>
-                {% endfor %}
-              </ul>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Current irrigation systems
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet">
-                {% for item in data['irrigation-systems-current'] %}
-                  <li>{{ item | capitalize }}</li>
-                {% endfor %}
-              </ul>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Projected irrigation systems
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet">
-                {% for item in data['irrigation-systems-target'] %}
-                  <li>{{ item | capitalize }}</li>
-                {% endfor %}
-              </ul>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Productivity
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet">
-                {% for item in data['productivity'] %}
-                  <li>{{ item | capitalize }}</li>
-                {% endfor %}
-              </ul>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Environment
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <ul class="govuk-list govuk-list--bullet">
-                {% for item in data['environment-summary'] %}
-                  <li>{{ item | capitalize }}</li>
-                {% endfor %}
-              </ul>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-third">
-              Other farms supplied with water
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['collaboration'] }}
-            </dd>
-          </div>
-        </dl>
-
-      </div>
-    </div>
-
-    <h3 class="govuk-heading-m">What happens next</h3>
-
-    <p>If you submit a full application, we will:</p>
-    
-    <ul class="govuk-list govuk-list--bullet">
-    <li>assess the application against the others</li>
-    <li>consider how well it fits the priorities for funding </li>
-    <li>identify projects that provide the best value for taxpayers' money</li>
-    </ul>
-
-    <p>If your application is successful, you’ll be sent a funding agreement and can begin work on the project.</p>
-
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">You must not start the project</span>
-        You must not start the project<br><br>
-        You will need to make a full application and complete a grant funding agreement before you can start the project.
-      </strong>
-    </div>
-
+          <h2 class="govuk-heading-m govuk-!-margin-top-2">Scoring</h2>
+          <p>Strong: Your project seems like it’s a strong fit with the funding priorities. Based on your answers, a grant application seems likely to be successful.</p>
+          <p>Average: Your project seems like it’s an average fit with the funding priorities. Based on your answers, a grant application seems like it might be successful. </p>
+          <p>Weak: Your project seems like it’s a weak fit with the funding priorities. Based on your answers, a grant application seems unlikely to be successful.</p>
+          <p class="govuk-!-padding-top-4">Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score.</p>
+          <p>The likelihood of a full application being successful will also depend on the number and value of applications we receive.</p>
+      <hr/>
+      <h2 class="govuk-heading-m">Your answers </h2>
+      <p>Scheme: Farming Investment Fund</p>
+      <p>Sub-scheme: Farming Transformation Fund</p>
+      <p>Theme: Resource management</p>
+      <p>Project type: Water management</p>
+      <p>Grant application window: 1 September - 31 December 2021</p>
+      <p>Growing: Food industry</p>
+      <p>Legal status: Trust</p>
+      <p>Location: England</p>
+      <p>Land ownership: No</p>
+      <p>Tenancy agreement until 2026: No</p>
+      <p class=" govuk-!-font-size-24 govuk-!-padding-top-2">Project items needed:</p>
+      <p></p>
+      <p></p>
+      <p></p>
   </div>
 </div>
-
 
 {% endblock %}
