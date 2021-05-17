@@ -590,23 +590,24 @@ router.get('*/water/next-steps', function (req, res) {
 })
 
 // business
-
 router.get('*/water/business', function (req, res) {
   if (req.session.data.water_s03_status !== 'Completed') {
     req.session.data.water_s03_status = 'In progress'
     req.session.data.water_s03_status_class = 'govuk-tag--blue'
   }
 
+  var nextUrl = 'applying'
   var backUrl = 'next-steps'
-  var nextUrl = '../water/applying'
+  var completedUrl = 'check-details'
 
-  if (req.session.data.water_s03_status === 'Completed') {
-    // backUrl = "../water/check-answers-contact-details"
-  }
+  // if (req.session.data.water_s03_status === 'Completed') {
+  // backUrl = "../water/check-answers-contact-details"
+  // }
 
   res.render('./' + req.originalUrl, {
+    nextUrl: nextUrl,
     backUrl: backUrl,
-    nextUrl: nextUrl
+    completedUrl: completedUrl
   })
 })
 
@@ -619,16 +620,19 @@ router.post('*/water/applying-answer', function (req, res) {
 router.get('*/water/your-details', function (req, res) {
   var nextUrl = 'check-details'
   var backUrl = 'applying-answer'
+  var completedUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
     backUrl: backUrl,
-    nextUrl: nextUrl
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
   })
 })
 
 // check-details
 
 router.get('*/water/check-details', function (req, res) {
+  req.session.data.COMPLETED = true
   var nextUrl = 'consent'
   var backUrl = 'your-details'
 
