@@ -326,7 +326,7 @@ router.get('*/water/tenancy', function (req, res) {
 router.post('*/water/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
-  if (tenant === 'yes') {
+  if (tenant === 'Yes') {
     res.redirect('../water/project-items')
   } else { res.redirect('../water/tenancy-length') }
 })
@@ -334,7 +334,7 @@ router.post('*/water/tenancy-answer', function (req, res) {
 router.post('*/water/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength === 'no') { res.redirect('../water/tenancy-length-condition') } else { res.redirect('../water/project-items') }
+  if (tenancyLength === 'No') { res.redirect('../water/tenancy-length-condition') } else { res.redirect('../water/project-items') }
 })
 
 router.post('*/water/tenancy-length-answer-completed', function (req, res) {
