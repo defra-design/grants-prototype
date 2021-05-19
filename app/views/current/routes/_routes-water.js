@@ -632,7 +632,7 @@ router.get('*/water/your-details', function (req, res) {
 // check-details
 
 router.get('*/water/check-details', function (req, res) {
-  req.session.data.COMPLETED = true
+  // req.session.data.COMPLETED = true
   var nextUrl = 'consent'
   var backUrl = 'your-details'
 
