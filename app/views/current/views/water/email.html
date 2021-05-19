@@ -42,7 +42,7 @@
           <p class="govuk-!-padding-top-4">Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score.</p>
           <p>The likelihood of a full application being successful will also depend on the number and value of applications we receive.</p>
       <hr/>
-      <h2 class="govuk-heading-m">Your answers </h2>
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-padding-top-4 govuk-!-padding-bottom-2">Your answers </p>
       <p>Scheme: Farming Investment Fund</p>
       <p>Sub-scheme: Farming Transformation Fund</p>
       <p>Theme: Resource management</p>
@@ -55,18 +55,59 @@
       <p>Tenancy agreement until 2026: {{data['tenancy-length']}}</p>
       <p class=" govuk-!-font-size-24 govuk-!-padding-top-2">Project items needed:</p>
       <p>Reservoir construction and infrastructure:</p>
-      <ul>
-        <li>Synthetic liner</li>
-        <li>Abstraction point including pump</li>
-        <li>Pipework to fill the reseroir</li>
-        <li></li>
-        <li></li>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for item in data['project-items'] %}
+            <li>{{ item | capitalize }}</li>
+        {% endfor %}
+      </ul>  
+      <p>Irrigation equipment:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      {% for item in data['Irrigation equipment'] %}
+            <li>{{ item | capitalize }}</li>
+      {% endfor %}
       </ul>
-
-
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Technology:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      {% for item in data['Technology'] %}
+            <li>{{ item | capitalize }}</li>
+      {% endfor %}
+      </ul>
+      <div class="govuk-body">
+      <p>Estimated cost of the items: {{ data['project-cost'] }}</p>
+      <p>Grant rate:40%</p>
+      <p>Potential grant funding: {% if data['project-items'] != NAN %}{{data['project-cost'] * 0.4}}{% endif %}</p>
+      <p>Remaining cost: {% if data['project-items'] != NAN %}{{ data['project-cost'] * 0.6 | toFixed(2) | commafy}}{% endif %}</p>
+      <p>Project started: {% if data['project-items'] != NAN %}{{data['project-start']}} {% endif %}</p>
+      <p>Planning permission needed: {{data['planning-permission']}} </p>
+      <p>Abstraction licence needed: {{data['abstraction-licence']}} </p>
+      <p>Site of Special Scientific Interest: {{data['water-SSSI']}}</p>
+      </div>
+      <div class="govuk-body">
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-padding-top-4 govuk-!-padding-bottom-2">Project details</p>
+      <p> Your project name: {{ data['project-name'] }} </p>
+      <p> Project impact: {% for item in data['project-summary'] %} <li>{{ item | capitalize }}</li> {% endfor %}</p>
+      <p>Your score to this answer is: Strong</p>
+      <p>Crops:</p>
+      <p>What main crops will be irrigated?</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+        {{data['irrigated-crops']}} 
+        </li>
+      </ul> 
+      <p>Irrigated land :</p>
+      <p>How much land is currently irrigated per year? <br> {{ data['irrigated-land-current'] }} hectares</p>
+      <p>How much land will be irrigated after the project? <br> {{ data['irrigated-land-target'] }} hectares</p>
+      <p>Your score to this answer is: Strong</p>
+      <p>Water source :</p>
+      <p>Where does your current irrigation water come from? <br>
+        {% for item in data['irrigation-current'] %} <li>{{ item | capitalize }}</li> {% endfor %}
+      </p>
+      <p>Where will your irrigation water come from? <br> 
+        {% for item in data['irrigation-target'] %} <li>{{ item | capitalize }}</li> {% endfor %}
+      </p>
+      <p>Your score to this answer is: Average</p>
+      
+      </div>
   </div>
 </div>
 
