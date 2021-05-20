@@ -40,7 +40,6 @@
           <p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-3 govuk-!-padding-bottom-3">Average</p>
            This means your project might be successful.
         </div>
-
           <h2 class="govuk-heading-m govuk-!-margin-top-2">Scoring</h2>
           <p>Strong: Your project seems like it’s a strong fit with the funding priorities. Based on your answers, a grant application seems likely to be successful.</p>
           <p>Average: Your project seems like it’s an average fit with the funding priorities. Based on your answers, a grant application seems like it might be successful. </p>
@@ -59,20 +58,20 @@
       <p>Location: England</p>
       <p>Land ownership: {{data['project-start']}}</p>
       <p>Tenancy agreement until 2026: {{data['tenancy-length']}}</p>
-      <p class=" govuk-!-font-size-24 govuk-!-padding-top-2">Project items needed:</p>
+      <p class=" govuk-!-font-size-24 govuk-!-padding-top-2 govuk-!-font-size-27">Project items needed</p>
       <p>Reservoir construction and infrastructure:</p>
       <ul class="govuk-list govuk-list--bullet">
         {% for item in data['project-items'] %}
             <li>{{ item | capitalize }}</li>
         {% endfor %}
       </ul>  
-      <p>Irrigation equipment:</p>
+      <p class="govuk-!-font-size-24">Irrigation equipment</p>
       <ul class="govuk-list govuk-list--bullet">
       {% for item in data['Irrigation equipment'] %}
             <li>{{ item | capitalize }}</li>
       {% endfor %}
       </ul>
-      <p>Technology:</p>
+      <p class="govuk-!-font-size-24">Technology</p>
       <ul class="govuk-list govuk-list--bullet">
       {% for item in data['Technology'] %}
             <li>{{ item | capitalize }}</li>
@@ -91,21 +90,21 @@
       <div class="govuk-body">
       <p class="govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-padding-top-4 govuk-!-padding-bottom-2">Project details</p>
       <p class="govuk-!-padding-top-3"> Your project name: {{ data['project-name'] }} </p>
-      <p class="govuk-!-padding-top-3"> Project impact: {% for item in data['project-summary'] %} <li>{{ item | capitalize }}</li> {% endfor %}</p>
+      <p class="govuk-!-padding-top-3 govuk-!-font-size-24"> Project impact {% for item in data['project-summary'] %} <li>{{ item | capitalize }}</li> {% endfor %}</p>
       <p class="govuk-!-padding-top-3">Your score to this answer is: Strong</p>
-      <p>Crops:</p>
-      <p class="govuk-!-padding-top-3">What main crops will be irrigated?</p>
+      <p class="govuk-!-font-size-24">Crops</p>
+      <p class="govuk-!-padding-top-2">What main crops will be irrigated?</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>
         {{data['irrigated-crops']}} 
         </li>
       </ul> 
-      <p>Irrigated land</p>
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Irrigated land</p>
       <p>How much land is currently irrigated per year? <br> {% if  data['irrigated-land-current'] %} {{ data['irrigated-land-current'] }} hectares {% endif %}</p>
       <p>How much land will be irrigated after the project? <br> {% if  data['irrigated-land-target'] %} {{ data['irrigated-land-target'] }} hectares {% endif %}</p>
       <p>Your score to this answer is: Strong</p>
-      <p>Water source :</p>
-      <p class="govuk-!-padding-top-3">Where does your current irrigation water come from? <br>
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Water source</p>
+      <p class="govuk-!-padding-top-1">Where does your current irrigation water come from? <br>
         {% for item in data['irrigation-current'] %} <li>{{ item | capitalize }}</li> {% endfor %}
       </p>
       <p class="govuk-!-padding-top-3">Where will your irrigation water come from? <br> 
@@ -113,30 +112,27 @@
       </p>
       <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
 
-      <p>Irrigation system</p>
-      <p class="govuk-!-padding-top-3">What systems are currently used to irrigate?</p>
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Irrigation system</p>
+      <p class="govuk-!-padding-top-1">What systems are currently used to irrigate?</p>
       {% for item in data['irrigation-current']%} <li>{{ item | capitalize }}</li> {% endfor %}
       <p class="govuk-!-padding-top-3">What systems will be used to irrigate?</p>
       {% for item in data['irrigation-target'] %} <li>{{ item | capitalize }}</li> {% endfor %}
       <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
-<<<<<<< HEAD
-
-      
-      <p>Productivity</p>
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Productivity</p>
       <p class="govuk-!-padding-top-3">How will the project improve productivity?</p>
       {% for item in data['productivity'] %} <li>{{ item | capitalize }}</li> {% endfor %}   
       <p class="govuk-!-padding-top-3">Your score to this answer is: Strong</p>   
 
 
-      <p>Other farms</p>
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Other farms</p>
       <p> Will water be supplied to other farms?
       {{ data['collaboration'] }}
       </p>
       <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
 
 
-      <p>Contact details</p>
-      <p class="govuk-!-padding-top-3">Project name: {{ data['project-name'] }}</p>
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Contact details</p>
+      <p class="govuk-!-padding-top-1">Project name: {{ data['project-name'] }}</p>
       <p>Business name: {{ data['business-name']}}</p>
       {% if data['applicant'] == "Farmer" %}
       <p>Farmer name: {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
@@ -148,46 +144,9 @@
       {% endif %}
       <p>Happy to be contacted: Yes</p>
       <p>Date of score: 20 May 2021</p>
-
-
       </div>
       <hr>
       <div class="govuk-body govuk-!-padding-top-3">
-=======
-
-      
-      <p>Productivity</p>
-      <p class="govuk-!-padding-top-3">How will the project improve productivity?</p>
-      {% for item in data['productivity'] %} <li>{{ item | capitalize }}</li> {% endfor %}   
-      <p class="govuk-!-padding-top-3">Your score to this answer is: Strong</p>   
-
-
-      <p>Other farms</p>
-      <p> Will water be supplied to other farms?
-      {{ data['collaboration'] }}
-      </p>
-      <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
-
-
-      <p>Contact details</p>
-      <p class="govuk-!-padding-top-3">Project name: {{ data['project-name'] }}</p>
-      <p>Business name: {{ data['business-name']}}</p>
-      {% if data['applicant'] == "Farmer"%}
-      <p>Farmer name: {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
-      <p>Farmer email: {{ data['farmer-email'] }}</p>
-      {% else %}
-      <p>Agent name: {{data['other-applicant-firstname']}} {{data['other-applicant-lastname']}}</p>
-      <p>Agent business name: {{ data['other-applicant-Business-name'] }}</p>
-      <p>Agent email: {{ data['agent-email'] }}</p>
-      {% endif %}
-      <p>Happy to be contacted:</p>
-      <p>Date of score:</p>
-
-
-      </div>
-      <hr>
-      <div class="govuk-body govuk-!-padding-top-5">
->>>>>>> 824f7fab8dcb0c92e5e5e296374e7ba8d89a257b
         <p>
         If you have any questions about the service, 
         call the RPA helpline on 0300 0200 301 and follow the options for the Farming Transformation Fund scheme, 
@@ -197,11 +156,7 @@
         </p>
       </div>
       <hr>
-<<<<<<< HEAD
       <div class="govuk-body govuk-!-margin-top-5">
-=======
-      <div class="govuk-body govuk-!-paading-top-5">
->>>>>>> 824f7fab8dcb0c92e5e5e296374e7ba8d89a257b
       The Department for Environment, Food and Rural Affairs (Defra) is the data controller for personal data you give to RPA.
       For information on how we handle personal data go to GOV.UK and search <a href="#"> Rural Payments Agency personal information charter </a>
       </div>
