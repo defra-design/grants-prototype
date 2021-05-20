@@ -11,7 +11,11 @@
   <div class="govuk-grid-column-full">
     <div class="govuk-body">
         <h1 class="govuk-heading-l">Farming Transformation Fund water grant </h1>
-        <p>Dear First name Last name,</p>
+        {% if data['applicant'] == "Farmer" %}
+        <p>Dear {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }} ,</p>
+        {% else %}
+        <p>Dear {{data['other-applicant-firstname']}} {{data['other-applicant-lastname']}} ,</p>
+        {% endif %}
         <div class="govuk-inset-text">
             Your reference number : 122345678 
         </div>
@@ -28,6 +32,7 @@
             <li>get quotes from suppliers </li>
             <li>apply for planning permission or an abstraction licence</li>
           </ul>
+          <p>Your project must be completed before you can claim the funding. All claims must be made before 21 March 2022.</p>
         </div>
         <hr/>
         <div class="govuk-inset-text govuk-!-padding-bottom-4">
@@ -131,7 +136,7 @@
       <p>Contact details</p>
       <p class="govuk-!-padding-top-3">Project name: {{ data['project-name'] }}</p>
       <p>Business name: {{ data['business-name']}}</p>
-      {% if data['applicant'] == "Farmer"%}
+      {% if data['applicant'] == "Farmer" %}
       <p>Farmer name: {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
       <p>Farmer email: {{ data['farmer-email'] }}</p>
       {% else %}
@@ -139,13 +144,13 @@
       <p>Agent business name: {{ data['other-applicant-Business-name'] }}</p>
       <p>Agent email: {{ data['agent-email'] }}</p>
       {% endif %}
-      <p>Happy to be contacted:</p>
-      <p>Date of score:</p>
+      <p>Happy to be contacted: Yes</p>
+      <p>Date of score: 20 May 2021</p>
 
 
       </div>
       <hr>
-      <div class="govuk-body govuk-!-padding-top-5">
+      <div class="govuk-body govuk-!-padding-top-3">
         <p>
         If you have any questions about the service, 
         call the RPA helpline on 0300 0200 301 and follow the options for the Farming Transformation Fund scheme, 
@@ -155,7 +160,7 @@
         </p>
       </div>
       <hr>
-      <div class="govuk-body govuk-!-paading-top-5">
+      <div class="govuk-body govuk-!-margin-top-5">
       The Department for Environment, Food and Rural Affairs (Defra) is the data controller for personal data you give to RPA.
       For information on how we handle personal data go to GOV.UK and search <a href="#"> Rural Payments Agency personal information charter </a>
       </div>
