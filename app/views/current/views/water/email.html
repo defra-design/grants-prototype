@@ -40,6 +40,7 @@
           <p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-3 govuk-!-padding-bottom-3">Average</p>
            This means your project might be successful.
         </div>
+
           <h2 class="govuk-heading-m govuk-!-margin-top-2">Scoring</h2>
           <p>Strong: Your project seems like it’s a strong fit with the funding priorities. Based on your answers, a grant application seems likely to be successful.</p>
           <p>Average: Your project seems like it’s an average fit with the funding priorities. Based on your answers, a grant application seems like it might be successful. </p>
@@ -118,6 +119,7 @@
       <p class="govuk-!-padding-top-3">What systems will be used to irrigate?</p>
       {% for item in data['irrigation-target'] %} <li>{{ item | capitalize }}</li> {% endfor %}
       <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
+<<<<<<< HEAD
 
       
       <p>Productivity</p>
@@ -151,6 +153,41 @@
       </div>
       <hr>
       <div class="govuk-body govuk-!-padding-top-3">
+=======
+
+      
+      <p>Productivity</p>
+      <p class="govuk-!-padding-top-3">How will the project improve productivity?</p>
+      {% for item in data['productivity'] %} <li>{{ item | capitalize }}</li> {% endfor %}   
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Strong</p>   
+
+
+      <p>Other farms</p>
+      <p> Will water be supplied to other farms?
+      {{ data['collaboration'] }}
+      </p>
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
+
+
+      <p>Contact details</p>
+      <p class="govuk-!-padding-top-3">Project name: {{ data['project-name'] }}</p>
+      <p>Business name: {{ data['business-name']}}</p>
+      {% if data['applicant'] == "Farmer"%}
+      <p>Farmer name: {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
+      <p>Farmer email: {{ data['farmer-email'] }}</p>
+      {% else %}
+      <p>Agent name: {{data['other-applicant-firstname']}} {{data['other-applicant-lastname']}}</p>
+      <p>Agent business name: {{ data['other-applicant-Business-name'] }}</p>
+      <p>Agent email: {{ data['agent-email'] }}</p>
+      {% endif %}
+      <p>Happy to be contacted:</p>
+      <p>Date of score:</p>
+
+
+      </div>
+      <hr>
+      <div class="govuk-body govuk-!-padding-top-5">
+>>>>>>> 824f7fab8dcb0c92e5e5e296374e7ba8d89a257b
         <p>
         If you have any questions about the service, 
         call the RPA helpline on 0300 0200 301 and follow the options for the Farming Transformation Fund scheme, 
@@ -160,7 +197,11 @@
         </p>
       </div>
       <hr>
+<<<<<<< HEAD
       <div class="govuk-body govuk-!-margin-top-5">
+=======
+      <div class="govuk-body govuk-!-paading-top-5">
+>>>>>>> 824f7fab8dcb0c92e5e5e296374e7ba8d89a257b
       The Department for Environment, Food and Rural Affairs (Defra) is the data controller for personal data you give to RPA.
       For information on how we handle personal data go to GOV.UK and search <a href="#"> Rural Payments Agency personal information charter </a>
       </div>
