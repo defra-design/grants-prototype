@@ -84,29 +84,80 @@
       </div>
       <div class="govuk-body">
       <p class="govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-padding-top-4 govuk-!-padding-bottom-2">Project details</p>
-      <p> Your project name: {{ data['project-name'] }} </p>
-      <p> Project impact: {% for item in data['project-summary'] %} <li>{{ item | capitalize }}</li> {% endfor %}</p>
-      <p>Your score to this answer is: Strong</p>
+      <p class="govuk-!-padding-top-3"> Your project name: {{ data['project-name'] }} </p>
+      <p class="govuk-!-padding-top-3"> Project impact: {% for item in data['project-summary'] %} <li>{{ item | capitalize }}</li> {% endfor %}</p>
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Strong</p>
       <p>Crops:</p>
-      <p>What main crops will be irrigated?</p>
+      <p class="govuk-!-padding-top-3">What main crops will be irrigated?</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>
         {{data['irrigated-crops']}} 
         </li>
       </ul> 
-      <p>Irrigated land :</p>
-      <p>How much land is currently irrigated per year? <br> {{ data['irrigated-land-current'] }} hectares</p>
-      <p>How much land will be irrigated after the project? <br> {{ data['irrigated-land-target'] }} hectares</p>
+      <p>Irrigated land</p>
+      <p>How much land is currently irrigated per year? <br> {% if  data['irrigated-land-current'] %} {{ data['irrigated-land-current'] }} hectares {% endif %}</p>
+      <p>How much land will be irrigated after the project? <br> {% if  data['irrigated-land-target'] %} {{ data['irrigated-land-target'] }} hectares {% endif %}</p>
       <p>Your score to this answer is: Strong</p>
       <p>Water source :</p>
-      <p>Where does your current irrigation water come from? <br>
+      <p class="govuk-!-padding-top-3">Where does your current irrigation water come from? <br>
         {% for item in data['irrigation-current'] %} <li>{{ item | capitalize }}</li> {% endfor %}
       </p>
-      <p>Where will your irrigation water come from? <br> 
+      <p class="govuk-!-padding-top-3">Where will your irrigation water come from? <br> 
         {% for item in data['irrigation-target'] %} <li>{{ item | capitalize }}</li> {% endfor %}
       </p>
-      <p>Your score to this answer is: Average</p>
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
+
+      <p>Irrigation system</p>
+      <p class="govuk-!-padding-top-3">What systems are currently used to irrigate?</p>
+      {% for item in data['irrigation-current']%} <li>{{ item | capitalize }}</li> {% endfor %}
+      <p class="govuk-!-padding-top-3">What systems will be used to irrigate?</p>
+      {% for item in data['irrigation-target'] %} <li>{{ item | capitalize }}</li> {% endfor %}
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
+
       
+      <p>Productivity</p>
+      <p class="govuk-!-padding-top-3">How will the project improve productivity?</p>
+      {% for item in data['productivity'] %} <li>{{ item | capitalize }}</li> {% endfor %}   
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Strong</p>   
+
+
+      <p>Other farms</p>
+      <p> Will water be supplied to other farms?
+      {{ data['collaboration'] }}
+      </p>
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
+
+
+      <p>Contact details</p>
+      <p class="govuk-!-padding-top-3">Project name: {{ data['project-name'] }}</p>
+      <p>Business name: {{ data['business-name']}}</p>
+      {% if data['applicant'] == "Farmer"%}
+      <p>Farmer name: {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
+      <p>Farmer email: {{ data['farmer-email'] }}</p>
+      {% else %}
+      <p>Agent name: {{data['other-applicant-firstname']}} {{data['other-applicant-lastname']}}</p>
+      <p>Agent business name: {{ data['other-applicant-Business-name'] }}</p>
+      <p>Agent email: {{ data['agent-email'] }}</p>
+      {% endif %}
+      <p>Happy to be contacted:</p>
+      <p>Date of score:</p>
+
+
+      </div>
+      <hr>
+      <div class="govuk-body govuk-!-padding-top-5">
+        <p>
+        If you have any questions about the service, 
+        call the RPA helpline on 0300 0200 301 and follow the options for the Farming Transformation Fund scheme, 
+        or email <a href="#"> FTF@rpa.gov.uk.</a>
+        <p>
+        We’d like feedback on our service so we can make improvements. Complete our customer satisfaction survey at: <a href="#"> XXXXXXXX </a> </p>
+        </p>
+      </div>
+      <hr>
+      <div class="govuk-body govuk-!-paading-top-5">
+      The Department for Environment, Food and Rural Affairs (Defra) is the data controller for personal data you give to RPA.
+      For information on how we handle personal data go to GOV.UK and search <a href="#"> Rural Payments Agency personal information charter </a>
       </div>
   </div>
 </div>
