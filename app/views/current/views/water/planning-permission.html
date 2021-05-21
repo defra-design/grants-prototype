@@ -10,11 +10,10 @@
 
 {% block content %}
 
+<main class="govuk-main-wrapper">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -50,22 +49,10 @@
                 </label>
               </div>
             </div>
-            <br><br>
-            <details class="govuk-details" data-module="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  Eligibility
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                Any planning permission must be in place by 31 December 2021 (the end of the application window). 
-              </div>
-            </details>
           </fieldset>
         </div>
 
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-
+        <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-5" data-module="govuk-button">Continue</button>
         {% if data['COMPLETED'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
             class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
@@ -73,11 +60,15 @@
             Back to summary page
           </button>
         {% endif %}
-
-
       </form>
-
+    </div>
+    <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+      <aside class="app-related-items">
+          <h3 class="govuk-heading-m"> Eligibility </h3>
+          <p>Any planning permission must be in place by 31 December 2021 (the end of the application window).</p>
+      </aside>    
     </div>
   </div>
+</main>  
 
 {% endblock %}
