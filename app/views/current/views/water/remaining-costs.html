@@ -10,57 +10,58 @@ Meeting the remaining project costs
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-
-      {% set remainingCosts = data['project-cost'] * 0.6 %}
-
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-m govuk-!-padding-bottom-1">Question 8 of 18 </span>
-            <h1 class="govuk-fieldset__heading">
-              Can you pay the remaining costs of £{{ remainingCosts | toFixed(2) | commafy }}?
-            </h1>
-          </legend>
-          <br>
-          <div id="public-money-hint" class="govuk-hint">
-            You can use loans, overdrafts and certain other grants, such as the Basic Payment Scheme or agri-environment schemes such as the Countryside Stewardship Scheme. 
-          </div>
-          <br>
-          <div class="govuk-radios govuk-radios--inline">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="remaining-costs" name="remaining-costs" type="radio" value="yes" {{ checked("remaining-costs", "yes") }}>
-              <label class="govuk-label govuk-radios__label" for="remaining-costs">
-                Yes
-              </label>
+<main class="govuk-main-wrapper"> 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        {% set remainingCosts = data['project-cost'] * 0.6 %}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-m govuk-!-padding-bottom-1">Question 8 of 18 </span>
+              <h1 class="govuk-fieldset__heading">
+                Can you pay the remaining costs {%if remainingCosts %}of £{{ remainingCosts | toFixed(2) | commafy }}{% endif %} ?
+              </h1>
+            </legend>
+            <br>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="remaining-costs" name="remaining-costs" type="radio" value="yes" {{ checked("remaining-costs", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="remaining-costs">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="remaining-costs-2" name="remaining-costs" type="radio" value="no" {{ checked("remaining-costs", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="remaining-costs-2">
+                  No
+                </label>
+              </div>
             </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="remaining-costs-2" name="remaining-costs" type="radio" value="no" {{ checked("remaining-costs", "no") }}>
-              <label class="govuk-label govuk-radios__label" for="remaining-costs-2">
-                No
-              </label>
-            </div>
-          </div>
-      </div>
-      <br>
-      <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+        </div>
+        <br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
-      {% if data['COMPLETED'] == true %}
-        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-          class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-        >
-          Back to summary page
-        </button>
-      {% endif %}
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to summary page
+          </button>
+        {% endif %}
 
 
-    </form>
-
-
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third govuk-!-padding-5">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-m">Eligibility</h3>
+        <div class="govuk-body govuk-!-font-size-19">  
+            You can use loans, overdrafts and certain other grants, such as the Basic Payment Scheme or agri-environment schemes such as the Countryside Stewardship Scheme.  
+        </div> 
+      </aside>         
+    </div>
   </div>
-</div>
+</main>
 
 {% endblock %}
