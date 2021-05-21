@@ -301,16 +301,17 @@ router.get('*/water/project-start', function (req, res) {
 router.post('*/water/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart === 'yes') { res.redirect('../water/project-start-fail') } else { res.redirect('../water/tenancy') }
+  if (projectStart === 'Yes') { res.redirect('../water/project-start-fail') } else { res.redirect('../water/tenancy') }
 })
 
 router.post('*/water/project-start-answer-completed', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart === 'yes') { res.redirect('../water/project-start-fail') } else { res.redirect('../water/answers') }
+  if (projectStart === 'Yes') { res.redirect('../water/project-start-fail') } else { res.redirect('../water/answers') }
 })
 
 // Q: Tenancy
+
 router.get('*/water/tenancy', function (req, res) {
   var backUrl = 'project-start'
   var nextUrl = '../water/tenancy-answer'
@@ -326,7 +327,7 @@ router.get('*/water/tenancy', function (req, res) {
 router.post('*/water/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
-  if (tenant === 'yes') {
+  if (tenant === 'Yes') {
     res.redirect('../water/project-items')
   } else { res.redirect('../water/tenancy-length') }
 })
@@ -334,7 +335,7 @@ router.post('*/water/tenancy-answer', function (req, res) {
 router.post('*/water/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength === 'no') { res.redirect('../water/tenancy-length-condition') } else { res.redirect('../water/project-items') }
+  if (tenancyLength === 'No') { res.redirect('../water/tenancy-length-condition') } else { res.redirect('../water/project-items') }
 })
 
 router.post('*/water/tenancy-length-answer-completed', function (req, res) {
@@ -392,6 +393,7 @@ router.get('*/water/grant', function (req, res) {
 })
 
 // Q: remaining costs
+
 router.get('*/water/remaining-costs', function (req, res) {
   var backUrl = 'grant'
   var nextUrl = '../water/remaining-costs-answer'
@@ -445,6 +447,7 @@ router.get('*/water/abstraction-licence', function (req, res) {
 })
 
 // Water SSSI
+
 router.get('*/water/water-SSSI', function (req, res) {
   var backUrl = 'abstraction-licence'
   var nextUrl = 'project-summary'
@@ -563,6 +566,7 @@ router.get('*/water/collaboration', function (req, res) {
     completedUrl: completedUrl
   })
 })
+
 // answers
 
 router.get('*/water/answers', function (req, res) {
@@ -590,6 +594,7 @@ router.get('*/water/next-steps', function (req, res) {
 })
 
 // business
+
 router.get('*/water/business', function (req, res) {
   if (req.session.data.water_s03_status !== 'Completed') {
     req.session.data.water_s03_status = 'In progress'
@@ -653,6 +658,7 @@ router.get('*/water/consent', function (req, res) {
     nextUrl: nextUrl
   })
 })
+
 // reference-number
 
 router.get('*/water/reference-number', function (req, res) {
