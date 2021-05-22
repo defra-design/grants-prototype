@@ -12,7 +12,6 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <div class="govuk-form-group">
           <span class="govuk-caption-m govuk-!-padding-bottom-1">Question 14 of 18 </span>
@@ -67,7 +66,6 @@
         <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">
           Continue
         </button>
-
         {% if data['COMPLETED'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
             class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
@@ -75,10 +73,7 @@
             Back to summary page
           </button>
         {% endif %}
-
-
       </form>
-
     </div>
   </div>
 
