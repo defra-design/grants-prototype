@@ -9,72 +9,76 @@
 {% endblock %}
 
 {% block content %}
-
+<main class="govuk-main-wrapper">
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <div class="govuk-form-group">
-          <span class="govuk-caption-m govuk-!-padding-bottom-1">Question 14 of 18 </span>
-          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="irrigated-land-current">
-              How much land is currently irrigated per year? 
-            </label>
-          </h1>
-          <br>
-          <div class="govuk-body govuk-!-margin-bottom-0">
-          Hectares
-          <p id="irrigated-land-current-hint" class="govuk-hint">
-            Enter figure in hectares, for example 543.5
-          </p>
-          </div>
-          <div class="govuk-input__wrapper">
-          <input class="govuk-input govuk-input--width-5" id="irrigated-land-current" name="irrigated-land-current" type="text" spellcheck="false" aria-describedby="irrigated-land-current-hint"  value="{{ data['irrigated-land-current'] }}">
-          <div class="govuk-input__suffix" aria-hidden="true">ha</div>
-          </div>
-        </div>
-       
-        <div class="govuk-form-group">
-          <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-label--l" for="irrigated-land-current">
-               How much land will be irrigated after the project?
-            </label>
-          </h1>
-          <br>
-          <div class="govuk-body govuk-!-margin-bottom-0">
-              Hectares
-          <p id="irrigated-land-target-hint" class="govuk-hint">
-             Enter figure in hectares, for example 543.5
-          </p>
-          </div>
-          <div class="govuk-input__wrapper">
-            <input class="govuk-input govuk-input--width-5" id="irrigated-land-target" name="irrigated-land-target" type="text" spellcheck="false" aria-describedby="irrigated-land-target-hint" value="{{ data['irrigated-land-target'] }}">
-              <div class="govuk-input__suffix" aria-hidden="true">ha</div>
-          </div>
-          <details class="govuk-details govuk-!-margin-top-9" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                        Funding  priorities 
-                    </span>
-                </summary>
-                <div class="govuk-details__text">
-                   RPA wants to fund projects that: 
-                   <ul>
-                    <li>improve productivity</li>
-                   </ul>
+            <fieldset class="govuk-fieldset">
+                <span class="govuk-caption-m govuk-!-padding-bottom-1">Question 14 of 18 </span>
+                <h1 class="govuk-label-wrapper">
+                 <label class="govuk-label govuk-label--l" for="irrigated-land-current">
+                    How much land is currently irrigated per year?
+                  </label>
+                </h1>
+                <br>
+                <div class="govuk-body govuk-!-margin-bottom-0">
+                Hectares
+                <p id="irrigated-land-current-hint" class="govuk-hint">
+                  Enter figure in hectares, for example 543.5
+                </p>
                 </div>
-              </details>
+                <div class="govuk-input__wrapper">
+                <input class="govuk-input govuk-input--width-5" id="irrigated-land-current" name="irrigated-land-current" type="text" spellcheck="false" aria-describedby="irrigated-land-current-hint"  value="{{ data['irrigated-land-current'] }}">
+                <div class="govuk-input__suffix" aria-hidden="true">ha</div>
+                </div>
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--l" for="irrigated-land-current">
+                    How much land will be irrigated after the project?
+                  </label>
+                </h1>
+                <br>
+                <div class="govuk-body govuk-!-margin-bottom-0">
+                    Hectares
+                  <p id="irrigated-land-target-hint" class="govuk-hint">
+                    Enter figure in hectares, for example 543.5
+                  </p>
+                </div>
+                <div class="govuk-input__wrapper">
+                  <input class="govuk-input govuk-input--width-5" id="irrigated-land-target" name="irrigated-land-target" type="text" spellcheck="false" aria-describedby="irrigated-land-target-hint" value="{{ data['irrigated-land-target'] }}">
+                    <div class="govuk-input__suffix" aria-hidden="true">ha</div>
+                </div>
+         
         
-        <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">
-          Continue
-        </button>
-        {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-            class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
-          >
-            Back to summary page
-          </button>
-        {% endif %}
-      </form>
-    </div>
+              <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">
+                Continue
+              </button>
+
+              {% if data['COMPLETED'] == true %}
+                <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+                  class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
+                >
+                  Back to summary page
+                </button>
+              {% endif %}
+            <fieldset>  
+        </form> 
+    </div>    
+    <div class="govuk-grid-column-one-third govuk-!-padding-5">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-m">Eligibility</h3>
+        <div class="govuk-body govuk-!-font-size-19">  
+            This grant is for:
+                <ul>
+                  <li>arable and horticultural farming businesses<br>supplying the food industry</li>
+                  <li>nurseries growing flowers </li>
+                  <li>forestry nurseries </li>
+      
+                </ul>
+        </div>         
+      </aside>                
+    </div>  
   </div>
+</main>  
 
 {% endblock %}
