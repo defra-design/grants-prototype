@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block content %}
-
+<mian class="govuk-main-wrapper">
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -145,6 +145,17 @@
         {% endif %}
       </form>
     </div>
-  </div>
-
+    <div class="govuk-grid-column-one-third govuk-!-padding-5">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-m"> Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">  
+            RPA wants to fund projects that: 
+                   <ul>
+                    <li>improve the environment</li>
+                    <li>improve water sustainability</li>
+                   </ul>
+        </div>         
+      </aside>   
+    </div>
+</main>
 {% endblock %}
