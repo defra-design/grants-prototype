@@ -2,7 +2,7 @@
 productivity? {% endblock %} {% block beforeContent %}
 <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %} {% block content %}
-
+<main class="govuk-main-wrapper">
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -83,19 +83,6 @@ productivity? {% endblock %} {% block beforeContent %}
               </label>
             </div>
           </div>
-          <details class="govuk-details govuk-!-margin-top-9" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                        Funding  priorities 
-                    </span>
-                </summary>
-                <div class="govuk-details__text">
-                   RPA wants to fund projects that: 
-                   <ul>
-                    <li>improve productivity </li>
-                   </ul>
-                </div>
-             </details>    
         </fieldset>
       </div>
       <br><br>
@@ -117,6 +104,17 @@ productivity? {% endblock %} {% block beforeContent %}
       {% endif %}
     </form>
   </div>
+<div class="govuk-grid-column-one-third govuk-!-padding-5">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-m"> Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">  
+           RPA wants to fund projects that: 
+                   <ul>
+                    <li>improve productivity </li>
+                   </ul>
+        </div>         
+      </aside>   
+</div>  
 </div>
-
+</main>
 {% endblock %}

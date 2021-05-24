@@ -9,12 +9,10 @@
 {% endblock %}
 
 {% block content %}
-
+<main class="govuk-main-wrapper">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -43,19 +41,6 @@
                   Fruit (for example fruit, bush fruit)
                 </label>
               </div>
-              <details class="govuk-details govuk-!-margin-top-9" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                        Funding  priorities 
-                    </span>
-                </summary>
-                <div class="govuk-details__text">
-                   RPA wants to fund projects that: 
-                   <ul>
-                    <li>improve productivity</li>
-                   </ul>
-                </div>
-              </details>
             </div>
           </fieldset>
         </div>
@@ -71,11 +56,19 @@
             Back to summary page
           </button>
         {% endif %}
-
-
       </form>
-
+    </div>
+     <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+      <aside class="app-related-items">
+          <h3 class="govuk-heading-m"> Funding  priorities </h3>
+          <div class="govuk-body">
+             RPA wants to fund projects that: 
+                   <ul>
+                    <li>improve productivity</li>
+                   </ul>
+          </div>
+      </aside>    
     </div>
   </div>
-
+</main>
 {% endblock %}

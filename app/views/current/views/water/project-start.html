@@ -9,12 +9,10 @@ Have you already started work on the project?
 {% endblock %}
 
 {% block content %}
-
+<main class="govuk-main-wrapper">
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -40,24 +38,6 @@ Have you already started work on the project?
           </div>
         </fieldset>
       </div>
-
-      <details class="govuk-details  govuk-!-margin-top-9" data-module="govuk-details" open>
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Eligibility
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          <p>You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.</p>
-
-          <p>Before you start the project, you can:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>get quotes from suppliers</li>
-            <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
-          </ul>
-        </div>
-      </details>
-
       <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">Continue</button>
 
       {% if data['COMPLETED'] == true %}
@@ -67,10 +47,20 @@ Have you already started work on the project?
           Back to summary page
         </button>
       {% endif %}
-
     </form>
-
+  </div>
+   <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-m"> Eligibility </h3>
+        <p>You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.</p>
+        <p>Before you start the project, you can:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>get quotes from suppliers</li>
+            <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
+        </ul>
+      </aside>    
   </div>
 </div>
+</main>
 
 {% endblock %}
