@@ -6,7 +6,7 @@
 
 {% block beforeContent %}
     {% if (data['applicant'] == "Agent")%}
-        <a class="govuk-back-link" href="../water/your-details">Back</a>
+        <a class="govuk-back-link" href="../water/agent-farmer-details">Back</a>
     {%else%}
         <a class="govuk-back-link" href="../water/your-details">Back</a>
     {%endif%} 
@@ -193,6 +193,62 @@
                        
                     </tbody>
                 </table>
+                <br>
+                {# agent farmer details #}
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                                <h1 class="govuk-!-font-size-24"><strong> Farmer's details</strong></h1>
+                        </tr>
+                        <hr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row--no-border">
+                            <th  scope="row" class="govuk-table__header">
+                                <strong>Name</strong>
+                            </th>
+                            <td class="govuk-table__cell">
+                                <p>{{data['agent-farmer-firstname']}}</p>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="agent-farmer-details">
+                                    Change<span class="govuk-visually-hidden">business details</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th  scope="row" class="govuk-table__header">
+                                <strong>Home address</strong>
+                            </th>
+                            <td class="govuk-table__cell">
+                                <p>{{ data['agent-farmer-address1'] }}</p>
+                                <p>{{ data['agent-farmer-address2'] }}</p>
+                                <p>{{ data['agent-farmer-postcode'] }}</p>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="agent-farmer-details">
+                                    Change<span class="govuk-visually-hidden">Home address</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th  scope="row" class="govuk-table__header">
+                                <strong> Contact datails</strong>
+                            </th>
+                            <td class="govuk-table__cell">
+                                <p>{{ data['agent-farmer-email'] }}</p>
+                                <p>{{ data['agent-farmer-landline'] }}</p>
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link" href="agent-farmer-details">
+                                    Change<span class="govuk-visually-hidden">Contact datails</span>
+                                </a>
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+                <br><br>
         </div>        
      </div>    
         <div class="govuk-grid-row govuk-!-padding-top-8">

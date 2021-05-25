@@ -17,7 +17,7 @@
         <p>Dear {{data['other-applicant-firstname']}} {{data['other-applicant-lastname']}} ,</p>
         {% endif %}
         <div class="govuk-inset-text">
-            Your reference number : 122345678 
+            Your reference number: 122345678 
         </div>
         <p>Thanks for using the Farming Transformation Fund water grant checker and submitting your details to the Rural Payments Agency (RPA).</p>
         <p>Based on the answers you have provided, your project appears eligible.</p>
@@ -79,7 +79,7 @@
       </ul>
       <div class="govuk-body">
       <p>Estimated cost of the items: {{ data['project-cost'] }}</p>
-      <p>Grant rate:40%</p>
+      <p>Grant rate: 40%</p>
       <p>Potential grant funding: {% if data['project-items'] != NAN %}{{data['project-cost'] * 0.4}}{% endif %}</p>
       <p>Remaining cost: {% if data['project-items'] != NAN %}{{ data['project-cost'] * 0.6 | toFixed(2) | commafy}}{% endif %}</p>
       <p>Project started: {% if data['project-items'] != NAN %}{{data['project-start']}} {% endif %}</p>
@@ -141,6 +141,8 @@
       <p>Agent name: {{data['other-applicant-firstname']}} {{data['other-applicant-lastname']}}</p>
       <p>Agent business name: {{ data['other-applicant-Business-name'] }}</p>
       <p>Agent email: {{ data['agent-email'] }}</p>
+      <p>Farmer name: {{ data['agent-farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
+      <p>Farmer email: {{ data['agent-farmer-email'] }}</p>
       {% endif %}
       <p>Happy to be contacted: Yes</p>
       <p>Date of score: 20 May 2021</p>
