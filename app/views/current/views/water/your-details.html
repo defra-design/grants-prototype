@@ -11,10 +11,8 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="../water/check-details" method="post">
-
-        {% if (data['applicant'] == "Agent") %}
-
+      {% if (data['applicant'] == "Agent") %}
+      <form class="form" action="../water/agent-farmer-details" method="post">
         <h1 class="govuk-heading-l">Agent's details </h1>
         <div class="govuk-form-group">
           <label class="govuk-label" for="other-applicant-firstname">
@@ -97,12 +95,11 @@
                         Postcode
                     </label>
                     <input class="govuk-input govuk-!-width-one-quarter" id="agent-postcode" name="agent-postcode" type="agent-postcode" spellcheck="false" aria-describedby="agent-postcode-hint" autocomplete="agent-postcode" value="{{ data['agent-postcode'] }}">
-                </div>                
-
-
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-			  Continue
-	   </button>
+                </div>                             
+             <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
        {# {% if data['COMPLETED'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
             class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
@@ -111,7 +108,8 @@
           </button>
         {% endif %} #}
 
-        {% else %}
+      {% else %}
+      <form class="form" action="../water/check-details" method="post">
         <h1 class="govuk-heading-l"> Farmer's details</h1>
         <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-firstname">
@@ -187,16 +185,16 @@
                     <input class="govuk-input govuk-!-width-one-quarter" id="farmer-postcode" name="farmer-postcode" type="farmer-postcode" spellcheck="false" aria-describedby="farmer-postcode-hint" autocomplete="farmer-postcode" value="{{ data['farmer-postcode'] }}">
                 </div>                
 
-		  <button class="govuk-button govuk-!-margin-top-6 govuk-!-margin-right-1" data-module="govuk-button">
-			  Continue
-		  </button>
-          {# {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-            class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
-          >
-            Back to summary page
-          </button>
-        {% endif %} #}
+            <button class="govuk-button govuk-!-margin-top-6 govuk-!-margin-right-1" data-module="govuk-button">
+              Continue
+            </button>
+              {# {% if data['COMPLETED'] == true %}
+              <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+                class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
+              >
+                Back to summary page
+              </button>
+            {% endif %} #}
       </form>
     </div>
   </div>

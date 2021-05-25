@@ -647,7 +647,18 @@ router.get('*/water/check-details', function (req, res) {
   })
 })
 
+router.get('*/water/agent-farmer-details', function (req, res) {
+  var nextUrl = 'check-details'
+  var backUrl = 'your-details'
+
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+})
+
 // consent
+
 router.get('*/water/consent', function (req, res) {
   var nextUrl = 'reference-number'
   var backUrl = 'check-details'
