@@ -648,7 +648,6 @@ router.get('*/water/check-details', function (req, res) {
 })
 
 // consent
-
 router.get('*/water/consent', function (req, res) {
   var nextUrl = 'reference-number'
   var backUrl = 'check-details'
