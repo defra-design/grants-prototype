@@ -103,13 +103,13 @@
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
 			  Continue
 	   </button>
-       {% if data['COMPLETED'] == true %}
+       {# {% if data['COMPLETED'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
             class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
           >
             Back to summary page
           </button>
-        {% endif %}
+        {% endif %} #}
 
         {% else %}
         <h1 class="govuk-heading-l"> Farmer's details</h1>
@@ -190,13 +190,13 @@
 		  <button class="govuk-button govuk-!-margin-top-6 govuk-!-margin-right-1" data-module="govuk-button">
 			  Continue
 		  </button>
-          {% if data['COMPLETED'] == true %}
+          {# {% if data['COMPLETED'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
             class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
           >
             Back to summary page
           </button>
-        {% endif %}
+        {% endif %} #}
       </form>
     </div>
   </div>
