@@ -1,16 +1,15 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Email
+  email 
 {% endblock %}
-
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <div class="govuk-body">
-        <h1 class="govuk-heading-l">Farming Transformation Fund water grant </h1>
+        <h1 class="govuk-heading-l">Farming Transformation Fund water management grant  </h1>
         {% if data['applicant'] == "Farmer" %}
         <p>Dear {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }} ,</p>
         {% else %}
@@ -19,7 +18,7 @@
         <div class="govuk-inset-text">
             Your reference number: 122345678 
         </div>
-        <p>Thanks for using the Farming Transformation Fund water grant checker and submitting your details to the Rural Payments Agency (RPA).</p>
+        <p>Thanks for using the Farming Transformation Fund water management grant  checker and submitting your details to the Rural Payments Agency (RPA).</p>
         <p>Based on the answers you have provided, your project appears eligible.</p>
         <p>RPA will be in touch when the full application period opens.</p>
         <p>They’ll tell you about the application form and any guidance you need to submit a full application.</p>
