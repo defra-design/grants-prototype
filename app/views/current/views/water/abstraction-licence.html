@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+  {% if (data['planning-permission'] !== 'Secured' ||  data['planning-permission'] !== 'Not needed') %}
+       <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -24,13 +25,13 @@
             <br>
             <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="not needed" {{ checked("abstraction-licence", "not needed") }}>
+                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="Not needed" {{ checked("abstraction-licence", "Not needed") }}>
                 <label class="govuk-label govuk-radios__label" for="abstraction-licence">
                   Not needed
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="secured" {{ checked("abstraction-licence", "secured") }}>
+                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="Secured" {{ checked("abstraction-licence", "Secured") }}>
                 <label class="govuk-label govuk-radios__label" for="abstraction-licence-2">
                   Secured
                 </label>
