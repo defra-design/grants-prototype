@@ -1,37 +1,34 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-You may be able to apply for a large grant from this scheme
+  You may be able to apply for a grant from this scheme
 {% endblock %}
 
 {% block beforeContent %}
-<a class="govuk-back-link" href="abstraction-licence">Back</a>
+  <a class="govuk-back-link" href="abstraction-licence">Back</a>
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-body govuk-!-font-size-48">
+        <h1 class="govuk-heading-l">
+          You may be able to apply for this grant 
+        </h1>
+        <p>Any abstraction licences or variations must be in place by 31 December 2021 (the end of the application window).</p>
 
-    <h1 class="govuk-heading-l">
-      You may be able to apply for a large grant from this scheme
-    </h1>
+        <p>If you have already applied for an abstraction licence or variation and expect to get it by then, you can submit a full application. </p>
 
-    <p>Check if you need an abstraction licence.</p>
+        <p>If you have already applied for an abstraction licence or variation but it might not be issued by then, please email <a href=""> FTF@rpa.gov.uk</a> </p>
 
-    <p>It can take up to a year to get this.</p>
+            <form class="form" action="../water/water-SSSI" method="post">
 
-    <p>You will need a licence if you want to take more than 20 cubic metres (approximately 4,400 gallons) a day from a surface or underground source.</p>
+              <button class="govuk-button govuk-!-margin-top-6" data-module="govuk-button">Continue</button>
 
-    <p>You can find out if you need a licence from the <a href="">Environment Agency</a>.</p>
-
-    <form class="form" action="../water/water-SSSI" method="post">
-
-      <button class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Continue</button>
-
-    </form>
-
+            </form>
+       </div>      
+    </div>
   </div>
-</div>
 
 {% endblock %}
