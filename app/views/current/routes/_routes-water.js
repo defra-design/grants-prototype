@@ -421,10 +421,10 @@ router.post('*/water/remaining-costs-answer-completed', function (req, res) {
 // PLANNING PERMISSION
 
 router.get('*/water/planning-permission', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'remaining-costs'
-  var nextUrl = 'abstraction-licence'
+  var nextUrl = 'planning-permission-answer-completed'
   var completedUrl = 'answers'
-
   res.render('./' + req.originalUrl, {
     backUrl: backUrl,
     nextUrl: nextUrl,
@@ -432,27 +432,62 @@ router.get('*/water/planning-permission', function (req, res) {
   })
 })
 
+// PLANNING PERMISSION CONDITION
+router.get('*/water/planning-required-condition', function (req, res) {
+  var backUrl = 'planning-permission'
+  var nextUrl = 'abstraction-licence'
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+})
+
+// PLANNING PERMISSION COMPLETED
+router.post('*/water/planning-permission-answer-completed', function (req, res) {
+  var planningPermission = req.session.data['planning-permission']
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured') { res.redirect('../water/abstraction-licence') } else if (planningPermission === 'maybe') { res.redirect('../water/planning-required-condition') } else { res.redirect('../water/planning-permission-fail') }
+})
+
 // ABSTRACTION LICENCE
 
 router.get('*/water/abstraction-licence', function (req, res) {
-  var backUrl = 'planning-permission'
-  var nextUrl = 'water-SSSI'
+  var planningPermission = req.session.data['planning-permission']
+  var nextUrl = 'abstraction-licence-answer-completed'
+  var backUrl
   var completedUrl = 'answers'
-
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured') { backUrl = 'planning-permission' } else if (planningPermission === 'maybe') { backUrl = 'planning-required-condition' } else { backUrl = 'planning-permission-fail' }
   res.render('./' + req.originalUrl, {
     backUrl: backUrl,
     nextUrl: nextUrl,
     completedUrl: completedUrl
+  })
+})
+
+// ABSTRACTION LICENCE COMPLETED
+
+router.post('*/water/abstraction-licence-answer-completed', function (req, res) {
+  var abstractionLicence = req.session.data['abstraction-licence']
+  if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') { res.redirect('../water/water-SSSI') } else { res.redirect('../water/abstraction-required-condition') }
+})
+
+// ABSTRACTION LICENCE CONDITION
+router.get('*/water/abstraction-required-condition', function (req, res) {
+  var backUrl = 'abstraction-licence'
+  var nextUrl = 'water-SSSI'
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
   })
 })
 
 // Water SSSI
 
 router.get('*/water/water-SSSI', function (req, res) {
-  var backUrl = 'abstraction-licence'
+  var abstractionLicence = req.session.data['abstraction-licence']
   var nextUrl = 'project-summary'
+  var backUrl
   var completedUrl = 'answers'
-
+  if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') { backUrl = 'abstraction-licence' } else { backUrl = 'abstraction-required-condition' }
   res.render('./' + req.originalUrl, {
     backUrl: backUrl,
     nextUrl: nextUrl,

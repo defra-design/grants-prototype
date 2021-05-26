@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+       <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -16,7 +16,6 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-m govuk-!-padding-bottom-1">Question 10 of 18 </span>
               <h1 class="govuk-fieldset__heading">
                 Does the project need an abstraction licence or a variation of one?
               </h1>
@@ -24,13 +23,13 @@
             <br>
             <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="not needed" {{ checked("abstraction-licence", "not needed") }}>
+                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="Not needed" {{ checked("abstraction-licence", "Not needed") }}>
                 <label class="govuk-label govuk-radios__label" for="abstraction-licence">
                   Not needed
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="secured" {{ checked("abstraction-licence", "secured") }}>
+                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="Secured" {{ checked("abstraction-licence", "Secured") }}>
                 <label class="govuk-label govuk-radios__label" for="abstraction-licence-2">
                   Secured
                 </label>
