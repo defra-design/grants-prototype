@@ -422,7 +422,7 @@ router.post('*/water/remaining-costs-answer-completed', function (req, res) {
 
 router.get('*/water/planning-permission', function (req, res) {
   var backUrl = 'remaining-costs'
-  var nextUrl = 'abstraction-licence'
+  var nextUrl = 'planning-permission-answer-completed'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -430,6 +430,22 @@ router.get('*/water/planning-permission', function (req, res) {
     nextUrl: nextUrl,
     completedUrl: completedUrl
   })
+})
+
+// PLANNING PERMISSION CONDITION
+router.get('*/water/planning-required-condition', function (req, res) {
+  var backUrl = 'planning-permission'
+  var nextUrl = 'abstraction-licence'
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+})
+
+// PLANNING PERMISSION COMPLETED
+router.post('*/water/planning-permission-answer-completed', function (req, res) {
+  var planningPermission = req.session.data['planning-permission']
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured') { res.redirect('../water/abstraction-licence') } else if (planningPermission === 'maybe') { res.redirect('../water/planning-required-condition') } else { res.redirect('../water/planning-permission-fail') }
 })
 
 // ABSTRACTION LICENCE
