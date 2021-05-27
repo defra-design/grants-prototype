@@ -1,3 +1,4 @@
+node_modules
 node_modules/*
 lib/extensions/_extensions.scss
 public/stylesheets/*.css
