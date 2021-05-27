@@ -1,6 +1,3 @@
 node_modules/*
 lib/extensions/_extensions.scss
-public/stylesheets/application-ie8.css
-public/stylesheets/application.css
-public/stylesheets/unbranded-ie8.css
-public/stylesheets/unbranded.css
+public/stylesheets/*.css
