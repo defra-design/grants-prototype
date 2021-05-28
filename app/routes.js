@@ -13,6 +13,7 @@ router.use('/', (req, res, next) => {
   res.locals.subfolder = req.subfolder // what subfolder the URL is in
   console.log('folder : ' + res.locals.folder + ', subfolder : ' + res.locals.subfolder)
   console.log('previous page is: ' + res.locals.prevURL + ' and current page is ' + req.url + ' ' + res.locals.currentURL)
+  console.log('\n-------------------------\n')
   next()
 })
 
