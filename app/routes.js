@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const { serviceName, schemeList } = require('./utils')
 
 // Add your routes here - above the module.exports line
 
@@ -22,87 +23,12 @@ router.get('/', function (req, res) {
   res.render('./index')
 })
 
-// Set service name based on sub folders for different prototypes
-router.get('/current/views/water/*', function (req, res, next) {
-  res.locals.serviceName = 'Check if you can apply for a Farming Transformation Fund water grant'
-  next()
-})
+router.get('/:version/views/:scheme/*', function (req, res, next) {
+  const { version, scheme } = req.params
 
-// Set service name based on sub folders for different prototypes
-router.get('/current/views/slurry/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for slurry equipment'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v7-privateBeta/views/water/*', function (req, res, next) {
-  res.locals.serviceName = 'Check if you can apply for a water resource management grant'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v7-privateBeta/views/slurry/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for slurry equipment'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v6/views/water/*', function (req, res, next) {
-  res.locals.serviceName = 'Check if you can apply for a water resource management grant'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v6/views/slurry/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for slurry equipment'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v5/views/water/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a Farming Transformation Fund water resource management grant'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v5/views/slurry/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for slurry equipment'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v4+/views/water/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for a water resource management project'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v4+/views/slurry/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for slurry equipment'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v4/views/water/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for a water resource management project'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v4/views/slurry/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for slurry equipment'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v3/views/water/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for a water resource management project'
-  next()
-})
-
-// Set service name based on sub folders for different prototypes
-router.get('/v3/views/slurry/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large grant for slurry equipment'
+  if (schemeList.includes(scheme)) {
+    res.locals.serviceName = serviceName[scheme][version]
+  }
   next()
 })
 
