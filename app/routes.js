@@ -129,10 +129,4 @@ router.use('/v6', require('./views/v6/routes/_routes-slurry'))
 router.use('/v7-privateBeta', require('./views/v7-privateBeta/routes/_routes-water'))
 router.use('/v7-privateBeta', require('./views/v7-privateBeta/routes/_routes-slurry'))
 
-// Task list status settings
-
-router.get('*/v1/start', function (req, res) {
-  res.render('./' + req.originalUrl)
-})
-
 module.exports = router
