@@ -38,14 +38,14 @@ router.get('/v2/*', function (req, res, next) {
 })
 
 // Start folder specific route
-router.use('/current', require('./views/current/routes/routes'))
-router.use('/v1', require('./views/v1/routes/routes'))
-router.use('/v2', require('./views/v2/routes/routes'))
-router.use('/v3', require('./views/v3/routes/routes'))
-router.use('/v4', require('./views/v4/routes/routes'))
-router.use('/v4+', require('./views/v4+/routes/routes'))
-router.use('/v5', require('./views/v5/routes/routes'))
-router.use('/v6', require('./views/v6/routes/routes'))
-router.use('/v7-privateBeta', require('./views/v7-privateBeta/routes/routes'))
+router.use('/current', require('./views/water/current/routes/routes'))
+router.use('/v1', require('./views/water/v1/routes/routes'))
+router.use('/v2', require('./views/water/v2/routes/routes'))
+router.use('/v3', require('./views/water/v3/routes/routes'))
+router.use('/v4', require('./views/water/v4/routes/routes'))
+router.use('/v4+', require('./views/water/v4+/routes/routes'))
+router.use('/v5', require('./views/water/v5/routes/routes'))
+router.use('/v6', require('./views/water/v6/routes/routes'))
+router.use('/v7-privateBeta', require('./views/water/v7-privateBeta/routes/routes'))
 
 module.exports = router
