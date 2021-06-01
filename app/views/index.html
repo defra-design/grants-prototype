@@ -1,94 +1,46 @@
-
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-  Grants Prototypes
-{% endblock %}
+{% extends "./layouts/_BASEFULL.html" %}
 
-{% block content %}
+{% block service %}
 
-  <style>
-    dd {margin-inline-start: 0}
-  </style>
+<!-- 
+<span class="govuk-caption-xl">Prototypes</span> 
+-->
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-xl">Prototypes</span>
-      <h1 class="govuk-heading-xl">
-        Grants
-      </h1>
+<h1 class="govuk-heading-l">
+  Grants prototypes
+</h1>
+<p>
+  The following were built using GOV.UK Prototype Kit v9.8.0.
+</p>
 
-      <dl class="govuk-list">
-        <dt><a href="/current/views/">Version 07</a></dt>
-        <dd>Beta - Public</dd>
-      </dl>
+<!--
+<h2 class="govuk-heading-m"> Prototypes </h2>
+-->
 
-      <dl class="govuk-list">
-        <dt><a href="/v7-privateBeta/views/">Version 07</a></dt>
-        <dd>Beta - Private</dd>
-      </dl>
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col">Prototype</th>
+      <th class="govuk-table__header" scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell"><a href="water">
+          Water resource management EoI
+        </a></td>
+      <td class="govuk-table__cell">Eligibility and expression of interest</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+          Slurry management EoI
+        </td>
+      <td class="govuk-table__cell">Eligibility and expression of interest</td>
+    </tr>
+  </tbody>
+</table>
 
-      <dl class="govuk-list">
-        <dt><a href="/v6/views/">Version 06</a></dt>
-        <dd>Alpha extension</dd>
-      </dl>
-
-      <dl class="govuk-list">
-        <dt><a href="/v5/views/">Version 05</a></dt>
-        <dd>Alpha extension</dd>
-      </dl>
-
-      <dl class="govuk-list">
-        <dt><a href="/v4+/views/">Version 04.5</a></dt>
-        <dd>Alpha extension</dd>
-      </dl>
-
-      <dl class="govuk-list">
-        <dt><a href="/v4/views/">Version 04</a></dt>
-        <dd>Alpha sprint XXXX - large grants expression of interest v3</dd>
-      </dl>
-
-      <dl class="govuk-list">
-        <dt><a href="/v3/views/">Version 03</a></dt>
-        <dd>Alpha sprint 6 - large grants expression of interest v2</dd>
-      </dl>
-
-      <dl class="govuk-list">
-        <dt><a href="/v2/views/">Version 02</a></dt>
-        <dd>Alpha sprint 5 - large grants expression of interest</dd>
-      </dl>
-
-      <dl class="govuk-list">
-        <dt><a href="/v1/views/">Version 01</a></dt>
-        <dd>Alpha sprint 3 - small grants service</dd>
-      </dl>
-
-    </div>
-
-    <div class="govuk-grid-column-one-third">
-
-      <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Related links
-        </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
-            <li>
-              <a href="https://github.com/DEFRA/grants-prototype">
-                Prototype code on Github
-              </a>
-            </li>
-            <li>
-              <a href="https://grants-design-history.herokuapp.com/">
-                Design history
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-
-    </div>
-
-  </div>
 
 {% endblock %}
