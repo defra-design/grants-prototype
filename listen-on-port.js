@@ -13,6 +13,7 @@ var env = (process.env.NODE_ENV || 'development').toLowerCase()
 
 utils.findAvailablePort(server, function (port) {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
+  console.log('------------------------------------------------------\n')
   if (env === 'production' || useBrowserSync === 'false') {
     server.listen(port)
   } else {
