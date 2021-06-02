@@ -44,7 +44,7 @@ router.use('/v2', require('./views/water/v2/routes/routes'))
 router.use('/v3', require('./views/water/v3/routes/routes'))
 router.use('/v4', require('./views/water/v4/routes/routes'))
 router.use('/v4b', require('./views/water/v4b/routes/routes'))
-router.use('/v5', require('./views/water/v5/routes/routes'))
+router.use('/water/v5', require('./views/water/v5/routes/routes'))
 router.use('/water/v6', require('./views/water/v6/routes/routes'))
 router.use('/water/v7private', require('./views/water/v7private/routes/routes'))
 
