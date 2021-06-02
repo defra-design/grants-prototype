@@ -22,7 +22,7 @@
 
       <p class="govuk-!-margin-bottom-9">Based on the estimated total project cost of £{{ data['project-cost'] | toFixed(2) | commafy }} you can apply for a grant of up to <strong>£{{ grantAmount | toFixed(2) | commafy }}</strong>.</p>
 
-      <form class="form" action="../routes/remaining-costs-answer" method="post">
+      <form class="form" action="remaining-costs-answer" method="post">
 
         <div class="govuk-form-group govuk-!-margin-bottom-7">
           <label class="govuk-label govuk-!-margin-bottom-3" for="remaining-costs">

@@ -32,15 +32,10 @@ router.get('/:scheme/:version/*', function (req, res, next) {
   next()
 })
 
-router.get('/v2/*', function (req, res, next) {
-  res.locals.serviceName = 'Apply for a large countryside productivity grant for water'
-  next()
-})
-
 // Start folder specific route
 router.use('/water/current', require('./views/water/current/routes/routes'))
 router.use('/v1', require('./views/water/v1/routes/routes'))
-router.use('/v2', require('./views/water/v2/routes/routes'))
+router.use('/water/v2', require('./views/water/v2/routes/routes'))
 router.use('/water/v3', require('./views/water/v3/routes/routes'))
 router.use('/water/v4', require('./views/water/v4/routes/routes'))
 router.use('/water/v4b', require('./views/water/v4b/routes/routes'))

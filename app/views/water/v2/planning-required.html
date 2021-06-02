@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Does this project need an abstraction licence?
+  Does this project need planning permission?
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" onclick="history.back()" href="#">Back</a>
+  <a class="govuk-back-link" href="project">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,25 +13,25 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="../routes/abstraction-required-answer" method="post">
+      <form class="form" action="planning-required-answer" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Does this project need an abstraction licence?
+                Does this project need planning permission?
               </h1>
             </legend>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-required" name="abstraction-required" type="radio" value="yes" {{ checked("abstraction-required", "yes") }}>
-                <label class="govuk-label govuk-radios__label" for="abstraction-required">
+                <input class="govuk-radios__input" id="planning-required" name="planning-required" type="radio" value="yes" {{ checked("planning-required", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-required">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-required-2" name="abstraction-required" type="radio" value="no" {{ checked("abstraction-required", "no") }}>
-                <label class="govuk-label govuk-radios__label" for="abstraction-required-2">
+                <input class="govuk-radios__input" id="planning-required-2" name="planning-required" type="radio" value="no" {{ checked("planning-required", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-required-2">
                   No
                 </label>
               </div>
@@ -42,7 +42,7 @@
         <details class="govuk-details" data-module="govuk-details">
           <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
-              Help deciding if you need an abstraction licence
+              Help deciding if you need planning permission
             </span>
           </summary>
           <div class="govuk-details__text">

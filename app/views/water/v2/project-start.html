@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Who is applying for this grant?
+  Have you already started work on this project?
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="business">Back</a>
+  <a class="govuk-back-link" href="remaining-costs">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,26 +13,26 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="../routes/applying-answer" method="post">
+      <form class="form" action="project-start-answer" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Who is applying for this grant?
+                Have you already started work on this project?
               </h1>
             </legend>
-            <div class="govuk-radios">
+            <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="applying" name="applying" type="radio" value="own" {{ checked("applying", "own") }}>
-                <label class="govuk-label govuk-radios__label" for="applying">
-                  I am applying for my business
+                <input class="govuk-radios__input" id="project-start" name="project-start" type="radio" value="yes" {{ checked("project-start", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="project-start">
+                  Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="applying-2" name="applying" type="radio" value="other" {{ checked("applying", "other") }}>
-                <label class="govuk-label govuk-radios__label" for="applying-2">
-                  I am applying on behalf of someone else's business
+                <input class="govuk-radios__input" id="project-start-2" name="project-start" type="radio" value="no" {{ checked("project-start", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="project-start-2">
+                  No
                 </label>
               </div>
             </div>

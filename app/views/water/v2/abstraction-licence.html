@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Are your land or premises rented, leased or tenanted?
+  Do you have an abstraction licence?
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="country">Back</a>
+  <a class="govuk-back-link" href="abstraction-required">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -13,25 +13,25 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="../routes/tenancy-answer" method="post">
+      <form class="form" action="abstraction-licence-answer" method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Is the business on land or premises that is rented, leased or tenanted?
+                Do you have an abstraction licence?
               </h1>
             </legend>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy" name="tenancy" type="radio" value="yes" {{ checked("tenancy", "yes") }}>
-                <label class="govuk-label govuk-radios__label" for="tenancy">
+                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="yes" {{ checked("abstraction-licence", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-2" name="tenancy" type="radio" value="no" {{ checked("tenancy", "no") }}>
-                <label class="govuk-label govuk-radios__label" for="tenancy-2">
+                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="no" {{ checked("abstraction-licence", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence-2">
                   No
                 </label>
               </div>
