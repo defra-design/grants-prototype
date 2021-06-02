@@ -10,7 +10,7 @@ console.log('Service name: ' + serviceName)
 
 //* ****************************************************
 // WATER START PAGE //
-router.get('*/water/start', function (req, res) {
+router.get('*/start', function (req, res) {
   // console.log( 'This is the start page' );
 
   // Cannot start yet = 'govuk-tag--grey'
@@ -50,7 +50,7 @@ router.get('*/water/start', function (req, res) {
 
 // START PAGE END //
 
-router.get('*/water/task-list-prefilled', function (req, res) {
+router.get('*/task-list-prefilled', function (req, res) {
   req.session.data.water_s01_status = 'Completed'
   req.session.data.water__s01_status_class = ''
 
@@ -63,12 +63,12 @@ router.get('*/water/task-list-prefilled', function (req, res) {
   req.session.data.water_s04_status = 'Cannot start yet'
   req.session.data.water_s04_status_class = 'govuk-tag--grey'
 
-  res.redirect('./task-list')
+  res.redirect('task-list')
 })
 
 //* ****************************************************
 // TASK LIST PAGE START //
-router.get('*/water/task-list', function (req, res) {
+router.get('*/task-list', function (req, res) {
   // console.log( 'This is the task list' );
 
   // Cannot start yet = 'govuk-tag--grey'
@@ -161,9 +161,9 @@ router.get('*/water/task-list', function (req, res) {
 
 // Q: FARMING TYPE
 
-router.get('*/water/farming-type', function (req, res) {
+router.get('*/farming-type', function (req, res) {
   var backUrl = 'start'
-  var nextUrl = '../water/farming-type-answer'
+  var nextUrl = 'farming-type-answer'
   var completedUrl = 'farming-type-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -173,50 +173,50 @@ router.get('*/water/farming-type', function (req, res) {
   })
 })
 
-router.get('*/water/farming-type-answer', function (req, res) {
+router.get('*/farming-type-answer', function (req, res) {
   var farmingType = req.session.data['farming-type']
   var farmingTypeOther = req.session.data['farming-type-other-options']
 
   if (!!farmingType && farmingType === 'Something else') {
-    res.redirect('../water/farming-type-fail')
+    res.redirect('farming-type-fail')
   }
   if (!!farmingType && farmingType === 'no' && !!farmingTypeOther) {
     if (farmingTypeOther === 'something else') {
-      res.redirect('../water/farming-type-fail')
+      res.redirect('farming-type-fail')
     } else {
       farmingType = 'no: [' + farmingTypeOther + ']'
     }
   }
 
   req.session.data['summary-farming-type'] = farmingType
-  res.redirect('../water/legal-status')
+  res.redirect('legal-status')
 })
 
-router.get('*/water/farming-type-answer-completed', function (req, res) {
+router.get('*/farming-type-answer-completed', function (req, res) {
   var farmingType = req.session.data['farming-type']
   var farmingTypeOther = req.session.data['farming-type-other-options']
 
   if (!!farmingType && farmingType === 'Something else') {
-    res.redirect('../water/farming-type-fail')
+    res.redirect('farming-type-fail')
   }
 
   if (!!farmingType && farmingType === 'no' && !!farmingTypeOther) {
     if (farmingTypeOther === 'something else') {
-      res.redirect('../water/farming-type-fail')
+      res.redirect('farming-type-fail')
     } else {
       farmingType = 'no: [' + farmingTypeOther + ']'
     }
   }
 
   req.session.data['summary-farming-type'] = farmingType
-  res.redirect('../water/answers')
+  res.redirect('answers')
 })
 
 // Q: LEGAL STATUS
 
-router.get('*/water/legal-status', function (req, res) {
+router.get('*/legal-status', function (req, res) {
   var backUrl = 'farming-type'
-  var nextUrl = '../water/legal-status-answer'
+  var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -226,23 +226,23 @@ router.get('*/water/legal-status', function (req, res) {
   })
 })
 
-router.post('*/water/legal-status-answer', function (req, res) {
+router.post('*/legal-status-answer', function (req, res) {
   var legalStatus = req.session.data['legal-status']
 
-  if (legalStatus === 'None') { res.redirect('../water/legal-status-fail') } else { res.redirect('../water/country') }
+  if (legalStatus === 'None') { res.redirect('legal-status-fail') } else { res.redirect('country') }
 })
 
-router.post('*/water/legal-status-answer-completed', function (req, res) {
+router.post('*/legal-status-answer-completed', function (req, res) {
   var legalStatus = req.session.data['legal-status']
 
-  if (legalStatus === 'None') { res.redirect('../water/legal-status-fail') } else { res.redirect('../water/answers') }
+  if (legalStatus === 'None') { res.redirect('legal-status-fail') } else { res.redirect('answers') }
 })
 
 // Q : Country
 
-router.get('*/water/country', function (req, res) {
+router.get('*/country', function (req, res) {
   var backUrl = 'legal-status'
-  var nextUrl = '../water/country-answer'
+  var nextUrl = 'country-answer'
   var completedUrl = 'country-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -252,7 +252,7 @@ router.get('*/water/country', function (req, res) {
   })
 })
 
-router.post('*/water/country-answer', function (req, res) {
+router.post('*/country-answer', function (req, res) {
   var country = req.session.data.country
   var postcode = req.session.data.postcode
 
@@ -262,13 +262,13 @@ router.post('*/water/country-answer', function (req, res) {
     }
 
     req.session.data['summary-country'] = country
-    res.redirect('../water/project-start')
+    res.redirect('project-start')
   } else {
-    res.redirect('../water/country-fail')
+    res.redirect('country-fail')
   }
 })
 
-router.post('*/water/country-answer-completed', function (req, res) {
+router.post('*/country-answer-completed', function (req, res) {
   var country = req.session.data.country
   var postcode = req.session.data.postcode
 
@@ -278,17 +278,17 @@ router.post('*/water/country-answer-completed', function (req, res) {
     }
 
     req.session.data['summary-country'] = country
-    res.redirect('../water/answers')
+    res.redirect('answers')
   } else {
-    res.redirect('../water/country-fail')
+    res.redirect('country-fail')
   }
 })
 
 // PROJECT START
 
-router.get('*/water/project-start', function (req, res) {
+router.get('*/project-start', function (req, res) {
   var backUrl = 'country'
-  var nextUrl = '../water/project-start-answer'
+  var nextUrl = 'project-start-answer'
   var completedUrl = 'project-start-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -298,23 +298,23 @@ router.get('*/water/project-start', function (req, res) {
   })
 })
 
-router.post('*/water/project-start-answer', function (req, res) {
+router.post('*/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart !== 'No') { res.redirect('../water/project-start-fail') } else { res.redirect('../water/tenancy') }
+  if (projectStart !== 'No') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
 })
 
-router.post('*/water/project-start-answer-completed', function (req, res) {
+router.post('*/project-start-answer-completed', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart !== 'No') { res.redirect('../water/project-start-fail') } else { res.redirect('../water/answers') }
+  if (projectStart !== 'No') { res.redirect('project-start-fail') } else { res.redirect('answers') }
 })
 
 // Q: Tenancy
 
-router.get('*/water/tenancy', function (req, res) {
+router.get('*/tenancy', function (req, res) {
   var backUrl = 'project-start'
-  var nextUrl = '../water/tenancy-answer'
+  var nextUrl = 'tenancy-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -324,27 +324,27 @@ router.get('*/water/tenancy', function (req, res) {
   })
 })
 
-router.post('*/water/tenancy-answer', function (req, res) {
+router.post('*/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
   if (tenant === 'Yes') {
-    res.redirect('../water/project-items')
-  } else { res.redirect('../water/tenancy-length') }
+    res.redirect('project-items')
+  } else { res.redirect('tenancy-length') }
 })
 
-router.post('*/water/tenancy-length-answer', function (req, res) {
+router.post('*/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength === 'No') { res.redirect('../water/tenancy-length-condition') } else { res.redirect('../water/project-items') }
+  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('project-items') }
 })
 
-router.post('*/water/tenancy-length-answer-completed', function (req, res) {
-  res.redirect('../water/answers')
+router.post('*/tenancy-length-answer-completed', function (req, res) {
+  res.redirect('answers')
 })
 
-router.get('*/water/project-items', function (req, res) {
+router.get('*/project-items', function (req, res) {
   var backUrl = 'tenancy-length'
-  var nextUrl = '../water/project-cost'
+  var nextUrl = 'project-cost'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -354,11 +354,11 @@ router.get('*/water/project-items', function (req, res) {
   })
 })
 
-router.get('*/water/project-cost', function (req, res) {
+router.get('*/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
 
   var backUrl = 'project-items'
-  var nextUrl = '../water/project-cost-answer'
+  var nextUrl = 'project-cost-answer'
   var completedUrl = 'project-cost-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -368,19 +368,19 @@ router.get('*/water/project-cost', function (req, res) {
   })
 })
 
-router.post('*/water/project-cost-answer', function (req, res) {
+router.post('*/project-cost-answer', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
-  if (projectCost < 87500) { res.redirect('../water/project-cost-fail') } else { res.redirect('../water/grant') }
+  if (projectCost < 87500) { res.redirect('project-cost-fail') } else { res.redirect('grant') }
 })
 
-router.post('*/water/project-cost-answer-completed', function (req, res) {
+router.post('*/project-cost-answer-completed', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
-  if (projectCost < 87500) { res.redirect('../water/project-cost-fail') } else { res.redirect('answers') }
+  if (projectCost < 87500) { res.redirect('project-cost-fail') } else { res.redirect('answers') }
 })
 
-router.get('*/water/grant', function (req, res) {
+router.get('*/grant', function (req, res) {
   var backUrl = 'project-cost'
   var nextUrl = 'remaining-costs'
   var completedUrl = 'answers'
@@ -394,9 +394,9 @@ router.get('*/water/grant', function (req, res) {
 
 // Q: remaining costs
 
-router.get('*/water/remaining-costs', function (req, res) {
+router.get('*/remaining-costs', function (req, res) {
   var backUrl = 'grant'
-  var nextUrl = '../water/remaining-costs-answer'
+  var nextUrl = 'remaining-costs-answer'
   var completedUrl = 'remaining-costs-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -406,21 +406,21 @@ router.get('*/water/remaining-costs', function (req, res) {
   })
 })
 
-router.post('*/water/remaining-costs-answer', function (req, res) {
+router.post('*/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('../water/remaining-costs-fail') } else { res.redirect('../water/planning-permission') }
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('planning-permission') }
 })
 
-router.post('*/water/remaining-costs-answer-completed', function (req, res) {
+router.post('*/remaining-costs-answer-completed', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('../water/remaining-costs-fail') } else { res.redirect('../water/answers') }
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('answers') }
 })
 
 // PLANNING PERMISSION
 
-router.get('*/water/planning-permission', function (req, res) {
+router.get('*/planning-permission', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'remaining-costs'
   var nextUrl = 'planning-permission-answer-completed'
@@ -433,7 +433,7 @@ router.get('*/water/planning-permission', function (req, res) {
 })
 
 // PLANNING PERMISSION CONDITION
-router.get('*/water/planning-required-condition', function (req, res) {
+router.get('*/planning-required-condition', function (req, res) {
   var backUrl = 'planning-permission'
   var nextUrl = 'abstraction-licence'
   res.render('./' + req.originalUrl, {
@@ -443,14 +443,14 @@ router.get('*/water/planning-required-condition', function (req, res) {
 })
 
 // PLANNING PERMISSION COMPLETED
-router.post('*/water/planning-permission-answer-completed', function (req, res) {
+router.post('*/planning-permission-answer-completed', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
-  if (planningPermission === 'Not needed' || planningPermission === 'Secured') { res.redirect('../water/abstraction-licence') } else if (planningPermission === 'maybe') { res.redirect('../water/planning-required-condition') } else { res.redirect('../water/planning-permission-fail') }
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured') { res.redirect('abstraction-licence') } else if (planningPermission === 'maybe') { res.redirect('planning-required-condition') } else { res.redirect('planning-permission-fail') }
 })
 
 // ABSTRACTION LICENCE
 
-router.get('*/water/abstraction-licence', function (req, res) {
+router.get('*/abstraction-licence', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
   var nextUrl = 'abstraction-licence-answer-completed'
   var backUrl
@@ -465,13 +465,13 @@ router.get('*/water/abstraction-licence', function (req, res) {
 
 // ABSTRACTION LICENCE COMPLETED
 
-router.post('*/water/abstraction-licence-answer-completed', function (req, res) {
+router.post('*/abstraction-licence-answer-completed', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
-  if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') { res.redirect('../water/water-SSSI') } else { res.redirect('../water/abstraction-required-condition') }
+  if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') { res.redirect('water-SSSI') } else { res.redirect('abstraction-required-condition') }
 })
 
 // ABSTRACTION LICENCE CONDITION
-router.get('*/water/abstraction-required-condition', function (req, res) {
+router.get('*/abstraction-required-condition', function (req, res) {
   var backUrl = 'abstraction-licence'
   var nextUrl = 'water-SSSI'
   res.render('./' + req.originalUrl, {
@@ -482,7 +482,7 @@ router.get('*/water/abstraction-required-condition', function (req, res) {
 
 // Water SSSI
 
-router.get('*/water/water-SSSI', function (req, res) {
+router.get('*/water-SSSI', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
   var nextUrl = 'project-summary'
   var backUrl
@@ -497,9 +497,9 @@ router.get('*/water/water-SSSI', function (req, res) {
 
 // project-summary
 
-router.get('*/water/project-summary', function (req, res) {
+router.get('*/project-summary', function (req, res) {
   var backUrl = 'water-SSSI'
-  var nextUrl = '../water/irrigated-crops'
+  var nextUrl = 'irrigated-crops'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -511,9 +511,9 @@ router.get('*/water/project-summary', function (req, res) {
 
 // irrigated-crops
 
-router.get('*/water/irrigated-crops', function (req, res) {
+router.get('*/irrigated-crops', function (req, res) {
   var backUrl = 'project-summary'
-  var nextUrl = '../water/irrigated-land'
+  var nextUrl = 'irrigated-land'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -525,9 +525,9 @@ router.get('*/water/irrigated-crops', function (req, res) {
 
 // irrigated-land
 
-router.get('*/water/irrigated-land', function (req, res) {
+router.get('*/irrigated-land', function (req, res) {
   var backUrl = 'irrigated-crops'
-  var nextUrl = '../water/irrigation-water-source'
+  var nextUrl = 'irrigation-water-source'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -539,7 +539,7 @@ router.get('*/water/irrigated-land', function (req, res) {
 
 // irrigation-water-source
 
-router.get('*/water/irrigation-water-source', function (req, res) {
+router.get('*/irrigation-water-source', function (req, res) {
   req.session.data.tempIrrigationAnswer = req.session.data.irrigationAnswer
   var backUrl = 'irrigated-land'
   var nextUrl = 'irrigation-water-source-answer'
@@ -552,19 +552,19 @@ router.get('*/water/irrigation-water-source', function (req, res) {
   })
 })
 
-router.post('*/water/irrigation-water-source-answer', function (req, res) {
-  res.redirect('../water/irrigation-systems')
+router.post('*/irrigation-water-source-answer', function (req, res) {
+  res.redirect('irrigation-systems')
 })
 
-router.post('*/water/irrigation-water-source-answer-completed', function (req, res) {
+router.post('*/irrigation-water-source-answer-completed', function (req, res) {
   res.redirect('answers')
 })
 
 // irrigation-systems
 
-router.get('*/water/irrigation-systems', function (req, res) {
+router.get('*/irrigation-systems', function (req, res) {
   var backUrl = 'irrigation-water-source'
-  var nextUrl = '../water/productivity'
+  var nextUrl = 'productivity'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -576,7 +576,7 @@ router.get('*/water/irrigation-systems', function (req, res) {
 
 // productivity
 
-router.get('*/water/productivity', function (req, res) {
+router.get('*/productivity', function (req, res) {
   var backUrl = 'irrigation-systems'
   var nextUrl = 'collaboration'
   var completedUrl = 'answers'
@@ -590,7 +590,7 @@ router.get('*/water/productivity', function (req, res) {
 
 // collaboration
 
-router.get('*/water/collaboration', function (req, res) {
+router.get('*/collaboration', function (req, res) {
   var backUrl = 'productivity'
   var nextUrl = 'answers'
   var completedUrl = 'answers'
@@ -604,7 +604,7 @@ router.get('*/water/collaboration', function (req, res) {
 
 // answers
 
-router.get('*/water/answers', function (req, res) {
+router.get('*/answers', function (req, res) {
   req.session.data.COMPLETED = true
 
   var backUrl = 'collaboration'
@@ -618,7 +618,7 @@ router.get('*/water/answers', function (req, res) {
 
 // next-steps
 
-router.get('*/water/next-steps', function (req, res) {
+router.get('*/next-steps', function (req, res) {
   var backUrl = 'answers'
   var nextUrl = 'business'
 
@@ -630,7 +630,7 @@ router.get('*/water/next-steps', function (req, res) {
 
 // business
 
-router.get('*/water/business', function (req, res) {
+router.get('*/business', function (req, res) {
   if (req.session.data.water_s03_status !== 'Completed') {
     req.session.data.water_s03_status = 'In progress'
     req.session.data.water_s03_status_class = 'govuk-tag--blue'
@@ -641,7 +641,7 @@ router.get('*/water/business', function (req, res) {
   var completedUrl = 'check-details'
 
   // if (req.session.data.water_s03_status === 'Completed') {
-  // backUrl = "../water/check-answers-contact-details"
+  // backUrl = "check-answers-contact-details"
   // }
 
   res.render('./' + req.originalUrl, {
@@ -653,11 +653,11 @@ router.get('*/water/business', function (req, res) {
 
 // applying
 
-router.post('*/water/applying-answer', function (req, res) {
-  res.redirect('../water/your-details')
+router.post('*/applying-answer', function (req, res) {
+  res.redirect('your-details')
 })
 
-router.get('*/water/your-details', function (req, res) {
+router.get('*/your-details', function (req, res) {
   var nextUrl = 'check-details'
   var backUrl = 'applying-answer'
   var completedUrl = 'check-details'
@@ -671,7 +671,7 @@ router.get('*/water/your-details', function (req, res) {
 
 // check-details
 
-router.get('*/water/check-details', function (req, res) {
+router.get('*/check-details', function (req, res) {
   // req.session.data.COMPLETED = true
   var nextUrl = 'consent'
   var backUrl = 'your-details'
@@ -682,7 +682,7 @@ router.get('*/water/check-details', function (req, res) {
   })
 })
 
-router.get('*/water/agent-farmer-details', function (req, res) {
+router.get('*/agent-farmer-details', function (req, res) {
   var nextUrl = 'check-details'
   var backUrl = 'your-details'
 
@@ -694,7 +694,7 @@ router.get('*/water/agent-farmer-details', function (req, res) {
 
 // consent
 
-router.get('*/water/consent', function (req, res) {
+router.get('*/consent', function (req, res) {
   var nextUrl = 'reference-number'
   var backUrl = 'check-details'
 
@@ -706,7 +706,7 @@ router.get('*/water/consent', function (req, res) {
 
 // reference-number
 
-router.get('*/water/reference-number', function (req, res) {
+router.get('*/reference-number', function (req, res) {
   var backUrl = 'consent'
 
   res.render('./' + req.originalUrl, {
@@ -714,7 +714,7 @@ router.get('*/water/reference-number', function (req, res) {
   })
 })
 
-router.get('*/water/survey', function (req, res) {
+router.get('*/survey', function (req, res) {
   req.session.data.water_completed_sections = '3'
 
   req.session.data.water_s03_status = 'Completed'
@@ -725,7 +725,7 @@ router.get('*/water/survey', function (req, res) {
   })
 })
 
-router.get('*/water/email', function (req, res) {
+router.get('*/email', function (req, res) {
   res.render('./' + req.originalUrl, {
     // backUrl: res.locals.prevURL
   })
