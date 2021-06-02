@@ -41,7 +41,7 @@ router.get('/v2/*', function (req, res, next) {
 router.use('/water/current', require('./views/water/current/routes/routes'))
 router.use('/v1', require('./views/water/v1/routes/routes'))
 router.use('/v2', require('./views/water/v2/routes/routes'))
-router.use('/v3', require('./views/water/v3/routes/routes'))
+router.use('/water/v3', require('./views/water/v3/routes/routes'))
 router.use('/water/v4', require('./views/water/v4/routes/routes'))
 router.use('/water/v4b', require('./views/water/v4b/routes/routes'))
 router.use('/water/v5', require('./views/water/v5/routes/routes'))
