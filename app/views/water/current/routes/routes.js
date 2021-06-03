@@ -541,8 +541,8 @@ router.get('*/irrigated-completed-answer', function (req, res) {
 
 // Yes - irrigated-land
 
-router.get('*/water/irrigated-land', function (req, res) {
-  var backUrl = '../water/current-irrigating'
+router.get('*/irrigated-land', function (req, res) {
+  var backUrl = 'current-irrigating'
   var nextUrl = 'irrigation-water-source'
   var completedUrl = 'answers'
 
@@ -555,7 +555,7 @@ router.get('*/water/irrigated-land', function (req, res) {
 
 // No - irrigated-land
 
-router.get('*/water/No-irrigated-land', function (req, res) {
+router.get('*/No-irrigated-land', function (req, res) {
   var backUrl = 'current-irrigating'
   var nextUrl = 'No-irrigation-water-source'
   var completedUrl = 'answers'
@@ -620,7 +620,7 @@ router.get('*/irrigation-systems', function (req, res) {
 
 // No - irrigation - systems
 
-router.get('*/water/No-irrigation-systems', function (req, res) {
+router.get('*/No-irrigation-systems', function (req, res) {
   var backUrl = 'No-irrigation-water-source'
   var nextUrl = 'productivity'
   var completedUrl = 'answers'
@@ -633,7 +633,7 @@ router.get('*/water/No-irrigation-systems', function (req, res) {
 })
 
 // productivity
-router.get('*/water/productivity', function (req, res) {
+router.get('*/productivity', function (req, res) {
   var data = req.session.data['current-irrigating']
   var backUrl
   var nextUrl = 'collaboration'
