@@ -18,11 +18,13 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Where does your current irrigation water come from?
+                Will your water source change?
               </h1>
             </legend>
-            <span class="govuk-caption-m">Select one or two options</span>
-            <br>
+            <div class="govuk-body govuk-!-margin-bottom-0 govuk-!-padding-top-5">
+            Where does your irrigation water come from currently?
+            <span class="govuk-hint">Select one or two options</span>
+            </div>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="irrigation-current-1" name="irrigation-current" type="checkbox" value="Peak flow" {{ checked("irrigation-current", "Peak flow") }}>
@@ -66,13 +68,10 @@
         <br>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Where will the irrigation water come from?
-              </h1>
-            </legend>
-            <span class="govuk-caption-m">Select one or two options</span>
-            <br>
+          <div class="govuk-body govuk-!-margin-bottom-0 govuk-!-padding-top-5">
+             Where will the irrigation water come from after the project has been completed?
+            <span class="govuk-hint">Select one or two options</span>
+            </div>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="irrigation-target-1" name="irrigation-target" type="checkbox" value="Peak flow" {{ checked("irrigation-target", "Peak flow") }}>
