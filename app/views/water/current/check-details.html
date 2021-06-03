@@ -6,9 +6,9 @@
 
 {% block beforeContent %}
     {% if (data['applicant'] == "Agent")%}
-        <a class="govuk-back-link" href="../water/agent-farmer-details">Back</a>
+        <a class="govuk-back-link" href="agent-farmer-details">Back</a>
     {%else%}
-        <a class="govuk-back-link" href="../water/your-details">Back</a>
+        <a class="govuk-back-link" href="your-details">Back</a>
     {%endif%} 
 {% endblock %}
 
@@ -131,7 +131,7 @@
                 <br><br>
                 <div class="govuk-grid-row govuk-!-padding-top-8">
                     <div class="govuk-grid-column-two-thirds">
-                        <form class="form" action="../water/consent" method="post">  
+                        <form class="form" action="consent" method="post">  
                             <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
                                 Continue
                             </button>
@@ -253,7 +253,7 @@
      </div>    
         <div class="govuk-grid-row govuk-!-padding-top-8">
             <div class="govuk-grid-column-two-thirds">
-                <form class="form" action="../water/consent" method="post">  
+                <form class="form" action="consent" method="post">  
                     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
                         Continue
                     </button>
