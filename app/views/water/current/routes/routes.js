@@ -513,11 +513,7 @@ router.get('*/project-summary', function (req, res) {
 
 router.get('*/irrigated-crops', function (req, res) {
   var backUrl = 'project-summary'
-<<<<<<< HEAD:app/views/water/current/routes/routes.js
-  var nextUrl = 'irrigated-land'
-=======
   var nextUrl = '../water/current-irrigating'
->>>>>>> routes and new page current irrigating page:app/views/current/routes/_routes-water.js
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -528,7 +524,6 @@ router.get('*/irrigated-crops', function (req, res) {
 })
 
 // current irrigating
-
 
 router.get('*/water/current-irrigating', function (req, res) {
   var backUrl = 'irrigated-crops'
