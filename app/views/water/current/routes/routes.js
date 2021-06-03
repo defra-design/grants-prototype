@@ -638,15 +638,9 @@ router.get('*/water/No-irrigation-systems', function (req, res) {
 })
 
 // productivity
-
-<<<<<<< HEAD:app/views/water/current/routes/routes.js
-router.get('*/productivity', function (req, res) {
-  var backUrl = 'irrigation-systems'
-=======
 router.get('*/water/productivity', function (req, res) {
   var data = req.session.data['current-irrigating']
   var backUrl
->>>>>>> routes and new page current irrigating page:app/views/current/routes/_routes-water.js
   var nextUrl = 'collaboration'
   var completedUrl = 'answers'
   if (data === 'Yes') { backUrl = 'irrigation-systems' } else { backUrl = 'No-irrigation-systems' }
