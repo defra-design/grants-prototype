@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your details
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="applying">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="consent" method="post">
+    
+        {% if (data['applicant'] == "Agent") or (data['applicant'] == "Farm manager") %}
+
+	      <h1 class="govuk-heading-l"> {{ data['applicant'] }} details </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-forename">
+            Forename
+          </label>
+          <input class="govuk-input" id="other-applicant-forename" name="other-applicant-forename" type="text" spellcheck="false" autocomplete="name" value="{{ data['other-applicant-forename'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-surname">
+            Surname
+          </label>
+          <input class="govuk-input" id="other-applicant-surname" name="other-applicant-surname" type="text" spellcheck="false" autocomplete="name" value="{{ data['other-applicant-surname'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-email">
+            Email address
+          </label>
+          <input class="govuk-input" id="other-applicant-email" name="other-applicant-email" type="other-applicant-email" spellcheck="false" aria-describedby="other-applicant-email-hint" autocomplete="other-applicant-email" value="{{ data['other-applicant-email'] }}">
+        </div>
+		
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-landline">
+            Landline number
+          </label>
+          <input class="govuk-input" id="other-applicant-landline" name="other-applicant-landline" type="other-applicant-landline" spellcheck="false" aria-describedby="other-applicant-landline-hint" autocomplete="other-applicant-landline" value="{{ data['other-applicant-landline'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-mobile">
+            Mobile number
+          </label>
+          <input class="govuk-input" id="other-applicant-mobile" name="other-applicant-mobile" type="other-applicant-mobile" spellcheck="false" aria-describedby="other-applicant-mobile-hint" autocomplete="other-applicant-mobile" value="{{ data['other-applicant-mobile'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-address1">
+            Address 1
+          </label>
+          <input class="govuk-input" id="other-applicant-address1" name="other-applicant-address1" type="other-applicant-address1" spellcheck="false" aria-describedby="other-applicant-address1-hint" autocomplete="other-applicant-address1" value="{{ data['other-applicant-address1'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-address2">
+            Address 2
+          </label>
+          <input class="govuk-input" id="other-applicant-address2" name="other-applicant-address2" type="other-applicant-address2" spellcheck="false" aria-describedby="other-applicant-address2-hint" autocomplete="other-applicant-address2" value="{{ data['other-applicant-address2'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-town">
+            Town
+          </label>
+          <input class="govuk-input" id="other-applicant-town" name="other-applicant-town" type="other-applicant-town" spellcheck="false" aria-describedby="other-applicant-town-hint" autocomplete="other-applicant-town" value="{{ data['other-applicant-town'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-county">
+            County
+          </label>
+          <input class="govuk-input" id="other-applicant-county" name="other-applicant-county" type="other-applicant-county" spellcheck="false" aria-describedby="other-applicant-county-hint" autocomplete="other-applicant-county" value="{{ data['other-applicant-county'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="other-applicant-postcode">
+            Postcode
+          </label>
+          <input class="govuk-input" id="other-applicant-postcode" name="other-applicant-postcode" type="other-applicant-postcode" spellcheck="false" aria-describedby="other-applicant-postcode-hint" autocomplete="other-applicant-postcode" value="{{ data['other-applicant-postcode'] }}">
+        </div>
+
+        {% endif %}
+
+        <h1 class="govuk-heading-l"> Farmer details </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-forename">
+            Forename
+          </label>
+          <input class="govuk-input" id="farmer-forename" name="farmer-forename" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-forename'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-surname">
+            Surname
+          </label>
+          <input class="govuk-input" id="farmer-surname" name="farmer-surname" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-surname'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-email">
+            Email address
+          </label>
+          <input class="govuk-input" id="farmer-email" name="farmer-email" type="farmer-email" spellcheck="false" aria-describedby="farmer-email-hint" autocomplete="farmer-email" value="{{ data['farmer-email'] }}">
+        </div>
+		
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-landline">
+            Landline number
+          </label>
+          <input class="govuk-input" id="farmer-landline" name="farmer-landline" type="farmer-landline" spellcheck="false" aria-describedby="farmer-landline-hint" autocomplete="farmer-landline" value="{{ data['farmer-landline'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-mobile">
+            Mobile number
+          </label>
+          <input class="govuk-input" id="farmer-mobile" name="farmer-mobile" type="farmer-mobile" spellcheck="false" aria-describedby="farmer-mobile-hint" autocomplete="farmer-mobile" value="{{ data['farmer-mobile'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-address1">
+            Address 1
+          </label>
+          <input class="govuk-input" id="farmer-address1" name="farmer-address1" type="farmer-address1" spellcheck="false" aria-describedby="farmer-address1-hint" autocomplete="farmer-address1" value="{{ data['farmer-address1'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-address2">
+            Address 2
+          </label>
+          <input class="govuk-input" id="farmer-address2" name="farmer-address2" type="farmer-address2" spellcheck="false" aria-describedby="farmer-address2-hint" autocomplete="farmer-address2" value="{{ data['farmer-address2'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-town">
+            Town
+          </label>
+          <input class="govuk-input" id="farmer-town" name="farmer-town" type="farmer-town" spellcheck="false" aria-describedby="farmer-town-hint" autocomplete="farmer-town" value="{{ data['farmer-town'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-county">
+            County
+          </label>
+          <input class="govuk-input" id="farmer-county" name="farmer-county" type="farmer-county" spellcheck="false" aria-describedby="farmer-county-hint" autocomplete="farmer-county" value="{{ data['farmer-county'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="farmer-postcode">
+            Postcode
+          </label>
+          <input class="govuk-input" id="farmer-postcode" name="farmer-postcode" type="farmer-postcode" spellcheck="false" aria-describedby="farmer-postcode-hint" autocomplete="farmer-postcode" value="{{ data['farmer-postcode'] }}">
+        </div>
+
+     
+		  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+			  Continue
+		  </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

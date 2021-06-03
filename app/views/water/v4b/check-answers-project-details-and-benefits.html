@@ -1,0 +1,287 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">Check your answers</h1>
+
+    <h2 class="govuk-heading-m">Project details and benefits</h2>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Project name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['project-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="project">
+            Change<span class="govuk-visually-hidden"> project name</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Project summary
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['project-summary'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="project">
+            Change<span class="govuk-visually-hidden"> project summary</span>
+          </a>
+        </dd>
+      </div>
+      {% if data['irrigation'] == "introduce" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Irrigation benefits
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Introducing irrigation
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="irrigation">
+            Change<span class="govuk-visually-hidden"> irrigation benefits</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Land to be irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-land-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="new-irrigation">
+            Change<span class="govuk-visually-hidden"> land irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Crops to be irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-crops-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="new-irrigation">
+            Change<span class="govuk-visually-hidden"> crops to be irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Water source for irrigation
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-water-source'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="new-irrigation">
+            Change<span class="govuk-visually-hidden"> water source</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Irrigation systems
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['new-irrigation-systems'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="new-irrigation">
+            Change<span class="govuk-visually-hidden"> irrigation systems</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+      {% if data['irrigation'] == "improve" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third govuk-!-width-one-half">
+          Irrigation benefits
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Increase and/or improve irrigation
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="irrigation">
+            Change<span class="govuk-visually-hidden"> irrigation benefits</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Current land irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['land-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="current-irrigation">
+            Change<span class="govuk-visually-hidden"> land irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Current crops irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['crops-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="current-irrigation">
+            Change<span class="govuk-visually-hidden"> crops irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Current water source for irrigation
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['water-source'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="current-irrigation">
+            Change<span class="govuk-visually-hidden"> water source</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Current irrigation systems
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['irrigation-systems'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="current-irrigation">
+            Change<span class="govuk-visually-hidden"> irrigation systems</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Proposed land to be irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['improved-land-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="proposed-irrigation">
+            Change<span class="govuk-visually-hidden"> land irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Proposed crops to be irrigated
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['improved-crops-irrigated'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="proposed-irrigation">
+            Change<span class="govuk-visually-hidden"> crops to be irrigated</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Proposed water source for irrigation
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['improved-water-source'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="proposed-irrigation">
+            Change<span class="govuk-visually-hidden"> proposed water source</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Proposed irrigation systems
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['improved-irrigation-systems'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="proposed-irrigation">
+            Change<span class="govuk-visually-hidden"> proposed irrigation systems</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Other farms supplied with water
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['collaboration'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="collaboration">
+            Change<span class="govuk-visually-hidden"> other farms supplied with water</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Productivity
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['productivity'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="productivity">
+            Change<span class="govuk-visually-hidden"> productivity</span>
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          Environment
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['environment'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="environment">
+            Change<span class="govuk-visually-hidden"> environment</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    <form action="task-list" method="post" novalidate>
+
+      <input type="hidden" name="answers-checked" value="true">
+
+      <button class="govuk-button govuk-!-margin-top-4" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

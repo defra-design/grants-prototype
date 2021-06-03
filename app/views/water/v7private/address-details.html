@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Address Details
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="contact-details">Back</a>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+         <div class="govuk-grid-column-two-thirds">
+            {% if (data['applicant'] == "Agent")%}
+             <form class="form" action="agent-farmer-details" method="post">
+              <h1 class="govuk-heading-l">Agent's address details</h1>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="other-applicant-address1">
+                        Address 1
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="other-applicant-address1" name="other-applicant-address1" type="other-applicant-address1" spellcheck="false" aria-describedby="other-applicant-address1-hint" autocomplete="other-applicant-address1" value="{{ data['other-applicant-address1'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="other-applicant-address2">
+                        Address 2
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="other-applicant-address2" name="other-applicant-address2" type="other-applicant-address2" spellcheck="false" aria-describedby="other-applicant-address2-hint" autocomplete="other-applicant-address2" value="{{ data['other-applicant-address2'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="other-applicant-town">
+                        Town
+                    </label>
+                    <input class="govuk-input govuk-!-width-one-half" id="other-applicant-town" name="other-applicant-town" type="other-applicant-town" spellcheck="false" aria-describedby="other-applicant-town-hint" autocomplete="other-applicant-town" value="{{ data['other-applicant-town'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="other-applicant-county">
+                        County
+                    </label>
+                    <input class="govuk-input govuk-!-width-one-half" id="other-applicant-county" name="other-applicant-county" type="other-applicant-county" spellcheck="false" aria-describedby="other-applicant-county-hint" autocomplete="other-applicant-county" value="{{ data['other-applicant-county'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="other-applicant-postcode">
+                        Postcode
+                    </label>
+                    <input class="govuk-input govuk-!-width-one-quarter" id="other-applicant-postcode" name="other-applicant-postcode" type="other-applicant-postcode" spellcheck="false" aria-describedby="other-applicant-postcode-hint" autocomplete="other-applicant-postcode" value="{{ data['other-applicant-postcode'] }}">
+                </div>                
+
+                <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>    
+              {% else %}
+             <form class="form" action="consent" method="post">
+                <h1 class="govuk-heading-l">Farmer's address details</h1>
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-address1">
+                        Address 1
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="farmer-address1" name="farmer-address1" type="farmer-address1" spellcheck="false" aria-describedby="farmer-address1-hint" autocomplete="farmer-address1" value="{{ data['farmer-address1'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-address2">
+                        Address 2
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="farmer-address2" name="farmer-address2" type="farmer-address2" spellcheck="false" aria-describedby="farmer-address2-hint" autocomplete="farmer-address2" value="{{ data['farmer-address2'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-town">
+                        Town
+                    </label>
+                    <input class="govuk-input govuk-!-width-one-half" id="farmer-town" name="farmer-town" type="farmer-town" spellcheck="false" aria-describedby="farmer-town-hint" autocomplete="farmer-town" value="{{ data['farmer-town'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-county">
+                        County
+                    </label>
+                    <input class="govuk-input govuk-!-width-one-half" id="farmer-county" name="farmer-county" type="farmer-county" spellcheck="false" aria-describedby="farmer-county-hint" autocomplete="farmer-county" value="{{ data['farmer-county'] }}">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="farmer-postcode">
+                        Postcode
+                    </label>
+                    <input class="govuk-input govuk-!-width-one-quarter" id="farmer-postcode" name="farmer-postcode" type="farmer-postcode" spellcheck="false" aria-describedby="farmer-postcode-hint" autocomplete="farmer-postcode" value="{{ data['farmer-postcode'] }}">
+                </div>                
+
+                <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>
+        </div>
+    </div>
+
+    {% endif %}
+{% endblock %}

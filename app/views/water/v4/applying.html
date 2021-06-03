@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Who is applying for this grant?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="business">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="applying-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Who is applying for this grant?
+              </h1>
+            </legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="applying" name="applying" type="radio" value="own" {{ checked("applying", "own") }}>
+                <label class="govuk-label govuk-radios__label" for="applying">
+                  I am applying for my business
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="applying-2" name="applying" type="radio" value="other" {{ checked("applying", "other") }}>
+                <label class="govuk-label govuk-radios__label" for="applying-2">
+                  I am applying on behalf of someone else's business
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Save and continue
+        </button>
+
+        <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button">
+          Save and come back later
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

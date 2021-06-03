@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  New irrigation
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="irrigation">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="collaboration" method="post">
+
+        <h1 class="govuk-heading-l">
+          New irrigation
+        </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="new-land-irrigated">
+              How much land will be irrigated in total?
+            </label>
+          <textarea class="govuk-textarea" id="new-land-irrigated" name="new-land-irrigated" rows="2" aria-describedby="new-land-irrigated-hint">{{ data['new-land-irrigated'] }}</textarea>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="new-crops-irrigated">
+              What crops will be irrigated?
+            </label>
+          <textarea class="govuk-textarea" id="new-crops-irrigated" name="new-crops-irrigated" rows="2" aria-describedby="new-crops-irrigated-hint">{{ data['new-crops-irrigated'] }}</textarea>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="new-water-source">
+              Where will the water used for irrigation come from?
+            </label>
+          <textarea class="govuk-textarea" id="new-water-source" name="new-water-source" rows="4" aria-describedby="new-water-source-hint">{{ data['new-water-source'] }}</textarea>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="new-irrigation-systems">
+              What systems will be used to irrigate?
+            </label>
+          <textarea class="govuk-textarea" id="new-irrigation-systems" name="new-irrigation-systems" rows="4" aria-describedby="new-irrigation-systems-hint">{{ data['new-irrigation-systems'] }}</textarea>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Save and continue
+        </button>
+
+        <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button">
+          Save and come back later
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

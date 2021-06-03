@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What type of farming do you do?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="start">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="farming-type-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What type of farming do you do?
+              </h1>
+            </legend>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="farming-type" name="farming-type" type="radio" value="arable farming" {{ checked("farming-type", "arable farming") }}>
+                <label class="govuk-label govuk-radios__label" for="farming-type">
+                  Arable
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="farming-type-2" name="farming-type" type="radio" value="horticultural" {{ checked("farming-type", "horticultural") }}>
+                <label class="govuk-label govuk-radios__label" for="farming-type-2">
+                  Horticulture
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="farming-type-3" name="farming-type" type="radio" value="none" {{ checked("farming-type", "none") }}>
+                <label class="govuk-label govuk-radios__label" for="farming-type-3">
+                  Other
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
