@@ -592,7 +592,7 @@ router.post('*/irrigation-water-source-answer-completed', function (req, res) {
 
 // No - irrigation - water - source
 
-router.get('*/water/No-irrigation-water-source', function (req, res) {
+router.get('*/No-irrigation-water-source', function (req, res) {
   var backUrl = 'No-irrigated-land'
   var nextUrl = 'No-irrigation-systems'
   var completedUrl = 'answers'
