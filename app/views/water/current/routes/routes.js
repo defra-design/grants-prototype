@@ -301,13 +301,13 @@ router.get('*/project-start', function (req, res) {
 router.post('*/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart !== 'No') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
 })
 
 router.post('*/project-start-answer-completed', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart !== 'No') { res.redirect('project-start-fail') } else { res.redirect('answers') }
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('answers') }
 })
 
 // Q: Tenancy
