@@ -513,7 +513,7 @@ router.get('*/project-summary', function (req, res) {
 
 router.get('*/irrigated-crops', function (req, res) {
   var backUrl = 'project-summary'
-  var nextUrl = '../water/current-irrigating'
+  var nextUrl = 'current-irrigating'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -525,7 +525,7 @@ router.get('*/irrigated-crops', function (req, res) {
 
 // current irrigating
 
-router.get('*/water/current-irrigating', function (req, res) {
+router.get('*/current-irrigating', function (req, res) {
   var backUrl = 'irrigated-crops'
   var nextUrl = 'irrigated-completed-answer'
   res.render('./' + req.originalUrl, {
@@ -534,16 +534,16 @@ router.get('*/water/current-irrigating', function (req, res) {
   })
 })
 
-router.get('*/water/irrigated-completed-answer', function (req, res) {
+router.get('*/irrigated-completed-answer', function (req, res) {
   var currentIrrigating = req.session.data['current-irrigating']
-  if (currentIrrigating === 'Yes') { res.redirect('../water/irrigated-land') } else { res.redirect('../water/No-irrigated-land') }
+  if (currentIrrigating === 'Yes') { res.redirect('irrigated-land') } else { res.redirect('No-irrigated-land') }
 })
 
 // Yes - irrigated-land
 
 router.get('*/water/irrigated-land', function (req, res) {
-  var backUrl = 'current-irrigating'
-  var nextUrl = '../water/irrigation-water-source'
+  var backUrl = '../water/current-irrigating'
+  var nextUrl = 'irrigation-water-source'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -557,7 +557,7 @@ router.get('*/water/irrigated-land', function (req, res) {
 
 router.get('*/water/No-irrigated-land', function (req, res) {
   var backUrl = 'current-irrigating'
-  var nextUrl = '../water/No-irrigation-water-source'
+  var nextUrl = 'No-irrigation-water-source'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -594,7 +594,7 @@ router.post('*/irrigation-water-source-answer-completed', function (req, res) {
 
 router.get('*/water/No-irrigation-water-source', function (req, res) {
   var backUrl = 'No-irrigated-land'
-  var nextUrl = '../water/No-irrigation-systems'
+  var nextUrl = 'No-irrigation-systems'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -622,7 +622,7 @@ router.get('*/irrigation-systems', function (req, res) {
 
 router.get('*/water/No-irrigation-systems', function (req, res) {
   var backUrl = 'No-irrigation-water-source'
-  var nextUrl = '../water/productivity'
+  var nextUrl = 'productivity'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
