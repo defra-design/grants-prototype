@@ -301,13 +301,13 @@ router.get('*/project-start', function (req, res) {
 router.post('*/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart !== 'No') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
 })
 
 router.post('*/project-start-answer-completed', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart !== 'No') { res.redirect('project-start-fail') } else { res.redirect('answers') }
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('answers') }
 })
 
 // Q: Tenancy
@@ -513,7 +513,7 @@ router.get('*/project-summary', function (req, res) {
 
 router.get('*/irrigated-crops', function (req, res) {
   var backUrl = 'project-summary'
-  var nextUrl = 'irrigated-land'
+  var nextUrl = 'current-irrigating'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -523,10 +523,26 @@ router.get('*/irrigated-crops', function (req, res) {
   })
 })
 
-// irrigated-land
+// current irrigating
+
+router.get('*/current-irrigating', function (req, res) {
+  var backUrl = 'irrigated-crops'
+  var nextUrl = 'irrigated-completed-answer'
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl
+  })
+})
+
+router.get('*/irrigated-completed-answer', function (req, res) {
+  var currentIrrigating = req.session.data['current-irrigating']
+  if (currentIrrigating === 'Yes') { res.redirect('irrigated-land') } else { res.redirect('no-irrigated-land') }
+})
+
+// Yes - irrigated-land
 
 router.get('*/irrigated-land', function (req, res) {
-  var backUrl = 'irrigated-crops'
+  var backUrl = 'current-irrigating'
   var nextUrl = 'irrigation-water-source'
   var completedUrl = 'answers'
 
@@ -537,7 +553,21 @@ router.get('*/irrigated-land', function (req, res) {
   })
 })
 
-// irrigation-water-source
+// No - irrigated-land
+
+router.get('*/no-irrigated-land', function (req, res) {
+  var backUrl = 'current-irrigating'
+  var nextUrl = 'no-irrigation-water-source'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
+})
+
+// Yes -  irrigation-water-source
 
 router.get('*/irrigation-water-source', function (req, res) {
   req.session.data.tempIrrigationAnswer = req.session.data.irrigationAnswer
@@ -560,7 +590,21 @@ router.post('*/irrigation-water-source-answer-completed', function (req, res) {
   res.redirect('answers')
 })
 
-// irrigation-systems
+// No - irrigation - water - source
+
+router.get('*/no-irrigation-water-source', function (req, res) {
+  var backUrl = 'no-irrigated-land'
+  var nextUrl = 'no-irrigation-systems'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
+})
+
+// Yes - irrigation-systems
 
 router.get('*/irrigation-systems', function (req, res) {
   var backUrl = 'irrigation-water-source'
@@ -574,13 +618,27 @@ router.get('*/irrigation-systems', function (req, res) {
   })
 })
 
-// productivity
+// No - irrigation - systems
 
-router.get('*/productivity', function (req, res) {
-  var backUrl = 'irrigation-systems'
-  var nextUrl = 'collaboration'
+router.get('*/no-irrigation-systems', function (req, res) {
+  var backUrl = 'no-irrigation-water-source'
+  var nextUrl = 'productivity'
   var completedUrl = 'answers'
 
+  res.render('./' + req.originalUrl, {
+    backUrl: backUrl,
+    nextUrl: nextUrl,
+    completedUrl: completedUrl
+  })
+})
+
+// productivity
+router.get('*/productivity', function (req, res) {
+  var data = req.session.data['current-irrigating']
+  var backUrl
+  var nextUrl = 'collaboration'
+  var completedUrl = 'answers'
+  if (data === 'Yes') { backUrl = 'irrigation-systems' } else { backUrl = 'no-irrigation-systems' }
   res.render('./' + req.originalUrl, {
     backUrl: backUrl,
     nextUrl: nextUrl,
