@@ -536,7 +536,7 @@ router.get('*/current-irrigating', function (req, res) {
 
 router.get('*/irrigated-completed-answer', function (req, res) {
   var currentIrrigating = req.session.data['current-irrigating']
-  if (currentIrrigating === 'Yes') { res.redirect('irrigated-land') } else { res.redirect('No-irrigated-land') }
+  if (currentIrrigating === 'Yes') { res.redirect('irrigated-land') } else { res.redirect('no-irrigated-land') }
 })
 
 // Yes - irrigated-land
@@ -555,9 +555,9 @@ router.get('*/irrigated-land', function (req, res) {
 
 // No - irrigated-land
 
-router.get('*/No-irrigated-land', function (req, res) {
+router.get('*/no-irrigated-land', function (req, res) {
   var backUrl = 'current-irrigating'
-  var nextUrl = 'No-irrigation-water-source'
+  var nextUrl = 'no-irrigation-water-source'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -592,9 +592,9 @@ router.post('*/irrigation-water-source-answer-completed', function (req, res) {
 
 // No - irrigation - water - source
 
-router.get('*/No-irrigation-water-source', function (req, res) {
-  var backUrl = 'No-irrigated-land'
-  var nextUrl = 'No-irrigation-systems'
+router.get('*/no-irrigation-water-source', function (req, res) {
+  var backUrl = 'no-irrigated-land'
+  var nextUrl = 'no-irrigation-systems'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -620,8 +620,8 @@ router.get('*/irrigation-systems', function (req, res) {
 
 // No - irrigation - systems
 
-router.get('*/No-irrigation-systems', function (req, res) {
-  var backUrl = 'No-irrigation-water-source'
+router.get('*/no-irrigation-systems', function (req, res) {
+  var backUrl = 'no-irrigation-water-source'
   var nextUrl = 'productivity'
   var completedUrl = 'answers'
 
@@ -638,7 +638,7 @@ router.get('*/productivity', function (req, res) {
   var backUrl
   var nextUrl = 'collaboration'
   var completedUrl = 'answers'
-  if (data === 'Yes') { backUrl = 'irrigation-systems' } else { backUrl = 'No-irrigation-systems' }
+  if (data === 'Yes') { backUrl = 'irrigation-systems' } else { backUrl = 'no-irrigation-systems' }
   res.render('./' + req.originalUrl, {
     backUrl: backUrl,
     nextUrl: nextUrl,
