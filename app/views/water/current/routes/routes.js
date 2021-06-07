@@ -242,7 +242,7 @@ router.post('*/legal-status-answer-completed', function (req, res) {
 
 router.get('*/country', function (req, res) {
   var backUrl = 'legal-status'
-  var nextUrl = 'planning-permission'
+  var nextUrl = 'country-answer'
   var completedUrl = 'country-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -255,14 +255,12 @@ router.get('*/country', function (req, res) {
 router.post('*/country-answer', function (req, res) {
   var country = req.session.data.country
   var postcode = req.session.data.postcode
-
   if (!!country && country === 'yes') {
     if (!!postcode && postcode.length > 0) {
       country = 'yes: [ Postcode: ' + postcode + ' ]'
     }
-
     req.session.data['summary-country'] = country
-    res.redirect('project-start')
+    res.redirect('planning-permission')
   } else {
     res.redirect('country-fail')
   }
