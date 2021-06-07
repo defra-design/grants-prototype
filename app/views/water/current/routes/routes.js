@@ -6,11 +6,15 @@ const serviceName = 'Apply for a large grant for a water resource management pro
 console.log('Service name: ' + serviceName)
 
 router.get('/start', function (req, res) {
-  // ------------------------------------------
+  // =================================
   req.session.data.COMPLETED = false
-  // ------------------------------------------
+  // =================================
 
-  res.render('./' + req.originalUrl, {})
+  var nextUrl = 'farming-type'
+
+  res.render('./' + req.originalUrl, {
+    nextUrl
+  })
 })
 
 router.get('/farming-type', function (req, res) {
@@ -19,13 +23,13 @@ router.get('/farming-type', function (req, res) {
   var completedUrl = 'farming-type-answer-completed'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
-router.get('*/farming-type-answer', function (req, res) {
+router.get('/farming-type-answer', function (req, res) {
   var farmingType = req.session.data['farming-type']
   var farmingTypeOther = req.session.data['farming-type-other-options']
 
@@ -44,7 +48,7 @@ router.get('*/farming-type-answer', function (req, res) {
   res.redirect('legal-status')
 })
 
-router.get('*/farming-type-answer-completed', function (req, res) {
+router.get('/farming-type-answer-completed', function (req, res) {
   var farmingType = req.session.data['farming-type']
   var farmingTypeOther = req.session.data['farming-type-other-options']
 
@@ -66,7 +70,7 @@ router.get('*/farming-type-answer-completed', function (req, res) {
 
 // Q: LEGAL STATUS
 
-router.get('*/legal-status', function (req, res) {
+router.get('/legal-status', function (req, res) {
   var backUrl = 'farming-type'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
@@ -78,13 +82,13 @@ router.get('*/legal-status', function (req, res) {
   })
 })
 
-router.post('*/legal-status-answer', function (req, res) {
+router.post('/legal-status-answer', function (req, res) {
   var legalStatus = req.session.data['legal-status']
 
   if (legalStatus === 'None') { res.redirect('legal-status-fail') } else { res.redirect('country') }
 })
 
-router.post('*/legal-status-answer-completed', function (req, res) {
+router.post('/legal-status-answer-completed', function (req, res) {
   var legalStatus = req.session.data['legal-status']
 
   if (legalStatus === 'None') { res.redirect('legal-status-fail') } else { res.redirect('answers') }
@@ -92,7 +96,7 @@ router.post('*/legal-status-answer-completed', function (req, res) {
 
 // Q : Country
 
-router.get('*/country', function (req, res) {
+router.get('/country', function (req, res) {
   var backUrl = 'legal-status'
   var nextUrl = 'country-answer'
   var completedUrl = 'country-answer-completed'
@@ -104,7 +108,7 @@ router.get('*/country', function (req, res) {
   })
 })
 
-router.post('*/country-answer', function (req, res) {
+router.post('/country-answer', function (req, res) {
   var country = req.session.data.country
   var postcode = req.session.data.postcode
 
@@ -120,7 +124,7 @@ router.post('*/country-answer', function (req, res) {
   }
 })
 
-router.post('*/country-answer-completed', function (req, res) {
+router.post('/country-answer-completed', function (req, res) {
   var country = req.session.data.country
   var postcode = req.session.data.postcode
 
@@ -138,7 +142,7 @@ router.post('*/country-answer-completed', function (req, res) {
 
 // PROJECT START
 
-router.get('*/project-start', function (req, res) {
+router.get('/project-start', function (req, res) {
   var backUrl = 'country'
   var nextUrl = 'project-start-answer'
   var completedUrl = 'project-start-answer-completed'
@@ -150,13 +154,13 @@ router.get('*/project-start', function (req, res) {
   })
 })
 
-router.post('*/project-start-answer', function (req, res) {
+router.post('/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
   if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
 })
 
-router.post('*/project-start-answer-completed', function (req, res) {
+router.post('/project-start-answer-completed', function (req, res) {
   var projectStart = req.session.data['project-start']
 
   if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('answers') }
@@ -164,7 +168,7 @@ router.post('*/project-start-answer-completed', function (req, res) {
 
 // Q: Tenancy
 
-router.get('*/tenancy', function (req, res) {
+router.get('/tenancy', function (req, res) {
   var backUrl = 'project-start'
   var nextUrl = 'tenancy-answer'
   var completedUrl = 'answers'
@@ -176,7 +180,7 @@ router.get('*/tenancy', function (req, res) {
   })
 })
 
-router.post('*/tenancy-answer', function (req, res) {
+router.post('/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
   if (tenant === 'Yes') {
@@ -184,17 +188,17 @@ router.post('*/tenancy-answer', function (req, res) {
   } else { res.redirect('tenancy-length') }
 })
 
-router.post('*/tenancy-length-answer', function (req, res) {
+router.post('/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
   if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('project-items') }
 })
 
-router.post('*/tenancy-length-answer-completed', function (req, res) {
+router.post('/tenancy-length-answer-completed', function (req, res) {
   res.redirect('answers')
 })
 
-router.get('*/project-items', function (req, res) {
+router.get('/project-items', function (req, res) {
   var backUrl = 'tenancy-length'
   var nextUrl = 'project-cost'
   var completedUrl = 'answers'
@@ -206,7 +210,7 @@ router.get('*/project-items', function (req, res) {
   })
 })
 
-router.get('*/project-cost', function (req, res) {
+router.get('/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
 
   var backUrl = 'project-items'
@@ -220,19 +224,19 @@ router.get('*/project-cost', function (req, res) {
   })
 })
 
-router.post('*/project-cost-answer', function (req, res) {
+router.post('/project-cost-answer', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
   if (projectCost < 87500) { res.redirect('project-cost-fail') } else { res.redirect('grant') }
 })
 
-router.post('*/project-cost-answer-completed', function (req, res) {
+router.post('/project-cost-answer-completed', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
   if (projectCost < 87500) { res.redirect('project-cost-fail') } else { res.redirect('answers') }
 })
 
-router.get('*/grant', function (req, res) {
+router.get('/grant', function (req, res) {
   var backUrl = 'project-cost'
   var nextUrl = 'remaining-costs'
   var completedUrl = 'answers'
@@ -246,7 +250,7 @@ router.get('*/grant', function (req, res) {
 
 // Q: remaining costs
 
-router.get('*/remaining-costs', function (req, res) {
+router.get('/remaining-costs', function (req, res) {
   var backUrl = 'grant'
   var nextUrl = 'remaining-costs-answer'
   var completedUrl = 'remaining-costs-answer-completed'
@@ -258,13 +262,13 @@ router.get('*/remaining-costs', function (req, res) {
   })
 })
 
-router.post('*/remaining-costs-answer', function (req, res) {
+router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
   if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('planning-permission') }
 })
 
-router.post('*/remaining-costs-answer-completed', function (req, res) {
+router.post('/remaining-costs-answer-completed', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
   if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('answers') }
@@ -272,7 +276,7 @@ router.post('*/remaining-costs-answer-completed', function (req, res) {
 
 // PLANNING PERMISSION
 
-router.get('*/planning-permission', function (req, res) {
+router.get('/planning-permission', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'remaining-costs'
   var nextUrl = 'planning-permission-answer-completed'
@@ -285,7 +289,7 @@ router.get('*/planning-permission', function (req, res) {
 })
 
 // PLANNING PERMISSION CONDITION
-router.get('*/planning-required-condition', function (req, res) {
+router.get('/planning-required-condition', function (req, res) {
   var backUrl = 'planning-permission'
   var nextUrl = 'abstraction-licence'
   res.render('./' + req.originalUrl, {
@@ -295,14 +299,14 @@ router.get('*/planning-required-condition', function (req, res) {
 })
 
 // PLANNING PERMISSION COMPLETED
-router.post('*/planning-permission-answer-completed', function (req, res) {
+router.post('/planning-permission-answer-completed', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
   if (planningPermission === 'Not needed' || planningPermission === 'Secured') { res.redirect('abstraction-licence') } else if (planningPermission === 'maybe') { res.redirect('planning-required-condition') } else { res.redirect('planning-permission-fail') }
 })
 
 // ABSTRACTION LICENCE
 
-router.get('*/abstraction-licence', function (req, res) {
+router.get('/abstraction-licence', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
   var nextUrl = 'abstraction-licence-answer-completed'
   var backUrl
@@ -317,13 +321,13 @@ router.get('*/abstraction-licence', function (req, res) {
 
 // ABSTRACTION LICENCE COMPLETED
 
-router.post('*/abstraction-licence-answer-completed', function (req, res) {
+router.post('/abstraction-licence-answer-completed', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
   if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') { res.redirect('water-SSSI') } else { res.redirect('abstraction-required-condition') }
 })
 
 // ABSTRACTION LICENCE CONDITION
-router.get('*/abstraction-required-condition', function (req, res) {
+router.get('/abstraction-required-condition', function (req, res) {
   var backUrl = 'abstraction-licence'
   var nextUrl = 'water-SSSI'
   res.render('./' + req.originalUrl, {
@@ -334,7 +338,7 @@ router.get('*/abstraction-required-condition', function (req, res) {
 
 // Water SSSI
 
-router.get('*/water-SSSI', function (req, res) {
+router.get('/water-SSSI', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
   var nextUrl = 'project-summary'
   var backUrl
@@ -349,7 +353,7 @@ router.get('*/water-SSSI', function (req, res) {
 
 // project-summary
 
-router.get('*/project-summary', function (req, res) {
+router.get('/project-summary', function (req, res) {
   var backUrl = 'water-SSSI'
   var nextUrl = 'irrigated-crops'
   var completedUrl = 'answers'
@@ -363,7 +367,7 @@ router.get('*/project-summary', function (req, res) {
 
 // irrigated-crops
 
-router.get('*/irrigated-crops', function (req, res) {
+router.get('/irrigated-crops', function (req, res) {
   var backUrl = 'project-summary'
   var nextUrl = 'current-irrigating'
   var completedUrl = 'answers'
@@ -377,7 +381,7 @@ router.get('*/irrigated-crops', function (req, res) {
 
 // current irrigating
 
-router.get('*/current-irrigating', function (req, res) {
+router.get('/current-irrigating', function (req, res) {
   var backUrl = 'irrigated-crops'
   var nextUrl = 'irrigated-completed-answer'
   res.render('./' + req.originalUrl, {
@@ -386,14 +390,14 @@ router.get('*/current-irrigating', function (req, res) {
   })
 })
 
-router.get('*/irrigated-completed-answer', function (req, res) {
+router.get('/irrigated-completed-answer', function (req, res) {
   var currentIrrigating = req.session.data['current-irrigating']
   if (currentIrrigating === 'Yes') { res.redirect('irrigated-land') } else { res.redirect('irrigated-land-no') }
 })
 
 // Yes - irrigated-land
 
-router.get('*/irrigated-land', function (req, res) {
+router.get('/irrigated-land', function (req, res) {
   var backUrl = 'current-irrigating'
   var nextUrl = 'irrigation-water-source'
   var completedUrl = 'answers'
@@ -407,7 +411,7 @@ router.get('*/irrigated-land', function (req, res) {
 
 // No - irrigated-land
 
-router.get('*/irrigated-land-no', function (req, res) {
+router.get('/irrigated-land-no', function (req, res) {
   var backUrl = 'current-irrigating'
   var nextUrl = 'irrigation-water-source-no'
   var completedUrl = 'answers'
@@ -421,7 +425,7 @@ router.get('*/irrigated-land-no', function (req, res) {
 
 // Yes -  irrigation-water-source
 
-router.get('*/irrigation-water-source', function (req, res) {
+router.get('/irrigation-water-source', function (req, res) {
   req.session.data.tempIrrigationAnswer = req.session.data.irrigationAnswer
   var backUrl = 'irrigated-land'
   var nextUrl = 'irrigation-water-source-answer'
@@ -434,17 +438,17 @@ router.get('*/irrigation-water-source', function (req, res) {
   })
 })
 
-router.post('*/irrigation-water-source-answer', function (req, res) {
+router.post('/irrigation-water-source-answer', function (req, res) {
   res.redirect('irrigation-systems')
 })
 
-router.post('*/irrigation-water-source-answer-completed', function (req, res) {
+router.post('/irrigation-water-source-answer-completed', function (req, res) {
   res.redirect('answers')
 })
 
 // No - irrigation - water - source
 
-router.get('*/irrigation-water-source-no', function (req, res) {
+router.get('/irrigation-water-source-no', function (req, res) {
   var backUrl = 'irrigated-land-no'
   var nextUrl = 'irrigation-systems-no'
   var completedUrl = 'answers'
@@ -458,7 +462,7 @@ router.get('*/irrigation-water-source-no', function (req, res) {
 
 // Yes - irrigation-systems
 
-router.get('*/irrigation-systems', function (req, res) {
+router.get('/irrigation-systems', function (req, res) {
   var backUrl = 'irrigation-water-source'
   var nextUrl = 'productivity'
   var completedUrl = 'answers'
@@ -472,7 +476,7 @@ router.get('*/irrigation-systems', function (req, res) {
 
 // No - irrigation - systems
 
-router.get('*/irrigation-systems-no', function (req, res) {
+router.get('/irrigation-systems-no', function (req, res) {
   var backUrl = 'irrigation-water-source-no'
   var nextUrl = 'productivity'
   var completedUrl = 'answers'
@@ -485,7 +489,7 @@ router.get('*/irrigation-systems-no', function (req, res) {
 })
 
 // productivity
-router.get('*/productivity', function (req, res) {
+router.get('/productivity', function (req, res) {
   var data = req.session.data['current-irrigating']
   var backUrl
   var nextUrl = 'collaboration'
@@ -500,7 +504,7 @@ router.get('*/productivity', function (req, res) {
 
 // collaboration
 
-router.get('*/collaboration', function (req, res) {
+router.get('/collaboration', function (req, res) {
   var backUrl = 'productivity'
   var nextUrl = 'answers'
   var completedUrl = 'answers'
@@ -514,7 +518,7 @@ router.get('*/collaboration', function (req, res) {
 
 // answers
 
-router.get('*/answers', function (req, res) {
+router.get('/answers', function (req, res) {
   req.session.data.COMPLETED = true
 
   var backUrl = 'collaboration'
@@ -528,7 +532,7 @@ router.get('*/answers', function (req, res) {
 
 // next-steps
 
-router.get('*/next-steps', function (req, res) {
+router.get('/next-steps', function (req, res) {
   var backUrl = 'answers'
   var nextUrl = 'business'
 
@@ -540,7 +544,7 @@ router.get('*/next-steps', function (req, res) {
 
 // business
 
-router.get('*/business', function (req, res) {
+router.get('/business', function (req, res) {
   if (req.session.data.water_s03_status !== 'Completed') {
     req.session.data.water_s03_status = 'In progress'
     req.session.data.water_s03_status_class = 'govuk-tag--blue'
@@ -563,11 +567,11 @@ router.get('*/business', function (req, res) {
 
 // applying
 
-router.post('*/applying-answer', function (req, res) {
+router.post('/applying-answer', function (req, res) {
   res.redirect('your-details')
 })
 
-router.get('*/your-details', function (req, res) {
+router.get('/your-details', function (req, res) {
   var nextUrl = 'check-details'
   var backUrl = 'applying-answer'
   var completedUrl = 'check-details'
@@ -581,7 +585,7 @@ router.get('*/your-details', function (req, res) {
 
 // check-details
 
-router.get('*/check-details', function (req, res) {
+router.get('/check-details', function (req, res) {
   // req.session.data.COMPLETED = true
   var nextUrl = 'consent'
   var backUrl = 'your-details'
@@ -592,7 +596,7 @@ router.get('*/check-details', function (req, res) {
   })
 })
 
-router.get('*/agent-farmer-details', function (req, res) {
+router.get('/agent-farmer-details', function (req, res) {
   var nextUrl = 'check-details'
   var backUrl = 'your-details'
 
@@ -604,7 +608,7 @@ router.get('*/agent-farmer-details', function (req, res) {
 
 // consent
 
-router.get('*/consent', function (req, res) {
+router.get('/consent', function (req, res) {
   var nextUrl = 'reference-number'
   var backUrl = 'check-details'
 
@@ -616,7 +620,7 @@ router.get('*/consent', function (req, res) {
 
 // reference-number
 
-router.get('*/reference-number', function (req, res) {
+router.get('/reference-number', function (req, res) {
   var backUrl = 'consent'
 
   res.render('./' + req.originalUrl, {
@@ -624,7 +628,7 @@ router.get('*/reference-number', function (req, res) {
   })
 })
 
-router.get('*/survey', function (req, res) {
+router.get('/survey', function (req, res) {
   req.session.data.water_completed_sections = '3'
 
   req.session.data.water_s03_status = 'Completed'
@@ -635,7 +639,7 @@ router.get('*/survey', function (req, res) {
   })
 })
 
-router.get('*/email', function (req, res) {
+router.get('/email', function (req, res) {
   res.render('./' + req.originalUrl, {
     // backUrl: res.locals.prevURL
   })
