@@ -76,9 +76,9 @@ router.get('/legal-status', function (req, res) {
   var completedUrl = 'legal-status-answer-completed'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -102,9 +102,9 @@ router.get('/country', function (req, res) {
   var completedUrl = 'country-answer-completed'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -148,9 +148,9 @@ router.get('/project-start', function (req, res) {
   var completedUrl = 'project-start-answer-completed'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -174,9 +174,9 @@ router.get('/tenancy', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -204,9 +204,9 @@ router.get('/project-items', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -218,9 +218,9 @@ router.get('/project-cost', function (req, res) {
   var completedUrl = 'project-cost-answer-completed'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -242,9 +242,9 @@ router.get('/grant', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -256,9 +256,9 @@ router.get('/remaining-costs', function (req, res) {
   var completedUrl = 'remaining-costs-answer-completed'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -281,10 +281,11 @@ router.get('/planning-permission', function (req, res) {
   var backUrl = 'remaining-costs'
   var nextUrl = 'planning-permission-answer-completed'
   var completedUrl = 'answers'
+
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -292,9 +293,10 @@ router.get('/planning-permission', function (req, res) {
 router.get('/planning-required-condition', function (req, res) {
   var backUrl = 'planning-permission'
   var nextUrl = 'abstraction-licence'
+
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
+    backUrl,
+    nextUrl
   })
 })
 
@@ -312,10 +314,11 @@ router.get('/abstraction-licence', function (req, res) {
   var backUrl
   var completedUrl = 'answers'
   if (planningPermission === 'Not needed' || planningPermission === 'Secured') { backUrl = 'planning-permission' } else if (planningPermission === 'maybe') { backUrl = 'planning-required-condition' } else { backUrl = 'planning-permission-fail' }
+
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -330,9 +333,10 @@ router.post('/abstraction-licence-answer-completed', function (req, res) {
 router.get('/abstraction-required-condition', function (req, res) {
   var backUrl = 'abstraction-licence'
   var nextUrl = 'water-SSSI'
+
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
+    backUrl,
+    nextUrl
   })
 })
 
@@ -344,10 +348,11 @@ router.get('/water-SSSI', function (req, res) {
   var backUrl
   var completedUrl = 'answers'
   if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') { backUrl = 'abstraction-licence' } else { backUrl = 'abstraction-required-condition' }
+
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -359,9 +364,9 @@ router.get('/project-summary', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -373,9 +378,9 @@ router.get('/irrigated-crops', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -384,9 +389,10 @@ router.get('/irrigated-crops', function (req, res) {
 router.get('/current-irrigating', function (req, res) {
   var backUrl = 'irrigated-crops'
   var nextUrl = 'irrigated-completed-answer'
+
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
+    backUrl,
+    nextUrl
   })
 })
 
@@ -403,9 +409,9 @@ router.get('/irrigated-land', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -417,9 +423,9 @@ router.get('/irrigated-land-no', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -432,9 +438,9 @@ router.get('/irrigation-water-source', function (req, res) {
   var completedUrl = 'irrigation-water-source-answer-completed'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -454,9 +460,9 @@ router.get('/irrigation-water-source-no', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -468,9 +474,9 @@ router.get('/irrigation-systems', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -482,9 +488,9 @@ router.get('/irrigation-systems-no', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -495,10 +501,11 @@ router.get('/productivity', function (req, res) {
   var nextUrl = 'collaboration'
   var completedUrl = 'answers'
   if (data === 'Yes') { backUrl = 'irrigation-systems' } else { backUrl = 'irrigation-systems-no' }
+
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -510,9 +517,9 @@ router.get('/collaboration', function (req, res) {
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -525,8 +532,8 @@ router.get('/answers', function (req, res) {
   var nextUrl = 'next-steps'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
+    backUrl,
+    nextUrl
   })
 })
 
@@ -537,8 +544,8 @@ router.get('/next-steps', function (req, res) {
   var nextUrl = 'business'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
+    backUrl,
+    nextUrl
   })
 })
 
@@ -559,9 +566,9 @@ router.get('/business', function (req, res) {
   // }
 
   res.render('./' + req.originalUrl, {
-    nextUrl: nextUrl,
-    backUrl: backUrl,
-    completedUrl: completedUrl
+    nextUrl,
+    backUrl,
+    completedUrl
   })
 })
 
@@ -577,9 +584,9 @@ router.get('/your-details', function (req, res) {
   var completedUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl,
-    completedUrl: completedUrl
+    backUrl,
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -591,8 +598,8 @@ router.get('/check-details', function (req, res) {
   var backUrl = 'your-details'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
+    backUrl,
+    nextUrl
   })
 })
 
@@ -601,8 +608,8 @@ router.get('/agent-farmer-details', function (req, res) {
   var backUrl = 'your-details'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
+    backUrl,
+    nextUrl
   })
 })
 
@@ -613,8 +620,8 @@ router.get('/consent', function (req, res) {
   var backUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl,
-    nextUrl: nextUrl
+    backUrl,
+    nextUrl
   })
 })
 
