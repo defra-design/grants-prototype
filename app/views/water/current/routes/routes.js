@@ -644,8 +644,8 @@ router.get('/farmer-details', function (req, res) {
 router.get('/check-details', function (req, res) {
   req.session.data.DETAILS = true
 
+  var backUrl = 'farmer-details'
   var nextUrl = 'consent'
-  var backUrl = 'your-details'
 
   res.render('./' + req.originalUrl, {
     backUrl,
