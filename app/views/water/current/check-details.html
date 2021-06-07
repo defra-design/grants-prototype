@@ -13,180 +13,181 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l govuk-!-margin-top-9 govuk-!-margin-bottom-9">Check your details </h1>
-                {#business details #}
 
-                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <div class="govuk-summary-list__row--no-border">
-                                <dt class="govuk-summary-list__key">
-                                    <p class="govuk-body govuk-!-font-size-24"><strong>Business details</strong></p>
-                                </dt>
-                                <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href="business">
-                                        Change<span class="govuk-visually-hidden">business details</span>
-                                    </a>
-                                </dd>
-                            </div>
-                        </tr>
-                        <hr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Project name</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['project-name'] }}
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Business name</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['business-name'] }}
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Number of employees</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['employees'] }}
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Business turnover</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['turnover'] }}
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Single Business Identifier (SBI)</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['sbi'] }}
-                            </td>
-                        </tr>
-                       
-                    </tbody>
-                </table>
-                <br><br><br>
- 
-                {# include agent details only if applicant is Agent  #}
+            {#business details #}
 
-                {% if (data['applicant'] == "Agent") %}
-                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <div class="govuk-summary-list__row--no-border">
-                                <dt class="govuk-summary-list__key">
-                                    <p class="govuk-body govuk-!-font-size-24"><strong>Agent's details</strong></p>
-                                </dt>
-                                <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href="agent-details">
-                                            Change<span class="govuk-visually-hidden">agent's details</span>
-                                    </a>
-                                </dd>
-                            </div>
-                        </tr>
-                        <hr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Name</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                <p>{{ data['agent-firstname'] }}</p>
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Address</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['agent-address1'] }}<br>
-                                {{ data['agent-address2'] }}<br>
-                                {{ data['agent-postcode'] }}
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">
-                                <strong> Contact details</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                <p>{{ data['agent-email'] }}</p>
-                                <p>{{ data['agent-landline'] }}</p>
-                            </td>
-                        </tr>
-                       
-                    </tbody>
-                </table>
-                <br><br>
-                {% endif %}
-                
-                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <div class="govuk-summary-list__row--no-border">
-                                <dt class="govuk-summary-list__key">
-                                    <p class="govuk-body govuk-!-font-size-24"><strong>Farmer's details</strong></p>
-                                </dt>
-                                <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href="farmer-details">
-                                        Change<span class="govuk-visually-hidden">farmer's details</span>
-                                    </a>
-                                </dd>
-                            </div>
-                        </tr>
-                        <hr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row--no-border">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Name</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{data['farmer-firstname']}}<br>
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Address</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['farmer-address1'] }}<br>
-                                {{ data['farmer-address2'] }}<br>
-                                {{ data['farmer-postcode'] }}<br>
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong> Contact details</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['farmer-email'] }}<br>
-                                {{ data['farmer-landline'] }}
-                            </td>
-                        </tr>
-                       
-                    </tbody>
-                </table>
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <div class="govuk-summary-list__row--no-border">
+                            <dt class="govuk-summary-list__key">
+                                <p class="govuk-body govuk-!-font-size-24"><strong>Business details</strong></p>
+                            </dt>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="business">
+                                    Change<span class="govuk-visually-hidden">business details</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </tr>
+                    <hr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Project name</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['project-name'] }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Business name</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['business-name'] }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Number of employees</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['employees'] }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Business turnover</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['turnover'] }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Single Business Identifier (SBI)</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['sbi'] }}
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <br><br><br>
+
+            {# include agent details only if applicant is Agent  #}
+
+            {% if (data['applicant'] == "Agent") %}
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <div class="govuk-summary-list__row--no-border">
+                            <dt class="govuk-summary-list__key">
+                                <p class="govuk-body govuk-!-font-size-24"><strong>Agent's details</strong></p>
+                            </dt>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="agent-details">
+                                        Change<span class="govuk-visually-hidden">agent's details</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </tr>
+                    <hr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Name</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            <p>{{ data['agent-firstname'] }}</p>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Address</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['agent-address1'] }}<br>
+                            {{ data['agent-address2'] }}<br>
+                            {{ data['agent-postcode'] }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <strong> Contact details</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            <p>{{ data['agent-email'] }}</p>
+                            <p>{{ data['agent-landline'] }}</p>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <br><br>
+            {% endif %}
+            
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <div class="govuk-summary-list__row--no-border">
+                            <dt class="govuk-summary-list__key">
+                                <p class="govuk-body govuk-!-font-size-24"><strong>Farmer's details</strong></p>
+                            </dt>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="farmer-details">
+                                    Change<span class="govuk-visually-hidden">farmer's details</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </tr>
+                    <hr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Name</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{data['farmer-firstname']}}<br>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Address</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['farmer-address1'] }}<br>
+                            {{ data['farmer-address2'] }}<br>
+                            {{ data['farmer-postcode'] }}<br>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong> Contact details</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['farmer-email'] }}<br>
+                            {{ data['farmer-landline'] }}
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
         </div>        
-     </div>    
-        <div class="govuk-grid-row govuk-!-padding-top-8">
-            <div class="govuk-grid-column-two-thirds">
-                <form class="form" action="{{ nextUrl }}" method="post">  
-                    <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-                        Continue
-                    </button>
-                </form>
-            </div>
-         </div>
+     </div>
+    <div class="govuk-grid-row govuk-!-padding-top-8">
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="{{ nextUrl }}" method="post">  
+                <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>
+        </div>
+    </div>
 
 {% endblock %}
