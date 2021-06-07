@@ -279,7 +279,7 @@ router.post('/remaining-costs-answer-completed', function (req, res) {
 router.get('/planning-permission', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'remaining-costs'
-  var nextUrl = 'planning-permission-answer-completed'
+  var nextUrl = 'planning-permission-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -287,6 +287,21 @@ router.get('/planning-permission', function (req, res) {
     nextUrl,
     completedUrl
   })
+})
+
+// PLANNING PERMISSION COMPLETED
+router.post('/planning-permission-answer', function (req, res) {
+  var planningPermission = req.session.data['planning-permission']
+
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
+    res.redirect('abstraction-licence')
+  }
+
+  if (planningPermission === 'maybe') {
+    res.redirect('planning-required-condition')
+  }
+
+  res.redirect('planning-permission-fail')
 })
 
 // PLANNING PERMISSION CONDITION
@@ -300,20 +315,21 @@ router.get('/planning-required-condition', function (req, res) {
   })
 })
 
-// PLANNING PERMISSION COMPLETED
-router.post('/planning-permission-answer-completed', function (req, res) {
-  var planningPermission = req.session.data['planning-permission']
-  if (planningPermission === 'Not needed' || planningPermission === 'Secured') { res.redirect('abstraction-licence') } else if (planningPermission === 'maybe') { res.redirect('planning-required-condition') } else { res.redirect('planning-permission-fail') }
-})
-
 // ABSTRACTION LICENCE
 
 router.get('/abstraction-licence', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
-  var nextUrl = 'abstraction-licence-answer-completed'
   var backUrl
+  var nextUrl = 'abstraction-licence-answer-completed'
   var completedUrl = 'answers'
-  if (planningPermission === 'Not needed' || planningPermission === 'Secured') { backUrl = 'planning-permission' } else if (planningPermission === 'maybe') { backUrl = 'planning-required-condition' } else { backUrl = 'planning-permission-fail' }
+
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
+    backUrl = 'planning-permission'
+  } else if (planningPermission === 'maybe') {
+    backUrl = 'planning-required-condition'
+  } else {
+    backUrl = 'planning-permission-fail'
+  }
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -326,7 +342,12 @@ router.get('/abstraction-licence', function (req, res) {
 
 router.post('/abstraction-licence-answer-completed', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
-  if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') { res.redirect('water-SSSI') } else { res.redirect('abstraction-required-condition') }
+
+  if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') {
+    res.redirect('water-SSSI')
+  }
+
+  res.redirect('abstraction-required-condition')
 })
 
 // ABSTRACTION LICENCE CONDITION
@@ -344,10 +365,16 @@ router.get('/abstraction-required-condition', function (req, res) {
 
 router.get('/water-SSSI', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
-  var nextUrl = 'project-summary'
+
   var backUrl
+  var nextUrl = 'project-summary'
   var completedUrl = 'answers'
-  if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') { backUrl = 'abstraction-licence' } else { backUrl = 'abstraction-required-condition' }
+
+  if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') {
+    backUrl = 'abstraction-licence'
+  } else {
+    backUrl = 'abstraction-required-condition'
+  }
 
   res.render('./' + req.originalUrl, {
     backUrl,
