@@ -664,20 +664,11 @@ router.get('/reference-number', function (req, res) {
 })
 
 router.get('/survey', function (req, res) {
-  req.session.data.water_completed_sections = '3'
-
-  req.session.data.water_s03_status = 'Completed'
-  req.session.data.water_s03_status_class = ''
-
-  res.render('./' + req.originalUrl, {
-    // backUrl: res.locals.prevURL
-  })
+  res.render('./' + req.originalUrl, {})
 })
 
 router.get('/email', function (req, res) {
-  res.render('./' + req.originalUrl, {
-    // backUrl: res.locals.prevURL
-  })
+  res.render('./' + req.originalUrl, {})
 })
 
 module.exports = router
