@@ -8,6 +8,7 @@ console.log('Service name: ' + serviceName)
 router.get('/start', function (req, res) {
   // =================================
   req.session.data.COMPLETED = false
+  req.session.data.DETAILS = false
   // =================================
 
   var nextUrl = 'farming-type'
@@ -580,12 +581,12 @@ router.get('/next-steps', function (req, res) {
 router.get('/business', function (req, res) {
   var backUrl = 'next-steps'
   var nextUrl = 'applying'
-  var completedUrl = 'check-details'
+  var detailsUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
     nextUrl,
     backUrl,
-    completedUrl
+    detailsUrl
   })
 })
 
@@ -593,12 +594,12 @@ router.get('/business', function (req, res) {
 router.get('/applying', function (req, res) {
   var backUrl = 'business'
   var nextUrl = 'applying-answer'
-  var completedUrl = 'check-details'
+  var detailsUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
     nextUrl,
     backUrl,
-    completedUrl
+    detailsUrl
   })
 })
 
@@ -609,19 +610,20 @@ router.post('/applying-answer', function (req, res) {
 router.get('/your-details', function (req, res) {
   var nextUrl = 'check-details'
   var backUrl = 'applying-answer'
-  var completedUrl = 'check-details'
+  var detailsUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    detailsUrl
   })
 })
 
 // check-details
 
 router.get('/check-details', function (req, res) {
-  // req.session.data.COMPLETED = true
+  req.session.data.DETAILS = true
+
   var nextUrl = 'consent'
   var backUrl = 'your-details'
 
@@ -659,7 +661,7 @@ router.get('/reference-number', function (req, res) {
   var backUrl = 'consent'
 
   res.render('./' + req.originalUrl, {
-    backUrl: backUrl
+    backUrl
   })
 })
 
