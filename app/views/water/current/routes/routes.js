@@ -7,8 +7,10 @@ console.log('Service name: ' + serviceName)
 
 router.get('/start', function (req, res) {
   // =================================
-  req.session.data.COMPLETED = false
-  req.session.data.DETAILS = false
+  req.session.data = {
+    COMPLETED: false,
+    DETAILS: false
+  }
   // =================================
 
   var nextUrl = 'farming-type'
@@ -604,12 +606,30 @@ router.get('/applying', function (req, res) {
 })
 
 router.post('/applying-answer', function (req, res) {
-  res.redirect('your-details')
+  const { applicant } = req.session.data
+
+  if (applicant === 'Agent') {
+    res.redirect('agent-details')
+  }
+
+  res.redirect('farmer-details')
 })
 
-router.get('/your-details', function (req, res) {
+router.get('/agent-details', function (req, res) {
+  var backUrl = 'applying'
+  var nextUrl = 'farmer-details'
+  var detailsUrl = 'check-details'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    detailsUrl
+  })
+})
+
+router.get('/farmer-details', function (req, res) {
+  var backUrl = req.session.data.applicant === 'Agent' ? 'agent-details' : 'applying'
   var nextUrl = 'check-details'
-  var backUrl = 'applying-answer'
   var detailsUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {

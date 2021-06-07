@@ -5,11 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-    {% if (data['applicant'] == "Agent")%}
-        <a class="govuk-back-link" href="agent-farmer-details">Back</a>
-    {%else%}
-        <a class="govuk-back-link" href="your-details">Back</a>
-    {%endif%} 
+    <a class="govuk-back-link" href="farmer-details">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -28,7 +24,7 @@
                                 </dt>
                                 <dd class="govuk-summary-list__actions">
                                     <a class="govuk-link" href="business">
-                                            Change<span class="govuk-visually-hidden">business details</span>
+                                        Change<span class="govuk-visually-hidden">business details</span>
                                     </a>
                                 </dd>
                             </div>
@@ -43,13 +39,6 @@
                             <td class="govuk-table__cell">
                                 {{ data['project-name'] }}
                             </td>
-                            <!--
-                            <td class="govuk-table__cell">
-                                <a class="govuk-link" href="your-details">
-                                    Change<span class="govuk-visually-hidden">business details</span>
-                                </a>
-                            </td>
-                            -->
                         </tr>
                         <tr class="govuk-table__row">
                             <th  scope="row" class="govuk-table__header">
@@ -86,136 +75,11 @@
                        
                     </tbody>
                 </table>
-
-
-
-<!--
-                <dl class="govuk-summary-list">
-                    <div class="govuk-summary-list__row--no-border">
-                        <dt class="govuk-summary-list__key">
-                            <p class="govuk-body govuk-!-font-size-24"><strong>Business details</strong></p>
-                        </dt>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="business">
-                                    Change<span class="govuk-visually-hidden">business details</span>
-                            </a>
-                        </dd>
-                    </div>
-                    <hr>
-                    <div class="govuk-summary-list__row--no-border">
-                        <dt class="govuk-summary-list__key">
-                            <p class="govuk-body govuk-!-font-size-19"><strong>Project name</strong></p>
-                        </dt>
-                        <dd class="govuk-summary-list__actions">
-                            <span class="govuk-!-padding-left-9">{{ data['project-name'] }}</span>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row--no-border">
-                        <dt class="govuk-summary-list__key">
-                            <p class="govuk-body govuk-!-font-size-19"><strong>Business name</strong></p>
-                        </dt>
-                        <dd class="govuk-summary-list__actions">
-                            <span class="govuk-!-padding-left-9">{{ data['business-name'] }}</span>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row--no-border">
-                        <dt class="govuk-summary-list__key">
-                            <p class="govuk-body govuk-!-font-size-19"><strong>Number of employees</strong></p>
-                        </dt>
-                        <dd class="govuk-summary-list__actions">
-                            <span class="govuk-!-padding-left-9">{{ data['employees'] }}</span>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row--no-border">
-                        <dt class="govuk-summary-list__key govuk-!-padding-right-9">
-                            <p class="govuk-body govuk-!-font-size-19"><strong>Business turnover</strong></p>
-                        </dt>
-                        <dd class="govuk-summary-list__actions">
-                             <span class="govuk-!-padding-left-9">{{ data['turnover'] }}</span>
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row--no-border">
-                        <dt class="govuk-summary-list__key">
-                            <p class="govuk-body govuk-!-font-size-19"><strong>Single Business Identifier (SBI)</strong></p>
-                        </dt>
-                        <dd class="govuk-summary-list__actions">
-                             {{ data['sbi'] }}
-                        </dd>
-                    </div>
-                </dl>
--->
                 <br><br><br>
-                {%if (data['applicant'] == "Farmer")%}
-                {# Farmer details #}
-                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <div class="govuk-summary-list__row--no-border">
-                                <dt class="govuk-summary-list__key">
-                                    <p class="govuk-body govuk-!-font-size-24"><strong>Farmer's details</strong></p>
-                                </dt>
-                                <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href="your-details">
-                                            Change<span class="govuk-visually-hidden">farmer's details</span>
-                                    </a>
-                                </dd>
-                            </div>
-                        </tr>
-                        <!--
-                            <p class="govuk-body govuk-!-font-size-24"><strong>Farmer's details</strong></p>
-                        -->
-                        <hr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row--no-border">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Name</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                               {{data['farmer-firstname']}}
-                            </td>
-                            <!--
+ 
+                {# include agent details only if applicant is Agent  #}
 
-                                <td class="govuk-table__cell">
-                                    <a class="govuk-link" href="your-details">
-                                        Change<span class="govuk-visually-hidden">business details</span>
-                                    </a>
-                                </td>
-                            -->
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong>Address</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['farmer-address1'] }}<br>
-                                {{ data['farmer-address2'] }}<br>
-                                {{ data['farmer-postcode'] }}
-                            </td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
-                                <strong> Contact details</strong>
-                            </th>
-                            <td class="govuk-table__cell">
-                                {{ data['farmer-email'] }}<br>
-                                {{ data['farmer-landline'] }}
-                            </td>
-                        </tr>
-                       
-                    </tbody>
-                </table>
-                <div class="govuk-grid-row govuk-!-padding-top-8">
-                    <div class="govuk-grid-column-two-thirds">
-                        <form class="form" action="consent" method="post">  
-                            <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-                                Continue
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            {%else%}    
-                {#Agent details #}
+                {% if (data['applicant'] == "Agent") %}
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
@@ -224,7 +88,7 @@
                                     <p class="govuk-body govuk-!-font-size-24"><strong>Agent's details</strong></p>
                                 </dt>
                                 <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href="your-details">
+                                    <a class="govuk-link" href="agent-details">
                                             Change<span class="govuk-visually-hidden">agent's details</span>
                                     </a>
                                 </dd>
@@ -238,7 +102,7 @@
                                 <strong>Name</strong>
                             </th>
                             <td class="govuk-table__cell">
-                                <p>{{ data['other-applicant-firstname'] }}</p>
+                                <p>{{ data['agent-firstname'] }}</p>
                             </td>
                         </tr>
                         <tr class="govuk-table__row">
@@ -252,7 +116,7 @@
                             </td>
                         </tr>
                         <tr class="govuk-table__row">
-                            <th  scope="row" class="govuk-table__header">
+                            <th scope="row" class="govuk-table__header">
                                 <strong> Contact details</strong>
                             </th>
                             <td class="govuk-table__cell">
@@ -264,7 +128,8 @@
                     </tbody>
                 </table>
                 <br><br>
-                {# agent farmer details #}
+                {% endif %}
+                
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
@@ -273,8 +138,8 @@
                                     <p class="govuk-body govuk-!-font-size-24"><strong>Farmer's details</strong></p>
                                 </dt>
                                 <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href="agent-farmer-details">
-                                            Change<span class="govuk-visually-hidden">farmer's details</span>
+                                    <a class="govuk-link" href="farmer-details">
+                                        Change<span class="govuk-visually-hidden">farmer's details</span>
                                     </a>
                                 </dd>
                             </div>
@@ -287,7 +152,7 @@
                                 <strong>Name</strong>
                             </th>
                             <td class="govuk-table__cell">
-                                {{data['agent-farmer-firstname']}}<br>
+                                {{data['farmer-firstname']}}<br>
                             </td>
                         </tr>
                         <tr class="govuk-table__row">
@@ -295,9 +160,9 @@
                                 <strong>Address</strong>
                             </th>
                             <td class="govuk-table__cell">
-                                {{ data['agent-farmer-address1'] }}<br>
-                                {{ data['agent-farmer-address2'] }}<br>
-                                {{ data['agent-farmer-postcode'] }}<br>
+                                {{ data['farmer-address1'] }}<br>
+                                {{ data['farmer-address2'] }}<br>
+                                {{ data['farmer-postcode'] }}<br>
                             </td>
                         </tr>
                         <tr class="govuk-table__row">
@@ -305,8 +170,8 @@
                                 <strong> Contact details</strong>
                             </th>
                             <td class="govuk-table__cell">
-                                {{ data['agent-farmer-email'] }}<br>
-                                {{ data['agent-farmer-landline'] }}
+                                {{ data['farmer-email'] }}<br>
+                                {{ data['farmer-landline'] }}
                             </td>
                         </tr>
                        
@@ -323,6 +188,5 @@
                 </form>
             </div>
          </div>
-        {% endif %}
 
 {% endblock %}
