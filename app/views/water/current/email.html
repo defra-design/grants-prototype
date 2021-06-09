@@ -21,7 +21,7 @@
         <p>Thanks for using the Farming Transformation Fund water management grant  checker and submitting your details to the Rural Payments Agency (RPA).</p>
         <p>Based on the answers you have provided, your project appears eligible.</p>
         <p>RPA will be in touch when the full application period opens.</p>
-        <p>They’ll tell you about the application form and any guidance you need to submit a full application.</p>
+        <p>They will tell you if your project scored well enough to get the full application form.</p>
 
         <div class="govuk-inset-text">
           <h1 class="govuk-heading-m">You must not start the project</h1>
@@ -31,7 +31,6 @@
             <li>get quotes from suppliers </li>
             <li>apply for planning permission or an abstraction licence</li>
           </ul>
-          <p>Your project must be completed before you can claim the funding. All claims must be made before 21 March 2022.</p>
         </div>
         <hr/>
         <div class="govuk-inset-text govuk-!-padding-bottom-4">
@@ -135,12 +134,14 @@
       <p>Business name: {{ data['business-name']}}</p>
       {% if data['applicant'] == "Farmer" %}
       <p>Farmer name: {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
+      <p>Farmer gender: {{ data['gender'] }}</p>
       <p>Farmer email: {{ data['farmer-email'] }}</p>
       {% else %}
       <p>Agent name: {{data['other-applicant-firstname']}} {{data['other-applicant-lastname']}}</p>
       <p>Agent business name: {{ data['other-applicant-Business-name'] }}</p>
       <p>Agent email: {{ data['agent-email'] }}</p>
       <p>Farmer name: {{ data['agent-farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
+      <p>Farmer gender: {{ data['gender'] }}</p>
       <p>Farmer email: {{ data['agent-farmer-email'] }}</p>
       {% endif %}
       <p>Happy to be contacted: Yes</p>

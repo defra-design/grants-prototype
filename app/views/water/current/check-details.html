@@ -38,7 +38,7 @@
                             <strong>Project name</strong>
                         </th>
                         <td class="govuk-table__cell">
-                            {{ data['project-name'] }}
+                            <p>{{ data['project-name'] }}</p>
                         </td>
                     </tr>
                     <tr class="govuk-table__row">
@@ -46,7 +46,7 @@
                             <strong>Business name</strong>
                         </th>
                         <td class="govuk-table__cell">
-                            {{ data['business-name'] }}
+                            <p>{{ data['business-name'] }}</p>
                         </td>
                     </tr>
                     <tr class="govuk-table__row">
@@ -54,7 +54,7 @@
                             <strong>Number of employees</strong>
                         </th>
                         <td class="govuk-table__cell">
-                            {{ data['employees'] }}
+                            <p>{{ data['employees'] }}</p>
                         </td>
                     </tr>
                     <tr class="govuk-table__row">
@@ -62,7 +62,7 @@
                             <strong>Business turnover</strong>
                         </th>
                         <td class="govuk-table__cell">
-                            {{ data['turnover'] }}
+                            <p>{{ data['turnover'] }}</p>
                         </td>
                     </tr>
                     <tr class="govuk-table__row">
@@ -70,7 +70,7 @@
                             <strong>Single Business Identifier (SBI)</strong>
                         </th>
                         <td class="govuk-table__cell">
-                            {{ data['sbi'] }}
+                            <p>{{ data['sbi'] }}</p>
                         </td>
                     </tr>
                     
@@ -107,22 +107,22 @@
                         </td>
                     </tr>
                     <tr class="govuk-table__row">
-                        <th  scope="row" class="govuk-table__header">
-                            <strong>Address</strong>
-                        </th>
-                        <td class="govuk-table__cell">
-                            {{ data['agent-address1'] }}<br>
-                            {{ data['agent-address2'] }}<br>
-                            {{ data['agent-postcode'] }}
-                        </td>
-                    </tr>
-                    <tr class="govuk-table__row">
                         <th scope="row" class="govuk-table__header">
                             <strong> Contact details</strong>
                         </th>
                         <td class="govuk-table__cell">
                             <p>{{ data['agent-email'] }}</p>
                             <p>{{ data['agent-landline'] }}</p>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Address</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                           <p>{{ data['agent-address1'] }}</p>
+                           <p>{{ data['agent-address2'] }}</p>
+                           <p>{{ data['agent-postcode'] }}</p>
                         </td>
                     </tr>
                     
@@ -153,17 +153,15 @@
                             <strong>Name</strong>
                         </th>
                         <td class="govuk-table__cell">
-                            {{data['farmer-firstname']}}<br>
+                            <p>{{data['farmer-firstname']}}</p>
                         </td>
                     </tr>
-                    <tr class="govuk-table__row">
+                    <tr class="govuk-table__row--no-border">
                         <th  scope="row" class="govuk-table__header">
-                            <strong>Address</strong>
+                            <strong>Gender</strong>
                         </th>
                         <td class="govuk-table__cell">
-                            {{ data['farmer-address1'] }}<br>
-                            {{ data['farmer-address2'] }}<br>
-                            {{ data['farmer-postcode'] }}<br>
+                            <p>{{data['gender']}} </p>
                         </td>
                     </tr>
                     <tr class="govuk-table__row">
@@ -171,11 +169,20 @@
                             <strong> Contact details</strong>
                         </th>
                         <td class="govuk-table__cell">
-                            {{ data['farmer-email'] }}<br>
-                            {{ data['farmer-landline'] }}
+                           <p> {{ data['farmer-email'] }} </p>
+                           <p> {{ data['farmer-landline'] }} </p>
                         </td>
                     </tr>
-                    
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Address</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                           <p> {{ data['farmer-address1'] }} </p>
+                           <p> {{ data['farmer-address2'] }} </p>
+                           <p> {{ data['farmer-postcode'] }} </p>
+                        </td>
+                    </tr> 
                 </tbody>
             </table>
         </div>        

@@ -14,6 +14,7 @@
 
       <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
         <h1 class="govuk-heading-l"> Agent's details</h1>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Name</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="agent-firstname">
             First name
@@ -27,7 +28,7 @@
           </label>
           <input class="govuk-input govuk-!-width-one-half" id="agent-lastname" name="agent-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['agent-lastname'] }}">
         </div>
-
+        
         <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="agent-email">
@@ -53,7 +54,7 @@
           <input class="govuk-input  govuk-!-width-two-thirds" id="agent-mobile" name="agent-mobile" type="agent-mobile" spellcheck="false" aria-describedby="agent-mobile-hint" autocomplete="agent-mobile" value="{{ data['agent-mobile'] }}">
         </div>
 
-        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Address details</h2>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Address</h2>
         <div class="govuk-form-group">
             <label class="govuk-label" for="agent-address1">
                 Address 1

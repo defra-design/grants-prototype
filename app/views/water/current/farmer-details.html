@@ -14,6 +14,7 @@
 
       <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
         <h1 class="govuk-heading-l"> Farmer's details</h1>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Name</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-firstname">
             First name
@@ -27,7 +28,33 @@
           </label>
           <input class="govuk-input govuk-!-width-one-half" id="farmer-lastname" name="farmer-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-lastname'] }}">
         </div>
-
+        <h2 class="govuk-heading-m govuk-!-padding-top-6">Gender</h2>
+        <div class="govuk-form-group">
+          <div id="event-name-hint" class="govuk-hint">
+                We collect this equality data to improve our future schemes
+          </div>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="gender" name="gender" type="radio" value="Female" {{ checked("gender", "Female") }}>
+              <label class="govuk-label govuk-radios__label" for="gender">
+                Female
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="gender-2" name="gender" type="radio" value="Male" {{ checked("gender", "Male") }}  >
+              <label class="govuk-label govuk-radios__label" for="gender-2">
+                Male 
+              </label>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="gender-4" name="gender" type="radio" value="Prefer not to say" {{ checked("gender", "Prefer not to say") }} >
+              <label class="govuk-label govuk-radios__label" for="gender-4">
+                Prefer not to say
+              </label>
+            </div>
+          </div>
+        </div>  
         <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-email">
@@ -53,7 +80,7 @@
           <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-mobile" name="farmer-mobile" type="farmer-mobile" spellcheck="false" aria-describedby="farmer-mobile-hint" autocomplete="farmer-mobile" value="{{ data['farmer-mobile'] }}">
         </div>
 
-        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Address details</h2>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Address</h2>
         <div class="govuk-form-group">
             <label class="govuk-label" for="farmer-address1">
                 Address 1
