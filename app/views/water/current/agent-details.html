@@ -14,6 +14,7 @@
 
       <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
         <h1 class="govuk-heading-l"> Agent's details</h1>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Name</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="agent-firstname">
             First name
@@ -27,6 +28,34 @@
           </label>
           <input class="govuk-input govuk-!-width-one-half" id="agent-lastname" name="agent-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['agent-lastname'] }}">
         </div>
+        
+        <h2 class="govuk-heading-m govuk-!-padding-top-6">Gender</h2>
+        <div class="govuk-form-group">
+          <div id="event-name-hint" class="govuk-hint">
+                We collect this equality data to improve our future schemes
+          </div>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="gender-agent-1" name="gender-agent" type="radio" value="Female" {{ checked("gender-agent", "Female") }}>
+              <label class="govuk-label govuk-radios__label" for="gender-agent-1">
+                Female
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="gender-agent-2" name="gender-agent" type="radio" value="Male" {{ checked("gender-agent", "Male") }}  >
+              <label class="govuk-label govuk-radios__label" for="gender-agent-2">
+                Male 
+              </label>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="gender-agent-3" name="gender-agent" type="radio" value="Prefer not to say" {{ checked("gender-agent", "Prefer not to say") }} >
+              <label class="govuk-label govuk-radios__label" for="gender-agent-3">
+                Prefer not to say
+              </label>
+            </div>
+          </div>
+        </div>  
 
         <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
         <div class="govuk-form-group">
@@ -53,7 +82,7 @@
           <input class="govuk-input  govuk-!-width-two-thirds" id="agent-mobile" name="agent-mobile" type="agent-mobile" spellcheck="false" aria-describedby="agent-mobile-hint" autocomplete="agent-mobile" value="{{ data['agent-mobile'] }}">
         </div>
 
-        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Address details</h2>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Address</h2>
         <div class="govuk-form-group">
             <label class="govuk-label" for="agent-address1">
                 Address 1
