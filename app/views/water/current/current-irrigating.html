@@ -21,13 +21,14 @@
               </h1>
             </legend>
             <br>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="current-irrigating-1" name="current-irrigating" type="radio" value="Yes" {{ checked("current-irrigating", "Yes") }}>
-                <label class="govuk-label govuk-radios__label" for="current-irrigating-1">
-                  Yes
-                </label>
-              </div>
+            <div class="govuk-radios govuk-!-margin-top-4" data-module="govuk-radios">
+              <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="current-irrigating-1" name="current-irrigating" type="radio"  value="Yes" {{ checked("current-irrigating", "Yes") }}>
+                  <label class="govuk-label govuk-radios__label" for="current-irrigating-1">
+                    Yes
+                  </label>
+                </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="current-irrigating-2" name="current-irrigating" type="radio" value="No" {{ checked("current-irrigating", "No") }}>
                 <label class="govuk-label govuk-radios__label" for="current-irrigating-2">
@@ -36,9 +37,7 @@
               </div>
             </div>
           </fieldset>
-        </div>
-        <br>
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+        <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-9" data-module="govuk-button">
           Continue
         </button>
 
@@ -51,17 +50,6 @@
         {% endif %}
       </form>
     </div>
-     {# <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
-      <aside class="app-related-items">
-          <h3 class="govuk-heading-m"> Funding  priorities </h3>
-          <div class="govuk-body">
-             RPA wants to fund projects that: 
-                   <ul>
-                    <li>improve productivity</li>
-                   </ul>
-          </div>
-      </aside>    
-    </div> #}
   </div>
 </main>
 {% endblock %}
