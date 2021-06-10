@@ -557,13 +557,18 @@ router.get('/collaboration', function (req, res) {
 router.get('/answers', function (req, res) {
   req.session.data.COMPLETED = true
 
-  var backUrl = 'collaboration'
+  var backUrl = 'answers-back'
   var nextUrl = 'next-steps'
 
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl
   })
+})
+
+router.get('/answers-back', function (req, res) {
+  req.session.data.COMPLETED = false
+  res.redirect('collaboration')
 })
 
 // next-steps
@@ -644,13 +649,18 @@ router.get('/farmer-details', function (req, res) {
 router.get('/check-details', function (req, res) {
   req.session.data.DETAILS = true
 
-  var backUrl = 'farmer-details'
+  var backUrl = 'check-details-back'
   var nextUrl = 'consent'
 
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl
   })
+})
+
+router.get('/check-details-back', function (req, res) {
+  req.session.data.DETAILS = false
+  res.redirect('farmer-details')
 })
 
 router.get('/agent-farmer-details', function (req, res) {
