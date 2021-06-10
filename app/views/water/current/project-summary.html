@@ -19,31 +19,60 @@
             <p><span class="govuk-caption-m">Select one or two options</span></p>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-summary-1" name="project-summary" type="checkbox" value="Change water source" {{ checked("project-summary", "Change water source") }}>
+                <input 
+                  class="govuk-checkboxes__input" id="project-summary-1" name="project-summary" type="checkbox" value="Change water source"
+                  {{ checked("project-summary", "Change water source") }}
+                  {{ checked("project-summary", "None of the above") and 'disabled' }}
+                >
                 <label class="govuk-label govuk-checkboxes__label" for="project-summary-1">
                   Change water source 
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-summary-2" name="project-summary" type="checkbox" value="increase irrigation" {{ checked("project-summary", "increase irrigation") }}>
+                <input
+                  class="govuk-checkboxes__input" id="project-summary-2" name="project-summary" type="checkbox" value="increase irrigation"
+                  {{ checked("project-summary", "increase irrigation") }}
+                  {{ checked("project-summary", "None of the above") and 'disabled' }}
+                >
                 <label class="govuk-label govuk-checkboxes__label" for="project-summary-2">
                   Increase irrigation
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-summary-3" name="project-summary" type="checkbox" value="improve irrigation efficiency" {{ checked("project-summary", "improve irrigation efficiency") }}>
+                <input 
+                  class="govuk-checkboxes__input" id="project-summary-3" name="project-summary" type="checkbox" value="improve irrigation efficiency"
+                  {{ checked("project-summary", "improve irrigation efficiency") }}
+                  {{ checked("project-summary", "None of the above") and 'disabled' }}
+                >
                 <label class="govuk-label govuk-checkboxes__label" for="project-summary-3">
                   Improve irrigation efficiency
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-summary-4" name="project-summary" type="checkbox" value="introduce irrigation" {{ checked("project-summary", "introduce irrigation") }}>
+                <input 
+                  class="govuk-checkboxes__input" id="project-summary-4" name="project-summary" type="checkbox" value="introduce irrigation"
+                  {{ checked("project-summary", "introduce irrigation") }}
+                  {{ checked("project-summary", "None of the above") and 'disabled' }}
+                >
                 <label class="govuk-label govuk-checkboxes__label" for="project-summary-4">
                   Introduce irrigation
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-summary-5" name="project-summary" type="checkbox" value="None of the above" {{ checked("project-summary", "None of the above") }}>
+                <input
+                  class="govuk-checkboxes__input" id="none-project-summary" name="project-summary" type="checkbox"
+                  value="None of the above"
+                  {{ checked("project-summary", "None of the above") }}
+                  onclick="
+                    const isChecked = document.getElementById('none-project-summary').checked 
+                    const listOptions = document.querySelectorAll('input[id^=project-summary-]')
+
+                    listOptions.forEach(item => {
+                      item.disabled= isChecked
+                    })
+                  "
+                  
+                >
                 <label class="govuk-label govuk-checkboxes__label" for="project-summary-5">
                   None of the above
                 </label>
