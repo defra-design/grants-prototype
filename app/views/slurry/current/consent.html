@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check all your answers
+{% endblock %}
+
+{% block beforeContent %}
+{% if (data['applicant'] == "Agent")%}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  <a class="govuk-back-link" href="check-details">Back</a>
+{%else%}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  <a class="govuk-back-link" href="check-details">Back</a>
+{%endif%}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group govuk-!-margin-bottom-9">
+      <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
+        <h1 class="govuk-heading-l">Confirm and send</h1>
+        <p>I confirm that, to the best of my knowledge, the details I have provided are correct.</p>
+        <p>I understand the score was based on the answers I provided.</p>
+        <p>I am aware the information I submit will be checked.</p>
+        <p>I am happy to be contacted by Defra and RPA (or a third-party on their behalf) about my application.</p>
+
+        <div class="govuk-checkboxes__item govuk-!-margin-top-8">
+          <input class="govuk-checkboxes__input" id="confirm" name="confirmation" type="checkbox" value="{{ data['confirmation'] }}">
+            <label class="govuk-label govuk-checkboxes__label " for="confirm">
+              (Optional) &nbsp; So that we can continue to improve our services and schemes, we may wish to contact you in the future.
+              Please confirm if you are happy for us, or a third-party working for us, to contact you.
+            </label>
+          </div>
+      </fieldset>
+    </div>
+    <form class="form" action="{{ nextUrl }}" method="post">
+      <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+        Confirm and send
+      </button>
+    </form>
+
+</div>
+    <div class="govuk-body govuk-grid-column-full">
+      <p><hr class="govuk-section-break govuk-section-break--visible"></p>
+      <p>The Department for Environment, Food and Rural Affairs (Defra) is the data controller for personal data you give to RPA.For information on how we handle personal data go to <a href="#" rel="noreferrer noopener" target="_blank">GOV.UK (opens in new tab)</a> and search
+      <a href="https://www.gov.uk/government/organisations/rural-payments-agency/about/personal-information-charter" target="_blank" alt="Rural Payments Agency personal information charter rel="noreferrer noopener">Rural Payments Agency personal information charter (opens in  new tab).</a></p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

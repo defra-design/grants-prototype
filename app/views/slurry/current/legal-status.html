@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is the legal status of the {{ data['farming-type'] }} business?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What is the legal status of the farm business?
+              </h1>
+            </legend>
+            <br><br>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-1" name="legal-status" type="radio" value="Sole trader" {{ checked("legal-status", "Sole trader") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-1">
+                  Sole trader
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-2" name="legal-status" type="radio" value="Partnership" {{ checked("legal-status", "Partnership") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-2">
+                  Partnership
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-3" name="legal-status" type="radio" value="Ltd company" {{ checked("legal-status", "Ltd company") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-3">
+                  Limited company
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-4" name="legal-status" type="radio" value="Charity" {{ checked("legal-status", "Charity") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-4">
+                  Charity
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-6" name="legal-status" type="radio" value="Trust" {{ checked("legal-status", "Trust") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-6">
+                  Trust
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-7" name="legal-status" type="radio" value="limited liability partnership" {{ checked("legal-status", "limited liability partnership") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-7">
+                  Limited liability partnership
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-8" name="legal-status" type="radio" value="Community interest organisation" {{ checked("legal-status", "Community interest organisation") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-8">
+                  Community interest company 
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-10" name="legal-status" type="radio" value="Limited partnership" {{ checked("legal-status", "Limited partnership") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-10">
+                  Limited partnership
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-11" name="legal-status" type="radio" value="Industrial and provident society" {{ checked("legal-status", "Industrial and provident society") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-11">
+                  Industrial and provident society
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-12" name="legal-status" type="radio" value="Co-operative society" {{ checked("legal-status", "Co-operative society") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-12">
+                  Co-operative society (Co-Op)
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-13" name="legal-status" type="radio" value="Community benefit society" {{ checked("legal-status", "Community benefit society") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-13">
+                  Community benefit society (BenCom)
+                </label>
+              </div>
+              <div class="govuk-radios__divider">or</div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="legal-status-14" name="legal-status" type="radio" value="None" {{ checked("legal-status", "None") }}>
+                <label class="govuk-label govuk-radios__label" for="legal-status-14">
+                   None of the above
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <br><br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+      
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>Public organisations and local authorities cannot apply for this grant.</p>
+          <a href="#">
+          </a>
+
+      </div>
+
+  </div>
+
+
+{% endblock %}

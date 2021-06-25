@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What are your estimate total project costs?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-heading-l">What is the estimated cost of the items?</h1>
+          <div class="govuk-hint">
+            You can only apply for a grant of up to 40% of the estimated costs. <br/>Do not include VAT.
+          </div>
+
+          <span class="govuk-caption-m">Enter amount, for example 95000</span>
+          <div class="govuk-input__wrapper govuk-!-margin-top-4">
+          <span  class="govuk-input__prefix" aria-hidden="true">£</span> <input class="govuk-input govuk-input--width-10" id="project-cost" name="project-cost" type="text" spellcheck="false" aria-describedby="project-cost-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['project-cost'] }}">
+
+          </div>
+        </div>
+        <br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Items selected</span>
+          </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+            {% for item in data['project-items'] %}
+            <li>
+                {{ item | capitalize }}
+            </li>
+            {% endfor %}
+
+          </ul>
+
+        </nav>
+
+
+        </div>
+      </div>
+{% endblock %}

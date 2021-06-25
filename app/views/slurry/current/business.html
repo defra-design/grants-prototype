@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Project and business details
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
+
+        <h1 class="govuk-heading-l">
+          Business details
+        </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="project-name">
+              Project name
+          </label>
+          <span id="project-name-hint" class="govuk-hint">For example, Brown Hill Farm reservoir</span>
+          <input class="govuk-input" id="project-name" name="project-name" type="text" value="{{ data['project-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="business-name">
+              Business name
+          </label>
+          <span id="business-name-hint" class="govuk-hint">If you’re registered on the Rural Payments system, enter business name as registered</span>
+          <input class="govuk-input" id="business-name" name="business-name" type="text" value="{{ data['business-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="employees">
+              Number of employees
+          </label>
+          <span id="employees-hint" class="govuk-hint">Full-time employees, including the owner</span>
+          <input class="govuk-input govuk-input--width-10" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">
+        </div>
+        <br>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="turnover">
+              Business turnover (£)
+          </label>
+          <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-input--width-5" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
+          </div>
+        </div>
+        <br>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sbi">
+              Single Business Identifier (SBI)
+          </label>
+          <span id="sbi-hint" class="govuk-hint">If you do not have an SBI, leave it blank</span>
+          <input class="govuk-input govuk-input--width-10" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
+        </div>
+        <br><br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% if data['DETAILS'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk" data-module="govuk-button"
+          >
+            Back to contact details
+          </button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

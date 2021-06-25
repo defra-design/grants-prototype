@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Does the project need an abstraction licence?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+
+
+       <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<h1 class="govuk-heading-l">What is your project about?</h1>
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+
+                  idPrefix: 'projects-impact',
+                  name: 'projects-impact',
+                  fieldset: {
+                      legend: {
+                          text: '',
+                          isPageHeading: false,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    text: "Select one option."
+                },
+
+                  items: [
+                {
+                  value: "Increase acidification",
+                  text: "Increase acidification",
+                  checked: checked("projects-impact", "Increase acidification")
+                },
+                {
+                  value: "Introduce acidification ",
+                  text: "Introduce acidification ",
+                  checked: checked("projects-impact", "Introduce acidification ")
+                }
+              ]
+              }) }}
+
+              <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">
+                Continue
+              </button>
+
+  <!--COMPLETED section:activates when journey reaches 'Check answers' page-->
+  {% if data['COMPLETED'] == true %}
+    <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+      class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">Back to score
+    </button>
+  {% endif %}
+  </form>
+  </div>
+
+    <!--top right column 'Eligibility'-->
+    <div class="govuk-grid-column-one-third">
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund projects that:</p>
+          <ul class="govuk-list govuk-list--bullet">
+          <li>improve productivity</li>
+          <li>improve the environment</li>
+          <li>introduce innovation</li>
+          </ul>
+
+
+          <a href="#">
+          </a>
+
+      </div>
+      </div>
+
+    </div>
+{% endblock %}

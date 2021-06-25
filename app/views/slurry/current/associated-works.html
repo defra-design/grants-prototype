@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which items eligible for grant funding are included in the project?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
+
+
+
+            <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+      Which eligible items does your project need?
+        </h1>
+      </legend>
+<p class="govuk-hint">The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £1 million.<p/>
+<p class="govuk-hint">Select all that apply.</p>
+
+<div class="govuk-checkboxes">
+  <div class="govuk-checkboxes__item">
+    <input class="govuk-checkboxes__input" id="associated-works-1" name="associated-works" type="checkbox" value="Mild acidification equipment" {{ checked("associated-works", "Mild acidification equipment") }}>
+    <label class="govuk-label govuk-checkboxes__label" for="associated-works-1">
+      Mild acidification equipment
+    </label>
+    <div id="project-items-item-hint" class="govuk-hint govuk-checkboxes__hint">
+    Equipment for reducing the emissions of ammonia by lowering the pH value of slurry, such as:
+
+        <ul class="govuk-list govuk-list--bullet govuk-hint govuk-checkboxes__hint">
+          <li>Acid storage</li>
+          <li>Dosing equipment</li>
+          <li>Mixing tank</li>
+          <li>Pump</li>
+        </ul>
+
+    </div>
+  </div>
+
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
+
+
+    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="associated-works-2" name="associated-works" type="checkbox" value="Acidification infrastructure" {{ checked("associated-works", "Acidification infrastructure") }} >
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          Acidification infrastructure
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="associated-works-3" name="associated-works" type="checkbox" value="Slurry pipework" {{ checked("associated-works", "Slurry pipework") }}>
+        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+          Slurry pipework
+        </label>
+      </div>
+      <div class="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="associated-works-4" name="associated-works" type="checkbox" value="Plasma" {{ checked("associated-works", "Plasma") }} >
+          <label class="govuk-label govuk-checkboxes__label" for="waste">
+            Plasma
+          </label>
+          <div id="project-items-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          Advanced digestate processing equipment, such as multi-stage digestate separation   </div>
+        </div>
+
+    </div>
+
+
+  </fieldset>
+</div>
+
+
+
+
+
+
+    </fieldset>
+  </div>
+<br/><br/>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}
