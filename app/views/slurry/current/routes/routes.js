@@ -195,14 +195,14 @@ router.post('/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
   if (tenant === 'Yes') {
-    res.redirect('project-items')
+    res.redirect('associated-works')
   } else { res.redirect('tenancy-length') }
 })
 
 router.post('/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('project-items') }
+  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('associated-works') }
 })
 
 router.post('/tenancy-length-answer-completed', function (req, res) {
@@ -210,32 +210,32 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 })
 
 
-// Q: Project items
+// Q: Project items (page removed)
 
-router.get('/project-items', function (req, res) {
-  var backUrl = 'tenancy-length'
-  var nextUrl = 'project-items-answers'
-  var completedUrl = 'answers'
+//  router.get('/project-items', function (req, res) {
+//  var backUrl = 'tenancy-length'
+//  var nextUrl = 'project-items-answers'
+//  var completedUrl = 'answers'
 
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
+//  res.render('./' + req.originalUrl, {
+//   backUrl,
+//   nextUrl,
+//   completedUrl
+//  })
+//  })
 
 
-router.post('/project-items-answers', function (req, res) {
-  var projectItemsAnswers = req.session.data['project-items']
+// router.post('/project-items-answers', function (req, res) {
+// var projectItemsAnswers = req.session.data['project-items']
 
-  if (projectItemsAnswers == 'Mild acidification equipment' || projectItemsAnswers == 'Plasma')   { res.redirect('associated-works') } else { res.redirect('treatment-fail') }
-})
+//  if (projectItemsAnswers == 'Mild acidification equipment' || projectItemsAnswers == 'Plasma')   { res.redirect('associated-works') } else { res.redirect('treatment-fail') }
+// })
 
 
 // Q: Associated works
 
 router.get('/associated-works', function (req, res) {
-  var backUrl = 'project-items'
+  var backUrl = 'tenancy'
   var nextUrl = 'project-cost'
   var completedUrl = 'answers'
 
