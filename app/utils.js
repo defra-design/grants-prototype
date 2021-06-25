@@ -10,13 +10,8 @@ const serviceName = {
     current: 'Check if you can apply for a Farming Transformation Fund water management grant'
   },
   slurry: {
-    v3: 'Apply for a large grant for slurry equipment',
-    v4: 'Apply for a large grant for slurry equipment',
-    v4b: 'Apply for a large grant for slurry equipment',
-    v5: 'Apply for a large grant for slurry equipment',
-    v6: 'Apply for a large grant for slurry equipment',
-    v7private: 'Apply for a large grant for slurry equipment',
-    current: 'Apply for a large grant for slurry equipment'
+    current: 'Check if you can apply for a Farming Transformation Fund slurry acidification grant',
+         v1: 'Check if you can apply for a Farming Transformation Fund slurry acidification grant'
   }
 }
 

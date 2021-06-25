@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is your project about?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<h1 class="govuk-heading-l">What is your project about?</h1>
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'farming-type',
+                  name: 'farming-type',
+                  fieldset: {
+                      legend: {
+                          text: '',
+                          isPageHeading: false,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+                  items: [
+                {
+                  value: "Robotics, automation and innovation",
+                  text: "Robotics, automation and innovation",
+                  checked: checked("farming-type", "Robotics, automation and innovation")
+                },
+                {
+                  value: "Slurry acidification",
+                  text: "Slurry acidification",
+                  checked: checked("farming-type", "Slurry acidification")
+                }
+              ]
+              }) }}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+  <!--COMPLETED section:activates when journey reaches 'Check answers' page-->
+        {% if data['COMPLETED'] == true %}
+        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+          class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Back to summary page
+        </button>
+        {% endif %}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
