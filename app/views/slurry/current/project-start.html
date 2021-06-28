@@ -25,41 +25,38 @@ Have you already started work on the project?
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-            {{ govukRadios({
-                idPrefix: 'project-start',
-                name: 'project-start',
-                fieldset: {
-                    legend: {
-                        text: '',
-                        isPageHeading: false,
-                        classes: 'govuk-fieldset__legend--l'
-                    }
-                },
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="sign-in-project-start">
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="project-start-1" name="project-start" type="radio" value="preparatory work" aria-describedby="project-start-1-item-hint" {{ checked("project-start", "preparatory work") }}>
+                    <label class="govuk-label govuk-radios__label" for="project-start-1">
+                      Yes, preparatory work
+                    </label>
+                    <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                      For example quotes from suppliers, applying for planning permission
+                    </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="project-start-2" name="project-start" type="radio" value="project work" aria-describedby="project-start-2-item-hint" {{ checked("project-start", "project work") }}>
+                    <label class="govuk-label govuk-radios__label" for="project-start-2">
+                    Yes, we have begun project work
+                    </label>
+                    <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+                      For example digging, signing contracts, placing orders
+                    </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="project-start-3" name="project-start" type="radio" value="No" aria-describedby="project-start-3-item-hint" {{ checked("project-start", "No") }}>
+                    <label class="govuk-label govuk-radios__label" for="project-start-3">
+                      No
+                    </label>
 
-                items: [
-              {
-                value: "Yes, preparatory work",
-                text: "Yes, preparatory work",
-                hint: {
-                text: "For example quotes from suppliers, applying for planning permission"
-              },
-                checked: checked("project-start", "preparatory work")
-              },
-              {
-                value: "Yes, we have begun project work",
-                text: "Yes, we have begun project work",
-                hint: {
-                text: "For example digging, signing contracts, placing orders"
-              },
-                checked: checked("project-start", "project work")
-              },
-              {
-                value: "No",
-                text: "No",
-                checked: checked("project-start", "No")
-              }
-            ]
-            }) }}
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
 
     <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
@@ -92,7 +89,7 @@ can:
 
 
 
-      
+
     </form>
   </div>
 

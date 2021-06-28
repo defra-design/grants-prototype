@@ -1,4 +1,4 @@
-{% set serviceName = "Apply for a productivity grant" %}
+{% set serviceName = "Check if you can apply for a Farming Transformation Fund productivity grant" %}
 
 {% extends "layout.html" %}
 
@@ -12,7 +12,7 @@
 <!-- homepage header will always link to top level of that iteration, for example 'current' -->
 {% block beforeContent %}
 
-{{ govukPhaseBanner({  tag: {    text: "alpha"  },  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'}) }}
+{{ govukPhaseBanner({  tag: {    text: "beta"  },  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'}) }}
 
 <a class="govuk-back-link" onclick="history.back();">Back</a>
 {% endblock %}

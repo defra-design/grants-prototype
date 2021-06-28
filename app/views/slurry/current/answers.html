@@ -3,12 +3,20 @@
 {% block pageTitle %}
   Check all your answers
 {% endblock %}
-
 {% block beforeContent %}
-<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
+
+
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -17,8 +25,8 @@
 <p class="govuk-!-font-size-24">Based on your answers, your project’s score is:</p>
 
     <div class="govuk-inset-text">
-      <h2 class="govuk-heading-m">Average</h2>
-      <p>This means your project has a medium chance of getting funding.</p>
+      <h2 class="govuk-heading-m">Strong</h2>
+      <p>This means your project seems likely to be successful.</p>
     </div>
 
   </div>
@@ -97,9 +105,9 @@
           <td class="govuk-table__cell"><a href="projects-impact">Change</td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Current volume teated
+          <th scope="row" class="govuk-table__header">Current volume treated
           <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['slurry-currently-treated'] | capitalize}}</li></ul></th>
-          <td class="govuk-table__cell">Week</td>
+          <td class="govuk-table__cell">Average</td>
           <td class="govuk-table__cell">
             <ul class="govuk-list govuk-list--bullet govuk-body govuk-!-font-size-16">
               <li> productivity </li>
@@ -111,7 +119,7 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Future volume treated
           <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['slurry-to-be-treated'] | capitalize}}</li></ul></th>
-          <td class="govuk-table__cell">Strong</td>
+          <td class="govuk-table__cell">Weak</td>
           <td class="govuk-table__cell">
             <ul class="govuk-list govuk-list--bullet govuk-body govuk-!-font-size-16">
               <li> productivity </li>
