@@ -94,37 +94,37 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Project impact
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['projects-impact'] | capitalize}}</li></ul></th>
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['projects-impact'] | capitalize}} </li></ul></th>
           <td class="govuk-table__cell">Strong</td>
           <td class="govuk-table__cell">
-            <ul class="govuk-list govuk-list--bullet govuk-body govuk-!-font-size-16">
-              <li> productivity </li>
-              <li>improve the environment</li>
-            </ul>
+            <p class="govuk-body govuk-!-font-size-16">
+              Productivity <br/>
+              Improve the environment</p>
           </td>
           <td class="govuk-table__cell"><a href="projects-impact">Change</td>
         </tr>
+        {% if data['projects-impact'] === "Increase acidification" %}
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Current volume treated
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['slurry-currently-treated'] | capitalize}}</li></ul></th>
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['slurry-currently-treated'] | capitalize}} m<sup>3</sup></li></ul></th>
           <td class="govuk-table__cell">Average</td>
           <td class="govuk-table__cell">
-            <ul class="govuk-list govuk-list--bullet govuk-body govuk-!-font-size-16">
-              <li> productivity </li>
-              <li>improve the environment</li>
-            </ul>
+            <p class="govuk-body govuk-!-font-size-16">
+              Productivity <br/>
+              Improve the environment</p>
+
           </td>
           <td class="govuk-table__cell"><a href="slurry-currently-treated">Change</td>
         </tr>
+         {% endif %}
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Future volume treated
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['slurry-to-be-treated'] | capitalize}}</li></ul></th>
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['slurry-to-be-treated'] | capitalize}} m<sup>3</sup></li></ul></th>
           <td class="govuk-table__cell">Weak</td>
           <td class="govuk-table__cell">
-            <ul class="govuk-list govuk-list--bullet govuk-body govuk-!-font-size-16">
-              <li> productivity </li>
-              <li>improve the environment</li>
-            </ul>
+            <p class="govuk-body govuk-!-font-size-16">
+              Productivity <br/>
+              Improve the environment</p>
           </td>
           <td class="govuk-table__cell"><a href="slurry-to-be-treated">Change</td>
         </tr>

@@ -370,7 +370,7 @@ router.get('/water-SSSI', function (req, res) {
 // PROJECTS IMPACT (SLURRY)
 router.get('/projects-impact', function (req, res) {
   var backUrl = 'water-SSSI'
-  var nextUrl = 'slurry-currently-treated'
+  var nextUrl = 'projects-impact-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -379,6 +379,13 @@ router.get('/projects-impact', function (req, res) {
     completedUrl
   })
 })
+
+router.post('/projects-impact-answer', function (req, res) {
+  var prAnswer = req.session.data['projects-impact']
+
+  if (prAnswer === 'Introduce acidification') { res.redirect('slurry-to-be-treated') } else { res.redirect('slurry-currently-treated') }
+})
+
 
 
 // SLURRY CURRENTLY TREATED (SLURRY)
