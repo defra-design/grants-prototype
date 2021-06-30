@@ -21,7 +21,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-<h1 class="govuk-heading-xl">Scoring results</h1>
+<h1 class="govuk-heading-xl">Score results</h1>
 <p class="govuk-!-font-size-24">Based on your answers, your project’s score is:</p>
 
     <div class="govuk-inset-text">
@@ -29,9 +29,9 @@
       <p>This means your project seems likely to be successful.</p>
     </div>
 
-  </div>
-  </div>
 
+  </div>
+  </div>
 
 
 
@@ -71,7 +71,14 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <br><br/><br/>
+      <br>
+    {{ govukWarningText({
+        text: 'The likelihood of a full application being successful will also depend on the number and value of applications we receive.',
+        iconFallbackText: 'Warning'
+    }) }}
+    <p class="govuk-body">Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score.</p>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
     <h1 class="govuk-heading-l">Your scoring answers</h1>
     <p class="govuk-!-padding-bottom-4">You can go back to change scoring questions as many times as you like but you can only submit your details once.</p>
 
@@ -86,7 +93,7 @@
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Answers</th>
-          <th scope="col" class="govuk-table__header">Your score</th>
+          <th scope="col" class="govuk-table__header">Score</th>
           <th scope="col" class="govuk-table__header">Funding priorities</th>
           <th scope="col" class="govuk-table__header"></th>
         </tr>
