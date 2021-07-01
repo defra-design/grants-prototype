@@ -72,10 +72,14 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <br>
-    {{ govukWarningText({
-        text: 'The likelihood of a full application being successful will also depend on the number and value of applications we receive.',
-        iconFallbackText: 'Warning'
-    }) }}
+      <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    The likelihood of a full application being successful will also depend on the number and value of applications we receive.
+  </strong>
+</div>
+
     <p class="govuk-body">Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score.</p>
 
     <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
