@@ -1,16 +1,18 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check all your answers
+  Score results
 {% endblock %}
+
 {% block beforeContent %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "beta"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype"
+    },
+      html: 'This is a prototype. It is not a real service.'
+  }) }}
+
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
@@ -83,7 +85,7 @@
     <p class="govuk-body">Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score.</p>
 
     <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-    <h1 class="govuk-heading-l">Your scoring answers</h1>
+    <h1 class="govuk-heading-l">Your answers</h1>
     <p class="govuk-!-padding-bottom-4">You can go back to change scoring questions as many times as you like but you can only submit your details once.</p>
 
 

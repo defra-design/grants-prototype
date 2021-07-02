@@ -8,9 +8,9 @@
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner({
   tag: {
-    text: "beta"
+    text: "prototype"
   },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  html: 'This is a prototype. It is not a real service.'
 }) }}
   <a class="govuk-back-link govuk-!-margin-top-6" href="tenancy-length">Back</a>
 {% endblock %}
@@ -30,14 +30,7 @@
 
 
 
-        {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='answers'"
-            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-          >
-            Back to summary page
-          </button>
-        {% endif %}
-
+      
 
       </form>
 
