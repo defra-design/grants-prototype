@@ -8,10 +8,11 @@ What is your project about?
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner({
   tag: {
-    text: "beta"
+    text: "prototype"
   },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  html: 'This is a prototype. It is not a real service.'
 }) }}
+
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
@@ -50,12 +51,6 @@ What is your project about?
 
           <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
-  <!--COMPLETED section:activates when journey reaches 'Check answers' page-->
-        {% if data['COMPLETED'] == true %}
-        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-          class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Back to summary page
-        </button>
-        {% endif %}
 
       </form>
     </div>

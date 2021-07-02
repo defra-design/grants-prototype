@@ -10,15 +10,28 @@
 
 {% endblock %}
 
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+{% endblock %}
+
 {% block pageTitle %}
 Farming Transformation Fund slurry acidification grant
 {% endblock %}
 
 {% block header %}
 {% include "../includes/header-publisher.html" %}
+
 {% endblock %}
 
-{% block beforeContent %}
+
+
+
 
 <div id="global-header-bar"></div>
 
@@ -38,7 +51,7 @@ Farming Transformation Fund slurry acidification grant
 
 </div>
 
-{% endblock %}
+
 
 {% block content %}
 
@@ -50,11 +63,11 @@ Farming Transformation Fund slurry acidification grant
         Guidance
       </p>
       <h1 class="gem-c-title__text gem-c-title__text--long">
-        Farming Transformation Fund slurry acidification grant
+        Farming Transformation Fund productivity grant
       </h1>
     </div>
 
-    <p class="gem-c-lead-paragraph">Get a grant to lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    <p class="gem-c-lead-paragraph">Get a grant to improve economic and environmental performance and resilience through productive and innovative farming methods.</p>
 
   </div>
 </div>

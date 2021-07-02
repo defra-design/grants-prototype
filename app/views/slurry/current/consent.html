@@ -5,25 +5,15 @@
 {% endblock %}
 
 {% block beforeContent %}
-{% if (data['applicant'] == "Agent")%}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "beta"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype"
+    },
+      html: 'This is a prototype. It is not a real service.'
+  }) }}
   <a class="govuk-back-link" href="check-details">Back</a>
-{%else%}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "beta"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
-  <a class="govuk-back-link" href="check-details">Back</a>
-{%endif%}
+
 {% endblock %}
 
 {% block content %}

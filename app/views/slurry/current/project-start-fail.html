@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
   <a class="govuk-back-link" href="project-start">Back</a>
 {% endblock %}
 

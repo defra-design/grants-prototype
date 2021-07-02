@@ -1,8 +1,21 @@
 {% extends "layout.html" %}
 
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+{% endblock %}
+
 {% block pageTitle %}
   email
 {% endblock %}
+
+
+
 
 {% block content %}
 
