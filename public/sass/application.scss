@@ -26,5 +26,17 @@ $govuk-assets-path: '/govuk/assets/';
     margin-right: 60px;
 }
 
+.proto-admin {
+  background: #f5f5f5;
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+}
 
+.proto-admin p.govuk-body {
+  margin-bottom: 0;
+}
+
+.proto-admin .govuk-heading-m {
+  margin-bottom: 10px;
+}
 @import "grants";
