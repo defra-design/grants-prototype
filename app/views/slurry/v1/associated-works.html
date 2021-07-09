@@ -12,7 +12,7 @@
     },
       html: 'This is a prototype. It is not a real service.'
   }) }}
-
+  
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
@@ -45,7 +45,7 @@
       Mild acidification equipment
     </label>
     <div id="project-items-item-hint" class="govuk-hint govuk-checkboxes__hint">
-    You must buy all 4 of the following items:
+    Your acidification equipment must include all 4 of the following items:
 
         <ul class="govuk-list govuk-list--bullet govuk-hint govuk-checkboxes__hint">
           <li>acid storage</li>
@@ -69,11 +69,13 @@
         <label class="govuk-label govuk-checkboxes__label" for="waste">
           Acidification infrastructure
         </label>
-          <div id="acidification-infrastructure-item-hint" class="govuk-hint govuk-checkboxes__hint">Any work to adapt or install pipework, pumps etc to get slurry into the acidification system and then out to storage. </div>
       </div>
-
-
-
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="associated-works-3" name="associated-works" type="checkbox" value="Slurry pipework" {{ checked("associated-works", "Slurry pipework") }}>
+        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+          Slurry pipework
+        </label>
+      </div>
 
 
     </div>

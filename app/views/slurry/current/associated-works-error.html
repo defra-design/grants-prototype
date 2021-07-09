@@ -18,7 +18,22 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#passport-issued-day">You must select mild acidification equipment</a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+<div class="govuk-form-group govuk-form-group--error">
+
     <div class="govuk-grid-column-two-thirds">
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -28,7 +43,7 @@
 
 
 
-            <div class="govuk-form-group">
+            <div class="govuk-form-group govuk-form-group--error">
     <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
         <h1 class="govuk-fieldset__heading">
@@ -37,15 +52,23 @@
       </legend>
 <p class="govuk-hint">The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £1 million.<p/>
 <p class="govuk-hint">Select all that apply</p>
+<span id="nationality-error" class="govuk-error-message">
+  <span class="govuk-visually-hidden">Error:</span> You must select mild acidification equipment
+</span>
 
 <div class="govuk-checkboxes">
+
   <div class="govuk-checkboxes__item">
-    <input class="govuk-checkboxes__input" id="associated-works-1" name="associated-works" type="checkbox" value="Mild acidification equipment" {{ checked("associated-works", "Mild acidification equipment") }}>
+
+
+    <input class="govuk-checkboxes__input" id="associated-works-1" name="associated-works" type="checkbox" value="Mild acidification equipment" {{ checked("associated-works", "") }}>
     <label class="govuk-label govuk-checkboxes__label" for="associated-works-1">
       Mild acidification equipment
     </label>
+    <span id="nationality-error" class="govuk-error-message">
+
     <div id="project-items-item-hint" class="govuk-hint govuk-checkboxes__hint">
-    You must buy all 4 of the following items:
+    Your acidification equipment must include all 4 of the following items:
 
         <ul class="govuk-list govuk-list--bullet govuk-hint govuk-checkboxes__hint">
           <li>acid storage</li>
@@ -73,9 +96,6 @@
       </div>
 
 
-
-
-
     </div>
 
 
@@ -83,13 +103,13 @@
 </div>
 
 
-
-
-
-
     </fieldset>
   </div>
 <br/><br/>
+
+
+
+
 
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 

@@ -236,21 +236,6 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 
 router.get('/associated-works', function (req, res) {
   var backUrl = 'tenancy'
-  var nextUrl = 'associated-works-error'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
-// Q: Hardcoded ERROR on Associated works - to test scenario in '2nd roudn user testing'
-
-router.get('/associated-works-error', function (req, res) {
-  var backUrl = 'associated-works'
   var nextUrl = 'project-cost'
   var completedUrl = 'answers'
 
