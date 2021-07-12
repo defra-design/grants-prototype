@@ -32,6 +32,7 @@ router.get('/:scheme/:version/*', function (req, res, next) {
 
 // Start folder specific route
 router.use('/slurry/current', require('./views/slurry/current/routes/routes'))
+router.use('/slurry/v1', require('./views/slurry/v1/routes/routes'))
 router.use('/water/current', require('./views/water/current/routes/routes'))
 router.use('/v1', require('./views/water/v1/routes/routes'))
 router.use('/water/v2', require('./views/water/v2/routes/routes'))

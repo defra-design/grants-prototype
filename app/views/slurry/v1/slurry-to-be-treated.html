@@ -23,34 +23,27 @@
 
                <h1 class="govuk-label-wrapper govuk-!-padding-bottom-2">
                   <label class="govuk-label govuk-label--l" for="irrigated-land-current">
-                    What volume of slurry or digestate do you currently acidify per year?
+                    What volume of slurry or digestate will you acidify per year?
                   </label>
                 </h1>
                 <div class="govuk-body govuk-!-margin-bottom-0">
                   <p id="irrigated-land-target-hint" class="govuk-hint">
-                    Enter figure in cubic metres, for example 1500
+                    Enter figure in cubic metres, for example 543
                   </p>
                 </div>
 
                 <div class="govuk-input__wrapper govuk-!-margin-bottom-5">
-                  <input class="govuk-input govuk-input--width-5" id="slurry-currently-treated" name="slurry-currently-treated" type="text" spellcheck="false" aria-describedby="slurry-currently-treated-hint" value="{{ data['slurry-currently-treated'] }}">
+                  <input class="govuk-input govuk-input--width-5" id="slurry-to-be-treated" name="slurry-to-be-treated" type="text" spellcheck="false" aria-describedby="slurry-to-be-treated-target-hint" value="{{ data['slurry-to-be-treated'] }}">
                     <div class="govuk-input__suffix" aria-hidden="true">m<sup>3</sup></div>
                 </div>
 
-
               <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">
-                Continue
+              Get your score
               </button>
 
-              {% if data['COMPLETED'] == true %}
-                <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-                  class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">Back to score
-                </button>
-              {% endif %}
+
               </form>
               </div>
-
-
 
 
   <!--top right column 'Eligibility'-->
@@ -63,6 +56,7 @@
         <ul class="govuk-list govuk-list--bullet">
         <li>improve productivity</li>
         <li>improve the environment</li>
+        <li>introduce innovation </li>
 
         </ul>
 

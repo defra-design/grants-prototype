@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+
+  <a class="govuk-back-link" href="farming-type">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+          You have chosen 'Robotics and innovation'
+        </h1>
+        <p>This grant is only available to <strong>Slurry acidification</strong>.</p>
+
+        <div class="govuk-inset-text">
+          We've started the desing process for routes on 'Robotics and innovation' journey.
+        </div>
+
+        <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-body"> See other grants you may be eligible for.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
