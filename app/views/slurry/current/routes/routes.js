@@ -247,11 +247,11 @@ router.get('/associated-works', function (req, res) {
 })
 
 
-// Q: Hardcoded ERROR on Associated works - to test scenario in '2nd roudn user testing'
+// v2: NEW Q: Hardcoded ERROR on Associated works - to test scenario in '2nd roudn user testing'
 
 router.get('/associated-works-error', function (req, res) {
   var backUrl = 'associated-works'
-  var nextUrl = 'project-cost'
+  var nextUrl = 'low-emission'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -261,12 +261,44 @@ router.get('/associated-works-error', function (req, res) {
   })
 })
 
+
+// v2: NEW Q: Low emission question > project-cost
+
+router.get('/low-emission', function (req, res) {
+  var backUrl = 'associated-works'
+  var nextUrl = 'low-emission-answer'
+  var completedUrl = 'low-emission-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/low-emission-answer', function (req, res) {
+  var lowEmission = req.session.data['low-emission']
+
+  if (lowEmission === 'no') { res.redirect('low-emission-fail') } else { res.redirect('project-cost') }
+})
+
+router.post('/low-emission-answer-completed', function (req, res) {
+  var lowEmission = req.session.data['low-emission']
+
+  if (lowEmission === 'no') { res.redirect('low-emission-fail') } else { res.redirect('answers') }
+})
+
+
+
+
+
+
 // Q: Project cost
 
 router.get('/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
 
-  var backUrl = 'associated-works'
+  var backUrl = 'low-emission'
   var nextUrl = 'project-cost-answer'
   var completedUrl = 'project-cost-answer-completed'
 
