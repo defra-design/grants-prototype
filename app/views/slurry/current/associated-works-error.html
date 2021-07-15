@@ -25,7 +25,7 @@
   <div class="govuk-error-summary__body">
     <ul class="govuk-list govuk-error-summary__list">
       <li>
-        <a href="#passport-issued-day">You must select mild acidification equipment</a>
+        <a href="#mild-acidification-equipment">You must select mild acidification equipment</a>
       </li>
 
     </ul>
@@ -44,22 +44,21 @@
 
 
             <div class="govuk-form-group govuk-form-group--error">
-    <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-        <h1 class="govuk-fieldset__heading">
-      Which eligible items does your project need?
-        </h1>
-      </legend>
-<p class="govuk-hint">The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £1 million.<p/>
-<p class="govuk-hint">Select all that apply</p>
-<span id="nationality-error" class="govuk-error-message">
-  <span class="govuk-visually-hidden">Error:</span> You must select mild acidification equipment
-</span>
+                <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                      Which eligible items does your project need?
+                    </h1>
+                  </legend>
 
-<div class="govuk-checkboxes">
+                  <p class="govuk-hint">The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £1 million.<p/>
+                  <p class="govuk-hint">Select all that apply</p>
+                  <span id="mild-acidification-equipment-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> You must select mild acidification equipment
+                  </span>
 
-  <div class="govuk-checkboxes__item">
-
+                  <div class="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
 
     <input class="govuk-checkboxes__input" id="associated-works-1" name="associated-works" type="checkbox" value="Mild acidification equipment" {{ checked("associated-works", "") }}>
     <label class="govuk-label govuk-checkboxes__label" for="associated-works-1">
@@ -102,8 +101,8 @@
   </fieldset>
 </div>
 
+</fieldset>
 
-    </fieldset>
   </div>
 <br/><br/>
 
