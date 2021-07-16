@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Introducing innovation
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+  <a class="govuk-back-link" href="{{ backUrl }}"> Back</a>
+{% endblock %}
+
+{% block content %}
+ <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+   <div class="govuk-grid-row">
+     <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+                Have you used this technology on your farm before?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="introducing-innovation-1" name="introducing-innovation" type="radio" value="Yes" {{ checked("introducing-innovation", "Yes") }}>
+              <label class="govuk-label govuk-radios__label" for="introducing-innovation-1">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="introducing-innovation-2" name="introducing-innovation" type="radio" value="No" {{ checked("introducing-innovation", "No") }}>
+              <label class="govuk-label govuk-radios__label" for="introducing-innovation-2">
+                No
+              </label>
+
+            </div>
+              </div>
+
+
+          </div>
+
+
+
+        <br><br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Get your score</button>
+
+  </div>
+    </form>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p>RPA wants to fund projects that:
+            <ul class="govuk-list govuk-list--bullet">
+              <li>introduces innovation </li>
+        </ul></p>
+
+      </div>
+      </div>
+
+
+{%endblock%}

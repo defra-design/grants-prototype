@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Water SSSI
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+  <a class="govuk-back-link" href="{{ backUrl }}"> Back</a>
+{% endblock %}
+
+{% block content %}
+ <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+    <div class="govuk-form-group">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            Does the project directly impact a site of Special Scientific Interest?
+            </h1>
+          </div>
+        </div>
+        
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="water-SSSI" name="water-SSSI" type="radio" value="Yes" {{ checked("water-SSSI", "Yes") }}>
+              <label class="govuk-label govuk-radios__label" for="water-SSSI">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="water-SSSI-2" name="water-SSSI" type="radio" value="No" {{ checked("water-SSSI", "No") }}>
+              <label class="govuk-label govuk-radios__label" for="water-SSSI-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        <br><br><br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+    </form>
+
+{%endblock%}
