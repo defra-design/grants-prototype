@@ -238,6 +238,21 @@ router.post('/project-purchase-answer', function (req, res) {
 
 router.get('/associated-works', function (req, res) {
   var backUrl = 'project-purchase'
+  var nextUrl = 'wider-farming'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+
+// Wider farming
+router.get('/wider-farming', function (req, res) {
+  var backUrl = 'associated-works'
   var nextUrl = 'project-cost'
   var completedUrl = 'answers'
 
@@ -256,7 +271,7 @@ router.get('/associated-works', function (req, res) {
 router.get('/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
 
-  var backUrl = 'associated-works'
+  var backUrl = 'wider-farming'
   var nextUrl = 'project-cost-answer'
   var completedUrl = 'project-cost-answer-completed'
 
