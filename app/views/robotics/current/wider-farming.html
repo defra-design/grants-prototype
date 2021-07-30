@@ -19,9 +19,7 @@ Have you already started work on the project?
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -29,7 +27,6 @@ Have you already started work on the project?
             Will this project fit within your wider farming operations?
           </h1>
         </legend>
-
         <div class="govuk-radios">
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="wider-farming-1" name="wider-farming" type="radio" value="yes project fits" {{ checked("wider-farming", "yes project fits") }}>
@@ -43,9 +40,7 @@ Have you already started work on the project?
             Yes, project costs will include the technology required to ensure that it fits in into the wider farming operations
             </label>
           </div>
-
-
-          <div class="govuk-radios__divider">or</div>
+       <div class="govuk-radios__divider">or</div>
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="lwider-farming-3" name="wider-farming" type="radio" value="no" {{ checked("wider-farming", "no") }}>
             <label class="govuk-label govuk-radios__label" for="wider-farming-3">
@@ -53,15 +48,10 @@ Have you already started work on the project?
             </label>
           </div>
         </div>
-
       </fieldset>
     </div>
-
-
-
-    <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+  <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
   </form>
-
   </div>
 
   <!--top right column 'Funding priorities'-->
@@ -76,15 +66,8 @@ Have you already started work on the project?
         <li>improve the environment</li>
         <li>introduce innovation</li>
         </ul>
-
     </div>
     </div>
   </div>
-
-
-
-
-
-
 
 {% endblock %}
