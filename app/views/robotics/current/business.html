@@ -61,13 +61,42 @@
           </div>
         </div>
         <br>
+
         <div class="govuk-form-group">
-          <label class="govuk-label" for="sbi">
+          <label class="govuk-heading-s" for="sbi">
               Single Business Identifier (SBI)
           </label>
-          <span id="sbi-hint" class="govuk-hint">If you do not have an SBI, leave it blank</span>
-          <input class="govuk-input govuk-!-width-one-third" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
-        </div>
+          <div id="sbi-hint" class="govuk-hint">Select one option</div>
+           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+             <div class="govuk-radios__item">
+               <input class="govuk-radios__input" id="sbi-1" name="sbi" type="radio" value="Yes" data-aria-controls="conditional-sbi">
+               <label class="govuk-label govuk-radios__label" for="contact">
+               Yes
+               </label>
+             </div>
+             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-sbi">
+               <div class="govuk-form-group">
+                 <label class="govuk-label" for="contact-by-email">
+                  SBI number
+                 </label>
+                   <input class="govuk-input govuk-!-width-one-third" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}"></div>
+                </div>
+             <div class="govuk-radios__item">
+               <input class="govuk-radios__input" id="sbi-2" name="sbi" type="radio" value="No" data-aria-controls="conditional-contact" value="No" {{ checked("sbi", "No") }}>
+               <label class="govuk-label govuk-radios__label" for="sbi-2">
+               No
+               </label>
+             </div>
+
+
+
+
+
+
+
+
+
+
         <br><br>
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
