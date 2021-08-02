@@ -16,36 +16,48 @@
 {% endblock %}
 
 {% block content %}
- <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-    <div class="govuk-form-group">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-l">
-            Will your project include buying robotic or innovative technology?
-            </h1>
-            <div id="changed-name-hint" class="govuk-hint">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
-    </div>
-          </div>
-        </div>
 
-          <div class="govuk-radios govuk-radios--inline">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="project-purchase-1" name="project-purchase" type="radio" value="Yes" {{ checked("project-purchase", "Yes") }}>
-              <label class="govuk-label govuk-radios__label" for="project-purchase-1">
-                Yes
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="project-purchase-2" name="project-purchase" type="radio" value="No" {{ checked("project-purchase", "No") }}>
-              <label class="govuk-label govuk-radios__label" for="project-purchase-2">
-                No
-              </label>
-            </div>
-          </div>
+     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+          <div class="govuk-form-group">
+     <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+         <h1 class="govuk-fieldset__heading">
+           Will your project include buying robotic or innovative technology?
+         </h1>
+       </legend>
+       <div id="changed-name-hint" class="govuk-hint">
+        Sed ut perspiciatis unde omnis iste natus error sit .
+       </div>
+       <div class="govuk-radios govuk-radios--inline">
+         <div class="govuk-radios__item">
+           <input class="govuk-radios__input" id="project-purchase-1" name="project-purchase" type="radio" value="Yes" {{ checked("project-purchase", "Yes") }}>
+           <label class="govuk-label govuk-radios__label" for="project-purchase-1">
+             Yes
+           </label>
+         </div>
+         <div class="govuk-radios__item">
+           <input class="govuk-radios__input" id="project-purchase-2" name="project-purchase" type="radio" value="No" {{ checked("project-purchase", "No") }}>
+           <label class="govuk-label govuk-radios__label" for="project-purchase-2">
+             No
+           </label>
+         </div>
+       </div>
 
-        <br><br>
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-    </form>
+     </fieldset>
+   </div>
+     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+     </form>
+   </div>
 
+  <div class="govuk-grid-column-one-third">
+  <div class="app-step-nav-related app-step-nav-related--singular">
+     <h2 class="app-step-nav-related__heading">
+      <span class="app-step-nav-related__pretitle">Eligibility</span>
+      </h2>
+      <p>Your project must include buying robotic or innovative technology.</p>
+      <a href="#">
+      </a>
+  </div>
 {%endblock%}

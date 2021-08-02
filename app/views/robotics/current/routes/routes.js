@@ -253,7 +253,7 @@ router.get('/associated-works', function (req, res) {
 // Wider farming
 router.get('/wider-farming', function (req, res) {
   var backUrl = 'associated-works'
-  var nextUrl = 'project-cost'
+  var nextUrl = 'wider-farming-answers'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -263,6 +263,13 @@ router.get('/wider-farming', function (req, res) {
   })
 })
 
+router.post('/wider-farming-answers', function (req, res) {
+  var widerFarming = req.session.data['wider-farming']
+
+  if (widerFarming === 'No') {
+    res.redirect('wider-farming-fail')
+  } else { res.redirect('project-cost') }
+})
 
 
 
@@ -285,13 +292,13 @@ router.get('/project-cost', function (req, res) {
 router.post('/project-cost-answer', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
-  if (projectCost > 2500000 || projectCost < 87500 )  { res.redirect('project-cost-fail') } else { res.redirect('grant') }
+  if (projectCost > 1250000 || projectCost < 87500 )  { res.redirect('project-cost-fail') } else { res.redirect('grant') }
 })
 
 router.post('/project-cost-answer-completed', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
-  if (projectCost > 2500000 || projectCost < 87500  ) { res.redirect('project-cost-fail') } else { res.redirect('answers') }
+  if (projectCost > 1250000 || projectCost < 87500  ) { res.redirect('project-cost-fail') } else { res.redirect('answers') }
 })
 
 
