@@ -8,9 +8,10 @@
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
   {{ govukPhaseBanner({
     tag: {
-    text: "prototype"
+    text: "prototype",
+    classes: "govuk-tag--pink"
     },
-      html: 'This is a prototype. It is not a real service.'
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
@@ -35,10 +36,9 @@
         What impact will the project have?
         </h1>
       </legend>
-    <p class="govuk-hint">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a dignissim libero. Mauris ac auctor felis.
-    </p>
-
-<p class="govuk-hint">Select all that apply.</p>
+      <div id="changed-name-hint" class="govuk-hint">
+            Select all that apply
+          </div>
 
 <div class="govuk-checkboxes">
   <div class="govuk-checkboxes__item">
@@ -147,7 +147,7 @@
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Projects must achieve at least one of these outcomes. </p>
 
 
       </div>

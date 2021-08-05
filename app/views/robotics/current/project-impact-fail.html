@@ -6,12 +6,13 @@
 
 {% block beforeContent %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "prototype"
-  },
-  html: 'This is a prototype. It is not a real service.'
-}) }}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
 
   <a class="govuk-back-link" href="project-impact">Back</a>
 {% endblock %}
@@ -23,7 +24,7 @@
         <h1 class="govuk-heading-l">
           You cannot apply for a grant from this scheme
         </h1>
-        <p>Projects must achieve at least one of these outcomes to be eligible for funding.</p>
+        <p>Your project must achieve at least one of the outcomes to be eligible for funding. </p>
         <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-body"> See other grants you may be eligible for.</a>
         </p>
       </div>
