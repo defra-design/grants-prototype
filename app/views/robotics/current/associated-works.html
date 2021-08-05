@@ -8,9 +8,10 @@
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
   {{ govukPhaseBanner({
     tag: {
-    text: "prototype"
+    text: "prototype",
+    classes: "govuk-tag--pink"
     },
-      html: 'This is a prototype. It is not a real service.'
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
@@ -32,9 +33,13 @@
     <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
         <h1 class="govuk-fieldset__heading">
-          What new robotic or innovative technology does your project need?
+          What eligible robotic or innovative technology does your project need?
         </h1>
       </legend>
+      <div id="project-items-hint" class="govuk-hint">
+
+ The minimum grant you can apply for is £35,000 (40% of £87,500). The maximum grant is £500,000.
+    </div>
 
 <p class="govuk-hint">Select all the items your project needs</p>
 
@@ -84,7 +89,7 @@
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="robotic-equipment-7" name="robotic-equipment" type="checkbox" value="Robotic egg handling" {{ checked("robotic-equipment", "Robotic egg handling") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-7">
-                  Robotic egg handling
+                  Robotic egg stacking
                 </label>
               </div>
               <div class="govuk-checkboxes">
@@ -98,21 +103,21 @@
                   <div class="govuk-checkboxes__item">
                     <input class="govuk-checkboxes__input" id="robotic-equipment-9" name="robotic-equipment" type="checkbox" value="Plant spacing robots" {{ checked("robotic-equipment", "Plant spacing robots") }}>
                     <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-9">
-                    Plant spacing robots
+                    Plant-spacing robots
                     </label>
                   </div>
                   <div class="govuk-checkboxes">
                     <div class="govuk-checkboxes__item">
                       <input class="govuk-checkboxes__input" id="robotic-equipment-10" name="robotic-equipment" type="checkbox" value="Fertilizer precision application system" {{ checked("robotic-equipment", "Fertilizer precision application system") }}>
                       <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-10">
-                        Fertilizer precision application system
+                        Fertilizer precision-application system
                       </label>
                     </div>
                     <div class="govuk-checkboxes">
                       <div class="govuk-checkboxes__item">
                         <input class="govuk-checkboxes__input" id="robotic-equipment-11" name="robotic-equipment" type="checkbox" value="Wavelength controlled LED lighting" {{ checked("robotic-equipment", "Wavelength controlled LED lighting") }}>
                         <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-11">
-                          Wavelength controlled LED lighting
+                          Wavelength-controlled LED lighting
                         </label>
                       </div>
 

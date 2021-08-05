@@ -8,9 +8,10 @@
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
   {{ govukPhaseBanner({
     tag: {
-    text: "prototype"
+    text: "prototype",
+    classes: "govuk-tag--pink"
     },
-      html: 'This is a prototype. It is not a real service.'
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
@@ -53,7 +54,7 @@
         Average
           </dt>
           <dd class="govuk-summary-list__value govuk-!-font-size-16">
-           Your project seems like it’s an average fit with the funding priorities.  Based on your answers, a grant application seems like it might be successful.
+           Your project seems like it’s an average fit with the funding priorities. Based on your answers, a grant application seems like it might be successful.
           </dd>
           </div>
         <div class="govuk-summary-list__row">
@@ -61,7 +62,7 @@
           Weak
           </dt>
           <dd class="govuk-summary-list__value govuk-!-font-size-16">
-              Your project seems like it’s a weak fit with the funding priorities.  Based on your answers, a grant application seems unlikely to be successful.  
+              Your project seems like it’s a weak fit with the funding priorities. Based on your answers, a grant application seems unlikely to be successful.  
           </dd>
           </div>
 

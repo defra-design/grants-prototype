@@ -8,9 +8,10 @@
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
   {{ govukPhaseBanner({
     tag: {
-    text: "prototype"
+    text: "prototype",
+    classes: "govuk-tag--pink"
     },
-      html: 'This is a prototype. It is not a real service.'
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
