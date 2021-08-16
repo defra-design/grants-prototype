@@ -141,6 +141,50 @@ router.post('/country-answer-completed', function (req, res) {
   }
 })
 
+
+// PLANNING PERMISSION
+
+router.get('/planning-permission', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'country'
+  var nextUrl = 'planning-permission-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// PLANNING PERMISSION COMPLETED
+router.post('/planning-permission-answer', function (req, res) {
+  var planningPermission = req.session.data['planning-permission']
+
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
+    res.redirect('project-start')
+  }
+
+  if (planningPermission === 'maybe') {
+    res.redirect('planning-required-condition')
+  }
+
+  res.redirect('planning-permission-fail')
+})
+
+// PLANNING PERMISSION CONDITION
+router.get('/planning-required-condition', function (req, res) {
+  var backUrl = 'planning-permission'
+  var nextUrl = 'project-start'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl
+  })
+})
+
+
+
 // PROJECT START
 
 router.get('/project-start', function (req, res) {
@@ -228,9 +272,9 @@ router.get('/project-purchase', function (req, res) {
 router.post('/project-purchase-answer', function (req, res) {
   var projectP = req.session.data['project-purchase']
 
-  if (projectP === 'Yes') {
-    res.redirect('associated-works')
-  } else { res.redirect('project-purchase-fail') }
+  if (projectP === 'no') {
+    res.redirect('project-purchase-fail')
+  } else { res.redirect('associated-works') }
 })
 
 
@@ -238,7 +282,7 @@ router.post('/project-purchase-answer', function (req, res) {
 
 router.get('/associated-works', function (req, res) {
   var backUrl = 'project-purchase'
-  var nextUrl = 'wider-farming'
+  var nextUrl = 'project-cost'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -246,29 +290,6 @@ router.get('/associated-works', function (req, res) {
     nextUrl,
     completedUrl
   })
-})
-
-
-
-// Wider farming
-router.get('/wider-farming', function (req, res) {
-  var backUrl = 'associated-works'
-  var nextUrl = 'wider-farming-answers'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/wider-farming-answers', function (req, res) {
-  var widerFarming = req.session.data['wider-farming']
-
-  if (widerFarming === 'No') {
-    res.redirect('wider-farming-fail')
-  } else { res.redirect('project-cost') }
 })
 
 
@@ -278,7 +299,7 @@ router.post('/wider-farming-answers', function (req, res) {
 router.get('/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
 
-  var backUrl = 'wider-farming'
+  var backUrl = 'associated-works'
   var nextUrl = 'project-cost-answer'
   var completedUrl = 'project-cost-answer-completed'
 
@@ -337,70 +358,55 @@ router.post('/remaining-costs-answer', function (req, res) {
 router.post('/remaining-costs-answer-completed', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('answers') }
+  if (remainingCosts === 'no') {res.redirect('remaining-costs-fail')} else {res.redirect('answers')}
 })
 
-// PLANNING PERMISSION
 
-router.get('/planning-permission', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'country'
-  var nextUrl = 'planning-permission-answer'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// PLANNING PERMISSION COMPLETED
-router.post('/planning-permission-answer', function (req, res) {
-  var planningPermission = req.session.data['planning-permission']
-
-  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
-    res.redirect('project-start')
-  }
-
-  if (planningPermission === 'maybe') {
-    res.redirect('planning-required-condition')
-  }
-
-  res.redirect('planning-permission-fail')
-})
-
-// PLANNING PERMISSION CONDITION
-router.get('/planning-required-condition', function (req, res) {
-  var backUrl = 'planning-permission'
-  var nextUrl = 'project-start'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl
-  })
-})
-
-// Water SSSI
-
-router.get('/water-SSSI', function (req, res) {
-  var nextUrl = 'introducing-innovation'
-  var backUrl = 'project-impact'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// PROJECT IMPACT (ROBOTICS)
+// PROJECT IMPACT (ROBOTICS) and Wider farming condition
 router.get('/project-impact', function (req, res) {
   var backUrl = 'remaining-costs'
   var nextUrl = 'project-impact-answer'
   var completedUrl = 'answers'
 
+ res.render('./' + req.originalUrl, {
+  backUrl,
+  nextUrl,
+  completedUrl
+})
+})
+
+router.post('/project-impact-answer', function (req, res) {
+  var projectImpact = req.session.data['project-impact']
+
+  if (projectImpact !== 'yes') {res.redirect('project-impact-fail')}
+  const roboticEquipment = req.session.data ['robotic-equipment']
+
+  const widerFarmingOptions = [
+    'Robotic or automatic harvesting equipment',
+    'Robotic milking equipment',
+    'Robotic spraying equipment',
+    'Robotic sowing/planting equipment',
+    'Automated feeding systems'
+  ]
+
+  const widerFarmingCond = widerFarmingOptions.some(widerFarmingItem => (
+    roboticEquipment.includes(widerFarmingItem)
+    ))
+
+  if (widerFarmingCond) {
+    res.redirect ('wider-farming')
+  }
+  res.redirect('energy-source')
+})
+
+
+
+// Wider farming
+router.get('/wider-farming', function (req, res) {
+  var backUrl = 'project-impact'
+  var nextUrl = 'energy-source'
+  var completedUrl = 'answers'
+
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
@@ -409,19 +415,37 @@ router.get('/project-impact', function (req, res) {
 })
 
 
-router.post('/project-impact-answer', function (req, res) {
-  var projectImpact = req.session.data['project-impact']
-  if (projectImpact.includes('None of the above')) {
-    res.redirect('project-impact-fail')
-  } else { res.redirect('water-SSSI') }
+// Energy source
+router.get('/energy-source', function (req, res) {
+  var backUrl = 'project-impact'
+  var nextUrl = 'agricultural-sector'
+  var completedUrl = 'answers'
+
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
 })
 
+// Agricultural sector
+router.get('/agricultural-sector', function (req, res) {
+  var backUrl = 'energy-source'
+  var nextUrl = 'introducing-innovation'
+  var completedUrl = 'answers'
 
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
 
 
 // INTRODUCING INNOVATION (ROBOTICS)
 router.get('/introducing-innovation', function (req, res) {
-  var backUrl = 'water-SSSI'
+  var backUrl = 'agricultural-sector'
   var nextUrl = 'answers'
   var completedUrl = 'answers'
 
@@ -431,11 +455,6 @@ router.get('/introducing-innovation', function (req, res) {
     completedUrl
   })
 })
-
-
-
-
-
 
 
 
