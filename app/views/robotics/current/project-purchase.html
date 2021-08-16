@@ -25,23 +25,41 @@
      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
          <h1 class="govuk-fieldset__heading">
-           Will your project include buying robotic or innovative technology?
+           What type of new technology does your project need?
          </h1>
        </legend>
-       <div id="changed-name-hint" class="govuk-hint">
-        Sed ut perspiciatis unde omnis iste natus error sit .
+       <div id="project-purchase-hint" class="govuk-hint">
+        Equipment must be for activities in the crop-growing cycle or livestock husbandry
        </div>
-       <div class="govuk-radios govuk-radios--inline">
+       <div class="govuk-radios govuk-radios">
          <div class="govuk-radios__item">
-           <input class="govuk-radios__input" id="project-purchase-1" name="project-purchase" type="radio" value="Yes" {{ checked("project-purchase", "Yes") }}>
-           <label class="govuk-label govuk-radios__label" for="project-purchase-1">
-             Yes
+           <input class="govuk-radios__input" id="project-purchase" name="project-purchase" type="radio" value="robotic equipment" {{ checked("project-purchase", "robotic equipment") }}>
+           <label class="govuk-label govuk-radios__label" for="project-purchase">
+             Robotic equipment
            </label>
+           <div id="robotic-equipment-hint" class="govuk-hint govuk-radios__hint">Lorem ipsum hint text to follow</div>
          </div>
+         <div class="govuk-radios govuk-radios">
+           <div class="govuk-radios__item">
+             <input class="govuk-radios__input" id="project-purchase-1" name="project-purchase" type="radio" value="enhanced automation equipment" {{ checked("project-purchase", "enhanced automation equipment") }}>
+             <label class="govuk-label govuk-radios__label" for="project-purchase-1">
+               Enhanced automation equipment
+             </label>
+             <div id="Enhanced-automation-equipment-hint" class="govuk-hint govuk-radios__hint">Lorem ipsum hint text to follow</div>
+           </div>
+         <div class="govuk-radios govuk-radios">
+           <div class="govuk-radios__item">
+             <input class="govuk-radios__input" id="project-purchase-2" name="project-purchase" type="radio" value="wavelength-controlled led lighting" {{ checked("project-purchase", "wavelength-controlled led lighting") }}>
+             <label class="govuk-label govuk-radios__label" for="project-purchase-2">
+               Wavelength-controlled LED lighting
+             </label>
+             <div id="robotic-equipment-hint" class="govuk-hint govuk-radios__hint">Wavelength-specific LED lighting to help crop growth, pest control and animal welfare</div>
+           </div>
+           <div class="govuk-radios__divider">or</div>
          <div class="govuk-radios__item">
-           <input class="govuk-radios__input" id="project-purchase-2" name="project-purchase" type="radio" value="No" {{ checked("project-purchase", "No") }}>
-           <label class="govuk-label govuk-radios__label" for="project-purchase-2">
-             No
+           <input class="govuk-radios__input" id="project-purchase-3" name="project-purchase" type="radio" value="no" {{ checked("project-purchase", "no") }}>
+           <label class="govuk-label govuk-radios__label" for="project-purchase-3">
+             None of the above
            </label>
          </div>
        </div>
@@ -57,8 +75,7 @@
      <h2 class="app-step-nav-related__heading">
       <span class="app-step-nav-related__pretitle">Eligibility</span>
       </h2>
-      <p>Your project must include buying robotic or innovative technology.</p>
-      <a href="#">
-      </a>
+      <p>Equipment must increase the productivity of primary agricultural or horticultural practices.</p>
+      <p>Your project’s positive environmental benefit and the increase to productivity will be assessed at full application stage.</p>
   </div>
 {%endblock%}

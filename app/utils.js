@@ -10,11 +10,11 @@ const serviceName = {
     current: 'Check if you can apply for a Farming Transformation Fund water management grant'
   },
   slurry: {
-    current: 'Check if you can apply for a Farming Transformation Fund Productivity Grant',
+    current: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
          v1: 'Check if you can apply for a Farming Transformation Fund productivity grant'
   },
   robotics: {
-    current: 'Check if you can apply for a Farming Transformation Fund Productivity Grant'
+    current: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant'
   }
 }
 

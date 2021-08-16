@@ -30,20 +30,23 @@ Have you already started work on the project?
         </legend>
         <div class="govuk-radios">
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="wider-farming-1" name="wider-farming" type="radio" value="yes project fits" {{ checked("wider-farming", "yes project fits") }}>
+            <input class="govuk-radios__input" id="wider-farming-1" name="wider-farming" type="radio" value="Yes, we have the technology already" {{ checked("wider-farming", "Yes, we have the technology already") }}>
             <label class="govuk-label govuk-radios__label" for="wider-farming-1">
               Yes, we have the technology already
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="wider-farming-2" name="wider-farming" type="radio" value="yes buying tech that fits" {{ checked("wider-farming", "yes buying tech that fits") }}>
+            <input class="govuk-radios__input" id="wider-farming-2" name="wider-farming" type="radio" value="Yes, we’ll buy the technology as part of the project" {{ checked("wider-farming", "Yes, we’ll buy the technology as part of the project") }}>
             <label class="govuk-label govuk-radios__label" for="wider-farming-2">
             Yes, we’ll buy the technology as part of the project
             </label>
+            <div id="wider-farming-2" class="govuk-hint govuk-radios__hint">
+        Software licences cannot be paid for by the grant
+      </div>
           </div>
 
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="lwider-farming-3" name="wider-farming" type="radio" value="No" {{ checked("wider-farming", "No") }}>
+            <input class="govuk-radios__input" id="lwider-farming-3" name="wider-farming" type="radio" value="No, we will not use any data analytics" {{ checked("wider-farming", "No, we will not use any data analytics") }}>
             <label class="govuk-label govuk-radios__label" for="wider-farming-3">
               No, we will not use any data analytics
             </label>
@@ -51,18 +54,32 @@ Have you already started work on the project?
         </div>
       </fieldset>
     </div>
-  <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
-  </form>
-  </div>
+
+    <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">
+      Continue
+    </button>
+
+    {% if data['COMPLETED'] == true %}
+      <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+        class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">Back to score
+      </button>
+    {% endif %}
+    </form>
+    </div>
+
+  
 
   <!--top right column 'Funding priorities'-->
   <div class="govuk-grid-column-one-third">
     <div class="app-step-nav-related app-step-nav-related--singular">
       <h2 class="app-step-nav-related__heading">
-        <span class="app-step-nav-related__pretitle">Eligibility</span>
+        <span class="app-step-nav-related__pretitle">Funding priorities</span>
         </h2>
-        <p class="govuk-body">Your project must use data analytics.</p>
-
+        <p>RPA wants to fund projects that:
+          <ul class="govuk-list govuk-list--bullet">
+            <li>improve productivity</li>
+          </ul>
+        </p>
     </div>
     </div>
   </div>
