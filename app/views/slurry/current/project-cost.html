@@ -51,15 +51,18 @@
           </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
-            {% for item in data['associated-works'] %}
             <li>
-                {{ item | capitalize }}
+                Mild acidification equipment
             </li>
-            {% endfor %}
-
+{% if data['acidification-infrastructure'] === "yes" %}
+<li>
+    Acidification infrastructure
+</li>
+{% endif %}
           </ul>
 
         </nav>
+
 
 
         </div>
