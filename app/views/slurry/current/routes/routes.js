@@ -232,11 +232,10 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 // })
 
 
-// Q: Associated works
-
+// Q: Associated works - aka. Mild acidification equipment
 router.get('/associated-works', function (req, res) {
   var backUrl = 'tenancy'
-  var nextUrl = 'associated-works-error'
+  var nextUrl = 'associated-works-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -246,10 +245,14 @@ router.get('/associated-works', function (req, res) {
   })
 })
 
+router.get('/associated-works-answer', function (req, res) {
+  var acidificationEquipment = req.session.data['acidification-equipment']
+if (acidificationEquipment === 'Mild acification equipment')  { res.redirect('acidification-infrastructure') } else { res.redirect('associated-works-fail') }
+})
 
-// v2: NEW Q: Hardcoded ERROR on Associated works - to test scenario in '2nd roudn user testing'
+// Q: Acidification infrastructure
 
-router.get('/associated-works-error', function (req, res) {
+router.get('/acidification-infrastructure', function (req, res) {
   var backUrl = 'associated-works'
   var nextUrl = 'low-emission'
   var completedUrl = 'answers'
@@ -262,10 +265,11 @@ router.get('/associated-works-error', function (req, res) {
 })
 
 
+
 // v2: NEW Q: Low emission question > project-cost
 
 router.get('/low-emission', function (req, res) {
-  var backUrl = 'associated-works'
+  var backUrl = 'acidification-infrastructure'
   var nextUrl = 'low-emission-answer'
   var completedUrl = 'low-emission-answer-completed'
 

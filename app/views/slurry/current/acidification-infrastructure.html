@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Will your project buy mild acidification equipment?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype"
+    },
+      html: 'This is a prototype. It is not a real service.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="acidification-infrastructure-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Does your project also need acidification infrastructure?
+              </h1>
+            </legend>
+            <div id="acidification-infrastructure-hint" class="govuk-hint">
+              Any work to adapt or install pipework, pumps etc to get slurry into the acidification system and then out to storage.
+            </div>
+            <div class="govuk-radios govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="acidification-infrastructure" name="acidification-infrastructure" type="radio" value="yes" {{ checked("acidification-infrastructure", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="acidification-equipment">
+                  Yes, we will buy acidification infrastructure
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="acidification-infrastructure-2" name="acidification-infrastructure" type="radio" value="no" {{ checked("acidification-infrastructure", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="acidification-equipment-2">
+                  No, we don’t need it
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
