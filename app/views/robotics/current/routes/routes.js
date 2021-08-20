@@ -382,11 +382,13 @@ router.post('/project-impact-answer', function (req, res) {
   const roboticEquipment = req.session.data ['robotic-equipment']
 
   const widerFarmingOptions = [
-    'Robotic or automatic harvesting equipment',
-    'Robotic milking equipment',
+    'Robotic or autonomous harvesting equipment',
+    'Voluntary robotic milking equipment',
     'Robotic spraying equipment',
-    'Robotic sowing/planting equipment',
-    'Automated feeding systems'
+    'Robotic transplanting',
+    'Robotic feeding systems',
+    'Robotic tractor',
+    'Other robotic equipment'
   ]
 
   const widerFarmingCond = widerFarmingOptions.some(widerFarmingItem => (
