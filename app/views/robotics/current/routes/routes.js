@@ -274,14 +274,74 @@ router.post('/project-purchase-answer', function (req, res) {
 
   if (projectP === 'no') {
     res.redirect('project-purchase-fail')
-  } else { res.redirect('associated-works') }
+  } else { res.redirect('project-items') }
 })
 
 
-// Q: Associated works called 'Project items' on Mural
 
-router.get('/associated-works', function (req, res) {
+// Q: Project items (1)
+// Q: Flow 1 to 4
+
+router.get('/project-items', function (req, res) {
   var backUrl = 'project-purchase'
+  var nextUrl = 'project-items-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/project-items-answer', function (req, res) {
+  var projectItems = req.session.data['robotic-equipment']
+  const roboticEquipment2 = req.session.data ['robotic-equipment']
+
+  const otherRoboticEquipmentOptions = [
+    'Other robotic equipment'
+  ]
+
+  const otherRoboticEquipmentCond = otherRoboticEquipmentOptions.some(otherRoboticItem => (
+    roboticEquipment2.includes(otherRoboticItem)
+    ))
+
+  if (otherRoboticEquipmentCond) {
+    res.redirect ('other-robotic-equipment')
+  }
+  res.redirect('project-cost')
+})
+
+
+
+
+// Q: Other robotic equipment (2)
+
+router.get('/other-robotic-equipment', function (req, res) {
+  var backUrl = 'project-items'
+  var nextUrl = 'other-robotic-equipment-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+router.post('/other-robotic-equipment-answer', function (req, res) {
+  var otherRoboticRadio = req.session.data['other-robotic-radio']
+
+  if (otherRoboticRadio === 'no') { res.redirect('other-robotic-fail') } else { res.redirect('other-robotic-conditional') }
+})
+
+
+
+// Q: Other robotic conditional (3)
+
+router.get('/other-robotic-conditional', function (req, res) {
+  var backUrl = 'other-robotic-equipment'
   var nextUrl = 'project-cost'
   var completedUrl = 'answers'
 
@@ -294,12 +354,12 @@ router.get('/associated-works', function (req, res) {
 
 
 
-// Q: Project cost
+// Q: Project cost (4)
 
 router.get('/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
 
-  var backUrl = 'associated-works'
+  var backUrl = 'project-items'
   var nextUrl = 'project-cost-answer'
   var completedUrl = 'project-cost-answer-completed'
 
