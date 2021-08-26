@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Project purchase
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="{{ backUrl }}"> Back</a>
+{% endblock %}
+
+{% block content %}
+
+     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+          <div class="govuk-form-group">
+     <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+         <h1 class="govuk-fieldset__heading">
+           What type of new technology does your project need?
+         </h1>
+       </legend>
+       <div id="project-purchase-hint" class="govuk-hint">
+        Equipment must be for activities in the crop-growing cycle or livestock husbandry
+       </div>
+       <div class="govuk-radios govuk-radios">
+         <div class="govuk-radios__item">
+           <input class="govuk-radios__input" id="project-purchase" name="project-purchase" type="radio" value="robotic equipment" {{ checked("project-purchase", "robotic equipment") }}>
+           <label class="govuk-label govuk-radios__label" for="project-purchase">
+             Robotic equipment
+           </label>
+           <div id="robotic-equipment-hint" class="govuk-hint govuk-radios__hint">Autonomous farming equipment capable of sensing its environment, making decisions and performing actions</div>
+         </div>
+         <div class="govuk-radios govuk-radios">
+           <div class="govuk-radios__item">
+             <input class="govuk-radios__input" id="project-purchase-1" name="project-purchase" type="radio" value="enhanced automation equipment" {{ checked("project-purchase", "enhanced automation equipment") }}>
+             <label class="govuk-label govuk-radios__label" for="project-purchase-1">
+               Advanced ventilation control units
+             </label>
+             <div id="Enhanced-automation-equipment-hint" class="govuk-hint govuk-radios__hint">System to control ventilation of existing horticultural and livestock buildings to reduce greenhouse gas emissions</div>
+           </div>
+         <div class="govuk-radios govuk-radios">
+           <div class="govuk-radios__item">
+             <input class="govuk-radios__input" id="project-purchase-2" name="project-purchase" type="radio" value="wavelength-controlled led lighting" {{ checked("project-purchase", "wavelength-controlled led lighting") }}>
+             <label class="govuk-label govuk-radios__label" for="project-purchase-2">
+               Wavelength-controlled LED lighting
+             </label>
+             <div id="robotic-equipment-hint" class="govuk-hint govuk-radios__hint">Wavelength-specific LED lighting to help crop growth, pest control and animal welfare</div>
+           </div>
+           <div class="govuk-radios__divider">or</div>
+         <div class="govuk-radios__item">
+           <input class="govuk-radios__input" id="project-purchase-3" name="project-purchase" type="radio" value="no" {{ checked("project-purchase", "no") }}>
+           <label class="govuk-label govuk-radios__label" for="project-purchase-3">
+             None of the above
+           </label>
+         </div>
+       </div>
+
+     </fieldset>
+   </div>
+     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+     </form>
+   </div>
+
+  <div class="govuk-grid-column-one-third">
+  <div class="app-step-nav-related app-step-nav-related--singular">
+     <h2 class="app-step-nav-related__heading">
+      <span class="app-step-nav-related__pretitle">Eligibility</span>
+      </h2>
+      <p>Equipment must increase the productivity of primary agricultural or horticultural practices.</p>
+      <p>Your project’s positive environmental benefit and the increase to productivity will be assessed at full application stage.</p>
+  </div>
+{%endblock%}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is your project about?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<h1 class="govuk-heading-l">What would you like funding for?</h1>
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'farming-type',
+                  name: 'farming-type',
+                  fieldset: {
+                      legend: {
+                          text: '',
+                          isPageHeading: false,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+                  items: [
+                {
+                  value: "Robotics and innovation",
+                  text: "Robotics and innovation",
+                  checked: checked("farming-type", "Robotics and innovation")
+                },
+                {
+                  value: "Slurry acidification",
+                  text: "Slurry acidification",
+                  checked: checked("farming-type", "Slurry acidification")
+                }
+              ]
+              }) }}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -435,7 +435,7 @@ router.get('/projects-impact', function (req, res) {
 router.post('/projects-impact-answer', function (req, res) {
   var prAnswer = req.session.data['projects-impact']
 
-  if (prAnswer === 'Introduce acidification') { res.redirect('slurry-to-be-treated') } else { res.redirect('slurry-currently-treated') }
+  if (prAnswer === 'Introduce acidification for the first time') { res.redirect('slurry-to-be-treated') } else { res.redirect('slurry-currently-treated') }
 })
 
 
