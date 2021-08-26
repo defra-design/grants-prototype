@@ -52,8 +52,7 @@
                 <label class="govuk-label" for="label-as-page-heading">
                   Enter your item
                 </label>
-                <textarea class="govuk-textarea govuk-js-character-count" id="word-count" name="other-robotic-item" rows="2" aria-describedby="word-count-info" value="{{ data['other-robotic-item'] }}"></textarea>
-
+                <textarea class="govuk-textarea govuk-js-character-count" id="word-count" name="other-robotic-item" rows="2" aria-describedby="word-count-info">{{ data['other-robotic-item'] }}</textarea>
               </div>
               <div id="word-count-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
                 You can enter up to 10 words
@@ -73,9 +72,6 @@
      <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
      </form>
    </div>
-
-
-
   <div class="govuk-grid-column-one-third">
   <div class="app-step-nav-related app-step-nav-related--singular">
      <h2 class="app-step-nav-related__heading">
