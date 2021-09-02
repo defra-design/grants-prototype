@@ -33,7 +33,8 @@
         <div class="govuk-form-group">
           <h1 class="govuk-heading-l">What is the estimated cost of the items?</h1>
           <div class="govuk-hint">
-            You can only apply for a grant of up to 40% of the estimated costs. <br/>Do not include VAT.
+            You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £500,000. <br/><br/>
+            Do not include VAT.
           </div>
 
           <span class="govuk-caption-m">Enter amount, for example 95,000</span>
@@ -43,11 +44,19 @@
 
           </div>
         </div>
-        <br>
+
+
+        {% if data['other-robotic-item'] %}
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            RPA will assess your item and whether they can fund it. <br/>There’s no guarantee your item will be funded.
+          </strong>
+        </div>
+        {% endif %}
+
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-
-
-
       </form>
 
     </div>
@@ -68,13 +77,27 @@
 
             {% endif %}
             {% endfor %}
-            {% if data['other-robotic-item'] %}
+
+          </ul>
+        </nav>
+  {% if data['other-robotic-item'] %}
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Not yet eligible items</span>
+          </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+
+
+          <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+
+
 
             <li>
-              {{ data['other-robotic-item'] }} (not eligible)
+            Other robotic equipment
             </li>
             {% endif %}
           </ul>
+
+
         </nav>
 
 

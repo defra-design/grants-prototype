@@ -37,11 +37,39 @@
         </h1>
       </legend>
       <div id="project-items-hint" class="govuk-hint">
-
- The minimum grant you can apply for is £35,000 (40% of £87,500). The maximum grant is £500,000.
     </div>
 
 <p class="govuk-hint">Select all the items your project needs</p>
+
+<h3 class="govuk-heading-s">Non-robotic equipment</h3>
+  <div class="govuk-checkboxes">
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="robotic-equipment-2" name="robotic-equipment" type="checkbox" value="Advanced ventilation control units" {{ checked("robotic-equipment", "Advanced ventilation control units") }}>
+      <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-2">
+        Advanced ventilation control units
+      </label>
+      <div id="advanced-ventilation-control-units-hint" class="govuk-hint govuk-radios__hint">
+          System to control ventilation of existing horticultural and livestock buildings to reduce greenhouse gas emissions
+        </div>
+    </div>
+    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="robotic-equipment-8" name="robotic-equipment" type="checkbox" value="Wavelength-specific LED lighting" {{ checked("robotic-equipment", "Wavelength-specific LED lighting") }}>
+        <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-8">
+          Wavelength-specific LED lighting
+        </label>
+        <div id="wavelength-specific-LED-lighting-hint" class="govuk-hint govuk-radios__hint">
+              Wavelength-specific LED lighting to help crop growth, pest control and animal welfare
+            </div>
+      </div>
+    </div>
+  </fieldset>
+  </div>
+
+<h3 class="govuk-heading-s">Robotic equipment</h3>
+<div id="robotic-equipment-hint" class="govuk-hint">
+      Autonomous farming equipment capable of sensing its environment, making decisions and performing actions
+    </div>
 
 <div class="govuk-checkboxes">
   <div class="govuk-checkboxes__item">
@@ -49,14 +77,9 @@
     <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-1">
       Robotic or autonomous harvesting equipment
     </label>
+
   </div>
-  <div class="govuk-checkboxes">
-    <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="robotic-equipment-2" name="robotic-equipment" type="checkbox" value="Advanced ventilation control units" {{ checked("robotic-equipment", "Advanced ventilation control units") }}>
-      <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-2">
-        Advanced ventilation control units
-      </label>
-    </div>
+
     <div class="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="robotic-equipment-3" name="robotic-equipment" type="checkbox" value="Robotic weeding equipment" {{ checked("robotic-equipment", "Robotic weeding equipment") }}>
@@ -92,13 +115,7 @@
                   Robotic feeding systems
                 </label>
               </div>
-              <div class="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="robotic-equipment-8" name="robotic-equipment" type="checkbox" value="Wavelength-specific LED lighting" {{ checked("robotic-equipment", "Wavelength-specific LED lighting") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-8">
-                    Wavelength-specific LED lighting
-                  </label>
-                </div>
+
                 <div class="govuk-checkboxes">
                   <div class="govuk-checkboxes__item">
                     <input class="govuk-checkboxes__input" id="robotic-equipment-9" name="robotic-equipment" type="checkbox" value="Robotic tractor" {{ checked("robotic-equipment", "Robotic tractor") }}>
@@ -114,9 +131,7 @@
                       </label>
                     </div>
 
-            </div>
-  </fieldset>
-</div>
+
 
     </fieldset>
   </div>
