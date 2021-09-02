@@ -239,14 +239,14 @@ router.post('/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
   if (tenant === 'Yes') {
-    res.redirect('project-purchase')
+    res.redirect('project-items')
   } else { res.redirect('tenancy-length') }
 })
 
 router.post('/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('project-purchase') }
+  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('project-items') }
 })
 
 router.post('/tenancy-length-answer-completed', function (req, res) {
@@ -255,35 +255,11 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 
 
 
-// Q: Project purchase
-
-router.get('/project-purchase', function (req, res) {
-  var backUrl = 'tenancy'
-  var nextUrl = 'project-purchase-answer'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/project-purchase-answer', function (req, res) {
-  var projectP = req.session.data['project-purchase']
-
-  if (projectP === 'no') {
-    res.redirect('project-purchase-fail')
-  } else { res.redirect('project-items') }
-})
-
-
-
 // Q: Project items (1)
 // Q: Flow 1 to 4
 
 router.get('/project-items', function (req, res) {
-  var backUrl = 'project-purchase'
+  var backUrl = 'tenancy'
   var nextUrl = 'project-items-answer'
   var completedUrl = 'answers'
 

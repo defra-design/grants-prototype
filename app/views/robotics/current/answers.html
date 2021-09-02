@@ -28,7 +28,7 @@
 
     <div class="govuk-inset-text">
       <h2 class="govuk-heading-m">Average</h2>
-      <p>This means your project seems like it might be successful.</p>
+      <p>This means your project might be successful.</p>
     </div>
 </div>
   </div>
@@ -40,7 +40,7 @@
         Strong
         </dt>
         <dd class="govuk-summary-list__value govuk-!-font-size-16">
-          Your project seems like it’s a strong fit with the funding priorities. Based on your answers, a grant application seems likely to be successful. 
+          Based on your answers, a grant application is likely to be successful.  
         </dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -48,7 +48,7 @@
         Average
           </dt>
           <dd class="govuk-summary-list__value govuk-!-font-size-16">
-           Your project seems like it’s an average fit with the funding priorities. Based on your answers, a grant application seems like it might be successful.
+           Based on your answers, a grant application might be successful. 
           </dd>
           </div>
         <div class="govuk-summary-list__row">
@@ -56,7 +56,7 @@
           Weak
           </dt>
           <dd class="govuk-summary-list__value govuk-!-font-size-16">
-              Your project seems like it’s a weak fit with the funding priorities. Based on your answers, a grant application seems unlikely to be successful.  
+              Based on your answers, a grant application is unlikely to be successful. 
           </dd>
           </div>
 </dl>
@@ -116,7 +116,16 @@
           </td>
           <td class="govuk-table__cell"><a href="energy-source">Change</td>
         </tr>
-
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Agricultural sector
+            <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet">
+              <li>{{data['agricultural-sector'] | capitalize}} </li>
+            </ul></th>
+            <td class="govuk-table__cell">Strong</td>
+            <td class="govuk-table__cell">
+            </td>
+            <td class="govuk-table__cell"><a href="agricultural-sector">Change</td>
+            </tr>
 
 
         <tr class="govuk-table__row">
