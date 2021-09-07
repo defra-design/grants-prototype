@@ -28,34 +28,37 @@ Agricultural sector
             Which  agricultural  sector is your project in?  
           </h1>
         </legend>
-        <div class="govuk-radios">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="agricultural-sector" name="agricultural-sector" type="radio" value="horticulture" {{ checked("agricultural-sector", "horticulture") }}>
-            <label class="govuk-label govuk-radios__label" for="agricultural-sector">
-              Horticulture
-            </label>
-          </div>
-          <div class="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="agricultural-sector-1" name="agricultural-sector" type="radio" value="arable" {{ checked("agricultural-sector", "arable") }}>
-              <label class="govuk-label govuk-radios__label" for="agricultural-sector-1">
-              Arable
-              </label>
-            </div>
-            <div class="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="agricultural-sector-2" name="agricultural-sector" type="radio" value="dairy livestock" {{ checked("agricultural-sector", "dairy livestock") }}>
-                <label class="govuk-label govuk-radios__label" for="agricultural-sector-2">
-                  Dairy livestock
-                </label>
-              </div>
-              <div class="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="agricultural-sector-3" name="agricultural-sector" type="radio" value="non-dairy livestock" {{ checked("agricultural-sector", "non-dairy livestock") }}>
-                  <label class="govuk-label govuk-radios__label" for="agricultural-sector-3">
-                    Non-dairy livestock
-                  </label>
-                </div>
+
+                <div id="agricultural-sector-hint" class="govuk-hint">Select up to 2 options</div>
+                <div class="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="agricultural-sector" name="agricultural-sector" type="checkbox" value="horticulture" {{ checked("agricultural-sector", "horticulture") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector">
+                      Horticulture
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="agricultural-sector-1" name="agricultural-sector" type="checkbox" value="arable" {{ checked("agricultural-sector", "arable") }}>
+                      <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-1">
+                      Arable
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="agricultural-sector-2" name="agricultural-sector" type="checkbox" value="dairy livestock" {{ checked("agricultural-sector", "dairy livestock") }}>
+                        <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-2">
+                          Dairy livestock
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes">
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="agricultural-sector-3" name="agricultural-sector" type="checkbox" value="non-dairy livestock" {{ checked("agricultural-sector", "non-dairy livestock") }}>
+                          <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-3">
+                            Non-dairy livestock
+                          </label>
+                        </div>
+
             </div>
             </fieldset>
           </div>
@@ -77,7 +80,11 @@ Agricultural sector
              <h2 class="app-step-nav-related__heading">
               <span class="app-step-nav-related__pretitle">Funding priorities</span>
               </h2>
-              <p>RPA wants to fund sectors where there is currently less use of robotics and innovative equipment.  </p>
+              <p>RPA wants to fund sectors that:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                  <li>have significant labour shortages</li>
+                  <li>have not received many grants in the past</li>
+                  </ul>
 
           </div>
 
