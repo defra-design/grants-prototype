@@ -308,8 +308,39 @@ router.get('/other-robotic-equipment', function (req, res) {
 
 router.post('/other-robotic-equipment-answer', function (req, res) {
   var otherRoboticRadio = req.session.data['other-robotic-radio']
+  var projectItems = req.session.data['robotic-equipment']
 
-  if (otherRoboticRadio === 'no') { res.redirect('other-robotic-fail') } else { res.redirect('other-robotic-conditional') }
+
+  if (otherRoboticRadio === 'no'){
+    if (
+      projectItems.includes('Other robotic equipment') &&
+      (typeof(projectItems) === 'string' ||
+      (typeof(projectItems) === 'object' && projectItems.length === 1)
+    )){
+      res.redirect('other-robotic-fail')
+    } else if (
+      projectItems.includes('Other robotic equipment') &&
+      (
+        (typeof(projectItems) === 'object' && projectItems.length > 1)
+      )
+    ){
+      res.redirect('other-robotic-fail2')
+    }
+    //  res.redirect('other-robotic-conditional') //If yes and Other and all items
+                                          //If no and Other and all items
+
+ }
+
+ else {
+   if (projectItems.includes('Other robotic equipment')){
+     res.redirect('other-robotic-conditional')
+   }
+   //  res.redirect('other-robotic-conditional') //If yes and Other and all items
+                                         //If no and Other and all items
+
+}
+
+  //if (otherRoboticRadio === 'no') { res.redirect('other-robotic-fail') } else { res.redirect('other-robotic-conditional') }
 })
 
 
@@ -328,6 +359,20 @@ router.get('/other-robotic-conditional', function (req, res) {
   })
 })
 
+
+// Q: Other robotic conditional (3)
+
+router.get('/other-robotic-fail2', function (req, res) {
+  var backUrl = 'other-robotic-equipment'
+  var nextUrl = 'project-cost'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
 
 
 // Q: Project cost (4)
