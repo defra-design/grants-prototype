@@ -31,7 +31,7 @@
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
         <div class="govuk-form-group">
-          <h1 class="govuk-heading-l">What is the estimated cost of the items?</h1>
+          <h1 class="govuk-heading-l">What is the total estimated cost of the items?</h1>
           <div class="govuk-hint">
             You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £500,000. <br/><br/>
             Do not include VAT.
@@ -51,7 +51,7 @@
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
           <strong class="govuk-warning-text__text">
             <span class="govuk-warning-text__assistive">Warning</span>
-            RPA will assess your item and whether they can fund it. <br/>There’s no guarantee your item will be funded.
+            RPA will assess your other robotic equipment item and whether they can fund it.<br/><br/>There’s no guarantee your item will be funded.
           </strong>
         </div>
         {% endif %}
@@ -64,7 +64,11 @@
 
       <div class="app-step-nav-related app-step-nav-related--singular">
         <h2 class="app-step-nav-related__heading">
+          {% for item in data['robotic-equipment'] %}
+          {% if item != 'Other robotic equipment' %}
           <span class="app-step-nav-related__pretitle">Items selected</span>
+          {% endif %}
+          {% endfor %}
           </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
 
