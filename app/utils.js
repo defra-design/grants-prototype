@@ -15,7 +15,8 @@ const serviceName = {
   },
   robotics: {
     current: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
-         v1: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant'
+         v1: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
+         v2: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant'
   }
 }
 

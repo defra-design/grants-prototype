@@ -36,6 +36,12 @@
           </label>
           <input class="govuk-input govuk-!-width-one-half" id="agent-lastname" name="agent-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['agent-lastname'] }}">
         </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="agent-business">
+            Business name
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="agent-business" name="agent-business" type="text" spellcheck="false" autocomplete="name" value="{{ data['agent-business'] }}">
+        </div>
 
         <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
         <div class="govuk-form-group">
@@ -85,7 +91,7 @@
 
         <div class="govuk-form-group">
             <label class="govuk-label" for="agent-town">
-                Town (optional)
+                Town 
             </label>
             <input class="govuk-input govuk-!-width-one-half" id="agent-town" name="agent-town" type="agent-town" spellcheck="false" aria-describedby="agent-town-hint" autocomplete="agent-town" value="{{ data['agent-town'] }}">
         </div>
