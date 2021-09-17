@@ -32,6 +32,7 @@ router.get('/:scheme/:version/*', function (req, res, next) {
 
 // Start folder specific route
 router.use('/robotics/current', require('./views/robotics/current/routes/routes'))
+router.use('/robotics/v2', require('./views/robotics/v2/routes/routes'))
 router.use('/robotics/v1', require('./views/robotics/v1/routes/routes'))
 router.use('/slurry/current', require('./views/slurry/current/routes/routes'))
 router.use('/slurry/v1', require('./views/slurry/v1/routes/routes'))
