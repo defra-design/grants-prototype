@@ -23,8 +23,11 @@ Meeting the remaining project costs
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
   {% set remainingCosts = data['project-cost'] * 0.6 %}
+  {% set remainingCosts2 = data['project-cost'] -500000 %}
 
-  <h1 class="govuk-heading-l">Can you pay the remaining costs{%if remainingCosts %} of £{{ remainingCosts | toFixed(2) | commafy }}{% endif%}?</h1>
+
+      <h1 class="govuk-heading-l">Can you pay the remaining costs{%if remainingCosts > 125001%} of £{{remainingCosts2 | toFixed(2) | commafy}}  {% else%} £{{ remainingCosts | toFixed(2) | commafy }}{% endif%}?</h1>
+
 
   <div class="govuk-radios govuk-radios--inline">
     <div class="govuk-radios__item">
