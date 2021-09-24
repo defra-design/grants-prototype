@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% extends "slurry/current/views/layouts/_BASEFULL.html" %}
+
+{% block service %}
+
+<!--
+<span class="govuk-caption-xl">Prototypes</span>
+-->
+<title> Slurry prototype admin</title>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl">
+  Adding value prototype admin
+</h1>
+
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">User research</h2>
+
+        <p class='govuk-list app-list--definition'>
+        <a href='/addingvalue/current/guidance2' class="govuk-link--no-visited-state">Guidance: Adding value grant</a></p>
+          <p class='govuk-list app-list--definition'>
+            <a href='/addingvalue/current/start' class="govuk-link--no-visited-state">Start page</a><br>
+            Specialist start page, hosted on GOV.UK</p>
+
+        <p class='govuk-list app-list--definition'>
+        <a href='/addingvalue/current/email' class="govuk-link--no-visited-state">Confirmation email</a><br>
+          User will receive a confirmation email, with their answers. Service is routed by GOV Notify.</p>
+      </div>
+
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">Design history</h2>
+                            <p class='govuk-list app-list--definition'>
+                              <a href='/robotics/v1/guidance' class="govuk-link--no-visited-state">Version 1</a><br>
+                                Adding value baseline design (TBC)</p>
+      </div>
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">Journeys and wireframes</h2>
+            <p class='govuk-heading-m'>Workflows, screenflows and user journeys</p>
+              <p class='govuk-list app-list--definition'>
+                <a href='https://app.mural.co/t/dcxuk3892/m/ftfgrants4310/1626122410966/caa4e0e8f5ce5ff44c0e641edd586e81d2d457a4?sender=uac8e5181797d9857544e5168' class='govuk-link--no-visited-state' target="new">High fidelity screenflow on Mural (opens in new tab)</a><br>
+                    <img src="/public/images/mural-icon.png" alt="Mural icon" width="17" height="17"> Mural (TBC).<br></p>
+
+            <p class='govuk-heading-m'>Wireframes</p>
+              <p class='govuk-list app-list--definition'>
+                <a href='https://www.sketch.com/s/92250393-268a-43ad-a337-ea90036ff4fb' class="govuk-link--no-visited-state" target="new" >Sketch wireframes (opens in new tab)</a><br>
+                  <img src="/public/images/sketch-icon.png" alt="Sketch icon" width="17" height="17">Sketch (TBC).</p>
+      </div>
+{% endblock %}
