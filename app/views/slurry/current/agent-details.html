@@ -1,16 +1,17 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Your details
+  Agent details
 {% endblock %}
 
 {% block beforeContent %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
   {{ govukPhaseBanner({
     tag: {
-    text: "prototype"
+    text: "prototype",
+    classes: "govuk-tag--pink"
     },
-      html: 'This is a prototype. It is not a real service.'
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
@@ -36,6 +37,7 @@
           </label>
           <input class="govuk-input govuk-!-width-one-half" id="agent-lastname" name="agent-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['agent-lastname'] }}">
         </div>
+
         <div class="govuk-form-group">
           <label class="govuk-label" for="agent-business">
             Business name
@@ -74,24 +76,24 @@
           <input class="govuk-input  govuk-!-width-two-thirds" id="agent-mobile" name="agent-mobile" type="agent-mobile" spellcheck="false" aria-describedby="agent-mobile-hint" autocomplete="agent-mobile" value="{{ data['agent-mobile'] }}">
         </div>
 
-        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Address</h2>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Business address</h2>
         <div class="govuk-form-group">
             <label class="govuk-label" for="agent-address1">
-                Address 1
+                Building and street
             </label>
             <input class="govuk-input govuk-!-width-two-thirds" id="agent-address1" name="agent-address1" type="agent-address1" spellcheck="false" aria-describedby="agent-address1-hint" autocomplete="agent-address1" value="{{ data['agent-address1'] }}">
         </div>
 
         <div class="govuk-form-group">
             <label class="govuk-label" for="agent-address2">
-                Address 2 (optional)
+
             </label>
             <input class="govuk-input govuk-!-width-two-thirds" id="agent-address2" name="agent-address2" type="agent-address2" spellcheck="false" aria-describedby="agent-address2-hint" autocomplete="agent-address2" value="{{ data['agent-address2'] }}">
         </div>
 
         <div class="govuk-form-group">
             <label class="govuk-label" for="agent-town">
-                Town 
+                Town
             </label>
             <input class="govuk-input govuk-!-width-one-half" id="agent-town" name="agent-town" type="agent-town" spellcheck="false" aria-describedby="agent-town-hint" autocomplete="agent-town" value="{{ data['agent-town'] }}">
         </div>

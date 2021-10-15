@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Irrigation land size
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+               <h1 class="govuk-label-wrapper govuk-!-padding-bottom-2">
+                  <label class="govuk-label govuk-label--l" for="irrigated-land-current">
+                    What volume of slurry or digestate do you currently acidify per year?
+                  </label>
+                </h1>
+                <div class="govuk-body govuk-!-margin-bottom-0">
+                  <p id="irrigated-land-target-hint" class="govuk-hint">
+                    Enter figure in cubic metres (m3), for example 18,000 
+                  </p>
+                </div>
+
+                <div class="govuk-input__wrapper govuk-!-margin-bottom-5">
+                  <input class="govuk-input govuk-input--width-5" id="slurry-currently-treated" name="slurry-currently-treated" type="text" spellcheck="false" aria-describedby="slurry-currently-treated-hint" value="{{ data['slurry-currently-treated'] }}">
+                    <div class="govuk-input__suffix" aria-hidden="true">m<sup>3</sup></div>
+                </div>
+
+
+              <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">
+                Continue
+              </button>
+
+              {% if data['COMPLETED'] == true %}
+                <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+                  class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">Back to score
+                </button>
+              {% endif %}
+              </form>
+              </div>
+
+
+
+
+  <!--top right column 'Eligibility'-->
+  <div class="govuk-grid-column-one-third">
+    <div class="app-step-nav-related app-step-nav-related--singular">
+      <h2 class="app-step-nav-related__heading">
+        <span class="app-step-nav-related__pretitle">Funding priorities</span>
+        </h2>
+        <p class="govuk-body">RPA wants to fund projects that:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>improve productivity</li>
+        <li>improve the environment</li>
+
+        </ul>
+
+
+        <a href="#">
+        </a>
+
+    </div>
+    </div>
+
+  </div>
+
+{% endblock %}

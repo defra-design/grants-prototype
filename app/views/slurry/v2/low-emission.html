@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Have you already started work on the project?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Will you be using low-emission precision application equipment?
+          </h1>
+        </legend>
+          <div id="changed-name-hint" class="govuk-hint">For example, shallow injection, trailing shoe or dribble bar</div>
+
+        <div class="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="low-emission-1" name="low-emission" type="radio" value="yes have equipment" {{ checked("low-emission", "yes have equipment") }}>
+            <label class="govuk-label govuk-radios__label" for="low-emission-1">
+              Yes, I already have the equipment
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="low-emission-2" name="low-emission" type="radio" value="yes will be purchasing" {{ checked("low-emission", "yes will be purchasing") }}>
+            <label class="govuk-label govuk-radios__label" for="low-emission-2">
+              Yes, I will be buying the equipment as part of the project
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="low-emission-3" name="low-emission" type="radio" value="yes will use contractor" {{ checked("low-emission", "yes will use contractor") }}>
+            <label class="govuk-label govuk-radios__label" for="low-emission-3">
+            Yes, I will be using a contractor with low-emission precision application equipment 
+            </label>
+          </div>
+          <div class="govuk-radios__divider">or</div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="low-emission-4" name="low-emission" type="radio" value="no" {{ checked("low-emission", "no") }}>
+            <label class="govuk-label govuk-radios__label" for="low-emission-4">
+              No, I won’t be using the equipment
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+   </form>
+  </div>
+  <!--top right column 'Eligibility'-->
+  <div class="govuk-grid-column-one-third">
+    <div class="app-step-nav-related app-step-nav-related--singular">
+      <h2 class="app-step-nav-related__heading">
+        <span class="app-step-nav-related__pretitle">Eligibility</span>
+        </h2>
+      <p>You must use low-emission precision application equipment. </p>
+        <a href="#">
+        </a>
+    </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+{% endblock %}

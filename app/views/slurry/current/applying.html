@@ -8,9 +8,10 @@
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
   {{ govukPhaseBanner({
     tag: {
-    text: "prototype"
+    text: "prototype",
+    classes: "govuk-tag--pink"
     },
-      html: 'This is a prototype. It is not a real service.'
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
@@ -29,16 +30,22 @@
               </h1>
             </legend>
             <br><br>
-            <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="applicant-1" name="applicant" type="radio" value="Farmer" {{ checked("applicant", "Farmer") }}>
-                <label class="govuk-label govuk-radios__label" for="applicant-1">
-                  Farmer or contractor
+                <input class="govuk-radios__input" id="applicant" name="applicant" type="radio" value="Farmer" {{ checked("applicant", "Farmer") }}>
+                <label class="govuk-label govuk-radios__label" for="applicant">
+                  Farmer
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="applicant-3" name="applicant" type="radio" value="Agent" {{ checked("applicant", "Agent") }}>
-                <label class="govuk-label govuk-radios__label" for="applicant-3">
+                <input class="govuk-radios__input" id="applicant-1" name="applicant" type="radio" value="Contractor" {{ checked("applicant", "Contractor") }}>
+                <label class="govuk-label govuk-radios__label" for="applicant-1">
+                  Contractor
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="applicant-2" name="applicant" type="radio" value="Agent" {{ checked("applicant", "Agent") }}>
+                <label class="govuk-label govuk-radios__label" for="applicant-2">
                   Agent
                 </label>
               </div>

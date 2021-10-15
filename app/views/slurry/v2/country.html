@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Where is the business located?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Is the planned project in England?
+              </h1>
+            </legend>
+            <br><br>
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="country" name="country" type="radio" value="yes" data-aria-controls="conditional-country-postcode" {{ checked("country", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="country">
+                  Yes
+                </label>
+              </div>
+              <br>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-country-postcode">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="conditional-country-postcode">
+                    Where will the work happen or the equipment be stored?
+                  </label>
+                  <label class="govuk-label" for="postcode">Postcode</label>
+                  <input class="govuk-input govuk-!-width-one-third" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}" spellcheck="false" {{ checked("postcode", "postcode") }}>
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="country-2" name="country" type="radio" value="no" {{ checked("country", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="country-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <br><br>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>This grant is only for projects in England.</p>
+          <p>Scotland, Wales and Northern Ireland have other grants available.</p>
+          <a href="#">
+          </a>
+
+      </div>
+
+
+
+{% endblock %}

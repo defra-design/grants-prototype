@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+
+  <a class="govuk-back-link" href="associated-works">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+          You cannot apply for a grant from this scheme
+        </h1>
+
+
+          <p class="govuk-body">Your project must buy all 4 of the following mild acidification equipment:
+            <ul class= "govuk-body govuk-list govuk-list--bullet">
+              <li>acid storage</li>
+              <li>dosing equipment</li>
+              <li>mixing tank</li>
+              <li>pump</li>
+              </ul>
+              </p>
+
+    <div class="govuk-inset-text">
+      <p>This mild acidification equipment is required for:  </p>
+        <ul class= "govuk-body govuk-list govuk-list--bullet">
+          <li>introducing acidification the first time  </li>
+          <li>adding additional acidification installations  </li>
+        </ul>
+</div>
+        <p>
+          <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments"  class="govuk-!-font-size-19">
+             See other grants you may be eligible for.
+          </a>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -28,23 +28,16 @@
                 Is the planned project in England?
               </h1>
             </legend>
-            <br><br>
-            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+            
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div id="changed-name-hint" class="govuk-hint">
+                The site where the work will happen
+              </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="country" name="country" type="radio" value="yes" data-aria-controls="conditional-country-postcode" {{ checked("country", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="country">
                   Yes
                 </label>
-              </div>
-              <br>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-country-postcode">
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="conditional-country-postcode">
-                    Where will the work happen or the equipment be stored?
-                  </label>
-                  <label class="govuk-label" for="postcode">Postcode</label>
-                  <input class="govuk-input govuk-!-width-one-third" id="postcode" name="postcode" type="text" value="{{ data['postcode'] }}" spellcheck="false" {{ checked("postcode", "postcode") }}>
-                </div>
               </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="country-2" name="country" type="radio" value="no" {{ checked("country", "no") }}>
@@ -55,7 +48,7 @@
             </div>
           </fieldset>
         </div>
-        <br><br>
+
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 
 
