@@ -6,12 +6,13 @@
 
 {% block beforeContent %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "prototype"
-  },
-  html: 'This is a prototype. It is not a real service.'
-}) }}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
@@ -21,7 +22,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
-        <h1 class="govuk-heading-l"> Farmer or contractor's details</h1>
+        <h1 class="govuk-heading-l"> Farmer's details</h1>
         <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Name</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-firstname">
@@ -41,13 +42,13 @@
         <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-email">
-            Email address
-            <div id="event-name-hint" class="govuk-hint">
-            {% if data['applicant'] === "Agent" %} We'll only use this to send them confirmation
-                       {% else %}
-                       We'll only use this to send you confirmation
-                       {% endif %}
-            </div>
+              Email address
+              <div id="event-name-hint" class="govuk-hint">
+              {% if data['applicant'] === "Agent" %} We'll only use this to send them confirmation
+                         {% else %}
+                         We'll only use this to send you confirmation
+                         {% endif %}
+              </div>
 
           </label>
           <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-email" name="farmer-email" type="farmer-email" spellcheck="false" aria-describedby="farmer-email-hint" autocomplete="farmer-email" value="{{ data['farmer-email'] }}">
@@ -57,12 +58,12 @@
           <label class="govuk-label" for="farmer-landline">
               Mobile number
           </label>
-          <div id="landline-name-hint" class="govuk-hint">
+          <div id="mobile-name-hint" class="govuk-hint">
             {% if data['applicant'] === "Agent" %} We will only use this to contact them about their application
                        {% else %}
                        We will only use this to contact you about your application
                        {% endif %}
-          </div>
+            </div>
           <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-landline" name="farmer-landline" type="farmer-landline" spellcheck="false" aria-describedby="farmer-landline-hint" autocomplete="farmer-landline" value="{{ data['farmer-landline'] }}">
         </div>
 
@@ -79,24 +80,24 @@
           <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-mobile" name="farmer-mobile" type="farmer-mobile" spellcheck="false" aria-describedby="farmer-mobile-hint" autocomplete="farmer-mobile" value="{{ data['farmer-mobile'] }}">
         </div>
 
-        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Address</h2>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Business address</h2>
         <div class="govuk-form-group">
             <label class="govuk-label" for="farmer-address1">
-                Address 1
+                Building and street
             </label>
             <input class="govuk-input govuk-!-width-two-thirds" id="farmer-address1" name="farmer-address1" type="farmer-address1" spellcheck="false" aria-describedby="farmer-address1-hint" autocomplete="farmer-address1" value="{{ data['farmer-address1'] }}">
         </div>
 
         <div class="govuk-form-group">
             <label class="govuk-label" for="farmer-address2">
-                Address 2 (optional)
+
             </label>
             <input class="govuk-input govuk-!-width-two-thirds" id="farmer-address2" name="farmer-address2" type="farmer-address2" spellcheck="false" aria-describedby="farmer-address2-hint" autocomplete="farmer-address2" value="{{ data['farmer-address2'] }}">
         </div>
 
         <div class="govuk-form-group">
             <label class="govuk-label" for="farmer-town">
-                Town 
+                Town (optional)
             </label>
             <input class="govuk-input govuk-!-width-one-half" id="farmer-town" name="farmer-town" type="farmer-town" spellcheck="false" aria-describedby="farmer-town-hint" autocomplete="farmer-town" value="{{ data['farmer-town'] }}">
         </div>
@@ -108,12 +109,31 @@
             <input class="govuk-input govuk-!-width-one-half" id="farmer-county" name="farmer-county" type="farmer-county" spellcheck="false" aria-describedby="farmer-county-hint" autocomplete="farmer-county" value="{{ data['farmer-county'] }}">
         </div>
 
-        <div class="govuk-form-group govuk-!-padding-bottom-8">
+        <div class="govuk-form-group">
             <label class="govuk-label" for="farmer-postcode">
-                Postcode
+                Business postcode
             </label>
             <input class="govuk-input govuk-!-width-one-quarter" id="farmer-postcode" name="farmer-postcode" type="farmer-postcode" spellcheck="false" aria-describedby="farmer-postcode-hint" autocomplete="farmer-postcode" value="{{ data['farmer-postcode'] }}">
         </div>
+
+        <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="project-postcode-hint">
+                <legend class="govuk-fieldset__legend">
+                  <h1 class="govuk-fieldset__heading">
+                    Project postcode
+                  </h1>
+                </legend>
+                <div id="contact-hint" class="govuk-hint">
+                  The site postcode where the work will happen
+                </div>
+
+            <input class="govuk-input govuk-!-width-one-quarter" id="project-postcode" name="project-postcode" type="project-postcode" spellcheck="false" aria-describedby="project-postcode-hint" autocomplete="project-postcode" value="{{ data['project-postcode'] }}">
+            </fieldset>
+            </div>
+
+
+      
+
 
         <button class="govuk-button govuk-!-margin-top-6 govuk-!-margin-right-1" data-module="govuk-button">
           Continue

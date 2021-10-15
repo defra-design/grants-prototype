@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Will your project buy mild acidification equipment?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype"
+    },
+      html: 'This is a prototype. It is not a real service.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="acidification-equipment-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will your project buy mild acidification equipment?
+              </h1>
+            </legend>
+            <div id="acidification-equipment-hint" class="govuk-hint">
+              Your project must buy all 4 of the following mild acidification equipment:
+              <p>
+                <ul class= "govuk-hint govuk-list govuk-list--bullet">
+                  <li>acid storage</li>
+                  <li>dosing equipment</li>
+                  <li>mixing tank</li>
+                  <li>pump</li>
+                  </ul>
+              </p>
+              <p class="govuk-hint">The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £500,000. </p>
+            </div>
+            <div class="govuk-radios govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="acidification-equipment" name="acidification-equipment" type="radio" value="Mild acification equipment" {{ checked("acidification-equipment", "Mild acification equipment") }}>
+                <label class="govuk-label govuk-radios__label" for="acidification-equipment">
+                  Yes, we will buy all 4 items
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="acidification-equipment-2" name="acidification-equipment" type="radio" value="no" {{ checked("acidification-equipment", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="acidification-equipment-2">
+                  No, we will not buy all 4 items
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+      </form>
+    </div>
+    <!--top right column 'Eligibility'-->
+    <div class="govuk-grid-column-one-third">
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">Your project must buy the mild acidification equipment required for:  </p>
+          <ul class="govuk-list govuk-list--bullet">
+          <li>introducing acidification the first time</li>
+          <li>adding additional acidification installations</li>
+          </ul>
+
+          <p><details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Items included as mild acidification
+equipment
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <ul class= "govuk-body govuk-list govuk-list--bullet">
+      <li>acid storage</li>
+      <li>dosing equipment</li>
+      <li>mixing tank</li>
+      <li>pump</li>
+      </ul>
+</details>
+<p>
+  </div>
+{% endblock %}
