@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Where is the business located?
+  Is your business in England?
 {% endblock %}
 
 {% block beforeContent %}
@@ -11,7 +11,7 @@
     text: "prototype",
     classes: "govuk-tag--pink"
     },
-      html: 'This is not a full service. It is not production code and you might experience problems  .'
+      html: 'This is not a full service. It is not production code and you might experience problems.'
   }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
@@ -26,30 +26,28 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Is the planned project in England?
+              Is your business in England?
               </h1>
             </legend>
-
+            <br><br>
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-              <div id="changed-name-hint" class="govuk-hint">
-      The site where the work will happen
-    </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="country" name="country" type="radio" value="yes" data-aria-controls="conditional-country-postcode" {{ checked("country", "yes") }}>
-                <label class="govuk-label govuk-radios__label" for="country">
+                <input class="govuk-radios__input" id="register" name="register" type="radio" value="yes" {{ checked("register", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="register">
                   Yes
                 </label>
               </div>
+
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="country-2" name="country" type="radio" value="no" {{ checked("country", "no") }}>
-                <label class="govuk-label govuk-radios__label" for="country-2">
+                <input class="govuk-radios__input" id="register-2" name="register" type="radio" value="no" {{ checked("register", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="register-2">
                   No
                 </label>
               </div>
             </div>
           </fieldset>
         </div>
-      
+
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 
 
@@ -61,7 +59,7 @@
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p>This grant is only for projects in England.</p>
+          <p>This grant is only for businesses registered in England. </p>
           <p>Scotland, Wales and Northern Ireland have other grants available.</p>
           <a href="#">
           </a>

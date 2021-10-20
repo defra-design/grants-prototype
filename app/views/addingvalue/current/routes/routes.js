@@ -48,7 +48,7 @@ router.get('/farming-type-answer', function (req, res) {
   }
 
   req.session.data['summary-farming-type'] = farmingType
-  res.redirect('legal-status')
+  res.redirect('register')
 })
 
 router.get('/farming-type-answer-completed', function (req, res) {
@@ -71,10 +71,35 @@ router.get('/farming-type-answer-completed', function (req, res) {
   res.redirect('answers')
 })
 
+
+//: Q: Registered in England?
+router.get('/register', function (req, res) {
+  var backUrl = 'farming-type'
+  var nextUrl = 'register-answer'
+  var completedUrl = 'register-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/register-answer', function (req, res) {
+  var registerEngland = req.session.data['register']
+
+  if (registerEngland === 'yes') {
+    res.redirect('legal-status')
+  } else {
+    res.redirect('register-fail')
+  }
+})
+
+
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = 'farming-type'
+  var backUrl = 'register'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
@@ -221,7 +246,7 @@ router.post('/project-start-answer-completed', function (req, res) {
   if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('answers') }
 })
 
-// Q: Tenancy
+// Q: Tenancy - modified 15 October 2021, containing contractor rule to skip tenancy changes and go straight to Project items.
 
 router.get('/tenancy', function (req, res) {
   var backUrl = 'project-start'
@@ -238,7 +263,7 @@ router.get('/tenancy', function (req, res) {
 router.post('/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
-  if (tenant === 'Yes') {
+  if (tenant === 'Yes' || tenant === 'Contractor') {
     res.redirect('project-items')
   } else { res.redirect('tenancy-length') }
 })
@@ -592,16 +617,21 @@ router.get('/applying', function (req, res) {
 router.post('/applying-answer', function (req, res) {
   const { applicant } = req.session.data
 
-  if (applicant === 'Agent') {
-    res.redirect('agent-details')
+  if (applicant === 'Farmer') {
+    res.redirect('farmer-details')
+  }
+  if (applicant === 'Contractor') {
+    res.redirect('contractor-details')
   }
 
-  res.redirect('farmer-details')
+  res.redirect('agent-details')
 })
+
+// agent-details
 
 router.get('/agent-details', function (req, res) {
   var backUrl = 'applying'
-  var nextUrl = 'farmer-details'
+  var nextUrl = 'agent-details-answer'
   var detailsUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
@@ -611,7 +641,31 @@ router.get('/agent-details', function (req, res) {
   })
 })
 
+router.post('/agent-details-answer', function (req, res) {
+  var contractorDetermine = req.session.data.tenancy
+
+if (contractorDetermine === 'Contractor') {
+  res.redirect('contractor-details')
+} else { res.redirect('farmer-details') }
+})
+
+
+
+// farmer-details
 router.get('/farmer-details', function (req, res) {
+  var backUrl = req.session.data.applicant === 'Agent' ? 'agent-details' : 'applying'
+  var nextUrl = 'check-details'
+  var detailsUrl = 'check-details'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    detailsUrl
+  })
+})
+
+// contractor-details
+router.get('/contractor-details', function (req, res) {
   var backUrl = req.session.data.applicant === 'Agent' ? 'agent-details' : 'applying'
   var nextUrl = 'check-details'
   var detailsUrl = 'check-details'
