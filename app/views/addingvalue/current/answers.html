@@ -87,59 +87,128 @@
       </thead>
       <tbody class="govuk-table__body">
 
-{% if data['wider-farming'] %}
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Data analytics to improve productivity
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['wider-farming'] | capitalize}}</li></ul></th>
-          <td class="govuk-table__cell">Weak</td>
-          <td class="govuk-table__cell">
-            <p class="govuk-body govuk-!-font-size-16">
-              Improve productivity<br>
-            introduce innovation</p>
-          </td>
-          <td class="govuk-table__cell"><a href="wider-farming">Change</td>
-        </tr>
-{% endif %}
 
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Type of energy
+          <th scope="row" class="govuk-table__header">Products processed
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['products-processed'] | capitalize}}</li></ul></th>
+          <td class="govuk-table__cell">Average</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve processing and supply chains</p>
+          </td>
+          <td class="govuk-table__cell"><a href="products-processed">Change</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Adding value
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['adding-value'] | capitalize}}</li></ul></th>
+          <td class="govuk-table__cell">Average</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve processing and supply chains<br><br>
+            Grow your business</p>
+          </td>
+          <td class="govuk-table__cell"><a href="adding-value">Change</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Project impact
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['project-impact'] | capitalize}}</li></ul></th>
+          <td class="govuk-table__cell">Strong</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve processing and supply chains<br><br>
+            Grow your business</p>
+          </td>
+          <td class="govuk-table__cell"><a href="project-impact">Change</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Current customers
           <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
-            {% for item in data['energy-source'] %}
+            {% for item in data['current-customers'] %}
             <li>{{ item | capitalize }}</li>
             {% endfor %}
           </ul>
         </th>
-          <td class="govuk-table__cell">Average</td>
+          <td class="govuk-table__cell">Strong</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve processing and supply chains<br><br>
+            Grow your business</p>
+          </td>
+          <td class="govuk-table__cell"><a href="current-customers">Change</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Future customers
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+            {% for item in data['future-customers'] %}
+            <li>{{ item | capitalize }}</li>
+            {% endfor %}
+          </ul>
+        </th>
+          <td class="govuk-table__cell">Strong</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve processing and supply chains<br><br>
+            Grow your business</p>
+          </td>
+          <td class="govuk-table__cell"><a href="future-customers">Change</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Buying from farmers
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['buying-from-farmers'] | capitalize}}</li></ul></th>
+          <td class="govuk-table__cell">Strong</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve processing and supply chains<br><br>
+            Encourage collaboration and partnerships</p>
+          </td>
+          <td class="govuk-table__cell"><a href="buying-from-farmers">Change</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Products coming from
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['products-coming-from'] | capitalize}}</li></ul></th>
+          <td class="govuk-table__cell">Strong</td>
           <td class="govuk-table__cell">
             <p class="govuk-body govuk-!-font-size-16">
               Improve the environment</p>
           </td>
-          <td class="govuk-table__cell"><a href="energy-source">Change</td>
+          <td class="govuk-table__cell"><a href="products-coming-from">Change</td>
         </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Agricultural sector
-            <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet">
-              {% for item in data['agricultural-sector'] %}
-              <li>{{ item | capitalize }}</li>
-              {% endfor %}
-            </ul></th>
-            <td class="govuk-table__cell">Strong</td>
-            <td class="govuk-table__cell">
-            </td>
-            <td class="govuk-table__cell"><a href="agricultural-sector">Change</td>
-            </tr>
-
 
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Technology use
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['introducing-innovation'] | capitalize}}</li></ul></th>
-          <td class="govuk-table__cell">Average</td>
+          <th scope="row" class="govuk-table__header">Where products sold
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['where-products-sold'] | capitalize}}</li></ul></th>
+          <td class="govuk-table__cell">Strong</td>
           <td class="govuk-table__cell">
-          <p class="govuk-body govuk-!-font-size-16">
-                Introduce innovation</p>
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve the environment</p>
           </td>
-          <td class="govuk-table__cell"><a href="introducing-innovation">Change</td>
+          <td class="govuk-table__cell"><a href="where-products-sold">Change</td>
         </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Environmental impact
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+            {% for item in data['environmental-impact'] %}
+            <li>{{ item | capitalize }}</li>
+            {% endfor %}
+          </ul>
+        </th>
+          <td class="govuk-table__cell">Strong</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve teh environment</p>
+          </td>
+          <td class="govuk-table__cell"><a href="environmental-impact">Change</td>
+        </tr>
+
+
+
       </tbody>
     </table>
 

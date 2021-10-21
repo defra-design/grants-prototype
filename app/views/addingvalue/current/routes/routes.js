@@ -20,6 +20,7 @@ router.get('/start', function (req, res) {
   })
 })
 
+//: Q: Business type
 router.get('/business-type', function (req, res) {
   var backUrl = 'start'
   var nextUrl = 'business-type-answer'
@@ -32,44 +33,22 @@ router.get('/business-type', function (req, res) {
   })
 })
 
-router.get('/business-type-answer', function (req, res) {
-  var businessType = req.session.data['business-type']
+router.post('/business-type-answer', function (req, res) {
+  var bType = req.session.data['b-type']
 
-  if (businessType === 'none') {
-    res.redirect('business-type-fail')
-  }
-  else {
-    res.redirect('legal-status')
-  }
+  if (bType === 'None') { res.redirect('business-type-fail') } else { res.redirect('legal-status') }
+})
+
+router.post('/business-type-answer-completed', function (req, res) {
+  var bType = req.session.data['business-type']
+
+  if (bType === 'None') { res.redirect('business-type-fail') } else { res.redirect('answers') }
 })
 
 
 
 
 
-
-//: Q: Registered in England?
-router.get('/register', function (req, res) {
-  var backUrl = 'farming-type'
-  var nextUrl = 'register-answer'
-  var completedUrl = 'register-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/register-answer', function (req, res) {
-  var registerEngland = req.session.data['register']
-
-  if (registerEngland === 'yes') {
-    res.redirect('legal-status')
-  } else {
-    res.redirect('register-fail')
-  }
-})
 
 
 // Q: LEGAL STATUS
@@ -534,8 +513,8 @@ router.get('/applying', function (req, res) {
 router.post('/applying-answer', function (req, res) {
   const { applicant } = req.session.data
 
-  if (applicant === 'Farmer') {
-    res.redirect('farmer-details')
+  if (applicant === 'Applicant') {
+    res.redirect('applicant-details')
   }
   if (applicant === 'Contractor') {
     res.redirect('contractor-details')
@@ -563,13 +542,13 @@ router.post('/agent-details-answer', function (req, res) {
 
 if (contractorDetermine === 'Contractor') {
   res.redirect('contractor-details')
-} else { res.redirect('farmer-details') }
+} else { res.redirect('applicant-details') }
 })
 
 
 
-// farmer-details
-router.get('/farmer-details', function (req, res) {
+// applicant-details
+router.get('/applicant-details', function (req, res) {
   var backUrl = req.session.data.applicant === 'Agent' ? 'agent-details' : 'applying'
   var nextUrl = 'check-details'
   var detailsUrl = 'check-details'
@@ -610,7 +589,7 @@ router.get('/check-details', function (req, res) {
 
 router.get('/check-details-back', function (req, res) {
   req.session.data.DETAILS = false
-  res.redirect('farmer-details')
+  res.redirect('applicant-details')
 })
 
 router.get('/agent-farmer-details', function (req, res) {

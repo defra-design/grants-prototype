@@ -23,8 +23,8 @@ What is your business?
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukRadios({
-                  idPrefix: 'business-type',
-                  name: 'busines-type',
+                  idPrefix: 'b-type',
+                  name: 'b-type',
                   fieldset: {
                       legend: {
                           text: 'What is your business?',
@@ -41,7 +41,7 @@ What is your business?
                   hint: {
                   text: "For example, arable or livestock farmer, growing trees, fruit producer, salad grower"
                   },
-                  checked: checked("busines-type", "Agricultural")
+                  checked: checked("b-type", "Agricultural")
                 },
 
                 {
@@ -50,7 +50,7 @@ What is your business?
                   hint: {
                   text: "For example, vegetable washing, mobile livestock slaughter services"
                   },
-                  checked: checked("business-type", "Processing services")
+                  checked: checked("b-type", "Processing services")
                 },
                 {
                   value: "100% business owned",
@@ -58,15 +58,15 @@ What is your business?
                   hint: {
                   text: "For example, cheese processing business owned by a dairy farmer"
                   },
-                  checked: checked("business-type", "100% business owned")
+                  checked: checked("b-type", "100% business owned")
                 },
                 {
                   divider: "or"
                 },
                 {
-                  value: "none",
+                  value: "None",
                   text: "None of the above",
-                  checked: checked("business-type", "none")
+                  checked: checked("b-type", "None")
                 }
               ]
               }) }}
