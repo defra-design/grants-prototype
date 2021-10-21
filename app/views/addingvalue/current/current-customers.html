@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What impact will the project have?
+Who are your current customers?
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,31 +22,40 @@ What impact will the project have?
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukRadios({
-                  idPrefix: 'project-impact',
-                  name: 'project-impact',
+              {{ govukCheckboxes({
+                  idPrefix: 'current-customers',
+                  name: 'current-customers',
                   fieldset: {
                       legend: {
-                          text: 'What impact will the project have?',
-                          isPageHeading: true,
+                          text: 'Who are your current customers?',
+                          isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
                   hint: {
-                  text: "Select one option"
+                  text: "Select all that apply"
                   },
 
                   items: [
                 {
-                  value: "Diversifying into creating added-value products",
-                  text: "Diversifying into creating added-value products",
-                  checked: checked("project-impact", "Diversifying into creating added-value products")
+                  value: "Processors",
+                  text: "Processors",
+                  checked: checked("current-customers", "Processors")
                 },
-
                 {
-                  value: "Increase volume or range of added-value products",
-                  text: "Increase volume or range of added-value products",
-                  checked: checked("project-impact", "Increase volume or range of added-value products")
+                  value: "Wholesalers",
+                  text: "Wholesalers",
+                  checked: checked("current-customers", "Wholesalers")
+                },
+                {
+                  value: "Retailers",
+                  text: "Retailers",
+                  checked: checked("current-customers", "Retailers")
+                },
+                {
+                  value: "Selling direct to consumers",
+                  text: "Selling direct to consumers",
+                  checked: checked("current-customers", "Selling direct to consumers")
                 }
                 ]
               }) }}

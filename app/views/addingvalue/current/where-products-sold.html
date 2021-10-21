@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What impact will the project have?
+Where are the processed products being sold?
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,12 +23,12 @@ What impact will the project have?
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukRadios({
-                  idPrefix: 'project-impact',
-                  name: 'project-impact',
+                  idPrefix: 'where-products-sold',
+                  name: 'where-products-sold',
                   fieldset: {
                       legend: {
-                          text: 'What impact will the project have?',
-                          isPageHeading: true,
+                          text: 'Where are the processed products being sold?',
+                          isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
@@ -38,15 +38,29 @@ What impact will the project have?
 
                   items: [
                 {
-                  value: "Diversifying into creating added-value products",
-                  text: "Diversifying into creating added-value products",
-                  checked: checked("project-impact", "Diversifying into creating added-value products")
+                  value: "Processing point",
+                  text: "Processing point",
+                  checked: checked("where-products-sold", "Processing point")
                 },
-
                 {
-                  value: "Increase volume or range of added-value products",
-                  text: "Increase volume or range of added-value products",
-                  checked: checked("project-impact", "Increase volume or range of added-value products")
+                  value: "Within 10 miles",
+                  text: "Within 10 miles",
+                  checked: checked("where-products-sold", "Within 10 miles")
+                },
+                {
+                  value: "Within 50 miles",
+                  text: "Within 50 miles",
+                  checked: checked("where-products-sold", "Within 50 miles")
+                },
+                {
+                  value: "More than 50 miles",
+                  text: "More than 50 miles",
+                  checked: checked("where-products-sold", "More than 50 miles")
+                },
+                {
+                  value: "Outside the UK ",
+                  text: "Outside the UK ",
+                  checked: checked("where-products-sold", "Outside the UK ")
                 }
                 ]
               }) }}
@@ -64,8 +78,7 @@ What impact will the project have?
           </h2>
           <p class="govuk-body">RPA wants to fund projects that:</p>
           <ul class="govuk-list govuk-list--bullet">
-          <li>improve processing and supply chains</li>
-          <li>grow your business</li>
+          <li>improve the environment</li>
           </ul>
 
 
