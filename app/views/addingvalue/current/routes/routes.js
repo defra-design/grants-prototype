@@ -13,17 +13,17 @@ router.get('/start', function (req, res) {
   }
   // =================================
 
-  var nextUrl = 'farming-type'
+  var nextUrl = 'business-type'
 
   res.render('./' + req.originalUrl, {
     nextUrl
   })
 })
 
-router.get('/farming-type', function (req, res) {
+router.get('/business-type', function (req, res) {
   var backUrl = 'start'
-  var nextUrl = 'farming-type-answer'
-  var completedUrl = 'farming-type-answer-completed'
+  var nextUrl = 'business-type-answer'
+  var completedUrl = 'business-type-answer-completed'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -32,44 +32,20 @@ router.get('/farming-type', function (req, res) {
   })
 })
 
-router.get('/farming-type-answer', function (req, res) {
-  var farmingType = req.session.data['farming-type']
-  var farmingTypeOther = req.session.data['farming-type-other-options']
+router.get('/business-type-answer', function (req, res) {
+  var businessType = req.session.data['business-type']
 
-  if (!!farmingType && farmingType === 'Something else') {
-    res.redirect('project-about-fail')
+  if (businessType === 'none') {
+    res.redirect('business-type-fail')
   }
-  if (!!farmingType && farmingType === 'no' && !!farmingTypeOther) {
-    if (farmingTypeOther === 'something else') {
-      res.redirect('project-about-fail')
-    } else {
-      farmingType = 'no: [' + farmingTypeOther + ']'
-    }
+  else {
+    res.redirect('legal-status')
   }
-
-  req.session.data['summary-farming-type'] = farmingType
-  res.redirect('register')
 })
 
-router.get('/farming-type-answer-completed', function (req, res) {
-  var farmingType = req.session.data['farming-type']
-  var farmingTypeOther = req.session.data['farming-type-other-options']
 
-  if (!!farmingType && farmingType === 'Something else') {
-    res.redirect('project-about-fail')
-  }
 
-  if (!!farmingType && farmingType === 'no' && !!farmingTypeOther) {
-    if (farmingTypeOther === 'something else') {
-      res.redirect('project-about-fail')
-    } else {
-      farmingType = 'no: [' + farmingTypeOther + ']'
-    }
-  }
 
-  req.session.data['summary-farming-type'] = farmingType
-  res.redirect('answers')
-})
 
 
 //: Q: Registered in England?
@@ -99,7 +75,7 @@ router.post('/register-answer', function (req, res) {
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = 'register'
+  var backUrl = 'business-type'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
@@ -316,90 +292,6 @@ router.post('/project-items-answer', function (req, res) {
 
 
 
-// Q: Other robotic equipment (2)
-
-router.get('/other-robotic-equipment', function (req, res) {
-  var backUrl = 'project-items'
-  var nextUrl = 'other-robotic-equipment-answer'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
-router.post('/other-robotic-equipment-answer', function (req, res) {
-  var otherRoboticRadio = req.session.data['other-robotic-radio']
-  var projectItems = req.session.data['robotic-equipment']
-
-
-  if (otherRoboticRadio === 'no'){
-    if (
-      projectItems.includes('Other robotic equipment') &&
-      (typeof(projectItems) === 'string' ||
-      (typeof(projectItems) === 'object' && projectItems.length === 1)
-    )){
-      res.redirect('other-robotic-fail')
-    } else if (
-      projectItems.includes('Other robotic equipment') &&
-      (
-        (typeof(projectItems) === 'object' && projectItems.length > 1)
-      )
-    ){
-      res.redirect('other-robotic-fail2')
-    }
-    //  res.redirect('other-robotic-conditional') //If yes and Other and all items
-                                          //If no and Other and all items
-
- }
-
- else {
-   if (projectItems.includes('Other robotic equipment')){
-     res.redirect('other-robotic-conditional')
-   }
-   //  res.redirect('other-robotic-conditional') //If yes and Other and all items
-                                         //If no and Other and all items
-
-}
-
-  //if (otherRoboticRadio === 'no') { res.redirect('other-robotic-fail') } else { res.redirect('other-robotic-conditional') }
-})
-
-
-
-// Q: Other robotic conditional (3)
-
-router.get('/other-robotic-conditional', function (req, res) {
-  var backUrl = 'other-robotic-equipment'
-  var nextUrl = 'project-cost'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
-// Q: Other robotic conditional (3)
-
-router.get('/other-robotic-fail2', function (req, res) {
-  var backUrl = 'other-robotic-equipment'
-  var nextUrl = 'project-cost'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
 // Q: Project cost (4)
 
 router.get('/project-cost', function (req, res) {
@@ -458,7 +350,7 @@ router.get('/remaining-costs', function (req, res) {
 router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('project-impact') }
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('products-processed') }
 })
 
 router.post('/remaining-costs-answer-completed', function (req, res) {
@@ -468,51 +360,104 @@ router.post('/remaining-costs-answer-completed', function (req, res) {
 })
 
 
-// PROJECT IMPACT (ROBOTICS) and Wider farming condition
-router.get('/project-impact', function (req, res) {
+
+
+
+// Products processed
+router.get('/products-processed', function (req, res) {
   var backUrl = 'remaining-costs'
-  var nextUrl = 'project-impact-answer'
+  var nextUrl = 'adding-value'
   var completedUrl = 'answers'
 
- res.render('./' + req.originalUrl, {
-  backUrl,
-  nextUrl,
-  completedUrl
-})
-})
-
-router.post('/project-impact-answer', function (req, res) {
-  var projectImpact = req.session.data['project-impact']
-
-  if (projectImpact !== 'yes') {res.redirect('project-impact-fail')}
-  const roboticEquipment = req.session.data ['robotic-equipment']
-
-  const widerFarmingOptions = [
-    'Robotic or autonomous harvesting equipment',
-    'Voluntary robotic milking equipment',
-    'Robotic spraying equipment',
-    'Robotic transplanting',
-    'Robotic feeding systems',
-    'Robotic tractor',
-    'Other robotic equipment'
-  ]
-
-  const widerFarmingCond = widerFarmingOptions.some(widerFarmingItem => (
-    roboticEquipment.includes(widerFarmingItem)
-    ))
-
-  if (widerFarmingCond) {
-    res.redirect ('wider-farming')
-  }
-  res.redirect('energy-source')
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
 })
 
+// Adding value
+router.get('/adding-value', function (req, res) {
+  var backUrl = 'products-processed'
+  var nextUrl = 'project-impact'
+  var completedUrl = 'answers'
 
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
 
-// Wider farming
-router.get('/wider-farming', function (req, res) {
+// Project impact
+router.get('/project-impact', function (req, res) {
+  var backUrl = 'adding-value'
+  var nextUrl = 'current-customers'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Current customers
+router.get('/current-customers', function (req, res) {
   var backUrl = 'project-impact'
-  var nextUrl = 'energy-source'
+  var nextUrl = 'future-customers'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Future customers
+router.get('/future-customers', function (req, res) {
+  var backUrl = 'current-customers'
+  var nextUrl = 'buying-from-farmers'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Buying from farmers
+router.get('/buying-from-farmers', function (req, res) {
+  var backUrl = 'future-customers'
+  var nextUrl = 'products-coming-from'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Products coming from
+router.get('/products-coming-from', function (req, res) {
+  var backUrl = 'buying-from-farmers'
+  var nextUrl = 'where-products-sold'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Where products sold
+router.get('/where-products-sold', function (req, res) {
+  var backUrl = 'products-coming-from'
+  var nextUrl = 'environmental-impact'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -523,37 +468,9 @@ router.get('/wider-farming', function (req, res) {
 })
 
 
-// Energy source
-router.get('/energy-source', function (req, res) {
-  var backUrl = 'project-impact'
-  var nextUrl = 'agricultural-sector'
-  var completedUrl = 'answers'
-
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Agricultural sector
-router.get('/agricultural-sector', function (req, res) {
-  var backUrl = 'energy-source'
-  var nextUrl = 'introducing-innovation'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
-// INTRODUCING INNOVATION (ROBOTICS)
-router.get('/introducing-innovation', function (req, res) {
-  var backUrl = 'agricultural-sector'
+// Environmental impact
+router.get('/environmental-impact', function (req, res) {
+  var backUrl = 'where-products-sold'
   var nextUrl = 'answers'
   var completedUrl = 'answers'
 
@@ -582,7 +499,7 @@ router.get('/answers', function (req, res) {
 
 router.get('/answers-back', function (req, res) {
   req.session.data.COMPLETED = false
-  res.redirect('introducing-innovation')
+  res.redirect('environmental-impact')
 })
 
 
