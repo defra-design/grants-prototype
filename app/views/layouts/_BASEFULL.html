@@ -1,4 +1,4 @@
-{% set serviceName = "Apply for a productivity grant" %}
+{% set serviceName = "Tactical grants - prototypes v1 to Private beta" %}
 
 {% extends "layout.html" %}
 
@@ -11,8 +11,14 @@
 {{ govukHeader({    homepageUrl: "/" + folder + "/",    serviceName: serviceName,    serviceUrl: "/",    containerClasses: "govuk-width-container"  }) }} {% endblock %}
 <!-- homepage header will always link to top level of that iteration, for example 'current' -->
 {% block beforeContent %}
-
-{{ govukPhaseBanner({  tag: {    text: "alpha"  },  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'}) }}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
 
 {% endblock %}
 {% block content %}
