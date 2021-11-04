@@ -17,12 +17,13 @@ What impact will the project have?
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukRadios({
+              {{ govukCheckboxes({
                   idPrefix: 'project-impact',
                   name: 'project-impact',
                   fieldset: {
@@ -33,20 +34,30 @@ What impact will the project have?
                       }
                   },
                   hint: {
-                  text: "Select one option"
+                  text: "Select up to 2 options"
                   },
 
                   items: [
                 {
-                  value: "Diversifying into creating added-value products",
-                  text: "Diversifying into creating added-value products",
-                  checked: checked("project-impact", "Diversifying into creating added-value products")
+                  value: "Creating added-value products for the first time",
+                  text: "Creating added-value products for the first time",
+                  checked: checked("project-impact", "Creating added-value products for the first time")
                 },
 
                 {
-                  value: "Increase volume or range of added-value products",
-                  text: "Increase volume or range of added-value products",
-                  checked: checked("project-impact", "Increase volume or range of added-value products")
+                  value: "Increasing volume of added-value products",
+                  text: "Increasing volume of added-value products",
+                  checked: checked("project-impact", "Increasing volume of added-value products")
+                },
+                {
+                  value: "Increasing range of added-value products",
+                  text: "Increasing range of added-value products",
+                  checked: checked("project-impact", "Increasing range of added-value products")
+                },
+                {
+                  value: "Allow selling direct to consumer",
+                  text: "Allow selling direct to consumer",
+                  checked: checked("project-impact", "Allow selling direct to consumer")
                 }
                 ]
               }) }}

@@ -419,7 +419,7 @@ router.get('/current-customers', function (req, res) {
 // Future customers
 router.get('/future-customers', function (req, res) {
   var backUrl = 'current-customers'
-  var nextUrl = 'buying-from-farmers'
+  var nextUrl = 'collaboration'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -429,8 +429,8 @@ router.get('/future-customers', function (req, res) {
   })
 })
 
-// Buying from farmers
-router.get('/buying-from-farmers', function (req, res) {
+// Collaboration (aka. Buying from farmers - was called earlier)
+router.get('/collaboration', function (req, res) {
   var backUrl = 'future-customers'
   var nextUrl = 'products-coming-from'
   var completedUrl = 'answers'
@@ -444,7 +444,7 @@ router.get('/buying-from-farmers', function (req, res) {
 
 // Products coming from
 router.get('/products-coming-from', function (req, res) {
-  var backUrl = 'buying-from-farmers'
+  var backUrl = 'collaboration'
   var nextUrl = 'where-products-sold'
   var completedUrl = 'answers'
 
