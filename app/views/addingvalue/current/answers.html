@@ -113,7 +113,12 @@
 
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Project impact
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['project-impact'] | capitalize}}</li></ul></th>
+            <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+            {% for item in data['project-impact'] %}
+            <li>{{ item | capitalize }}</li>
+            {% endfor %}
+            </ul>
+          </th>
           <td class="govuk-table__cell">Strong</td>
           <td class="govuk-table__cell">
             <p class="govuk-body govuk-!-font-size-16">
@@ -158,15 +163,15 @@
         </tr>
 
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Buying from farmers
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['buying-from-farmers'] | capitalize}}</li></ul></th>
+          <th scope="row" class="govuk-table__header">Collaboration
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['collaboration'] | capitalize}}</li></ul></th>
           <td class="govuk-table__cell">Strong</td>
           <td class="govuk-table__cell">
             <p class="govuk-body govuk-!-font-size-16">
               Improve processing and supply chains<br><br>
             Encourage collaboration and partnerships</p>
           </td>
-          <td class="govuk-table__cell"><a href="buying-from-farmers">Change</td>
+          <td class="govuk-table__cell"><a href="collaboration">Change</td>
         </tr>
 
         <tr class="govuk-table__row">

@@ -56,9 +56,19 @@ Who are your current customers?
                   value: "Selling direct to consumers",
                   text: "Selling direct to consumers",
                   checked: checked("current-customers", "Selling direct to consumers")
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "Not currently selling to customers",
+                  text: "Not currently selling to customers",
+                  checked: checked("current-customers", "Not currently selling to customers"),
+                  behaviour: "exclusive"
                 }
                 ]
               }) }}
+
 
           <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
           {% if data['COMPLETED'] == true %}
