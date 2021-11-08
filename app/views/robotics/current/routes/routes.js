@@ -281,7 +281,6 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 
 
 // Q: Project items (1)
-// Q: Flow 1 to 4
 
 router.get('/project-items', function (req, res) {
   var backUrl = 'tenancy'
@@ -296,6 +295,39 @@ router.get('/project-items', function (req, res) {
 })
 
 router.post('/project-items-answer', function (req, res) {
+  var projectItems1 = req.session.data['robotic-equipment2']
+  const roboticEquipment3 = req.session.data ['robotic-equipment2']
+
+  const otherRoboticEquipmentOptions2 = [
+    'Robotic equipment item'
+  ]
+
+  const otherRoboticEquipmentCond2 = otherRoboticEquipmentOptions2.some(otherRoboticItem22 => (
+    roboticEquipment3.includes(otherRoboticItem22)
+    ))
+
+  if (otherRoboticEquipmentCond2) {
+    res.redirect ('project-items2')
+  }
+  res.redirect('project-cost')
+})
+
+
+// Q: Flow 1 to 4
+
+router.get('/project-items2', function (req, res) {
+  var backUrl = 'project-items'
+  var nextUrl = 'project-items2-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/project-items2-answer', function (req, res) {
   var projectItems = req.session.data['robotic-equipment']
   const roboticEquipment2 = req.session.data ['robotic-equipment']
 
@@ -334,6 +366,7 @@ router.get('/other-robotic-equipment', function (req, res) {
 router.post('/other-robotic-equipment-answer', function (req, res) {
   var otherRoboticRadio = req.session.data['other-robotic-radio']
   var projectItems = req.session.data['robotic-equipment']
+  var projectItemsPage1 = req.session.data['robotic-equipment2']
 
 
   if (otherRoboticRadio === 'no'){
@@ -346,7 +379,7 @@ router.post('/other-robotic-equipment-answer', function (req, res) {
     } else if (
       projectItems.includes('Other robotic equipment') &&
       (
-        (typeof(projectItems) === 'object' && projectItems.length > 1)
+        (typeof(projectItems) === 'object' && projectItems.length > 1) 
       )
     ){
       res.redirect('other-robotic-fail2')
