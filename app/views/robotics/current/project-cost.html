@@ -64,23 +64,26 @@
 
       <div class="app-step-nav-related app-step-nav-related--singular">
         <h2 class="app-step-nav-related__heading">
-          {% for item in data['robotic-equipment'] %}
-          {% if item != 'Other robotic equipment' %}
+
           <span class="app-step-nav-related__pretitle">Items selected</span>
-          {% endif %}
-          {% endfor %}
+
           </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
 
 
           <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
-            {% for item in data['robotic-equipment'] %}
-            {% if item != 'Other robotic equipment' %}
-
+            {% for item in data['robotic-equipment2'] %}
+            {% if item == 'Robotic equipment item' %} {% else %}
               <li>{{ item | capitalize }}</li>
-
-            {% endif %}
+              {% endif %}
             {% endfor %}
+
+            {% for item in data['robotic-equipment'] %}
+              {% if item == 'Other robotic equipment' %} {% else %}
+              <li>{{ item | capitalize }}</li>
+              {% endif %}
+            {% endfor %}
+
 
           </ul>
         </nav>
