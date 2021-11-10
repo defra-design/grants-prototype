@@ -25,7 +25,7 @@ How will you add value to the products?
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukRadios({
+              {{ govukCheckboxes({
                   idPrefix: 'adding-value',
                   name: 'adding-value',
                   fieldset: {
@@ -36,7 +36,7 @@ How will you add value to the products?
                       }
                   },
                   hint: {
-                  text: "Select one option"
+                  text: "Select all that apply"
                   },
 
                   items: [
