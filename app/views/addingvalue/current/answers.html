@@ -101,7 +101,12 @@
 
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Adding value
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['adding-value'] | capitalize}}</li></ul></th>
+            <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+            {% for item in data['adding-value'] %}
+            <li>{{ item | capitalize }}</li>
+            {% endfor %}
+            </ul>
+          </th>
           <td class="govuk-table__cell">Average</td>
           <td class="govuk-table__cell">
             <p class="govuk-body govuk-!-font-size-16">
