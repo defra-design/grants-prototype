@@ -27,7 +27,7 @@ Who will your customers be after the project?
                   name: 'future-customers',
                   fieldset: {
                       legend: {
-                          text: 'Who will your customers be after the project?',
+                          text: 'Who will your new customers be after the project?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
@@ -61,6 +61,15 @@ Who will your customers be after the project?
                   value: "Selling direct to consumers",
                   text: "Selling direct to consumers",
                   checked: checked("future-customers", "Selling direct to consumers")
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "No change",
+                  text: "No change",
+                  checked: checked("future-customers", "No change"),
+                  behaviour: "exclusive"
                 }
                 ]
               }) }}

@@ -32,6 +32,7 @@ router.get('/:scheme/:version/*', function (req, res, next) {
 
 // Start folder specific route
 router.use('/addingvalue/current', require('./views/addingvalue/current/routes/routes'))
+router.use('/addingvalue/v2', require('./views/addingvalue/v2/routes/routes'))
 router.use('/addingvalue/v1', require('./views/addingvalue/v1/routes/routes'))
 router.use('/robotics/current', require('./views/robotics/current/routes/routes'))
 router.use('/robotics/v3', require('./views/robotics/v3/routes/routes'))
