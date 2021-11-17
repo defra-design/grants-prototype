@@ -257,12 +257,11 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 
 
 
-// Q: Project items (1)
-// Q: Flow 1 to 4
+// Q: Project items
 
 router.get('/project-items', function (req, res) {
   var backUrl = 'tenancy'
-  var nextUrl = 'project-items-answer'
+  var nextUrl = 'project-cost'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -272,28 +271,10 @@ router.get('/project-items', function (req, res) {
   })
 })
 
-router.post('/project-items-answer', function (req, res) {
-  var projectItems = req.session.data['robotic-equipment']
-  const roboticEquipment2 = req.session.data ['robotic-equipment']
-
-  const otherRoboticEquipmentOptions = [
-    'Other robotic equipment'
-  ]
-
-  const otherRoboticEquipmentCond = otherRoboticEquipmentOptions.some(otherRoboticItem => (
-    roboticEquipment2.includes(otherRoboticItem)
-    ))
-
-  if (otherRoboticEquipmentCond) {
-    res.redirect ('other-robotic-equipment')
-  }
-  res.redirect('project-cost')
-})
 
 
 
-
-// Q: Project cost (4)
+// Q: Project cost
 
 router.get('/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
@@ -393,19 +374,6 @@ router.get('/adding-value', function (req, res) {
 // Project impact
 router.get('/project-impact', function (req, res) {
   var backUrl = 'adding-value'
-  var nextUrl = 'current-customers'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Current customers
-router.get('/current-customers', function (req, res) {
-  var backUrl = 'project-impact'
   var nextUrl = 'future-customers'
   var completedUrl = 'answers'
 
@@ -416,9 +384,10 @@ router.get('/current-customers', function (req, res) {
   })
 })
 
+
 // Future customers
 router.get('/future-customers', function (req, res) {
-  var backUrl = 'current-customers'
+  var backUrl = 'adding-value'
   var nextUrl = 'collaboration'
   var completedUrl = 'answers'
 

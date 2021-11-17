@@ -22,7 +22,8 @@ const serviceName = {
   },
   addingvalue: {
     current: 'Check if you can apply for a Farming Transformation Fund Adding Value grant',
-         v1: 'Check if you can apply for a Farming Transformation Fund Adding Value grant'
+         v1: 'Check if you can apply for a Farming Transformation Fund Adding Value grant',
+         v2: 'Check if you can apply for a Farming Transformation Fund Adding Value grant'
   }
 }
 
