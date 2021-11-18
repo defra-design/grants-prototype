@@ -11,9 +11,15 @@
     text: "prototype",
     classes: "govuk-tag--pink"
     },
-      html: 'This is not a full service. It is not production code and you might experience problems  .'
+      html: 'This is not a full service. It is not production code and you might experience problems .'
   }) }}
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+
+  {% if data['who-are-you'] === "farmer" %}
+  <a class="govuk-back-link" href="who-are-you">Back</a>
+  {% else %}
+  <a class="govuk-back-link" href="register">Back</a>
+  {% endif %}
+
 {% endblock %}
 
 {% block content %}

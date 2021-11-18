@@ -22,7 +22,7 @@ router.get('/start', function (req, res) {
 
 router.get('/farming-type', function (req, res) {
   var backUrl = 'start'
-  var nextUrl = 'farming-type-answer'
+  var nextUrl = 'who-are-you'
   var completedUrl = 'farming-type-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -32,49 +32,39 @@ router.get('/farming-type', function (req, res) {
   })
 })
 
-router.get('/farming-type-answer', function (req, res) {
-  var farmingType = req.session.data['farming-type']
-  var farmingTypeOther = req.session.data['farming-type-other-options']
 
-  if (!!farmingType && farmingType === 'Something else') {
-    res.redirect('project-about-fail')
-  }
-  if (!!farmingType && farmingType === 'no' && !!farmingTypeOther) {
-    if (farmingTypeOther === 'something else') {
-      res.redirect('project-about-fail')
-    } else {
-      farmingType = 'no: [' + farmingTypeOther + ']'
-    }
-  }
+//: Q: Who are you
 
-  req.session.data['summary-farming-type'] = farmingType
-  res.redirect('register')
+router.get('/who-are-you', function (req, res) {
+  var backUrl = 'farming-type'
+  var nextUrl = 'who-are-you-answer'
+  var completedUrl = 'farming-type-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
 })
 
-router.get('/farming-type-answer-completed', function (req, res) {
-  var farmingType = req.session.data['farming-type']
-  var farmingTypeOther = req.session.data['farming-type-other-options']
+router.post('/who-are-you-answer', function (req, res) {
+  var whoisthisUser = req.session.data['who-are-you']
 
-  if (!!farmingType && farmingType === 'Something else') {
-    res.redirect('project-about-fail')
+  if (whoisthisUser === 'farmer') {
+    res.redirect('legal-status')
+  } else {
+    res.redirect('register')
   }
-
-  if (!!farmingType && farmingType === 'no' && !!farmingTypeOther) {
-    if (farmingTypeOther === 'something else') {
-      res.redirect('project-about-fail')
-    } else {
-      farmingType = 'no: [' + farmingTypeOther + ']'
-    }
-  }
-
-  req.session.data['summary-farming-type'] = farmingType
-  res.redirect('answers')
 })
+
+
+
+
 
 
 //: Q: Registered in England?
 router.get('/register', function (req, res) {
-  var backUrl = 'farming-type'
+  var backUrl = 'who-are-you'
   var nextUrl = 'register-answer'
   var completedUrl = 'register-answer-completed'
 
@@ -99,7 +89,7 @@ router.post('/register-answer', function (req, res) {
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = 'register'
+  var backUrl = "register"
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
@@ -110,10 +100,19 @@ router.get('/legal-status', function (req, res) {
   })
 })
 
+
+
 router.post('/legal-status-answer', function (req, res) {
   var legalStatus = req.session.data['legal-status']
+  var identityUser = req.session.data['who-are-you']
 
-  if (legalStatus === 'None') { res.redirect('legal-status-fail') } else { res.redirect('country') }
+  if (legalStatus === 'None') { res.redirect('legal-status-fail') }
+  else if (identityUser === 'contractor') {
+    { res.redirect('planning-permission') }
+  }
+   else {
+  res.redirect('country')}
+
 })
 
 router.post('/legal-status-answer-completed', function (req, res) {
@@ -121,6 +120,21 @@ router.post('/legal-status-answer-completed', function (req, res) {
 
   if (legalStatus === 'None') { res.redirect('legal-status-fail') } else { res.redirect('answers') }
 })
+
+
+// Model to build if, else if and else structure.
+// if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
+//  backUrl = 'planning-permission'
+//  } else if (planningPermission === 'maybe') {
+//   backUrl = 'planning-required-condition'
+//  } else {
+//   backUrl = 'planning-permission-fail'
+//  }
+
+
+
+
+
 
 // Q : Country
 
@@ -219,11 +233,13 @@ router.get('/project-start', function (req, res) {
   var nextUrl = 'project-start-answer'
   var completedUrl = 'project-start-answer-completed'
 
-  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
+
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured'){
     backUrl = 'planning-permission'
   } else if (planningPermission === 'maybe') {
     backUrl = 'planning-required-condition'
-  } else {
+  }
+  else {
     backUrl = 'planning-permission-fail'
   }
 
@@ -234,10 +250,16 @@ router.get('/project-start', function (req, res) {
   })
 })
 
+
 router.post('/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
+  var identityUser = req.session.data['who-are-you']
 
-  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
+  if (projectStart === 'project work')
+  { res.redirect('project-start-fail') }
+ else if (identityUser === 'contractor')
+  { res.redirect('project-items') }
+  else { res.redirect('tenancy') }
 })
 
 router.post('/project-start-answer-completed', function (req, res) {
@@ -379,7 +401,7 @@ router.post('/other-robotic-equipment-answer', function (req, res) {
     } else if (
       projectItems.includes('Other robotic equipment') &&
       (
-        (typeof(projectItems) === 'object' && projectItems.length > 1) 
+        (typeof(projectItems) === 'object' && projectItems.length > 1)
       )
     ){
       res.redirect('other-robotic-fail2')
@@ -648,17 +670,40 @@ router.get('/applying', function (req, res) {
 })
 
 router.post('/applying-answer', function (req, res) {
-  const { applicant } = req.session.data
 
-  if (applicant === 'Farmer') {
+  var applicantUser = req.session.data['applicant']
+  var identityUser = req.session.data['who-are-you']
+
+  if (identityUser === 'farmer' && applicantUser === 'Applicant') {
     res.redirect('farmer-details')
   }
-  if (applicant === 'Contractor') {
+
+  if (identityUser === 'contractor' && applicantUser === 'Applicant') {
     res.redirect('contractor-details')
   }
 
+
+  else
+
   res.redirect('agent-details')
 })
+
+
+
+// Model to build if, else if and else structure.
+// if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
+//  backUrl = 'planning-permission'
+//  } else if (planningPermission === 'maybe') {
+//   backUrl = 'planning-required-condition'
+//  } else {
+//   backUrl = 'planning-permission-fail'
+//  }
+
+
+
+
+
+
 
 // agent-details
 
@@ -675,9 +720,9 @@ router.get('/agent-details', function (req, res) {
 })
 
 router.post('/agent-details-answer', function (req, res) {
-  var contractorDetermine = req.session.data.tenancy
+  var identityUser = req.session.data['who-are-you']
 
-if (contractorDetermine === 'Contractor') {
+if (identityUser === 'contractor') {
   res.redirect('contractor-details')
 } else { res.redirect('farmer-details') }
 })
