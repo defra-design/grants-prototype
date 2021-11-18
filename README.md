@@ -1,2 +1,0 @@
-# grants-prototype
-Grants prototype

@@ -30,19 +30,14 @@
               </h1>
             </legend>
             <br><br>
-            <div class="govuk-radios">
+            <div class="govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="applicant" name="applicant" type="radio" value="Farmer" {{ checked("applicant", "Farmer") }}>
+                <input class="govuk-radios__input" id="applicant" name="applicant" type="radio" value="Applicant" {{ checked("applicant", "Applicant") }}>
                 <label class="govuk-label govuk-radios__label" for="applicant">
-                  Farmer
+            Applicant
                 </label>
               </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="applicant-1" name="applicant" type="radio" value="Contractor" {{ checked("applicant", "Contractor") }}>
-                <label class="govuk-label govuk-radios__label" for="applicant-1">
-                  Contractor
-                </label>
-              </div>
+
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="applicant-2" name="applicant" type="radio" value="Agent" {{ checked("applicant", "Agent") }}>
                 <label class="govuk-label govuk-radios__label" for="applicant-2">
@@ -52,7 +47,7 @@
             </div>
           </fieldset>
         </div>
-        <br>
+
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
         </button>
