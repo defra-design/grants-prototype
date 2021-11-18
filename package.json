@@ -40,7 +40,7 @@
     "keypather": "^3.0.0",
     "marked": "^0.8.2",
     "notifications-node-client": "^4.7.2",
-    "nunjucks": "^3.2.1",
+    "nunjucks": "^3.2.3",
     "portscanner": "^2.1.1",
     "require-dir": "^1.0.0",
     "sync-request": "^6.0.0",
