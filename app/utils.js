@@ -18,7 +18,8 @@ const serviceName = {
     current: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
          v1: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
          v2: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
-         v3: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant'
+         v3: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
+         v4: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant'
   },
   addingvalue: {
     current: 'Check if you can apply for a Farming Transformation Fund Adding Value grant',

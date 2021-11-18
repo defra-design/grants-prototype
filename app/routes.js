@@ -34,13 +34,17 @@ router.get('/:scheme/:version/*', function (req, res, next) {
 router.use('/addingvalue/current', require('./views/addingvalue/current/routes/routes'))
 router.use('/addingvalue/v2', require('./views/addingvalue/v2/routes/routes'))
 router.use('/addingvalue/v1', require('./views/addingvalue/v1/routes/routes'))
+
 router.use('/robotics/current', require('./views/robotics/current/routes/routes'))
+router.use('/robotics/v4', require('./views/robotics/v4/routes/routes'))
 router.use('/robotics/v3', require('./views/robotics/v3/routes/routes'))
 router.use('/robotics/v2', require('./views/robotics/v2/routes/routes'))
 router.use('/robotics/v1', require('./views/robotics/v1/routes/routes'))
+
 router.use('/slurry/current', require('./views/slurry/current/routes/routes'))
 router.use('/slurry/v1', require('./views/slurry/v2/routes/routes'))
 router.use('/slurry/v1', require('./views/slurry/v1/routes/routes'))
+
 router.use('/water/current', require('./views/water/current/routes/routes'))
 router.use('/v1', require('./views/water/v1/routes/routes'))
 router.use('/water/v2', require('./views/water/v2/routes/routes'))
