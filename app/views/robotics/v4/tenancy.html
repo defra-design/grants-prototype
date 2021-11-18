@@ -27,7 +27,7 @@
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukRadios({
-                  classes: "govuk-radios--inline",
+                  classes: "govuk-radios",
                   idPrefix: 'tenancy',
                   name: 'tenancy',
                   fieldset: {
@@ -51,6 +51,11 @@
                   value: "No",
                   text: "No",
                   checked: checked("tenancy", "No")
+                },
+                {
+                  value: "Contractor",
+                  text: "Not applicable – I’m a contractor ",
+                  checked: checked("tenancy", "Contractor")
                 }
               ]
               }) }}

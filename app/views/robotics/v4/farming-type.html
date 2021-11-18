@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Are your land or premises rented, leased or tenanted?
+What is your project about?
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,18 +18,16 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-<h1 class="govuk-heading-l">Is the planned project on land the business owns?</h1>
+<h1 class="govuk-heading-l">What would you like funding for?</h1>
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukRadios({
-                  classes: "govuk-radios--inline",
-                  idPrefix: 'tenancy',
-                  name: 'tenancy',
+                  idPrefix: 'farming-type',
+                  name: 'farming-type',
                   fieldset: {
                       legend: {
                           text: '',
@@ -38,42 +36,28 @@
                       }
                   },
                   hint: {
-                    text: "The site where the work will happen  "
+                    html: "If you want to apply for both a slurry project and a robotics project, you must submit 2 separate applications. The maximum grant amount for both projects together is £500,000.<br><br>Select one option"
                 },
 
                   items: [
                 {
-                  value: "Yes",
-                  text: "Yes",
-                  checked: checked("tenancy", "Yes")
+                  value: "Robotics and innovation",
+                  text: "Robotics and innovation",
+                  checked: checked("farming-type", "Robotics and innovation")
                 },
                 {
-                  value: "No",
-                  text: "No",
-                  checked: checked("tenancy", "No")
+                  value: "Slurry acidification",
+                  text: "Slurry acidification",
+                  checked: checked("farming-type", "Slurry acidification")
                 }
               ]
               }) }}
 
-          <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
-
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
 
       </form>
     </div>
-
-
-      <div class="govuk-grid-column-one-third">
-
-        <div class="app-step-nav-related app-step-nav-related--singular">
-          <h2 class="app-step-nav-related__heading">
-            <span class="app-step-nav-related__pretitle">Eligibility</span>
-            </h2>
-            <p>The land must be owned or have a tenancy in place until 2027 before starting the project.</p>
-            <a href="#">
-            </a>
-
-        </div>
-      </div>
+  </div>
 
 {% endblock %}
