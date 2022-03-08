@@ -4,131 +4,64 @@
 
 {% block service %}
 
+<!--
+<span class="govuk-caption-xl">Prototypes</span>
+-->
+<title> Slurry prototype admin</title>
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-l">
-      Slurry
-    </h1>
-  </div>
+    <div class="govuk-grid-column-two-thirds">
+
+<span class="govuk-caption-xl">Productivity grant</span>
+<h1 class="govuk-heading-xl">
+  Slurry prototype admin
+</h1>
 
 
-  <div class="govuk-grid-column-two-thirds">
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">User research</h2>
 
-    <p>The Farming Investment Fund will provide support for eligible applicants to invest in their businesses to improve productivity, profitability and enhance environmental sustainability.</p>
+        <p class='govuk-list app-list--definition'>
+        <a href='/slurry/current/guidance' class="govuk-link--no-visited-state">Guidance: Farming Transformation Fund productivity grant</a></p>
+        <p class='govuk-list app-list--definition'>
+        <a href='/slurry/current/start' class="govuk-link--no-visited-state">Start page</a><br>
+        Specialist start page, hosted on GOV.UK</p>
 
-    <h2 class="govuk-heading-m">
-      Version 3
-    </h2>
-
-    <h3 class="govuk-heading-s">Changes</h3>
-    <p>We have made the following changes marked as <strong class="govuk-tag govuk-tag--orange">Important issue</strong>:
-      <ul class="govuk-list govuk-list--number">
-        <li><a href="/slurry/current/projects-impact" class="govuk-link--no-visited-state">Project impact page</a></li>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>‘Introduce acidification’ to ‘Introduce acidification for the first time’​</li>
-            <li> ‘Increase acidification’ to ‘Add additional acidification installations’​​</li>
-          </ul>
-
-          <li><a href="/slurry/current/guidance" class="govuk-link--no-visited-state">Guidance page</a></li>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>The grant summary text was changed ​</li>
-              <li> The hyperlink to get to the ‘Start Page’ was embedded in a grey box to help users navigate easily​​​</li>
-            </ul>
-
-          <li><a href="#" class="govuk-link--no-visited-state">GDS Content changes</a></li>
-          Some content changes have been applied suggested by GDS.
-          <li><a href="#" class="govuk-link--no-visited-state">Contractor changes</a></li>
-                Redesigned the user-flow to accomodate contractors
-
-      </ul>
+        <p class='govuk-list app-list--definition'>
+        <a href='/slurry/current/email' class="govuk-link--no-visited-state">Confirmation email</a><br>
+          User will receive a confirmation email, with their answers. Service is routed by GOV Notify.</p>
+      </div>
 
 
-
-
-
-
-    <h3 class="govuk-heading-s">Research notes</h3>
-    <p>We've now redesigned the journey to suit contractors. Last updated on 15 October 2021.</p>
-
-    <p><a href="https://capgemini.sharepoint.com/:p:/r/sites/FutureFarming/_layouts/15/Doc.aspx?sourcedoc=%7BC1C3BCD1-628B-4688-886C-D373C4B0C51E%7D&file=Slurry%20Usability%20Testing%202021.pptx&action=edit&mobileredirect=true&wdPreviousSession=adc45c79-b0d8-415b-95ad-b57dafcf5e2c&wdOrigin=TEAMS-ELECTRON.teams.undefined" class="govuk-link--no-visited-state" target="new">View user research report (opens in new tab)</a>.<p>
-
-    {{ govukButton({
-      text: 'View prototype',
-      href: '/slurry/current/guidance'
-    }) }}
-
-
-
-
-
-
-    {% set v1 %}
-    <h3 class="govuk-heading-s">Changes</h3>
-    <p>We have made the following changes:
-      <ul class="govuk-list govuk-list--number">
-      <li><a href="/slurry/v1/slurry-to-be-treated" class="govuk-link--no-visited-state">Current and future treatment volume page</a></li>
-      Hint text volume changed to 1500
-    </p>
-      <p>
-        <p class="govuk-list govuk-list--number">
-      <li><a href="/slurry/v1/associated-works" class="govuk-link--no-visited-state">Project items page</a></li>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Acidification infrastructure and slurry pipework merged as one option with hint text​</li>
-          <li>  Hint text for ‘Mild acidification equipment’ was also changed to ‘You must buy...’​</li>
-        </ul>
-        <ul class="govuk-list govuk-list--bullet">
-      <li><a href="/slurry/current/low-emission" class="govuk-link--no-visited-state">Slurry application page</a></li>
-      New question added in: 'Will you be using low-emission precision application equipment?'
-      </ul>
-    </p>
-
-
-
-
-      <h3 class="govuk-heading-s">Research notes</h3>
-      <p>Slurry baseline design, tested in our 1st round of usability testing between 30 Jun 2021 - 6 Jul 2021.</p>
-
-
-      {{ govukButton({
-        text: 'View prototype',
-        href: '/slurry/v1/guidance'
-      }) }}
-    {% endset %}
-
-    {{ govukAccordion({
-      items: [
-        {
-          heading: { text: 'Version 1' },
-          content: { html: v1 }
-        }
-      ]
-    }) }}
-
-
-  </div>
-  <div class="govuk-grid-column-one-third">
-
-    <div class="app-step-nav-related app-step-nav-related--singular">
-      <h2 class="app-step-nav-related__heading">
-        <span class="app-step-nav-related__pretitle">Other resources</span>
-        </h2>
-
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">Design history</h2>
           <p class='govuk-list app-list--definition'>
-            <a href='https://app.mural.co/t/dcxuk3892/m/ftfgrants4310/1626110810024/185f9759f0ba83b4513012d6b47958ecad7c2fe4?sender=uac8e5181797d9857544e5168' class="govuk-link--no-visited-state" target="new">High fidelity screenflow on Mural</a><br>
-                 Last updated on 18 August 2021.<br></p>
+                  <a href='slurry/current/guidance' class="govuk-link--no-visited-state"><strong>Version 3 (current)</strong></a><br>
 
-          <p class='govuk-list app-list--definition'>
-            <a href='https://www.sketch.com/s/bc04f07a-1c5d-4173-8e97-941118e01749' class="govuk-link--no-visited-state" target="new">Sketch wireframes</a><br>
-              Up to date designs.</p>
+                    <p class='govuk-list app-list--definition'>We've redesigned the journey to suit contractors. This version does not include 'Who are you' question yet. However the concept was tested with contractors in the 4rd round of testing for Robotics. <br>
+                      <span class="govuk-body govuk-!-font-size-14"># Last updated on 15 October 2021</span></p>
 
-          <p class='govuk-list app-list--definition'>
-            <a href='/slurry/current/email' class="govuk-link--no-visited-state">Confirmation email</a><br>
-                Confirmation email (GOV Notify).</p>
+                      <p class='govuk-heading-m'>Previous versions</p>
+                        <p class='govuk-list app-list--definition'>
+                          <a href='/slurry/v2/guidance' class="govuk-link--no-visited-state">Version 2</a><br>
+                            Additional changes added to Slurry journey.</p>
 
-          <p class='govuk-list app-list--definition'>
-            <a href='/slurry/current/start' class="govuk-link--no-visited-state">Start page</a><br>
-                    Specialist start page (RPA).</p>
-    </div>
-</div>
 
+                    <p class='govuk-list app-list--definition'>
+                      <a href='/slurry/v1/guidance' class="govuk-link--no-visited-state">Version 1</a><br>
+                        Slurry baseline design, tested in our 1st round of usability testing between 30 Jun 2021 - 6 Jul 2021.</p>
+      </div>
+
+
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">Journeys and wireframes</h2>
+            <p class='govuk-heading-m'>Workflows, screenflows and user journeys</p>
+              <p class='govuk-list app-list--definition'>
+                <a href='https://app.mural.co/t/dcx6016/m/ftfgrants4310/1626110810024/185f9759f0ba83b4513012d6b47958ecad7c2fe4?sender=uac8e5181797d9857544e5168' class="govuk-link--no-visited-state" target="new">High fidelity screenflow on Mural (opens in new tab)</a><br>
+                    <img src="/public/images/mural-icon.png" alt="Mural icon" width="17" height="17"> Mural last updated on 1 August 2021.<br></p>
+
+            <p class='govuk-heading-m'>Wireframes</p>
+              <p class='govuk-list app-list--definition'>
+                <a href='https://www.sketch.com/s/bc04f07a-1c5d-4173-8e97-941118e01749' class="govuk-link--no-visited-state" target="new">Sketch wireframes (opens in new tab)</a><br>
+                  <img src="/public/images/sketch-icon.png" alt="Sketch icon" width="17" height="17">Sketch is up to date.</p>
+      </div>
 {% endblock %}
