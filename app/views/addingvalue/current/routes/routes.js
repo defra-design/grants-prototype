@@ -401,32 +401,6 @@ router.get('/future-customers', function (req, res) {
 // Collaboration (aka. Buying from farmers - was called earlier)
 router.get('/collaboration', function (req, res) {
   var backUrl = 'future-customers'
-  var nextUrl = 'products-coming-from'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Products coming from
-router.get('/products-coming-from', function (req, res) {
-  var backUrl = 'collaboration'
-  var nextUrl = 'where-products-sold'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Where products sold
-router.get('/where-products-sold', function (req, res) {
-  var backUrl = 'products-coming-from'
   var nextUrl = 'environmental-impact'
   var completedUrl = 'answers'
 
@@ -437,10 +411,35 @@ router.get('/where-products-sold', function (req, res) {
   })
 })
 
+// Products coming from - this is removed from the flow
+//router.get('/products-coming-from', function (req, res) {
+//  var backUrl = 'collaboration'
+//  var nextUrl = 'environmental-impact'
+//  var completedUrl = 'answers'
+
+  //res.render('./' + req.originalUrl, {
+  //  backUrl,
+  //  nextUrl,
+  //  completedUrl
+  //})
+//})
+
+// Where products sold - this is removed from the flow
+//router.get('/where-products-sold', function (req, res) {
+//  var backUrl = 'products-coming-from'
+//  var nextUrl = 'environmental-impact'
+//  var completedUrl = 'answers'
+//  res.render('./' + req.originalUrl, {
+//    backUrl,
+//    nextUrl,
+//    completedUrl
+//  })
+//})
+
 
 // Environmental impact
 router.get('/environmental-impact', function (req, res) {
-  var backUrl = 'where-products-sold'
+  var backUrl = 'collaboration'
   var nextUrl = 'answers'
   var completedUrl = 'answers'
 
