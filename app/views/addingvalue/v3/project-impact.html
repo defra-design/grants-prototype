@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Who will your customers be after the project?
+What impact will the project have?
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,59 +17,47 @@ Who will your customers be after the project?
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukCheckboxes({
-                  idPrefix: 'future-customers',
-                  name: 'future-customers',
+                  idPrefix: 'project-impact',
+                  name: 'project-impact',
                   fieldset: {
                       legend: {
-                          text: 'Who will your new customers be after the project?',
-                          isPageHeading: yes,
+                          text: 'What impact will the project have?',
+                          isPageHeading: true,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
                   hint: {
-                  html: "For example, you will now sell directly to retailers.<br><br>Select all that apply"
+                  text: "Select all that apply"
                   },
 
                   items: [
                 {
-                  value: "Producers or growers2",
-                  text: "Producers or growers",
-                  checked: checked("current-customers", "Producers or growers2")
+                  value: "Creating added-value products for the first time",
+                  text: "Creating added-value products for the first time",
+                  checked: checked("project-impact", "Creating added-value products for the first time")
+                },
+
+                {
+                  value: "Increasing volume of added-value products",
+                  text: "Increasing volume of added-value products",
+                  checked: checked("project-impact", "Increasing volume of added-value products")
                 },
                 {
-                  value: "Processors",
-                  text: "Processors",
-                  checked: checked("future-customers", "Processors")
+                  value: "Increasing range of added-value products",
+                  text: "Increasing range of added-value products",
+                  checked: checked("project-impact", "Increasing range of added-value products")
                 },
                 {
-                  value: "Wholesalers",
-                  text: "Wholesalers",
-                  checked: checked("future-customers", "Wholesalers")
-                },
-                {
-                  value: "Retailers",
-                  text: "Retailers",
-                  checked: checked("future-customers", "Retailers")
-                },
-                {
-                  value: "Selling direct to consumers",
-                  text: "Selling direct to consumers",
-                  checked: checked("future-customers", "Selling direct to consumers")
-                },
-                {
-                  divider: "or"
-                },
-                {
-                  value: "No change",
-                  text: "No change",
-                  checked: checked("future-customers", "No change"),
-                  behaviour: "exclusive"
+                  value: "Allow selling direct to consumer",
+                  text: "Allow selling direct to consumer",
+                  checked: checked("project-impact", "Allow selling direct to consumer")
                 }
                 ]
               }) }}

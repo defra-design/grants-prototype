@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Who will your customers be after the project?
+Who are your current customers?
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,56 +23,57 @@ Who will your customers be after the project?
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukCheckboxes({
-                  idPrefix: 'future-customers',
-                  name: 'future-customers',
+                  idPrefix: 'current-customers',
+                  name: 'current-customers',
                   fieldset: {
                       legend: {
-                          text: 'Who will your new customers be after the project?',
+                          text: 'Who are your current customers?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
                   hint: {
-                  html: "For example, you will now sell directly to retailers.<br><br>Select all that apply"
+                  text: "Select all that apply"
                   },
 
                   items: [
                 {
-                  value: "Producers or growers2",
+                  value: "Producers or growers",
                   text: "Producers or growers",
-                  checked: checked("current-customers", "Producers or growers2")
+                  checked: checked("current-customers", "Producers or growers")
                 },
                 {
                   value: "Processors",
                   text: "Processors",
-                  checked: checked("future-customers", "Processors")
+                  checked: checked("current-customers", "Processors")
                 },
                 {
                   value: "Wholesalers",
                   text: "Wholesalers",
-                  checked: checked("future-customers", "Wholesalers")
+                  checked: checked("current-customers", "Wholesalers")
                 },
                 {
                   value: "Retailers",
                   text: "Retailers",
-                  checked: checked("future-customers", "Retailers")
+                  checked: checked("current-customers", "Retailers")
                 },
                 {
                   value: "Selling direct to consumers",
                   text: "Selling direct to consumers",
-                  checked: checked("future-customers", "Selling direct to consumers")
+                  checked: checked("current-customers", "Selling direct to consumers")
                 },
                 {
                   divider: "or"
                 },
                 {
-                  value: "No change",
-                  text: "No change",
-                  checked: checked("future-customers", "No change"),
+                  value: "Not currently selling to customers",
+                  text: "Not currently selling to customers",
+                  checked: checked("current-customers", "Not currently selling to customers"),
                   behaviour: "exclusive"
                 }
                 ]
               }) }}
+
 
           <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
           {% if data['COMPLETED'] == true %}

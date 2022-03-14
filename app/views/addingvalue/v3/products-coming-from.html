@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Who will your customers be after the project?
+Where are the primary products coming from?
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,54 +22,45 @@ Who will your customers be after the project?
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukCheckboxes({
-                  idPrefix: 'future-customers',
-                  name: 'future-customers',
+              {{ govukRadios({
+                  idPrefix: 'products-coming-from',
+                  name: 'products-coming-from',
                   fieldset: {
                       legend: {
-                          text: 'Who will your new customers be after the project?',
+                          text: 'Where are the primary products coming from?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
                   hint: {
-                  html: "For example, you will now sell directly to retailers.<br><br>Select all that apply"
+                  html: "How far the majority of the raw materials will travel to get to your <br>project site <br><br>Select one option"
                   },
 
                   items: [
                 {
-                  value: "Producers or growers2",
-                  text: "Producers or growers",
-                  checked: checked("current-customers", "Producers or growers2")
+                  value: "Processing point",
+                  text: "Within 1 mile",
+                  checked: checked("products-coming-from", "Processing point")
                 },
                 {
-                  value: "Processors",
-                  text: "Processors",
-                  checked: checked("future-customers", "Processors")
+                  value: "Within 10 miles",
+                  text: "Within 10 miles",
+                  checked: checked("products-coming-from", "Within 10 miles")
                 },
                 {
-                  value: "Wholesalers",
-                  text: "Wholesalers",
-                  checked: checked("future-customers", "Wholesalers")
+                  value: "Within 50 miles",
+                  text: "Within 50 miles",
+                  checked: checked("products-coming-from", "Within 50 miles")
                 },
                 {
-                  value: "Retailers",
-                  text: "Retailers",
-                  checked: checked("future-customers", "Retailers")
+                  value: "More than 50 miles",
+                  text: "More than 50 miles",
+                  checked: checked("products-coming-from", "More than 50 miles")
                 },
                 {
-                  value: "Selling direct to consumers",
-                  text: "Selling direct to consumers",
-                  checked: checked("future-customers", "Selling direct to consumers")
-                },
-                {
-                  divider: "or"
-                },
-                {
-                  value: "No change",
-                  text: "No change",
-                  checked: checked("future-customers", "No change"),
-                  behaviour: "exclusive"
+                  value: "Outside the UK",
+                  text: "From outside the UK",
+                  checked: checked("products-coming-from", "Outside the UK")
                 }
                 ]
               }) }}
@@ -91,8 +82,7 @@ Who will your customers be after the project?
           </h2>
           <p class="govuk-body">RPA wants to fund projects that:</p>
           <ul class="govuk-list govuk-list--bullet">
-          <li>improve processing and supply chains</li>
-          <li>grow your business</li>
+          <li>improve the environment</li>
           </ul>
 
 
