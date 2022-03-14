@@ -401,7 +401,7 @@ router.get('/future-customers', function (req, res) {
 // Collaboration (aka. Buying from farmers - was called earlier)
 router.get('/collaboration', function (req, res) {
   var backUrl = 'future-customers'
-  var nextUrl = 'environmental-impact'
+  var nextUrl = 'products-coming-from'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -440,7 +440,7 @@ router.get('/where-products-sold', function (req, res) {
 
 // Environmental impact
 router.get('/environmental-impact', function (req, res) {
-  var backUrl = 'collaboration'
+  var backUrl = 'where-products-sold'
   var nextUrl = 'answers'
   var completedUrl = 'answers'
 

@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What type of products are being processed?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'products-processed',
+                  name: 'products-processed',
+                  fieldset: {
+                      legend: {
+                          text: 'What type of products are being processed?',
+                          isPageHeading: true,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+
+                  hint: {
+                    text: 'Select one option'
+                  },
+
+
+                  items: [
+                {
+                  value: "Arable crops",
+                  text: "Arable products",
+                  hint: {
+                  text: "For example, crushing of oilseeds, rolling or flaking of grains as food ingredients"
+                  },
+                  checked: checked("products-processed", "Arable crops")
+                },
+
+                {
+                  value: "Horticultural crops",
+                  text: "Horticultural products",
+                  hint: {
+                  text: "For example, grading and packing of soft fruit, washing and packing vegetables, packing salad crops"
+                  },
+                  checked: checked("products-processed", "Horticultural crops")
+                },
+                {
+                  value: "Dairy or meat produce",
+                  text: "Dairy or meat products",
+                  hint: {
+                  text: "For example, processing and bottling milk or slaughtering, cutting, processing and packing meat"
+                  },
+                  checked: checked("products-processed", "Dairy or meat produce")
+                },
+                {
+                  value: "Forestry products",
+                  text: "Forestry products",
+                  hint: {
+                  text: "For example, wood from harvested trees before industrial processing"
+                  },
+                  checked: checked("products-processed", "Forestry products")
+                },
+                {
+                  value: "Fodder crops",
+                  text: "Fodder products",
+                  hint: {
+                  text: "For example, processing and repacking hay and straw for specialist markets or retail sale"
+                  },
+                  checked: checked("products-processed", "Fodder crops")
+                },
+                {
+                  value: "Non-edible crops",
+                  text: "Non-edible products",
+                  hint: {
+                  text: "For example, processing and packing ornamental flowers and bulbs after harvesting"
+                  },
+                  checked: checked("products-processed", "Non-edible crops")
+                },
+                {
+                  value: "Fibre products",
+                  text: "Fibre products",
+                  hint: {
+                  text: "For example, processing animal hides and leather, processing fibres such as flax and hemp"
+                  },
+                  checked: checked("products-processed", "Fibre products")
+                }
+              ]
+              }) }}
+
+       <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+          {% if data['COMPLETED'] == true %}
+            <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+              class="govuk-button govuk-button--secondary govuk-!-margin-right-1 " data-module="govuk-button">Back to score
+            </button>
+          {% endif %}
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund projects that:</p>
+          <ul class="govuk-list govuk-list--bullet">
+          <li>create and expand processing capacity to provide more English-grown food for consumers to buy</li>
+
+          </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

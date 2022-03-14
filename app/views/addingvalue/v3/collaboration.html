@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Who will your customers be after the project?
+Will you buy materials from other farmers?
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,54 +22,32 @@ Who will your customers be after the project?
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukCheckboxes({
-                  idPrefix: 'future-customers',
-                  name: 'future-customers',
+              {{ govukRadios({
+                  classes: "govuk-radios--inline",
+                  idPrefix: 'collaboration',
+                  name: 'collaboration',
                   fieldset: {
                       legend: {
-                          text: 'Who will your new customers be after the project?',
+                          text: 'Will you work in partnership or collaborate with other farmers or producers?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
                   hint: {
-                  html: "For example, you will now sell directly to retailers.<br><br>Select all that apply"
+                  text: 'For example, in a formal partnership or contract supply arrangement for raw materials'
                   },
 
                   items: [
                 {
-                  value: "Producers or growers2",
-                  text: "Producers or growers",
-                  checked: checked("current-customers", "Producers or growers2")
+                  value: "Yes",
+                  text: "Yes",
+                  checked: checked("collaboration", "Yes")
                 },
+
                 {
-                  value: "Processors",
-                  text: "Processors",
-                  checked: checked("future-customers", "Processors")
-                },
-                {
-                  value: "Wholesalers",
-                  text: "Wholesalers",
-                  checked: checked("future-customers", "Wholesalers")
-                },
-                {
-                  value: "Retailers",
-                  text: "Retailers",
-                  checked: checked("future-customers", "Retailers")
-                },
-                {
-                  value: "Selling direct to consumers",
-                  text: "Selling direct to consumers",
-                  checked: checked("future-customers", "Selling direct to consumers")
-                },
-                {
-                  divider: "or"
-                },
-                {
-                  value: "No change",
-                  text: "No change",
-                  checked: checked("future-customers", "No change"),
-                  behaviour: "exclusive"
+                  value: "No",
+                  text: "No",
+                  checked: checked("collaboration", "No")
                 }
                 ]
               }) }}
@@ -92,7 +70,7 @@ Who will your customers be after the project?
           <p class="govuk-body">RPA wants to fund projects that:</p>
           <ul class="govuk-list govuk-list--bullet">
           <li>improve processing and supply chains</li>
-          <li>grow your business</li>
+          <li>encourage collaboration and partnerships</li>
           </ul>
 
 
