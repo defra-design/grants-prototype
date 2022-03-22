@@ -36,7 +36,7 @@ router.get('/business-type', function (req, res) {
 router.post('/business-type-answer', function (req, res) {
   var bType = req.session.data['b-type']
 
-  if (bType === 'None') { res.redirect('business-type-fail') } else { res.redirect('register') }
+  if (bType === 'None') { res.redirect('business-type-fail') } else { res.redirect('legal-status') }
 })
 
 router.post('/business-type-answer-completed', function (req, res) {
@@ -46,28 +46,28 @@ router.post('/business-type-answer-completed', function (req, res) {
 })
 
 
-//: Q: Registered in England?
-router.get('/register', function (req, res) {
-  var backUrl = 'business-type'
-  var nextUrl = 'register-answer'
-  var completedUrl = 'register-answer-completed'
+//: Q: Registered in England? Remmoved questions
+//router.get('/register', function (req, res) {
+//  var backUrl = 'business-type'
+//  var nextUrl = 'register-answer'
+//  var completedUrl = 'register-answer-completed'
 
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
+  //res.render('./' + req.originalUrl, {
+  //  backUrl,
+  //  nextUrl,
+  //  completedUrl
+//  })
+//})
 
-router.post('/register-answer', function (req, res) {
-  var registerEngland = req.session.data['register']
+//router.post('/register-answer', function (req, res) {
+//  var registerEngland = req.session.data['register']
 
-  if (registerEngland === 'yes') {
-    res.redirect('legal-status')
-  } else {
-    res.redirect('register-fail')
-  }
-})
+  //if (registerEngland === 'yes') {
+  //  res.redirect('legal-status')
+  //} else {
+  //  res.redirect('register-fail')
+//  }
+//})
 
 
 
@@ -76,7 +76,7 @@ router.post('/register-answer', function (req, res) {
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = 'register'
+  var backUrl = 'business-type'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
