@@ -27,7 +27,7 @@
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukRadios({
-                  classes: "govuk-radios",
+                  classes: "govuk-radios--inline",
                   idPrefix: 'tenancy',
                   name: 'tenancy',
                   fieldset: {
@@ -51,11 +51,6 @@
                   value: "No",
                   text: "No",
                   checked: checked("tenancy", "No")
-                },
-                {
-                  value: "Contractor",
-                  text: "Not applicable – I'm a mobile contractor",
-                  checked: checked("tenancy", "Contractor")
                 }
               ]
               }) }}
@@ -74,7 +69,7 @@
           <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Eligibility</span>
             </h2>
-            <p>You must own the land or have a tenancy in place until 2027 before starting the project.</p>
+            <p>You must own the land or have a tenancy in place until 2028 before starting the project.</p>
             <a href="#">
             </a>
 
