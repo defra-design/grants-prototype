@@ -261,6 +261,20 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 
 router.get('/project-items', function (req, res) {
   var backUrl = 'tenancy'
+  var nextUrl = 'storage'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Q: Storage (new page - solving a problem around adding secondary project item - as storage faciliies)
+
+router.get('/storage', function (req, res) {
+  var backUrl = 'project-items'
   var nextUrl = 'project-cost'
   var completedUrl = 'answers'
 
@@ -279,7 +293,7 @@ router.get('/project-items', function (req, res) {
 router.get('/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
 
-  var backUrl = 'project-items'
+  var backUrl = 'storage'
   var nextUrl = 'project-cost-answer'
   var completedUrl = 'project-cost-answer-completed'
 
