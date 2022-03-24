@@ -45,17 +45,6 @@
           </div>
         </div>
 
-
-        {% if data['other-robotic-item'] %}
-        <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">
-            <span class="govuk-warning-text__assistive">Warning</span>
-            RPA will assess your other robotic equipment and whether they can fund it. There’s no guarantee your item will be funded.
-          </strong>
-        </div>
-        {% endif %}
-
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
       </form>
 
@@ -71,6 +60,13 @@
             {% for item in data['robotic-equipment'] %}
               <li>{{ item | capitalize }}</li>
             {% endfor %}
+
+            {% if (data['storage'] == "yes") %}
+            <li>Storage facilities</li>
+            {% else %}
+            {% endif %}
+
+
 
           </ul>
         </nav>
