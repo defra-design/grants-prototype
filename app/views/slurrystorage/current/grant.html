@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Potential grant funding
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Potential grant funding
+    </h1>
+
+    {% set grantAmount = data['project-cost'] *0.4 %}
+    {% set projectCost = data['project-cost'] %}
+      {% if projectCost >=750001 %}
+      <p class="govuk-body">You may be able to apply for a grant of up to £300,000, based on the estimated cost of £{{ data['project-cost'] | toFixed(2) | commafy }} (and above).</p>
+
+      {% else %}
+    <p class="govuk-body">You may be able to apply for a grant of up to £{{ grantAmount | toFixed(2) | commafy }}, based on the estimated cost of £{{ data['project-cost'] | toFixed(2) | commafy }}.</p>
+          {% endif %}
+
+    {{ govukWarningText({
+        text: 'There’s no guarantee the project will receive a grant.',
+        iconFallbackText: 'Warning'
+    }) }}
+
+    <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+      <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}
