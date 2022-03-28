@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+How will the project improve the environment?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+              {{ govukCheckboxes({
+                  idPrefix: 'environmental-impact',
+                  name: 'environmental-impact',
+                  fieldset: {
+                      legend: {
+                          text: 'How will the project improve the environment?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                  text: "Select all that apply"
+                  },
+
+                  items: [
+                {
+                  value: "Renewable energy",
+                  text: "Renewable energy",
+                  hint:{
+                    text:'For example, majority of energy for the project is generated on site'
+                  },
+                  checked: checked("environmental-impact", "Renewable energy")
+                },
+                {
+                  value: "Energy efficiency",
+                  text: "Energy efficiency",
+                  hint:{
+                    text: 'For example, using variable speed motors or heat exchangers'
+                  },
+                  checked: checked("environmental-impact", "Energy efficiency")
+                },
+                {
+                  value: "Water efficiency",
+                  text: "Water efficiency",
+                  hint:{
+                    text: 'For example, majority of water for the project is harvested or recycled on site'
+                  },
+                  checked: checked("environmental-impact", "Water efficiency")
+                },
+                {
+                  value: "Waste efficiency",
+                  text: "Waste efficiency",
+                  hint: {
+                    text: 'For example, majority of project waste is recycled or reused instead of going to landfill'
+                  },
+                  checked: checked("environmental-impact", "Waste efficiency")
+                },
+                {
+                  value: "Sustainable packaging measures",
+                  text: "Sustainable packaging measures",
+                  hint :{
+                    text: 'For example, removing unnecessary packaging, replacing plastic packaging'
+                  },
+                  checked: checked("environmental-impact", "Sustainable packaging measures")
+                },
+                {
+                  value: "Reduce harmful emissions or pollutants",
+                  text: "Reduce harmful emissions or pollutants",
+                  hint :{
+                    text: 'For example, reducing pollutants in waste water'
+                  },
+                  checked: checked("environmental-impact", "Reduce harmful emissions or pollutants")
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "My project will not improve the environment",
+                  text: "My project will not improve the environment",
+                  checked: checked("environmental-impact", "My project will not improve the environment"),
+                  behaviour: "exclusive"
+                }
+                ]
+              }) }}
+
+
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Get your score</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund projects that:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>improve the environment</li>
+            </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

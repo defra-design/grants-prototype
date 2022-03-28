@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What eligible items does your project need?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+
+
+
+
+            <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          What eligible items does your project need?
+        </h1>
+      </legend>
+      <div id="project-items-hint" class="govuk-hint">
+    </div>
+
+<p class="govuk-hint">Select all the items your project needs</p>
+
+    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="robotic-equipment-3" name="robotic-equipment" type="checkbox" value="Constructing or improving buildings" {{ checked("robotic-equipment", "Constructing or improving buildings") }}>
+        <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-3">
+          Constructing or improving buildings for processing
+        </label>
+        <div id="Constructing-or-improving-buildings-hint" class="govuk-hint govuk-radios__hint">
+              For example, a new building for cheese making, extending an existing building to install a new meat-cutting and packing line
+            </div>
+      </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="robotic-equipment-2" name="robotic-equipment" type="checkbox" value="Processing equipment or machinery" {{ checked("robotic-equipment", "Processing equipment or machinery") }}>
+          <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-2">
+            Processing equipment or machinery
+          </label>
+          <div id="Processing-equipment-or-machinery-hint" class="govuk-hint govuk-radios__hint">
+              For example, equipment and machinery for pasteurising and bottling milk, a meat cutting and packing line or vegetable washing and packing
+            </div>
+        </div>
+
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="robotic-equipment-9" name="robotic-equipment" type="checkbox" value="Retail facilities " {{ checked("robotic-equipment", "Retail facilities ") }}>
+            <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-9">
+              Retail facilities
+            </label>
+            <div id="Retail-facilities-hint" class="govuk-hint govuk-radios__hint">
+                  For example, shops or display cabinets
+                </div>
+          </div>
+</div>
+
+        </fieldset>
+        </div>
+
+
+
+<button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

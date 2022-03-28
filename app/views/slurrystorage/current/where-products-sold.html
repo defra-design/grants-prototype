@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Where are the processed products being sold?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'where-products-sold',
+                  name: 'where-products-sold',
+                  fieldset: {
+                      legend: {
+                          text: 'Where will the processed products be sold?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                  html: "How far the majority of the processed products will travel from your<br>project site <br><br>Select one option"
+                  },
+
+                  items: [
+                {
+                  value: "Processing point",
+                  text: "Within 1 mile",
+                  checked: checked("where-products-sold", "Processing point")
+                },
+                {
+                  value: "Within 10 miles",
+                  text: "Within 10 miles",
+                  checked: checked("where-products-sold", "Within 10 miles")
+                },
+                {
+                  value: "Within 50 miles",
+                  text: "Within 50 miles",
+                  checked: checked("where-products-sold", "Within 50 miles")
+                },
+                {
+                  value: "More than 50 miles",
+                  text: "More than 50 miles",
+                  checked: checked("where-products-sold", "More than 50 miles")
+                },
+                {
+                  value: "Outside the UK ",
+                  text: "Outside the UK ",
+                  checked: checked("where-products-sold", "Outside the UK ")
+                }
+                ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+          {% if data['COMPLETED'] == true %}
+            <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+              class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
+            </button>
+          {% endif %}
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund projects that:</p>
+          <ul class="govuk-list govuk-list--bullet">
+          <li>improve the environment</li>
+          </ul>
+
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
