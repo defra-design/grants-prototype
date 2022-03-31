@@ -11,7 +11,7 @@ const serviceName = {
   },
 
 slurrystorage: {
-    current: 'Check if you can apply for a Farming Transformation Fund Slurry Storage Grant'
+    current: 'Check if you can apply for a Farming Transformation Fund Slurry Infrastructure Grant'
 },
   slurry: {
     current: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
