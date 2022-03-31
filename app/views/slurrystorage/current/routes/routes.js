@@ -492,7 +492,7 @@ router.get('/answers-back', function (req, res) {
 
 router.get('/business', function (req, res) {
   var backUrl = 'business'
-  var nextUrl = 'business'
+  var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
