@@ -19,10 +19,37 @@
     },
       html: 'This is not a full service. It is not production code and you might experience problems.'
   }) }}
+
+  {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Environment",
+        href: "https://www.gov.uk/environment"
+      },
+      {
+        text: "Food and farming",
+        href: "https://www.gov.uk/environment/food-and-farming"
+      },
+      {
+        text: "Farming and food grants and payments",
+        href: "https://www.gov.uk/environment/farming-food-grants-payments"
+      },
+      {
+        text: "Rural grants and payments",
+        href: "https://www.gov.uk/environment/farming-food-grants-payments-rural-grants-payments"
+      }
+    ]
+  }) }}
 {% endblock %}
 
 {% block pageTitle %}
-Farming Transformation Fund Adding Value Grant
+Farming Transformation Fund Slurry Infrastructure Grant
 {% endblock %}
 
 {% block header %}
@@ -34,7 +61,6 @@ Farming Transformation Fund Adding Value Grant
 
 
 
-<div id="global-header-bar"></div>
 
 <div class="gem-c-contextual-breadcrumbs">
 
@@ -56,6 +82,7 @@ Farming Transformation Fund Adding Value Grant
 
 {% block content %}
 
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
@@ -64,11 +91,11 @@ Farming Transformation Fund Adding Value Grant
         Guidance
       </p>
       <h1 class="gem-c-title__text gem-c-title__text--long">
-        Farming Transformation Fund Adding Value Grant
+        Farming Transformation Fund Slurry Infrastructure Grant
       </h1>
     </div>
 
-    <p class="gem-c-lead-paragraph">Get a grant to add value to agricultural and horticultural products through preparing and processing.</p>
+    <p class="gem-c-lead-paragraph">Get a grant to help reduce pollution from slurry and increase your storage capacity.  </p>
 
   </div>
 </div>
@@ -78,30 +105,16 @@ Farming Transformation Fund Adding Value Grant
     <div class="govuk-grid-column-two-thirds metadata-column">
       <div class="app-c-publisher-metadata" lang="en">
         <div class="app-c-published-dates " lang="en">
-          Published 20 October 2021
-          <br>Last updated 21 October 2021
-          — <a href="#history">see all updates</a>
+          From: <a href="#"><span class="govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state">Rural Payments Agency</span></a>
+          <br>Published 1 April 2022
+
         </div>
 
-        <div class="app-c-publisher-metadata__other">
-          <dl data-module="track-click">
-            <dt class="app-c-publisher-metadata__term">
-              From:
-            </dt>
-            <dd class="app-c-publisher-metadata__definition" data-module="gem-toggle">
-              <span class="app-c-publisher-metadata__definition-sentence">
-                <a class="govuk-link" href="#">Department for Environment, Food &amp; Rural Affairs</a>, <a class="govuk-link"
-                  href="#">Rural Payments Agency</a>, and <a class="govuk-link" href="#">Rural Development Programme for England
-                  Network</a>
-              </span>
-            </dd>
-          </dl>
-        </div>
-      </div>
+
 
     </div>
   </div>
-</div>
+
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -110,14 +123,9 @@ Farming Transformation Fund Adding Value Grant
     {% block guidance %}Guidance content goes here, override this by overriding the block{% endblock %}
     <!-- end guidance specific block-->
 
-    <div class="responsive-bottom-margin">
-      <div class="app-c-published-dates app-c-published-dates--history" id="history" data-module="toggle" lang="en">
-        Published 21 June 2021
-        <br>Last updated 5 October 2021
-        <a href="#full-history" class="app-c-published-dates__toggle" data-controls="full-history" data-expanded="false" data-toggled-text="-&nbsp;hide all updates" role="button" aria-controls="full-history" aria-expanded="false">+&nbsp;show all
-          updates</a>
-      </div>
-    </div>
+
+
+
     <div data-sticky-element="" class="app-c-contents-list-with-body__link-wrapper govuk-sticky-element--enabled">
       <div class="app-c-contents-list-with-body__link-container">
         <a class="govuk-link app-c-back-to-top dont-print" href="#toc">
@@ -145,29 +153,15 @@ Farming Transformation Fund Adding Value Grant
 
           <ul class="gem-c-related-navigation__link-list" data-module="track-click">
 
-            <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked"
-                data-track-action="1.1 Related content" data-track-label="#"
-                data-track-options="{}" href="large-water">Large grants for water resource management projects</a></li>
-            <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar  gem-c-related-navigation__section-link--other" data-track-category="relatedLinkClicked"
-                data-track-action="1.2 Related content" data-track-label="#"
-                data-track-options="{}"
-                href="small-grants">Small grants for equipment to improve productivity</a></li>
+            <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/farming-transformation-fund-how-to-fill-in-an-improving-farm-productivity-grant-full-application">Farming Transformation Fund: How to apply for an Improving Farm Productivity grant</a></li>
+            <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/farming-transformation-fund-water-management-grant-manual">Farming Transformation Fund Water Management grant manual</a></li>
+            <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/farming-transformation-fund-how-to-fill-in-a-water-management-grant-full-application">Farming Transformation Fund: How to fill in a Water Management grant Full Application</a></li>
+            <li class="gem-c-related-navigation__link"><a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/farming-investment-fund">Farming Investment Fund</a></li>
 
           </ul>
         </nav>
 
-        <nav role="navigation" class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-collections-2dae1b11" data-module="gem-toggle">
 
-          <h3 id="related-nav-collections-2dae1b11" class="gem-c-related-navigation__sub-heading gem-c-related-navigation__sub-heading--sidebar" data-track-count="sidebarRelatedItemSection">Collection</h3>
-
-          <ul class="gem-c-related-navigation__link-list" data-module="track-click">
-
-            <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--sidebar" data-track-category="relatedLinkClicked" data-track-action="2.1 Collection"
-                data-track-label="#" data-track-options="{&quot;dimension28&quot;:&quot;1&quot;,&quot;dimension29&quot;:&quot;Rural payments and grants&quot;}"
-                href="all-grants">Rural payments and grants</a></li>
-
-          </ul>
-        </nav>
 
       </div>
 
@@ -188,7 +182,7 @@ Farming Transformation Fund Adding Value Grant
 
             <ul class="gem-c-related-navigation__link-list" data-module="track-click">
 
-              <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer" data-track-category="relatedLinkClicked" data-track-action="1.1 Explore the topic"
+              <li class="gem-c-related-navigation__link"><a class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer govuk-link--no-visited-state" data-track-category="relatedLinkClicked" data-track-action="1.1 Explore the topic"
                   data-track-label="#" data-track-options="{&quot;dimension28&quot;:&quot;1&quot;,&quot;dimension29&quot;:&quot;Rural grants and payments&quot;}"
                   href="#">Rural grants and payments</a></li>
 
