@@ -34,9 +34,9 @@ router.get('/business-type', function (req, res) {
 })
 
 router.post('/business-type-answer', function (req, res) {
-  var bType = req.session.data['b-type']
+  var bType2 = req.session.data['b-type']
 
-  if (bType === 'None') { res.redirect('business-type-fail') } else { res.redirect('legal-status') }
+  if (bType2 === 'None2') { res.redirect('business-type-fail') } else { res.redirect('legal-status') }
 })
 
 router.post('/business-type-answer-completed', function (req, res) {
@@ -121,7 +121,7 @@ router.post('/country-answer', function (req, res) {
       country = 'yes: [ Postcode: ' + postcode + ' ]'
     }
     req.session.data['summary-country'] = country
-    res.redirect('planning-permission')
+    res.redirect('country')
   } else {
     res.redirect('country-fail')
   }

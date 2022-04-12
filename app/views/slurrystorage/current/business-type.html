@@ -22,12 +22,12 @@ What is your business?
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukRadios({
+              {{ govukCheckboxes({
                   idPrefix: 'b-type',
                   name: 'b-type',
                   fieldset: {
                       legend: {
-                          text: 'What is your business?',
+                          text: 'What type of farmer are you?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
@@ -36,29 +36,30 @@ What is your business?
 
                   items: [
                 {
-                  value: "Agricultural)",
-                  text: "A grower or producer of agricultural or horticultural produce",
-                  hint: {
-                  text: "For example, arable or livestock farmer, fruit producer, salad grower"
-                  },
-                  checked: checked("b-type", "Agricultural")
+                  value: "Pig",
+                  text: "Pig",
+                  checked: checked("b-type", "Pig")
                 },
 
                 {
-                  value: "100% business owned",
-                  text: "A separate processing business at least 50% owned by growers or producers of agricultural or horticultural produce",
-                  hint: {
-                  text: "For example, cheese processing business owned by a dairy farmer"
-                  },
-                  checked: checked("b-type", "100% business owned")
+                  value: "Beef",
+                  text: "Beef",
+                  checked: checked("b-type", "Beef")
                 },
+                {
+                  value: "Dairy",
+                  text: "Dairy",
+                  checked: checked("b-type", "Dairy")
+                },
+
                 {
                   divider: "or"
                 },
                 {
-                  value: "None",
+                  value: "None2",
                   text: "None of the above",
-                  checked: checked("b-type", "None")
+                  checked: checked("b-type", "None2"),
+                  behaviour: "exclusive"
                 }
               ]
               }) }}
@@ -74,14 +75,10 @@ What is your business?
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">This grant is for businesses who: </p>
-          <ul class="govuk-list govuk-list--bullet">
-          <li>are agricultural or horticultural growers or producers</li>
-          <li>are a separate processing business at least 50% owned by growers or producers of agricultural or horticultural produce</li>
-          </ul>
-
-
-      </div>
-  </div>
+          <p class="govuk-body">This grant is for pig, beef or dairy farmers.<br><br>
+            Poultry, arable-only, contractors and horticultural growers are not currently eligible.
+          </p>
+     </div>
+   </div>
 
 {% endblock %}
