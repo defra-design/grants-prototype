@@ -34,15 +34,11 @@ router.get('/farmer-type', function (req, res) {
 })
 
 router.post('/farmer-type-answer', function (req, res) {
-  var farmerType = req.session.data['farmertype']
-  const farmertypeItem3 = req.session.data['farmertype']
+  const typeCondition = req.session.data['farmertype']
+  //console.log ('typeCondition',typeCondition)
 
-  const farmertypeItem3Condition = [
-   'None of the above'
- ]
-
-if (farmertypeItem3Condition) {
-   res.redirect ('system-type')
+if (typeCondition.includes('None of the above')) {
+   res.redirect ('farmer-type-fail')
  }
  res.redirect('system-type')
 })
