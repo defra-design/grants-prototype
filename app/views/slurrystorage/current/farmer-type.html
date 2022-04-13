@@ -22,7 +22,7 @@ What is your business?
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukRadios({
+              {{ govukCheckboxes({
                   idPrefix: 'farmertype',
                   name: 'farmertype',
                   fieldset: {
