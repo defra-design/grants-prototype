@@ -13,18 +13,18 @@ router.get('/start', function (req, res) {
   }
   // =================================
 
-  var nextUrl = 'business-type'
+  var nextUrl = 'farmer-type'
 
   res.render('./' + req.originalUrl, {
     nextUrl
   })
 })
 
-//: Q: Business type
-router.get('/business-type', function (req, res) {
+//: Q: Farmer type
+router.get('/farmer-type', function (req, res) {
   var backUrl = 'start'
-  var nextUrl = 'business-type-answer'
-  var completedUrl = 'business-type-answer-completed'
+  var nextUrl = 'farmer-type-answer'
+  var completedUrl = 'farmer-type-answer-completed'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -33,50 +33,61 @@ router.get('/business-type', function (req, res) {
   })
 })
 
-router.post('/business-type-answer', function (req, res) {
-  var bType2 = req.session.data['b-type']
+router.post('/farmer-type-answer', function (req, res) {
+  var farmerType = req.session.data['farmertype']
+  const farmertypeItem3 = req.session.data['farmertype']
 
-  if (bType2 === 'None2') { res.redirect('business-type-fail') } else { res.redirect('legal-status') }
+  const farmertypeItem3Condition = [
+   'None of the above'
+ ]
+
+if (farmertypeItem3Condition) {
+   res.redirect ('system-type')
+ }
+ res.redirect('system-type')
 })
 
-router.post('/business-type-answer-completed', function (req, res) {
-  var bType = req.session.data['business-type']
 
-  if (bType === 'None') { res.redirect('business-type-fail') } else { res.redirect('answers') }
+
+
+
+
+
+
+//: Q: System type
+router.get('/system-type', function (req, res) {
+  var backUrl = 'farmer-type'
+  var nextUrl = 'system-type-answer'
+  var completedUrl = 'system-type-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
 })
 
+router.post('/system-type-answer', function (req, res) {
+  var systemType = req.session.data['systemtype']
 
-//: Q: Registered in England? Remmoved questions
-//router.get('/register', function (req, res) {
-//  var backUrl = 'business-type'
-//  var nextUrl = 'register-answer'
-//  var completedUrl = 'register-answer-completed'
-
-  //res.render('./' + req.originalUrl, {
-  //  backUrl,
-  //  nextUrl,
-  //  completedUrl
-//  })
-//})
-
-//router.post('/register-answer', function (req, res) {
-//  var registerEngland = req.session.data['register']
-
-  //if (registerEngland === 'yes') {
-  //  res.redirect('legal-status')
-  //} else {
-  //  res.redirect('register-fail')
-//  }
-//})
+  if (systemType === 'no system' || systemType === 'straw-bedded system') { res.redirect('system-type-fail') }
 
 
+   else { res.redirect('legal-status') }
+})
+
+router.post('/system-type-answer-completed', function (req, res) {
+  var systemType = req.session.data['farmertype']
+
+  if (systemType === 'I do not have a system') { res.redirect('system-type-fail') } else { res.redirect('answers') }
+})
 
 
 
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = 'business-type'
+  var backUrl = 'system-type'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
@@ -121,7 +132,7 @@ router.post('/country-answer', function (req, res) {
       country = 'yes: [ Postcode: ' + postcode + ' ]'
     }
     req.session.data['summary-country'] = country
-    res.redirect('country')
+    res.redirect('slurry-storage')
   } else {
     res.redirect('country-fail')
   }
@@ -143,6 +154,32 @@ router.post('/country-answer-completed', function (req, res) {
   }
 })
 
+
+// Q: Slurry storage
+
+router.get('/slurry-storage', function (req, res) {
+  var backUrl = 'country'
+  var nextUrl = 'slurry-storage-answer'
+  var completedUrl = 'slurry-storage-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/slurry-storage-answer', function (req, res) {
+  var slurryStorage = req.session.data['storage']
+
+  if (slurryStorage === 'no') { res.redirect('slurry-storage-fail') } else { res.redirect('slurry-storage') }
+})
+
+//JOURNEY FINISHING
+// ***************
+// ***************
+// ***************
+// ***************
 
 // PLANNING PERMISSION
 
