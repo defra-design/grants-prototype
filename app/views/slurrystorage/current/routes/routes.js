@@ -172,7 +172,7 @@ router.get('/slurry-storage', function (req, res) {
 router.post('/slurry-storage-answer', function (req, res) {
   var slurryStorage = req.session.data['storage']
 
-  if (slurryStorage === 'no') { res.redirect('slurry-storage-fail') } else { res.redirect('slurry-storage') }
+  if (slurryStorage === 'no') { res.redirect('slurry-storage-fail') } else { res.redirect('business') }
 })
 
 //JOURNEY FINISHING
@@ -528,7 +528,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'business'
+  var backUrl = 'slurry-storage'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 
