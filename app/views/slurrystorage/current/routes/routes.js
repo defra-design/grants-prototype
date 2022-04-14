@@ -168,8 +168,33 @@ router.get('/slurry-storage', function (req, res) {
 router.post('/slurry-storage-answer', function (req, res) {
   var slurryStorage = req.session.data['storage']
 
-  if (slurryStorage === 'no') { res.redirect('slurry-storage-fail') } else { res.redirect('business') }
+  if (slurryStorage === 'no') { res.redirect('slurry-storage-fail') } else { res.redirect('existing-size-storage') }
 })
+
+
+// Q: Existing size Storage
+
+router.get('/existing-size-storage', function (req, res) {
+  var backUrl = 'slurry-storage'
+  var nextUrl = 'existing-size-storage-answer'
+  var completedUrl = 'existing-size-storage-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/existing-size-storage-answer', function (req, res) {
+  var existingSize = req.session.data['existing-size-storage']
+
+  if (existingSize === 'At least 6 months') { res.redirect('existing-size-storage-fail') }
+
+
+   else { res.redirect('business') }
+})
+
 
 //JOURNEY FINISHING
 // ***************
@@ -524,7 +549,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'slurry-storage'
+  var backUrl = 'existing-size-storage'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 
