@@ -192,9 +192,56 @@ router.post('/existing-size-storage-answer', function (req, res) {
   if (existingSize === 'At least 6 months') { res.redirect('existing-size-storage-fail') }
 
 
-   else { res.redirect('business') }
+   else { res.redirect('planned-size-storage') }
 })
 
+// Q: Planned size Storage
+
+router.get('/planned-size-storage', function (req, res) {
+  var backUrl = 'existing-size-storage'
+  var nextUrl = 'planned-size-storage-answer'
+  var completedUrl = 'planned-size-storage-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/planned-size-storage-answer', function (req, res) {
+  var plannedSize = req.session.data['planned-size-storage']
+
+  if (plannedSize === 'Less than 6 months') { res.redirect('planned-size-storage-fail') }
+
+
+   else { res.redirect('livestock-numbers') }
+})
+
+
+// Q: Livestock numbers
+
+router.get('/livestock-numbers', function (req, res) {
+  var backUrl = 'planned-size-storage'
+  var nextUrl = 'livestock-numbers-answer'
+  var completedUrl = 'livestock-numbers-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/livestock-numbers-answer', function (req, res) {
+  var livestockNumbers = req.session.data['livestock-numbers']
+console.log ('livestock-numbers',livestockNumbers)
+  if (livestockNumbers === 'yes') { res.redirect('livestock-numbers-fail') }
+
+
+
+   else { res.redirect('business') }
+})
 
 //JOURNEY FINISHING
 // ***************
@@ -549,7 +596,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'existing-size-storage'
+  var backUrl = 'planned-size-storage'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 
