@@ -235,13 +235,119 @@ router.get('/livestock-numbers', function (req, res) {
 
 router.post('/livestock-numbers-answer', function (req, res) {
   var livestockNumbers = req.session.data['livestock-numbers']
-console.log ('livestock-numbers',livestockNumbers)
+//console.log ('livestock-numbers',livestockNumbers)
   if (livestockNumbers === 'yes') { res.redirect('livestock-numbers-fail') }
-
-
-
-   else { res.redirect('business') }
+   else { res.redirect('project-type') }
 })
+
+
+// Q: Project type
+
+router.get('/project-type', function (req, res) {
+  var backUrl = 'livestock-numbers'
+  var nextUrl = 'project-type-answer'
+  var completedUrl = 'project-type-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/project-type-answer', function (req, res) {
+  var projectType = req.session.data['projecttype']
+
+  if (projectType === 'None of the above') { res.redirect('project-type-fail') }
+   else { res.redirect('covers') }
+})
+
+
+// Q: Covers
+
+router.get('/covers', function (req, res) {
+  var backUrl = 'project-type'
+  var nextUrl = 'covers-answer'
+  var completedUrl = 'covers-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/covers-answer', function (req, res) {
+  var coversImp = req.session.data['covers']
+
+  if (coversImp === 'No') { res.redirect('covers-fail') }
+   else { res.redirect('project-start') }
+})
+
+
+// PROJECT START
+
+router.get('/project-start', function (req, res) {
+  var planningPermission = req.session.data['planning-permission']
+
+  var backUrl = 'covers'
+  var nextUrl = 'project-start-answer'
+  var completedUrl = 'project-start-answer-completed'
+
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/project-start-answer', function (req, res) {
+  var projectStart = req.session.data['project-start']
+
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
+})
+
+router.post('/project-start-answer-completed', function (req, res) {
+  var projectStart = req.session.data['project-start']
+
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('answers') }
+})
+
+// Q: Tenancy
+
+router.get('/tenancy', function (req, res) {
+  var backUrl = 'project-start'
+  var nextUrl = 'tenancy-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/tenancy-answer', function (req, res) {
+  var tenant = req.session.data.tenancy
+
+  if (tenant === 'Yes' || tenant === 'Contractor') {
+    res.redirect('business')
+  } else { res.redirect('tenancy-length') }
+})
+
+router.post('/tenancy-length-answer', function (req, res) {
+  var tenancyLength = req.session.data['tenancy-length']
+
+  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('business') }
+})
+
+router.post('/tenancy-length-answer-completed', function (req, res) {
+  res.redirect('answers')
+})
+
+
+
 
 //JOURNEY FINISHING
 // ***************
@@ -292,73 +398,6 @@ router.get('/planning-required-condition', function (req, res) {
 
 
 
-// PROJECT START
-
-router.get('/project-start', function (req, res) {
-  var planningPermission = req.session.data['planning-permission']
-
-  var backUrl
-  var nextUrl = 'project-start-answer'
-  var completedUrl = 'project-start-answer-completed'
-
-  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
-    backUrl = 'planning-permission'
-  } else if (planningPermission === 'maybe') {
-    backUrl = 'planning-required-condition'
-  } else {
-    backUrl = 'planning-permission-fail'
-  }
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/project-start-answer', function (req, res) {
-  var projectStart = req.session.data['project-start']
-
-  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
-})
-
-router.post('/project-start-answer-completed', function (req, res) {
-  var projectStart = req.session.data['project-start']
-
-  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('answers') }
-})
-
-// Q: Tenancy - modified 15 October 2021, containing contractor rule to skip tenancy changes and go straight to Project items.
-
-router.get('/tenancy', function (req, res) {
-  var backUrl = 'project-start'
-  var nextUrl = 'tenancy-answer'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/tenancy-answer', function (req, res) {
-  var tenant = req.session.data.tenancy
-
-  if (tenant === 'Yes' || tenant === 'Contractor') {
-    res.redirect('project-items')
-  } else { res.redirect('tenancy-length') }
-})
-
-router.post('/tenancy-length-answer', function (req, res) {
-  var tenancyLength = req.session.data['tenancy-length']
-
-  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('project-items') }
-})
-
-router.post('/tenancy-length-answer-completed', function (req, res) {
-  res.redirect('answers')
-})
 
 
 
@@ -596,7 +635,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'planned-size-storage'
+  var backUrl = 'tenancy'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 

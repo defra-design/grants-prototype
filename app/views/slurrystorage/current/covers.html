@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Covers
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'covers',
+                  name: 'covers',
+                  fieldset: {
+                      legend: {
+                          text: 'Will the store have an impermeable cover?  ',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+                  items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: checked("covers", "Yes")
+                },
+
+                {
+                  value: "Not needed, the slurry is treated with acidification",
+                  text: "Not needed, the slurry is treated with acidification",
+                  checked: checked("covers", "Not needed, the slurry is treated with acidification")
+                },
+
+                {
+                  value: "No",
+                  text: "No",
+                  checked: checked("covers", "No")
+                }
+              ]
+              }) }}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">Stores must have an impermeable cover unless the slurry is treated with acidification.<br><br>
+            Acidification is the use of acid treatment to lower the PH value of slurry  to stabilise ammonia emissions.:</p>
+      </div>
+   </div>
+
+{% endblock %}
