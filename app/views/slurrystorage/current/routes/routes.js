@@ -128,7 +128,7 @@ router.post('/country-answer', function (req, res) {
       country = 'yes: [ Postcode: ' + postcode + ' ]'
     }
     req.session.data['summary-country'] = country
-    res.redirect('slurry-storage')
+    res.redirect('existing-size-storage')
   } else {
     res.redirect('country-fail')
   }
@@ -151,31 +151,13 @@ router.post('/country-answer-completed', function (req, res) {
 })
 
 
-// Q: Slurry storage
 
-router.get('/slurry-storage', function (req, res) {
-  var backUrl = 'country'
-  var nextUrl = 'slurry-storage-answer'
-  var completedUrl = 'slurry-storage-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/slurry-storage-answer', function (req, res) {
-  var slurryStorage = req.session.data['storage']
-
-  if (slurryStorage === 'no') { res.redirect('slurry-storage-fail') } else { res.redirect('existing-size-storage') }
-})
 
 
 // Q: Existing size Storage
 
 router.get('/existing-size-storage', function (req, res) {
-  var backUrl = 'slurry-storage'
+  var backUrl = 'country'
   var nextUrl = 'existing-size-storage-answer'
   var completedUrl = 'existing-size-storage-answer-completed'
 
