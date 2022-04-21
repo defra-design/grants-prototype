@@ -5,6 +5,6 @@ Following a security incident, Heroku has temporarily stopped GitHub repositorie
 Deployment URL has been changed to:
 https://grants-prototype2.herokuapp.com/
 
-<strong>Access details:</strong><br>
+<strong>Access details</strong><br>
 username: grants<br>
 password: prototype
