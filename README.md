@@ -6,5 +6,4 @@ Deployment URL has been changed to:
 https://grants-prototype2.herokuapp.com/
 
 <strong>Access details</strong><br>
-username: grants<br>
-password: prototype
+For credentials, please get in touch at robert.a.nagy@capgemini.com
