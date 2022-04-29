@@ -45,11 +45,6 @@ if (typeCondition.includes('None of the above')) {
 
 
 
-
-
-
-
-
 //: Q: System type
 router.get('/system-type', function (req, res) {
   var backUrl = 'farmer-type'
@@ -197,36 +192,16 @@ router.post('/planned-size-storage-answer', function (req, res) {
   if (plannedSize === 'Less than 6 months') { res.redirect('planned-size-storage-fail') }
 
 
-   else { res.redirect('livestock-numbers') }
-})
-
-
-// Q: Livestock numbers
-
-router.get('/livestock-numbers', function (req, res) {
-  var backUrl = 'planned-size-storage'
-  var nextUrl = 'livestock-numbers-answer'
-  var completedUrl = 'livestock-numbers-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/livestock-numbers-answer', function (req, res) {
-  var livestockNumbers = req.session.data['livestock-numbers']
-//console.log ('livestock-numbers',livestockNumbers)
-  if (livestockNumbers === 'yes') { res.redirect('livestock-numbers-fail') }
    else { res.redirect('project-type') }
 })
+
+
 
 
 // Q: Project type
 
 router.get('/project-type', function (req, res) {
-  var backUrl = 'livestock-numbers'
+  var backUrl = 'planned-size-storage'
   var nextUrl = 'project-type-answer'
   var completedUrl = 'project-type-answer-completed'
 

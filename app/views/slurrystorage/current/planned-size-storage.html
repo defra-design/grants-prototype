@@ -21,7 +21,23 @@ Planned size storage
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        {% set numberMonths %}
+        {{ govukInput({
+          id: "number-months",
+          name: "number-months",
+          type: "months",
+          autocomplete: "months",
+          spellcheck: false,
+          classes: "govuk-input--width-2",
+          suffix: {
+            text: "months"
+            },
+          label: {
+            text: "Enter number of months"
+          }
 
+        }) }}
+        {% endset -%}
               {{ govukRadios({
                   idPrefix: 'planned-size-storage',
                   name: 'planned-size-storage',
@@ -33,17 +49,26 @@ Planned size storage
                       }
                   },
 
+                  hint: {
+                    text: "Based on your current animal numbers"
+                  },
 
                   items: [
                 {
                   value: "6 months",
                   text: "6 months",
+                  conditional: {
+                  html:numberMonths
+                },
                   checked: checked("planned-size-storage", "6 months")
                 },
 
                 {
                   value: "More than 6 months",
                   text: "More than 6 months",
+                  conditional: {
+                  html:numberMonths
+                },
                   checked: checked("planned-size-storage", "More than 6 months")
                 },
                 {
@@ -66,8 +91,9 @@ Planned size storage
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
           <p class="govuk-body">This grant is to expand current storage levels to 6 months.<br><br>
-                                If your storage has more than 6 months’ capacity, the grant will only cover up to 6 months.</p>
-     </div>
+                                If your storage will have more than 6 months’ capacity, the grant will only cover up to 6 months.</p>
+          <p class="govuk-body">You must maintain at least 6 months' capacity for the duration of the grant funding agreement.</p>
+      </div>
    </div>
 
 {% endblock %}
