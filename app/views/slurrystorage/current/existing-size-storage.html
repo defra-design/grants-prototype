@@ -22,6 +22,23 @@ Existing size storage
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
+        {% set numberMonths %}
+        {{ govukInput({
+          id: "number-months",
+          name: "number-months",
+          type: "months",
+          autocomplete: "months",
+          spellcheck: false,
+          classes: "govuk-input--width-2",
+          suffix: {
+            text: "month(s)"
+            },
+          label: {
+            text: "Enter number of months"
+          }
+        }) }}
+        {% endset -%}
+
               {{ govukRadios({
                   idPrefix: 'existing-size-storage',
                   name: 'existing-size-storage',
@@ -33,17 +50,25 @@ Existing size storage
                       }
                   },
 
+                  hint: {
+                    text: "Based on your current animal numbers"
+                  },
 
                   items: [
                 {
                   value: "Less than 6 months",
                   text: "Less than 6 months",
-                  checked: checked("existing-size-storage", "Less than 6 months")
+                  conditional: {
+                  html:numberMonths
                 },
-
+                checked: checked("existing-size-storage", "Less than 6 months")
+                },
                 {
                   value: "Up to 6 months but it is no longer serviceable",
                   text: "Up to 6 months but it is no longer serviceable",
+                  conditional: {
+                  html:numberMonths
+                },
                   checked: checked("existing-size-storage", "Up to 6 months but it is no longer serviceable")
                 },
                 {
@@ -70,6 +95,8 @@ Existing size storage
               <li>expand current storage levels	to 	6 months</li>
               <li>make your storage serviceable if capacity is already 6 months or more</li>
             </ul>
+            </p>
+            <p class=govuk-body">A store may be non-serviceable because it was built before 1991 and was exempt from the Silage, Slurry and Agricultural Fuel Oil Regulations (SSAFO) requirements or because it has reached the end of its design life (for example, it may be susceptible to leaks or failure).
           </p>
      </div>
    </div>
