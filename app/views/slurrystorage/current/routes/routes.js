@@ -289,20 +289,52 @@ router.post('/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
   if (tenant === 'Yes' || tenant === 'Contractor') {
-    res.redirect('business')
+    res.redirect('standardised-costs')
   } else { res.redirect('tenancy-length') }
 })
 
 router.post('/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('business') }
+  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('standardised-costs') }
 })
 
 router.post('/tenancy-length-answer-completed', function (req, res) {
   res.redirect('answers')
 })
 
+// Q: Standardised costs - routing embeded in-page
+
+
+// Q: Current storage capacity
+
+router.get('/current-storage-capacity', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'standardised-costs'
+  var nextUrl = 'future-storage-capacity'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Q: Future storage capacity
+
+router.get('/future-storage-capacity', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'current-storage-capacity'
+  var nextUrl = 'business'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
 
 
 
@@ -592,7 +624,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'tenancy'
+  var backUrl = 'future-storage-capacity'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 

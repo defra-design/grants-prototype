@@ -26,6 +26,24 @@ Existing size storage
         {{ govukInput({
           id: "number-months",
           name: "number-months",
+          value: data['number-months'],
+          type: "months",
+          autocomplete: "months",
+          spellcheck: false,
+          classes: "govuk-input--width-2",
+          suffix: {
+            text: "month(s)"
+            },
+          label: {
+            text: "Enter number of months"
+          }
+        }) }}
+        {% endset -%}
+        {% set numberMonths2 %}
+        {{ govukInput({
+          id: "number-months2",
+          name: "number-months2",
+          value: data['number-months2'],
           type: "months",
           autocomplete: "months",
           spellcheck: false,
@@ -60,14 +78,16 @@ Existing size storage
                   text: "Less than 6 months",
                   conditional: {
                   html:numberMonths
+
                 },
                 checked: checked("existing-size-storage", "Less than 6 months")
                 },
+
                 {
                   value: "Up to 6 months but it is no longer serviceable",
                   text: "Up to 6 months but it is no longer serviceable",
                   conditional: {
-                  html:numberMonths
+                  html:numberMonths2
                 },
                   checked: checked("existing-size-storage", "Up to 6 months but it is no longer serviceable")
                 },
