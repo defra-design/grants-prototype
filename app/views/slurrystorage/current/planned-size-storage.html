@@ -21,11 +21,12 @@ Planned size storage
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-        {% set numberMonths %}
+        {% set numberMonths3 %}
         {{ govukInput({
-          id: "number-months",
-          name: "number-months",
+          id: "number-months3",
+          name: "number-months3",
           type: "months",
+          value: data['number-months3'],
           autocomplete: "months",
           spellcheck: false,
           classes: "govuk-input--width-2",
@@ -38,6 +39,26 @@ Planned size storage
 
         }) }}
         {% endset -%}
+        {% set numberMonths4 %}
+        {{ govukInput({
+          id: "number-months4",
+          name: "number-months4",
+          type: "months",
+          value: data['number-months4'],
+          autocomplete: "months",
+          spellcheck: false,
+          classes: "govuk-input--width-2",
+          suffix: {
+            text: "month(s)"
+            },
+          label: {
+            text: "Enter number of months"
+          }
+
+        }) }}
+        {% endset -%}
+
+
               {{ govukRadios({
                   idPrefix: 'planned-size-storage',
                   name: 'planned-size-storage',
@@ -58,7 +79,7 @@ Planned size storage
                   value: "6 months",
                   text: "6 months",
                   conditional: {
-                  html:numberMonths
+                  html:numberMonths3
                 },
                   checked: checked("planned-size-storage", "6 months")
                 },
@@ -67,7 +88,7 @@ Planned size storage
                   value: "More than 6 months",
                   text: "More than 6 months",
                   conditional: {
-                  html:numberMonths
+                  html:numberMonths4
                 },
                   checked: checked("planned-size-storage", "More than 6 months")
                 },
