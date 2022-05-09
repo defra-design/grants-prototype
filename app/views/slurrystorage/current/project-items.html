@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What eligible items does your project need?
+What type of cover will you have?
 {% endblock %}
 
 {% block beforeContent %}
@@ -11,77 +11,98 @@
     text: "prototype",
     classes: "govuk-tag--pink"
     },
-      html: 'This is not a full service. It is not production code and you might experience problems.'
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
+              {{ govukCheckboxes({
+                  idPrefix: 'projectitems',
+                  name: 'projectitems',
+                  fieldset: {
+                      legend: {
+                          text: 'What other items do you need?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    text: "Select all the items your project needs"
+                  },
 
+                  items: [
+                {
+                  value: "Agitator",
+                  text: "Agitator",
+                  checked: checked("projectitems", "Agitator"),
+                  hint: {
+                    text: "Item cost: £1,000"
+                  }
+                },
+                {
+                  value: "Under-floor storage and transfer channels",
+                  text: "Under-floor storage and transfer channels",
+                  checked: checked("projectitems", "Under-floor storage and transfer channels"),
+                  hint: {
+                    text: "Item cost: £2,100"
+                  }
+                },
+                {
+                  value: "Reception tanks/pits",
+                  text: "Reception tanks/pits",
+                  checked: checked("projectitems", "Reception tanks/pits"),
+                  hint: {
+                    text: "Item cost: £3,250"
+                  }
+                },
+                {
+                  value: "Ladders and platforms",
+                  text: "Ladders and platforms",
+                  checked: checked("projectitems", "Ladders and platforms"),
+                  hint: {
+                    text: "Item cost: £4,550"
+                  }
+                },
+                {
+                  value: "Agitator platform",
+                  text: "Agitator platform",
+                  checked: checked("projectitems", "Agitator platform"),
+                  hint: {
+                    text: "Item cost: £3,190"
+                  }
+                },
+                {
+                  value: "Health and safety features",
+                  text: "Health and safety features",
+                  checked: checked("projectitems", "Health and safety features"),
+                  hint: {
+                    html: "For example, gas monitor, tyre ladders<br>Item cost: £2,440"
+                  }
+                },
+                {
+                  divider: "or"
+                },
 
+                {
+                  value: "None of the above",
+                  text: "None of the above",
+                  checked: checked("projectitems", "None of the above"),
+                  behaviour: "exclusive"
+                }
+              ]
+              }) }}
 
+          <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
-            <div class="govuk-form-group">
-    <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-        <h1 class="govuk-fieldset__heading">
-          What eligible items does your project need?
-        </h1>
-      </legend>
-      <div id="project-items-hint" class="govuk-hint">
-    </div>
-
-<p class="govuk-hint">Select all the items your project needs</p>
-
-    <div class="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="robotic-equipment-3" name="robotic-equipment" type="checkbox" value="Constructing or improving buildings" {{ checked("robotic-equipment", "Constructing or improving buildings") }}>
-        <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-3">
-          Constructing or improving buildings for processing
-        </label>
-        <div id="Constructing-or-improving-buildings-hint" class="govuk-hint govuk-radios__hint">
-              For example, a new building for cheese making, extending an existing building to install a new meat-cutting and packing line
-            </div>
-      </div>
-
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="robotic-equipment-2" name="robotic-equipment" type="checkbox" value="Processing equipment or machinery" {{ checked("robotic-equipment", "Processing equipment or machinery") }}>
-          <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-2">
-            Processing equipment or machinery
-          </label>
-          <div id="Processing-equipment-or-machinery-hint" class="govuk-hint govuk-radios__hint">
-              For example, equipment and machinery for pasteurising and bottling milk, a meat cutting and packing line or vegetable washing and packing
-            </div>
-        </div>
-
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="robotic-equipment-9" name="robotic-equipment" type="checkbox" value="Retail facilities " {{ checked("robotic-equipment", "Retail facilities ") }}>
-            <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-9">
-              Retail facilities
-            </label>
-            <div id="Retail-facilities-hint" class="govuk-hint govuk-radios__hint">
-                  For example, shops or display cabinets
-                </div>
-          </div>
-</div>
-
-        </fieldset>
-        </div>
-
-
-
-<button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
       </form>
     </div>
-  </div>
 
 
 {% endblock %}
