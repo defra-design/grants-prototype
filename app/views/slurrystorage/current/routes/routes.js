@@ -326,6 +326,51 @@ router.get('/current-storage-capacity', function (req, res) {
 router.get('/future-storage-capacity', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'current-storage-capacity'
+  var nextUrl = 'store-type'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Q: Store type
+
+router.get('/store-type', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'future-storage-capacity'
+  var nextUrl = 'cover-type'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Q: Cover type
+
+router.get('/cover-type', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'store-type'
+  var nextUrl = 'project-items'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Q: Cover type
+
+router.get('/project-items', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'cover-type'
   var nextUrl = 'business'
   var completedUrl = 'answers'
 
@@ -336,13 +381,39 @@ router.get('/future-storage-capacity', function (req, res) {
   })
 })
 
-
-
 //JOURNEY FINISHING
 // ***************
 // ***************
 // ***************
 // ***************
+
+
+// Q: remaining costs
+
+router.get('/remaining-costs', function (req, res) {
+  var backUrl = 'grant'
+  var nextUrl = 'remaining-costs-answer'
+  var completedUrl = 'remaining-costs-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/remaining-costs-answer', function (req, res) {
+  var remainingCosts = req.session.data['remaining-costs']
+
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('products-processed') }
+})
+
+router.post('/remaining-costs-answer-completed', function (req, res) {
+  var remainingCosts = req.session.data['remaining-costs']
+
+  if (remainingCosts === 'no') {res.redirect('remaining-costs-fail')} else {res.redirect('answers')}
+})
+
 
 // PLANNING PERMISSION
 
@@ -388,218 +459,6 @@ router.get('/planning-required-condition', function (req, res) {
 
 
 
-
-
-// Q: Project items
-
-router.get('/project-items', function (req, res) {
-  var backUrl = 'tenancy'
-  var nextUrl = 'storage'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Q: Storage (new page - solving a problem around adding secondary project item - as storage faciliies)
-
-router.get('/storage', function (req, res) {
-  var backUrl = 'project-items'
-  var nextUrl = 'project-cost'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
-
-
-// Q: Project cost
-
-router.get('/project-cost', function (req, res) {
-  req.session.data.currentProjectCost = req.session.data['project-cost']
-
-  var backUrl = 'storage'
-  var nextUrl = 'project-cost-answer'
-  var completedUrl = 'project-cost-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/project-cost-answer', function (req, res) {
-  var projectCost = req.session.data['project-cost']
-
-  if (projectCost < 87500)   { res.redirect('project-cost-fail') } else { res.redirect('grant') }
-})
-
-router.post('/project-cost-answer-completed', function (req, res) {
-  var projectCost = req.session.data['project-cost']
-
-  if (projectCost < 87500)   { res.redirect('project-cost-fail') } else { res.redirect('answers') }
-})
-
-
-router.get('/grant', function (req, res) {
-  var backUrl = 'project-cost'
-  var nextUrl = 'remaining-costs'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Q: remaining costs
-
-router.get('/remaining-costs', function (req, res) {
-  var backUrl = 'grant'
-  var nextUrl = 'remaining-costs-answer'
-  var completedUrl = 'remaining-costs-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/remaining-costs-answer', function (req, res) {
-  var remainingCosts = req.session.data['remaining-costs']
-
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('products-processed') }
-})
-
-router.post('/remaining-costs-answer-completed', function (req, res) {
-  var remainingCosts = req.session.data['remaining-costs']
-
-  if (remainingCosts === 'no') {res.redirect('remaining-costs-fail')} else {res.redirect('answers')}
-})
-
-
-
-
-
-// Products processed
-router.get('/products-processed', function (req, res) {
-  var backUrl = 'remaining-costs'
-  var nextUrl = 'adding-value'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Adding value
-router.get('/adding-value', function (req, res) {
-  var backUrl = 'products-processed'
-  var nextUrl = 'project-impact'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Project impact
-router.get('/project-impact', function (req, res) {
-  var backUrl = 'adding-value'
-  var nextUrl = 'future-customers'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
-// Future customers
-router.get('/future-customers', function (req, res) {
-  var backUrl = 'adding-value'
-  var nextUrl = 'collaboration'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Collaboration (aka. Buying from farmers - was called earlier)
-router.get('/collaboration', function (req, res) {
-  var backUrl = 'future-customers'
-  var nextUrl = 'environmental-impact'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Products coming from
-router.get('/products-coming-from', function (req, res) {
-  var backUrl = 'collaboration'
-  var nextUrl = 'where-products-sold'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Where products sold
-router.get('/where-products-sold', function (req, res) {
-  var backUrl = 'products-coming-from'
-  var nextUrl = 'environmental-impact'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
-// Environmental impact
-router.get('/environmental-impact', function (req, res) {
-  var backUrl = 'collaboration'
-  var nextUrl = 'answers'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
-
 // answers
 
 router.get('/answers', function (req, res) {
@@ -624,7 +483,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'future-storage-capacity'
+  var backUrl = 'project-items'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 

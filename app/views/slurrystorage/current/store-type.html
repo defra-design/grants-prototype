@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What type of cover will you have?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'storetype',
+                  name: 'storetype',
+                  fieldset: {
+                      legend: {
+                          text: 'What type of store will you have?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    text: "Select one option"
+                  },
+
+                  items: [
+                {
+                  value: "Earth-banked lagoon",
+                  text: "Earth-banked lagoon",
+                  checked: checked("storetype", "Earth-banked lagoon"),
+                  hint: {
+                    text: "Item cost: £9,000"
+                  }
+                },
+                {
+                  value: "Earth-banked lagoon",
+                  text: "Earth-banked lagoon",
+                  checked: checked("storetype", "Earth-banked lagoon"),
+                  hint: {
+                    text: "Item cost: £2,100"
+                  }
+                },
+                {
+                  value: "Earth-banked lagoon",
+                  text: "Earth-banked lagoon",
+                  checked: checked("storetype", "Earth-banked lagoon"),
+                  hint: {
+                    text: "Item cost: £20,250"
+                  }
+                },
+                {
+                  value: "In situ concrete store",
+                  text: "In situ concrete store",
+                  checked: checked("storetype", "In situ concrete store"),
+                  hint: {
+                    text: "Item cost: £10,000"
+                  }
+                },
+                {
+                  value: "Precast concrete store",
+                  text: "Precast concrete store",
+                  checked: checked("storetype", "Precast concrete store"),
+                  hint: {
+                    text: "Item cost: £8,000"
+                  }
+                },
+                {
+                  value: "Underfloor slatted store",
+                  text: "Underfloor slatted store",
+                  checked: checked("storetype", "Underfloor slatted store"),
+                  hint: {
+                    text: "Item cost: £21,500"
+                  }
+                },
+                {
+                  value: "Alligator bags",
+                  text: "Alligator bags",
+                  checked: checked("storetype", "Alligator bags"),
+                  hint: {
+                    text: "Item cost: £5,010"
+                  }
+                }
+
+              ]
+              }) }}
+
+          <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+
+
+{% endblock %}
