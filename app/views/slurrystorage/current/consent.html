@@ -24,11 +24,23 @@
     <div class="govuk-form-group govuk-!-margin-bottom-9">
       <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
         <h1 class="govuk-heading-l">Confirm and send</h1>
-        <p class="govuk-body">Holding page and text to be confirmed by business. </p>
+          <p class="govuk-body">I confirm that, to the best of my knowledge, the details I have provided are correct.<br><br>
+            I understand the score was based on the answers I provided.<br><br>
+            I am aware the information I submit will be checked.<br><br>
+            I am happy to be contacted by Defra and RPA (or a third-party on their behalf) about my application.<br><br>
+            So that we can continue to improve our services and schemes, we may wish to contact you in the future. Please confirm if you are happy for us, or a third-party working for us, to contact you.
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="confirm" name="confirmation" type="checkbox" value="{{ data['confirmation'] }}">
+                <label class="govuk-label govuk-checkboxes__label" for="confirm">
+                (Optional) I confirm.
+                </label>
+              </div>
+            </div>
 
-      </fieldset>
-    </div>
-
+        {{ govukWarningText({
+          text: "You can only submit your details once",
+          iconFallbackText: "Warning"
+        }) }}
 
 
     <form class="form" action="{{ nextUrl }}" method="post">
