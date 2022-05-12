@@ -103,6 +103,52 @@ What type of cover will you have?
 
       </form>
     </div>
+    <div class="govuk-grid-column-one-third">
 
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Storage selected</span>
+          </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+            <li>
+              Current storage: {{ data['current-capacity'] }}m<sup>3</sup>
+            </li>
+            <li>
+              Future storage: {{ data['future-capacity'] }}m<sup>3</sup>
+            </li>
+          </ul>
+        </nav>
+        </div>
+        <div>
+          <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Type of store selected</span>
+            </h2>
+          <nav role="navigation" aria-labelledby="subsection-title">
+            <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+              <li>
+                {{ data['storetype'] }}
+              </li>
+
+            </ul>
+
+          </nav>
+          </div>
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Type of cover selected</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {{ data['covertype'] }}
+                </li>
+                
+              </ul>
+
+            </nav>
+            </div>
+
+      </div>
 
 {% endblock %}

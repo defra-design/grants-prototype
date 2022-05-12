@@ -371,6 +371,21 @@ router.get('/cover-type', function (req, res) {
 router.get('/project-items', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'cover-type'
+  var nextUrl = 'project-summary'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Q: Project summary
+
+router.get('/project-summary', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'project-items'
   var nextUrl = 'business'
   var completedUrl = 'answers'
 

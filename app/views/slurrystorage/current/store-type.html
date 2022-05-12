@@ -46,17 +46,17 @@ What type of cover will you have?
                   }
                 },
                 {
-                  value: "Earth-banked lagoon",
-                  text: "Earth-banked lagoon",
-                  checked: checked("storetype", "Earth-banked lagoon"),
+                  value: "Lined lagoon",
+                  text: "Lined lagoon",
+                  checked: checked("storetype", "Lined lagoon"),
                   hint: {
                     text: "Item cost: £2,100"
                   }
                 },
                 {
-                  value: "Earth-banked lagoon",
-                  text: "Earth-banked lagoon",
-                  checked: checked("storetype", "Earth-banked lagoon"),
+                  value: "Above-ground cyclindral tank",
+                  text: "Above-ground cyclindral tank",
+                  checked: checked("storetype", "Above-ground cyclindral tank"),
                   hint: {
                     text: "Item cost: £20,250"
                   }
@@ -103,5 +103,24 @@ What type of cover will you have?
       </form>
     </div>
 
+    <div class="govuk-grid-column-one-third">
 
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Storage selected</span>
+          </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+            <li>
+              Current storage: {{ data['current-capacity'] }}m<sup>3</sup>
+            </li>
+            <li>
+              Future storage: {{ data['future-capacity'] }}m<sup>3</sup>
+            </li>
+
+
+          </ul>
+        </nav>
+        </div>
+      </div>
 {% endblock %}
