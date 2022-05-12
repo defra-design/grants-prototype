@@ -48,7 +48,19 @@ Current storage capacity
     </div>
     <div class="govuk-grid-column-one-third">
 
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Storage selected</span>
+          </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+            <li>
+              Current storage: {{ data['current-capacity'] }}m<sup>3</sup>
+            </li>
 
-   </div>
+          </ul>
+        </nav>
+        </div>
+      </div>
 
 {% endblock %}
