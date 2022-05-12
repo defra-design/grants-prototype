@@ -387,7 +387,7 @@ router.get('/project-summary', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'project-items'
   var nextUrl = 'business'
-  var completedUrl = 'answers'
+  var completedUrl = 'current-storage-capacity'
 
   res.render('./' + req.originalUrl, {
     backUrl,
