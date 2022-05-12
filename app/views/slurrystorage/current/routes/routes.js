@@ -356,6 +356,21 @@ router.get('/store-type', function (req, res) {
 router.get('/cover-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'store-type'
+  var nextUrl = 'cover-size'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Q: Cover size
+
+router.get('/cover-size', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'cover-type'
   var nextUrl = 'project-items'
   var completedUrl = 'answers'
 
@@ -366,11 +381,11 @@ router.get('/cover-type', function (req, res) {
   })
 })
 
-// Q: Cover type
+// Q: Project items
 
 router.get('/project-items', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'cover-type'
+  var backUrl = 'cover-size'
   var nextUrl = 'project-summary'
   var completedUrl = 'answers'
 

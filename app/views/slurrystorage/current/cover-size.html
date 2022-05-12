@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-What type of cover will you have?
+Cover size
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,52 +21,27 @@ What type of cover will you have?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        {{ govukInput({
+          label: {
+            text: "How big will the cover be?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Enter size in meters squared"
+          },
+          classes: "govuk-input--width-5",
+          id: "cover-size",
+          name: "cover-size",
+          suffix: {
+            html: "m<sup>2</sup>"
+          },
+         value: data['cover-size'],
 
-              {{ govukRadios({
-                  idPrefix: 'covertype',
-                  name: 'covertype',
-                  fieldset: {
-                      legend: {
-                          text: 'What type of cover will you have?',
-                          isPageHeading: yes,
-                          classes: 'govuk-fieldset__legend--l'
-                      }
-                  },
-                  hint: {
-                    text: "Select one option"
-                  },
+          spellcheck: false
+        }) }}
 
-                  items: [
-                {
-                  value: "Fixed cover or lid",
-                  text: "Fixed cover or lid",
-                  checked: checked("covertype", "Fixed cover or lid"),
-                  hint: {
-                    text: "Item cost: £1,000"
-                  }
-                },
-                {
-                  value: "Fixed-floating plastic membrane",
-                  text: "Fixed-floating plastic membrane",
-                  checked: checked("covertype", "Fixed-floating plastic membrane"),
-                  hint: {
-                    text: "Item cost: £2,100"
-                  }
-                },
-                {
-                  value: "Free-floating plastic cover",
-                  text: "Free-floating plastic cover",
-                  checked: checked("covertype", "Free-floating plastic cover"),
-                  hint: {
-                    text: "Item cost: £3,250"
-                  }
-                }
-
-
-              ]
-              }) }}
-
-          <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
 
       </form>
@@ -105,8 +80,18 @@ What type of cover will you have?
 
           </nav>
           </div>
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Cover type</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {{ data['covertype'] }}
+                </li>
 
+              </ul>
 
-      </div>
-
+            </nav>
+            </div>
 {% endblock %}
