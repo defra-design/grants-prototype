@@ -368,7 +368,8 @@ router.get('/project-items', function (req, res) {
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    projectItemsCost
   })
 })
 

@@ -21,82 +21,52 @@ What type of cover will you have?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="projectitems-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What other items do you need?
+              </h1>
+            </legend>
+            <div id="projectitems-hint" class="govuk-hint">
+              Select all the items your project needs
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 
-              {{ govukCheckboxes({
-                  idPrefix: 'projectitems',
-                  name: 'projectitems',
-                  fieldset: {
-                      legend: {
-                          text: 'What other items do you need?',
-                          isPageHeading: yes,
-                          classes: 'govuk-fieldset__legend--l'
-                      }
-                  },
-                  hint: {
-                    text: "Select all the items your project needs"
-                  },
+              {% for item, properties in projectItemsCost %}
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input"
+                    name="projectitems" type="checkbox" value="{{item}}"
+                    aria-describedby="projectitems-item-hint"
+                    {{ checked("projectitems", item) }}
+                  >
+                  <label class="govuk-label govuk-checkboxes__label">
+                    {{properties.text}}
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">
+                    {{properties.hint | safe}}
+                  </div>
+                </div>
+              {% endfor %}
 
-                  items: [
-                {
-                  value: "agitator",
-                  text: "Agitator",
-                  checked: checked("projectitems", "agitator"),
-                  hint: {
-                    text: "Item cost: £1,000"
-                  }
-                },
-                {
-                  value: "underFloorStorage",
-                  text: "Under-floor storage and transfer channels",
-                  checked: checked("projectitems", "underFloorStorage"),
-                  hint: {
-                    text: "Item cost: £2,100"
-                  }
-                },
-                {
-                  value: "receptionTanksPits",
-                  text: "Reception tanks/pits",
-                  checked: checked("projectitems", "receptionTanksPits"),
-                  hint: {
-                    text: "Item cost: £3,250"
-                  }
-                },
-                {
-                  value: "laddersPlatforms",
-                  text: "Ladders and platforms",
-                  checked: checked("projectitems", "laddersPlatforms"),
-                  hint: {
-                    text: "Item cost: £4,550"
-                  }
-                },
-                {
-                  value: "agitatorPlatform",
-                  text: "Agitator platform",
-                  checked: checked("projectitems", "agitatorPlatform"),
-                  hint: {
-                    text: "Item cost: £3,190"
-                  }
-                },
-                {
-                  value: "healthSafetyFeatures",
-                  text: "Health and safety features",
-                  checked: checked("projectitems", "healthSafetyFeatures"),
-                  hint: {
-                    html: "For example, gas monitor, tyre ladders<br>Item cost: £2,440"
-                  }
-                },
-                {
-                  divider: "or"
-                },
+              <div class="govuk-checkboxes__divider">or</div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" name="projectitems" type="checkbox" value="None of the above"
+                  data-behaviour="exclusive" {{ checked("projectitems", "None of the above") }}>
+                <label class="govuk-label govuk-checkboxes__label">
+                  None of the above
+                </label>
+              </div>
+            </div>
+        
+          </fieldset>
+        </div>
 
-                {
-                  value: "None of the above",
-                  text: "None of the above",
-                  checked: checked("projectitems", "None of the above"),
-                  behaviour: "exclusive"
-                }
-              ]
-              }) }}
+
+
+
+
+
 
           <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
