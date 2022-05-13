@@ -57,7 +57,7 @@
     {% for item in data['projectitems'] %}
     <tr class="govuk-table__row"></tr>
       <th scope="row" class="govuk-table__header">{{projectItemsCost[item].text}}</th>
-      <td class="govuk-table__cell">{{projectItemsCost[item].value}}</td>
+      <td class="govuk-table__cell">£{{projectItemsCost[item].value}}</td>
       <td class="govuk-table__cell">
         <select class="govuk-select" id="sort" name="sort">
           <option value="published">0</option>
