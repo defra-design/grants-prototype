@@ -54,31 +54,21 @@
       <td class="govuk-table__cell">1</td>
     </tr>
 
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header"> Agitator</th>
-      <td class="govuk-table__cell">£1,000</td>
+    {% for item in data['projectitems'] %}
+    <tr class="govuk-table__row"></tr>
+      <th scope="row" class="govuk-table__header">{{projectItemsCost[item].text}}</th>
+      <td class="govuk-table__cell">{{projectItemsCost[item].value}}</td>
       <td class="govuk-table__cell">
         <select class="govuk-select" id="sort" name="sort">
-            <option value="published">0</option>
-            <option value="updated" selected>1</option>
-            <option value="views">2</option>
-            <option value="comments">3</option>
-          </select>
-        </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header"> Reception tanks and pits</th>
-      <td class="govuk-table__cell">£3,250</td>
-      <td class="govuk-table__cell">
-        <select class="govuk-select" id="sort" name="sort">
-            <option value="published">0</option>
-            <option value="updated" selected>1</option>
-            <option value="views">2</option>
-            <option value="comments">3</option>
-          </select>
-
+          <option value="published">0</option>
+          <option value="updated" selected>1</option>
+          <option value="views">2</option>
+          <option value="comments">3</option>
+        </select>
       </td>
     </tr>
+    {% endfor %}
+
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__footer"> Total requested grant amount</th>
       <td class="govuk-table__cell"><strong>£14,250</strong></td>
