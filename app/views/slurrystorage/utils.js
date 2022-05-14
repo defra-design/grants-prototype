@@ -5,7 +5,7 @@ const storeTypeCost = {
   insituConcreteStore: { text: 'In situ concrete store', value: 10000, hint: 'Item cost: £10,000' },
   precastConcreteStore: { text: 'Precast concrete store', value: 8000, hint: 'Item cost: £8,000' },
   undefloorSlattedStore: { text: 'Underfloor slatted store', value: 21500, hint: 'Item cost: £21,500' },
-  alligatorBags: { text: 'AlligatorBags', value: 5010, hint: 'Item cost: £5,010' }
+  alligatorBags: { text: 'Alligator bags', value: 5010, hint: 'Item cost: £5,010' }
 }
 
 const coverTypeCost = {
