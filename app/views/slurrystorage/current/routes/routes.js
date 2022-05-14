@@ -3,7 +3,7 @@ const router = express.Router()
 
 const serviceName = 'Check if you can apply for a Farming Transformation Fund slurry acidification grant'
 
-const { projectItemsCost } = require('../../utils')
+const { storeTypeCost, coverTypeCost, projectItemsCost } = require('../../utils')
 
 console.log('Service name: ' + serviceName)
 
