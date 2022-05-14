@@ -387,6 +387,8 @@ router.get('/project-summary', function (req, res) {
     backUrl,
     nextUrl,
     completedUrl,
+    storeTypeCost,
+    coverTypeCost,
     projectItemsCost
   })
 })

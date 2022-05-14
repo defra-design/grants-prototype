@@ -22,82 +22,38 @@ What type of cover will you have?
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukRadios({
-                  idPrefix: 'storetype',
-                  name: 'storetype',
-                  fieldset: {
-                      legend: {
-                          text: 'What type of store will you have?',
-                          isPageHeading: yes,
-                          classes: 'govuk-fieldset__legend--l'
-                      }
-                  },
-                  hint: {
-                    text: "Select one option"
-                  },
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="storetype-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What type of store will you have?
+              </h1>
+            </legend>
+            <div id="storetype-hint" class="govuk-hint">
+              Select one option
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
 
-                  items: [
-                {
-                  value: "Earth-banked lagoon",
-                  text: "Earth-banked lagoon",
-                  checked: checked("storetype", "Earth-banked lagoon"),
-                  hint: {
-                    text: "Item cost: £9,000"
-                  }
-                },
-                {
-                  value: "Lined lagoon",
-                  text: "Lined lagoon",
-                  checked: checked("storetype", "Lined lagoon"),
-                  hint: {
-                    text: "Item cost: £2,100"
-                  }
-                },
-                {
-                  value: "Above-ground cyclindral tank",
-                  text: "Above-ground cyclindral tank",
-                  checked: checked("storetype", "Above-ground cyclindral tank"),
-                  hint: {
-                    text: "Item cost: £20,250"
-                  }
-                },
-                {
-                  value: "In situ concrete store",
-                  text: "In situ concrete store",
-                  checked: checked("storetype", "In situ concrete store"),
-                  hint: {
-                    text: "Item cost: £10,000"
-                  }
-                },
-                {
-                  value: "Precast concrete store",
-                  text: "Precast concrete store",
-                  checked: checked("storetype", "Precast concrete store"),
-                  hint: {
-                    text: "Item cost: £8,000"
-                  }
-                },
-                {
-                  value: "Underfloor slatted store",
-                  text: "Underfloor slatted store",
-                  checked: checked("storetype", "Underfloor slatted store"),
-                  hint: {
-                    text: "Item cost: £21,500"
-                  }
-                },
-                {
-                  value: "Alligator bags",
-                  text: "Alligator bags",
-                  checked: checked("storetype", "Alligator bags"),
-                  hint: {
-                    text: "Item cost: £5,010"
-                  }
-                }
-
-              ]
-              }) }}
-
-          <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+              {% for item, properties in storeTypeCost %}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input"
+                    name="storetype" type="radio" value="{{item}}"
+                    aria-describedby="storetype-item-hint"
+                    {{ checked("storetype", item) }}
+                  >
+                  <label class="govuk-label govuk-radios__label">
+                    {{properties.text}}
+                  </label>
+                  <div class="govuk-hint govuk-radios__hint">
+                    {{properties.hint | safe}}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+        
+          </fieldset>
+        </div>
+        <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
 
       </form>

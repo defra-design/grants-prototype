@@ -43,16 +43,23 @@
     </tr>
   </thead>
   <tbody class="govuk-table__body">
+    {% if data['storetype'] %}
+    {% set storeType = data['storetype'] %}
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">{{ storeTypeCost[storeType].text }}</th>
+        <td class="govuk-table__cell">£{{storeTypeCost[storeType].value}}</td>
+        <td class="govuk-table__cell">1</td>
+      </tr>
+    {% endif %}
+
+    {% if data['covertype'] %}
+    {% set coverType = data['covertype'] %}
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">{{ data['storetype'] }}
-      <td class="govuk-table__cell">£9,000</td>
+      <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
+      <td class="govuk-table__cell">£{{coverTypeCost[coverType].value}}</td>
       <td class="govuk-table__cell">1</td>
     </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">{{ data['covertype'] }} </th>
-      <td class="govuk-table__cell">£1,000</td>
-      <td class="govuk-table__cell">1</td>
-    </tr>
+    {% endif %}
 
     {% for item in data['projectitems'] %}
       {% if item in projectItemsCost %}

@@ -22,51 +22,38 @@ What type of cover will you have?
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukRadios({
-                  idPrefix: 'covertype',
-                  name: 'covertype',
-                  fieldset: {
-                      legend: {
-                          text: 'What type of cover will you have?',
-                          isPageHeading: yes,
-                          classes: 'govuk-fieldset__legend--l'
-                      }
-                  },
-                  hint: {
-                    text: "Select one option"
-                  },
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="covertype-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What type of cover will you have?
+              </h1>
+            </legend>
+            <div id="covertype-hint" class="govuk-hint">
+              Select one option
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
 
-                  items: [
-                {
-                  value: "Fixed cover or lid",
-                  text: "Fixed cover or lid",
-                  checked: checked("covertype", "Fixed cover or lid"),
-                  hint: {
-                    text: "Item cost: £1,000"
-                  }
-                },
-                {
-                  value: "Fixed-floating plastic membrane",
-                  text: "Fixed-floating plastic membrane",
-                  checked: checked("covertype", "Fixed-floating plastic membrane"),
-                  hint: {
-                    text: "Item cost: £2,100"
-                  }
-                },
-                {
-                  value: "Free-floating plastic cover",
-                  text: "Free-floating plastic cover",
-                  checked: checked("covertype", "Free-floating plastic cover"),
-                  hint: {
-                    text: "Item cost: £3,250"
-                  }
-                }
-
-
-              ]
-              }) }}
-
-          <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+              {% for item, properties in coverTypeCost %}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input"
+                    name="covertype" type="radio" value="{{item}}"
+                    aria-describedby="covertype-item-hint"
+                    {{ checked("covertype", item) }}
+                  >
+                  <label class="govuk-label govuk-radios__label">
+                    {{properties.text}}
+                  </label>
+                  <div class="govuk-hint govuk-radios__hint">
+                    {{properties.hint | safe}}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+        
+          </fieldset>
+        </div>
+        <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
 
       </form>
