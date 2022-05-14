@@ -323,7 +323,8 @@ router.get('/store-type', function (req, res) {
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    storeTypeCost
   })
 })
 
@@ -338,7 +339,8 @@ router.get('/cover-type', function (req, res) {
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    coverTypeCost
   })
 })
 
