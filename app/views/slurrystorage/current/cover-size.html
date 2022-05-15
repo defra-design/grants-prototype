@@ -52,20 +52,22 @@ Cover size
         <h1 class="app-step-nav-related__heading">
           <span class="govuk-heading-m">Your project items</span>
           </h1>
+
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Storage</span>
           </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
             <li>
-              Current storage: {{ data['current-capacity'] }}m<sup>3</sup>
+              Servicible capacity increse: {{ data['current-capacity'] }}m<sup>3</sup>
             </li>
-            <li>
-              Future storage: {{ data['future-capacity'] }}m<sup>3</sup>
-            </li>
+
           </ul>
         </nav>
+
         </div>
+
+        {% if data['storetype'] %}
         <div>
           <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Store type</span>
@@ -73,13 +75,14 @@ Cover size
           <nav role="navigation" aria-labelledby="subsection-title">
             <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
               <li>
-                {{ data['storetype'] }}
+                {% set storeType = data['storetype'] %}
+                {{ storeTypeCost[storeType].text }}
               </li>
-
             </ul>
-
           </nav>
           </div>
+          {% endif %}
+            {% if data['covertype'] %}
           <div>
             <h2 class="app-step-nav-related__heading">
               <span class="app-step-nav-related__pretitle">Cover type</span>
@@ -87,11 +90,14 @@ Cover size
             <nav role="navigation" aria-labelledby="subsection-title">
               <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
                 <li>
-                  {{ data['covertype'] }}
+                  {% set coverType = data['covertype'] %}
+                  {{ coverTypeCost[coverType].text }}
                 </li>
 
               </ul>
 
             </nav>
             </div>
+ {% endif %}
+
 {% endblock %}

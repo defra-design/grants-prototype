@@ -287,21 +287,6 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 router.get('/current-storage-capacity', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'standardised-costs'
-  var nextUrl = 'future-storage-capacity'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Q: Future storage capacity
-
-router.get('/future-storage-capacity', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'current-storage-capacity'
   var nextUrl = 'store-type'
   var completedUrl = 'answers'
 
@@ -312,11 +297,13 @@ router.get('/future-storage-capacity', function (req, res) {
   })
 })
 
+
+
 // Q: Store type
 
 router.get('/store-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'future-storage-capacity'
+  var backUrl = 'current-storage-capacity'
   var nextUrl = 'cover-type'
   var completedUrl = 'answers'
 
@@ -340,7 +327,8 @@ router.get('/cover-type', function (req, res) {
     backUrl,
     nextUrl,
     completedUrl,
-    coverTypeCost
+    coverTypeCost,
+    storeTypeCost
   })
 })
 
@@ -355,7 +343,9 @@ router.get('/cover-size', function (req, res) {
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    coverTypeCost,
+    storeTypeCost
   })
 })
 
@@ -371,7 +361,11 @@ router.get('/project-items', function (req, res) {
     backUrl,
     nextUrl,
     completedUrl,
+    coverTypeCost,
+    storeTypeCost,
     projectItemsCost
+
+
   })
 })
 
@@ -488,7 +482,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'project-items'
+  var backUrl = 'project-summary'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 

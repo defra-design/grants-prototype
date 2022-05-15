@@ -50,7 +50,7 @@ What type of cover will you have?
                 </div>
               {% endfor %}
             </div>
-        
+
           </fieldset>
         </div>
         <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
@@ -70,14 +70,13 @@ What type of cover will you have?
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
             <li>
-              Current storage: {{ data['current-capacity'] }}m<sup>3</sup>
+              Servicible capacity increse:  {{ data['current-capacity'] }}m<sup>3</sup>
             </li>
-            <li>
-              Future storage: {{ data['future-capacity'] }}m<sup>3</sup>
-            </li>
+
           </ul>
         </nav>
         </div>
+        {% if data['storetype'] %}
         <div>
           <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Store type</span>
@@ -85,13 +84,14 @@ What type of cover will you have?
           <nav role="navigation" aria-labelledby="subsection-title">
             <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
               <li>
-                {{ data['storetype'] }}
+                {% set storeType = data['storetype'] %}
+                {{ storeTypeCost[storeType].text }}
               </li>
-
             </ul>
-
           </nav>
           </div>
+          {% endif %}
+          
 
 
       </div>
