@@ -3,6 +3,8 @@ const router = express.Router()
 
 const serviceName = 'Check if you can apply for a Farming Transformation Fund slurry acidification grant'
 
+const { storeTypeCost, coverTypeCost, projectItemsCost } = require('../../utils')
+
 console.log('Service name: ' + serviceName)
 
 router.get('/start', function (req, res) {
@@ -20,7 +22,7 @@ router.get('/start', function (req, res) {
   })
 })
 
-//: Q: Farmer type
+// : Q: Farmer type
 router.get('/farmer-type', function (req, res) {
   var backUrl = 'start'
   var nextUrl = 'farmer-type-answer'
@@ -34,18 +36,16 @@ router.get('/farmer-type', function (req, res) {
 })
 
 router.post('/farmer-type-answer', function (req, res) {
-  const typeCondition = req.session.data['farmertype']
-  //console.log ('typeCondition',typeCondition)
+  const typeCondition = req.session.data.farmertype
+  // console.log ('typeCondition',typeCondition)
 
-if (typeCondition.includes('None of the above')) {
-   res.redirect ('farmer-type-fail')
- }
- res.redirect('system-type')
+  if (typeCondition.includes('None of the above')) {
+    res.redirect('farmer-type-fail')
+  }
+  res.redirect('system-type')
 })
 
-
-
-//: Q: System type
+// : Q: System type
 router.get('/system-type', function (req, res) {
   var backUrl = 'farmer-type'
   var nextUrl = 'system-type-answer'
@@ -59,21 +59,16 @@ router.get('/system-type', function (req, res) {
 })
 
 router.post('/system-type-answer', function (req, res) {
-  var systemType = req.session.data['systemtype']
+  var systemType = req.session.data.systemtype
 
-  if (systemType === 'no system' || systemType === 'straw-bedded system') { res.redirect('system-type-fail') }
-
-
-   else { res.redirect('legal-status') }
+  if (systemType === 'no system' || systemType === 'straw-bedded system') { res.redirect('system-type-fail') } else { res.redirect('legal-status') }
 })
 
 router.post('/system-type-answer-completed', function (req, res) {
-  var systemType = req.session.data['farmertype']
+  var systemType = req.session.data.farmertype
 
   if (systemType === 'I do not have a system') { res.redirect('system-type-fail') } else { res.redirect('answers') }
 })
-
-
 
 // Q: LEGAL STATUS
 
@@ -145,10 +140,6 @@ router.post('/country-answer-completed', function (req, res) {
   }
 })
 
-
-
-
-
 // Q: Existing size Storage
 
 router.get('/existing-size-storage', function (req, res) {
@@ -166,10 +157,7 @@ router.get('/existing-size-storage', function (req, res) {
 router.post('/existing-size-storage-answer', function (req, res) {
   var existingSize = req.session.data['existing-size-storage']
 
-  if (existingSize === 'At least 6 months') { res.redirect('existing-size-storage-fail') }
-
-
-   else { res.redirect('planned-size-storage') }
+  if (existingSize === 'At least 6 months') { res.redirect('existing-size-storage-fail') } else { res.redirect('planned-size-storage') }
 })
 
 // Q: Planned size Storage
@@ -189,14 +177,8 @@ router.get('/planned-size-storage', function (req, res) {
 router.post('/planned-size-storage-answer', function (req, res) {
   var plannedSize = req.session.data['planned-size-storage']
 
-  if (plannedSize === 'Less than 6 months') { res.redirect('planned-size-storage-fail') }
-
-
-   else { res.redirect('project-type') }
+  if (plannedSize === 'Less than 6 months') { res.redirect('planned-size-storage-fail') } else { res.redirect('project-type') }
 })
-
-
-
 
 // Q: Project type
 
@@ -213,12 +195,10 @@ router.get('/project-type', function (req, res) {
 })
 
 router.post('/project-type-answer', function (req, res) {
-  var projectType = req.session.data['projecttype']
+  var projectType = req.session.data.projecttype
 
-  if (projectType === 'None of the above') { res.redirect('project-type-fail') }
-   else { res.redirect('covers') }
+  if (projectType === 'None of the above') { res.redirect('project-type-fail') } else { res.redirect('covers') }
 })
-
 
 // Q: Covers
 
@@ -235,12 +215,10 @@ router.get('/covers', function (req, res) {
 })
 
 router.post('/covers-answer', function (req, res) {
-  var coversImp = req.session.data['covers']
+  var coversImp = req.session.data.covers
 
-  if (coversImp === 'No') { res.redirect('covers-fail') }
-   else { res.redirect('project-start') }
+  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('project-start') }
 })
-
 
 // PROJECT START
 
@@ -250,7 +228,6 @@ router.get('/project-start', function (req, res) {
   var backUrl = 'covers'
   var nextUrl = 'project-start-answer'
   var completedUrl = 'project-start-answer-completed'
-
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -305,7 +282,6 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 
 // Q: Standardised costs - routing embeded in-page
 
-
 // Q: Current storage capacity
 
 router.get('/current-storage-capacity', function (req, res) {
@@ -347,7 +323,8 @@ router.get('/store-type', function (req, res) {
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    storeTypeCost
   })
 })
 
@@ -362,7 +339,8 @@ router.get('/cover-type', function (req, res) {
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    coverTypeCost
   })
 })
 
@@ -392,7 +370,8 @@ router.get('/project-items', function (req, res) {
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    projectItemsCost
   })
 })
 
@@ -407,16 +386,18 @@ router.get('/project-summary', function (req, res) {
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    storeTypeCost,
+    coverTypeCost,
+    projectItemsCost
   })
 })
 
-//JOURNEY FINISHING
+// JOURNEY FINISHING
 // ***************
 // ***************
 // ***************
 // ***************
-
 
 // Q: remaining costs
 
@@ -441,9 +422,8 @@ router.post('/remaining-costs-answer', function (req, res) {
 router.post('/remaining-costs-answer-completed', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') {res.redirect('remaining-costs-fail')} else {res.redirect('answers')}
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('answers') }
 })
-
 
 // PLANNING PERMISSION
 
@@ -486,9 +466,6 @@ router.get('/planning-required-condition', function (req, res) {
   })
 })
 
-
-
-
 // answers
 
 router.get('/answers', function (req, res) {
@@ -507,8 +484,6 @@ router.get('/answers-back', function (req, res) {
   req.session.data.COMPLETED = false
   res.redirect('environmental-impact')
 })
-
-
 
 // business
 
@@ -567,12 +542,10 @@ router.get('/agent-details', function (req, res) {
 router.post('/agent-details-answer', function (req, res) {
   var contractorDetermine = req.session.data.tenancy
 
-if (contractorDetermine === 'Contractor') {
-  res.redirect('contractor-details')
-} else { res.redirect('applicant-details') }
+  if (contractorDetermine === 'Contractor') {
+    res.redirect('contractor-details')
+  } else { res.redirect('applicant-details') }
 })
-
-
 
 // applicant-details
 router.get('/applicant-details', function (req, res) {

@@ -43,42 +43,41 @@
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">{{ data['storetype'] }}
-      <td class="govuk-table__cell">£9,000</td>
-      <td class="govuk-table__cell">1</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">{{ data['covertype'] }} </th>
-      <td class="govuk-table__cell">£1,000</td>
-      <td class="govuk-table__cell">1</td>
-    </tr>
+    {% if data['storetype'] %}
+    {% set storeType = data['storetype'] %}
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">{{ storeTypeCost[storeType].text }}</th>
+        <td class="govuk-table__cell">{{storeTypeCost[storeType].formattedValue}}</td>
+        <td class="govuk-table__cell">1</td>
+      </tr>
+    {% endif %}
 
+    {% if data['covertype'] %}
+    {% set coverType = data['covertype'] %}
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header"> Agitator</th>
-      <td class="govuk-table__cell">£1,000</td>
-      <td class="govuk-table__cell">
-        <select class="govuk-select" id="sort" name="sort">
+      <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
+      <td class="govuk-table__cell">1</td>
+    </tr>
+    {% endif %}
+
+    {% for item in data['projectitems'] %}
+      {% if item in projectItemsCost %}
+      <tr class="govuk-table__row"></tr>
+        <th scope="row" class="govuk-table__header">{{projectItemsCost[item].text}}</th>
+        <td class="govuk-table__cell">{{projectItemsCost[item].formattedValue}}</td>
+        <td class="govuk-table__cell">
+          <select class="govuk-select" id="sort" name="sort">
             <option value="published">0</option>
             <option value="updated" selected>1</option>
             <option value="views">2</option>
             <option value="comments">3</option>
           </select>
         </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header"> Reception tanks and pits</th>
-      <td class="govuk-table__cell">£3,250</td>
-      <td class="govuk-table__cell">
-        <select class="govuk-select" id="sort" name="sort">
-            <option value="published">0</option>
-            <option value="updated" selected>1</option>
-            <option value="views">2</option>
-            <option value="comments">3</option>
-          </select>
+      </tr>
+      {% endif %}
+    {% endfor %}
 
-      </td>
-    </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__footer"> Total requested grant amount</th>
       <td class="govuk-table__cell"><strong>£14,250</strong></td>
