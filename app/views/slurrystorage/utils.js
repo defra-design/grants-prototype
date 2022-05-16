@@ -17,12 +17,20 @@ const coverTypeCost = {
 }
 
 const projectItemsCost = {
-  agitator: { text: 'Agitator', value: 1000, formattedValue: '£1,000', hint: 'Item cost: £1,000' },
-  underFloorStorage: { text: 'Under-floor storage and transfer channels', value: 2100, formattedValue: '£2,100', hint: 'Item cost: £2,100' },
-  receptionTanksPits: { text: 'Reception tanks/pits', value: 3250, formattedValue: '£3,250', hint: 'Item cost: £3,250' },
-  laddersPlatforms: { text: 'Ladders and platforms', value: 4550, formattedValue: '£4,550', hint: 'Item cost: £4,550' },
-  agitatorPlatform: { text: 'Agitator platform', value: 3190, formattedValue: '£3,190', hint: 'Item cost: £3,190' },
-  healthSafetyFeatures: { text: 'Health and safety features', value: 2440, formattedValue: '£2,440', hint: 'For example, gas monitor, tyre ladders<br/>Item cost: £2,440' }
+  plasticGRP: { text: 'Glass-reinforced plastic (GRP) reception pit', value: 1000, formattedValue: '£1,000', hint: 'Item cost: £25 per m<sup>3</sup>' },
+  plasticReceptionPit: { text: 'Plastic reception pit', value: 2100, formattedValue: '£2,100', hint: 'Item cost: £26 per m<sup>3</sup>' },
+  concreteReceptionPits: { text: 'Pre-cast concrete reception pit', value: 3250, formattedValue: '£3,250', hint: 'Item cost: £27 per m<sup>3</sup>' },
+  insituConcreteReceptionPits: { text: 'In-situ cast concrete reception pit', value: 4550, formattedValue: '£4,550', hint: 'Item cost: £30 per m<sup>3</sup>' },
+  slurryTransferPump: { text: 'Electric-powered slurry transfer pump', value: 1050, formattedValue: '£1,050', hint: 'Item cost: £1,050' },
+  chopperPump: { text: 'Centrifugal chopper pump', value: 2090, formattedValue: '£2,090', hint: 'Item cost: £2,090' },
+  steelPipework100: { text: 'Galvanised steel pipework 100mm diameter', value: 1100, formattedValue: '£1,100', hint: 'Item cost: £14 per meter' },
+  steelPipework150: { text: 'Galvanised steel pipework 150mm diameter', value: 2300, formattedValue: '£2,300', hint: 'Item cost: £24 per meter' },
+  transferChannels: { text: 'Under-floor transfer channels', value: 2650, formattedValue: '£2,650', hint: 'Item cost: £25 per meter' },
+  tankWallMixers1200: { text: 'Tank wall mixers with tank capacity up to 1,200 m3', value: 350, formattedValue: '£350', hint: 'Item cost: £350' },
+  tankWallMixers8000: { text: 'Tank wall mixers with tank capacity up to 8,000 m3', value: 1000, formattedValue: '£1,000', hint: 'Item cost: £1,000' },
+  inspectionSteelTanks: { text: 'Inspection platform with ladder above-ground concrete and steel tanks', value: 800, formattedValue: '£800', hint: 'Item cost: £800' },
+  safetyFencingStores: { text: 'Safety fencing for below-ground stores, earth-bank lagoons and slurry bags', value: 2400, formattedValue: '£2,400', hint: 'Item cost: £55 per meter' }
+
 }
 
 module.exports = { storeTypeCost, coverTypeCost, projectItemsCost }
