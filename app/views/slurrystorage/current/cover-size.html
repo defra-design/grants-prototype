@@ -53,39 +53,32 @@ Cover size
           <span class="govuk-heading-m">Your project items</span>
           </h1>
 
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Storage</span>
-          </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
-            <li>
-              Servicible capacity increse: {{ data['current-capacity'] }}m<sup>3</sup>
-            </li>
 
-          </ul>
-        </nav>
+          {% if data['storetype'] %}
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Store</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set storeType = data['storetype'] %}
+                  {{ storeTypeCost[storeType].text }}
+                </li>
+                <li>
+                  Serviceable capacity increase:  {{ data['current-capacity'] }}m<sup>3</sup>
+                </li>
 
-        </div>
+              </ul>
+            </nav>
+            </div>
+            {% endif %}
 
-        {% if data['storetype'] %}
-        <div>
-          <h2 class="app-step-nav-related__heading">
-            <span class="app-step-nav-related__pretitle">Store type</span>
-            </h2>
-          <nav role="navigation" aria-labelledby="subsection-title">
-            <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
-              <li>
-                {% set storeType = data['storetype'] %}
-                {{ storeTypeCost[storeType].text }}
-              </li>
-            </ul>
-          </nav>
-          </div>
-          {% endif %}
+
             {% if data['covertype'] %}
           <div>
             <h2 class="app-step-nav-related__heading">
-              <span class="app-step-nav-related__pretitle">Cover type</span>
+              <span class="app-step-nav-related__pretitle">Cover</span>
               </h2>
             <nav role="navigation" aria-labelledby="subsection-title">
               <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
