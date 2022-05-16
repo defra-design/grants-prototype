@@ -23,7 +23,7 @@ Current storage capacity
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         {{ govukInput({
           label: {
-            text: "How much will your servicable capacity increase by to get you to 6 months?",
+            html: "How much will your servicable <br>capacity increase by to get you <br>to 6 months?",
             classes: "govuk-label--l",
             isPageHeading: true
           },
@@ -48,7 +48,25 @@ Current storage capacity
     </div>
     <div class="govuk-grid-column-one-third">
 
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h1 class="app-step-nav-related__heading">
+          <span class="govuk-heading-m">Your project items</span>
+          </h1>
+          {% if data['storetype'] %}
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Store type</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set storeType = data['storetype'] %}
+                  {{ storeTypeCost[storeType].text }}
+                </li>
+              </ul>
+            </nav>
+            </div>
+            {% endif %}
 
-   </div>
 
 {% endblock %}

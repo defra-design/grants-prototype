@@ -282,28 +282,27 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 
 // Q: Standardised costs - routing embeded in-page
 
-// Q: Current storage capacity
+// Q: Store type
 
-router.get('/current-storage-capacity', function (req, res) {
+router.get('/store-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'standardised-costs'
-  var nextUrl = 'store-type'
+  var nextUrl = 'current-storage-capacity'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    storeTypeCost
   })
 })
 
+// Q: Current storage capacity
 
-
-// Q: Store type
-
-router.get('/store-type', function (req, res) {
+router.get('/current-storage-capacity', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'current-storage-capacity'
+  var backUrl = 'store-type'
   var nextUrl = 'cover-type'
   var completedUrl = 'answers'
 
@@ -315,11 +314,12 @@ router.get('/store-type', function (req, res) {
   })
 })
 
+
 // Q: Cover type
 
 router.get('/cover-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'store-type'
+  var backUrl = 'current-storage-capacity'
   var nextUrl = 'cover-size'
   var completedUrl = 'answers'
 
@@ -375,7 +375,7 @@ router.get('/project-summary', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'project-items'
   var nextUrl = 'business'
-  var completedUrl = 'current-storage-capacity'
+  var completedUrl = 'store-type'
 
   res.render('./' + req.originalUrl, {
     backUrl,
