@@ -1,15 +1,10 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-
+Project summary
 {% endblock %}
 
-{% block header %}
-<!-- Blank header with no service name for the start page -->
 
-{{ govukHeader() }}
-
-{% endblock %}
 
 {% block beforeContent %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
@@ -28,7 +23,7 @@
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <h2 class="govuk-heading-l">Your project items</h2>
-        <p class="govuk-body">We have calculated your total grant amount based on your answers provided <br>
+        <p class="govuk-body">We have calculated the total grant amount based on the standardised costs for each item.<br>
 </p>
 
 
@@ -38,7 +33,7 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Item</th>
-      <th scope="col" class="govuk-table__header">Grant amount (£)</th>
+      <th scope="col" class="govuk-table__header">Grant amount</th>
       <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Quantity</th>
     </tr>
   </thead>
