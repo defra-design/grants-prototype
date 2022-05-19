@@ -374,7 +374,7 @@ router.get('/project-items', function (req, res) {
 router.get('/project-summary', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'project-items'
-  var nextUrl = 'business'
+  var nextUrl = 'grant'
   var completedUrl = 'store-type'
 
   res.render('./' + req.originalUrl, {
@@ -387,14 +387,22 @@ router.get('/project-summary', function (req, res) {
   })
 })
 
-// JOURNEY FINISHING
-// ***************
-// ***************
-// ***************
-// ***************
+
+// Q: Grant
+router.get('/grant', function (req, res) {
+  var backUrl = 'project-summary'
+  var nextUrl = 'remaining-costs'
+  var completedUrl = 'grant-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
 
 // Q: remaining costs
-
 router.get('/remaining-costs', function (req, res) {
   var backUrl = 'grant'
   var nextUrl = 'remaining-costs-answer'
@@ -410,7 +418,7 @@ router.get('/remaining-costs', function (req, res) {
 router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('products-processed') }
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('business') }
 })
 
 router.post('/remaining-costs-answer-completed', function (req, res) {
@@ -418,6 +426,13 @@ router.post('/remaining-costs-answer-completed', function (req, res) {
 
   if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('answers') }
 })
+
+
+// JOURNEY FINISHING
+// ***************
+// ***************
+// ***************
+// ***************
 
 // PLANNING PERMISSION
 
@@ -482,7 +497,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'project-summary'
+  var backUrl = 'remaining-costs'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 
