@@ -25,17 +25,11 @@ Potential grant funding
       Potential grant funding
     </h1>
 
-    {% set grantAmount = data['project-cost'] *0.4 %}
-    {% set projectCost = data['project-cost'] %}
-      {% if projectCost >=750001 %}
-      <p class="govuk-body">You may be able to apply for a grant of up to £300,000, based on the estimated cost of £{{ data['project-cost'] | toFixed(2) | commafy }} (and above).</p>
-
-      {% else %}
-    <p class="govuk-body">You may be able to apply for a grant of up to £{{ grantAmount | toFixed(2) | commafy }}, based on the estimated cost of £{{ data['project-cost'] | toFixed(2) | commafy }}.</p>
-          {% endif %}
+    <p class="govuk-body">Based on a grant of 50% of standardised item costs and the store capacity you entered, we estimate you could be eligible for a grant of £142,500.</p>
+          
 
     {{ govukWarningText({
-        text: 'There’s no guarantee the project will receive a grant.',
+        text: 'Other types of business may be supported in future schemes.',
         iconFallbackText: 'Warning'
     }) }}
 

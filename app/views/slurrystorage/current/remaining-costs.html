@@ -22,12 +22,11 @@ Meeting the remaining project costs
   <div class="govuk-grid-column-two-thirds">
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-  {% set remainingCosts = data['project-cost'] * 0.6 %}
-  {% set remainingCosts2 = data['project-cost'] -300000 %}
-  
 
-      <h1 class="govuk-heading-l">Can you pay the remaining costs{%if remainingCosts > 125001%} of £{{remainingCosts2 | toFixed(2) | commafy}}  {% else%} £{{ remainingCosts | toFixed(2) | commafy }}{% endif%}?</h1>
-
+      <h1 class="govuk-heading-l">Can you pay the remaining costs?</h1>
+      <div id="remaining-cost-hint" class="govuk-hint">
+            The grant will only pay up to 50% of standardised item costs – items may cost more than the standardised cost.
+          </div>
 
   <div class="govuk-radios govuk-radios--inline">
     <div class="govuk-radios__item">
@@ -62,7 +61,6 @@ Meeting the remaining project costs
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
           <p>You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
-          <p>You also cannot use money from a producer organisation under the Fresh Fruit and Vegetable Aid Scheme.</p>
           <p>You can use:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>loans</li>
@@ -74,6 +72,5 @@ Meeting the remaining project costs
 
       </div>
     </div>
-
 
 {% endblock %}
