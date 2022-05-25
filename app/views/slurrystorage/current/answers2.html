@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Score results
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<h1 class="govuk-heading-xl">Score results</h1>
+<p class="govuk-!-font-size-24">Based on your answers, your project’s score is:</p>
+
+    <div class="govuk-inset-text">
+      <h2 class="govuk-heading-m">Not in a priority funding area</h2>
+      <p>This means your project might not be successful</p>
+    </div>
+    <p class="govuk-body">RPA wants to fund projects that are in protected sites. <br><br>
+      Depending on the number of applications received, they may extend the grant to projects outside protected sites. </p>
+
+    <h1 class="govuk-heading-l">Your answers</h1>
+    <table class="govuk-table govuk-body govuk-!-font-size-16">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Answers</th>
+          <th scope="col" class="govuk-table__header">Change</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Within 1km of air quality protected site
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+            <li>Special areas of conservation (SACs) </li>
+            <li>Special protection areas (PAs) </li>
+
+            </ul>
+          </th>
+          <td class="govuk-table__cell"><a href="air-quality">Change</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Within 1km of water quality protected site
+            <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+            <li>Designated water catchments</li>
+            <li>Ramsar sites</li>
+            </ul>
+          </th>
+        <td class="govuk-table__cell"><a href="water-quality">Change</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Planning permission
+            <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+            <li>  Applied for but not yet approved</li>
+             </ul>
+          </th>
+        <td class="govuk-table__cell"><a href="planning-permission">Change</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+<div class="govuk-warning-text">
+<span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+<strong class="govuk-warning-text__text">
+<span class="govuk-warning-text__assistive">Warning</span>
+The likelihood of a full application being successful will also depend on the number and value of applications we receive.
+</strong>
+</div>
+<h2 class="govuk-heading-m">Next steps</h2>
+<p class="govuk-body">Next, add your business and contact details and submit them to the RPA (you should only do this once).</p>
+<p>You’ll get an email with your score and answers, and a reference number.</p>
+<br/><br/>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form class="form" action="{{ nextUrl }}" method="post">
+          <button class="govuk-button govuk-!-margin-right-1 govuk-!-padding-left-4 govuk-!-padding-right-4" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+
+       </div>
+    </div>
+
+{% endblock %}
