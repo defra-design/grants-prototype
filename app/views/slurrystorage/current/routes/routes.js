@@ -42,38 +42,15 @@ router.post('/farmer-type-answer', function (req, res) {
   if (typeCondition.includes('None of the above')) {
     res.redirect('farmer-type-fail')
   }
-  res.redirect('system-type')
+  res.redirect('legal-status')
 })
 
-// : Q: System type
-router.get('/system-type', function (req, res) {
-  var backUrl = 'farmer-type'
-  var nextUrl = 'system-type-answer'
-  var completedUrl = 'system-type-answer-completed'
 
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/system-type-answer', function (req, res) {
-  var systemType = req.session.data.systemtype
-
-  if (systemType === 'no system' || systemType === 'straw-bedded system') { res.redirect('system-type-fail') } else { res.redirect('legal-status') }
-})
-
-router.post('/system-type-answer-completed', function (req, res) {
-  var systemType = req.session.data.farmertype
-
-  if (systemType === 'I do not have a system') { res.redirect('system-type-fail') } else { res.redirect('answers') }
-})
 
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = 'system-type'
+  var backUrl = 'farmer-type'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
@@ -95,6 +72,8 @@ router.post('/legal-status-answer-completed', function (req, res) {
 
   if (legalStatus === 'None') { res.redirect('legal-status-fail') } else { res.redirect('answers') }
 })
+
+
 
 // Q : Country
 
@@ -118,7 +97,7 @@ router.post('/country-answer', function (req, res) {
       country = 'yes: [ Postcode: ' + postcode + ' ]'
     }
     req.session.data['summary-country'] = country
-    res.redirect('existing-size-storage')
+    res.redirect('system-type')
   } else {
     res.redirect('country-fail')
   }
@@ -140,10 +119,39 @@ router.post('/country-answer-completed', function (req, res) {
   }
 })
 
+
+
+// : Q: System type
+router.get('/system-type', function (req, res) {
+  var backUrl = 'country'
+  var nextUrl = 'system-type-answer'
+  var completedUrl = 'system-type-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/system-type-answer', function (req, res) {
+  var systemType = req.session.data.systemtype
+
+  if (systemType === 'no system' || systemType === 'straw-bedded system') { res.redirect('system-type-fail') } else { res.redirect('existing-size-storage') }
+})
+
+router.post('/system-type-answer-completed', function (req, res) {
+  var systemType = req.session.data.farmertype
+
+  if (systemType === 'I do not have a system') { res.redirect('system-type-fail') } else { res.redirect('answers') }
+})
+
+
+
 // Q: Existing size Storage
 
 router.get('/existing-size-storage', function (req, res) {
-  var backUrl = 'country'
+  var backUrl = 'system-type'
   var nextUrl = 'existing-size-storage-answer'
   var completedUrl = 'existing-size-storage-answer-completed'
 
@@ -418,7 +426,7 @@ router.get('/remaining-costs', function (req, res) {
 router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('business') }
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('air-quality') }
 })
 
 router.post('/remaining-costs-answer-completed', function (req, res) {
@@ -428,17 +436,38 @@ router.post('/remaining-costs-answer-completed', function (req, res) {
 })
 
 
-// JOURNEY FINISHING
-// ***************
-// ***************
-// ***************
-// ***************
+// SCORING QUESTIONS
+// Q: Air quality
+router.get('/air-quality', function (req, res) {
+  var backUrl = 'remaining-costs'
+  var nextUrl = 'water-quality'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Q: Air quality
+router.get('/water-quality', function (req, res) {
+  var backUrl = 'air-quality'
+  var nextUrl = 'planning-permission'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
 
 // PLANNING PERMISSION
 
 router.get('/planning-permission', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'country'
+  var backUrl = 'water-quality'
   var nextUrl = 'planning-permission-answer'
   var completedUrl = 'answers'
 
@@ -453,27 +482,63 @@ router.get('/planning-permission', function (req, res) {
 router.post('/planning-permission-answer', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
 
-  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
-    res.redirect('project-start')
+  if (planningPermission === 'Approved' || planningPermission === 'Applied') {
+    res.redirect('planning-list')
   }
 
-  if (planningPermission === 'maybe') {
+  if (planningPermission === 'Not yet applied') {
     res.redirect('planning-required-condition')
   }
 
-  res.redirect('planning-permission-fail')
+  res.redirect('os-grid')
 })
 
 // PLANNING PERMISSION CONDITION
 router.get('/planning-required-condition', function (req, res) {
   var backUrl = 'planning-permission'
-  var nextUrl = 'project-start'
+  var nextUrl = 'os-grid'
 
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl
   })
 })
+
+// PLANNING PERMISSION CONDITION
+router.get('/os-grid', function (req, res) {
+  var backUrl = 'planning-permission'
+  var nextUrl = 'os-grid'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl
+  })
+})
+
+
+
+// Q: Evidence
+
+router.get('/evidence', function (req, res) {
+  var backUrl = 'os-grid'
+  var nextUrl = 'evidence-answer'
+  var completedUrl = 'evidence-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/evidence-answer', function (req, res) {
+  var eEvidence = req.session.data.evidence
+
+  if (eEvidence === 'no') { res.redirect('evidence-conditional') } else { res.redirect('answers') }
+})
+
+
+
 
 // answers
 
@@ -491,13 +556,13 @@ router.get('/answers', function (req, res) {
 
 router.get('/answers-back', function (req, res) {
   req.session.data.COMPLETED = false
-  res.redirect('environmental-impact')
+  res.redirect('evidence')
 })
 
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'remaining-costs'
+  var backUrl = 'answers'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 
@@ -642,3 +707,9 @@ router.get('/email', function (req, res) {
 })
 
 module.exports = router
+
+// JOURNEY FINISHING
+// ***************
+// ***************
+// ***************
+// ***************
