@@ -1,0 +1,374 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+
+{{ govukHeader() }}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+<a class="govuk-back-link" href="tenancy">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+       <form id="mainForm" class="form" action="store-type" method="post">
+
+         <div class="govuk-form-group">
+        <h2 class="govuk-heading-l">Standardised costs for eligible items</h2>
+        <p class="govuk-body">The Slurry Infrastructure grant uses standardised costs for the eligible items.</p>
+        <p class="govuk-body">You can apply for a grant of 50% of the standardised cost of an item.</p>
+        <p class="govuk-body">At full application stage, you can choose between a grant of 50% of the standardised cost of an item or submitting three quotes.</p>
+
+        {{ govukWarningText({
+          text: "Items may cost more than the standardised cost.",
+          iconFallbackText: "Warning"
+        }) }}
+
+
+        {{ govukTable({
+          caption: "Storage",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            text: "Above-ground steel tank"
+            },
+            {
+            html: "£22 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            text: "Above-ground concrete tank"
+            },
+            {
+            html: "£17 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            html: "Below-ground in-situ cast-reinforced<br> concrete tank"
+            },
+            {
+            html: "£15 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            text: "Earth-bank lagoon (unlined)"
+            },
+            {
+            html: "£8 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            text: "Earth-bank lagoon (lined)"
+            },
+            {
+            html: "£12 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            html: "Stores using pre-cast rectangular<br> concrete panels"
+            },
+            {
+            html: "£14 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            text: "Large-volume supported slurry bag"
+            },
+            {
+            html: "£20 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            text: "Slatted-floor stores"
+            },
+            {
+            html: "£14 per m<sup>3</sup>"
+            }
+          ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "Cover type",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Rigid covers for above-ground steel<br> or concrete stores"
+            },
+            {
+            html: "£8 per m<sup>2</sup>"
+            }
+          ],
+          [
+            {
+            html: "Fixed flexible covers for above-ground<br> steel and concrete stores and <br>earth-bank lagoons"
+            },
+            {
+            html: "£4 per m<sup>2</sup>"
+            }
+          ],
+          [
+            {
+            html: "Floating flexible cover for earth-bank<br> lagoons only"
+            },
+            {
+            html: "£3 per m<sup>2</sup>"
+            }
+          ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "Reception pit type",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            text: "Glass-reinforced plastic (GRP)"
+            },
+            {
+            html: "£25 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            text: "Plastic "
+            },
+            {
+            html: "£26 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            text: "Pre-cast concrete "
+            },
+            {
+            html: "£27 per m<sup>3</sup>"
+            }
+          ],
+          [
+            {
+            text: "In-situ cast concrete"
+            },
+            {
+            html: "£30 per m<sup>3</sup>"
+            }
+          ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "Pump type",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Electric-powered slurry transfer <br>pump "
+            },
+            {
+            html: "£1,050 per pump"
+            }
+          ],
+          [
+            {
+            text: "Centrifugal chopper pump"
+            },
+            {
+            html: "£2,090 per pump"
+            }
+          ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "Pipework",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Galvanised steel pipework <br>100mm diameter"
+            },
+            {
+            html: "£14 per meter"
+            }
+          ],
+          [
+            {
+            html: "Galvanised steel pipework <br>150mm diameter diameter"
+            },
+            {
+            html: "£24 per meter"
+            }
+          ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "Transfer channels",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Under-floor transfer channels"
+            },
+            {
+            html: "£25 per meter"
+            }
+          ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "Agitator",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Tank wall mixers with tank capacity<br> up to 1,200m<sup>3</sup>"
+            },
+            {
+            html: "£350 per meter"
+            }
+          ],
+          [
+            {
+            html: "Tank wall mixers with tank capacity <br> up to 8,000m<sup>3</sup>"
+            },
+            {
+            html: "£1,000 per meter"
+            }
+          ]
+          ]
+        }) }}
+
+        {{ govukTable({
+          caption: "Safety equipment",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Inspection platform with ladder<br> for above-ground concrete and<br> steel tanks"
+            },
+            {
+            html: "£800 per unit"
+            }
+          ],
+          [
+            {
+            html: "Safety fencing for below-ground<br> stores,earth-bank lagoons and<Br> slurry bags "
+            },
+            {
+            html: "£55 per unit"
+            }
+          ]
+          ]
+        }) }}
+      </div>
+    <br>
+      <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+    </a>
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

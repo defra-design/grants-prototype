@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Evidence
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Evidence
+      </h1>
+
+      <p class="govuk-body">
+        If your project is invited to submit a full application, you need:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>a storage calculation plan, which you will need to submit for review to the Environment Agency</li>
+          <li>confirmation that your project will comply with Water Resources (Control  of Pollution) (Silage, Slurry and Agricultural Fuel Oil) regualations (SSAFO) and build standards (signed by you and your engineer) </li>
+          <li>a nutrient management plan</li>
+          <li>	a declaration that you will comply with monitoring requirements</li>
+        </ul>
+
+      <form action="{{ nextUrl }}" method="post" novalidate>
+
+        {{ govukRadios({
+          idPrefix: "evidence",
+          name: "evidence",
+          fieldset: {
+            legend: {
+              text: "Can you provide evidence?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes, I will supply these",
+              checked: checked("evidence", "yes")
+
+            },
+            {
+              value: "no",
+              text: "No, I will not supply these",
+              checked: checked("evidence", "no")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}
