@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Project type
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'projecttype',
+                  name: 'projecttype',
+                  fieldset: {
+                      legend: {
+                          text: 'How will you increase your storage capacity?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+
+                  items: [
+                {
+                  value: "Build a new store",
+                  text: "Build a new store",
+                  checked: checked("projecttype", "Build a new store")
+                },
+
+                {
+                  value: "Expand an existing store",
+                  text: "Expand an existing store",
+                  checked: checked("projecttype", "Expand an existing store")
+                },
+
+                {
+                  value: "Reconstruct an existing store that is no longer serviceable",
+                  text: "Reconstruct an existing store that is no longer serviceable",
+                  checked: checked("projecttype", "Reconstruct an existing store that is no longer serviceable")
+                },
+                {
+                  divider: "or"
+                },
+
+                {
+                  value: "None of the above",
+                  text: "None of the above",
+                  checked: checked("projecttype", "None of the above")
+                }
+              ]
+              }) }}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">This grant is only for:</p>
+          <ul class="govuk-body">
+            <li>building a new store</li>
+            <li>expanding an existing store</li>
+            <li>reconstructing an existing store that is no longer serviceable </li>
+          </ul>
+          <p class="govuk-body">A store may be non-serviceable because it was built before 1991 and was exempt from the Silage, Slurry and Agricultural Fuel Oil Regulations (SSAFO) requirements or because it has reached the end of its design life (for example, it may be susceptible to leaks or failure).</p>
+      </div>
+   </div>
+
+{% endblock %}

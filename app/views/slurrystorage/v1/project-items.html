@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What type of cover will you have?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="projectitems-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What other items do you need?
+              </h1>
+            </legend>
+            <div id="projectitems-hint" class="govuk-hint">
+              Select all the items your project needs
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+              {% for item, properties in projectItemsCost %}
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input"
+                    name="projectitems" type="checkbox" value="{{item}}"
+                    aria-describedby="projectitems-item-hint"
+                    {{ checked("projectitems", item) }}
+                  >
+                  <label class="govuk-label govuk-checkboxes__label">
+                    {{properties.text}}
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">
+                    {{properties.hint | safe}}
+                  </div>
+                </div>
+              {% endfor %}
+
+              <div class="govuk-checkboxes__divider">or</div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" name="projectitems" type="checkbox" value="None of the above"
+                  data-behaviour="exclusive" {{ checked("projectitems", "None of the above") }}>
+                <label class="govuk-label govuk-checkboxes__label">
+                  None of the above
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+
+
+
+
+
+
+          <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h1 class="app-step-nav-related__heading">
+          <span class="govuk-heading-m">Your project items</span>
+          </h1>
+
+          {% if data['storetype'] %}
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Store</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set storeType = data['storetype'] %}
+                  {{ storeTypeCost[storeType].text }}
+                </li>
+                <li>
+                  Serviceable capacity increase:  {{ data['current-capacity'] }}m<sup>3</sup>
+                </li>
+
+              </ul>
+            </nav>
+            </div>
+            {% endif %}
+
+
+            {% if data['covertype'] %}
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Cover</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set coverType = data['covertype'] %}
+                  {{ coverTypeCost[coverType].text }}
+                </li>
+                <li>
+                  {{ data['cover-size'] }}m<sup>2</sup>
+                </li>
+
+              </ul>
+
+            </nav>
+            </div>
+        {% endif %}
+
+
+
+
+
+
+
+
+      </div>
+
+{% endblock %}

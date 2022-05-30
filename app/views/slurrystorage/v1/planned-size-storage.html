@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Planned size storage
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        {% set numberMonths3 %}
+        {{ govukInput({
+          id: "number-months3",
+          name: "number-months3",
+          type: "months",
+          value: data['number-months3'],
+          autocomplete: "months",
+          spellcheck: false,
+          classes: "govuk-input--width-2",
+          suffix: {
+            text: "month(s)"
+            },
+          label: {
+            text: "Enter number of months"
+          }
+
+        }) }}
+        {% endset -%}
+        {% set numberMonths4 %}
+        {{ govukInput({
+          id: "number-months4",
+          name: "number-months4",
+          type: "months",
+          value: data['number-months4'],
+          autocomplete: "months",
+          spellcheck: false,
+          classes: "govuk-input--width-2",
+          suffix: {
+            text: "month(s)"
+            },
+          label: {
+            text: "Enter number of months"
+          }
+
+        }) }}
+        {% endset -%}
+
+
+              {{ govukRadios({
+                  idPrefix: 'planned-size-storage',
+                  name: 'planned-size-storage',
+                  fieldset: {
+                      legend: {
+                          text: 'How many months’ slurry storage capacity will you have?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+                  hint: {
+                    text: "Based on your current animal numbers"
+                  },
+
+                  items: [
+                {
+                  value: "6 months",
+                  text: "6 months",
+                  checked: checked("planned-size-storage", "6 months")
+                },
+
+                {
+                  value: "More than 6 months",
+                  text: "More than 6 months",
+                  conditional: {
+                  html:numberMonths4
+                },
+                  checked: checked("planned-size-storage", "More than 6 months")
+                },
+                {
+                  value: "Less than 6 months",
+                  text: "Less than 6 months",
+                  checked: checked("planned-size-storage", "Less than 6 months")
+                }
+              ]
+              }) }}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">This grant is to expand current storage levels to 6 months.<br><br>
+                                If your storage will have more than 6 months’ capacity, the grant will only cover up to 6 months.</p>
+          <p class="govuk-body">You must maintain at least 6 months' capacity for the duration of the grant funding agreement.</p>
+      </div>
+   </div>
+
+{% endblock %}
