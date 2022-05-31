@@ -450,7 +450,7 @@ router.get('/air-quality', function (req, res) {
   })
 })
 
-// Q: Air quality
+// Q: Water quality
 router.get('/water-quality', function (req, res) {
   var backUrl = 'air-quality'
   var nextUrl = 'planning-permission'
@@ -482,11 +482,11 @@ router.get('/planning-permission', function (req, res) {
 router.post('/planning-permission-answer', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
 
-  if (planningPermission === 'Approved' || planningPermission === 'Applied for but not yet approved') {
+  if (planningPermission === 'Approved' || planningPermission === 'Applied') {
     res.redirect('planning-list')
   }
 
-  if (planningPermission === 'Not yet applied for but expected to be in place by 31 December 2022') {
+  if (planningPermission === 'Not yet applied') {
     res.redirect('planning-required-condition')
   }
 

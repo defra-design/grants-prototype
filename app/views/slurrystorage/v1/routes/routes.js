@@ -504,7 +504,7 @@ router.get('/planning-required-condition', function (req, res) {
   })
 })
 
-// PLANNING PERMISSION CONDITION
+// OS grid
 router.get('/os-grid', function (req, res) {
   var backUrl = 'planning-permission'
   var nextUrl = 'os-grid'
