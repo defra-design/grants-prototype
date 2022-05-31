@@ -482,11 +482,11 @@ router.get('/planning-permission', function (req, res) {
 router.post('/planning-permission-answer', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
 
-  if (planningPermission === 'Approved' || planningPermission === 'Applied') {
+  if (planningPermission === 'Approved' || planningPermission === 'Applied for but not yet approved') {
     res.redirect('planning-list')
   }
 
-  if (planningPermission === 'Not yet applied') {
+  if (planningPermission === 'Not yet applied for but expected to be in place by 31 December 2022') {
     res.redirect('planning-required-condition')
   }
 
@@ -504,7 +504,7 @@ router.get('/planning-required-condition', function (req, res) {
   })
 })
 
-// PLANNING PERMISSION CONDITION
+// OS grid
 router.get('/os-grid', function (req, res) {
   var backUrl = 'planning-permission'
   var nextUrl = 'os-grid'
