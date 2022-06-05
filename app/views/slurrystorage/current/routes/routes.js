@@ -295,7 +295,7 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 router.get('/store-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'standardised-costs'
-  var nextUrl = 'current-storage-capacity'
+  var nextUrl = 'storage-capacity-increase'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -306,9 +306,9 @@ router.get('/store-type', function (req, res) {
   })
 })
 
-// Q: Current storage capacity
+// Q: Storage capacity increase (renamed from Current storage capacity)
 
-router.get('/current-storage-capacity', function (req, res) {
+router.get('/storage-capacity-increase', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'store-type'
   var nextUrl = 'cover-type'
@@ -327,7 +327,7 @@ router.get('/current-storage-capacity', function (req, res) {
 
 router.get('/cover-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'current-storage-capacity'
+  var backUrl = 'storage-capacity-increase'
   var nextUrl = 'cover-size'
   var completedUrl = 'answers'
 
@@ -382,7 +382,7 @@ router.get('/project-items', function (req, res) {
 router.get('/project-summary', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'project-items'
-  var nextUrl = 'grant'
+  var nextUrl = 'potential-grant'
   var completedUrl = 'store-type'
 
   res.render('./' + req.originalUrl, {
@@ -397,7 +397,7 @@ router.get('/project-summary', function (req, res) {
 
 
 // Q: Grant
-router.get('/grant', function (req, res) {
+router.get('/potential-grant', function (req, res) {
   var backUrl = 'project-summary'
   var nextUrl = 'remaining-costs'
   var completedUrl = 'grant-answer-completed'
@@ -412,7 +412,7 @@ router.get('/grant', function (req, res) {
 
 // Q: remaining costs
 router.get('/remaining-costs', function (req, res) {
-  var backUrl = 'grant'
+  var backUrl = 'potential-grant'
   var nextUrl = 'remaining-costs-answer'
   var completedUrl = 'remaining-costs-answer-completed'
 
