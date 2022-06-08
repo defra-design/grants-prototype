@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Project summary failure
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="https://grants-prototype2.herokuapp.com/slurrystorage">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+     <h1 class="govuk-heading-l">
+        You cannot apply for a grant from this scheme
+     </h1>
+
+    <div class="govuk-body">
+      <p>You can only apply for a grant of up to 50% of the standardised costs.</p>
+    </div>
+
+{{ govukInsetText({
+    text: 'The minimum grant you can claim is £25,000 (50% of £50,000). The maximum grant is £250,000.'
+}) }}
+
+<p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments"  class="govuk-!-font-size-19"> See other grants you may be eligible for.</a><p>
+      <!--See <a href="">the large countryside productivity grant guidance</a> for further information.-->
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
