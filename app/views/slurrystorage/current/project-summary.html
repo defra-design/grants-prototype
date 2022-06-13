@@ -15,7 +15,7 @@ Project summary
     },
       html: 'This is not a full service. It is not production code and you might experience problems.'
   }) }}
-<a class="govuk-back-link" href="project-items">Back</a>
+<a class="govuk-back-link" href="item-sizes-quantities">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -23,7 +23,7 @@ Project summary
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <h2 class="govuk-heading-l">Your project items</h2>
-        <p class="govuk-body">We have calculated the estimated total grant amount based on the standardised costs for each item.<br>
+        <p class="govuk-body">We have calculated the estimated total grant amount based on the standardised costs for each item and the approximate size and quantities you entered.
 </p>
 
 
@@ -61,20 +61,16 @@ Project summary
       <tr class="govuk-table__row"></tr>
         <th scope="row" class="govuk-table__header">{{projectItemsCost[item].text}}</th>
         <td class="govuk-table__cell">{{projectItemsCost[item].formattedValue}}</td>
-        <td class="govuk-table__cell">
-          <select class="govuk-select" id="sort" name="sort">
-            <option value="published">0</option>
-            <option value="updated" selected>1</option>
-            <option value="views">2</option>
-            <option value="comments">3</option>
-          </select>
-        </td>
+        <td class="govuk-table__cell">1</td>
       </tr>
       {% endif %}
     {% endfor %}
 
+
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__footer"> Total grant amount</th>
+
+
       <td class="govuk-table__cell"><strong>£142,500</strong></td>
       <td class="govuk-table__cell"></td>
     </tr>
