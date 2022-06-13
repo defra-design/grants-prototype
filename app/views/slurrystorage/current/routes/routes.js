@@ -357,12 +357,12 @@ router.get('/cover-size', function (req, res) {
   })
 })
 
-// Q: Project items
+// Q: Other items
 
 router.get('/project-items', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'cover-size'
-  var nextUrl = 'project-summary'
+  var nextUrl = 'item-sizes-quantities'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -377,11 +377,29 @@ router.get('/project-items', function (req, res) {
   })
 })
 
+// Q: Item sizes and quantities
+
+router.get('/item-sizes-quantities', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'project-items'
+  var nextUrl = 'project-summary'
+  var completedUrl = 'project-items-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    storeTypeCost,
+    coverTypeCost,
+    projectItemsCost
+  })
+})
+
 // Q: Project summary
 
 router.get('/project-summary', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'project-items'
+  var backUrl = 'item-sizes-quantities'
   var nextUrl = 'potential-grant'
   var completedUrl = 'store-type'
 
