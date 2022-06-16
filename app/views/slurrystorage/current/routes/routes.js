@@ -429,14 +429,9 @@ router.get('/remaining-costs', function (req, res) {
 router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('air-quality') }
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('planning-permission') }
 })
 
-router.post('/remaining-costs-answer-completed', function (req, res) {
-  var remainingCosts = req.session.data['remaining-costs']
-
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('answers') }
-})
 
 
 
@@ -444,9 +439,9 @@ router.post('/remaining-costs-answer-completed', function (req, res) {
 
 router.get('/planning-permission', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'water-quality'
+  var backUrl = 'remaining-costs'
   var nextUrl = 'planning-permission-answer'
-  var completedUrl = 'answers'
+  var completedUrl = 'evidence-summary'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -481,10 +476,11 @@ router.get('/planning-required-condition', function (req, res) {
   })
 })
 
-// OS grid
-router.get('/os-grid', function (req, res) {
+// Planning list
+router.get('/planning-list', function (req, res) {
   var backUrl = 'planning-permission'
   var nextUrl = 'os-grid'
+  var completedUrl = 'evidence-summary'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -494,11 +490,34 @@ router.get('/os-grid', function (req, res) {
 
 
 
+// OS grid
+router.get('/os-grid', function (req, res) {
+  var backUrl = 'planning-permission'
+  var nextUrl = 'evidence-summary'
+  var completedUrl = 'evidence-summary'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl
+  })
+})
+
+// evidence summary
+router.get('/evidence-summary', function (req, res) {
+  req.session.data.COMPLETED = true
+
+  var backUrl = 'os-grid'
+  var nextUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl
+  })
+})
 
 // answers
 
 router.get('/answers', function (req, res) {
-  req.session.data.COMPLETED = true
 
   var backUrl = 'answers-back'
   var nextUrl = 'business'
@@ -511,7 +530,7 @@ router.get('/answers', function (req, res) {
 
 router.get('/answers-back', function (req, res) {
   req.session.data.COMPLETED = false
-  res.redirect('evidence')
+  res.redirect('evidence-summary')
 })
 
 // business
