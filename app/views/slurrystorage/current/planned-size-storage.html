@@ -21,42 +21,7 @@ Planned size storage
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-        {% set numberMonths3 %}
-        {{ govukInput({
-          id: "number-months3",
-          name: "number-months3",
-          type: "months",
-          value: data['number-months3'],
-          autocomplete: "months",
-          spellcheck: false,
-          classes: "govuk-input--width-2",
-          suffix: {
-            text: "month(s)"
-            },
-          label: {
-            text: "Enter number of months"
-          }
 
-        }) }}
-        {% endset -%}
-        {% set numberMonths4 %}
-        {{ govukInput({
-          id: "number-months4",
-          name: "number-months4",
-          type: "months",
-          value: data['number-months4'],
-          autocomplete: "months",
-          spellcheck: false,
-          classes: "govuk-input--width-2",
-          suffix: {
-            text: "month(s)"
-            },
-          label: {
-            text: "Enter number of months"
-          }
-
-        }) }}
-        {% endset -%}
 
 
               {{ govukRadios({
@@ -108,9 +73,10 @@ Planned size storage
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">This grant is to expand current storage levels to 6 months.<br><br>
-                                If your storage will have more than 6 months’ capacity, the grant will only cover up to 6 months.</p>
-          <p class="govuk-body">You must maintain at least 6 months' capacity for the duration of the grant funding agreement.</p>
+          <p class="govuk-body">This grant is to get your serviceable storage levels to 6 months.<br><br>
+            For example, if you have 4 months' storage, we will fund another 2 months.<br><br>
+            Any capacity above 6 months is not covered by the grant.<br><br>
+            You must maintain at least 6 months' capacity for the duration of the grant funding agreement.</p>
       </div>
    </div>
 

@@ -97,33 +97,76 @@ router.post('/country-answer', function (req, res) {
       country = 'yes: [ Postcode: ' + postcode + ' ]'
     }
     req.session.data['summary-country'] = country
+    res.redirect('project-start')
+  } else {
+    res.redirect('country-fail')
+  }
+})
+
+
+// PROJECT START
+
+router.get('/project-start', function (req, res) {
+  var planningPermission = req.session.data['planning-permission']
+
+  var backUrl = 'country'
+  var nextUrl = 'project-start-answer'
+  var completedUrl = 'project-start-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/project-start-answer', function (req, res) {
+  var projectStart = req.session.data['project-start']
+
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
+})
+
+router.post('/project-start-answer-completed', function (req, res) {
+  var projectStart = req.session.data['project-start']
+
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('answers') }
+})
+
+// Q: Tenancy
+
+router.get('/tenancy', function (req, res) {
+  var backUrl = 'project-start'
+  var nextUrl = 'tenancy-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/tenancy-answer', function (req, res) {
+  var tenant = req.session.data.tenancy
+
+  if (tenant === 'Yes' || tenant === 'Contractor') {
     res.redirect('system-type')
-  } else {
-    res.redirect('country-fail')
-  }
+  } else { res.redirect('tenancy-length') }
 })
 
-router.post('/country-answer-completed', function (req, res) {
-  var country = req.session.data.country
-  var postcode = req.session.data.postcode
+router.post('/tenancy-length-answer', function (req, res) {
+  var tenancyLength = req.session.data['tenancy-length']
 
-  if (!!country && country === 'yes') {
-    if (!!postcode && postcode.length > 0) {
-      country = 'yes: [ Postcode: ' + postcode + ' ]'
-    }
-
-    req.session.data['summary-country'] = country
-    res.redirect('answers')
-  } else {
-    res.redirect('country-fail')
-  }
+  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('system-type') }
 })
 
-
+router.post('/tenancy-length-answer-completed', function (req, res) {
+  res.redirect('answers')
+})
 
 // : Q: System type
 router.get('/system-type', function (req, res) {
-  var backUrl = 'country'
+  var backUrl = 'tenancy'
   var nextUrl = 'system-type-answer'
   var completedUrl = 'system-type-answer-completed'
 
@@ -225,68 +268,10 @@ router.get('/covers', function (req, res) {
 router.post('/covers-answer', function (req, res) {
   var coversImp = req.session.data.covers
 
-  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('project-start') }
+  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('standardised-costs') }
 })
 
-// PROJECT START
 
-router.get('/project-start', function (req, res) {
-  var planningPermission = req.session.data['planning-permission']
-
-  var backUrl = 'covers'
-  var nextUrl = 'project-start-answer'
-  var completedUrl = 'project-start-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/project-start-answer', function (req, res) {
-  var projectStart = req.session.data['project-start']
-
-  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
-})
-
-router.post('/project-start-answer-completed', function (req, res) {
-  var projectStart = req.session.data['project-start']
-
-  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('answers') }
-})
-
-// Q: Tenancy
-
-router.get('/tenancy', function (req, res) {
-  var backUrl = 'project-start'
-  var nextUrl = 'tenancy-answer'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/tenancy-answer', function (req, res) {
-  var tenant = req.session.data.tenancy
-
-  if (tenant === 'Yes' || tenant === 'Contractor') {
-    res.redirect('standardised-costs')
-  } else { res.redirect('tenancy-length') }
-})
-
-router.post('/tenancy-length-answer', function (req, res) {
-  var tenancyLength = req.session.data['tenancy-length']
-
-  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('standardised-costs') }
-})
-
-router.post('/tenancy-length-answer-completed', function (req, res) {
-  res.redirect('answers')
-})
 
 // Q: Standardised costs - routing embeded in-page
 
@@ -454,32 +439,6 @@ router.post('/remaining-costs-answer-completed', function (req, res) {
 })
 
 
-// SCORING QUESTIONS
-// Q: Air quality
-router.get('/air-quality', function (req, res) {
-  var backUrl = 'remaining-costs'
-  var nextUrl = 'water-quality'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// Q: Water quality
-router.get('/water-quality', function (req, res) {
-  var backUrl = 'air-quality'
-  var nextUrl = 'planning-permission'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
 
 // PLANNING PERMISSION
 
@@ -531,28 +490,6 @@ router.get('/os-grid', function (req, res) {
     backUrl,
     nextUrl
   })
-})
-
-
-
-// Q: Evidence
-
-router.get('/evidence', function (req, res) {
-  var backUrl = 'os-grid'
-  var nextUrl = 'evidence-answer'
-  var completedUrl = 'evidence-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/evidence-answer', function (req, res) {
-  var eEvidence = req.session.data.evidence
-
-  if (eEvidence === 'no') { res.redirect('evidence-conditional') } else { res.redirect('answers') }
 })
 
 

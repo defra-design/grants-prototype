@@ -21,14 +21,19 @@ Current storage capacity
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+  {# include logice if it's a New store  #}
+  {% if (data['projecttype'] == "Replace") %}
+
+
         {{ govukInput({
           label: {
-            html: "What estimated additional volume do you need to have 6 months' serviceable storage?",
+            html: "What estimated volume do you need <br>to have 6 months' serviceable storage?",
             classes: "govuk-label--l",
             isPageHeading: true
           },
           hint: {
-            text: "Enter volume in cubic meters"
+            html: "Enter the difference between your current serviceable storage<br> and 6 months’ serviceable storage, based on current animal numbers"
           },
           classes: "govuk-input--width-5",
           id: "current-capacity",
@@ -41,6 +46,28 @@ Current storage capacity
           spellcheck: false
         }) }}
 
+        {% else %}
+        {{ govukInput({
+          label: {
+            html: "What estimated additional volume do you need <br>to have 6 months' serviceable storage?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            html: "Enter the difference between your current serviceable storage <br> and 6 months’ serviceable storage, based on current animal numbers"
+          },
+          classes: "govuk-input--width-5",
+          id: "current-capacity",
+          name: "current-capacity",
+          suffix: {
+            html: "m<sup>3</sup>"
+          },
+         value: data['current-capacity'],
+
+          spellcheck: false
+        }) }}
+
+{% endif %}
           <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
 
