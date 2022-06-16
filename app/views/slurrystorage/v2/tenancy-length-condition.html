@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You may be able to apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link govuk-!-margin-top-6" href="tenancy-length">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="standardised-costs" method="post">
+      <h1 class="govuk-heading-l govuk-!-padding-bottom-5">
+        You may be able to apply for a grant from this scheme
+      </h1>
+
+      <p class="govuk-body">You will need to extend your tenancy agreement before you can complete a full application.</p>
+
+        <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

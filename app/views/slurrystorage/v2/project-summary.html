@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Project summary
+{% endblock %}
+
+
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+<a class="govuk-back-link" href="item-sizes-quantities">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <h2 class="govuk-heading-l">Your project items</h2>
+        <p class="govuk-body">We have calculated the estimated total grant amount based on the standardised costs for each item and the approximate size and quantities you entered.
+</p>
+
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Breakdown of funding</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Item</th>
+      <th scope="col" class="govuk-table__header">Grant amount</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Quantity</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% if data['storetype'] %}
+    {% set storeType = data['storetype'] %}
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">{{ storeTypeCost[storeType].text }}</th>
+        <td class="govuk-table__cell">{{storeTypeCost[storeType].formattedValue}}</td>
+        <td class="govuk-table__cell">1</td>
+      </tr>
+    {% endif %}
+
+    {% if data['covertype'] %}
+    {% set coverType = data['covertype'] %}
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
+      <td class="govuk-table__cell">1</td>
+    </tr>
+    {% endif %}
+
+    {% for item in data['projectitems'] %}
+      {% if item in projectItemsCost %}
+      <tr class="govuk-table__row"></tr>
+        <th scope="row" class="govuk-table__header">{{projectItemsCost[item].text}}</th>
+        <td class="govuk-table__cell">{{projectItemsCost[item].formattedValue}}</td>
+        <td class="govuk-table__cell">{{projectItemsCost[item].quantity}}</td>
+      </tr>
+      {% endif %}
+    {% endfor %}
+
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__footer"> Total grant amount</th>
+
+
+      <td class="govuk-table__cell"><strong>£94,400</strong></td>
+      <td class="govuk-table__cell"></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+  If your storage has more than 6 months’ capacity, the grant will only cover up to 6 months.
+  </strong>
+</div>
+
+
+
+
+      <br>  <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+         class="govuk-button govuk-button--secondary" data-module="govuk-button">Change your items
+       </button></p>
+
+      </form>
+  </div>
+
+
+
+
+
+      </div>
+
+
+{% endblock %}

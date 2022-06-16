@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Item sizes and quantities
+{% endblock %}
+
+
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+<a class="govuk-back-link" href="project-items">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <h2 class="govuk-heading-l">Item sizes and quantities</h2>
+        <div id="item-sizes" class="govuk-body">
+    Enter the approximate size and quantities your project needs
+  </div>
+
+
+
+
+
+  <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="cubic">
+      Glass-reinforced plastic (GRP) reception pit
+    </label>
+  </h1>
+  <div id="event-name-hint" class="govuk-hint">
+      Grant amount: £25 per cubic metre
+  </div>
+  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="cubic1" name="cubic1" type="text" spellcheck="false" value="{{ data['cubic1'] }}">
+    <div class="govuk-input__suffix" aria-hidden="true">m<sup>3</sup> </div>
+  </div>
+</div>
+
+<br>
+<div class="govuk-form-group">
+<h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="cubic">
+    Plastic reception pit
+  </label>
+</h1>
+<div id="event-name-hint" class="govuk-hint">
+    Grant amount: £26 per cubic metre
+</div>
+<div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="cubic2" name="cubic2" type="text" spellcheck="false" value="{{ data['cubic2'] }}" >
+  <div class="govuk-input__suffix" aria-hidden="true">m<sup>3</sup> </div>
+</div>
+</div>
+
+<br>
+<div class="govuk-form-group">
+<h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="unit">
+    Electric-powered slurry transfer pump
+  </label>
+</h1>
+<div id="event-name-hint" class="govuk-hint">
+    Grant amount: £1,050
+</div>
+<div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="unit" name="unit" type="text" spellcheck="false" value="{{ data['unit'] }}">
+  <div class="govuk-input__suffix" aria-hidden="true">item(s) </div>
+</div>
+</div>
+<br>
+<div class="govuk-form-group">
+<h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="metre">
+    Safety fencing for below-ground stores, earth-bank lagoons and slurry bags
+  </label>
+</h1>
+<div id="event-name-hint" class="govuk-hint">
+    Grant amount: £55 per metre
+</div>
+<div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="metre" name="metre" type="text" spellcheck="false" value="{{ data['metre'] }}" >
+  <div class="govuk-input__suffix" aria-hidden="true">metre(s) </div>
+</div>
+
+
+
+      <br><br>  <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+      </form>
+  </div>
+  </div>
+
+
+  <div class="govuk-grid-column-one-third">
+
+    <div class="app-step-nav-related app-step-nav-related--singular">
+      <h1 class="app-step-nav-related__heading">
+        <span class="govuk-heading-m">Your project items</span>
+        </h1>
+        </div>
+
+        {% if data['storetype'] %}
+        <div>
+          <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Store</span>
+            </h2>
+          <nav role="navigation" aria-labelledby="subsection-title">
+            <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+              <li>
+                {% set storeType = data['storetype'] %}
+                {{ storeTypeCost[storeType].text }}
+              </li>
+              <li>
+                Increase:  {{ data['current-capacity'] }}m<sup>3</sup>
+              </li>
+
+            </ul>
+          </nav>
+          </div>
+          {% endif %}
+
+
+          {% if data['covertype'] %}
+        <div>
+          <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Cover</span>
+            </h2>
+          <nav role="navigation" aria-labelledby="subsection-title">
+            <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+              <li>
+                {% set coverType = data['covertype'] %}
+                {{ coverTypeCost[coverType].text }}
+              </li>
+              <li>
+                Size: {{ data['cover-size'] }}m<sup>2</sup>
+              </li>
+
+            </ul>
+
+          </nav>
+          </div>
+      {% endif %}
+
+
+  </div>
+
+
+
+{% endblock %}

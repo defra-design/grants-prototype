@@ -22,40 +22,7 @@ Existing size storage
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-        {% set numberMonths %}
-        {{ govukInput({
-          id: "number-months",
-          name: "number-months",
-          value: data['number-months'],
-          type: "months",
-          autocomplete: "months",
-          spellcheck: false,
-          classes: "govuk-input--width-2",
-          suffix: {
-            text: "month(s)"
-            },
-          label: {
-            text: "Enter number of months"
-          }
-        }) }}
-        {% endset -%}
-        {% set numberMonths2 %}
-        {{ govukInput({
-          id: "number-months2",
-          name: "number-months2",
-          value: data['number-months2'],
-          type: "months",
-          autocomplete: "months",
-          spellcheck: false,
-          classes: "govuk-input--width-2",
-          suffix: {
-            text: "month(s)"
-            },
-          label: {
-            text: "Enter number of months"
-          }
-        }) }}
-        {% endset -%}
+
 
               {{ govukRadios({
                   idPrefix: 'existing-size-storage',
@@ -85,7 +52,7 @@ Existing size storage
 
                 {
                   value: "Up to 6 months but it is no longer serviceable",
-                  text: "Up to 6 months but it is no longer serviceable",
+                  text: "Up to 6 months but it is no longer fit for purpose",
                   conditional: {
                   html:numberMonths2
                 },
@@ -113,7 +80,7 @@ Existing size storage
           <p class="govuk-body">This grant is to: <br>
             <ul class="govuk-body">
               <li>expand current storage levels	to 	6 months</li>
-              <li>make your storage serviceable if capacity is already 6 months or more</li>
+              <li>make your storage fit for purpose if capacity is already 6 months or more</li>
             </ul>
             </p>
             <p class=govuk-body">A store is no longer fit for purpose if it has reached the end of its design life (for example, it may be susceptible to leaks or failure).
