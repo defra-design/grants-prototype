@@ -31,6 +31,18 @@ Item sizes and quantities
           {% if item in projectItemsCost %}
             {% set properties = projectItemsCost[item] %}
 
+            {% set measuring_unit %}
+
+              {% if properties['measuringUnit'] == 'cubic' %}
+                m<sup>3</sup>
+              {% elif properties['measuringUnit'] == 'unit' %}
+                items(s)
+              {% else %}
+                metre(s)
+              {% endif %}
+
+            {% endset %}
+
             <div class="govuk-form-group">
               <h1 class="govuk-label-wrapper">
                 <label class="govuk-label govuk-label--m" for="cubic">
@@ -41,7 +53,7 @@ Item sizes and quantities
                   {{properties.hint}}
               </div>
               <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="cubic1" name="cubic1" type="text" spellcheck="false" value="{{ data['cubic1'] }}">
-                <div class="govuk-input__suffix" aria-hidden="true">m<sup>3</sup> </div>
+                <div class="govuk-input__suffix" aria-hidden="true">{{measuring_unit | safe}}</div>
               </div>
             </div>
 
