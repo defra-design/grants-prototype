@@ -76,11 +76,20 @@ Project summary
       {% set thisTotal = thisItemCost.value * (data[quantity] | int)  %}
 
       {% set grantsTotal = grantsTotal + thisTotal %}
+
+      {% set measuring_unit %}
+        {% if thisItemCost['measuringUnit'] == 'cubic' %}
+          m<sup>3</sup>
+        {% elif thisItemCost['measuringUnit'] == 'metre' %}
+          m
+        {% else %}
+        {% endif %}
+      {% endset %}
       
       <tr class="govuk-table__row"></tr>
         <th scope="row" class="govuk-table__header">{{thisItemCost.text}}</th>
         <td class="govuk-table__cell">{{thisItemCost.formattedValue}}</td>
-        <td class="govuk-table__cell">{{data[quantity] | int}}</td>
+        <td class="govuk-table__cell">{{data[quantity] | int}}{{measuring_unit | safe}}</td>
         <td class="govuk-table__cell">{{thisTotal}}</td>
       </tr>
       {% endif %}
