@@ -24,71 +24,50 @@ Item sizes and quantities
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <h2 class="govuk-heading-l">Item sizes and quantities</h2>
         <div id="item-sizes" class="govuk-body">
-    Enter the approximate size and quantities your project needs
-  </div>
+          Enter the approximate size and quantities your project needs
+        </div>
 
+        {% for item in data['projectitems'] %}
+          {% if item in projectItemsCost %}
+            {% set properties = projectItemsCost[item] %}
 
+            {% set quantity %}quantity-{{item}}{% endset %}
+            
+            {% set measuring_unit %}
 
+              {% if properties['measuringUnit'] == 'cubic' %}
+                m<sup>3</sup>
+              {% elif properties['measuringUnit'] == 'unit' %}
+                items(s)
+              {% else %}
+                metre(s)
+              {% endif %}
 
+            {% endset %}
 
-  <div class="govuk-form-group">
-  <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="cubic">
-      Glass-reinforced plastic (GRP) reception pit
-    </label>
-  </h1>
-  <div id="event-name-hint" class="govuk-hint">
-      Grant amount: £25 per cubic metre
-  </div>
-  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="cubic1" name="cubic1" type="text" spellcheck="false" value="{{ data['cubic1'] }}">
-    <div class="govuk-input__suffix" aria-hidden="true">m<sup>3</sup> </div>
-  </div>
-</div>
+            <br>
+            <div class="govuk-form-group">
+              <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m">
+                  {{properties.text}}
+                </label>
+              </h1>
+              <div id="event-name-hint" class="govuk-hint">
+                  {{properties.hint}}
+              </div>
+              <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" name="{{quantity}}" type="text" spellcheck="false"
+                value="{{data[quantity]}}" {{ checked(quantity, quantity) }}>
+                <div class="govuk-input__suffix" aria-hidden="true">{{measuring_unit | safe}}</div>
+              </div>
+            </div><br><br>
 
-<br>
-<div class="govuk-form-group">
-<h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="cubic">
-    Plastic reception pit
-  </label>
-</h1>
-<div id="event-name-hint" class="govuk-hint">
-    Grant amount: £26 per cubic metre
-</div>
-<div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="cubic2" name="cubic2" type="text" spellcheck="false" value="{{ data['cubic2'] }}" >
-  <div class="govuk-input__suffix" aria-hidden="true">m<sup>3</sup> </div>
-</div>
-</div>
+          {% endif %}
+        {% endfor %}
 
-<br>
-<div class="govuk-form-group">
-<h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="unit">
-    Electric-powered slurry transfer pump
-  </label>
-</h1>
-<div id="event-name-hint" class="govuk-hint">
-    Grant amount: £1,050
-</div>
-<div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="unit" name="unit" type="text" spellcheck="false" value="{{ data['unit'] }}">
-  <div class="govuk-input__suffix" aria-hidden="true">item(s) </div>
-</div>
-</div>
-<br>
-<div class="govuk-form-group">
-<h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="metre">
-    Safety fencing for below-ground stores, earth-bank lagoons and slurry bags
-  </label>
-</h1>
-<div id="event-name-hint" class="govuk-hint">
-    Grant amount: £55 per metre
-</div>
-<div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="metre" name="metre" type="text" spellcheck="false" value="{{ data['metre'] }}" >
-  <div class="govuk-input__suffix" aria-hidden="true">metre(s) </div>
-</div>
-
-
-
-      <br><br>  <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+        <br><br>
+        <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
       </form>
-  </div>
+  
   </div>
 
 
@@ -144,7 +123,6 @@ Item sizes and quantities
 
 
   </div>
-
-
+</div>
 
 {% endblock %}
