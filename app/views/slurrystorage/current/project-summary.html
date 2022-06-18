@@ -19,6 +19,9 @@ Project summary
 {% endblock %}
 
 {% block content %}
+
+{% set grantsTotal = 0 %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -33,35 +36,52 @@ Project summary
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Item</th>
-      <th scope="col" class="govuk-table__header">Grant amount</th>
-      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Quantity</th>
+      <th scope="col" class="govuk-table__header">Grant amount per unit</th>
+      <th scope="col" class="govuk-table__header">Quantity</th>
+      <th scope="col" class="govuk-table__header">Total</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
     {% if data['storetype'] %}
     {% set storeType = data['storetype'] %}
+
+    {% set grantsTotal = grantsTotal + (storeTypeCost[storeType].value | int) %}
       <tr class="govuk-table__row">
         <th scope="row" class="govuk-table__header">{{ storeTypeCost[storeType].text }}</th>
         <td class="govuk-table__cell">{{storeTypeCost[storeType].formattedValue}}</td>
         <td class="govuk-table__cell">1</td>
+        <td class="govuk-table__cell">{{storeTypeCost[storeType].formattedValue}}</td>
       </tr>
     {% endif %}
 
     {% if data['covertype'] %}
     {% set coverType = data['covertype'] %}
+
+    {% set grantsTotal = grantsTotal + (coverTypeCost[coverType].value | int) %}
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
       <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
       <td class="govuk-table__cell">1</td>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
     </tr>
     {% endif %}
 
     {% for item in data['projectitems'] %}
       {% if item in projectItemsCost %}
+
+      {% set quantity %}quantity-{{item}}{% endset %}
+
+      {% set thisItemCost = projectItemsCost[item] %}
+
+      {% set thisTotal = thisItemCost.value * (data[quantity] | int)  %}
+
+      {% set grantsTotal = grantsTotal + thisTotal %}
+      
       <tr class="govuk-table__row"></tr>
-        <th scope="row" class="govuk-table__header">{{projectItemsCost[item].text}}</th>
-        <td class="govuk-table__cell">{{projectItemsCost[item].formattedValue}}</td>
-        <td class="govuk-table__cell">{{projectItemsCost[item].quantity}}</td>
+        <th scope="row" class="govuk-table__header">{{thisItemCost.text}}</th>
+        <td class="govuk-table__cell">{{thisItemCost.formattedValue}}</td>
+        <td class="govuk-table__cell">{{data[quantity] | int}}</td>
+        <td class="govuk-table__cell">{{thisTotal}}</td>
       </tr>
       {% endif %}
     {% endfor %}
@@ -71,8 +91,9 @@ Project summary
       <th scope="row" class="govuk-table__footer"> Total grant amount</th>
 
 
-      <td class="govuk-table__cell"><strong>£94,400</strong></td>
-      <td class="govuk-table__cell"></td>
+      <td></td>
+      <td></td>
+      <td class="govuk-table__cell"><strong>{{grantsTotal}}</strong></td>
     </tr>
   </tbody>
 </table>
