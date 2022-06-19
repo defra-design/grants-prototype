@@ -387,7 +387,7 @@ router.get('/project-summary', function (req, res) {
   var backUrl = 'item-sizes-quantities'
   var nextUrl = 'potential-grant'
   var completedUrl = 'store-type'
-
+  
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
@@ -397,6 +397,7 @@ router.get('/project-summary', function (req, res) {
     projectItemsCost
   })
 })
+
 
 
 // Q: Grant
