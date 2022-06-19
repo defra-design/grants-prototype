@@ -84,13 +84,14 @@ Project summary
           m
         {% else %}
         {% endif %}
+
       {% endset %}
-      
+
       <tr class="govuk-table__row"></tr>
         <th scope="row" class="govuk-table__header">{{thisItemCost.text}}</th>
         <td class="govuk-table__cell">{{thisItemCost.formattedValue}}</td>
         <td class="govuk-table__cell">{{data[quantity] | int}}{{measuring_unit | safe}}</td>
-        <td class="govuk-table__cell">{{thisTotal}}</td>
+        <td class="govuk-table__cell">£{{thisTotal | toFixed(2) | commafy }}</td>
       </tr>
       {% endif %}
     {% endfor %}
@@ -100,12 +101,17 @@ Project summary
       <th scope="row" class="govuk-table__footer"> Total grant amount</th>
 
 
+
       <td></td>
       <td></td>
-      <td class="govuk-table__cell"><strong>{{grantsTotal}}</strong></td>
+      <td class="govuk-table__cell"><strong>£{{grantsTotal | toFixed(2) | commafy  }}</strong>
+
+        </td>
+
     </tr>
   </tbody>
 </table>
+
 
 
 <div class="govuk-warning-text">

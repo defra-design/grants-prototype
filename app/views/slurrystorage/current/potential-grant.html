@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 
+
 {% block pageTitle %}
 Potential grant funding
 {% endblock %}
@@ -25,7 +26,9 @@ Potential grant funding
       Potential grant funding
     </h1>
 
-    <p class="govuk-body">Based on the standardised costs for each item and the approximate size and quantities you entered, we estimate you could be eligible for a grant of £94,400.</p>
+    <p class="govuk-body">Based on the standardised costs for each item and the approximate size and quantities you entered, we estimate you could be eligible for a grant of  £{{ 1250000| toFixed(2) | commafy  }}.</p>
+
+
 
 
     {{ govukWarningText({
