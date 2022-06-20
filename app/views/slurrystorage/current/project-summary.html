@@ -49,7 +49,7 @@ Project summary
       <tr class="govuk-table__row">
         <th scope="row" class="govuk-table__header">{{ storeTypeCost[storeType].text }}</th>
         <td class="govuk-table__cell">{{storeTypeCost[storeType].formattedValue}}</td>
-        <td class="govuk-table__cell">1</td>
+        <td class="govuk-table__cell">{{data ['current-capacity']}} m<sup>3</sup></td>
         <td class="govuk-table__cell">{{storeTypeCost[storeType].formattedValue}}</td>
       </tr>
     {% endif %}
@@ -61,7 +61,7 @@ Project summary
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
       <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
-      <td class="govuk-table__cell">1</td>
+      <td class="govuk-table__cell">{{data ['cover-size']}} m<sup>2</sup></td>
       <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
     </tr>
     {% endif %}
@@ -119,7 +119,7 @@ Project summary
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
     This grant is to get your serviceable storage levels to 6 months.<br>
-  For example, if you have 4 months' storage, we will fund another 2 months.<br><br>
+  For example, if you have 4 months' serviceable storage, we will fund another 2 months.<br><br>
   Any capacity above 6 months is not covered by the grant.
   </strong>
 </div>
