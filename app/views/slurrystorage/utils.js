@@ -17,15 +17,15 @@ const coverTypeCost = {
 }
 
 const projectItemsCost = {
-  plasticGRP: { text: 'Glass-reinforced plastic (GRP) reception pit', value: 2500, formattedValue: '£2,500', hint: 'Grant amount: £25 per cubic metre',  measuringUnit: 'cubic' },
+  plasticGRP: { text: 'Glass-reinforced plastic (GRP) reception pit', value: 1100, formattedValue: '£1,100', hint: 'Grant amount: £25 per cubic metre',  measuringUnit: 'cubic' },
   plasticReceptionPit: { text: 'Plastic reception pit', value: 1200, formattedValue: '£1,200', hint: 'Grant amount: £26 per cubic metre', measuringUnit: 'cubic' },
-  concreteReceptionPits: { text: 'Pre-cast concrete reception pit', value: 3250, formattedValue: '£3,250', hint: 'Grant amount: £27 per cubic metre', measuringUnit: 'cubic' },
-  insituConcreteReceptionPits: { text: 'In-situ cast-concrete reception pit', value: 4550, formattedValue: '£4,550', hint: 'Grant amount: £30 per cubic metre', quantity: '1', measuringUnit: 'cubic' },
-  slurryTransferPump: { text: 'Electric-powered slurry transfer pump', value: 2100, formattedValue: '£2,100', hint: 'Grant amount: £1,050', measuringUnit: 'unit' },
-  chopperPump: { text: 'Centrifugal chopper pump', value: 2090, formattedValue: '£2,090', hint: 'Grant amount: £2,090', measuringUnit: 'unit' },
+  concreteReceptionPits: { text: 'Pre-cast concrete reception pit', value: 1050, formattedValue: '£1,050', hint: 'Grant amount: £27 per cubic metre', measuringUnit: 'cubic' },
+  insituConcreteReceptionPits: { text: 'In-situ cast-concrete reception pit', value: 1200, formattedValue: '£1,200', hint: 'Grant amount: £30 per cubic metre', quantity: '1', measuringUnit: 'cubic' },
+  slurryTransferPump: { text: 'Electric-powered slurry transfer pump', value: 800, formattedValue: '£800', hint: 'Grant amount: £1,050', measuringUnit: 'unit' },
+  chopperPump: { text: 'Centrifugal chopper pump', value: 2090, formattedValue: '£790', hint: 'Grant amount: £790', measuringUnit: 'unit' },
   steelPipework100: { text: 'Galvanised steel pipework 100mm diametre', value: 1100, formattedValue: '£1,100', hint: 'Grant amount: £14 per metre',  measuringUnit: 'metre' },
-  steelPipework150: { text: 'Galvanised steel pipework 150mm diametre', value: 2300, formattedValue: '£2,300', hint: 'Grant amount: £24 per metre',  measuringUnit: 'metre' },
-  transferChannels: { text: 'Under-floor transfer channels', value: 2650, formattedValue: '£2,650', hint: 'Grant amount: £25 per metre',  measuringUnit: 'metre' },
+  steelPipework150: { text: 'Galvanised steel pipework 150mm diametre', value: 1300, formattedValue: '£1,300', hint: 'Grant amount: £24 per metre',  measuringUnit: 'metre' },
+  transferChannels: { text: 'Under-floor transfer channels', value: 1650, formattedValue: '£1,650', hint: 'Grant amount: £25 per metre',  measuringUnit: 'metre' },
   tankWallMixers1200: { text: 'Tank wall mixers with tank capacity up to 1,200 cubic metre', value: 350, formattedValue: '£350', hint: 'Grant amount: £350',  measuringUnit: 'unit' },
   tankWallMixers8000: { text: 'Tank wall mixers with tank capacity up to 8,000 cubic metre', value: 1000, formattedValue: '£1,000', hint: 'Grant amount: £1,000',  measuringUnit: 'unit' },
   inspectionSteelTanks: { text: 'Inspection platform with ladder above-ground concrete and steel tanks', value: 800, formattedValue: '£800', hint: 'Grant amount: £800',  measuringUnit: 'unit' },
