@@ -68,7 +68,14 @@ Current storage capacity
         }) }}
 
 {% endif %}
-          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{{ govukWarningText({
+  html: "This grant is to get your serviceable storage levels to 6 months. <br>For example, if you have 4 months’ serviceable storage, we will fund another 2 months. <br><br>Any capacity above 6 months is not covered by the grant.",
+  iconFallbackText: "Warning"
+}) }}
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
 
       </form>
