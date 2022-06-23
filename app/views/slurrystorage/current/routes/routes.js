@@ -268,7 +268,7 @@ router.get('/covers', function (req, res) {
 router.post('/covers-answer', function (req, res) {
   var coversImp = req.session.data.covers
 
-  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('standardised-costs') }
+  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('warning') }
 })
 
 
@@ -296,7 +296,7 @@ router.get('/store-type', function (req, res) {
 router.get('/storage-capacity-increase', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'store-type'
-  var nextUrl = 'cover-type'
+  var nextUrl = 'store-type-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -306,6 +306,15 @@ router.get('/storage-capacity-increase', function (req, res) {
     storeTypeCost
   })
 })
+
+
+
+router.post('/store-type-answer', function (req, res) {
+  var impermeableCover = req.session.data.covers
+
+  if (impermeableCover === 'acidification') { res.redirect('project-items') } else { res.redirect('cover-type') }
+})
+
 
 
 // Q: Cover type
@@ -387,7 +396,7 @@ router.get('/project-summary', function (req, res) {
   var backUrl = 'item-sizes-quantities'
   var nextUrl = 'potential-grant'
   var completedUrl = 'store-type'
-  
+
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
