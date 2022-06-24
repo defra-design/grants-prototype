@@ -28,7 +28,7 @@ Current storage capacity
 
         {{ govukInput({
           label: {
-            html: "What estimated volume do you need <br>to have 6 months' serviceable storage?",
+            html: "What estimated volume do you need <br>to have 6 months’ serviceable storage?",
             classes: "govuk-label--l",
             isPageHeading: true
           },
@@ -49,12 +49,12 @@ Current storage capacity
         {% else %}
         {{ govukInput({
           label: {
-            html: "What estimated additional volume do you need to have 6 months' serviceable storage?",
+            html: "What estimated additional volume do you need to have 6 months’ serviceable storage?",
             classes: "govuk-label--l",
             isPageHeading: true
           },
           hint: {
-            html: "Enter the difference between your current serviceable storage <br> and 6 months’ serviceable storage, based on current animal numbers<br><br>Enter volume in cubic metres"
+            html: "Enter the difference between your current serviceable storage <br> and 6 months’ serviceable storage, based on current animal numbers<br><br>Enter estimated volume in cubic metres"
           },
           classes: "govuk-input--width-5",
           id: "current-capacity",
