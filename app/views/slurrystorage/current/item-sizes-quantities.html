@@ -91,7 +91,7 @@ Item sizes and quantities
                 {{ storeTypeCost[storeType].text }}
               </li>
               <li>
-                Increase:  {{ data['current-capacity'] }}m<sup>3</sup>
+                Increase:  {{ data['current-capacity'] | toFixed(2) | commafy}}m<sup>3</sup>
               </li>
 
             </ul>
@@ -112,7 +112,7 @@ Item sizes and quantities
                 {{ coverTypeCost[coverType].text }}
               </li>
               <li>
-                Size: {{ data['cover-size'] }}m<sup>2</sup>
+                Size: {{ data['cover-size'] | toFixed(2) | commafy}}m<sup>2</sup>
               </li>
 
             </ul>
@@ -121,7 +121,7 @@ Item sizes and quantities
           </div>
       {% endif %}
 
-      
+
   </div>
 </div>
 
