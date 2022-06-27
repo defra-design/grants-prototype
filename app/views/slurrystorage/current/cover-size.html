@@ -66,7 +66,7 @@ Cover size
                   {{ storeTypeCost[storeType].text }}
                 </li>
                 <li>
-                  Increase:  {{ data['current-capacity'] }}m<sup>3</sup>
+                  Increase:  {{ data['current-capacity'] | toFixed(2) | commafy }}m<sup>3</sup>
                 </li>
 
               </ul>

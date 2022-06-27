@@ -11,8 +11,8 @@ const storeTypeCost = {
 }
 
 const coverTypeCost = {
-  rigidCoversConcreteStores: { text: 'Rigid covers for above-ground steel or concrete stores', value: 1000, formattedValue: '£1,000', hint: 'Grant amount: £8 per square metre' },
-  fixedFlexibleCovers: { text: 'Fixed flexible covers for above-ground steel and concrete stores and earth-bank lagoons', value: 2100, formattedValue: '£2,100', hint: 'Grant amount: £4 per square metre' },
+  rigidCoversConcreteStores: { text: 'Rigid cover for above-ground steel or concrete stores', value: 1000, formattedValue: '£1,000', hint: 'Grant amount: £8 per square metre' },
+  fixedFlexibleCovers: { text: 'Fixed flexible cover for above-ground steel and concrete stores and earth-bank lagoons', value: 2100, formattedValue: '£2,100', hint: 'Grant amount: £4 per square metre' },
   freeFloatingPlastic: { text: 'Free-floating plastic cover', value: 3250, formattedValue: '£3,250', hint: 'Grant amount: £3 per square metre' }
 }
 
