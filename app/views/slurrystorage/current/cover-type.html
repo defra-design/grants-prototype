@@ -53,7 +53,7 @@ What type of cover will you have?
               <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="covertype2" name="covertype" type="radio" value="None of the above" {{ checked("covertype", "None of the above") }}>
         <label class="govuk-label govuk-radios__label" for="covertype2">
-          Not needed, the slurry is treated with acidification
+          I already have a cover
         </label>
       </div>
             </div>
@@ -84,7 +84,7 @@ What type of cover will you have?
                 {{ storeTypeCost[storeType].text }}
               </li>
               <li>
-                Increase:  {{ data['current-capacity'] }}m<sup>3</sup>
+                Increase:  {{ data['current-capacity'] | toFixed(2) | commafy }}m<sup>3</sup>
               </li>
 
             </ul>

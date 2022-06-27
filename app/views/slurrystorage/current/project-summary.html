@@ -24,7 +24,7 @@ Project summary
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+<form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <h2 class="govuk-heading-l">Your project items</h2>
         <p class="govuk-body">We have calculated the estimated total grant amount based on the standardised costs for each item and the approximate size and quantities you entered.
 </p>
@@ -124,6 +124,7 @@ Project summary
 
 
 
+  <input name="potentialgrant" type="hidden" value="{{grantsTotal}}">
 
       <br>  <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
         <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"

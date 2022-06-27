@@ -394,7 +394,7 @@ router.get('/item-sizes-quantities', function (req, res) {
 router.get('/project-summary', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'item-sizes-quantities'
-  var nextUrl = 'potential-grant'
+  var nextUrl = 'project-summary-answer'
   var completedUrl = 'store-type'
 
   res.render('./' + req.originalUrl, {
@@ -406,6 +406,15 @@ router.get('/project-summary', function (req, res) {
     projectItemsCost
   })
 })
+
+// Note: Routing here is based on 'potentialgrant' session value, which is a hidden value based on input method I've created on page. Calculations happen on page, we're passing a hidden value because of the temporary value stored on page.
+
+router.post('/project-summary-answer', function (req, res) {
+  var potentialGrant = req.session.data['potentialgrant']
+
+  if (potentialGrant > 250000 || potentialGrant < 25000 )  { res.redirect('project-summary-fail') } else { res.redirect('potential-grant') }
+})
+
 
 
 
