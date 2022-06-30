@@ -100,7 +100,7 @@ Item sizes and quantities
           {% endif %}
 
 
-          {% if data['covertype'] %}
+          {% if data['covertype'] != 'none' %}
         <div>
           <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Cover</span>
@@ -118,7 +118,27 @@ Item sizes and quantities
             </ul>
 
           </nav>
-          </div>
+          {# Do not print anything about covers, as I've checked 'I already have cover'  #}
+          {% else %}
+      {% endif %}
+
+
+      {% if data['projectitems'] %}
+      <div>
+        <h2 class="app-step-nav-related__heading">
+        <span class="app-step-nav-related__pretitle">Other items</span>
+        </h2>
+        {% for item in data['projectitems'] %}
+        {# Showing checkbox items in a list format  #}
+
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+
+          <li>  {{ projectItemsCost[item].text }}</li>
+        </ul>
+      </nav>
+
+      {% endfor %}
       {% endif %}
 
 

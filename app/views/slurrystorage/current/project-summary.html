@@ -26,7 +26,7 @@ Project summary
   <div class="govuk-grid-column-two-thirds">
 <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <h2 class="govuk-heading-l">Your project items</h2>
-        <p class="govuk-body">We have calculated the estimated total grant amount based on the standardised costs for each item and the approximate size and quantities you entered.
+        <p class="govuk-body">We have calculated your requested total grant amount based on the standardised costs for each item and the approximate size and quantities you entered.
 </p>
 
 
@@ -37,7 +37,7 @@ Project summary
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Item</th>
       <th scope="col" class="govuk-table__header">Grant amount per unit</th>
-      <th scope="col" class="govuk-table__header">Quantity</th>
+      <th scope="col" class="govuk-table__header">Quantity or size</th>
       <th scope="col" class="govuk-table__header">Total</th>
     </tr>
   </thead>
@@ -48,7 +48,7 @@ Project summary
     {% set grantsTotal = grantsTotal + (storeTypeCost[storeType].value | int) %}
       <tr class="govuk-table__row">
         <th scope="row" class="govuk-table__header">{{ storeTypeCost[storeType].text }}</th>
-        <td class="govuk-table__cell">{{storeTypeCost[storeType].formattedValue}}</td>
+        <td class="govuk-table__cell">{{storeTypeCost[storeType].unit}}</td>
         <td class="govuk-table__cell">{{data ['current-capacity']}}m<sup>3</sup></td>
         <td class="govuk-table__cell">{{storeTypeCost[storeType].formattedValue}}</td>
       </tr>
@@ -60,7 +60,7 @@ Project summary
     {% set grantsTotal = grantsTotal + (coverTypeCost[coverType].value | int) %}
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
-      <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].unit}}</td>
       <td class="govuk-table__cell">{{data ['cover-size']}}m<sup>2</sup></td>
       <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
     </tr>
@@ -98,7 +98,7 @@ Project summary
 
 
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__footer"> Total grant amount</th>
+      <th scope="row" class="govuk-table__footer"> Total requested grant amount</th>
 
 
 
@@ -118,7 +118,7 @@ Project summary
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
-    Items may cost more than the standardised cost.
+    The minimum grant you can claim is £25,000 (50% of £50,000). The maximum grant is £250,000.
   </strong>
 </div>
 
