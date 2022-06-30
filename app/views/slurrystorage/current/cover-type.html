@@ -42,16 +42,18 @@ What type of cover will you have?
                     {{ checked("covertype", item) }}
                   >
                   <label class="govuk-label govuk-radios__label">
-                    {{properties.text}}
+                  {{properties.text}}
                   </label>
                   <div class="govuk-hint govuk-radios__hint">
                     {{properties.hint | safe}}
+                    <p class="govuk-body">({{properties.hint2 | safe}})</p>
                   </div>
+
                 </div>
               {% endfor %}
               <div class="govuk-radios__divider">or</div>
               <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="covertype2" name="covertype" type="radio" value="None of the above" {{ checked("covertype", "None of the above") }}>
+        <input class="govuk-radios__input" id="covertype2" name="covertype" type="radio" value="none" {{ checked("covertype", "none") }}>
         <label class="govuk-label govuk-radios__label" for="covertype2">
           I already have a cover
         </label>

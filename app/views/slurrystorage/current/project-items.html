@@ -51,8 +51,8 @@ What type of cover will you have?
 
               <div class="govuk-checkboxes__divider">or</div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" name="projectitems" type="checkbox" value="None of the above"
-                  data-behaviour="exclusive" {{ checked("projectitems", "None of the above") }}>
+                <input class="govuk-checkboxes__input" name="projectitems" type="checkbox" value="none"
+                  data-behaviour="exclusive" {{ checked("projectitems", "none") }}>
                 <label class="govuk-label govuk-checkboxes__label">
                   None of the above
                 </label>
@@ -102,7 +102,7 @@ What type of cover will you have?
             {% endif %}
 
 
-            {% if data['covertype'] %}
+            {% if data['covertype'] != 'none' %}
           <div>
             <h2 class="app-step-nav-related__heading">
               <span class="app-step-nav-related__pretitle">Cover</span>
@@ -118,6 +118,10 @@ What type of cover will you have?
                 </li>
 
               </ul>
+
+              {# Do not print anything about covers, as I've checked 'I already have cover'  #}
+              {% else %}
+              
 
             </nav>
             </div>

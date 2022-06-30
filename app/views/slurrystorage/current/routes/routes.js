@@ -322,8 +322,22 @@ router.post('/store-type-answer', function (req, res) {
 router.get('/cover-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'storage-capacity-increase'
-  var nextUrl = 'cover-size'
-  var completedUrl = 'answers'
+  var nextUrl = 'cover-type-answer'
+  var completedUrl = 'cover-type-completed'
+
+  // Note: Routing here is based on - if user selected 'None of the above'
+
+  router.post('/cover-type-answer', function (req, res) {
+    var coverType = req.session.data ['covertype']
+
+    if (coverType != 'none')  { res.redirect('cover-size') } else { res.redirect('project-items') }
+  })
+
+
+
+
+
+
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -356,8 +370,18 @@ router.get('/cover-size', function (req, res) {
 router.get('/project-items', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'cover-size'
-  var nextUrl = 'item-sizes-quantities'
-  var completedUrl = 'answers'
+  var nextUrl = 'project-items-answer'
+  var completedUrl = 'project-items-completed'
+
+  // Note: Routing here is based on - if user selected 'None of the above'
+
+  router.post('/project-items-answer', function (req, res) {
+    var otherItems = req.session.data ['projectitems']
+
+    if (otherItems != 'none')  { res.redirect('item-sizes-quantities') } else { res.redirect('project-summary') }
+  })
+
+
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -377,7 +401,8 @@ router.get('/item-sizes-quantities', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'project-items'
   var nextUrl = 'project-summary'
-  var completedUrl = 'project-items-completed'
+  var completedUrl = 'item-sizes-quantities-completed'
+
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -393,29 +418,35 @@ router.get('/item-sizes-quantities', function (req, res) {
 
 router.get('/project-summary', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'item-sizes-quantities'
+  var backUrl = 'project-summary-back'
   var nextUrl = 'project-summary-answer'
   var completedUrl = 'store-type'
 
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl,
-    storeTypeCost,
-    coverTypeCost,
-    projectItemsCost
+// Note: Back button - is routing here is based on 'potentialgrant'
+  router.post('/project-summary-back', function (req, res) {
+    var otherItems = req.session.data ['projectitems']
+    if (otherItems != 'none')  { res.redirect('project-items') } else { res.redirect('item-sizes-quantities') }
   })
-})
+
+
 
 // Note: Routing here is based on 'potentialgrant' session value, which is a hidden value based on input method I've created on page. Calculations happen on page, we're passing a hidden value because of the temporary value stored on page.
 
 router.post('/project-summary-answer', function (req, res) {
   var potentialGrant = req.session.data['potentialgrant']
 
-  if (potentialGrant > 250000 || potentialGrant < 25000 )  { res.redirect('project-summary-fail') } else { res.redirect('potential-grant') }
+  if (potentialGrant < 25000 )  { res.redirect('project-summary-fail') } else { res.redirect('potential-grant') }
 })
 
-
+res.render('./' + req.originalUrl, {
+  backUrl,
+  nextUrl,
+  completedUrl,
+  storeTypeCost,
+  coverTypeCost,
+  projectItemsCost
+})
+})
 
 
 // Q: Grant
