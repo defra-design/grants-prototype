@@ -41,6 +41,25 @@
               </a>
             </dd>
           </div>
+
+          {# Do not add extra rows about planning permission authority and reference - if not applied yet  #}
+           {%if data ['planning-permission'] == 'Not yet applied' %}
+
+           <div class="govuk-summary-list__row">
+             <dt class="govuk-summary-list__key">
+               OS grid reference
+             </dt>
+             <dd class="govuk-summary-list__value">
+               {{ data['os-grid'] }}
+             </dd>
+             <dd class="govuk-summary-list__actions">
+               <a class="govuk-link" href="os-grid">
+                 Change<span class="govuk-visually-hidden"> address</span>
+               </a>
+             </dd>
+           </div>
+           {% else %}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Planning authority
@@ -80,10 +99,13 @@
               </a>
             </dd>
           </div>
-
+{% endif %}
 
         </div>
        </div>
+
+
+
 
        <div class="govuk-grid-row">
          <div class="govuk-grid-column-two-thirds-from-desktop">
