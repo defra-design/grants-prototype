@@ -101,6 +101,7 @@ Item sizes and quantities
 
 
           {% if data['covertype'] != 'none' %}
+          {% if data['covers'] != 'acidification' %}
         <div>
           <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Cover</span>
@@ -118,8 +119,9 @@ Item sizes and quantities
             </ul>
 
           </nav>
-          {# Do not print anything about covers, as I've checked 'I already have cover'  #}
+          {# Do not print anything about covers, as I've checked 'I already have cover' and also ' selected 'Acidification' on Covers page  #}
           {% else %}
+      {% endif %}
       {% endif %}
 
 
