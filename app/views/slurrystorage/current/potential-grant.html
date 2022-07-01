@@ -26,10 +26,14 @@ Potential grant funding
       Potential grant funding
     </h1>
 
-    <p class="govuk-body">Based on the standardised costs for each item and the approximate <br>size and quantities you entered, we estimate you could be eligible for <br>a grant of  £{{ data['potentialgrant']| toFixed(2) | commafy  }}.</p>
+    <p class="govuk-body">Based on the standardised costs for each item and the approximate <br>size and quantities you entered, we estimate you could be eligible for <br>a grant of
 
-
-
+      {# Putting a rule to cap grant amount at 250,000 when the value goes over maximum grant amount of 250K #}
+      {% if data['potentialgrant'] >= 250000 %}
+        £250,000.</p>
+      {% else %}
+        £{{ data['potentialgrant']| toFixed(2) | commafy  }}.</p>
+      {% endif %}
 
     {{ govukWarningText({
         text: 'There’s no guarantee the project will receive a grant.',
