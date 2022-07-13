@@ -268,7 +268,7 @@ router.get('/covers', function (req, res) {
 router.post('/covers-answer', function (req, res) {
   var coversImp = req.session.data.covers
 
-  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('warning') }
+  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('estimate') }
 })
 
 

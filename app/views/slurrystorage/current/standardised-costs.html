@@ -14,7 +14,7 @@ Standardised costs
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
-<a class="govuk-back-link" href="warning">Back</a>
+<a class="govuk-back-link" href="estimate">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,7 @@ Standardised costs
 
          <div class="govuk-form-group">
         <h2 class="govuk-heading-l">Grant amounts for eligible items</h2>
-        <p class="govuk-body">The Slurry Infrastructure grant uses standardised costs for the eligible items. The grant is 50% of the standardised cost.  </p>
+        <p class="govuk-body">The Slurry Infrastructure grant uses standardised costs for the eligible items. </p>
         <p class="govuk-body">At full application stage, you can choose between the standard grant for an item or you can submit 3 quotes. </p>
         <p class="govuk-body">If you submit quotes, your grant amount is based on 50% of the cheapest quote.</p>
 
@@ -50,7 +50,7 @@ Standardised costs
           rows: [
           [
             {
-            text: "Above-ground steel tank"
+            text: "Above-ground steel slurry store"
             },
             {
             html: "£22 per cubic metre"
@@ -58,7 +58,7 @@ Standardised costs
           ],
           [
             {
-            text: "Above-ground concrete tank"
+            text: "Precast circular concrete slurry store"
             },
             {
             html: "£17 per cubic metre"
@@ -66,7 +66,7 @@ Standardised costs
           ],
           [
             {
-            html: "Below-ground in-situ cast-reinforced<br> concrete tank"
+            html: "In situ cast-reinforced concrete <br>slurry store"
             },
             {
             html: "£15 per cubic metre"
@@ -74,7 +74,7 @@ Standardised costs
           ],
           [
             {
-            text: "Earth-bank lagoon (unlined)"
+            html: "Earth-bank lagoon with consolidated <br>clay lining"
             },
             {
             html: "£8 per cubic metre"
@@ -82,7 +82,7 @@ Standardised costs
           ],
           [
             {
-            text: "Earth-bank lagoon (lined)"
+            text: "Earth-bank lagoon with internal liner"
             },
             {
             html: "£12 per cubic metre"
@@ -98,7 +98,7 @@ Standardised costs
           ],
           [
             {
-            text: "Large-volume supported slurry bag"
+            html: "Large-volume supported slurry bag <br>(over 2,500 cubic metres)"
             },
             {
             html: "£20 per cubic metre"
@@ -122,7 +122,7 @@ Standardised costs
           rows: [
           [
             {
-            html: "Rigid cover for above-ground steel<br> or concrete stores"
+            html: "Rigid cover for steel or concrete <br>slurry stores"
             },
             {
             html: "£8 per square metre"
@@ -130,7 +130,7 @@ Standardised costs
           ],
           [
             {
-            html: "Fixed flexible cover for above-ground<br> steel and concrete stores and <br>earth-bank lagoons"
+            html: "Fixed flexible cover"
             },
             {
             html: "£4 per square metre"
@@ -138,7 +138,7 @@ Standardised costs
           ],
           [
             {
-            html: "Floating flexible cover for earth-bank<br> lagoons only"
+            html: "Floating flexible cover"
             },
             {
             html: "£3 per square metre"
@@ -162,18 +162,10 @@ Standardised costs
           rows: [
           [
             {
-            text: "Glass-reinforced plastic (GRP)"
+            text: "Glass-reinforced plastic (GRP) or steel lined"
             },
             {
             html: "£25 per cubic metre"
-            }
-          ],
-          [
-            {
-            text: "Plastic "
-            },
-            {
-            html: "£26 per cubic metre"
             }
           ],
           [
@@ -186,7 +178,7 @@ Standardised costs
           ],
           [
             {
-            text: "In-situ cast concrete"
+            text: "In situ cast concrete"
             },
             {
             html: "£30 per cubic metre"
@@ -218,10 +210,26 @@ Standardised costs
           ],
           [
             {
+            html: "Powered take off (PTO) hydraulically <br>powered slurry transfer pump "
+            },
+            {
+            html: "£950 per pump"
+            }
+          ],
+          [
+            {
             text: "Centrifugal chopper pump"
             },
             {
             html: "£2,090 per pump"
+            }
+          ],
+          [
+            {
+            text: "Powered take off (PTO) or hydraulically"
+            },
+            {
+            html: "£1,700 per pump"
             }
           ]
           ]
@@ -254,6 +262,22 @@ Standardised costs
             },
             {
             html: "£24 per metre"
+            }
+          ],
+          [
+            {
+            html: " Polyethylene (PE) or equivalent <br>pipe 100mm diameter"
+            },
+            {
+            html: "£8 per metre"
+            }
+          ],
+          [
+            {
+            html: " Polyethylene (PE) or equivalent <br>pipe 150mm diameter"
+            },
+            {
+            html: "£9 per metre"
             }
           ]
           ]
@@ -298,7 +322,7 @@ Standardised costs
           rows: [
           [
             {
-            html: "Tank wall mixers with tank capacity<br> up to 1,200 cubic metre"
+            html: "Slurry store wall mixers with store <br>capacity up to 1,200 cubic metre"
             },
             {
             html: "£350 per tank"
@@ -306,7 +330,7 @@ Standardised costs
           ],
           [
             {
-            html: "Tank wall mixers with tank capacity <br> up to 8,000 cubic metre"
+            html: "Slurry store wall mixers with store <br>capacity up to 8,000 cubic metre"
             },
             {
             html: "£1,000 per tank"
@@ -330,7 +354,7 @@ Standardised costs
           rows: [
           [
             {
-            html: "Inspection platform with ladder<br> for above-ground concrete and<br> steel tanks"
+            html: "Inspection platform with ladder for above-<br>ground concrete and steel slurry stores"
             },
             {
             html: "£800 per item"
@@ -338,7 +362,7 @@ Standardised costs
           ],
           [
             {
-            html: "Safety fencing for below-ground<br> stores,earth-bank lagoons and<Br> slurry bags "
+            html: "Safety fencing for stores constructed <br>below ground level, earth-bank lagoons<Br> and slurry bags"
             },
             {
             html: "£55 per metre"
