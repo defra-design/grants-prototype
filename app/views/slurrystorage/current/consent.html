@@ -24,13 +24,18 @@
     <div class="govuk-form-group govuk-!-margin-bottom-9">
       <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
         <h1 class="govuk-heading-l">Confirm and send</h1>
-          <p class="govuk-body">I confirm that:</p>
+          <p class="govuk-body">I confirm that, to the best of my knowledge, the details I have provided are correct.</p>
+          <p class="govuk-body">I understand the project’s eligibility and estimated grant amount was based on the answers I provided. </p>
+          <p class="govuk-body">I am aware that the information I submit will be:</p>
             <ul class="govuk-list govuk-list--bullet"><li> to the best of my knowledge, the details I have provided are correct</li>
-            <li>I understand the result was based on the answers I provided</li>
-            <li>I am aware the information I submit will be checked</li>
-            <li>I am happy to be contacted by Defra and RPA (or a third-party on their behalf) about my application.</li>
-            </ul><br>
-            <p class="govuk-body">So that we can continue to improve our services and schemes, we may wish to contact you in the future. Please confirm if you are happy for us, or a third-party working for us, to contact you.</p>
+              <li>checked by the RPA</li>
+              <li>passed to Natural England so they can contact me to provide advice on my project</li>
+              <li>passed to the Environment Agency so that they are aware of my planned project</li>
+            </ul>
+            <p class="govuk-body">I am aware that if my project is successful, details of my full application will be shared with the Environment Agency so they can provide assurance on the project location and store design. </p>
+            <br><br>
+            <p class="govuk-body">I am happy to be contacted by Defra and RPA (or a third-party on their behalf) about my application.</p>
+
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="confirm" name="confirmation" type="checkbox" value="{{ data['confirmation'] }}">
                 <label class="govuk-label govuk-checkboxes__label" for="confirm">

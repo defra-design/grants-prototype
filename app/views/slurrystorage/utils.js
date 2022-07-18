@@ -16,16 +16,16 @@ const coverTypeCost = {
 }
 
 const projectItemsCost = {
-  plasticGRP: { text: 'Glass-reinforced plastic (GRP) or steel lined', value: 25, formattedValue: '£25', hint: 'Grant amount: £25 per cubic metre',  measuringUnit: 'cubic' },
+  plasticGRP: { text: 'Glass-reinforced plastic (GRP) or steel lined reception pit', value: 25, formattedValue: '£25', hint: 'Grant amount: £25 per cubic metre',  measuringUnit: 'cubic' },
   concreteReceptionPits: { text: 'Pre-cast concrete reception pit', value: 27, formattedValue: '£27', hint: 'Grant amount: £27 per cubic metre', measuringUnit: 'cubic' },
-  insituConcreteReceptionPits: { text: 'In situ cast concrete', value: 30, formattedValue: '£30', hint: 'Grant amount: £30 per cubic metre', quantity: '1', measuringUnit: 'cubic' },
+  insituConcreteReceptionPits: { text: 'In situ cast concrete reception pit', value: 30, formattedValue: '£30', hint: 'Grant amount: £30 per cubic metre', quantity: '1', measuringUnit: 'cubic' },
   slurryTransferPump: { text: 'Electric-powered slurry transfer pump', value: 1050, formattedValue: '£1,050', hint: 'Grant amount: £1,050', measuringUnit: 'unit' },
   powerPTOpump1: { text: 'Powered take off (PTO) hydraulically powered slurry transfer pump', value: 950, formattedValue: '£950', hint: 'Grant amount: £950', measuringUnit: 'unit' },
   chopperPump: { text: 'Centrifugal chopper pump', value: 2090, formattedValue: '£790', hint: 'Grant amount: £790', measuringUnit: 'unit' },
   powerPTOpump2: { text: 'Powered take off (PTO) or hydraulically driven chopper pump', value: 1700, formattedValue: '£1,700', hint: 'Grant amount: £1,700', measuringUnit: 'unit' },
   steelPipework100: { text: 'Galvanised steel pipework 100mm diameter', value: 14, formattedValue: '£14', hint: 'Grant amount: £14 per metre',  measuringUnit: 'metre' },
   steelPipework150: { text: 'Galvanised steel pipework 150mm diameter', value: 24, formattedValue: '£24', hint: 'Grant amount: £24 per metre',  measuringUnit: 'metre' },
-  polyPipework100: { text: 'Polyethylene (PE) or equivalent pipe 100mm diameter', value: 8, formattedValue: '£8', hint: 'Grant amount: £8 per metre',  measuringUnit: 'metre' },
+  polyPipework100: { text: 'Polyethylene (PE) or equivalent pipework 100mm diameter', value: 8, formattedValue: '£8', hint: 'Grant amount: £8 per metre',  measuringUnit: 'metre' },
   polyPipework150: { text: 'Polyethylene (PE) or equivalent pipework 150mm diameter', value: 9, formattedValue: '£9', hint: 'Grant amount: £9 per metre',  measuringUnit: 'metre' },
   transferChannels: { text: 'Under-floor transfer channels', value: 25, formattedValue: '£25', hint: 'Grant amount: £25 per metre',  measuringUnit: 'metre' },
   tankWallMixers1200: { text: 'Slurry store wall mixers with store capacity up to 1,200 cubic metre', value: 350, formattedValue: '£350', hint: 'Grant amount: £350',  measuringUnit: 'unit' },
