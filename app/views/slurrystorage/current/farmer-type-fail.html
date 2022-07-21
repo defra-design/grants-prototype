@@ -26,9 +26,11 @@
         You cannot apply for a grant from this scheme
       </h1>
 
-      <p class="govuk-body">This grant is for pig, beef or dairy farmers.<br><br>
-Poultry, arable-only, contractors and horticultural growers are not currently eligible.</p>
+      <p class="govuk-body">This grant is for pig, beef or dairy farmers.
 
+        {{ govukInsetText({
+          text: "Poultry, arable-only, contractors and horticultural growers are not currently eligible."
+        }) }}
 
       <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-link govuk-link--no-visited-state"> See other grants you may be eligible for.</a></p>
       </div>
