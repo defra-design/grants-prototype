@@ -16,9 +16,7 @@ const coverTypeCost = {
 }
 
 const projectItemsCost = {
-  plasticGRP: { text: 'Glass-reinforced plastic (GRP) or steel lined reception pit', value: 25, formattedValue: '£25', hint: 'Grant amount: £25 per cubic metre',  measuringUnit: 'cubic' },
-  concreteReceptionPits: { text: 'Pre-cast concrete reception pit', value: 27, formattedValue: '£27', hint: 'Grant amount: £27 per cubic metre', measuringUnit: 'cubic' },
-  insituConcreteReceptionPits: { text: 'In situ cast concrete reception pit', value: 30, formattedValue: '£30', hint: 'Grant amount: £30 per cubic metre', quantity: '1', measuringUnit: 'cubic' },
+  receptionPit: { text: 'Reception pit', value: 30, formattedValue: '£30', hint: 'Grant amount: £30 per cubic metre',  measuringUnit: 'cubic' },
   slurryTransferPump: { text: 'Electric-powered slurry transfer pump', value: 1050, formattedValue: '£1,050', hint: 'Grant amount: £1,050', measuringUnit: 'unit' },
   powerPTOpump1: { text: 'Powered take off (PTO) hydraulically powered slurry transfer pump', value: 950, formattedValue: '£950', hint: 'Grant amount: £950', measuringUnit: 'unit' },
   chopperPump: { text: 'Centrifugal chopper pump', value: 2090, formattedValue: '£790', hint: 'Grant amount: £790', measuringUnit: 'unit' },
