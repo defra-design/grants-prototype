@@ -279,7 +279,7 @@ router.post('/covers-answer', function (req, res) {
 
 router.get('/store-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'standardised-costs'
+  var backUrl = 'standardised-grant-amounts'
   var nextUrl = 'storage-capacity-increase'
   var completedUrl = 'answers'
 
