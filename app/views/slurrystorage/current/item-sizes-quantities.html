@@ -91,7 +91,7 @@ Item sizes and quantities
                 {{ storeTypeCost[storeType].text }}
               </li>
               <li>
-                Increase:  {{ data['current-capacity'] | toFixed(2) | commafy}}m<sup>3</sup>
+                Increase:  {{ data['current-capacity2'] | toFixed(2) | commafy}}m<sup>3</sup>
               </li>
 
             </ul>
@@ -100,27 +100,44 @@ Item sizes and quantities
           {% endif %}
 
 
-          {% if data['covertype'] != 'none' %}
-          {% if data['covers'] != 'acidification' %}
+
         <div>
           <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Cover</span>
             </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  Not needed
+                </li>
+
+              </ul>
+
+          </nav>
+
+            {% if data['covertype'] != 'none' %}
+            {% if data['covers'] != 'acidification' %}
+
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set coverType = data['covertype'] %}
+                  {{ coverTypeCost[coverType].text }}
+                </li>
+                <li>
+                  Size: {{ data['cover-size'] | toFixed(2) | commafy}}m<sup>2</sup>
+                </li>
+              </ul>
+            </nav>
+          {# Only print 'Not needed' wording - as per workaround/fix [change 207], Scenario: I've checked 'I already have cover' and also ' selected 'Acidification' on Covers page  #}
+          {% else %}
           <nav role="navigation" aria-labelledby="subsection-title">
             <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
               <li>
-                {% set coverType = data['covertype'] %}
-                {{ coverTypeCost[coverType].text }}
+                Not needed
               </li>
-              <li>
-                Size: {{ data['cover-size'] | toFixed(2) | commafy}}m<sup>2</sup>
-              </li>
-
             </ul>
-
-          </nav>
-          {# Do not print anything about covers, as I've checked 'I already have cover' and also ' selected 'Acidification' on Covers page  #}
-          {% else %}
+            </nav>
       {% endif %}
       {% endif %}
 

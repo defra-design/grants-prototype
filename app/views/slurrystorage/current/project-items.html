@@ -93,7 +93,7 @@ What type of cover will you have?
                   {{ storeTypeCost[storeType].text }}
                 </li>
                 <li>
-                  Increase:  {{ data['current-capacity'] | toFixed(2) | commafy}}m<sup>3</sup>
+                  Increase:  {{ data['current-capacity2'] | toFixed(2) | commafy}}m<sup>3</sup>
                 </li>
 
               </ul>
@@ -102,36 +102,59 @@ What type of cover will you have?
             {% endif %}
 
 
-            {% if data['covertype'] != 'none'  %}
-            {% if data['covers'] != 'acidification' %}
+
 
           <div>
             <h2 class="app-step-nav-related__heading">
               <span class="app-step-nav-related__pretitle">Cover</span>
               </h2>
-            <nav role="navigation" aria-labelledby="subsection-title">
-              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
-                <li>
-                  {% set coverType = data['covertype'] %}
-                  {{ coverTypeCost[coverType].text }}
-                </li>
-                <li>
-                  Size: {{ data['cover-size'] | toFixed(2) | commafy}}m<sup>2</sup>
-                </li>
+              <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                  <li>
+                    Not needed
+                  </li>
 
-              </ul>
-
-              {# Do not print anything about covers, as I've checked 'I already have cover' and also ' selected 'Acidification' on Covers page  #}
-              {% else %}
-
+                </ul>
 
             </nav>
+            
+              {% if data['covertype'] != 'none' %}
+              {% if data['covers'] != 'acidification' %}
+
+
+
+
+                <nav role="navigation" aria-labelledby="subsection-title">
+                  <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                    <li>
+                      {% set coverType = data['covertype'] %}
+                      {{ coverTypeCost[coverType].text }}
+                    </li>
+
+
+                    <li>
+                      Size: {{ data['cover-size'] | toFixed(2) | commafy}}m<sup>2</sup>
+                    </li>
+
+                  </ul>
+
+              {# Only print 'Not needed' wording - as per workaround/fix [change 207], Scenario: when I've checked 'I already have cover' and also ' selected 'Acidification' on Covers page  #}
+              {% else %}
+
+              <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                  <li>
+                    Not needed
+                  </li>
+
+                </ul>
+
+            </nav>
+            {% endif %}
+            {% endif %}
+
             </div>
-        {% endif %}
-        {% endif %}
-
-
-      </div>
+          </div>
             </div>
 
 {% endblock %}
