@@ -26,8 +26,8 @@ const projectItemsCost = {
   polyPipework100: { text: 'Polyethylene (PE) or equivalent pipework 100mm diameter', value: 8, formattedValue: '£8', hint: 'Grant amount: £8 per metre',  measuringUnit: 'metre' },
   polyPipework150: { text: 'Polyethylene (PE) or equivalent pipework 150mm diameter', value: 9, formattedValue: '£9', hint: 'Grant amount: £9 per metre',  measuringUnit: 'metre' },
   transferChannels: { text: 'Under-floor transfer channels', value: 25, formattedValue: '£25', hint: 'Grant amount: £25 per metre',  measuringUnit: 'metre' },
-  tankWallMixers1200: { text: 'Slurry store wall mixers with store capacity up to 1,200 cubic metre', value: 350, formattedValue: '£350', hint: 'Grant amount: £350',  measuringUnit: 'unit' },
-  tankWallMixers8000: { text: 'Slurry store wall mixers with store capacity up to 8,000 cubic metre', value: 1000, formattedValue: '£1,000', hint: 'Grant amount: £1,000',  measuringUnit: 'unit' },
+  tankWallMixers1200: { text: 'Slurry store wall mixers with store capacity up to 1,200 cubic metres', value: 350, formattedValue: '£350', hint: 'Grant amount: £350',  measuringUnit: 'unit' },
+  tankWallMixers8000: { text: 'Slurry store wall mixers with store capacity up to 8,000 cubic metres', value: 1000, formattedValue: '£1,000', hint: 'Grant amount: £1,000',  measuringUnit: 'unit' },
   inspectionSteelTanks: { text: 'Inspection platform with ladder for above-ground concrete and steel slurry stores', value: 800, formattedValue: '£800', hint: 'Grant amount: £800',  measuringUnit: 'unit' },
   safetyFencingStores: { text: 'Safety fencing for stores constructed below ground level, earth-bank lagoons and slurry bags', value: 55, formattedValue: '£55', hint: 'Grant amount: £55 per metre',  measuringUnit: 'metre' }
 
