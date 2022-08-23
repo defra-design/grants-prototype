@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Does the project need an abstraction licence?
+{% endblock %}
+
+{% block beforeContent %}
+       <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<main class="govuk-main-wrapper">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Does the project need an abstraction licence or a variation of one?
+              </h1>
+            </legend>
+            <br>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="Not needed" {{ checked("abstraction-licence", "Not needed") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence">
+                  Not needed
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="Secured" {{ checked("abstraction-licence", "Secured") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence-2">
+                  Secured
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="expected by 21 October 2021" {{ checked("abstraction-licence", "expected by 21 October 2021") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence-3">
+                  Expected to have by 31 December 2021
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="won’t have by 21 October 2021" {{ checked("abstraction-licence", "won’t have by 21 October 2021") }}>
+                <label class="govuk-label govuk-radios__label" for="abstraction-licence-3">
+                  Will not have by 31 December 2021
+                </label>
+              </div>
+            </div>
+            <br><br>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+        {% if data['COMPLETED'] == true %}
+        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+          class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+        >
+          Back to summary page
+        </button>
+        {% endif %}
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+      <aside class="app-related-items">
+          <h3 class="govuk-heading-m"> Eligibility </h3>
+          <p> Any abstraction licences or variations must be in place by 31 December 2021 (the end of the application window).</p>
+      </aside>
+    </div> 
+  </div>
+</main>
+{% endblock %}

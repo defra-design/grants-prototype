@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Survey
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="{{ nextUrl }}" method="post">
+        <h1 class="govuk-heading-l">Survey question</h1>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <p>Based on this score will you proceed to making a full application?</p>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="survey-1" name="survey" type="radio" value="yes" {{ checked("survey", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="survey-1">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="survey-2" name="survey" type="radio" value="no" {{ checked("survey", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="survey-2">
+                  No
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="survey-3" name="survey" type="radio" value="not sure" {{ checked("survey", "not-sure") }}>
+                <label class="govuk-label govuk-radios__label" for="survey-3">
+                  Not sure
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Submit survey
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

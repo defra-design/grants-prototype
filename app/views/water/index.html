@@ -1,101 +1,106 @@
-
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-  Grants Prototypes
-{% endblock %}
+{% extends "addingvalue/current/views/layouts/_BASEFULL-AV.html" %}
 
-{% block header %}
-  {{ super() }}
-  <div class="govuk-width-container">
-    <a class="govuk-back-link" href="/">Back</a>
-  </div>
-{% endblock %}
+{% block service %}
 
-{% block content %}
-
-  <style>
-    dd {margin-inline-start: 0}
-  </style>
-
-  <div class="govuk-grid-row">
+<!--
+<span class="govuk-caption-xl">Prototypes</span>
+-->
+<title> Water R2 prototype admin</title>
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-xl">Grants Prototype</span>
-      <h1 class="govuk-heading-xl">
-        Water
-      </h1>
 
-      <dl class="govuk-list">
-        <dt><a href="/water/current/guidance">Version 7</a></dt>
-        <dd>Beta - Public</dd>
-      </dl>
 
-      <dl class="govuk-list">
-        <dt><a href="/water/v7private/guidance-all-grants">Version 7</a></dt>
-        <dd>Beta - Private</dd>
-      </dl>
+<h1 class="govuk-heading-xl">
+  Water R2 prototype admin
+</h1>
 
-      <dl class="govuk-list">
-        <dt><a href="/water/v6/guidance-all-grants">Version 6</a></dt>
-        <dd>Alpha extension</dd>
-      </dl>
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">User research</h2>
 
-      <dl class="govuk-list">
-        <dt><a href="/water/v5/guidance-all-grants">Version 5</a></dt>
-        <dd>Alpha extension</dd>
-      </dl>
+        <p class='govuk-list app-list--definition'>
+        <a href='#' class="govuk-link--no-visited-state">Guidance: Water Management Grantt</a></p>
+          <p class='govuk-list app-list--definition'>
+            <a href='#' class="govuk-link--no-visited-state">Start page</a><br>
+            Specialist start page, hosted on GOV.UK</p>
 
-      <dl class="govuk-list">
-        <dt><a href="/water/v4b/guidance-all-grants">Version 4 beta</a></dt>
-        <dd>Alpha extension</dd>
-      </dl>
+        <p class='govuk-list app-list--definition'>
+        <a href='#' class="govuk-link--no-visited-state">Confirmation email</a><br>
+          User will receive a confirmation email, with their answers. Service is routed by GOV Notify.</p>
+      </div>
 
-      <dl class="govuk-list">
-        <dt><a href="/water/v4/guidance-all-grants">Version 4</a></dt>
-        <dd>Alpha sprint XXXX - large grants expression of interest v3</dd>
-      </dl>
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">Design history</h2>
+                            <p class='govuk-list app-list--definition'>
+                              <a href='water/current/guidance' class="govuk-link--no-visited-state"><strong>R2: version 1 (current)</a></strong><br>
+                              This version was not tested yet and <a href='https://eaflood.atlassian.net/browse/GRANTS-856' target="new" class="govuk-link--no-visited-state">includes prototype tickets from Jira</a>.<br>
+                                <span class="govuk-body govuk-!-font-size-14"># Last updated on 23 August 2022<br/>
+                                </span></p>
 
-      <dl class="govuk-list">
-        <dt><a href="/water/v3/guidance-all-grants">Version 3</a></dt>
-        <dd>Alpha sprint 6 - large grants expression of interest v2</dd>
-      </dl>
+                                <p class='govuk-heading-m'>Previous versions</p>
+                                <p class='govuk-list app-list--definition'>
+                                  <a href='https://www.sketch.com/s/e7c8bc45-c33c-45eb-bed9-4c7481258b21' class="govuk-link--no-visited-state">Version 8 (public beta) - Sketch only</a><br>
+                                  This is the version the service went live with on 16-11-2021<br>
+                                    <span class="govuk-body govuk-!-font-size-14"># Last updated on 12 October 2021<br/>
+                                    </span></p>
+                                <p class='govuk-list app-list--definition'>
+                                  <a href='/water/v7public/guidance' class="govuk-link--no-visited-state">Version 7 (public beta)</a><br>
+                                        Last version that was tested with users.</p>
+                                <p class='govuk-list app-list--definition'>
+                                    <a href='/water/v7private/guidance-all-grants' class="govuk-link--no-visited-state">Version 7 (private beta)</a><br>
+                                        This version was tested with internal users.</p>
+                                <p class='govuk-list app-list--definition'>
+                                    <a href='/water/v6/guidance-all-grants' class="govuk-link--no-visited-state">Version 6</a><br>
+                                        Alpha extension</p>
+                                <p class='govuk-list app-list--definition'>
+                                    <a href='/water/v5/guidance-all-grants' class="govuk-link--no-visited-state">Version 5</a><br>
+                                        Alpha extension</p>
+                                <p class='govuk-list app-list--definition'>
+                                    <a href='/water/v4b/guidance-all-grants' class="govuk-link--no-visited-state">Version 4 (beta phase)</a><br>
+                                        Alpha extension</p>
+                                <p class='govuk-list app-list--definition'>
+                                    <a href='/water/v4/guidance-all-grants' class="govuk-link--no-visited-state">Version 4</a><br>
+                                        Alpha sprint XXXX - large grants expression of interest v3</p>
+                                <p class='govuk-list app-list--definition'>
+                                    <a href='/water/v3/guidance-all-grants' class="govuk-link--no-visited-state">Version 3</a><br>
+                                    Alpha sprint 6 - large grants expression of interest v2</p>
+                                <p class='govuk-list app-list--definition'>
+                                    <a href='/water/v2/start' class="govuk-link--no-visited-state">Version 2</a><br>
+                                    Alpha sprint 5 - large grants expression of interest</p>
+                                <p class='govuk-list app-list--definition'>
+                                    <a href='/water/v1/guidance-2019' class="govuk-link--no-visited-state">Version 1</a><br>
+                                    Alpha sprint 3 - small grants service</p>
 
-      <dl class="govuk-list">
-        <dt><a href="/water/v2/start">Version 2</a></dt>
-        <dd>Alpha sprint 5 - large grants expression of interest</dd>
-      </dl>
 
-      <dl class="govuk-list">
-        <dt><a href="/water/v1/guidance-2019">Version 1</a></dt>
-        <dd>Alpha sprint 3 - small grants service</dd>
-      </dl>
 
-    </div>
 
-    <div class="govuk-grid-column-one-third">
 
-      <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Related links
-        </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
-            <li>
-              <a href="https://github.com/DEFRA/grants-prototype">
-                Prototype code on Github
-              </a>
-            </li>
-            <li>
-              <a href="https://grants-design-history.herokuapp.com/">
-                Design history
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
 
-    </div>
 
-  </div>
 
+      </div>
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">Journeys and wireframes</h2>
+            <p class='govuk-heading-m'>Workflows, screenflows and user journeys</p>
+              <p class='govuk-list app-list--definition'>
+                <a href='https://app.mural.co/t/dcx6016/m/ftfgrants4310/1626085420287/620bc3379126edc6a2653cd43fe0cba97f8477f4?sender=uac8e5181797d9857544e5168' target="new">High fidelity screenflow on Mural (opens in new tab)</a><br>
+                    <img src="/public/images/mural-icon.png" alt="Mural icon" width="17" height="17"> Mural (Updated on 6 October 2021 for R1 public beta).<br></p>
+
+
+            <p class='govuk-heading-m'>Wireframes - R2</p>
+              <p class='govuk-list app-list--definition'>
+                  <a href='https://www.sketch.com/s/3a3f3efe-71a0-4fb3-a274-1dc84915aadf' class="govuk-link--no-visited-state" target="new" >Sketch wireframes (opens in new tab)</a><br>
+                    <img src="/public/images/sketch-icon.png" alt="Sketch icon" width="17" height="17">Sketch (always up-to date).</p>
+
+                    <p class='govuk-heading-m'>Wireframes - R1: v8 (public beta)</p>
+                      <p class='govuk-list app-list--definition'>
+                        <a href='https://www.sketch.com/s/e7c8bc45-c33c-45eb-bed9-4c7481258b21' class="govuk-link--no-visited-state" target="new" >Sketch wireframes (opens in new tab)</a><br>
+                          <img src="/public/images/sketch-icon.png" alt="Sketch icon" width="17" height="17">Sketch (always up-to date).</p>
+
+                          <p class='govuk-heading-m'>Design history (based on DfE model)</p>
+                            <p class='govuk-list app-list--definition'>
+                              <a href='https://grants-design-history.herokuapp.com/' class="govuk-link--no-visited-state" target="new" >Grants design history</a><br>
+
+      </div>
 {% endblock %}
