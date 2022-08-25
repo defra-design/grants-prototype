@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are your land or premises rented, leased or tenanted?
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<main class="govuk-main-wrapper">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Is the planned project on land the farm business owns?
+              </h1>
+            </legend>
+            <br><br>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="tenancy" name="tenancy" type="radio" value="Yes" {{ checked("tenancy", "Yes") }}>
+                <label class="govuk-label govuk-radios__label" for="tenancy">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="tenancy-2" name="tenancy" type="radio" value="No" {{ checked("tenancy", "No") }}>
+                <label class="govuk-label govuk-radios__label" for="tenancy-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to summary page
+          </button>
+        {% endif %}
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+      <aside class="app-related-items">
+          <h3 class="govuk-heading-m"> Eligibility </h3>
+          <p> The land must be owned or have a tenancy in place until 2026 <br> before starting the project.</p>
+      </aside>
+    </div>
+  </div>
+</main>  
+
+{% endblock %}

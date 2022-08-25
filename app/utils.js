@@ -7,7 +7,8 @@ const serviceName = {
     v5: 'Apply for a Farming Transformation Fund water resource management grant',
     v6: 'Check if you can apply for a water resource management grant',
     v7private: 'Check if you can apply for a water resource management grant',
-    current: 'Check if you can apply for a Farming Transformation Fund water management grant'
+    v7public: 'Check if you can apply for a Farming Transformation Fund water management grant',
+    current: 'Check if you can apply for a Water Management Grant'
   },
 
 slurrystorage: {
