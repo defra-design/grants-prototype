@@ -48,16 +48,16 @@
               Business turnover (£)
           </label>
           <div class="govuk-input__wrapper">
-          <div class="govuk-input__prefix" aria-hidden="true">£</div>  
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
           <input class="govuk-input govuk-input--width-5" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
           </div>
         </div>
         <br>
         <div class="govuk-form-group">
           <label class="govuk-label" for="sbi">
-              Single Business Identifier (SBI)  
+              Single Business Identifier (SBI)
           </label>
-          <span id="sbi-hint" class="govuk-hint">If you do not have an SBI, leave it blank</span>
+          <span id="sbi-hint" class="govuk-hint">If you do not have an SBI, you will need to get one for full application</span>
           <input class="govuk-input govuk-input--width-10" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
         </div>
         <br><br>
@@ -67,9 +67,9 @@
 
         {% if data['DETAILS'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
-            class="govuk-button govuk-!-margin-right-1 govuk" data-module="govuk-button"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk" data-module="govuk-button"
           >
-            Back to details page
+            Back to details
           </button>
         {% endif %}
       </form>
