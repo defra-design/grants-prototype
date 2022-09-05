@@ -10,7 +10,7 @@
 
 {% block content %}
 
-<main class="govuk-main-wrapper">
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -40,32 +40,26 @@
             </div>
           </fieldset>
         </div>
-        <br>
+        
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-          Get your score 
+          Get your score
         </button>
 
-        {% if data['COMPLETED'] == true %}
-        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-          class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-        >
-          Back to summary page
-        </button>
-        {% endif %}
+
 
       </form>
     </div>
-    <div class="govuk-grid-column-one-third govuk-!-padding-5">
+    <div class="govuk-grid-column-one-third ">
       <aside class="app-related-items">
         <h3 class="govuk-heading-m">Funding  priorities</h3>
-        <div class="govuk-body govuk-!-font-size-19">  
-            RPA wants to fund projects that: 
+        <div class="govuk-body govuk-!-font-size-19">
+            RPA wants to fund projects that:
                    <ul>
                     <li>improve water sustainability  </li>
                    </ul>
-        </div>         
-      </aside>                
+        </div>
+      </aside>
     </div>
   </div>
-</main>
+
 {% endblock %}
