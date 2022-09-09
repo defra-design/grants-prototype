@@ -22,16 +22,20 @@ Os grid
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <h2 class="govuk-heading-l">What is the OS grid reference for your slurry store?</h2>
+        <div id="current-capacity-hint" class="govuk-hint">
+          Enter OS grid reference number in the <a href="https://magic.defra.gov.uk/magicmap.aspx" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Magic Map (opens in new tab)</a> format of 2 letters and 8 numbers, for example NT12836972
+        </div>
 
         {{ govukInput({
+
           label: {
-            text: "Enter OS grid reference number, for example AB12478975"
+            text: "OS grid reference number"
           },
-          classes: "govuk-input--width-20",
-          id: "os-grid",
-          name: "os-grid",
-          value: data['os-grid']
-        }) }}
+            classes: "govuk-input--width-10",
+            id: "os-grid",
+            name: "os-grid",
+            value: data['os-grid']
+          }) }}
 
         {{ govukButton({
           text: "Continue"
