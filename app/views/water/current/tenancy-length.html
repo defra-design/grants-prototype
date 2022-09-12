@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-<main class="govuk-main-wrapper">
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="tenancy-length-answer" method="post">
@@ -17,10 +17,12 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Do you have a tenancy agreement until 2026 or after? 
+                Do you have a tenancy agreement for 5 years after the final grant payment?
               </h1>
             </legend>
-            <br><br>
+            <div id="tenancy-hint" class="govuk-hint">
+              The location of the project
+            </div>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="Yes" {{ checked("tenancy-length", "Yes") }}>
@@ -49,12 +51,12 @@
         {% endif %}
       </form>
     </div>
-  <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+  <div class="govuk-grid-column-one-third">
       <aside class="app-related-items">
           <h3 class="govuk-heading-m"> Eligibility </h3>
-          <p>The land must be owned or have a tenancy in place until 2026 <br> before starting the project.</p>
-      </aside>    
+          <p>You must own the land or have a tenancy in place for 5 years after the final grant payment.</p>
+      </aside>
   </div>
   </div>
-</main>
+
 {% endblock %}
