@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Cover size
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        {{ govukInput({
+          label: {
+            text: "How big will the cover be?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            html: "Enter the estimated surface area of the replacement, new or expanded store<br><br>Enter the size in metres squared"
+          },
+          classes: "govuk-input--width-5",
+          id: "cover-size",
+          name: "cover-size",
+          suffix: {
+            html: "m<sup>2</sup>"
+          },
+         value: data['cover-size'],
+
+          spellcheck: false
+        }) }}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h1 class="app-step-nav-related__heading">
+          <span class="govuk-heading-m">Your project items</span>
+          </h1>
+
+
+          {% if data['storetype'] %}
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Store</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set storeType = data['storetype'] %}
+                  {{ storeTypeCost[storeType].text }}
+                </li>
+                <li>
+                  Increase:  {{ data['current-capacity2'] | toFixed(2) | commafy }}m<sup>3</sup>
+                </li>
+
+              </ul>
+            </nav>
+            </div>
+            {% endif %}
+
+
+            {% if data['covertype'] %}
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Cover</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set coverType = data['covertype'] %}
+                  {{ coverTypeCost[coverType].text }}
+                </li>
+
+              </ul>
+
+            </nav>
+            </div>
+ {% endif %}
+
+{% endblock %}
