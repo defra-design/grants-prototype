@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Current storage capacity
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+  {# include logic if it's a New store  #}
+  {% if (data['projecttype'] == "Replace") %}
+
+
+  <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="current-capacity">
+    What estimated volume do you need <br>to have 6 months’ serviceable storage?
+    </label>
+  </h1>
+  <div id="current-capacity-hint" class="govuk-hint">
+    Use <a href="https://ahdb.org.uk/knowledge-library/slurry-wizard" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Slurry Wizard (opens in new tab)</a> to help you calculate the difference between your current serviceable storage and 6 months’ serviceable storage, based on current animal numbers<br><br>Enter volume in cubic metres
+
+  </div>
+  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="current-capacity2" name="current-capacity2" type="text" spellcheck="false" value="{{ data['current-capacity2'] }}">
+    <div class="govuk-input__suffix" aria-hidden="true">m<sup>3</sup></div>
+  </div>
+</div>
+
+
+        {{ govukWarningText({
+          html: "This grant is to get your serviceable storage levels to 6 months. Any capacity above 6 months is not covered by the grant.",
+          iconFallbackText: "Warning"
+        }) }}
+
+        {% else %}
+        <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="current-capacity">
+          What estimated additional volume do you need to have 6 months’ serviceable storage?
+          </label>
+        </h1>
+        <div id="current-capacity-hint" class="govuk-hint">
+          Use <a href="https://ahdb.org.uk/knowledge-library/slurry-wizard" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Slurry Wizard (opens in new tab)</a> to help you calculate the difference between your current serviceable storage and 6 months’ serviceable storage, based on current animal numbers<br><br>Enter volume in cubic metres
+
+        </div>
+        <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="current-capacity2" name="current-capacity2" type="text" spellcheck="false" value="{{ data['current-capacity2'] }}">
+          <div class="govuk-input__suffix" aria-hidden="true">m<sup>3</sup></div>
+        </div>
+      </div>
+
+        {{ govukWarningText({
+          html: "This grant is to get your serviceable storage levels to 6 months. <br>For example, if you have 4 months’ serviceable storage, we will fund another 2 months. <br><br>Any capacity above 6 months is not covered by the grant.",
+          iconFallbackText: "Warning"
+        }) }}
+{% endif %}
+
+
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h1 class="app-step-nav-related__heading">
+          <span class="govuk-heading-m">Your project items</span>
+          </h1>
+          {% if data['storetype'] %}
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Store</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set storeType = data['storetype'] %}
+                  {{ storeTypeCost[storeType].text }}
+                </li>
+              </ul>
+            </nav>
+            </div>
+            {% endif %}
+
+
+{% endblock %}

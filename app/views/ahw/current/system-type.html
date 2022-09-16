@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+What is your current manure management system?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'systemtype',
+                  name: 'systemtype',
+                  fieldset: {
+                      legend: {
+                          text: 'What is your current manure management system?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+                  items: [
+                {
+                  value: "Slurry-based system only",
+                  text: "Slurry-based system",
+                  checked: checked("systemtype", "Slurry-based system only")
+                },
+
+                {
+                  value: "Straw-bedded system with slurry production",
+                  text: "Farm-yard manure and slurry system",
+                  checked: checked("systemtype", "Straw-bedded system with slurry production")
+                },
+
+                {
+                  value: "straw-bedded system",
+                  text: "Farm-yard manure system that does not produce slurry",
+                  checked: checked("systemtype", "straw-bedded system")
+                },
+
+                {
+                  value: "no system",
+                  text: "I do not have a slurry system",
+                  checked: checked("systemtype", "no system"),
+                  behaviour: "exclusive"
+                }
+              ]
+              }) }}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">This grant is for farmers currently using a system that produces slurry.</p>
+          <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      What is slurry?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    Slurry is a liquid organic manure produced by livestock (other than poultry) while in a yard or building. It includes animal bedding and water that drains from areas where animals are kept.
+  </div>
+</details>
+          
+     </div>
+   </div>
+
+{% endblock %}

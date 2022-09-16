@@ -1,0 +1,366 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Standardised costs
+{% endblock %}
+
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+<a class="govuk-back-link" href="estimate">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+       <form id="mainForm" class="form" action="store-type" method="post">
+
+         <div class="govuk-form-group">
+        <h2 class="govuk-heading-l">Grant amounts for eligible items</h2>
+        <p class="govuk-body">The Slurry Infrastructure Grant uses standardised grant amounts for the eligible items. </p>
+
+
+        
+
+
+        {{ govukTable({
+          caption: "Storage",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            text: "Above-ground steel slurry store"
+            },
+            {
+            html: "£22 per cubic metre"
+            }
+          ],
+          [
+            {
+            text: "Precast circular concrete slurry store"
+            },
+            {
+            html: "£17 per cubic metre"
+            }
+          ],
+          [
+            {
+            html: "In situ cast-reinforced concrete <br>slurry store"
+            },
+            {
+            html: "£15 per cubic metre"
+            }
+          ],
+          [
+            {
+            html: "Earth-bank lagoon with consolidated <br>clay lining"
+            },
+            {
+            html: "£8 per cubic metre"
+            }
+          ],
+          [
+            {
+            text: "Earth-bank lagoon with internal liner"
+            },
+            {
+            html: "£12 per cubic metre"
+            }
+          ],
+          [
+            {
+            html: "Stores using pre-cast rectangular<br> concrete panels"
+            },
+            {
+            html: "£14 per cubic metre"
+            }
+          ],
+          [
+            {
+            html: "Large-volume supported slurry bag <br>(over 2,500 cubic metres)"
+            },
+            {
+            html: "£20 per cubic metre"
+            }
+          ]
+          ]
+        }) }}
+        <br><br>
+        {{ govukTable({
+          caption: "Cover",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Rigid cover for steel or concrete <br>slurry stores"
+            },
+            {
+            html: "£8 per square metre"
+            }
+          ],
+          [
+            {
+            html: "Fixed flexible cover"
+            },
+            {
+            html: "£4 per square metre"
+            }
+          ],
+          [
+            {
+            html: "Floating flexible cover"
+            },
+            {
+            html: "£3 per square metre"
+            }
+          ]
+          ]
+        }) }}
+        <br><br>
+        {{ govukTable({
+          caption: "Reception pit",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            text: "Reception pit"
+            },
+            {
+            html: "£30 per cubic metre"
+            }
+          ]
+          ]
+        }) }}
+        <br><br>
+        {{ govukTable({
+          caption: "Pump",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Electric-powered slurry transfer <br>pump "
+            },
+            {
+            html: "£1,050 per pump"
+            }
+          ],
+          [
+            {
+            html: "Powered take off (PTO) hydraulically <br>powered slurry transfer pump "
+            },
+            {
+            html: "£950 per pump"
+            }
+          ],
+          [
+            {
+            text: "Centrifugal chopper pump"
+            },
+            {
+            html: "£2,090 per pump"
+            }
+          ],
+          [
+            {
+            text: "Powered take off (PTO) or hydraulically"
+            },
+            {
+            html: "£1,700 per pump"
+            }
+          ]
+          ]
+        }) }}
+        <br><br>
+        {{ govukTable({
+          caption: "Pipework",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Galvanised steel pipework <br>100mm diameter"
+            },
+            {
+            html: "£14 per metre"
+            }
+          ],
+          [
+            {
+            html: "Galvanised steel pipework <br>150mm diameter diameter"
+            },
+            {
+            html: "£24 per metre"
+            }
+          ],
+          [
+            {
+            html: " Polyethylene (PE) or equivalent <br>pipe 100mm diameter"
+            },
+            {
+            html: "£8 per metre"
+            }
+          ],
+          [
+            {
+            html: " Polyethylene (PE) or equivalent <br>pipe 150mm diameter"
+            },
+            {
+            html: "£9 per metre"
+            }
+          ]
+          ]
+        }) }}
+        <br><br>
+        {{ govukTable({
+          caption: "Transfer channels",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Under-floor transfer channels"
+            },
+            {
+            html: "£25 per metre"
+            }
+          ]
+          ]
+        }) }}
+        <br><br>
+        {{ govukTable({
+          caption: "Agitator",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Slurry store wall mixers with store <br>capacity up to 1,200 cubic metres"
+            },
+            {
+            html: "£350 per tank"
+            }
+          ],
+          [
+            {
+            html: "SSlurry store wall mixers with store <br>capacity up to 8,000 cubic metres"
+            },
+            {
+            html: "£1,000 per tank"
+            }
+          ]
+          ]
+        }) }}
+        <br><br>
+        {{ govukTable({
+          caption: "Safety equipment",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Inspection platform with ladder for above-<br>ground concrete and steel slurry stores"
+            },
+            {
+            html: "£800 per item"
+            }
+          ],
+          [
+            {
+            html: "Safety fencing for stores constructed <br>below ground level, earth-bank lagoons<Br> and slurry bags"
+            },
+            {
+            html: "£55 per metre"
+            }
+          ]
+          ]
+        }) }}
+      </div>
+    <br>
+ <p class="govuk-heading-m">Next steps</p>
+    <p>Next, select the items you want for your project.</p>
+      <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+    </a>
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -11,6 +11,10 @@ const serviceName = {
     current: 'Check if you can apply for a Water Management Grant'
   },
 
+  ahw: {
+    current: 'Check if you can apply for an Animal Health and Welfare Grant'
+  },
+
 slurrystorage: {
     current: 'Check if you can apply for a Slurry Infrastructure Grant',
         v1: 'Check if you can apply for a Farming Transformation Fund Slurry Infrastructure Grant',
