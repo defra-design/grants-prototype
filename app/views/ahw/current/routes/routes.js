@@ -586,7 +586,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'answers'
+  var backUrl = 'business'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 
@@ -677,7 +677,7 @@ router.get('/check-details', function (req, res) {
   req.session.data.DETAILS = true
 
   var backUrl = 'check-details-back'
-  var nextUrl = 'consent'
+  var nextUrl = 'check-details'
 
   res.render('./' + req.originalUrl, {
     backUrl,
