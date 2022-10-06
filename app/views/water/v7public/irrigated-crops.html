@@ -5,11 +5,18 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
-<main class="govuk-main-wrapper">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -52,22 +59,22 @@
           <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
             class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
           >
-            Back to summary page
+            Back to score
           </button>
         {% endif %}
       </form>
     </div>
-     <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+     <div class="govuk-grid-column-one-third">
       <aside class="app-related-items">
-          <h3 class="govuk-heading-m"> Funding  priorities </h3>
+          <h3 class="govuk-heading-s"> Funding  priorities </h3>
           <div class="govuk-body">
-             RPA wants to fund projects that: 
+             RPA wants to fund projects that:
                    <ul>
                     <li>improve productivity</li>
                    </ul>
           </div>
-      </aside>    
+      </aside>
     </div>
   </div>
-</main>
+
 {% endblock %}

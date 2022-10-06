@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
   <a class="govuk-back-link" href="project-cost">Back</a>
 {% endblock %}
 
@@ -18,10 +26,11 @@
 
     <div class="govuk-body">
       <p>You can only apply for a grant of up to 40% of the estimated costs.</p>
-      <p>The minimum grant you can apply for is £35,000 (40% of £87,500).</p>
-      <p>The maximum grant is £1 million.</p>
+
     </div>
-      
+    {{ govukInsetText({
+        text: 'The minimum grant you can apply for is £35,000 (40% of £87,500). The maximum grant is £500,000.'
+    }) }}
     </div>
   </div>
 

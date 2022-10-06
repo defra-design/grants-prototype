@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
@@ -14,11 +22,15 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="govuk-body govuk-!-font-size-48">
         <h1 class="govuk-heading-l">
-          You may be able to apply for this grant 
+          You may be able to apply for this grant
         </h1>
         <p>Any abstraction licences or variations must be in place by 31 December 2021 (the end of the application window).</p>
 
-        <p>If you have already applied for an abstraction licence or variation and expect to get it by then, you can submit a full application. </p>
+        {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+        {{ govukInsetText({
+          text: "If you have already applied for an abstraction licence or variation and expect to get it by then, you can submit a full application."
+        }) }}
 
         <p>If you have already applied for an abstraction licence or variation but it might not be issued by then, please email <a href=""> FTF@rpa.gov.uk</a> </p>
 
@@ -27,7 +39,7 @@
               <button class="govuk-button govuk-!-margin-top-6" data-module="govuk-button">Continue</button>
 
             </form>
-       </div>      
+       </div>
     </div>
   </div>
 

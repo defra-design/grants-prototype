@@ -5,12 +5,19 @@ Meeting the remaining project costs
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
 <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
 
-<main class="govuk-main-wrapper"> 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -22,7 +29,7 @@ Meeting the remaining project costs
                 Can you pay the remaining costs{%if remainingCosts %} of £{{ remainingCosts | toFixed(2) | commafy }}{% endif%}?
               </h1>
             </legend>
-            <br>
+
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="remaining-costs" name="remaining-costs" type="radio" value="yes" {{ checked("remaining-costs", "yes") }}>
@@ -38,30 +45,24 @@ Meeting the remaining project costs
               </div>
             </div>
         </div>
-        <br>
+
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
-        {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-          >
-            Back to summary page
-          </button>
-        {% endif %}
+
 
 
       </form>
     </div>
-    <div class="govuk-grid-column-one-third govuk-!-padding-5">
+    <div class="govuk-grid-column-one-third">
       <aside class="app-related-items">
-        <h3 class="govuk-heading-m">Eligibility</h3>
-        <div class="govuk-body govuk-!-font-size-19">  
+        <h3 class="govuk-heading-s">Eligibility</h3>
+        <div class="govuk-body govuk-!-font-size-19">
           <p>You cannot use public money (for example grant funding from government or local authorities) towards the project costs.</p>
           <p>You can use loans, overdrafts and certain other grants, such as the Basic Payment Scheme or agri-environment schemes such as the Countryside Stewardship Scheme.</p>
-        </div> 
-      </aside>         
+        </div>
+      </aside>
     </div>
   </div>
-</main>
+
 
 {% endblock %}

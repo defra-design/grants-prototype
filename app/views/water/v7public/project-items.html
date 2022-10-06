@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
@@ -24,7 +32,7 @@
             </legend>
             <br>
             <span id="project-items-hint" class="govuk-hint">
-              The minimum grant you can apply for is £35,000 (40% of £87,500). The maximum grant is £1 million.
+              The minimum grant you can apply for is £35,000 (40% of £87,500). The maximum grant is £500,000.
             </span>
           <h2 class="govuk-heading-m govuk-!-margin-top-6">Reservoir construction and infrastructure</h2>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -112,7 +120,7 @@
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="Irrigation equipment-1" name="Irrigation equipment" type="checkbox" value="Boom " {{ checked("Irrigation equipment", "Boom") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="Irrigation equipment-1">
-                  Boom 
+                  Boom
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
@@ -164,13 +172,7 @@
         <br>
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
-        {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-          >
-            Back to summary page
-          </button>
-        {% endif %}
+        
 
 
       </form>

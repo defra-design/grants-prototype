@@ -5,12 +5,20 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
 
-<main class="govuk-main-wrapper">
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -38,36 +46,30 @@
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="maybe" {{ checked("planning-permission", "maybe") }}>
                 <label class="govuk-label govuk-radios__label" for="planning-permission-3">
-                  Expected to have by 31 December 2021
+                  Expected to have by 31 December 2022
                 </label>
               </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="No" {{ checked("planning-permission", "No") }}>
                 <label class="govuk-label govuk-radios__label" for="planning-permission-3">
-                  Will not have by 31 December 2021
+                  Will not have by 31 December 2022
                 </label>
               </div>
             </div>
           </fieldset>
         </div>
-        <br/><br/>
+
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-        {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-          >
-            Back to summary page
-          </button>
-        {% endif %}
+
       </form>
     </div>
-    <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+    <div class="govuk-grid-column-one-third ">
       <aside class="app-related-items">
-          <h3 class="govuk-heading-m"> Eligibility </h3>
-          <p>Any planning permission must be in place by 31 December 2021 (the end of the application window).</p>
-      </aside>    
+          <h3 class="govuk-heading-s"> Eligibility </h3>
+          <p>Any planning permission must be in place by 31 December 2022 (the end of the application window).</p>
+      </aside>
     </div>
   </div>
-</main>  
+
 
 {% endblock %}
