@@ -1,8 +1,19 @@
 {% extends "layout.html" %} {% block pageTitle %} How would the project improve
-productivity? {% endblock %} {% block beforeContent %}
+productivity?
+{% endblock %}
+ {% block beforeContent %}
+ {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+   {{ govukPhaseBanner({
+     tag: {
+     text: "prototype",
+     classes: "govuk-tag--pink"
+     },
+       html: 'This is not a full service. It is not production code and you might experience problems.'
+   }) }}
 <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
-{% endblock %} {% block content %}
-<main class="govuk-main-wrapper">
+{% endblock %}
+{% block content %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -16,12 +27,12 @@ productivity? {% endblock %} {% block beforeContent %}
           <br>
           <div class="govuk-body">
           <p class="govuk-caption-m">
-            Productivity is about how much is produced relative to<br> inputs (for example increased yield for the same inputs or the same
+            Productivity is about how much is produced relative to inputs (for example increased yield for the same inputs or the same
             yield with lower inputs).
           </p>
-          <p class="govuk-caption-m">Select one or two options</p>
+          <p class="govuk-caption-m">Select up to 2 options</p>
           </div>
-          <br>
+
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="productivity-1"
@@ -84,7 +95,7 @@ productivity? {% endblock %} {% block beforeContent %}
           </div>
         </fieldset>
       </div>
-      <br><br>
+
       <button
         class="govuk-button govuk-!-margin-right-1"
         data-module="govuk-button"
@@ -98,22 +109,22 @@ productivity? {% endblock %} {% block beforeContent %}
         class="govuk-button govuk-!-margin-right-1"
         data-module="govuk-button"
       >
-        Back to summary page
+        Back to score
       </button>
       {% endif %}
     </form>
   </div>
-<div class="govuk-grid-column-one-third govuk-!-padding-5">
+<div class="govuk-grid-column-one-third">
       <aside class="app-related-items">
-        <h3 class="govuk-heading-m"> Funding  priorities</h3>
-        <div class="govuk-body govuk-!-font-size-19">  
-           RPA wants to fund projects that: 
+        <h3 class="govuk-heading-s"> Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">
+           RPA wants to fund projects that:
                    <ul>
                     <li>improve productivity </li>
                    </ul>
-        </div>         
-      </aside>   
-</div>  
+        </div>
+      </aside>
 </div>
-</main>
+</div>
+
 {% endblock %}

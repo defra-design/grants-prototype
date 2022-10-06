@@ -5,23 +5,31 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
 
-<main class="govuk-main-wrapper"> 
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-        <div class="govuk-form-group">
+
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
                 What crops are you growing?
               </h1>
             </legend>
-            <br><br>
+
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="farming-type-1" name="farming-type" type="radio" value="Crops for the food industry" {{ checked("farming-type", "Crops for the food industry") }}>
@@ -43,32 +51,26 @@
               </div>
             </div>
           </fieldset>
-        </div>
+
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
-        {% if data['COMPLETED'] == true %}
-        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-          class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-        >
-          Back to summary page
-        </button>
-        {% endif %}
+
       </form>
     </div>
     <div class="govuk-grid-column-one-third govuk-!-padding-5">
       <aside class="app-related-items">
-        <h3 class="govuk-heading-m">Eligibility</h3>
-        <div class="govuk-body govuk-!-font-size-19">  
+        <h3 class="govuk-heading-s">Eligibility</h3>
+        <div class="govuk-body govuk-!-font-size-19">
             This grant is for:
                 <ul>
                   <li>arable and horticultural farming businesses<br>supplying the food industry</li>
                   <li>nurseries growing ornamentals</li>
                   <li>forestry nurseries </li>
-      
+
                 </ul>
-        </div>         
-      </aside>                
+        </div>
+      </aside>
     </div>
   </div>
-</main>
+
 {% endblock %}

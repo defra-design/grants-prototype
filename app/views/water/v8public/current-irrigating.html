@@ -5,11 +5,19 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
-<main class="govuk-main-wrapper">
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -20,7 +28,7 @@
                 Are you currently irrigating?
               </h1>
             </legend>
-            <br>
+
             <div class="govuk-radios govuk-!-margin-top-4" data-module="govuk-radios">
               <div class="govuk-radios govuk-radios--inline">
                 <div class="govuk-radios__item">
@@ -37,19 +45,12 @@
               </div>
             </div>
           </fieldset>
-        <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-9" data-module="govuk-button">
+        <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-3" data-module="govuk-button">
           Continue
         </button>
 
-        {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-          >
-            Back to summary page
-          </button>
-        {% endif %}
       </form>
     </div>
   </div>
-</main>
+
 {% endblock %}

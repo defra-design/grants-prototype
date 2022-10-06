@@ -5,11 +5,19 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
        <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
-<main class="govuk-main-wrapper">
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
@@ -37,13 +45,13 @@
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="expected by 21 October 2021" {{ checked("abstraction-licence", "expected by 21 October 2021") }}>
                 <label class="govuk-label govuk-radios__label" for="abstraction-licence-3">
-                  Expected to have by 31 December 2021
+                  Expected to have by 31 December 2022
                 </label>
               </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="won’t have by 21 October 2021" {{ checked("abstraction-licence", "won’t have by 21 October 2021") }}>
                 <label class="govuk-label govuk-radios__label" for="abstraction-licence-3">
-                  Will not have by 31 December 2021
+                  Will not have by 31 December 2022
                 </label>
               </div>
             </div>
@@ -53,21 +61,15 @@
 
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
-        {% if data['COMPLETED'] == true %}
-        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-          class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-        >
-          Back to summary page
-        </button>
-        {% endif %}
+
       </form>
     </div>
-    <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+    <div class="govuk-grid-column-one-third ">
       <aside class="app-related-items">
-          <h3 class="govuk-heading-m"> Eligibility </h3>
-          <p> Any abstraction licences or variations must be in place by 31 December 2021 (the end of the application window).</p>
+          <h3 class="govuk-heading-s"> Eligibility </h3>
+          <p> Any abstraction licences or variations must be in place by 31 December 2022 (the end of the application window).</p>
       </aside>
-    </div> 
+    </div>
   </div>
-</main>
+
 {% endblock %}

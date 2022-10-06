@@ -10,16 +10,14 @@
 {% endblock %}
 
 {% block beforeContent %}
-<div class="govuk-breadcrumbs">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link">{{ serviceName }}</a>
-    </li>
-  </ol>
-</div>
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -51,8 +49,31 @@
       <ul class="govuk-list govuk-list--bullet">
         <li>information about your business (for example, number of employees and turnover)</li>
         <li>information about the project (for example, irrigated land in hectares)</li>
-        <li>estimated total cost of the items you need</li>
+        <li>an estimated total cost of the items you need</li>
       </ul>
+    </div>
+    <p class="govuk-body">If you do not enter any information for more than 20 minutes, your application will time out and you will have to start again.
+
+</p>
+    <div class="govuk-body">
+      <h3 class="govuk-heading-m govuk-!-margin-top-2">Problems using the online service</h3>
+      <p class="govuk-body">If you have any problems using the online  service, contact RPA.</p>
+      <h3 class="govuk-heading-s">Telephone</h3>
+
+      <ul class="govuk-list">
+    <li>Telephone: 03000 200 301</li>
+    <li>Monday to Friday, 9am to 5pm (except public holidays)</li>
+    </ul>
+    <p class="govuk-body">
+    <a class="govuk-link" href="https://www.gov.uk/call-charges">Find out about call charges</a>
+    </p>
+
+    <h3 class="govuk-heading-s">Email</h3>
+
+    <ul class="govuk-list">
+    <li><a class="govuk-link" href="mailto:FTF@rpa.gov.uk">FTF@rpa.gov.uk</a></li>
+
+    </ul>
     </div>
   </div>
 </div>
