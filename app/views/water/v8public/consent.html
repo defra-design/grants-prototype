@@ -15,19 +15,19 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <div class="govuk-form-group govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group">
       <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
         <h1 class="govuk-heading-l">Confirm and send</h1>
         <p>I confirm that, to the best of my knowledge, the details I have provided are correct.</p>
         <p>I understand the score was based on the answers I provided.</p>
         <p>I am aware the information I submit will be checked.</p>
         <p>I am happy to be contacted by Defra and RPA (or a third-party on their behalf) about my application.</p>
-  
-        <div class="govuk-checkboxes__item govuk-!-margin-top-8"> 
+
+        <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="confirm" name="confirmation" type="checkbox" value="{{ data['confirmation'] }}">
             <label class="govuk-label govuk-checkboxes__label " for="confirm">
-              (Optional) &nbsp; So that we can continue to improve our services and schemes, we may wish to contact you in the future. 
+              (Optional) &nbsp; So that we can continue to improve our services and schemes, we may wish to contact you in the future.
               Please confirm if you are happy for us, or a third-party working for us, to contact you.
             </label>
           </div>
@@ -38,11 +38,12 @@
         Confirm and send
       </button>
     </form>
+    </div>
     <br>
-    <div class="govuk-body">
+    <div class="govuk-body govuk-grid-column-full">
       <p>The Department for Environment, Food and Rural Affairs (Defra) is the data controller for personal data you give to RPA.For information on how we handle personal data go to GOV.UK and search
       <a href="https://www.gov.uk/government/organisations/rural-payments-agency/about/personal-information-charter" target="_blank" alt="Rural Payments Agency personal information charter">Rural Payments Agency personal information charter.</a></p>
-    </div>
+
   </div>
 </div>
 

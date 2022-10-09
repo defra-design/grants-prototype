@@ -558,7 +558,7 @@ router.get('/answers', function (req, res) {
   req.session.data.COMPLETED = true
 
   var backUrl = 'answers-back'
-  var nextUrl = 'next-steps'
+  var nextUrl = 'business'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -571,22 +571,12 @@ router.get('/answers-back', function (req, res) {
   res.redirect('collaboration')
 })
 
-// next-steps
 
-router.get('/next-steps', function (req, res) {
-  var backUrl = 'answers'
-  var nextUrl = 'business'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl
-  })
-})
 
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'next-steps'
+  var backUrl = 'answers'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 

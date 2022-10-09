@@ -1,39 +1,44 @@
 {% extends "layout.html" %} {% block pageTitle %} How would the project improve
-productivity? {% endblock %} {% block beforeContent %}
+productivity?
+{% endblock %}
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
 <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %} {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-      <div class="govuk-form-group">
+
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading govuk-!-margin-top-2">
               How will the project improve productivity?
             </h1>
           </legend>
-          <br>
+
           <div class="govuk-body">
           <p class="govuk-caption-m">
-            Productivity is about how much is produced relative to<br> inputs (for example increased yield for the same inputs or the same
+            Productivity is about how much is produced relative to inputs (for example increased yield for the same inputs or the same
             yield with lower inputs).
           </p>
-          <p class="govuk-caption-m">Select one or two options</p>
+          <p class="govuk-caption-m">Select up to 2 options</p>
           </div>
-          <br>
+
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="productivity-1"
               name="productivity" type="checkbox" value="Introduce or expand
               high-value crops" {{ checked("productivity", "Introduce or expand
               high-value crops") }}>
-              <label
-                class="govuk-label govuk-checkboxes__label"
-                for="productivity-1"
-              >
-                Introduce or expand high-value crops
-              </label>
+              <label class="govuk-label govuk-checkboxes__label" for="productivity-1">Introduce or expand high-value crops</label>
             </div>
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="productivity-2"
@@ -83,8 +88,8 @@ productivity? {% endblock %} {% block beforeContent %}
             </div>
           </div>
         </fieldset>
-      </div>
-      <br><br>
+
+        <br>
       <button
         class="govuk-button govuk-!-margin-right-1"
         data-module="govuk-button"
@@ -115,5 +120,5 @@ productivity? {% endblock %} {% block beforeContent %}
       </aside>
 </div>
 </div>
-</main>
+
 {% endblock %}

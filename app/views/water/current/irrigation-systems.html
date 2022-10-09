@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
@@ -24,7 +32,7 @@
             </legend>
 
             <div id="irrigation-systems" class="govuk-hint">
-            Select one or two options</div>
+            Select up to 2 options</div>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="irrigation-systems-current-1" name="irrigation-systems-current" type="checkbox" value="Trickle" {{ checked("irrigation-systems-current", "Trickle") }}>

@@ -5,377 +5,262 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
 <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-xl">Your project’s score</h1>
-    <div class="govuk-inset-text">
-      <p>Based on your answers, your project’s score is:</p>
-      <h2 class="govuk-heading-m">Average</h2>
-      <p>This means your project has a medium chance of getting funding.</p>
-    </div>
-    <h1 class="govuk-heading-m">Scoring</h1>
-    <p class="govuk-body"><span class="govuk-!-font-weight-bold">Strong:</span>
-       Your project seems like it’s a strong fit with the funding priorities. Based on your answers, a grant application seems likely to be successful.    
-    <p class="govuk-body"><span class="govuk-!-font-weight-bold">Average:</span>
-       Your project seems like it’s an average fit with the funding priorities. Based on your answers, a grant application seems like it might be successful.   
-    <p class="govuk-body"><span class="govuk-!-font-weight-bold ">Weak:</span>
-       Your project seems like it’s a weak fit with the funding priorities. Based on your answers, a grant application seems unlikely to be successful. 
-  </div>
-</div>
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Score results</h1>
+    <p class="govuk-!-font-size-24">Based on your answers, your project’s score is:</p>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <br>
-    <h1 class="govuk-heading-l">Your answers</h1>
-    <p class="govuk-!-padding-bottom-4">You can go back through the checker as many times as you like but you can only submit your details once.</p>
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header app-custom-class">Sections</th>
-          <th scope="col" class="govuk-table__header app-custom-class">Your score</th>
-          <th scope="col" class="govuk-table__header app-custom-class govuk-!-padding-left-9">Funding priorities</th>
-          <th scope="col" class="govuk-table__header app-custom-class">Change answers</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header"><span>Project details</span>
-          <br><br>
-          <p>The project will :</p>
-            <ul class="govuk-list govuk-list--bullet">
-              {% for item in data['project-summary'] %}
-                <li>{{ item | capitalize }}</li>
-              {% endfor %}
-            </ul>
-          </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-        <br><br><br>
+        <div class="govuk-inset-text">
+          <h2 class="govuk-heading-m">Average</h2>
+          <p>This means your project might be successful.</p>
+        </div>
+    </div>
+      </div>
+      <div class="govuk-grid-column-two-thirds css-index-link-block">
+        <dl class="govuk-body">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-font-size-16">
           Strong
-        </td>
-        <td class="govuk-table__cell">
-          <div class="govuk-!-margin-9">
-          <p>Improve productivity<br>
-          Improve the environment<br>
-          Improve water sustainability</p>
+          </dt>
+          <dd class="govuk-summary-list__value govuk-!-font-size-16">
+            Based on your answers, a grant application is likely to be successful.  
+          </dd>
           </div>
-        </td>
-        <td class="govuk-table__cell">
-            <br><br>
-            <a class="govuk-link" href="project-summary">
-              Change<span class="govuk-visually-hidden"> project summary</span>
-            </a>
-        </td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header">Crops
-          <br><br>
-          <p>What main crops <br>
-          will be irrigated?</p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>{{data['irrigated-crops'] | capitalize}}</li> 
-            </ul>  
-        </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-        <br><br>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-font-size-16">
           Average
-        </td>
-        <td class="govuk-table__cell">
-          <div class="govuk-!-margin-9">
-          <p>Improve productivity </p>
-          </div>
-        </td>
-        <td class="govuk-table__cell">
-          <br><br>
-          <a class="govuk-link" href="irrigated-crops">
-              Change<span class="govuk-visually-hidden">irrigated crops</span>
-          </a>
-        </td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header">Irrigated land
-        <br><br>
-        {% if data['current-irrigating'] === "Yes" %}
-        <p>
-          How much land is currently
+            </dt>
+            <dd class="govuk-summary-list__value govuk-!-font-size-16">
+             Based on your answers, a grant application might be successful. 
+            </dd>
+            </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-font-size-16">
+            Weak
+            </dt>
+            <dd class="govuk-summary-list__value govuk-!-font-size-16">
+                Based on your answers, a grant application is unlikely to be successful. 
+            </dd>
+            </div>
+  </dl>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
         <br>
-          irrigated per year?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-            <li>{{ data['irrigated-land-current'] }} hectares</li>
-        </ul>
-        <p>
-          How much land will be
-        <br>
-          irrigated after the project?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>{{ data['irrigated-land-target'] }} hectares</li>
-        </ul>
-        </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-          <br><br><br><br>
-          Average
-        </td>
-        <td class="govuk-table__cell">
-          <br><br>
-          <div class="govuk-!-margin-9">
-            Improve productivity 
-          </div>  
-        </td>
-        <td class="govuk-table__cell">
-          <br><br><br><br>
-          <a class="govuk-link" href="irrigated-land">
-              Change<span class="govuk-visually-hidden"> current irrigated land</span>
-          </a>
-        </td>
-        {% else %}
-        <p>
-          How much land will be
-        <br>
-          irrigated after the project?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>{{ data['irrigated-land-target'] }} hectares</li>
-        </ul>
-        </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-          <br><br><br><br>
-          Average
-        </td>
-        <td class="govuk-table__cell">
-          <br><br>
-          <div class="govuk-!-margin-9">
-            Improve productivity 
-          </div>  
-        </td>
-        <td class="govuk-table__cell">
-          <br><br><br><br>
-          <a class="govuk-link" href="no-irrigated-land">
-              Change<span class="govuk-visually-hidden"> current irrigated land</span>
-          </a>
-        </td>
-        {% endif %}
-      </tr>
-      <tr class="govuk-table__row">
-        {% if data['current-irrigating'] === "Yes" %}
-        <th scope="row" class="govuk-table__header govuk-!-padding-bottom-2">Irrigation source
-        <br><br>
-        <p>
-          Where does your current
-        <br>
-          irrigation water come from?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-          {% for item in data['irrigation-current'] %}
-            <li>{{ item | capitalize }}</li>
-          {% endfor %}
-        </ul>
-        <p>
-          Where will your irrigation
-        <br>
-          water come from?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-              {% for item in data['irrigation-target'] %}
-                <li>{{ item | capitalize }}</li>
-              {% endfor %}
-        </ul>
-        </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-        <br><br><br>
-            Average
-        </td>
-        <td class="govuk-table__cell">
-          <div class="govuk-!-margin-9">
-          <p>Improve the environment<br>
-          Improve water sustainability</p>
-          </div>
-        </td>
-        <td class="govuk-table__cell">
-          <br><br><br>
-          <a class="govuk-link" href="irrigation-water-source">
-              Change<span class="govuk-visually-hidden"> projected irrigation water source</span>
-          </a>
-        </td>
-        {% else %}
-        <th scope="row" class="govuk-table__header">Irrigation source
-        <br><br>
-        <p>
-          Where will your irrigation
-        <br>
-          water come from?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-              {% for item in data['irrigation-target'] %}
-                <li>{{ item | capitalize }}</li>
-              {% endfor %}
-        </ul>
-        </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-        <br><br><br>
-            Average
-        </td>
-        <td class="govuk-table__cell">
-          <div class="govuk-!-margin-9">
-          <p>Improve the environment<br>
-          Improve water sustainability</p>
-          </div>
-        </td>
-        <td class="govuk-table__cell">
-          <br><br><br>
-          <a class="govuk-link" href="irrigation-water-source-no">
-              Change<span class="govuk-visually-hidden"> projected irrigation water source</span>
-          </a>
-        </td>
-        {% endif %}
-      </tr>
-      <tr class="govuk-table__row">
-        {% if data['current-irrigating'] === "Yes"  %}
-        <th scope="row" class="govuk-table__header">Irrigation system
-        <br><br>
-        <p>
-          What systems are currently
-        <br>
-          used to irrigate?
-        </p>
-      <ul class="govuk-list govuk-list--bullet">
-          {% for item in data['irrigation-systems-current'] %}
-              <li>{{ item | capitalize }}</li>
-          {% endfor %}
-        </ul>
-        <br>
-        <p>
-          What systems will be
-        <br>
-          used to irrigate?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-          {% for item in data['irrigation-systems-target'] %}
-              <li>{{ item | capitalize }}</li>
-          {% endfor %}
-        </ul>
-        </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-        <br><br><br>
-          Weak
-        </td>
-        <td class="govuk-table__cell">
-        <div class="govuk-!-margin-9">
-        <p>Improve the environment<br>
-          Improve water sustainability</p>
-          </div>
-        </td>
-        <td class="govuk-table__cell">
-          <br><br><br><br>
-          <a class="govuk-link" href="irrigation-systems">
-              Change<span class="govuk-visually-hidden"> projected irrigation systems</span>
-          </a>
-        </td>
+        <div class="govuk-warning-text">
+    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+    <strong class="govuk-warning-text__text">
+      <span class="govuk-warning-text__assistive">Warning</span>
+      The likelihood of a full application being successful will also depend on the number and value of applications we receive.
+    </strong>
+  </div>
+      <p class="govuk-body">Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score.</p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      <h1 class="govuk-heading-l">Your answers</h1>
+      <p class="govuk-!-padding-bottom-4">You can go back to change scoring questions as many times as you like but you can only submit your details once.</p>
+      <table class="govuk-table govuk-body govuk-!-font-size-16">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Answers</th>
+            <th scope="col" class="govuk-table__header">Score</th>
+            <th scope="col" class="govuk-table__header">Funding priorities</th>
+            <th scope="col" class="govuk-table__header">Change</th>
+          </tr>
+        </thead>
+
+      <tbody class="govuk-table__body">
+
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Project details
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">{% for item in data['project-summary'] %}<li>{{ item | capitalize }}</li>{% endfor %}</ul></th>
+          <td class="govuk-table__cell">Strong</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve productivity<br>
+              Improve the environment<br>
+              Improve water sustainability</p>
+          </td>
+          <td class="govuk-table__cell"><a href="project-summary">Change</td>
         </tr>
-      {% else %}
-        <th scope="row" class="govuk-table__header">Irrigation system
-        <br><br>
-        <p>
-          What systems will be
-        <br>
-          used to irrigate?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-          {% for item in data['irrigation-systems-target'] %}
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Crops
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['irrigated-crops'] | capitalize}}</li></ul></th>
+          <td class="govuk-table__cell">Average</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve productivity</p>
+          </td>
+          <td class="govuk-table__cell"><a href="irrigated-crops">Change</td>
+        </tr>
+{% if data['current-irrigating'] === "Yes" %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Irrigated land
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+
+            <li>{{ data['irrigated-land-current'] }} hectares</li>
+            <li>{{ data['irrigated-land-target'] }} hectares</li>
+          </ul>
+        </th>
+          <td class="govuk-table__cell">Average</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve productivity</p>
+          </td>
+          <td class="govuk-table__cell"><a href="irrigated-land">Change</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Irrigation source
+              <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+              {% for item in data['irrigation-current'] %}
               <li>{{ item | capitalize }}</li>
-          {% endfor %}
-        </ul>
-        </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-        <br><br><br>
-          Weak
-        </td>
-        <td class="govuk-table__cell">
-        <div class="govuk-!-margin-9">
-        <p>Improve the environment<br>
-          Improve water sustainability</p>
-          </div>
-        </td>
-        <td class="govuk-table__cell">
-          <br><br><br><br>
-          <a class="govuk-link" href="irrigation-water-source-no">
-              Change<span class="govuk-visually-hidden"> projected irrigation systems</span>
-          </a>
-        </td>
-         </tr>
-      {% endif %}
-      <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header">Productivity
-        <br><br>
-        <p>
-          How will the project improve
-        <br>
-          productivity?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-              {% for item in data['productivity'] %}
-                <li>{{ item | capitalize }}</li>
               {% endfor %}
-        </ul>
+
+              {% for item in data['irrigation-target'] %}
+              <li>{{ item | capitalize }}</li>
+                {% endfor %}
+              </ul></th>
+              <td class="govuk-table__cell">Average</td>
+              <td class="govuk-table__cell">
+                <p class="govuk-body govuk-!-font-size-16">
+                  Improve the environment<br>
+                  Improve water sustainability</p>
+              </td>
+              <td class="govuk-table__cell"><a href="irrigation-water-source">Change</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Irrigation system
+              <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">{% for item in data['irrigation-systems-current'] %}
+                  <li>{{ item | capitalize }}</li>
+              {% endfor %}
+              {% for item in data['irrigation-systems-target'] %}
+                  <li>{{ item | capitalize }}</li>
+              {% endfor %}
+            </ul></th>
+              <td class="govuk-table__cell">Weak</td>
+              <td class="govuk-table__cell">
+                <p class="govuk-body govuk-!-font-size-16">
+                  Improve the environment<br>
+                    Improve water sustainability</p>
+              </td>
+              <td class="govuk-table__cell"><a href="irrigation-systems">Change</td>
+            </tr>
+
+
+            {% else %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Irrigated land
+              <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+
+              <li>{{ data['irrigated-land-target'] }} hectares</li>
+            </ul></th>
+
+            <td class="govuk-table__cell">Average</td>
+            <td class="govuk-table__cell">
+              <p class="govuk-body govuk-!-font-size-16">
+                Improve productivity</p>
+            </td>
+            <td class="govuk-table__cell"><a href="irrigated-land-no">Change</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Irrigation source
+                <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+                  {% for item in data['irrigation-target-no'] %}
+                  <li>{{ item | capitalize }}</li>
+                  {% endfor %}
+                </ul>
+              </th>
+              <td class="govuk-table__cell">Average</td>
+                <td class="govuk-table__cell">
+                  <p class="govuk-body govuk-!-font-size-16">
+                    Improve the environment<br>
+                    Improve water sustainability</p>
+              </td>
+              <td class="govuk-table__cell"><a href="irrigation-water-source-no">Change</td>
+            </tr>
+
+
+                <tr class="govuk-table__row">
+
+              <th scope="row" class="govuk-table__header">Irrigation system
+              <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+                {% for item in data['irrigation-systems-target'] %}
+                    <li>{{ item | capitalize }}</li>
+                {% endfor %}
+
+              </ul></th>
+
+
+              <td class="govuk-table__cell">Average</td>
+              <td class="govuk-table__cell">
+                <p class="govuk-body govuk-!-font-size-16">
+                  Improve the environment<br>
+                  Improve water sustainability</p>
+              </td>
+              <td class="govuk-table__cell"><a href="irrigation-systems-no">Change</td>
+                </tr>
+        {% endif %}
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Productivity
+          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+            {% for item in data['productivity'] %}
+              <li>{{ item | capitalize }}</li>
+            {% endfor %}
+          </ul>
         </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-        <br><br>
-        Average
-        </td>
-        <td class="govuk-table__cell">
-        <div class="govuk-!-margin-8">
-          Improve productivity 
-        </div>
-        </td>
-        <td class="govuk-table__cell">
-          <br><br>
-          <a class="govuk-link" href="productivity">
-              Change<span class="govuk-visually-hidden"> productivity</span>
-          </a>
-        </td>
-      </tr>
-      <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header">Other farms
-        <br><br>
-        <p>
-          Will water be supplied<br>
-          to other farms?
-        </p>
-        <ul class="govuk-list govuk-list--bullet">
-            <li>{{ data['collaboration'] }} </li>
-        </ul>
-        </th>
-        <td class="govuk-table__cell govuk-!-padding-left-2">
-        <br><br>
-          Weak
-        </td>
-        <td class="govuk-table__cell">
-        <div class="govuk-!-margin-8">
-          Improve water sustainability
-        </div>
-        </td>
-        <td class="govuk-table__cell">
-        <br><br>
-          <a class="govuk-link" href="collaboration">
-              Change<span class="govuk-visually-hidden"> other farms supplied with water</span>
-          </a>
-        </td>
-      </tr>
+          <td class="govuk-table__cell">Average</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Improve productivity</p>
+          </td>
+        <td class="govuk-table__cell"><a href="productivity">Change</td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Other farms
+      <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+      <li>{{ data['collaboration'] }} </li></ul></th>
+      <td class="govuk-table__cell">Weak</td>
+      <td class="govuk-table__cell">
+        <p class="govuk-body govuk-!-font-size-16">
+          Improve water sustainability</p>
+      </td>
+      <td class="govuk-table__cell"><a href="collaboration">Change</td>
+    </tr>
+
       </tbody>
     </table>
-  </div>  
-</div>
+
+    <h2 class="govuk-heading-m">Next steps</h2>
+    <p class="govuk-body">Next, add your business and contact details and submit them to the RPA (you should only do this once).</p>
+    <p>You’ll get an email with your score and answers, and a reference number.</p>
+    
+
+
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
         <form class="form" action="{{ nextUrl }}" method="post">
           <button class="govuk-button govuk-!-margin-right-1 govuk-!-padding-left-4 govuk-!-padding-right-4" data-module="govuk-button">
-            Next
+            Continue
           </button>
         </form>
 
@@ -383,4 +268,3 @@
     </div>
 
 {% endblock %}
-
