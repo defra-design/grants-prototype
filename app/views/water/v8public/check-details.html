@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    
+
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l govuk-!-margin-top-9 govuk-!-margin-bottom-9">Check your details </h1>
@@ -70,10 +70,10 @@
                             <strong>Single Business Identifier (SBI)</strong>
                         </th>
                         <td class="govuk-table__cell">
-                            <p>{{ data['sbi'] }}</p>
+                            <p>{{ data['enter-sbi'] }}</p>
                         </td>
                     </tr>
-                    
+
                 </tbody>
             </table>
             <br><br><br>
@@ -125,12 +125,12 @@
                            <p>{{ data['agent-postcode'] }}</p>
                         </td>
                     </tr>
-                    
+
                 </tbody>
             </table>
             <br><br>
             {% endif %}
-            
+
             <table class="govuk-table">
                 <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
@@ -182,14 +182,14 @@
                            <p> {{ data['farmer-address2'] }} </p>
                            <p> {{ data['farmer-postcode'] }} </p>
                         </td>
-                    </tr> 
+                    </tr>
                 </tbody>
             </table>
-        </div>        
+        </div>
      </div>
-    <div class="govuk-grid-row govuk-!-padding-top-8">
+    <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form class="form" action="{{ nextUrl }}" method="post">  
+            <form class="form" action="{{ nextUrl }}" method="post">
                 <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
                     Continue
                 </button>

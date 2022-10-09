@@ -28,7 +28,7 @@
           </label>
           <input class="govuk-input govuk-!-width-one-half" id="agent-lastname" name="agent-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['agent-lastname'] }}">
         </div>
-        
+
         <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="agent-email">
@@ -42,7 +42,7 @@
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="agent-landline">
-              Mobile number  
+              Mobile number
           </label>
           <input class="govuk-input  govuk-!-width-two-thirds" id="agent-landline" name="agent-landline" type="agent-landline" spellcheck="false" aria-describedby="agent-landline-hint" autocomplete="agent-landline" value="{{ data['agent-landline'] }}">
         </div>
@@ -83,22 +83,22 @@
             <input class="govuk-input govuk-!-width-one-half" id="agent-county" name="agent-county" type="agent-county" spellcheck="false" aria-describedby="agent-county-hint" autocomplete="agent-county" value="{{ data['agent-county'] }}">
         </div>
 
-        <div class="govuk-form-group govuk-!-padding-bottom-8">
+        <div class="govuk-form-group ">
             <label class="govuk-label" for="agent-postcode">
                 Postcode
             </label>
             <input class="govuk-input govuk-!-width-one-quarter" id="agent-postcode" name="agent-postcode" type="agent-postcode" spellcheck="false" aria-describedby="agent-postcode-hint" autocomplete="agent-postcode" value="{{ data['agent-postcode'] }}">
-        </div>                
+        </div>
 
-        <button class="govuk-button govuk-!-margin-top-6 govuk-!-margin-right-1" data-module="govuk-button">
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
         </button>
 
         {% if data['DETAILS'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
-            class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1 " data-module="govuk-button"
           >
-            Back to details page
+            Back to details
           </button>
         {% endif %}
       </form>

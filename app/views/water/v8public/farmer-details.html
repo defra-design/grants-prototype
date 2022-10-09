@@ -43,7 +43,7 @@
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="gender-2" name="gender" type="radio" value="Male" {{ checked("gender", "Male") }}  >
               <label class="govuk-label govuk-radios__label" for="gender-2">
-                Male 
+                Male
               </label>
             </div>
             <div class="govuk-radios__divider">or</div>
@@ -54,7 +54,7 @@
               </label>
             </div>
           </div>
-        </div>  
+        </div>
         <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-email">
@@ -68,7 +68,7 @@
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-landline">
-              Mobile number  
+              Mobile number
           </label>
           <input class="govuk-input  govuk-!-width-two-thirds" id="farmer-landline" name="farmer-landline" type="farmer-landline" spellcheck="false" aria-describedby="farmer-landline-hint" autocomplete="farmer-landline" value="{{ data['farmer-landline'] }}">
         </div>
@@ -109,22 +109,22 @@
             <input class="govuk-input govuk-!-width-one-half" id="farmer-county" name="farmer-county" type="farmer-county" spellcheck="false" aria-describedby="farmer-county-hint" autocomplete="farmer-county" value="{{ data['farmer-county'] }}">
         </div>
 
-        <div class="govuk-form-group govuk-!-padding-bottom-8">
+        <div class="govuk-form-group">
             <label class="govuk-label" for="farmer-postcode">
                 Postcode
             </label>
             <input class="govuk-input govuk-!-width-one-quarter" id="farmer-postcode" name="farmer-postcode" type="farmer-postcode" spellcheck="false" aria-describedby="farmer-postcode-hint" autocomplete="farmer-postcode" value="{{ data['farmer-postcode'] }}">
-        </div>                
+        </div>
 
-        <button class="govuk-button govuk-!-margin-top-6 govuk-!-margin-right-1" data-module="govuk-button">
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
         </button>
 
         {% if data['DETAILS'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
-            class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1 " data-module="govuk-button"
           >
-            Back to details page
+            Back to details
           </button>
         {% endif %}
       </form>

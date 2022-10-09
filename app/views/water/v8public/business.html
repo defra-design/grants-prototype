@@ -48,28 +48,59 @@
               Business turnover (£)
           </label>
           <div class="govuk-input__wrapper">
-          <div class="govuk-input__prefix" aria-hidden="true">£</div>  
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
           <input class="govuk-input govuk-input--width-5" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
           </div>
         </div>
         <br>
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="sbi">
-              Single Business Identifier (SBI)  
-          </label>
-          <span id="sbi-hint" class="govuk-hint">If you do not have an SBI, leave it blank</span>
-          <input class="govuk-input govuk-input--width-10" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
-        </div>
-        <br><br>
+
+        <!--Conditional SBI field starts'-->
+                     <div class="govuk-form-group">
+                           <fieldset class="govuk-fieldset" aria-describedby="sbi-hint">
+                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                               <h1 class="govuk-fieldset__heading">
+                                 Single Business Identifier (SBI)
+                               </h1>
+                             </legend>
+                             <div id="contact-hint" class="govuk-hint">
+                               Select one option
+                             </div>
+
+                         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                           <div class="govuk-radios__item">
+                             <input class="govuk-radios__input" id="sbi-yes" name="sbi-radio" type="radio" value="Yes" data-aria-controls="conditional-sbi"{{ checked("sbi-radio", "Yes") }}>
+                             <label class="govuk-label govuk-radios__label" for="sbi-yes">
+                               Yes
+                             </label>
+                           </div>
+                           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-sbi">
+                             <div class="govuk-form-group">
+                               <label class="govuk-label" for="sbi">
+                                 SBI number
+                               </label>
+                               <input class="govuk-input govuk-!-width-one-third" id="enter-sbi" name="enter-sbi" pattern="[0-9]*" inputmode="numeric" value="{{ data['enter-sbi'] }}"{{ checked("enter-sbi", "enter-sbi") }}></div>
+                           </div>
+                           <div class="govuk-radios__item">
+                             <input class="govuk-radios__input" id="sbi-no" name="sbi-radio" type="radio" value="No" data-aria-controls="conditional-contact-2" {{ checked("sbi-radio", "No") }}>
+                             <label class="govuk-label govuk-radios__label" for="sbi-no">
+                               No
+                             </label>
+                           </div>
+
+                       </fieldset>
+                     </div>
+        <!--Conditional SBI field ends'-->
+
+
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
         </button>
 
         {% if data['DETAILS'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
-            class="govuk-button govuk-!-margin-right-1 govuk" data-module="govuk-button"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk" data-module="govuk-button"
           >
-            Back to details page
+            Back to details
           </button>
         {% endif %}
       </form>

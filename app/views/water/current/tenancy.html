@@ -5,6 +5,15 @@ Tenancy page
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
@@ -40,21 +49,14 @@ Tenancy page
             </div>
           </fieldset>
         </div>
-        <br>
+      
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
-        {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-            class="govuk-button govuk-!-margin-right-1" data-module="govuk-button"
-          >
-            Back to summary page
-          </button>
-        {% endif %}
       </form>
     </div>
     <div class="govuk-grid-column-one-third">
       <aside class="app-related-items">
-          <h3 class="govuk-heading-m"> Eligibility </h3>
+          <h3 class="govuk-heading-s"> Eligibility </h3>
           <p>You must own the land or have a tenancy in place for 5 years after the final grant payment.</p>
       </aside>
     </div>

@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
   <a class="govuk-back-link" href="{{ backUrl }}"> Back</a>
 {% endblock %}
 
@@ -17,7 +25,7 @@
                 Does the project directly impact a Site <br> of Special Scientific Interest?
             </h1>
           </legend>
-          <br><br>
+
           <div class="govuk-radios govuk-radios--inline">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="water-SSSI" name="water-SSSI" type="radio" value="Yes" {{ checked("water-SSSI", "Yes") }}>
@@ -33,7 +41,7 @@
             </div>
           </div>
         </fieldset>
-        <br><br><br>
+<br>
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
     </form>
 
