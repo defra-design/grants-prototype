@@ -22,35 +22,14 @@ router.get('/start', function (req, res) {
   })
 })
 
-// : Q: Farmer type
-router.get('/farmer-type', function (req, res) {
-  var backUrl = 'start'
-  var nextUrl = 'farmer-type-answer'
-  var completedUrl = 'farmer-type-answer-completed'
 
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/farmer-type-answer', function (req, res) {
-  const typeCondition = req.session.data.farmertype
-  // console.log ('typeCondition',typeCondition)
-
-  if (typeCondition.includes('None of the above')) {
-    res.redirect('farmer-type-fail')
-  }
-  res.redirect('legal-status')
-})
 
 
 
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = 'farmer-type'
+  var backUrl = 'legal-status'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
@@ -123,7 +102,7 @@ router.get('/project-start', function (req, res) {
 router.post('/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('business') }
 })
 
 router.post('/project-start-answer-completed', function (req, res) {
@@ -586,7 +565,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'business'
+  var backUrl = 'project-start'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 
