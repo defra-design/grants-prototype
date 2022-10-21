@@ -76,10 +76,52 @@ router.post('/country-answer', function (req, res) {
       country = 'yes: [ Postcode: ' + postcode + ' ]'
     }
     req.session.data['summary-country'] = country
-    res.redirect('project-start')
+    res.redirect('planning-permission')
   } else {
     res.redirect('country-fail')
   }
+})
+
+
+// PLANNING PERMISSION
+
+router.get('/planning-permission', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'country'
+  var nextUrl = 'planning-permission-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// PLANNING PERMISSION COMPLETED
+router.post('/planning-permission-answer', function (req, res) {
+  var planningPermission = req.session.data['planning-permission']
+
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
+    res.redirect('project-start')
+  }
+
+  if (planningPermission === 'maybe') {
+    res.redirect('planning-required-condition')
+  }
+
+  res.redirect('planning-permission-fail')
+})
+
+// PLANNING PERMISSION CONDITION
+router.get('/planning-required-condition', function (req, res) {
+  var backUrl = 'planning-permission'
+  var nextUrl = 'project-start'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl
+  })
 })
 
 
@@ -88,7 +130,7 @@ router.post('/country-answer', function (req, res) {
 router.get('/project-start', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
 
-  var backUrl = 'country'
+  var backUrl = 'planning-permission'
   var nextUrl = 'project-start-answer'
   var completedUrl = 'project-start-answer-completed'
 
@@ -102,7 +144,7 @@ router.get('/project-start', function (req, res) {
 router.post('/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
 
-  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('business') }
+  if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('tenancy') }
 })
 
 router.post('/project-start-answer-completed', function (req, res) {
@@ -129,269 +171,21 @@ router.post('/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
   if (tenant === 'Yes' || tenant === 'Contractor') {
-    res.redirect('system-type')
+    res.redirect('business')
   } else { res.redirect('tenancy-length') }
 })
 
 router.post('/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('system-type') }
+  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('business') }
 })
 
 router.post('/tenancy-length-answer-completed', function (req, res) {
   res.redirect('answers')
 })
 
-// : Q: System type
-router.get('/system-type', function (req, res) {
-  var backUrl = 'tenancy'
-  var nextUrl = 'system-type-answer'
-  var completedUrl = 'system-type-answer-completed'
 
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/system-type-answer', function (req, res) {
-  var systemType = req.session.data.systemtype
-
-  if (systemType === 'no system' || systemType === 'straw-bedded system') { res.redirect('system-type-fail') } else { res.redirect('existing-size-storage') }
-})
-
-router.post('/system-type-answer-completed', function (req, res) {
-  var systemType = req.session.data.farmertype
-
-  if (systemType === 'I do not have a system') { res.redirect('system-type-fail') } else { res.redirect('answers') }
-})
-
-
-
-// Q: Existing size Storage
-
-router.get('/existing-size-storage', function (req, res) {
-  var backUrl = 'system-type'
-  var nextUrl = 'existing-size-storage-answer'
-  var completedUrl = 'existing-size-storage-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/existing-size-storage-answer', function (req, res) {
-  var existingSize = req.session.data['existing-size-storage']
-
-  if (existingSize === 'At least 6 months') { res.redirect('existing-size-storage-fail') } else { res.redirect('planned-size-storage') }
-})
-
-// Q: Planned size Storage
-
-router.get('/planned-size-storage', function (req, res) {
-  var backUrl = 'existing-size-storage'
-  var nextUrl = 'planned-size-storage-answer'
-  var completedUrl = 'planned-size-storage-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/planned-size-storage-answer', function (req, res) {
-  var plannedSize = req.session.data['planned-size-storage']
-
-  if (plannedSize === 'Less than 6 months') { res.redirect('planned-size-storage-fail') } else { res.redirect('project-type') }
-})
-
-// Q: Project type
-
-router.get('/project-type', function (req, res) {
-  var backUrl = 'planned-size-storage'
-  var nextUrl = 'project-type-answer'
-  var completedUrl = 'project-type-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/project-type-answer', function (req, res) {
-  var projectType = req.session.data.projecttype
-
-  if (projectType === 'None of the above') { res.redirect('project-type-fail') } else { res.redirect('covers') }
-})
-
-// Q: Covers
-
-router.get('/covers', function (req, res) {
-  var backUrl = 'project-type'
-  var nextUrl = 'covers-answer'
-  var completedUrl = 'covers-answer-completed'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-router.post('/covers-answer', function (req, res) {
-  var coversImp = req.session.data.covers
-
-  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('estimate') }
-})
-
-
-
-// Q: Standardised costs - routing embeded in-page
-
-// Q: Store type
-
-router.get('/store-type', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'standardised-grant-amounts'
-  var nextUrl = 'storage-capacity-increase'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl,
-    storeTypeCost
-  })
-})
-
-// Q: Storage capacity increase (renamed from Current storage capacity)
-
-router.get('/storage-capacity-increase', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'store-type'
-  var nextUrl = 'store-type-answer'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl,
-    storeTypeCost
-  })
-})
-
-
-
-router.post('/store-type-answer', function (req, res) {
-  var impermeableCover = req.session.data.covers
-
-  if (impermeableCover === 'acidification') { res.redirect('project-items') } else { res.redirect('cover-type') }
-})
-
-
-
-// Q: Cover type
-
-router.get('/cover-type', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'storage-capacity-increase'
-  var nextUrl = 'cover-type-answer'
-  var completedUrl = 'cover-type-completed'
-
-  // Note: Routing here is based on - if user selected 'None of the above'
-
-  router.post('/cover-type-answer', function (req, res) {
-    var coverType = req.session.data ['covertype']
-
-    if (coverType != 'none')  { res.redirect('cover-size') } else { res.redirect('project-items') }
-  })
-
-
-
-
-
-
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl,
-    coverTypeCost,
-    storeTypeCost
-  })
-})
-
-// Q: Cover size
-
-router.get('/cover-size', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'cover-type'
-  var nextUrl = 'project-items'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl,
-    coverTypeCost,
-    storeTypeCost
-  })
-})
-
-// Q: Other items
-
-router.get('/project-items', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'cover-size'
-  var nextUrl = 'project-items-answer'
-  var completedUrl = 'project-items-completed'
-
-  // Note: Routing here is based on - if user selected 'None of the above'
-
-  router.post('/project-items-answer', function (req, res) {
-    var otherItems = req.session.data ['projectitems']
-
-    if (otherItems != 'none')  { res.redirect('item-sizes-quantities') } else { res.redirect('project-summary') }
-  })
-
-
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl,
-    coverTypeCost,
-    storeTypeCost,
-    projectItemsCost
-
-
-  })
-})
-
-// Q: Item sizes and quantities
-
-router.get('/item-sizes-quantities', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'project-items'
-  var nextUrl = 'project-summary'
-  var completedUrl = 'item-sizes-quantities-completed'
-
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl,
-    storeTypeCost,
-    coverTypeCost,
-    projectItemsCost
-  })
-})
 
 // Q: Project summary
 
@@ -565,7 +359,7 @@ router.get('/answers-back', function (req, res) {
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'project-start'
+  var backUrl = 'tenancy'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 
