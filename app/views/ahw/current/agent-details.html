@@ -23,7 +23,8 @@
 
       <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
         <h1 class="govuk-heading-l"> Agent’s details</h1>
-        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Name</h2>
+        <div id="agent-hint" class="govuk-hint govuk-!-padding-bottom-2">Enter the agent and agent business details </div>
+        <h2 class="govuk-heading-m">Name</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="agent-firstname">
             First name
@@ -62,7 +63,7 @@
           </label>
           <input class="govuk-input  govuk-!-width-two-thirds" id="confirm-farmer-email" name="confirm-farmer-email" type="confirm-farmer-email" spellcheck="false"  value="{{ data['confirm-farmer-email'] }}">
         </div>
-        
+
         <div class="govuk-form-group">
           <label class="govuk-label" for="agent-landline">
               Mobile number

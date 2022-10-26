@@ -27,7 +27,7 @@ Meeting the remaining project costs
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Can you pay the remaining costs{%if remainingCosts %} of £{{ remainingCosts | toFixed(2) | commafy }}{% endif%}?
+                Can you pay the remaining costs{%if remainingCosts %} of £{{ remainingCosts | toFixed(0) | commafy }}{% endif%}?
               </h1>
             </legend>
             <br>
