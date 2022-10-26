@@ -18,8 +18,8 @@ const coverTypeCost = {
 const projectItemsCost = {
   receptionPit: { text: 'Reception pit', value: 30, formattedValue: '£30', hint: 'Grant amount: £30 per cubic metre',  measuringUnit: 'cubic' },
   slurryTransferPump: { text: 'Electric-powered slurry transfer pump', value: 1050, formattedValue: '£1,050', hint: 'Grant amount: £1,050', measuringUnit: 'unit' },
-  powerPTOpump1: { text: 'Powered take off (PTO) hydraulically powered slurry transfer pump', value: 950, formattedValue: '£950', hint: 'Grant amount: £950', measuringUnit: 'unit' },
-  chopperPump: { text: 'Centrifugal chopper pump', value: 2090, formattedValue: '£790', hint: 'Grant amount: £790', measuringUnit: 'unit' },
+  powerPTOpump1: { text: 'Powered take off (PTO) or hydraulically driven chopper pump', value: 950, formattedValue: '£950', hint: 'Grant amount: £950', measuringUnit: 'unit' },
+  chopperPump: { text: 'Centrifugal chopper pump', value: 2090, formattedValue: '£2,090', hint: 'Grant amount: £2,090', measuringUnit: 'unit' },
   powerPTOpump2: { text: 'Powered take off (PTO) or hydraulically driven chopper pump', value: 1700, formattedValue: '£1,700', hint: 'Grant amount: £1,700', measuringUnit: 'unit' },
   steelPipework100: { text: 'Galvanised steel pipework 100mm diameter', value: 14, formattedValue: '£14', hint: 'Grant amount: £14 per metre',  measuringUnit: 'metre' },
   steelPipework150: { text: 'Galvanised steel pipework 150mm diameter', value: 24, formattedValue: '£24', hint: 'Grant amount: £24 per metre',  measuringUnit: 'metre' },
