@@ -18,10 +18,15 @@
 
     <div class="govuk-body">
       <p>You can only apply for a grant of up to 40% of the estimated costs.</p>
-      <p>The minimum grant you can apply for is £35,000 (40% of £87,500).</p>
-      <p>The maximum grant is £1 million.</p>
+
+      {{ govukInsetText({
+        html: "The minimum grant you can apply for is £35,000 (40% of £87,500). <BR>The maximum grant is £500,000."
+      }) }}
+      <p></p>
+
+      <p></p>
     </div>
-      
+
     </div>
   </div>
 

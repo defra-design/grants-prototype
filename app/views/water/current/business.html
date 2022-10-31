@@ -23,7 +23,7 @@
           <label class="govuk-label" for="project-name">
               Project name
           </label>
-          <span id="project-name-hint" class="govuk-hint">For example, Brown Hill Farm reservoir</span>
+          <div id="project-name-hint" class="govuk-hint">For example, Brown Hill Farm reservoir</div>
           <input class="govuk-input" id="project-name" name="project-name" type="text" value="{{ data['project-name'] }}">
         </div>
 
@@ -31,7 +31,7 @@
           <label class="govuk-label" for="business-name">
               Business name
           </label>
-          <span id="business-name-hint" class="govuk-hint">If you’re registered on the Rural Payments system, enter business name as registered</span>
+          <div id="business-name-hint" class="govuk-hint">If you’re registered on the Rural Payments system, enter business name as registered</div>
           <input class="govuk-input" id="business-name" name="business-name" type="text" value="{{ data['business-name'] }}">
         </div>
 
@@ -39,7 +39,7 @@
           <label class="govuk-label" for="employees">
               Number of employees
           </label>
-          <span id="employees-hint" class="govuk-hint">Full-time employees, including the owner</span>
+          <div id="employees-hint" class="govuk-hint">Full-time employees, including the owner</div>
           <input class="govuk-input govuk-input--width-10" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">
         </div>
         <br>
@@ -57,7 +57,7 @@
           <label class="govuk-label" for="sbi">
               Single Business Identifier (SBI)
           </label>
-          <span id="sbi-hint" class="govuk-hint">If you do not have an SBI, you will need to get one for full application</span>
+          <div id="sbi-hint" class="govuk-hint">If you do not have an SBI, you will need to get one for full application</div>
           <input class="govuk-input govuk-input--width-10" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
         </div>
         <br><br>
