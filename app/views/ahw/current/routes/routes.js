@@ -256,88 +256,6 @@ router.post('/remaining-costs-answer', function (req, res) {
 })
 
 
-
-
-// PLANNING PERMISSION
-
-router.get('/planning-permission', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'remaining-costs'
-  var nextUrl = 'planning-permission-answer'
-  var completedUrl = 'evidence-summary'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// PLANNING PERMISSION COMPLETED
-router.post('/planning-permission-answer', function (req, res) {
-  var planningPermission = req.session.data['planning-permission']
-
-  if (planningPermission === 'Approved' || planningPermission === 'Applied') {
-    res.redirect('planning-list')
-  }
-
-  if (planningPermission === 'Not yet applied') {
-    res.redirect('planning-required-condition')
-  }
-
-  res.redirect('os-grid')
-})
-
-// PLANNING PERMISSION CONDITION
-router.get('/planning-required-condition', function (req, res) {
-  var backUrl = 'planning-permission'
-  var nextUrl = 'os-grid'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl
-  })
-})
-
-// Planning list
-router.get('/planning-list', function (req, res) {
-  var backUrl = 'planning-permission'
-  var nextUrl = 'os-grid'
-  var completedUrl = 'evidence-summary'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl
-  })
-})
-
-
-
-// OS grid
-router.get('/os-grid', function (req, res) {
-  var backUrl = 'planning-permission'
-  var nextUrl = 'evidence-summary'
-  var completedUrl = 'evidence-summary'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl
-  })
-})
-
-// evidence summary
-router.get('/evidence-summary', function (req, res) {
-  req.session.data.COMPLETED = true
-
-  var backUrl = 'os-grid'
-  var nextUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl
-  })
-})
-
 // answers
 
 router.get('/answers', function (req, res) {
@@ -431,18 +349,7 @@ router.get('/applicant-details', function (req, res) {
   })
 })
 
-// contractor-details
-router.get('/contractor-details', function (req, res) {
-  var backUrl = req.session.data.applicant === 'Agent' ? 'agent-details' : 'applying'
-  var nextUrl = 'check-details'
-  var detailsUrl = 'check-details'
 
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    detailsUrl
-  })
-})
 
 // check-details
 
@@ -450,7 +357,7 @@ router.get('/check-details', function (req, res) {
   req.session.data.DETAILS = true
 
   var backUrl = 'check-details-back'
-  var nextUrl = 'check-details'
+  var nextUrl = 'consent'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -464,7 +371,7 @@ router.get('/check-details-back', function (req, res) {
 })
 
 router.get('/agent-farmer-details', function (req, res) {
-  var nextUrl = 'check-details'
+  var nextUrl = 'consent'
   var backUrl = 'your-details'
 
   res.render('./' + req.originalUrl, {
