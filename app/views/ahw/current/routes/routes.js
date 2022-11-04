@@ -5,7 +5,7 @@ const serviceName = 'Check if you can apply for a Farming Transformation Fund sl
 
 const { storeTypeCost, coverTypeCost, projectItemsCost } = require('../../utils')
 
-console.log('Service name: ' + serviceName)
+//console.log('Service name: ' + serviceName)
 
 router.get('/start', function (req, res) {
   // =================================
@@ -23,13 +23,38 @@ router.get('/start', function (req, res) {
 })
 
 
+// Farmer type
+router.get('/farmer-type', function (req, res) {
+  var backUrl = 'start'
+  var nextUrl = 'farmer-type-answer'
+  var completedUrl = 'farmer-type-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/farmer-type-answer', function (req, res) {
+  const typeCondition = req.session.data.farmertype
+   console.log ('typeCondition',typeCondition)
+
+  if (typeCondition.includes('None of the above')) {
+    res.redirect('farmer-type-fail')
+  }
+  else {
+  res.redirect('legal-status')
+  }
+
+})
 
 
 
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = 'legal-status'
+  var backUrl = 'farmer-type'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
@@ -106,11 +131,12 @@ router.post('/planning-permission-answer', function (req, res) {
     res.redirect('project-start')
   }
 
-  if (planningPermission === 'maybe') {
+  else if (planningPermission === 'maybe') {
     res.redirect('planning-required-condition')
   }
-
+  else {
   res.redirect('planning-permission-fail')
+  }
 })
 
 // PLANNING PERMISSION CONDITION
