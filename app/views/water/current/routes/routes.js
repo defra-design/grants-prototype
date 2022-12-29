@@ -221,6 +221,49 @@ router.get('/project-items', function (req, res) {
   })
 })
 
+
+
+// PLANNING PERMISSION
+
+router.get('/planning-permission', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'country'
+  var nextUrl = 'planning-permission-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// PLANNING PERMISSION COMPLETED
+router.post('/planning-permission-answer', function (req, res) {
+  var planningPermission = req.session.data['planning-permission']
+
+  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
+    res.redirect('project-start')
+  }
+
+  if (planningPermission === 'maybe') {
+    res.redirect('planning-required-condition')
+  }
+
+  res.redirect('planning-permission-fail')
+})
+
+// PLANNING PERMISSION CONDITION
+router.get('/planning-required-condition', function (req, res) {
+  var backUrl = 'planning-permission'
+  var nextUrl = 'project-start'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl
+  })
+})
+
 router.get('/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
 
@@ -285,44 +328,17 @@ router.post('/remaining-costs-answer-completed', function (req, res) {
   if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('answers') }
 })
 
-// PLANNING PERMISSION
+// Water SSSI
 
-router.get('/planning-permission', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'country'
-  var nextUrl = 'planning-permission-answer'
+router.get('/water-SSSI', function (req, res) {
+  var nextUrl = 'abstraction-licence'
+  var backUrl = 'remaining-costs'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
     completedUrl
-  })
-})
-
-// PLANNING PERMISSION COMPLETED
-router.post('/planning-permission-answer', function (req, res) {
-  var planningPermission = req.session.data['planning-permission']
-
-  if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
-    res.redirect('project-start')
-  }
-
-  if (planningPermission === 'maybe') {
-    res.redirect('planning-required-condition')
-  }
-
-  res.redirect('planning-permission-fail')
-})
-
-// PLANNING PERMISSION CONDITION
-router.get('/planning-required-condition', function (req, res) {
-  var backUrl = 'planning-permission'
-  var nextUrl = 'project-start'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl
   })
 })
 
@@ -346,7 +362,7 @@ router.post('/abstraction-licence-answer-completed', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
 
   if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') {
-    res.redirect('project-summary')
+    res.redirect('current-irrigating')
   }
 
   res.redirect('abstraction-required-condition')
@@ -355,7 +371,7 @@ router.post('/abstraction-licence-answer-completed', function (req, res) {
 // ABSTRACTION LICENCE CONDITION
 router.get('/abstraction-required-condition', function (req, res) {
   var backUrl = 'abstraction-licence'
-  var nextUrl = 'project-summary'
+  var nextUrl = 'current-irrigating'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -363,60 +379,12 @@ router.get('/abstraction-required-condition', function (req, res) {
   })
 })
 
-// Water SSSI
 
-router.get('/water-SSSI', function (req, res) {
-  var nextUrl = 'abstraction-licence'
-  var backUrl = 'remaining-costs'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// project-summary
-
-router.get('/project-summary', function (req, res) {
-  var abstractionLicence = req.session.data['abstraction-licence']
-
-  var backUrl
-  var nextUrl = 'irrigated-crops'
-  var completedUrl = 'answers'
-
-  if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') {
-    backUrl = 'abstraction-licence'
-  } else {
-    backUrl = 'abstraction-required-condition'
-  }
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-// irrigated-crops
-
-router.get('/irrigated-crops', function (req, res) {
-  var backUrl = 'project-summary'
-  var nextUrl = 'current-irrigating'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
 
 // current irrigating
 
 router.get('/current-irrigating', function (req, res) {
-  var backUrl = 'irrigated-crops'
+  var backUrl = 'abstraction-licence'
   var nextUrl = 'irrigated-completed-answer'
 
   res.render('./' + req.originalUrl, {
@@ -427,15 +395,22 @@ router.get('/current-irrigating', function (req, res) {
 
 router.get('/irrigated-completed-answer', function (req, res) {
   var currentIrrigating = req.session.data['current-irrigating']
-  if (currentIrrigating === 'Yes') { res.redirect('irrigated-land') } else { res.redirect('irrigated-land-no') }
+  if (currentIrrigating === 'No') { res.redirect('change-summerabs') } else { res.redirect('change-summerabs-yes') }
 })
 
-// Yes - irrigated-land
 
-router.get('/irrigated-land', function (req, res) {
+// Change summer abstraction
+
+router.get('/change-summerabs', function (req, res) {
   var backUrl = 'current-irrigating'
-  var nextUrl = 'irrigation-water-source'
+  var nextUrl = 'change-summerabs-answer'
   var completedUrl = 'answers'
+
+  router.get('/change-summerabs-answer', function (req, res) {
+    var changeSummerabs = req.session.data['change-summerabs']
+    if (changeSummerabs === 'no') { res.redirect('water-source') } else { res.redirect('summerabs-fail') }
+  })
+
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -444,12 +419,38 @@ router.get('/irrigated-land', function (req, res) {
   })
 })
 
-// No - irrigated-land
 
-router.get('/irrigated-land-no', function (req, res) {
+// Change summer abstraction
+
+router.get('/change-summerabs-yes', function (req, res) {
   var backUrl = 'current-irrigating'
-  var nextUrl = 'irrigation-water-source-no'
+  var nextUrl = 'change-summerabs-yes-answer'
   var completedUrl = 'answers'
+
+  router.get('/change-summerabs-yes-answer', function (req, res) {
+    var changeSummerabsYes = req.session.data['change-summerabs-yes']
+
+    if (changeSummerabsYes === 'dont use') {
+      res.redirect('water-source-1')
+    }
+    if (changeSummerabsYes === 'decrease') {
+      res.redirect('water-source-2')
+    }
+    if (changeSummerabsYes === 'stop') {
+      res.redirect('water-source-3')
+    }
+    if (changeSummerabsYes === 'intro sustainable') {
+      res.redirect('water-source-4')
+    }
+    if (changeSummerabsYes === 'maintain sustainable') {
+      res.redirect('water-source-5')
+    }
+
+  else {
+    res.redirect('summerabs-fail')
+  }
+  })
+
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -458,12 +459,14 @@ router.get('/irrigated-land-no', function (req, res) {
   })
 })
 
-// Yes -  irrigation-water-source
 
-router.get('/irrigation-water-source', function (req, res) {
+
+// Water source
+
+router.get('/water-source', function (req, res) {
   req.session.data.tempIrrigationAnswer = req.session.data.irrigationAnswer
-  var backUrl = 'irrigated-land'
-  var nextUrl = 'irrigation-water-source-answer'
+  var backUrl = 'change-summerabs'
+  var nextUrl = 'water-source-answer'
   var completedUrl = 'irrigation-water-source-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -473,19 +476,21 @@ router.get('/irrigation-water-source', function (req, res) {
   })
 })
 
-router.post('/irrigation-water-source-answer', function (req, res) {
-  res.redirect('irrigation-systems')
+router.post('/water-source-answer', function (req, res) {
+  res.redirect('irrigation-system')
 })
 
-router.post('/irrigation-water-source-answer-completed', function (req, res) {
+router.post('/water-source-answer-completed', function (req, res) {
   res.redirect('answers')
 })
 
-// No - irrigation - water - source
 
-router.get('/irrigation-water-source-no', function (req, res) {
-  var backUrl = 'irrigated-land-no'
-  var nextUrl = 'irrigation-systems-no'
+
+// Irrigation system (Happy path - the future)
+
+router.get('/irrigation-system', function (req, res) {
+  var backUrl = 'water-source'
+  var nextUrl = 'irrigated-crops'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -495,10 +500,72 @@ router.get('/irrigation-water-source-no', function (req, res) {
   })
 })
 
-// Yes - irrigation-systems
+// Irrigation-systems (Present and Future)
 
 router.get('/irrigation-systems', function (req, res) {
-  var backUrl = 'irrigation-water-source'
+  var data1 = req.session.data['water-source-1-current']
+  var data2 = req.session.data['water-source-2-current']
+  var data3 = req.session.data['water-source-3-current']
+  var data4 = req.session.data['water-source-4-current']
+  var data5 = req.session.data['water-source-5-current']
+  var backUrl
+  var nextUrl = 'irrigated-crops'
+  var completedUrl = 'answers'
+  if (data1) { backUrl = 'water-source-1' }
+  if (data2) { backUrl = 'water-source-2' }
+  if (data3) { backUrl = 'water-source-3' }
+  if (data4) { backUrl = 'water-source-4' }
+  if (data5) { backUrl = 'water-source-5' }
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+// Summerabs fail (backURL)
+
+router.get('/summerabs-fail', function (req, res) {
+  var data = req.session.data['current-irrigating']
+  var backUrl
+  var nextUrl
+  var completedUrl = 'answers'
+
+  if (data === 'Yes') { backUrl = 'change-summerabs-yes' } else { backUrl = 'change-summerabs' }
+
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// irrigated-crops (Happy path - the future)
+
+router.get('/irrigated-crops', function (req, res) {
+  var data = req.session.data['current-irrigating']
+  var backUrl
+  var nextUrl
+  var completedUrl = 'answers'
+
+  if (data === 'Yes') { nextUrl = 'irrigated-land' } else { nextUrl = 'irrigated-land-future' }
+  if (data === 'Yes') { backUrl = 'irrigation-systems' } else { backUrl = 'irrigation-system' }
+
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Irrigated-land
+
+router.get('/irrigated-land', function (req, res) {
+  var backUrl = 'irrigated-crops'
   var nextUrl = 'productivity'
   var completedUrl = 'answers'
 
@@ -509,10 +576,10 @@ router.get('/irrigation-systems', function (req, res) {
   })
 })
 
-// No - irrigation - systems
+// Irrigated-land future (Happy path - the future)
 
-router.get('/irrigation-systems-no', function (req, res) {
-  var backUrl = 'irrigation-water-source-no'
+router.get('/irrigated-land-future', function (req, res) {
+  var backUrl = 'irrigated-crops'
   var nextUrl = 'productivity'
   var completedUrl = 'answers'
 
@@ -522,6 +589,8 @@ router.get('/irrigation-systems-no', function (req, res) {
     completedUrl
   })
 })
+
+
 
 // productivity
 router.get('/productivity', function (req, res) {
@@ -529,7 +598,7 @@ router.get('/productivity', function (req, res) {
   var backUrl
   var nextUrl = 'collaboration'
   var completedUrl = 'answers'
-  if (data === 'Yes') { backUrl = 'irrigation-systems' } else { backUrl = 'irrigation-systems-no' }
+  if (data === 'Yes') { backUrl = 'irrigated-land' } else { backUrl = 'irrigated-land-future' }
 
   res.render('./' + req.originalUrl, {
     backUrl,

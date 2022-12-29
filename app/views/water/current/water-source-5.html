@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Water source 5
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+  <a class="govuk-back-link" href="change-summerabs-yes">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="irrigation-systems" method="post">
+          <h1 class="govuk-heading-l">Water source</h1>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                What is your current main water source?
+              </h2>
+            </legend>
+
+            <div id="water-source" class="govuk-hint">
+            Select all that apply</div>
+
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="water-source-5-current-4" name="water-source-5-current" type="checkbox" value="Surface abstraction" {{ checked("water-source-5-current", "Surface abstraction") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="water-source-5-current-4">
+                  Summer water surface abstraction
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="water-source-5-current-5" name="water-source-5-current" type="checkbox" value="mains" {{ checked("water-source-5-current", "mains") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="water-source-5-current-5">
+                  Mains
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  Wha will be the new water source
+                </h2>
+              </legend>
+
+              <div id="water-source" class="govuk-hint">
+              Select all that apply</div>
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="water-source-5-target-4" name="water-source-5-target" type="checkbox" value="Surface abstraction" {{ checked("water-source-5-target", "Surface abstraction") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="water-source-5-target-4">
+                  Summer water surface abstraction
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="water-source-5-target-5" name="water-source-5-target" type="checkbox" value="mains" {{ checked("water-source-5-target", "mains") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="water-source-5-target-5">
+                  Mains
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-button--secondary" data-module="govuk-button"
+          >
+            Back to score
+          </button>
+        {% endif %}
+
+
+      </form>
+  </div>
+  <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-s"> Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">
+          <p>RPA wants to fund projects that use more sustainable water sources, such as:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>winter peak-flow abstraction</li>
+            <li>rain water harvesting</li>
+            <li>bore hole / aquifer</li>
+            </ul>
+            <p>RPA will not fund projects that increase water usage from:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>summer water surface abstraction</li>
+              <li>mains</li>
+              </ul>
+        </div>
+      </aside>
+  </div>
+  </div>
+
+
+{% endblock %}
