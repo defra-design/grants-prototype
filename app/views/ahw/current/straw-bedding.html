@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Type of farmer
+Straw bedding
 {% endblock %}
 
 {% block beforeContent %}
@@ -11,7 +11,7 @@ Type of farmer
     text: "prototype",
     classes: "govuk-tag--pink"
     },
-      html: 'This is not a full service. It is not production code and you might experience problems  .'
+      html: 'This is not a full service. It is not production code and you might experience problems.'
   }) }}
 
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
@@ -22,48 +22,31 @@ Type of farmer
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukCheckboxes({
-                  idPrefix: 'farmertype',
-                  name: 'farmertype',
+              {{ govukRadios({
+                  classes: "govuk-radios--inline",
+                  idPrefix: 'strawbedding',
+                  name: 'strawbedding',
                   fieldset: {
                       legend: {
-                          text: 'What type of farmer are you?',
+                          text: 'Will the calf housing have straw bedding?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
-                  hint: {
-                    text: "Select all that apply"
-                  },
 
                   items: [
                 {
-                  value: "dairy",
-                  text: "Dairy farmer",
-                  checked: checked("farmertype", "dairy")
+                  value: "yes",
+                  text: "Yes",
+                  checked: checked("strawbedding", "yes")
                 },
 
                 {
-                  value: "beef",
-                  text: "Beef farmer",
-                  checked: checked("farmertype", "beef")
-                },
-                {
-                  value: "mixed",
-                  text: "Mixed farmer (cattle and arable)",
-                  checked: checked("farmertype", "mixed")
-                },
-
-                {
-                  divider: "or"
-                },
-                {
-                  value: "None of the above",
-                  text: "None of the above",
-                  behaviour: "exclusive",
-                  checked: checked("farmertype", "None of the above")
-
+                  value: "no",
+                  text: "No",
+                  checked: checked("strawbedding", "no")
                 }
+
               ]
               }) }}
 
@@ -78,10 +61,9 @@ Type of farmer
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">This grant is for farmers raising calves up to the age of 1 year.<br><br>
-
+          <p class="govuk-body">The calf housing must have straw bedding.
           </p>
-     </div>
+            </div>
    </div>
 
 {% endblock %}
