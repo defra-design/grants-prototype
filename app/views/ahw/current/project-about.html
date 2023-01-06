@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Type of farmer
+About the project
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,46 +22,40 @@ Type of farmer
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukCheckboxes({
-                  idPrefix: 'farmertype',
-                  name: 'farmertype',
+              {{ govukRadios({
+                  idPrefix: 'projectabout',
+                  name: 'projectabout',
                   fieldset: {
                       legend: {
-                          text: 'What type of farmer are you?',
+                          text: 'What is your project',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
-                  hint: {
-                    text: "Select all that apply"
-                  },
+
 
                   items: [
                 {
-                  value: "dairy",
-                  text: "Dairy farmer",
-                  checked: checked("farmertype", "dairy")
+                  value: "new",
+                  text: "Building new calf housing",
+                  checked: checked("projectabout", "new")
                 },
 
                 {
-                  value: "beef",
-                  text: "Beef farmer",
-                  checked: checked("farmertype", "beef")
+                  value: "refurb",
+                  text: "Refurbishing or extending existing calf housing",
+                  checked: checked("projectabout", "refurb")
                 },
-                {
-                  value: "mixed",
-                  text: "Mixed farmer (cattle and arable)",
-                  checked: checked("farmertype", "mixed")
-                },
+
 
                 {
                   divider: "or"
                 },
                 {
-                  value: "None of the above",
-                  text: "None of the above",
+                  value: "else",
+                  text: "Something else",
                   behaviour: "exclusive",
-                  checked: checked("farmertype", "None of the above")
+                  checked: checked("projectabout", "else")
 
                 }
               ]
@@ -78,9 +72,12 @@ Type of farmer
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">This grant is for farmers raising calves up to the age of 1 year.<br><br>
+          <p class="govuk-body">This grant is for:</p>
+            <ul class="govuk-list govuk-list--bullet"><li>building new calf housing</li>
+              <li>refurbishing or extending existing calf housing</li>
+              </ul>
 
-          </p>
+          
      </div>
    </div>
 

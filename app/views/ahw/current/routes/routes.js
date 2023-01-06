@@ -197,14 +197,14 @@ router.post('/tenancy-answer', function (req, res) {
   var tenant = req.session.data.tenancy
 
   if (tenant === 'Yes' || tenant === 'Contractor') {
-    res.redirect('business')
+    res.redirect('project-about')
   } else { res.redirect('tenancy-length') }
 })
 
 router.post('/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('business') }
+  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('project-about') }
 })
 
 router.post('/tenancy-length-answer-completed', function (req, res) {
@@ -212,20 +212,225 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 })
 
 
+// Q: Project about
 
-// Q: Project summary
+router.get('/project-about', function (req, res) {
+  var backUrl = 'tenancy-answer'
+  var nextUrl = 'project-about-answer'
+  var completedUrl = 'answers'
 
-router.get('/project-summary', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'project-summary-back'
-  var nextUrl = 'project-summary-answer'
-  var completedUrl = 'store-type'
-
-// Note: Back button - is routing here is based on 'potentialgrant'
-  router.post('/project-summary-back', function (req, res) {
-    var otherItems = req.session.data ['projectitems']
-    if (otherItems != 'none')  { res.redirect('project-items') } else { res.redirect('item-sizes-quantities') }
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
   })
+})
+
+router.post('/project-about-answer', function (req, res) {
+  var projectAbout = req.session.data['projectabout']
+
+  if (projectAbout === 'else') {
+    res.redirect('project-about-fail')
+  }
+  else {
+     res.redirect('calf-weight')
+  }
+})
+
+  // Q: Calf weight
+
+  router.get('/calf-weight', function (req, res) {
+    var backUrl = 'project-about'
+    var nextUrl = 'calf-weight-answer'
+    var completedUrl = 'answers'
+
+    res.render('./' + req.originalUrl, {
+      backUrl,
+      nextUrl,
+      completedUrl
+    })
+  })
+
+  router.post('/calf-weight-answer', function (req, res) {
+    var calfWeight = req.session.data['calfweight']
+
+    if (calfWeight === '201') {
+      res.redirect('calf-weight-fail')
+    }
+    else {
+       res.redirect('calf-weight-route')
+    }
+})
+
+    // Q: Calf weight route
+
+    router.get('/calf-weight-route', function (req, res) {
+      var backUrl = 'calf-weight'
+      var nextUrl = 'calf-weight-route-answer'
+      var completedUrl = 'answers'
+
+      res.render('./' + req.originalUrl, {
+        backUrl,
+        nextUrl,
+        completedUrl
+      })
+    })
+
+    router.post('/calf-weight-route-answer', function (req, res) {
+      var sqM1 = req.session.data['sqm1']
+      var sqM2 = req.session.data['sqm2']
+      var sqM3 = req.session.data['sqm3']
+
+      if (sqM1 === 'yes') {
+        res.redirect('calf-healthy')
+      }
+      else if (sqM2 === 'yes') {
+        res.redirect('calf-healthy')
+      }
+      else if (sqM3 === 'yes') {
+        res.redirect('calf-healthy')
+      }
+      else {
+         res.redirect('calf-weight-route-fail')
+      }
+})
+
+
+
+
+  // Q: Calf healthy
+
+        router.get('/calf-healthy', function (req, res) {
+          var backUrl = 'calf-weight-route'
+          var nextUrl = 'calf-healthy-answer'
+          var completedUrl = 'answers'
+
+          res.render('./' + req.originalUrl, {
+            backUrl,
+            nextUrl,
+            completedUrl
+          })
+        })
+
+
+        router.post('/calf-healthy-answer', function (req, res) {
+          var calfHealthy = req.session.data['calfhealthy']
+
+          if (calfHealthy === 'yes') {
+            res.redirect('calf-healthy-fail')
+          }
+          else {
+            res.redirect ('calf-sick')
+          }
+})
+
+// Q: Calf sick
+
+      router.get('/calf-sick', function (req, res) {
+        var backUrl = 'calf-healthy'
+        var nextUrl = 'calf-sick-answer'
+        var completedUrl = 'answers'
+
+        res.render('./' + req.originalUrl, {
+          backUrl,
+          nextUrl,
+          completedUrl
+        })
+      })
+
+
+      router.post('/calf-sick-answer', function (req, res) {
+        var calfSick = req.session.data['calfsick']
+
+        if (calfSick === 'no') {
+          res.redirect('calf-sick-fail')
+        }
+        else {
+          res.redirect ('flooring-type')
+        }
+})
+
+// Q: Flooring type
+
+      router.get('/flooring-type', function (req, res) {
+        var backUrl = 'calf-sick'
+        var nextUrl = 'flooring-type-answer'
+        var completedUrl = 'answers'
+
+        res.render('./' + req.originalUrl, {
+          backUrl,
+          nextUrl,
+          completedUrl
+        })
+      })
+
+
+      router.post('/flooring-type-answer', function (req, res) {
+        var flooringType = req.session.data['flooringtype']
+
+        if (flooringType === 'no') {
+          res.redirect('flooring-type-fail')
+        }
+        else {
+          res.redirect ('straw-bedding')
+        }
+})
+
+
+// Q: Straw bedding
+
+      router.get('/straw-bedding', function (req, res) {
+        var backUrl = 'flooring-type'
+        var nextUrl = 'straw-bedding-answer'
+        var completedUrl = 'answers'
+
+        res.render('./' + req.originalUrl, {
+          backUrl,
+          nextUrl,
+          completedUrl
+        })
+      })
+
+
+      router.post('/straw-bedding-answer', function (req, res) {
+        var strawBedding = req.session.data['strawbedding']
+
+        if (strawBedding === 'no') {
+          res.redirect('straw-bedding-fail')
+        }
+        else {
+          res.redirect ('enrichment')
+        }
+
+
+      })
+
+
+      // Q: Enrichment
+
+            router.get('/enrichment', function (req, res) {
+              var backUrl = 'straw-bedding'
+              var nextUrl = 'enrichment-answer'
+              var completedUrl = 'answers'
+
+              res.render('./' + req.originalUrl, {
+                backUrl,
+                nextUrl,
+                completedUrl
+              })
+            })
+
+
+            router.post('/enrichment-answer', function (req, res) {
+              var enrichment = req.session.data['enrichment']
+
+              if (enrichment === 'no') {
+                res.redirect('enrichment-fail')
+              }
+              else {
+                res.redirect ('building-route')
+              }
+
 
 
 
