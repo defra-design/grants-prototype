@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Calf weight
+Straw bedding
 {% endblock %}
 
 {% block beforeContent %}
@@ -24,11 +24,11 @@ Calf weight
 
               {{ govukRadios({
                   classes: "govuk-radios--inline",
-                  idPrefix: 'calfsick',
-                  name: 'calfsick',
+                  idPrefix: 'drainage2',
+                  name: 'drainage2',
                   fieldset: {
                       legend: {
-                          text: 'Will there be facilities to temporarily isolate sick calves?',
+                          html: 'Will the building&apos;s housing and drinking areas have drainage with at least 5% slope?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
@@ -36,15 +36,15 @@ Calf weight
 
                   items: [
                 {
-                  value: "yes",
+                  value: "y",
                   text: "Yes",
-                  checked: checked("calfsick", "yes")
+                  checked: checked("drainage2", "y")
                 },
 
                 {
                   value: "no",
                   text: "No",
-                  checked: checked("calfsick", "no")
+                  checked: checked("drainage2", "no")
                 }
 
               ]
@@ -61,9 +61,7 @@ Calf weight
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">The building must have facilities to temporarily isolate sick calves.
-            <br><br>
-            Sick calves may need to be temporarily isolated to prevent spreading disease.
+          <p class="govuk-body">Each pen must have sloped flooring with a 1 in 20 (5%) gradient that slopes towards a drain or drainage2 channel.
           </p>
             </div>
    </div>

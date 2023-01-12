@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Calf weight
+Straw bedding
 {% endblock %}
 
 {% block beforeContent %}
@@ -24,27 +24,33 @@ Calf weight
 
               {{ govukRadios({
                   classes: "govuk-radios--inline",
-                  idPrefix: 'calfsick',
-                  name: 'calfsick',
+                  idPrefix: 'additionalitems',
+                  name: 'additionalitems',
                   fieldset: {
                       legend: {
-                          text: 'Will there be facilities to temporarily isolate sick calves?',
+                          text: 'Will the building have these items?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
+                  hint: {
+                    html: "This building must have:<br><br><li>a minimum and maximum thermometer</li>
+                    <li>a humidity sensor</li>
+                    <li>at least 2 IP66 sockets in housing areas</li>
+                    <li>access to a water supply</li>"
 
+                  },
                   items: [
                 {
                   value: "yes",
                   text: "Yes",
-                  checked: checked("calfsick", "yes")
+                  checked: checked("additionalitems", "yes")
                 },
 
                 {
                   value: "no",
                   text: "No",
-                  checked: checked("calfsick", "no")
+                  checked: checked("additionalitems", "no")
                 }
 
               ]
@@ -61,10 +67,13 @@ Calf weight
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">The building must have facilities to temporarily isolate sick calves.
-            <br><br>
-            Sick calves may need to be temporarily isolated to prevent spreading disease.
-          </p>
+          <p class="govuk-body">The building must have:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>a humidity sensor</li>
+              <li>at least 2 IP66 sockets in housing areas</li>
+              <li>access to a water supply</li>
+              </ul>
+              
             </div>
    </div>
 

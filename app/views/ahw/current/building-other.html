@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Calf weight
+Straw bedding
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,30 +21,49 @@ Calf weight
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-
+          {% set describeText %}
+            {{ govukCharacterCount({
+              id: "build-oth",
+              name: "build-oth",
+              maxwords: 25,
+              label: {
+                text: "Describe the building structure"
+              }
+            }) }}
+          {% endset -%}
               {{ govukRadios({
-                  classes: "govuk-radios--inline",
-                  idPrefix: 'calfsick',
-                  name: 'calfsick',
+                  classes: "govuk-radios",
+                  idPrefix: 'buildingother',
+                  name: 'buildingother',
                   fieldset: {
                       legend: {
-                          text: 'Will there be facilities to temporarily isolate sick calves?',
+                          text: 'Does your building structure meet the eligibility criteria',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
+                  hint: {
+                    html: "All buildings must:<br><br>
+                    <li>be permanent structures</li>
+                    <li>have adequate drainage</li>
+                    <li>protect calves from draughts with solid walls/barriers to calf height</li>
+                    "
 
+                  },
                   items: [
                 {
                   value: "yes",
                   text: "Yes",
-                  checked: checked("calfsick", "yes")
+                  checked: checked("buildingother", "yes"),
+                  conditional: {
+                    html: describeText
+                  }
                 },
 
                 {
                   value: "no",
                   text: "No",
-                  checked: checked("calfsick", "no")
+                  checked: checked("buildingother", "no")
                 }
 
               ]
@@ -55,17 +74,6 @@ Calf weight
 
       </form>
     </div>
-    <div class="govuk-grid-column-one-third">
 
-      <div class="app-step-nav-related app-step-nav-related--singular">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Eligibility</span>
-          </h2>
-          <p class="govuk-body">The building must have facilities to temporarily isolate sick calves.
-            <br><br>
-            Sick calves may need to be temporarily isolated to prevent spreading disease.
-          </p>
-            </div>
-   </div>
 
 {% endblock %}
