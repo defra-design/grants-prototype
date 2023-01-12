@@ -215,7 +215,7 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 // Q: Project about
 
 router.get('/project-about', function (req, res) {
-  var backUrl = 'tenancy-answer'
+  var backUrl = 'tenancy'
   var nextUrl = 'project-about-answer'
   var completedUrl = 'answers'
 
@@ -430,32 +430,251 @@ router.post('/project-about-answer', function (req, res) {
               else {
                 res.redirect ('building-route')
               }
-
-
-
-
-// Note: Routing here is based on 'potentialgrant' session value, which is a hidden value based on input method I've created on page. Calculations happen on page, we're passing a hidden value because of the temporary value stored on page.
-
-router.post('/project-summary-answer', function (req, res) {
-  var potentialGrant = req.session.data['potentialgrant']
-
-  if (potentialGrant < 25000 )  { res.redirect('project-summary-fail') } else { res.redirect('potential-grant') }
 })
 
-res.render('./' + req.originalUrl, {
+
+// Q: Building route
+
+  router.get('/building-route', function (req, res) {
+  var backUrl = 'enrichment'
+  var nextUrl = 'building-route-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
   backUrl,
   nextUrl,
-  completedUrl,
-  storeTypeCost,
-  coverTypeCost,
-  projectItemsCost
+  completedUrl
+  })
+})
+
+
+router.post('/building-route-answer', function (req, res) {
+  var buildingRoute = req.session.data['buildingroute']
+
+  if (buildingRoute === 'other') {
+    res.redirect('building-other')
+  }
+
+  else if (buildingRoute === 'igloo') {
+    res.redirect('drainage2')
+  }
+
+  else {
+    res.redirect ('drainage')
+  }
+})
+
+
+router.get('/building-other', function (req, res) {
+var backUrl = 'building-route'
+var nextUrl = 'building-other-answer'
+var completedUrl = 'answers'
+
+res.render('./' + req.originalUrl, {
+backUrl,
+nextUrl,
+completedUrl
 })
 })
+
+router.post('/building-other-answer', function (req, res) {
+  var buildingOther = req.session.data['buildingother']
+
+  if (buildingOther === 'no') {
+    res.redirect('building-other-fail')
+  }
+
+  else {
+    res.redirect ('drainage')
+  }
+})
+
+// Q: Drainage
+
+      router.get('/drainage', function (req, res) {
+        var backUrl = 'building-route'
+        var nextUrl = 'drainage-answer'
+        var completedUrl = 'answers'
+
+        res.render('./' + req.originalUrl, {
+          backUrl,
+          nextUrl,
+          completedUrl
+        })
+      })
+
+
+      router.post('/drainage-answer', function (req, res) {
+        var drainage = req.session.data['drainage']
+
+
+        if (drainage === 'yes') {
+            res.redirect ('draught')
+          }
+
+
+        else {
+          res.redirect('drainage-fail')
+        }
+      })
+
+
+      // Q: Drainage2
+
+            router.get('/drainage2', function (req, res) {
+              var backUrl = 'building-route'
+              var nextUrl = 'drainage2-answer'
+              var completedUrl = 'answers'
+
+              res.render('./' + req.originalUrl, {
+                backUrl,
+                nextUrl,
+                completedUrl
+              })
+            })
+
+
+            router.post('/drainage2-answer', function (req, res) {
+              var drainage2 = req.session.data['drainage2']
+
+              if (drainage2 === 'y') {
+                  res.redirect ('additional-items')
+                }
+
+
+              else {
+                res.redirect('drainage2-fail')
+              }
+            })
+
+
+
+
+// Q: Draught
+
+      router.get('/draught', function (req, res) {
+        var backUrl = 'drainage'
+        var nextUrl = 'draught-answer'
+        var completedUrl = 'answers'
+
+        res.render('./' + req.originalUrl, {
+          backUrl,
+          nextUrl,
+          completedUrl
+        })
+      })
+
+
+      router.post('/draught-answer', function (req, res) {
+        var draught = req.session.data['draught']
+
+        if (draught === 'yes') {
+          res.redirect('additional-items')
+        }
+
+        else {
+          res.redirect ('draught-fail')
+        }
+      })
+
+      // Q: Additional items
+
+      router.get('/additional-items', function (req, res) {
+        var backUrl = 'building-route'
+        var nextUrl = 'additional-items-answer'
+        var completedUrl = 'answers'
+
+        res.render('./' + req.originalUrl, {
+          backUrl,
+          nextUrl,
+          completedUrl
+        })
+      })
+
+
+      router.post('/additional-items-answer', function (req, res) {
+        var additionalItems = req.session.data['additionalitems']
+
+        if (additionalItems === 'yes') {
+          res.redirect('solar')
+        }
+
+        else {
+          res.redirect ('additional-items-fail')
+        }
+      })
+
+
+
+// Q: Solar PV
+
+router.get('/solar', function (req, res) {
+var backUrl = 'additional-items'
+var nextUrl = 'solar-answer'
+var completedUrl = 'answers'
+
+ res.render('./' + req.originalUrl, {
+backUrl,
+nextUrl,
+completedUrl
+})
+} )
+
+
+router.post('/solar-answer', function (req, res) {
+  var solar = req.session.data['solar']
+
+  if (solar === 'yes') {
+    res.redirect('project-cost')
+  }
+
+  else {
+    res.redirect ('solar-fail')
+  }
+
+})
+
+
+
+
+
+// Q: Project cost
+
+router.get('/project-cost', function (req, res) {
+  req.session.data.currentProjectCost = req.session.data['project-cost']
+
+  var backUrl = 'solar'
+  var nextUrl = 'project-cost-answer'
+  var completedUrl = 'project-cost-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/project-cost-answer', function (req, res) {
+  var projectCost = req.session.data['project-cost']
+
+  if (projectCost > 1250000 || projectCost < 87500 )  { res.redirect('project-cost-fail') } else { res.redirect('potential-grant') }
+})
+
+router.post('/project-cost-answer-completed', function (req, res) {
+  var projectCost = req.session.data['project-cost']
+
+  if (projectCost > 12500000 || projectCost < 87500  ) { res.redirect('project-cost-fail') } else { res.redirect('answers') }
+
+})
+
+
+
+
 
 
 // Q: Grant
 router.get('/potential-grant', function (req, res) {
-  var backUrl = 'project-summary'
+  var backUrl = 'project-cost'
   var nextUrl = 'remaining-costs'
   var completedUrl = 'grant-answer-completed'
 
@@ -483,7 +702,7 @@ router.get('/remaining-costs', function (req, res) {
 router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('planning-permission') }
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('remaining-costs') }
 })
 
 

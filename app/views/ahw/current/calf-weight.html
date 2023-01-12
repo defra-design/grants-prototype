@@ -27,7 +27,7 @@ Calf weight
                   name: 'calfweight',
                   fieldset: {
                       legend: {
-                          text: 'What is the average weight of calves that will be housed in the building?',
+                          text: 'What will be the weight of the largest calf?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
@@ -37,7 +37,7 @@ Calf weight
                   items: [
                 {
                   value: "99",
-                  text: "Under 100kg",
+                  text: "100kg or under",
                   checked: checked("calfweight", "99")
                 },
 
@@ -48,21 +48,14 @@ Calf weight
                 },
 
                 {
-                  value: "151 to 200",
-                  text: "Between 151kg and 200kg",
-                  checked: checked("calfweight", "151 to 200")
-                },
-
-                {
-                  value: "201",
-                  text: "More than 200kg",
-                  checked: checked("calfweight", "201")
-
+                  value: "151",
+                  text: "Over 150kg",
+                  checked: checked("calfweight", "151")
                 }
               ]
               }) }}
 
-          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
 
       </form>
@@ -73,7 +66,12 @@ Calf weight
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">Calves must weigh no more than 200kg.</p>
+          <p class="govuk-body">There must be a minimum floor area of:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>3m<sup>2</sup> per calf when largest calf is 100kg or under</li>
+              <li>4m<sup>2</sup> per calf when largest calf is under 150kg</li>
+              <li>5m<sup>2</sup> per calf when largest calf is over 150kg</li>
+            </ul>
             </div>
    </div>
 

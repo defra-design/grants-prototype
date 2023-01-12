@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Calf weight
+Straw bedding
 {% endblock %}
 
 {% block beforeContent %}
@@ -24,11 +24,11 @@ Calf weight
 
               {{ govukRadios({
                   classes: "govuk-radios--inline",
-                  idPrefix: 'calfsick',
-                  name: 'calfsick',
+                  idPrefix: 'draught',
+                  name: 'draught',
                   fieldset: {
                       legend: {
-                          text: 'Will there be facilities to temporarily isolate sick calves?',
+                          text: 'Will calves be protected from draughts?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
@@ -38,13 +38,13 @@ Calf weight
                 {
                   value: "yes",
                   text: "Yes",
-                  checked: checked("calfsick", "yes")
+                  checked: checked("draught", "yes")
                 },
 
                 {
                   value: "no",
                   text: "No",
-                  checked: checked("calfsick", "no")
+                  checked: checked("draught", "no")
                 }
 
               ]
@@ -61,9 +61,8 @@ Calf weight
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">The building must have facilities to temporarily isolate sick calves.
-            <br><br>
-            Sick calves may need to be temporarily isolated to prevent spreading disease.
+          <p class="govuk-body">All projects must have external calf-height solid walls/barriers to keep out drafts.<br><br>
+            For permanent igloos or hutches grouped together, this may mean adding solid sides to the outside pens.
           </p>
             </div>
    </div>
