@@ -13,7 +13,7 @@
     },
       html: 'This is not a full service. It is not production code and you might experience problems.'
   }) }}
-  <a class="govuk-back-link" href="change-summerabs">Back</a>
+  <a class="govuk-back-link" href="change-summerabs-yes">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -21,7 +21,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" action="irrigation-systems" method="post">
           <h1 class="govuk-heading-l">Water source</h1>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -32,17 +32,17 @@
             </legend>
 
             <div id="water-source" class="govuk-hint">
-            Select all that apply</div>
+            Select up to 2 options</div>
 
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-current-4" name="water-source-2-current" type="checkbox" value="summer abs current" {{ checked("water-source-2-current", "summer abs current") }}>
+                <input class="govuk-checkboxes__input" id="water-source-2-current-4" name="water-source-2-current" type="checkbox" value="Surface abstraction" {{ checked("water-source-2-current", "Surface abstraction") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="water-source-2-current-4">
                   Summer water surface abstraction
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-current-5" name="water-source-2-current" type="checkbox" value="mains current" {{ checked("water-source-2-current", "mains current") }}>
+                <input class="govuk-checkboxes__input" id="water-source-2-current-5" name="water-source-2-current" type="checkbox" value="mains" {{ checked("water-source-2-current", "mains") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="water-source-2-current-5">
                   Mains
                 </label>
@@ -84,13 +84,13 @@
               Select all that apply</div>
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="water-source-2-target-4" name="water-source-2-target" type="checkbox" value="summer abs target" {{ checked("water-source-2-target", "summer abs target") }}>
+                  <input class="govuk-checkboxes__input" id="water-source-2-target-4" name="water-source-2-target" type="checkbox" value="Surface abstraction" {{ checked("water-source-2-target", "Surface abstraction") }}>
                   <label class="govuk-label govuk-checkboxes__label" for="water-source-2-target-4">
                     Summer water surface abstraction
                   </label>
                 </div>
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="water-source-2-target-5" name="water-source-2-target" type="checkbox" value="mains target" {{ checked("water-source-2-target", "mains target") }}>
+                  <input class="govuk-checkboxes__input" id="water-source-2-target-5" name="water-source-2-target" type="checkbox" value="mains" {{ checked("water-source-2-target", "mains") }}>
                   <label class="govuk-label govuk-checkboxes__label" for="water-source-2-target-5">
                     Mains
                   </label>

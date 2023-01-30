@@ -381,7 +381,22 @@ router.get('/abstraction-required-condition', function (req, res) {
 
 
 
+// current irrigating
 
+router.get('/current-irrigating', function (req, res) {
+  var backUrl = 'abstraction-licence'
+  var nextUrl = 'irrigated-completed-answer'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl
+  })
+})
+
+router.get('/irrigated-completed-answer', function (req, res) {
+  var currentIrrigating = req.session.data['current-irrigating']
+  if (currentIrrigating === 'No') { res.redirect('change-summerabs') } else { res.redirect('change-summerabs-yes') }
+})
 
 
 // Change summer abstraction
@@ -393,10 +408,7 @@ router.get('/change-summerabs', function (req, res) {
 
   router.get('/change-summerabs-answer', function (req, res) {
     var changeSummerabs = req.session.data['change-summerabs']
-    var irrigation = req.session.data['current-irrigating']
-    if (changeSummerabs === 'no' && irrigation === 'Yes') { res.redirect('water-source-2') }
-    if (changeSummerabs === 'no') { res.redirect('water-source') }
-    else { res.redirect('summerabs-fail') }
+    if (changeSummerabs === 'no') { res.redirect('water-source') } else { res.redirect('summerabs-fail') }
   })
 
 
@@ -406,70 +418,6 @@ router.get('/change-summerabs', function (req, res) {
     completedUrl
   })
 })
-
-
-
-//NEW Summer abs routing
-router.get('/water-source-2', function (req, res) {
-  var backUrl = 'abstraction-license'
-  var nextUrl = 'water-source-2-answer'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-  router.get('/water-source-2-answer', function (req, res) {
-    const ws2Current = req.session.data ['water-source-2-current']
-    const ws2Target = req.session.data ['water-source-2-target']
-
-    const currentOptions1 = [
-      'summer abs current'
-    ]
-
-    const currentOptions2 = [
-      'mains current'
-    ]
-
-    const targetOptions1 = [
-      'summer abs target'
-    ]
-
-    const targetOptions2 = [
-      'mains target'
-    ]
-
-    const currentCondition1 =
-    (currentOptions1.some(item => ws2Current.includes(item)
-    ))
-
-    const targetCondition1 =
-    (targetOptions1.some(item => ws2Target.includes(item)
-    ))
-
-    const currentCondition2 =
-    (currentOptions2.some(item => ws2Current.includes(item)
-    ))
-
-    const targetCondition2 =
-    (targetOptions2.some(item => ws2Target.includes(item)
-    ))
-
-
-    if (currentCondition1 && targetCondition1) {
-      res.redirect ('summerabs-only')
-    }
-
-    if (currentCondition2 && targetCondition2) {
-      res.redirect ('mains-only')
-    }
-
-    res.redirect('irrigation-systems')
-    })
-
 
 
 // Change summer abstraction

@@ -63,5 +63,6 @@ router.use('/water/v5', require('./views/water/v5/routes/routes'))
 router.use('/water/v6', require('./views/water/v6/routes/routes'))
 router.use('/water/v7private', require('./views/water/v7private/routes/routes'))
 router.use('/water/v8public', require('./views/water/v8public/routes/routes'))
+router.use('/water/r2v2', require('./views/water/r2v2/routes/routes'))
 
 module.exports = router
