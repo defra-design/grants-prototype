@@ -8,6 +8,7 @@ const serviceName = {
     v6: 'Check if you can apply for a water resource management grant',
     v7private: 'Check if you can apply for a water resource management grant',
     v8public: 'Check if you can apply for a Farming Transformation Fund water management grant',
+    r2v2: 'Check if you can apply for a Farming Transformation Fund water management grant',
     current: 'Check if you can apply for a Water Management Grant'
   },
 
