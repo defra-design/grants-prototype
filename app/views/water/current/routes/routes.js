@@ -442,6 +442,16 @@ router.get('/water-source-2', function (req, res) {
       'mains target'
     ]
 
+    const targetOptions3 = [
+      'summer abs target',
+      'mains target'
+    ]
+
+    const currentOptions3 = [
+      'summer abs current',
+      'mains current'
+    ]
+
     const currentCondition1 =
     (currentOptions1.some(item => ws2Current.includes(item)
     ))
@@ -458,6 +468,17 @@ router.get('/water-source-2', function (req, res) {
     (targetOptions2.some(item => ws2Target.includes(item)
     ))
 
+    const currentCondition3 =
+    (currentOptions3.every(item => ws2Current.includes(item)
+    ))
+
+    const targetCondition3 =
+    (targetOptions3.every(item => ws2Target.includes(item)
+    ))
+
+    if (currentCondition3 && targetCondition3) {
+      res.redirect ('unsustainable-watersource')
+    }
 
     if (currentCondition1 && targetCondition1) {
       res.redirect ('summerabs-only')
