@@ -422,6 +422,7 @@ router.get('/water-source-2', function (req, res) {
   })
 })
 
+
   router.get('/water-source-2-answer', function (req, res) {
     const ws2Current = req.session.data ['water-source-2-current']
     const ws2Target = req.session.data ['water-source-2-target']
@@ -429,108 +430,60 @@ router.get('/water-source-2', function (req, res) {
     const currentOptions1 = [
       'summer abs current'
     ]
-
     const currentOptions2 = [
       'mains current'
     ]
-
     const targetOptions1 = [
       'summer abs target'
     ]
-
     const targetOptions2 = [
       'mains target'
     ]
-
     const targetOptions3 = [
       'summer abs target',
       'mains target'
     ]
-
     const currentOptions3 = [
       'summer abs current',
       'mains current'
     ]
 
+
     const currentCondition1 =
     (currentOptions1.some(item => ws2Current.includes(item)
     ))
-
     const targetCondition1 =
     (targetOptions1.some(item => ws2Target.includes(item)
     ))
-
     const currentCondition2 =
     (currentOptions2.some(item => ws2Current.includes(item)
     ))
-
     const targetCondition2 =
     (targetOptions2.some(item => ws2Target.includes(item)
     ))
-
     const currentCondition3 =
     (currentOptions3.every(item => ws2Current.includes(item)
     ))
-
     const targetCondition3 =
     (targetOptions3.every(item => ws2Target.includes(item)
     ))
 
+
+
     if (currentCondition3 && targetCondition3) {
       res.redirect ('unsustainable-watersource')
     }
-
     if (currentCondition1 && targetCondition1) {
       res.redirect ('summerabs-only')
     }
-
     if (currentCondition2 && targetCondition2) {
       res.redirect ('mains-only')
     }
-
     res.redirect('irrigation-systems')
     })
 
 
 
-// Change summer abstraction
-
-router.get('/change-summerabs-yes', function (req, res) {
-  var backUrl = 'current-irrigating'
-  var nextUrl = 'change-summerabs-yes-answer'
-  var completedUrl = 'answers'
-
-  router.get('/change-summerabs-yes-answer', function (req, res) {
-    var changeSummerabsYes = req.session.data['change-summerabs-yes']
-
-    if (changeSummerabsYes === 'dont use') {
-      res.redirect('water-source-1')
-    }
-    if (changeSummerabsYes === 'decrease') {
-      res.redirect('water-source-2')
-    }
-    if (changeSummerabsYes === 'stop') {
-      res.redirect('water-source-3')
-    }
-    if (changeSummerabsYes === 'intro sustainable') {
-      res.redirect('water-source-4')
-    }
-    if (changeSummerabsYes === 'maintain sustainable') {
-      res.redirect('water-source-5')
-    }
-
-  else {
-    res.redirect('summerabs-fail')
-  }
-  })
-
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
 
 
 
@@ -540,7 +493,7 @@ router.get('/water-source', function (req, res) {
   req.session.data.tempIrrigationAnswer = req.session.data.irrigationAnswer
   var backUrl = 'change-summerabs'
   var nextUrl = 'water-source-answer'
-  var completedUrl = 'irrigation-water-source-answer-completed'
+  var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -553,9 +506,7 @@ router.post('/water-source-answer', function (req, res) {
   res.redirect('irrigation-system')
 })
 
-router.post('/water-source-answer-completed', function (req, res) {
-  res.redirect('answers')
-})
+
 
 
 
