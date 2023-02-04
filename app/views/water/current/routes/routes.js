@@ -449,6 +449,8 @@ router.get('/water-source-2', function (req, res) {
     ]
 
 
+
+
     const currentCondition1 =
     (currentOptions1.some(item => ws2Current.includes(item)
     ))
@@ -467,22 +469,138 @@ router.get('/water-source-2', function (req, res) {
     const targetCondition3 =
     (targetOptions3.every(item => ws2Target.includes(item)
     ))
+    const targetCondition4 =
+    (targetOptions3.some(item => ws2Target.includes(item)
+    ))
+
 
 
 
     if (currentCondition3 && targetCondition3) {
       res.redirect ('unsustainable-watersource')
     }
-    if (currentCondition1 && targetCondition1) {
-      res.redirect ('summerabs-only')
+    if (currentCondition3 && targetCondition2) {
+      res.redirect ('mains-only')
     }
     if (currentCondition2 && targetCondition2) {
       res.redirect ('mains-only')
     }
+    if (currentCondition3 && targetCondition1) {
+      res.redirect ('summerabs-only')
+    }
+    if (currentCondition1 && targetCondition1) {
+      res.redirect ('summerabs-only')
+    }
+    if (currentCondition2 && targetCondition1) {
+      res.redirect ('water-source-2-error')
+    }
+    if (ws2Current !== 'summer abs current' && ws2Current !== 'mains current' && targetCondition4){
+      res.redirect ('water-source-2-error')
+    }
+    if (currentCondition1 && targetCondition2) {
+      res.redirect ('water-source-2-error')
+    }
+
+
     res.redirect('irrigation-systems')
     })
 
 
+
+
+    //ERROR validation
+    router.get('/water-source-2-error', function (req, res) {
+      var backUrl = 'water-source-2'
+      var nextUrl = 'water-source-2-error-answer'
+      var completedUrl = 'answers'
+
+      res.render('./' + req.originalUrl, {
+        backUrl,
+        nextUrl,
+        completedUrl
+      })
+    })
+
+    router.get('/water-source-2-error-answer', function (req, res) {
+      const ws2Current = req.session.data ['water-source-2-current']
+      const ws2Target = req.session.data ['water-source-2-target']
+
+      const currentOptions1 = [
+        'summer abs current'
+      ]
+      const currentOptions2 = [
+        'mains current'
+      ]
+      const targetOptions1 = [
+        'summer abs target'
+      ]
+      const targetOptions2 = [
+        'mains target'
+      ]
+      const targetOptions3 = [
+        'summer abs target',
+        'mains target'
+      ]
+      const currentOptions3 = [
+        'summer abs current',
+        'mains current'
+      ]
+
+
+
+      const currentCondition1 =
+      (currentOptions1.some(item => ws2Current.includes(item)
+      ))
+      const targetCondition1 =
+      (targetOptions1.some(item => ws2Target.includes(item)
+      ))
+      const currentCondition2 =
+      (currentOptions2.some(item => ws2Current.includes(item)
+      ))
+      const targetCondition2 =
+      (targetOptions2.some(item => ws2Target.includes(item)
+      ))
+      const currentCondition3 =
+      (currentOptions3.every(item => ws2Current.includes(item)
+      ))
+      const targetCondition3 =
+      (targetOptions3.every(item => ws2Target.includes(item)
+      ))
+      const targetCondition4 =
+      (targetOptions3.some(item => ws2Target.includes(item)
+      ))
+
+
+      if (currentCondition3 && targetCondition3) {
+        res.redirect ('unsustainable-watersource')
+      }
+      if (currentCondition3 && targetCondition2) {
+        res.redirect ('mains-only')
+      }
+      if (currentCondition2 && targetCondition2) {
+        res.redirect ('mains-only')
+      }
+      if (currentCondition3 && targetCondition1) {
+        res.redirect ('summerabs-only')
+      }
+      if (currentCondition1 && targetCondition1) {
+        res.redirect ('summerabs-only')
+      }
+      if (currentCondition2 && targetCondition1) {
+        res.redirect ('water-source-2-error')
+      }
+      if (ws2Current !== 'summer abs current' && ws2Current !== 'mains current' && targetCondition4){
+        res.redirect ('water-source-2-error')
+      }
+      if (currentCondition1 && targetCondition2) {
+        res.redirect ('water-source-2-error')
+      }
+      if (currentCondition1 && targetCondition1) {
+        res.redirect ('summerabs-only')
+      }
+
+      res.redirect('irrigation-systems')
+      })
 
 
 
