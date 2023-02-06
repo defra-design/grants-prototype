@@ -428,24 +428,24 @@ router.get('/water-source-2', function (req, res) {
     const ws2Target = req.session.data ['water-source-2-target']
 
     const currentOptions1 = [
-      'summer abs current'
+      'Summer abstraction'
     ]
     const currentOptions2 = [
-      'mains current'
+      'Mains'
     ]
     const targetOptions1 = [
-      'summer abs target'
+      'Summer abstraction'
     ]
     const targetOptions2 = [
-      'mains target'
+      'Mains'
     ]
     const targetOptions3 = [
-      'summer abs target',
-      'mains target'
+      'Summer abstraction',
+      'Mains'
     ]
     const currentOptions3 = [
-      'summer abs current',
-      'mains current'
+      'Summer abstraction',
+      'Mains'
     ]
 
 
@@ -494,7 +494,7 @@ router.get('/water-source-2', function (req, res) {
     if (currentCondition2 && targetCondition1) {
       res.redirect ('water-source-2-error')
     }
-    if (ws2Current !== 'summer abs current' && ws2Current !== 'mains current' && targetCondition4){
+    if (ws2Current !== 'Summer abstraction' && ws2Current !== 'Mains' && targetCondition4){
       res.redirect ('water-source-2-error')
     }
     if (currentCondition1 && targetCondition2) {
@@ -526,24 +526,24 @@ router.get('/water-source-2', function (req, res) {
       const ws2Target = req.session.data ['water-source-2-target']
 
       const currentOptions1 = [
-        'summer abs current'
+        'Summer abstraction'
       ]
       const currentOptions2 = [
-        'mains current'
+        'Mains'
       ]
       const targetOptions1 = [
-        'summer abs target'
+        'Summer abstraction'
       ]
       const targetOptions2 = [
-        'mains target'
+        'Mains'
       ]
       const targetOptions3 = [
-        'summer abs target',
-        'mains target'
+        'Summer abstraction',
+        'Mains'
       ]
       const currentOptions3 = [
-        'summer abs current',
-        'mains current'
+        'Summer abstraction',
+        'Mains'
       ]
 
 
@@ -574,6 +574,7 @@ router.get('/water-source-2', function (req, res) {
       if (currentCondition3 && targetCondition3) {
         res.redirect ('unsustainable-watersource')
       }
+
       if (currentCondition3 && targetCondition2) {
         res.redirect ('mains-only')
       }
@@ -583,13 +584,17 @@ router.get('/water-source-2', function (req, res) {
       if (currentCondition3 && targetCondition1) {
         res.redirect ('summerabs-only')
       }
+
+
+
+
       if (currentCondition1 && targetCondition1) {
         res.redirect ('summerabs-only')
       }
       if (currentCondition2 && targetCondition1) {
         res.redirect ('water-source-2-error')
       }
-      if (ws2Current !== 'summer abs current' && ws2Current !== 'mains current' && targetCondition4){
+      if (ws2Current !== 'Summer abstraction' && ws2Current !== 'Mains' && targetCondition4){
         res.redirect ('water-source-2-error')
       }
       if (currentCondition1 && targetCondition2) {
@@ -647,17 +652,11 @@ router.get('/irrigation-system', function (req, res) {
 router.get('/irrigation-systems', function (req, res) {
   var data1 = req.session.data['water-source-1-current']
   var data2 = req.session.data['water-source-2-current']
-  var data3 = req.session.data['water-source-3-current']
-  var data4 = req.session.data['water-source-4-current']
-  var data5 = req.session.data['water-source-5-current']
   var backUrl
   var nextUrl = 'irrigated-crops'
   var completedUrl = 'answers'
-  if (data1) { backUrl = 'water-source-1' }
   if (data2) { backUrl = 'water-source-2' }
-  if (data3) { backUrl = 'water-source-3' }
-  if (data4) { backUrl = 'water-source-4' }
-  if (data5) { backUrl = 'water-source-5' }
+
 
   res.render('./' + req.originalUrl, {
     backUrl,
