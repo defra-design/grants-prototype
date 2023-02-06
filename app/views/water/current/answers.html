@@ -190,11 +190,17 @@
 
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Irrigated land
-                <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+                  <ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+
                     {% if data['current-irrigating'] === "Yes" %}
+                    <br><p class="govuk-!-font-size-16"><strong>Current</strong></p>
                     <ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
 
                       <li>{{ data['irrigated-land-current'] }} hectares</li>
+                        </ul>
+                          <p class="govuk-!-font-size-16"><strong>Future</strong></p>
+                          <ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"></ul>
+
                       <li>{{ data['irrigated-land-target'] }} hectares</li>
                     </ul>
                     {% else %}
