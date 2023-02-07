@@ -479,6 +479,9 @@ router.get('/water-source-2', function (req, res) {
     if (currentCondition3 && targetCondition3) {
       res.redirect ('unsustainable-watersource')
     }
+    if (currentCondition2 && targetCondition3) {
+      res.redirect ('water-source-2-error')
+    }
     if (currentCondition3 && targetCondition2) {
       res.redirect ('mains-only')
     }
@@ -488,9 +491,14 @@ router.get('/water-source-2', function (req, res) {
     if (currentCondition3 && targetCondition1) {
       res.redirect ('summerabs-only')
     }
+    if (currentCondition1 && targetCondition3) {
+      res.redirect ('water-source-2-error')
+    }
+
     if (currentCondition1 && targetCondition1) {
       res.redirect ('summerabs-only')
     }
+
     if (currentCondition2 && targetCondition1) {
       res.redirect ('water-source-2-error')
     }
@@ -574,7 +582,9 @@ router.get('/water-source-2', function (req, res) {
       if (currentCondition3 && targetCondition3) {
         res.redirect ('unsustainable-watersource')
       }
-
+      if (currentCondition2 && targetCondition3) {
+        res.redirect ('water-source-2-error')
+      }
       if (currentCondition3 && targetCondition2) {
         res.redirect ('mains-only')
       }
@@ -584,13 +594,14 @@ router.get('/water-source-2', function (req, res) {
       if (currentCondition3 && targetCondition1) {
         res.redirect ('summerabs-only')
       }
-
-
-
+      if (currentCondition1 && targetCondition3) {
+        res.redirect ('water-source-2-error')
+      }
 
       if (currentCondition1 && targetCondition1) {
         res.redirect ('summerabs-only')
       }
+
       if (currentCondition2 && targetCondition1) {
         res.redirect ('water-source-2-error')
       }
@@ -600,9 +611,7 @@ router.get('/water-source-2', function (req, res) {
       if (currentCondition1 && targetCondition2) {
         res.redirect ('water-source-2-error')
       }
-      if (currentCondition1 && targetCondition1) {
-        res.redirect ('summerabs-only')
-      }
+
 
       res.redirect('irrigation-systems')
       })
