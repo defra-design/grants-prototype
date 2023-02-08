@@ -364,8 +364,11 @@ router.post('/abstraction-licence-answer-completed', function (req, res) {
   if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') {
     res.redirect('current-irrigating')
   }
-
-  res.redirect('abstraction-required-condition')
+  if (abstractionLicence === 'should') {
+    res.redirect('abstraction-required-condition')
+  }
+else
+  res.redirect('abstraction-license-fail')
 })
 
 // ABSTRACTION LICENCE CONDITION
