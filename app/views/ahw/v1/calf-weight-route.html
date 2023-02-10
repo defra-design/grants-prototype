@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+About the project
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="calf-weight">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+
+        {% if data['calfweight'] === '99'  %}
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "sqm1",
+          fieldset: {
+            legend: {
+              html: "Will each calf have at least 3m<sup>2</sup> living space?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: checked("sqm1", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("sqm1", "no")
+          }
+          ]
+        }) }}
+
+
+
+        {% elseif data['calfweight'] === '100 to 150'  %}
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "sqm2",
+          fieldset: {
+            legend: {
+              html: "Will each calf have at least 4m<sup>2</sup> living space?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: checked("sqm2", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("sqm2", "no")
+          }
+          ]
+        }) }}
+        {% else %}
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "sqm3",
+          fieldset: {
+            legend: {
+              html: "Will each calf have at least 5m<sup>2</sup> living space?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: checked("sqm3", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("sqm3", "no")
+          }
+          ]
+        }) }}
+{% endif %}
+
+
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+
+
+          <p class="govuk-body">
+            {% if data['calfweight'] === '99'  %}
+            Calves weighing up to 100kg must have at least 3m<sup>2</sup> living space.
+            {% elseif data['calfweight'] === '100 to 150' %}
+            Calves weighing between 100kg and 150kg must have at least 4m<sup>2</sup> living space.
+
+            {% else %}
+            Calves weighing over 150kg must have at least 5m<sup>2</sup> living space.
+
+            {% endif %}
+
+            </p>
+
+     </div>
+   </div>
+{% endblock %}
