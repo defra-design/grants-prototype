@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+About the project
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'projectabout',
+                  name: 'projectabout',
+                  fieldset: {
+                      legend: {
+                          text: 'What is your project?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+
+                  items: [
+                {
+                  value: "new",
+                  text: "Building new calf housing",
+                  checked: checked("projectabout", "new")
+                },
+
+                {
+                  value: "refurb",
+                  text: "Refurbishing or extending existing calf housing",
+                  checked: checked("projectabout", "refurb")
+                },
+
+
+                {
+                  divider: "or"
+                },
+                {
+                  value: "else",
+                  text: "Something else",
+                  behaviour: "exclusive",
+                  checked: checked("projectabout", "else")
+
+                }
+              ]
+              }) }}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">This grant is for:</p>
+            <ul class="govuk-list govuk-list--bullet"><li>building new calf housing</li>
+              <li>refurbishing or extending existing calf housing</li>
+              </ul>
+
+
+     </div>
+   </div>
+
+{% endblock %}

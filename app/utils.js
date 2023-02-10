@@ -13,7 +13,8 @@ const serviceName = {
   },
 
   ahw: {
-    current: 'Check if you can apply for an Upgrading Cattle Housing Grant'
+    current: 'Check if you can apply for an Upgrading Cattle Housing Grant',
+    v1: 'Check if you can apply for an Upgrading Cattle Housing Grant'
   },
 
 slurrystorage: {

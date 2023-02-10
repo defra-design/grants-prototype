@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Project and business details
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
+
+        <h1 class="govuk-heading-l">
+          Business details
+        </h1>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="project-name">
+              Project name
+          </label>
+          <div class="govuk-hint">For example, Browns Hill Farm calf housing project</div>
+          <input class="govuk-input" id="project-name" name="project-name" type="text" value="{{ data['project-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="business-name">
+              Business name
+          </label>
+          <div class="govuk-hint">If you’re registered on the Rural Payments system, enter business name as registered</div>
+          <input class="govuk-input" id="business-name" name="business-name" type="text" value="{{ data['business-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="employees">
+              Number of employees
+          </label>
+          <div class="govuk-hint">Full-time employees, including the owner</div>
+          <input class="govuk-input govuk-input--width-4" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="turnover">
+              Business turnover (£)
+          </label>
+          <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-!-width-one-third" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
+          </div>
+        </div>
+
+             <div class="govuk-form-group">
+                   <fieldset class="govuk-fieldset" aria-describedby="sbi-hint">
+                     <legend class="govuk-fieldset__legend">
+                       <h1 class="govuk-fieldset__heading">
+                         Single Business Identifier (SBI) - optional
+                     </legend>
+                     <div id="contact-hint" class="govuk-hint">
+                       If you do not have an SBI, you will need to get one for full application
+                     </div>
+                      <input class="govuk-input govuk-!-width-one-third" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
+                    </fieldset>
+                    </div>
+
+                    {{ govukSelect({
+                      id: "calving-system",
+                      name: "calving-system",
+                      label: {
+                        text: "Calving system (optional)"
+                      },
+                      items: [
+                      {
+                        value: "Select item",
+                        text: "Select item",
+                        checked: checked("calving-system", "Select item"),
+                        selected: true
+                      },
+                        {
+                          value: "Year round",
+                          text: "Year round",
+                          checked: checked("calving-system", "Year round")
+                        },
+                        {
+                          value: "Spring block",
+                          text: "Spring block",
+                          checked: checked("calving-system", "Spring block")
+                        },
+                        {
+                          value: "Autumn block",
+                          text: "Autumn block",
+                          checked: checked("calving-system", "Autumn block")
+                        },
+                        {
+                          value: "Other",
+                          text: "Other",
+                          checked: checked("calving-system", "Other")
+                        }
+
+                      ]
+                    }) }}
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="employees">
+                          Number of calves (optional)
+                      </label>
+                      <div class="govuk-hint">Maximum number of calves housed annually after project</div>
+                      <input class="govuk-input govuk-input--width-4" id="calveshoused" name="calveshoused" type="text" spellcheck="false" aria-describedby="calveshoused-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['calveshoused'] }}">
+                    </div>
+
+
+
+
+
+                     </div>
+
+             </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% if data['DETAILS'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk" data-module="govuk-button"
+          >
+            Back to details
+          </button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
