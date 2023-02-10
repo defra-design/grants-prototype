@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Type of farmer
+Reduce disease
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,11 +23,11 @@ Type of farmer
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukCheckboxes({
-                  idPrefix: 'farmertype',
-                  name: 'farmertype',
+                  idPrefix: 'reduce-disease',
+                  name: 'reduce-disease',
                   fieldset: {
                       legend: {
-                          text: 'What type of farmer are you?',
+                          text: 'How will your building reduce disease transmission between calf groups?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
@@ -38,21 +38,17 @@ Type of farmer
 
                   items: [
                 {
-                  value: "dairy",
-                  text: "Dairy farmer",
-                  checked: checked("farmertype", "dairy")
+                  value: "Housing 50 calves or less per building",
+                  text: "Housing 50 calves or less per building",
+                  checked: checked("reduce-disease", "Housing 50 calves or less per building")
                 },
 
                 {
-                  value: "beef",
-                  text: "Beef farmer",
-                  checked: checked("farmertype", "beef")
+                  value: "Providing solid walls or divides between calf pens",
+                  text: "Providing solid walls or divides between calf pens",
+                  checked: checked("reduce-disease", "Providing solid walls or divides between calf pens")
                 },
-                {
-                  value: "mixed",
-                  text: "Mixed farmer (cattle and arable)",
-                  checked: checked("farmertype", "mixed")
-                },
+
 
                 {
                   divider: "or"
@@ -61,13 +57,18 @@ Type of farmer
                   value: "None of the above",
                   text: "None of the above",
                   behaviour: "exclusive",
-                  checked: checked("farmertype", "None of the above")
+                  checked: checked("reduce-disease", "None of the above")
 
                 }
               ]
               }) }}
 
           <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+          {% if data['COMPLETED'] == true %}
+            <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+              class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
+            </button>
+          {% endif %}
 
 
       </form>
@@ -76,12 +77,10 @@ Type of farmer
 
       <div class="app-step-nav-related app-step-nav-related--singular">
         <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
           </h2>
-          <p class="govuk-body">This grant is for:</p>
-            <ul class="govuk-list govuk-list--bullet"><li>building new calf housing</li>
-              <li>refurbishing or extending existing calf housing</li>
-              </ul>
+          <p class="govuk-body">RPA wants to fund projects that reduce disease transmission between calf groups.</p>
+
      </div>
    </div>
 
