@@ -1,9 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-const serviceName = 'Check if you can apply for a Farming Transformation Fund slurry acidification grant'
+const serviceName = 'Service name not here defined'
 
-const { storeTypeCost, coverTypeCost, projectItemsCost } = require('../../utils')
 
 //console.log('Service name: ' + serviceName)
 
@@ -27,7 +26,7 @@ router.get('/start', function (req, res) {
 router.get('/farmer-type', function (req, res) {
   var backUrl = 'start'
   var nextUrl = 'farmer-type-answer'
-  var completedUrl = 'farmer-type-answer-completed'
+  var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -56,7 +55,7 @@ router.post('/farmer-type-answer', function (req, res) {
 router.get('/legal-status', function (req, res) {
   var backUrl = 'farmer-type'
   var nextUrl = 'legal-status-answer'
-  var completedUrl = 'legal-status-answer-completed'
+  var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -84,7 +83,7 @@ router.post('/legal-status-answer-completed', function (req, res) {
 router.get('/country', function (req, res) {
   var backUrl = 'legal-status'
   var nextUrl = 'country-answer'
-  var completedUrl = 'country-answer-completed'
+  var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -143,10 +142,12 @@ router.post('/planning-permission-answer', function (req, res) {
 router.get('/planning-required-condition', function (req, res) {
   var backUrl = 'planning-permission'
   var nextUrl = 'project-start'
+  var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
-    nextUrl
+    nextUrl,
+    completedUrl
   })
 })
 
@@ -158,7 +159,7 @@ router.get('/project-start', function (req, res) {
 
   var backUrl = 'planning-permission'
   var nextUrl = 'project-start-answer'
-  var completedUrl = 'project-start-answer-completed'
+  var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -645,7 +646,8 @@ router.get('/project-cost', function (req, res) {
 
   var backUrl = 'solar'
   var nextUrl = 'project-cost-answer'
-  var completedUrl = 'project-cost-answer-completed'
+  var completedUrl = 'answers'
+
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -676,7 +678,7 @@ router.post('/project-cost-answer-completed', function (req, res) {
 router.get('/potential-grant', function (req, res) {
   var backUrl = 'project-cost'
   var nextUrl = 'remaining-costs'
-  var completedUrl = 'grant-answer-completed'
+  var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -690,7 +692,7 @@ router.get('/potential-grant', function (req, res) {
 router.get('/remaining-costs', function (req, res) {
   var backUrl = 'potential-grant'
   var nextUrl = 'remaining-costs-answer'
-  var completedUrl = 'remaining-costs-answer-completed'
+  var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
@@ -702,13 +704,122 @@ router.get('/remaining-costs', function (req, res) {
 router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('remaining-costs') }
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('housing') }
 })
 
 
-// answers
 
+
+
+// SCORING JOURNEY - Q1 Housing
+router.get('/housing', function (req, res) {
+  var backUrl = 'remaining-costs'
+  var nextUrl = 'reduce-disease'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+// SCORING JOURNEY - Q2 Reduce disease
+router.get('/reduce-disease', function (req, res) {
+  var backUrl = 'housing'
+  var nextUrl = 'moisture'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// SCORING JOURNEY - Q3 Moisture
+router.get('/moisture', function (req, res) {
+  var backUrl = 'reduce-disease'
+  var nextUrl = 'sick-pen'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// SCORING JOURNEY - Q4 Sick pen
+router.get('/sick-pen', function (req, res) {
+  var backUrl = 'moisture'
+  var nextUrl = 'floor-size'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// SCORING JOURNEY - Q5 Floor size
+router.get('/floor-size', function (req, res) {
+  var backUrl = 'sick-pen'
+  var nextUrl = 'environmental-impact'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// SCORING JOURNEY - Q6 Environmental impact
+router.get('/environmental-impact', function (req, res) {
+  var backUrl = 'floor-size'
+  var nextUrl = 'sustainable-materials'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// SCORING JOURNEY - Q7 Sustainable materials
+router.get('/sustainable-materials', function (req, res) {
+  var backUrl = 'environmental-impact'
+  var nextUrl = 'innovation'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// SCORING JOURNEY - Q8 Innovation
+router.get('/innovation', function (req, res) {
+  var backUrl = 'sustainable-materials'
+  var nextUrl = 'answers'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+// Score results - Answers
 router.get('/answers', function (req, res) {
+  req.session.data.COMPLETED = true
 
   var backUrl = 'answers-back'
   var nextUrl = 'business'
@@ -721,13 +832,13 @@ router.get('/answers', function (req, res) {
 
 router.get('/answers-back', function (req, res) {
   req.session.data.COMPLETED = false
-  res.redirect('evidence-summary')
+  res.redirect('innovation')
 })
 
 // business
 
 router.get('/business', function (req, res) {
-  var backUrl = 'tenancy'
+  var backUrl = 'answers'
   var nextUrl = 'applying'
   var detailsUrl = 'check-details'
 

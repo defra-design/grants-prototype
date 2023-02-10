@@ -66,19 +66,68 @@
                    <fieldset class="govuk-fieldset" aria-describedby="sbi-hint">
                      <legend class="govuk-fieldset__legend">
                        <h1 class="govuk-fieldset__heading">
-                         Single Business Identifier (SBI) - Optional
+                         Single Business Identifier (SBI) - optional
                      </legend>
                      <div id="contact-hint" class="govuk-hint">
                        If you do not have an SBI, you will need to get one for full application
                      </div>
                       <input class="govuk-input govuk-!-width-one-third" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
-</fieldset>
+                    </fieldset>
                     </div>
+
+                    {{ govukSelect({
+                      id: "calving-system",
+                      name: "calving-system",
+                      label: {
+                        text: "Calving system (optional)"
+                      },
+                      items: [
+                      {
+                        value: "Select item",
+                        text: "Select item",
+                        checked: checked("calving-system", "Select item"),
+                        selected: true
+                      },
+                        {
+                          value: "Year round",
+                          text: "Year round",
+                          checked: checked("calving-system", "Year round")
+                        },
+                        {
+                          value: "Spring block",
+                          text: "Spring block",
+                          checked: checked("calving-system", "Spring block")
+                        },
+                        {
+                          value: "Autumn block",
+                          text: "Autumn block",
+                          checked: checked("calving-system", "Autumn block")
+                        },
+                        {
+                          value: "Other",
+                          text: "Other",
+                          checked: checked("calving-system", "Other")
+                        }
+
+                      ]
+                    }) }}
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="employees">
+                          Number of calves (optional)
+                      </label>
+                      <div class="govuk-hint">Maximum number of calves housed annually after project</div>
+                      <input class="govuk-input govuk-input--width-4" id="calveshoused" name="calveshoused" type="text" spellcheck="false" aria-describedby="calveshoused-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['calveshoused'] }}">
+                    </div>
+
+
+
+
 
                      </div>
 
              </div>
-    
+
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
         </button>
