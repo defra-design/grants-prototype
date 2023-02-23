@@ -319,7 +319,7 @@ router.get('/remaining-costs', function (req, res) {
 router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
 
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('water-SSSI') }
+  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('abstraction-licence') }
 })
 
 router.post('/remaining-costs-answer-completed', function (req, res) {
@@ -342,19 +342,7 @@ router.get('/water-SSSI', function (req, res) {
   })
 })
 
-// ABSTRACTION LICENCE
 
-router.get('/abstraction-licence', function (req, res) {
-  var backUrl = 'water-SSSI'
-  var nextUrl = 'abstraction-licence-answer-completed'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
 
 // ABSTRACTION LICENCE COMPLETED
 
