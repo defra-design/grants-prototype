@@ -34,11 +34,18 @@
 
         {% else %}
         Calves weighing over 150kg must have at least 5m<sup>2</sup> living space.
-        
+
         {% endif %}
 
         </p>
 
+        {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  html: "This includes the lying, standing and feeding/drinking areas."
+}) }}
+
+<p class="govuk-body">The required space-per-calf for each group or pair may change over time so the housing design should account for this.</p>
 
       <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-link govuk-link--no-visited-state"> See other grants you may be eligible for.</a></p>
       </div>

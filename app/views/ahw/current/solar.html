@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Straw bedding
+Solar
 {% endblock %}
 
 {% block beforeContent %}
@@ -33,6 +33,17 @@ Straw bedding
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
+                  hint: {
+                    html: "The roof must be able to support solar PV panels, allowing for potential use in the future, unless:<br><br>
+                    <li>the building is listed or on a world heritage site</li>
+                    <li>you're upgrading an existing building and would not otherwise make changes to the roof</li>
+                    <li>the roof faces only north or is heavily shaded</li>
+                    <li>the roof does not have 20m2 of clear roof space</li>
+                    <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li><br>
+                    Structural calculations by a building expert, contractor or structural engineer need to be provided at full application.
+                    "
+                  },
+
 
                   items: [
                 {
@@ -50,6 +61,10 @@ Straw bedding
               ]
               }) }}
 
+
+
+
+
           <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
 
@@ -63,6 +78,16 @@ Straw bedding
           </h2>
           <p class="govuk-body">The roof must be able to support solar PV panels, allowing for potential use in the future.
           </p>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                What the grant will fund
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              The cost of purchasing or installing solar PV panels is not funded by this grant.<br><br>Structural assessment and certification of a building’s capacity to structurally support solar panels is funded.
+            </div>
+          </details>
             </div>
    </div>
 
