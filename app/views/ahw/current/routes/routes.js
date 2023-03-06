@@ -347,41 +347,17 @@ router.post('/project-about-answer', function (req, res) {
           res.redirect('calf-sick-fail')
         }
         else {
-          res.redirect ('flooring-type')
-        }
-})
-
-// Q: Flooring type
-
-      router.get('/flooring-type', function (req, res) {
-        var backUrl = 'calf-sick'
-        var nextUrl = 'flooring-type-answer'
-        var completedUrl = 'answers'
-
-        res.render('./' + req.originalUrl, {
-          backUrl,
-          nextUrl,
-          completedUrl
-        })
-      })
-
-
-      router.post('/flooring-type-answer', function (req, res) {
-        var flooringType = req.session.data['flooringtype']
-
-        if (flooringType === 'no') {
-          res.redirect('flooring-type-fail')
-        }
-        else {
           res.redirect ('straw-bedding')
         }
 })
 
 
+
+
 // Q: Straw bedding
 
       router.get('/straw-bedding', function (req, res) {
-        var backUrl = 'flooring-type'
+        var backUrl = 'calf-sick'
         var nextUrl = 'straw-bedding-answer'
         var completedUrl = 'answers'
 
@@ -400,17 +376,43 @@ router.post('/project-about-answer', function (req, res) {
           res.redirect('straw-bedding-fail')
         }
         else {
-          res.redirect ('enrichment')
+          res.redirect ('flooring-type')
         }
 
 
+      })
+
+      // Q: Flooring type
+
+            router.get('/flooring-type', function (req, res) {
+              var backUrl = 'straw-bedding'
+              var nextUrl = 'flooring-type-answer'
+              var completedUrl = 'answers'
+
+              res.render('./' + req.originalUrl, {
+                backUrl,
+                nextUrl,
+                completedUrl
+              })
+            })
+
+
+            router.post('/flooring-type-answer', function (req, res) {
+              var flooringType = req.session.data['flooringtype']
+
+              if (flooringType === 'no') {
+                res.redirect('flooring-type-fail')
+              }
+              else {
+                res.redirect ('enrichment')
+              }
       })
 
 
       // Q: Enrichment
 
             router.get('/enrichment', function (req, res) {
-              var backUrl = 'straw-bedding'
+              var backUrl = 'flooring-type'
               var nextUrl = 'enrichment-answer'
               var completedUrl = 'answers'
 
@@ -597,7 +599,7 @@ router.post('/building-other-answer', function (req, res) {
         var additionalItems = req.session.data['additionalitems']
 
         if (additionalItems === 'yes') {
-          res.redirect('solar')
+          res.redirect('lighting')
         }
 
         else {
@@ -606,11 +608,40 @@ router.post('/building-other-answer', function (req, res) {
       })
 
 
+      // Q: Lighting
+
+      router.get('/lighting', function (req, res) {
+      var backUrl = 'additional-items'
+      var nextUrl = 'lighting-answer'
+      var completedUrl = 'answers'
+
+       res.render('./' + req.originalUrl, {
+      backUrl,
+      nextUrl,
+      completedUrl
+      })
+      } )
+
+
+      router.post('/lighting-answer', function (req, res) {
+        var lighting = req.session.data['lighting']
+
+        if (lighting === 'yes') {
+          res.redirect('solar')
+        }
+
+        else {
+          res.redirect ('lighting-fail')
+        }
+
+      })
+
+
 
 // Q: Solar PV
 
 router.get('/solar', function (req, res) {
-var backUrl = 'additional-items'
+var backUrl = 'lighting'
 var nextUrl = 'solar-answer'
 var completedUrl = 'answers'
 
