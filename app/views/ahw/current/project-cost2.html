@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What are your estimate total project costs?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-heading-l">What is the total estimated cost of the calf housing?</h1>
+          <div class="govuk-hint">
+
+
+            You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £20,000 (40% of 50,000). The maximum grant is £500,000.
+            <br><br><span class="govuk-body govuk-hint">This grant is for:</span><br><br>
+            <ul class="govuk-list govuk-list--bullet govuk-hint"><li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
+              <li>fixtures, including calf accommodation pens, calf isolation facilities, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
+              <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
+              <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
+              </ul>
+
+            <br/>Do not include VAT
+          </div>
+
+
+          <span class="govuk-caption-m">Enter amount, for example 95,000</span>
+          <div class="govuk-input__wrapper govuk-!-margin-top-4">
+          <span  class="govuk-input__prefix" aria-hidden="true">£</span> <input class="govuk-input govuk-input--width-10" id="project-cost" name="project-cost" type="text" spellcheck="false" aria-describedby="project-cost-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['project-cost'] }}">
+
+          </div>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">What the grant will not fund</span>
+          </h2>
+
+<p class="govuk-body">Movable items (for example buckets) and ongoing costs (for example straw) will not be funded.</p>
+
+
+
+
+
+        </div>
+      </div>
+{% endblock %}
