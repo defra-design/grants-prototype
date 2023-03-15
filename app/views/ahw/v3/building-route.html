@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Calf weight
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'buildingroute',
+                  name: 'buildingroute',
+                  fieldset: {
+                      legend: {
+                          text: 'What type of structure is your building?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+
+                  items: [
+                {
+                  value: "aframe",
+                  text: "A-frame building",
+                  checked: checked("buildingroute", "aframe")
+                },
+
+                {
+                  value: "monopitch",
+                  text: "Mono-pitch building",
+                  checked: checked("buildingroute", "monopitch")
+                },
+
+                {
+                  value: "igloo",
+                  text: "A permanent open-sided structure with igloos/hutches",
+                  checked: checked("buildingroute", "igloo")
+                },
+
+                {
+                  value: "other",
+                  text: "Other",
+                  checked: checked("buildingroute", "other")
+
+                }
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">All buildings must be permanent structures.</p>
+
+
+            </div>
+   </div>
+
+{% endblock %}

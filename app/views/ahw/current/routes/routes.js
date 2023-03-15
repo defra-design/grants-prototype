@@ -745,7 +745,7 @@ router.post('/remaining-costs-answer', function (req, res) {
 // SCORING JOURNEY - Q1 Housing
 router.get('/housing', function (req, res) {
   var backUrl = 'remaining-costs'
-  var nextUrl = 'reduce-disease'
+  var nextUrl = 'calf-size'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -755,10 +755,35 @@ router.get('/housing', function (req, res) {
   })
 })
 
-
-// SCORING JOURNEY - Q2 Reduce disease
-router.get('/reduce-disease', function (req, res) {
+// SCORING JOURNEY - Q2 Calf size
+router.get('/calf-size', function (req, res) {
   var backUrl = 'housing'
+  var nextUrl = 'max-calf-housed'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// SCORING JOURNEY - Q3 Maximum calves housed
+router.get('/max-calf-housed', function (req, res) {
+  var backUrl = 'calf-size'
+  var nextUrl = 'automatic-calf-feeder'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// SCORING JOURNEY - Q4 Automatic calf feeder
+router.get('/automatic-calf-feeder', function (req, res) {
+  var backUrl = 'max-calf-housed'
   var nextUrl = 'moisture'
   var completedUrl = 'answers'
 
@@ -769,9 +794,10 @@ router.get('/reduce-disease', function (req, res) {
   })
 })
 
+
 // SCORING JOURNEY - Q3 Moisture
 router.get('/moisture', function (req, res) {
-  var backUrl = 'reduce-disease'
+  var backUrl = 'automatic-calf-feeder'
   var nextUrl = 'sick-pen'
   var completedUrl = 'answers'
 

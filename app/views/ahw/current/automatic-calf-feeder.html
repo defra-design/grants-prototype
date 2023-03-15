@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Automatic Calf feeder
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'automatic-calf-feeder',
+                  name: 'automatic-calf-feeder',
+                  fieldset: {
+                      legend: {
+                          text: 'How many calves will you have per automatic feeder?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+
+                  items: [
+                {
+                  value: "1 to 6",
+                  text: "1 to 6",
+                  checked: checked("automatic-calf-feeder", "1 to 6")
+                },
+
+                {
+                  value: "6 to 8",
+                  text: "6 to 8",
+                  checked: checked("automatic-calf-feeder", "6 to 8")
+                },
+                {
+                  value: "8 to 10",
+                  text: "8 to 10",
+                  checked: checked("automatic-calf-feeder", "8 to 10")
+                },
+                {
+                  value: "10 to 12",
+                  text: "10 to 12",
+                  checked: checked("automatic-calf-feeder", "10 to 12")
+                },
+
+                {
+                  value: "Over 12",
+                  text: "Over 12",
+                  checked: checked("automatic-calf-feeder", "Over 12")
+
+                },
+
+                {
+                  divider: "or"
+                },
+
+                {
+                  value: "We do not use an automatic feeder",
+                  text: "We do not use an automatic feeder",
+                  checked: checked("automatic-calf-feeder", "We do not use an automatic feeder")
+
+                }
+
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+          {% if data['COMPLETED'] == true %}
+            <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+              class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
+            </button>
+          {% endif %}
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund projects that have 1 to 6 calves per feeder. </p>
+
+
+     </div>
+   </div>
+
+{% endblock %}
