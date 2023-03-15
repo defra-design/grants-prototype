@@ -20,21 +20,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-                  {% if data['calfweight'] === '99'  %}
-                    <h1 class="govuk-label-wrapper govuk-!-padding-bottom-2">
-                      <label class="govuk-label govuk-label--l" for="calf-floor-size">Floor area when the largest calf is 100kg or under</label>
-                    </h1>
-                  {% elseif data['calfweight'] === '100 to 150'  %}
-                  <h1 class="govuk-label-wrapper govuk-!-padding-bottom-2">
-                    <label class="govuk-label govuk-label--l" for="calf-floor-size">Floor area when the largest calf is between 100kg and 150kg</label>
-                  </h1>
-                  {% else %}
-                  <h1 class="govuk-label-wrapper govuk-!-padding-bottom-2">
-                    <label class="govuk-label govuk-label--l" for="calf-floor-size">Floor area when the largest calf is over 150kg</label>
-                  </h1>
-                {% endif%}
 
-                <p class="govuk-heading-m">How much space will each calf have?</p>
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--l" for="calf-floor-size">How much space will each calf have?</label>
+                </h1>
+                
 
                 <div class="govuk-body">
                   <p id="calf-floor-size-hint" class="govuk-hint">

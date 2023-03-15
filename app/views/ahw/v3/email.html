@@ -1,0 +1,182 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+{% endblock %}
+
+{% block pageTitle %}
+  email
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-body">
+        <h1 class="govuk-heading-l">Farming Transformation Fund slurry acidification grant  </h1>
+        {% if data['applicant'] == "Farmer" %}
+        <p>Dear {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }} ,</p>
+        {% else %}
+        <p>Dear {{data['other-applicant-firstname']}} {{data['other-applicant-lastname']}} ,</p>
+        {% endif %}
+        <div class="govuk-inset-text">
+            Your reference number: 122345678
+        </div>
+        <p>Thanks for using the Farming Transformation Fund water management grant  checker and submitting your details to the Rural Payments Agency (RPA).</p>
+        <p>Based on the answers you have provided, your project appears eligible.</p>
+        <p>RPA will be in touch when the full application period opens.</p>
+        <p>They will tell you if your project scored well enough to get the full application form.</p>
+
+        <div class="govuk-inset-text">
+          <h1 class="govuk-heading-m">You must not start the project</h1>
+          <p>Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement will invalidate your application.</p>
+          <p>Before you start the project, you can: </p>
+          <ul>
+            <li>get quotes from suppliers </li>
+            <li>apply for planning permission or an abstraction licence</li>
+          </ul>
+        </div>
+        <hr/>
+        <div class="govuk-inset-text govuk-!-padding-bottom-4">
+          Based on your answers, your project’s score is:
+          <p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-3 govuk-!-padding-bottom-3">Average</p>
+           This means your project might be successful.
+        </div>
+          <h2 class="govuk-heading-m govuk-!-margin-top-2">Scoring</h2>
+          <p>Strong: Your project seems like it’s a strong fit with the funding priorities. Based on your answers, a grant application seems likely to be successful.</p>
+          <p>Average: Your project seems like it’s an average fit with the funding priorities. Based on your answers, a grant application seems like it might be successful. </p>
+          <p>Weak: Your project seems like it’s a weak fit with the funding priorities. Based on your answers, a grant application seems unlikely to be successful.</p>
+          <p class="govuk-!-padding-top-4">Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score.</p>
+          <p>The likelihood of a full application being successful will also depend on the number and value of applications we receive.</p>
+      <hr/>
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-padding-top-4 govuk-!-padding-bottom-2">Your answers </p>
+      <p>Scheme: Farming Investment Fund</p>
+      <p>Sub-scheme: Farming Transformation Fund</p>
+      <p>Theme: Resource management</p>
+      <p>Project type: Water management</p>
+      <p>Grant application window: 1 September - 31 December 2021</p>
+      <p>Growing: {{data['farming-type']}}</p>
+      <p>Legal status: {{data['legal-status']}}</p>
+      <p>Location: England</p>
+      <p>Land ownership: {{data['project-start']}}</p>
+      <p>Tenancy agreement until 2026: {{data['tenancy-length']}}</p>
+      <p class=" govuk-!-font-size-24 govuk-!-padding-top-2 govuk-!-font-size-27">Project items needed</p>
+      <p>Reservoir construction and infrastructure:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        {% for item in data['project-items'] %}
+            <li>{{ item | capitalize }}</li>
+        {% endfor %}
+      </ul>
+      <p class="govuk-!-font-size-24">Irrigation equipment</p>
+      <ul class="govuk-list govuk-list--bullet">
+      {% for item in data['Irrigation equipment'] %}
+            <li>{{ item | capitalize }}</li>
+      {% endfor %}
+      </ul>
+      <p class="govuk-!-font-size-24">Technology</p>
+      <ul class="govuk-list govuk-list--bullet">
+      {% for item in data['Technology'] %}
+            <li>{{ item | capitalize }}</li>
+      {% endfor %}
+      </ul>
+      <div class="govuk-body">
+      <p>Estimated cost of the items: {{ data['project-cost'] }}</p>
+      <p>Grant rate: 40%</p>
+      <p>Potential grant funding: {% if data['project-items'] != NAN %}{{data['project-cost'] * 0.4}}{% endif %}</p>
+      <p>Remaining cost: {% if data['project-items'] != NAN %}{{ data['project-cost'] * 0.6 | toFixed(2) | commafy}}{% endif %}</p>
+      <p>Project started: {% if data['project-items'] != NAN %}{{data['project-start']}} {% endif %}</p>
+      <p>Planning permission needed: {{data['planning-permission']}} </p>
+      <p>Abstraction licence needed: {{data['abstraction-licence']}} </p>
+      <p>Site of Special Scientific Interest: {{data['water-SSSI']}}</p>
+      </div>
+      <div class="govuk-body">
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-padding-top-4 govuk-!-padding-bottom-2">Project details</p>
+      <p class="govuk-!-padding-top-3"> Your project name: {{ data['project-name'] }} </p>
+      <p class="govuk-!-padding-top-3 govuk-!-font-size-24"> Project impact {% for item in data['project-summary'] %} <li>{{ item | capitalize }}</li> {% endfor %}</p>
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Strong</p>
+      <p class="govuk-!-font-size-24">Crops</p>
+      <p class="govuk-!-padding-top-2">What main crops will be irrigated?</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+        {{data['irrigated-crops']}}
+        </li>
+      </ul>
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Irrigated land</p>
+      <p>How much land is currently irrigated per year? <br> {% if  data['irrigated-land-current'] %} {{ data['irrigated-land-current'] }} hectares {% endif %}</p>
+      <p>How much land will be irrigated after the project? <br> {% if  data['irrigated-land-target'] %} {{ data['irrigated-land-target'] }} hectares {% endif %}</p>
+      <p>Your score to this answer is: Strong</p>
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Water source</p>
+      <p class="govuk-!-padding-top-1">Where does your current irrigation water come from? <br>
+        {% for item in data['irrigation-current'] %} <li>{{ item | capitalize }}</li> {% endfor %}
+      </p>
+      <p class="govuk-!-padding-top-3">Where will your irrigation water come from? <br>
+        {% for item in data['irrigation-target'] %} <li>{{ item | capitalize }}</li> {% endfor %}
+      </p>
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
+
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Irrigation system</p>
+      <p class="govuk-!-padding-top-1">What systems are currently used to irrigate?</p>
+      {% for item in data['irrigation-current']%} <li>{{ item | capitalize }}</li> {% endfor %}
+      <p class="govuk-!-padding-top-3">What systems will be used to irrigate?</p>
+      {% for item in data['irrigation-target'] %} <li>{{ item | capitalize }}</li> {% endfor %}
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Productivity</p>
+      <p class="govuk-!-padding-top-3">How will the project improve productivity?</p>
+      {% for item in data['productivity'] %} <li>{{ item | capitalize }}</li> {% endfor %}
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Strong</p>
+
+
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Other farms</p>
+      <p> Will water be supplied to other farms?
+      {{ data['collaboration'] }}
+      </p>
+      <p class="govuk-!-padding-top-3">Your score to this answer is: Average</p>
+
+
+      <p class="govuk-!-padding-top-2 govuk-!-font-size-24">Contact details</p>
+      <p class="govuk-!-padding-top-1">Project name: {{ data['project-name'] }}</p>
+      <p>Business name: {{ data['business-name']}}</p>
+      {% if data['applicant'] == "Farmer" %}
+      <p>Farmer name: {{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
+      <p>Farmer gender: {{ data['gender'] }}</p>
+      <p>Farmer email: {{ data['farmer-email'] }}</p>
+      {% else %}
+      <p>Agent name: {{data['other-applicant-firstname']}} {{data['other-applicant-lastname']}}</p>
+      <p>Agent business name: {{ data['other-applicant-Business-name'] }}</p>
+      <p>Agent email: {{ data['agent-email'] }}</p>
+      <p>Farmer name: {{ data['agent-farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
+      <p>Farmer gender: {{ data['gender'] }}</p>
+      <p>Farmer email: {{ data['agent-farmer-email'] }}</p>
+      {% endif %}
+      <p>Happy to be contacted: Yes</p>
+      <p>Date of score: 20 May 2021</p>
+      </div>
+      <hr>
+      <div class="govuk-body govuk-!-padding-top-3">
+        <p>
+        If you have any questions about the service,
+        call the RPA helpline on 0300 0200 301 and follow the options for the Farming Transformation Fund scheme,
+        or email <a href="#"> FTF@rpa.gov.uk.</a>
+        <p>
+        We’d like feedback on our service so we can make improvements. Complete our customer satisfaction survey at: <a href="#"> XXXXXXXX </a> </p>
+        </p>
+      </div>
+      <hr>
+      <div class="govuk-body govuk-!-margin-top-5">
+      The Department for Environment, Food and Rural Affairs (Defra) is the data controller for personal data you give to RPA.
+      For information on how we handle personal data go to GOV.UK and search <a href="#"> Rural Payments Agency personal information charter </a>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

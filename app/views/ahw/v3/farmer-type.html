@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Type of farmer
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukCheckboxes({
+                  idPrefix: 'farmertype',
+                  name: 'farmertype',
+                  fieldset: {
+                      legend: {
+                          text: 'What type of farmer are you?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    html: "Select all that apply"
+                  },
+
+                  items: [
+                {
+                  value: "dairy",
+                  text: "Dairy farmer",
+                  checked: checked("farmertype", "dairy")
+                },
+
+                {
+                  value: "beef",
+                  text: "Beef farmer",
+                  checked: checked("farmertype", "beef")
+                },
+                {
+                  value: "mixed",
+                  text: "Mixed farmer (cattle and arable)",
+                  checked: checked("farmertype", "mixed")
+                },
+
+                {
+                  divider: "or"
+                },
+                {
+                  value: "None of the above",
+                  text: "None of the above",
+                  behaviour: "exclusive",
+                  checked: checked("farmertype", "None of the above")
+
+                }
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">This grant is for:</p>
+            <ul class="govuk-list govuk-list--bullet"><li>building new calf housing</li>
+              <li>refurbishing or extending existing calf housing</li>
+              </ul>
+            <p class="govuk-body">A calf is up to 6 months of age.</p>
+     </div>
+   </div>
+
+{% endblock %}
