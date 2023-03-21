@@ -102,18 +102,42 @@
         </tr>
 
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Reduce disease transmission
+      <th scope="row" class="govuk-table__header">Average calf group size
       <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
-        {% for item in data['reduce-disease'] %}
-          <li>{{ item | capitalize }}</li>
-        {% endfor %}
+      <li>{{ data['calf-size'] }}</li>
       </ul></th>
-      <td class="govuk-table__cell">Weak</td>
+      <td class="govuk-table__cell">strong</td>
       <td class="govuk-table__cell">
         <p class="govuk-body govuk-!-font-size-16">
           Improve health/welfare</p>
       </td>
-      <td class="govuk-table__cell"><a href="reduce-disease">Change</td>
+      <td class="govuk-table__cell"><a href="group-size">Change</td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Maximum number of calves
+      <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+      <li>{{ data['max-calf-housed'] }}</li>
+      </ul></th>
+      <td class="govuk-table__cell">Strong</td>
+      <td class="govuk-table__cell">
+        <p class="govuk-body govuk-!-font-size-16">
+          Improve health/welfare</p>
+      </td>
+      <td class="govuk-table__cell"><a href="max-calf-housed">Change</td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Calves per automatic feeder
+      <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+      <li>{{ data['automatic-calf-feeder'] }}</li>
+      </ul></th>
+      <td class="govuk-table__cell">Strong</td>
+      <td class="govuk-table__cell">
+        <p class="govuk-body govuk-!-font-size-16">
+          Improve health/welfare</p>
+      </td>
+      <td class="govuk-table__cell"><a href="automatic-calf-feeder">Change</td>
     </tr>
 
     <tr class="govuk-table__row">
@@ -132,7 +156,7 @@
     </tr>
 
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Permanent sick pen
+      <th scope="row" class="govuk-table__header">Sick pen type
       <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
         {% for item in data['sick-pen'] %}
           <li>{{ item | capitalize }}</li>
