@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Straw bedding
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  classes: "govuk-radios--inline",
+                  idPrefix: 'drainage',
+                  name: 'drainage',
+                  fieldset: {
+                      legend: {
+                          html: 'Will the floor in bedded areas slope towards a drain or drainage channel?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+                  hint: {
+                    text: "The floor must have at least a 5% gradient"
+                  },
+
+                  items: [
+                {
+                  value: "yes",
+                  text: "Yes",
+                  checked: checked("drainage", "yes")
+                },
+
+                {
+                  value: "no",
+                  text: "No",
+                  checked: checked("drainage", "no")
+                }
+
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">The building must have sloped flooring with a 1 in 20 (5%) gradient in bedded areas that slopes towards a drain or drainage channel.
+          </p>
+            </div>
+   </div>
+
+{% endblock %}

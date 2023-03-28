@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Calf size
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'calf-size',
+                  name: 'calf-size',
+                  fieldset: {
+                      legend: {
+                          text: 'What will be the average calf group size for calves over 7 days old?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+
+                  items: [
+                {
+                  value: "2 to 3",
+                  text: "2 to 3",
+                  checked: checked("calf-size", "2 to 3")
+                },
+
+                {
+                  value: "4 to 8",
+                  text: "4 to 8",
+                  checked: checked("calf-size", "4 to 8")
+                },
+                {
+                  value: "9 to 12",
+                  text: "9 to 12",
+                  checked: checked("calf-size", "9 to 12")
+                },
+
+
+
+                {
+                  value: "13 or more",
+                  text: "13 or more",
+                  checked: checked("calf-size", "13 or more")
+
+                }
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+          {% if data['COMPLETED'] == true %}
+            <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+              class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
+            </button>
+          {% endif %}
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund projects that increase social interaction for calves, with a preference for groups of 4 to 8, followed by groups with fewer than 13 calves.</p>
+
+
+     </div>
+   </div>
+
+{% endblock %}
