@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="solar">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot apply for a grant from this scheme
+      </h1>
+
+      <p class="govuk-body">The roof must be able to support solar PV panels, allowing for potential use in the future, unless:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the building is listed or on a world heritage site</li>
+        <li>you're upgrading an existing building and would not otherwise make changes to the roof</li>
+        <li>the roof faces only north or is heavily shaded</li>
+        <li>the roof does not have 20m<sup>2</sup> of clear roof space</li>
+        <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>
+      </ul>
+
+
+      <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-link govuk-link--no-visited-state"> See other grants you may be eligible for.</a></p>
+      </div>
+
+  </div>
+
+{% endblock %}

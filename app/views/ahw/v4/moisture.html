@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Moisture
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukCheckboxes({
+                  idPrefix: 'moisture',
+                  name: 'moisture',
+                  fieldset: {
+                      legend: {
+                          text: 'How will your building control moisture?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    text: "Select all that apply"
+                  },
+
+                  items: [
+                {
+                  value: "A drain or drainage channel inside the pen",
+                  text: "A drain or drainage channel inside the pen",
+                  checked: checked("moisture", "A drain or drainage channel inside the pen")
+                },
+
+                {
+                  value: "Positioning drinking areas near drainage and away from bedding",
+                  text: "Positioning drinking areas near drainage and away from bedding",
+                  checked: checked("moisture", "Positioning drinking areas near drainage and away from bedding")
+                },
+                {
+                  value: "A separate preparation or washing area",
+                  text: "A separate preparation or washing area",
+                  checked: checked("moisture", "A separate preparation or washing area")
+                },
+
+
+                {
+                  divider: "or"
+                },
+                {
+                  value: "None of the above",
+                  text: "None of the above",
+                  behaviour: "exclusive",
+                  checked: checked("moisture", "None of the above")
+
+                }
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+          {% if data['COMPLETED'] == true %}
+            <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+              class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
+            </button>
+          {% endif %}
+
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund projects that go beyond the regulatory baseline  to control building moisture.</p>
+
+     </div>
+   </div>
+
+{% endblock %}

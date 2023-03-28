@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Calf floor size
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: 'This is a prototype. It is not a real service.'
+}) }}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--l" for="calf-floor-size">How much space will each calf have?</label>
+                </h1>
+                
+
+                <div class="govuk-body">
+                  <p id="calf-floor-size-hint" class="govuk-hint">
+                    Enter floor area in square metres, for example 5m<sup>2</sup>
+                  </p>
+                </div>
+
+                <div class="govuk-input__wrapper govuk-!-margin-bottom-5">
+                  <input class="govuk-input govuk-input--width-5" id="calf-floor-size" name="calf-floor-size" type="text" spellcheck="false" aria-describedby="calf-floor-size-target-hint" value="{{ data['calf-floor-size'] }}">
+                    <div class="govuk-input__suffix" aria-hidden="true">m<sup>2</sup></div>
+                </div>
+
+                {% if data['calfweight'] === '99'  %}
+                {{ govukWarningText({
+                  html: "There must be a minimum floor area of 3m<sup>2</sup> per calf when largest calf is 100kg or under.",
+                  iconFallbackText: "Warning"
+                }) }}
+
+                {% elseif data['calfweight'] === '100 to 150'  %}
+                {{ govukWarningText({
+                  html: "There must be a minimum floor area of 4m<sup>2</sup> per calf when largest calf is between 100kg and 150kg.",
+                  iconFallbackText: "Warning"
+                }) }}
+                {% else %}
+                {{ govukWarningText({
+                  html: "There must be a minimum floor area of 5m<sup>2</sup> per calf when largest calf is over 150kg.",
+                  iconFallbackText: "Warning"
+                }) }}
+
+                {% endif%}
+
+                <button class="govuk-button govuk-!-margin-right-1 data-module="govuk-button">Continue</button>
+                {% if data['COMPLETED'] == true %}
+                  <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+                    class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
+                  </button>
+                {% endif %}
+
+
+              </form>
+              </div>
+
+
+  <!--top right column 'Eligibility'-->
+  <div class="govuk-grid-column-one-third">
+    <div class="app-step-nav-related app-step-nav-related--singular">
+      <h2 class="app-step-nav-related__heading">
+        <span class="app-step-nav-related__pretitle">Funding priorities</span>
+        </h2>
+        <p>RPA wants to fund projects that go beyond the regulatory baseline and provide more than the minimum floor area.</p>
+
+
+
+
+    </div>
+    </div>
+
+  </div>
+
+{% endblock %}
