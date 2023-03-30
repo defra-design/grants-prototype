@@ -656,12 +656,12 @@ completedUrl
 router.post('/solar-answer', function (req, res) {
   var solar = req.session.data['solar']
 
-  if (solar === 'yes') {
-    res.redirect('project-cost')
+  if (solar === 'no') {
+    res.redirect('solar-fail')
   }
 
   else {
-    res.redirect ('solar-fail')
+    res.redirect ('project-cost')
   }
 
 })
