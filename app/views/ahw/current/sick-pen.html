@@ -66,6 +66,14 @@ Sick pen
               ]
               }) }}
 
+
+
+              {{ govukWarningText({
+                text: "To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.",
+                iconFallbackText: "Warning"
+              }) }}
+
+
           <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
           {% if data['COMPLETED'] == true %}
             <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
@@ -86,9 +94,9 @@ Sick pen
           <ul class="govuk-list govuk-list--bullet">
             <li>a permanent sick pen</li>
             <li>a separate air space</li>
-            <li>a permanent heat source</li>
+            <li>a permanent heat source (for example heat lamps)</li>
             </ul>
-          <p class="govuk-body">To create a separate air space, the area must have solid walls up to ceiling height blocking it from the calf housing.</p>
+
      </div>
    </div>
 
