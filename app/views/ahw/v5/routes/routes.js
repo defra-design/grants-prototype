@@ -758,6 +758,19 @@ router.get('/housing', function (req, res) {
 // SCORING JOURNEY - Q2 Calf size
 router.get('/group-size', function (req, res) {
   var backUrl = 'housing'
+  var nextUrl = 'max-calf-housed'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// SCORING JOURNEY - Q3 Maximum calves housed
+router.get('/max-calf-housed', function (req, res) {
+  var backUrl = 'group-size'
   var nextUrl = 'automatic-calf-feeder'
   var completedUrl = 'answers'
 
@@ -768,11 +781,9 @@ router.get('/group-size', function (req, res) {
   })
 })
 
-
-
 // SCORING JOURNEY - Q4 Automatic calf feeder
 router.get('/automatic-calf-feeder', function (req, res) {
-  var backUrl = 'group-size'
+  var backUrl = 'max-calf-housed'
   var nextUrl = 'moisture'
   var completedUrl = 'answers'
 

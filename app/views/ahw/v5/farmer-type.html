@@ -22,7 +22,7 @@ Type of farmer
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukCheckboxes({
+              {{ govukRadios({
                   idPrefix: 'farmertype',
                   name: 'farmertype',
                   fieldset: {
@@ -33,56 +33,33 @@ Type of farmer
                       }
                   },
 
-                  hint: {
-                    text: "Select all that apply"
-                  },
 
                   items: [
                 {
-                  value: "Beef (including calf rearing) ",
-                  text: "Beef (including calf rearing) ",
-                  checked: checked("farmertype", "Beef (including calf rearing) ")
+                  value: "dairy",
+                  text: "Dairy",
+                  checked: checked("farmertype", "dairy")
                 },
 
                 {
-                  value: "Dairy (including calf rearing)",
-                  text: "Dairy (including calf rearing)",
-                  checked: checked("farmertype", "Dairy (including calf rearing)")
+                  value: "beef",
+                  text: "Beef",
+                  checked: checked("farmertype", "beef")
                 },
                 {
-                  value: "Pigs",
-                  text: "Pigs",
-                  checked: checked("farmertype", "Pigs")
+                  value: "Dairy and beef",
+                  text: "Dairy and beef",
+                  checked: checked("farmertype", "Dairy and beef")
                 },
                 {
-                  value: "Sheep",
-                  text: "Sheep",
-                  checked: checked("farmertype", "Sheep")
+                  value: "Dairy and other livestock or arable",
+                  text: "Dairy and other livestock or arable",
+                  checked: checked("farmertype", "Dairy and other livestock or arable")
                 },
                 {
-                  value: "Laying hens",
-                  text: "Laying hens",
-                  checked: checked("farmertype", "Laying hens")
-                },
-                {
-                  value: "Meat chickens",
-                  text: "Meat chickens",
-                  checked: checked("farmertype", "Meat chickens")
-                },
-                {
-                  value: "Aquaculture",
-                  text: "Aquaculture",
-                  checked: checked("farmertype", "Aquaculture")
-                },
-                {
-                  value: "Arable",
-                  text: "Arable",
-                  checked: checked("farmertype", "Arable")
-                },
-                {
-                  value: "Horticulture",
-                  text: "Horticulture",
-                  checked: checked("farmertype", "Horticulture")
+                  value: "Beef and other livestock or arable",
+                  text: "Beef and other livestock or arable",
+                  checked: checked("farmertype", "Beef and other livestock or arable")
                 },
 
                 {

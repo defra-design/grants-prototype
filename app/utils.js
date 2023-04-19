@@ -17,7 +17,8 @@ const serviceName = {
     v1: 'Check if you can apply for an Upgrading Cattle Housing Grant',
     v2: 'Check if you can apply for an Upgrading Cattle Housing Grant',
     v3: 'Check if you can apply for an Upgrading Cattle Housing Grant',
-    v4: 'Check if you can apply for an Upgrading Cattle Housing Grant'
+    v4: 'Check if you can apply for an Upgrading Cattle Housing Grant',
+    v5: 'Check if you can apply for an Upgrading Cattle Housing Grant'
   },
 
 slurrystorage: {
