@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="calf-weight-route">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot apply for a grant from this scheme
+      </h1>
+
+      <p class="govuk-body">
+        {% if data['calfweight'] === '99'  %}
+        Calves weighing up to 100kg must have at least 3m<sup>2</sup> living space.
+        {% elseif data['calfweight'] === '100 to 150' %}
+        Calves weighing between 100kg and 150kg must have at least 4m<sup>2</sup> living space.
+
+        {% else %}
+        Calves weighing over 150kg must have at least 5m<sup>2</sup> living space.
+
+        {% endif %}
+
+        </p>
+
+        {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  html: "This includes the lying, standing and feeding/drinking areas."
+}) }}
+
+<p class="govuk-body">The required space-per-calf for each group or pair may change over time so the housing design should account for this.</p>
+
+      <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-link govuk-link--no-visited-state"> See other grants you may be eligible for.</a></p>
+      </div>
+
+  </div>
+
+{% endblock %}
