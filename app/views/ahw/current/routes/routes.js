@@ -36,18 +36,23 @@ router.get('/farmer-type', function (req, res) {
 })
 
 router.post('/farmer-type-answer', function (req, res) {
-  const typeCondition = req.session.data.farmertype
+  const typeCondition = req.session.data['farmertype']
    console.log ('typeCondition',typeCondition)
 
-  if (typeCondition.includes('None of the above')) {
-    res.redirect('farmer-type-fail')
+  if (typeCondition == 'beef'){
+    res.redirect('legal-status')
   }
+
   else {
-  res.redirect('legal-status')
+  res.redirect('farmer-type-fail')
   }
 
 })
 
+
+//  if (planningPermission === 'Approved' || planningPermission === 'Applied') {
+//    res.redirect('planning-list')
+//  }
 
 
 // Q: LEGAL STATUS
@@ -253,13 +258,13 @@ router.post('/project-about-answer', function (req, res) {
   })
 
   router.post('/calf-weight-answer', function (req, res) {
-    var calfWeight = req.session.data['calfweight']
+    var calfWeight = req.session.data['sqm1']
 
-    if (calfWeight === '201') {
-      res.redirect('calf-weight-fail')
+    if (calfWeight === 'yes') {
+      res.redirect('calf-healthy')
     }
     else {
-       res.redirect('calf-weight-route')
+       res.redirect('calf-weight-fail')
     }
 })
 
@@ -302,7 +307,7 @@ router.post('/project-about-answer', function (req, res) {
   // Q: Calf healthy
 
         router.get('/calf-healthy', function (req, res) {
-          var backUrl = 'calf-weight-route'
+          var backUrl = 'calf-weight'
           var nextUrl = 'calf-healthy-answer'
           var completedUrl = 'answers'
 
@@ -347,45 +352,19 @@ router.post('/project-about-answer', function (req, res) {
           res.redirect('calf-sick-fail')
         }
         else {
-          res.redirect ('straw-bedding')
+          res.redirect ('flooring-type')
         }
 })
 
 
 
 
-// Q: Straw bedding
 
-      router.get('/straw-bedding', function (req, res) {
-        var backUrl = 'calf-sick'
-        var nextUrl = 'straw-bedding-answer'
-        var completedUrl = 'answers'
-
-        res.render('./' + req.originalUrl, {
-          backUrl,
-          nextUrl,
-          completedUrl
-        })
-      })
-
-
-      router.post('/straw-bedding-answer', function (req, res) {
-        var strawBedding = req.session.data['strawbedding']
-
-        if (strawBedding === 'no') {
-          res.redirect('straw-bedding-fail')
-        }
-        else {
-          res.redirect ('flooring-type')
-        }
-
-
-      })
 
       // Q: Flooring type
 
             router.get('/flooring-type', function (req, res) {
-              var backUrl = 'straw-bedding'
+              var backUrl = 'calf-sick'
               var nextUrl = 'flooring-type-answer'
               var completedUrl = 'answers'
 
@@ -599,7 +578,7 @@ router.post('/building-other-answer', function (req, res) {
         var additionalItems = req.session.data['additionalitems']
 
         if (additionalItems === 'yes') {
-          res.redirect('lighting')
+          res.redirect('solar')
         }
 
         else {
@@ -608,40 +587,13 @@ router.post('/building-other-answer', function (req, res) {
       })
 
 
-      // Q: Lighting
-
-      router.get('/lighting', function (req, res) {
-      var backUrl = 'additional-items'
-      var nextUrl = 'lighting-answer'
-      var completedUrl = 'answers'
-
-       res.render('./' + req.originalUrl, {
-      backUrl,
-      nextUrl,
-      completedUrl
-      })
-      } )
-
-
-      router.post('/lighting-answer', function (req, res) {
-        var lighting = req.session.data['lighting']
-
-        if (lighting === 'yes') {
-          res.redirect('solar')
-        }
-
-        else {
-          res.redirect ('lighting-fail')
-        }
-
-      })
 
 
 
 // Q: Solar PV
 
 router.get('/solar', function (req, res) {
-var backUrl = 'lighting'
+var backUrl = 'additional-items'
 var nextUrl = 'solar-answer'
 var completedUrl = 'answers'
 
@@ -758,21 +710,6 @@ router.get('/housing', function (req, res) {
 // SCORING JOURNEY - Q2 Calf size
 router.get('/group-size', function (req, res) {
   var backUrl = 'housing'
-  var nextUrl = 'automatic-calf-feeder'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl
-  })
-})
-
-
-
-// SCORING JOURNEY - Q4 Automatic calf feeder
-router.get('/automatic-calf-feeder', function (req, res) {
-  var backUrl = 'group-size'
   var nextUrl = 'moisture'
   var completedUrl = 'answers'
 
@@ -784,9 +721,13 @@ router.get('/automatic-calf-feeder', function (req, res) {
 })
 
 
+
+
+
+
 // SCORING JOURNEY - Q3 Moisture
 router.get('/moisture', function (req, res) {
-  var backUrl = 'automatic-calf-feeder'
+  var backUrl = 'group-size'
   var nextUrl = 'sick-pen'
   var completedUrl = 'answers'
 
@@ -800,7 +741,7 @@ router.get('/moisture', function (req, res) {
 // SCORING JOURNEY - Q4 Sick pen
 router.get('/sick-pen', function (req, res) {
   var backUrl = 'moisture'
-  var nextUrl = 'floor-size'
+  var nextUrl = 'floor-size2'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -811,8 +752,20 @@ router.get('/sick-pen', function (req, res) {
 })
 
 // SCORING JOURNEY - Q5 Floor size
-router.get('/floor-size', function (req, res) {
+router.get('/floor-size2', function (req, res) {
   var backUrl = 'sick-pen'
+  var nextUrl = 'floor-size3'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.get('/floor-size3', function (req, res) {
+  var backUrl = 'floor-size2'
   var nextUrl = 'environmental-impact'
   var completedUrl = 'answers'
 
@@ -825,7 +778,7 @@ router.get('/floor-size', function (req, res) {
 
 // SCORING JOURNEY - Q6 Environmental impact
 router.get('/environmental-impact', function (req, res) {
-  var backUrl = 'floor-size'
+  var backUrl = 'floor-size3'
   var nextUrl = 'sustainable-materials'
   var completedUrl = 'answers'
 

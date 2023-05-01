@@ -14,7 +14,7 @@
       html: 'This is not a full service. It is not production code and you might experience problems.'
   }) }}
 
-  <a class="govuk-back-link" href="straw-bedding">Back</a>
+  <a class="govuk-back-link" href="calf-weight">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -26,7 +26,22 @@
         You cannot apply for a grant from this scheme
       </h1>
 
-      <p class="govuk-body">The calf housing must have cereal straw bedding.</p>
+      <p class="govuk-body">Each calf must have the minimum living space:<Br>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>3m<sup>2</sup> per calf when largest calf is 100kg or under</li>
+        <li>4m<sup>2</sup> per calf when largest calf is between 100kg and 150kg</li>
+        <li>5m<sup>2</sup> per calf when largest calf is over 150kg</li>
+
+      </ul>
+
+        </p>
+
+        {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  html: "This includes the lying, standing and feeding/drinking areas."
+}) }}
+
 
 
       <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-link govuk-link--no-visited-state"> See other grants you may be eligible for.</a></p>

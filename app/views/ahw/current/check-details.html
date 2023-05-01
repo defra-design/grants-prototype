@@ -103,6 +103,36 @@
 
           </dd>
         </div>
+        {% if (data['calving-system'] !== 'Select item' ) %}
+        <div class="govuk-summary-list__row">
+
+          <dt class="govuk-summary-list__key">
+            Calving system
+
+          </dt>
+          <dd class="govuk-summary-list__value">
+          {{ data['calving-system'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+
+          </dd>
+        </div>
+        {% endif %}
+        {% if (data['calveshoused'] ) %}
+        <div class="govuk-summary-list__row">
+
+          <dt class="govuk-summary-list__key">
+            Number of calves
+
+          </dt>
+          <dd class="govuk-summary-list__value">
+          {{ data['calveshoused'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+
+          </dd>
+        </div>
+        {% endif %}
       </dl>
 
 

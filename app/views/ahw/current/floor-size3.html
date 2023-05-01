@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Floor sizes
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="floor-size2">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <h1 class="govuk-heading-l">
+                How much space will each calf have?
+              </h1>
+              <p class="govuk-body">
+                Enter floor area in square metres, for example 2.22m<sup>2</sup>
+              </p>
+
+              {{ govukInput({
+                label: {
+                  text: "100kg or under",
+                  classes: "govuk-label--m",
+                  isPageHeading: true
+                },
+                classes: "govuk-input--width-5",
+                suffix: {
+                  html: "m<sup>2</sup>"
+                },
+                hint: {
+                  html: "Calves of this weight must have a minimum floor area of 3m<sup>2</sup> "
+                },
+                id: "100kg or under",
+                name: "100kg or under",
+                inputmode: "numeric",
+                checked: checked("100kg or under", "100kg or under"),
+                spellcheck: false
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: "Between 100 and 150kg",
+                  classes: "govuk-label--m",
+                  isPageHeading: true
+                },
+                classes: "govuk-input--width-5",
+                suffix: {
+                  html: "m<sup>2</sup>"
+                },
+                hint: {
+                  html: "Calves of this weight must have a minimum floor area of 4m<sup>2</sup>"
+                },
+                id: "Between 100 and 150kg",
+                name: "Between 100 and 150kg",
+                inputmode: "numeric",
+                checked: checked("Between 100 and 150kg", "Between 100 and 150kg"),
+                spellcheck: false
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priority</span>
+          </h2>
+
+          <p class="govuk-body">RPA wants to fund projects that go
+beyond the regulatory baseline and
+provide more that the minimum floor
+area.</p>
+
+            </div>
+   </div>
+
+{% endblock %}
