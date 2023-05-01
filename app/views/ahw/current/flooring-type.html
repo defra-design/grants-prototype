@@ -28,12 +28,14 @@ Flooring type
                   name: 'flooringtype',
                   fieldset: {
                       legend: {
-                          text: 'Will the calf housing have solid concrete flooring?',
+                          text: 'Will the calf housing have both  concrete flooring and cereal straw bedding?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
-
+                  hint: {
+                    text: "It cannot have slatted or hardcore flooring"
+                  },
                   items: [
                 {
                   value: "yes",
@@ -61,9 +63,7 @@ Flooring type
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">The calf housing must have solid concrete flooring.<br><br>
-
-It cannot have slatted or hardcore flooring.
+          <p class="govuk-body">The calf housing must have solid concrete flooring and cereal straw bedding.
           </p>
             </div>
    </div>
