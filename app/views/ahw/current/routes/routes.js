@@ -749,7 +749,7 @@ router.get('/moisture', function (req, res) {
 // SCORING JOURNEY - Q4 Sick pen
 router.get('/sick-pen', function (req, res) {
   var backUrl = 'moisture'
-  var nextUrl = 'floor-size2'
+  var nextUrl = 'floor-size3'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -760,7 +760,7 @@ router.get('/sick-pen', function (req, res) {
 })
 
 // SCORING JOURNEY - Q5 Floor size
-router.get('/floor-size1', function (req, res) {
+router.get('/floor-size3', function (req, res) {
   var backUrl = 'sick-pen'
   var nextUrl = 'floorsizes'
   var completedUrl = 'answers'
@@ -776,7 +776,7 @@ router.get('/floor-size1', function (req, res) {
 
 
 router.get('/floorsizes', function (req, res) {
-  var backUrl = 'floor-size1'
+  var backUrl = 'floor-size3'
   var nextUrl = 'environmental-impact'
   var completedUrl = 'answers'
 
