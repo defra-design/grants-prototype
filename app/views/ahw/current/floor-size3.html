@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Floor sizes
+Calf weight
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,69 +14,64 @@ Floor sizes
       html: 'This is not a full service. It is not production code and you might experience problems.'
   }) }}
 
-  <a class="govuk-back-link" href="floor-size2">Back</a>
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
 {% endblock %}
 
 {% block content %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-        <h1 class="govuk-heading-l">
-                How much space will each calf have?
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="group-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Which weight groups will you have?
               </h1>
-              <p class="govuk-body">
-                Enter floor area in square metres, for example 2.22m<sup>2</sup>
-              </p>
+            </legend>
+            <div id="group-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 
-              {{ govukInput({
-                label: {
-                  text: "100kg or under",
-                  classes: "govuk-label--m",
-                  isPageHeading: true
-                },
-                classes: "govuk-input--width-5",
-                suffix: {
-                  html: "m<sup>2</sup>"
-                },
-                hint: {
-                  html: "Calves of this weight must have a minimum floor area of 3m<sup>2</sup> "
-                },
-                id: "100kg or under",
-                name: "100kg or under",
-                checked: checked("100kg or under", "100kg or under"),
-                spellcheck: false
-              }) }}
+              {% for item, properties in groupType %}
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input"
+                    name="group" type="checkbox" value="{{item}}"
+                    aria-describedby="group-item-hint"
+                    {{ checked("group", item) }}
+                  >
+                  <label class="govuk-label govuk-checkboxes__label">
+                    {{properties.text}}
+                  </label>
 
-              {{ govukInput({
-                label: {
-                  text: "Between 100 and 150kg",
-                  classes: "govuk-label--m",
-                  isPageHeading: true
-                },
-                classes: "govuk-input--width-5",
-                suffix: {
-                  html: "m<sup>2</sup>"
-                },
-                hint: {
-                  html: "Calves of this weight must have a minimum floor area of 4m<sup>2</sup>"
-                },
-                id: "Between 100 and 150kg",
-                name: "Between 100 and 150kg",
-                checked: checked("Between 100 and 150kg", "Between 100 and 150kg"),
-                spellcheck: false
-              }) }}
+                </div>
+              {% endfor %}
+</fieldset>
+            <br>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+              {% if data['COMPLETED'] == true %}
+                <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+                  class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
+                </button>
+              {% endif %}
+            </form>
+
+          </div>
+          </div>
 
 
-          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-          {% if data['COMPLETED'] == true %}
-            <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-              class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
-            </button>
-          {% endif %}
 
 
-      </form>
-    </div>
+
+
+
+
+
+
+
+
+
+
     <div class="govuk-grid-column-one-third">
 
       <div class="app-step-nav-related app-step-nav-related--singular">
@@ -84,12 +79,13 @@ Floor sizes
           <span class="app-step-nav-related__pretitle">Funding priority</span>
           </h2>
 
-          <p class="govuk-body">RPA wants to fund projects that go
-beyond the regulatory baseline and
-provide more that the minimum floor
-area.</p>
+          <p class="govuk-body">RPA wants to fund projects that go beyond the regulatory baseline and provide more that the minimum area.</p>
 
-            </div>
-   </div>
+
+
+
+</div>
+</div>
+
 
 {% endblock %}
