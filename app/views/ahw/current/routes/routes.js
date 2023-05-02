@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const serviceName = 'Service name not here defined'
+const { groupType } = require('../../utils')
 
 
 //console.log('Service name: ' + serviceName)
@@ -752,33 +753,37 @@ router.get('/sick-pen', function (req, res) {
 })
 
 // SCORING JOURNEY - Q5 Floor size
-router.get('/floor-size2', function (req, res) {
+router.get('/floor-size1', function (req, res) {
   var backUrl = 'sick-pen'
-  var nextUrl = 'floor-size3'
+  var nextUrl = 'floorsizes'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    groupType
   })
 })
 
-router.get('/floor-size3', function (req, res) {
-  var backUrl = 'floor-size2'
+
+
+router.get('/floorsizes', function (req, res) {
+  var backUrl = 'floor-size1'
   var nextUrl = 'environmental-impact'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
     backUrl,
     nextUrl,
-    completedUrl
+    completedUrl,
+    groupType
   })
 })
 
 // SCORING JOURNEY - Q6 Environmental impact
 router.get('/environmental-impact', function (req, res) {
-  var backUrl = 'floor-size3'
+  var backUrl = 'floorsizes'
   var nextUrl = 'sustainable-materials'
   var completedUrl = 'answers'
 
@@ -825,7 +830,8 @@ router.get('/answers', function (req, res) {
 
   res.render('./' + req.originalUrl, {
     backUrl,
-    nextUrl
+    nextUrl,
+    groupType
   })
 })
 
