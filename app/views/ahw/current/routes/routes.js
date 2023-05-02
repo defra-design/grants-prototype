@@ -38,9 +38,15 @@ router.get('/farmer-type', function (req, res) {
 
 router.post('/farmer-type-answer', function (req, res) {
   const typeCondition = req.session.data['farmertype']
-   console.log ('typeCondition',typeCondition)
+  const farmerTypeOptions = [
+    'beef',
+    'dairy'
+  ]
+  const eligibleCondition = farmerTypeOptions.some(item =>(typeCondition.includes(item)
+  ))
+   console.log ('typeCondition',eligibleCondition)
 
-  if (typeCondition == 'beef'){
+  if (eligibleCondition){
     res.redirect('legal-status')
   }
 
@@ -49,6 +55,7 @@ router.post('/farmer-type-answer', function (req, res) {
   }
 
 })
+
 
 
 //  if (planningPermission === 'Approved' || planningPermission === 'Applied') {
