@@ -29,16 +29,16 @@ Calf weight route
           name: "sqm1",
           fieldset: {
             legend: {
-              html: "Will each calf have the minimum living space?",
+              html: "Will each calf have the minimum floor area?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            html: "The minimum space must be:<br><br>
-            <li>3m<sup>2</sup> per calf when largest calf is 100kg or under</li>
-            <li>4m<sup>2</sup> per calf when largest calf is between 100kg and 150kg</li>
-            <li>5m<sup>2</sup> per calf when largest calf is over 150kg</li><br>
+            html: "The minimum area must be:<br><br>
+            <li>3m<sup>2</sup> per calf for calves under 100kg</li>
+            <li>4m<sup>2</sup> per calf for calves between 100kg and 150kg</li>
+            <li>5m<sup>2</sup> per calf for calves over 150kg</li><br>
             This includes the lying, standing and feeding/drinking areas.
             "
           },
@@ -63,7 +63,7 @@ Calf weight route
 
 
 {{ govukWarningText({
-  text: "The required space-per-calf for each group or pair may change over time so the housing design should account for this.",
+  text: "The required area per calf for each group or pair may change over time so the housing design should account for this.",
   iconFallbackText: "Warning"
 }) }}
 
@@ -82,8 +82,7 @@ Calf weight route
 
 
           <p class="govuk-body">
-
-            Each calf must have at least the minimum living space.
+            Each calf must have at least the minimum floor area.
 
 
             </p>
