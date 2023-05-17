@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Environmental impact
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukCheckboxes({
+                  idPrefix: 'environmental-impact',
+                  name: 'environmental-impact',
+                  fieldset: {
+                      legend: {
+                          text: 'How will the building minimise environmental impact?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    text: "Select all that apply"
+                  },
+
+                  items: [
+                {
+                  value: "Solar PV panels on the roof of the building",
+                  text: "Solar PV panels on the roof of the building",
+                  checked: checked("environmental-impact", "Solar PV panels on the roof of the building")
+                },
+
+                {
+                  value: "Collect and store rainwater",
+                  text: "Collect and store rainwater",
+                  checked: checked("environmental-impact", "Collect and store rainwater")
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "None of the above",
+                  text: "None of the above",
+                  behaviour: "exclusive",
+                  checked: checked("environmental-impact", "None of the above")
+
+                }
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+          {% if data['COMPLETED'] == true %}
+            <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+              class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
+            </button>
+          {% endif %}
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.<br><br>
+            Solar PV panels are not funded through the grant but applicants intending to use them will get a higher score.</p>
+
+     </div>
+   </div>
+
+{% endblock %}

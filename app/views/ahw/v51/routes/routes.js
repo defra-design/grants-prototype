@@ -749,7 +749,7 @@ router.get('/moisture', function (req, res) {
 // SCORING JOURNEY - Q4 Sick pen
 router.get('/sick-pen', function (req, res) {
   var backUrl = 'moisture'
-  var nextUrl = 'environmental-impact'
+  var nextUrl = 'floor-size3'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -759,10 +759,38 @@ router.get('/sick-pen', function (req, res) {
   })
 })
 
-
-// SCORING JOURNEY - Q5 Environmental impact
-router.get('/environmental-impact', function (req, res) {
+// SCORING JOURNEY - Q5 Floor size
+router.get('/floor-size3', function (req, res) {
   var backUrl = 'sick-pen'
+  var nextUrl = 'floorsizes'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    groupType
+  })
+})
+
+
+
+router.get('/floorsizes', function (req, res) {
+  var backUrl = 'floor-size3'
+  var nextUrl = 'environmental-impact'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    groupType
+  })
+})
+
+// SCORING JOURNEY - Q6 Environmental impact
+router.get('/environmental-impact', function (req, res) {
+  var backUrl = 'floorsizes'
   var nextUrl = 'sustainable-materials'
   var completedUrl = 'answers'
 
@@ -773,7 +801,7 @@ router.get('/environmental-impact', function (req, res) {
   })
 })
 
-// SCORING JOURNEY - Q6 Sustainable materials
+// SCORING JOURNEY - Q7 Sustainable materials
 router.get('/sustainable-materials', function (req, res) {
   var backUrl = 'environmental-impact'
   var nextUrl = 'innovation'
@@ -786,7 +814,7 @@ router.get('/sustainable-materials', function (req, res) {
   })
 })
 
-// SCORING JOURNEY - Q7 Innovation
+// SCORING JOURNEY - Q8 Innovation
 router.get('/innovation', function (req, res) {
   var backUrl = 'sustainable-materials'
   var nextUrl = 'answers'

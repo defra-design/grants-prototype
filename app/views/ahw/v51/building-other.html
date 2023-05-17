@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Straw bedding
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+          {% set describeText %}
+            {{ govukCharacterCount({
+              id: "build-oth",
+              name: "build-oth",
+              maxwords: 25,
+              label: {
+                text: "Describe the building structure"
+              }
+            }) }}
+          {% endset -%}
+              {{ govukRadios({
+                  classes: "govuk-radios",
+                  idPrefix: 'buildingother',
+                  name: 'buildingother',
+                  fieldset: {
+                      legend: {
+                          text: 'Does your building structure meet the eligibility criteria?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    html: "All buildings must:<br><br>
+                    <li>be permanent structures</li>
+                    <li>have adequate drainage</li>
+                    <li>protect calves from draughts with solid walls/barriers to calf height</li>
+                    "
+
+                  },
+                  items: [
+                {
+                  value: "yes",
+                  text: "Yes",
+                  checked: checked("buildingother", "yes"),
+                  conditional: {
+                    html: describeText
+                  }
+                },
+
+                {
+                  value: "no",
+                  text: "No",
+                  checked: checked("buildingother", "no")
+                }
+
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+
+
+{% endblock %}
