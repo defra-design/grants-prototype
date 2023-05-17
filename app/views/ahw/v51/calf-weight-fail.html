@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="calf-weight">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot apply for a grant from this scheme
+      </h1>
+
+      <p class="govuk-body">Each calf must have the minimum floor area:<Br>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>3m<sup>2</sup> per calf for calves under 100kg</li>
+          <li>4m<sup>2</sup> per calf for calves between 100kg and 150kg</li>
+          <li>5m<sup>2</sup> per calf for calves over 150kg</li>
+
+      </ul>
+
+        </p>
+
+        {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  html: "This includes the lying, standing and feeding/drinking areas."
+}) }}
+
+
+
+      <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-link govuk-link--no-visited-state"> See other grants you may be eligible for.</a></p>
+      </div>
+
+  </div>
+
+{% endblock %}

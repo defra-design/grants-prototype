@@ -147,6 +147,21 @@
     </tr>
 
     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Floor area
+      <ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+        <li>{{data[quantity]}}</li>
+      </ul>
+
+    </th>
+      <td class="govuk-table__cell">Average</td>
+      <td class="govuk-table__cell">
+        <p class="govuk-body govuk-!-font-size-16">
+          Improve productivity</p>
+      </td>
+    <td class="govuk-table__cell"><a href="floorsizes">Change</td>
+    </tr>
+
+    <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">Environmental impact
       <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
         {% for item in data['environmental-impact'] %}

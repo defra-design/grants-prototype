@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Calf weight route
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="project-about">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "sqm1",
+          fieldset: {
+            legend: {
+              html: "Will each calf have the minimum floor area?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            html: "The minimum area must be:<br><br>
+            <li>3m<sup>2</sup> per calf for calves under 100kg</li>
+            <li>4m<sup>2</sup> per calf for calves between 100kg and 150kg</li>
+            <li>5m<sup>2</sup> per calf for calves over 150kg</li><br>
+            This includes the lying, standing and feeding/drinking areas.
+            "
+          },
+          items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: checked("sqm1", "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: checked("sqm1", "no")
+          }
+          ]
+        }) }}
+
+
+
+
+
+
+
+{{ govukWarningText({
+  text: "The required area per calf for each group or pair may change over time so the housing design should account for this.",
+  iconFallbackText: "Warning"
+}) }}
+
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+
+
+          <p class="govuk-body">
+            Each calf must have at least the minimum floor area.
+
+
+            </p>
+
+     </div>
+   </div>
+{% endblock %}
