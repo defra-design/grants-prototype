@@ -36,6 +36,7 @@
               <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
               <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
               <li>one-off utility costs such as the alteration of electricity or water supply to allow the building installation or upgrade</li>
+
               </ul>
 
             <br/>Do not include VAT
@@ -48,7 +49,10 @@
 
           </div>
         </div>
-
+        {{ govukWarningText({
+          text: "Costs for buying and installing rooftop solar PV panels must be less than 40% of the total grant amount.",
+          iconFallbackText: "Warning"
+        }) }}
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
 
