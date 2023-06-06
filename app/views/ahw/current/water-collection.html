@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Environmental impact
+Water collection
 {% endblock %}
 
 {% block beforeContent %}
@@ -11,10 +11,13 @@ Environmental impact
     text: "prototype",
     classes: "govuk-tag--pink"
     },
-      html: 'This is not a full service. It is not production code and you might experience problems  .'
+      html: 'This is not a full service. It is not production code and you might experience problems.'
   }) }}
 
+  {% if data['COMPLETED'] !== true %}
   <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+  {% else %}
+  {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -22,42 +25,31 @@ Environmental impact
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
-              {{ govukCheckboxes({
-                  idPrefix: 'environmental-impact',
-                  name: 'environmental-impact',
+              {{ govukRadios({
+                  classes: "govuk-radios--inline",
+                  idPrefix: 'housing',
+                  name: 'housing',
                   fieldset: {
                       legend: {
-                          text: 'How will the building minimise environmental impact?',
+                          text: 'Will your building collect and store rainwater?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
-                  hint: {
-                    text: "Select all that apply"
-                  },
 
                   items: [
                 {
-                  value: "Solar PV panels on the roof of the building",
-                  text: "Solar PV panels on the roof of the building",
-                  checked: checked("environmental-impact", "Solar PV panels on the roof of the building")
+                  value: "Yes",
+                  text: "Yes",
+                  checked: checked("housing", "Yes")
                 },
 
                 {
-                  value: "Collect and store rainwater",
-                  text: "Collect and store rainwater",
-                  checked: checked("environmental-impact", "Collect and store rainwater")
-                },
-                {
-                  divider: "or"
-                },
-                {
-                  value: "None of the above",
-                  text: "None of the above",
-                  behaviour: "exclusive",
-                  checked: checked("environmental-impact", "None of the above")
-
+                  value: "No",
+                  text: "No",
+                  checked: checked("housing", "No")
                 }
+
               ]
               }) }}
 
@@ -77,10 +69,9 @@ Environmental impact
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Funding priorities</span>
           </h2>
-          <p class="govuk-body">RPA wants to fund buildings that enhance environmental sustainability and help meet government environmental targets.<br><br>
-            </p>
-
-     </div>
+          <p class="govuk-body">RPA wants to fund buildings that enhance envrionmental sustainability and help meet government envrionmental targets.
+          </p>
+            </div>
    </div>
 
 {% endblock %}
