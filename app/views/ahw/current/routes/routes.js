@@ -749,7 +749,7 @@ router.get('/moisture', function (req, res) {
 // SCORING JOURNEY - Q4 Sick pen
 router.get('/sick-pen', function (req, res) {
   var backUrl = 'moisture'
-  var nextUrl = 'environmental-impact'
+  var nextUrl = 'environmental-options'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -760,8 +760,34 @@ router.get('/sick-pen', function (req, res) {
 })
 
 
-// SCORING JOURNEY - Q5 Environmental impact
+router.post('/environmental-options', function (req, res) {
+  var solar2 = req.session.data['solar']
+
+  if (solar2 === 'My roof is exempt') { res.redirect('water-collection') } else { res.redirect('environmental-impact') }
+})
+
+
+
+// SCORING JOURNEY - Q5 Environmental impact - option 1
 router.get('/environmental-impact', function (req, res) {
+  var backUrl = 'sick-pen'
+  var nextUrl = 'sustainable-materials'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+
+
+
+
+// SCORING JOURNEY - Q5 Environmental impact - option 2
+router.get('/water-collection', function (req, res) {
   var backUrl = 'sick-pen'
   var nextUrl = 'sustainable-materials'
   var completedUrl = 'answers'
@@ -785,6 +811,8 @@ router.get('/sustainable-materials', function (req, res) {
     completedUrl
   })
 })
+
+
 
 // SCORING JOURNEY - Q7 Innovation
 router.get('/innovation', function (req, res) {
