@@ -27,8 +27,8 @@ Water collection
 
               {{ govukRadios({
                   classes: "govuk-radios--inline",
-                  idPrefix: 'housing',
-                  name: 'housing',
+                  idPrefix: 'water-collection',
+                  name: 'water-collection',
                   fieldset: {
                       legend: {
                           text: 'Will your building collect and store rainwater?',
@@ -41,13 +41,13 @@ Water collection
                 {
                   value: "Yes",
                   text: "Yes",
-                  checked: checked("housing", "Yes")
+                  checked: checked("water-collection", "Yes")
                 },
 
                 {
                   value: "No",
                   text: "No",
-                  checked: checked("housing", "No")
+                  checked: checked("water-collection", "No")
                 }
 
               ]
