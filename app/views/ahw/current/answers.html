@@ -146,6 +146,22 @@
       <td class="govuk-table__cell"><a href="sick-pen">Change</td>
     </tr>
 
+
+  {% if data['solar'] === 'My roof is exempt' %}
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Collect and store rainwater 
+      <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
+        <li>{{ data['water-collection'] }}</li>
+      </ul></th>
+      <td class="govuk-table__cell">Strong</td>
+      <td class="govuk-table__cell">
+        <p class="govuk-body govuk-!-font-size-16">
+          Improve the environment</p>
+      </td>
+      <td class="govuk-table__cell"><a href="water-collection">Change</td>
+    </tr>
+
+    {% else %}
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">Environmental impact
       <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
@@ -160,7 +176,7 @@
       </td>
       <td class="govuk-table__cell"><a href="environmental-impact">Change</td>
     </tr>
-
+    {% endif %}
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">Sustainable materials
       <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
