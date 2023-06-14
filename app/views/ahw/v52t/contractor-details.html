@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Contractor details
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
+        <h1 class="govuk-heading-l"> Contractor's details</h1>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Name</h2>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contractor-firstname">
+            First name
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="contractor-firstname" name="contractor-firstname" type="text" spellcheck="false" autocomplete="name" value="{{ data['contractor-firstname'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contractor-lastname">
+            Last name
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="contractor-lastname" name="contractor-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['contractor-lastname'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contractor-business">
+            Business name
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="contractor-business" name="contractor-business" type="text" spellcheck="false" autocomplete="name" value="{{ data['contractor-business'] }}">
+        </div>
+
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contractor-email">
+              Email address
+              <div id="event-name-hint" class="govuk-hint">
+                  We'll only use this to send you confirmation
+              </div>
+          </label>
+          <input class="govuk-input  govuk-!-width-two-thirds" id="contractor-email" name="contractor-email" type="contractor-email" spellcheck="false" aria-describedby="contractor-email-hint" autocomplete="contractor-email" value="{{ data['contractor-email'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contractor-landline">
+              Mobile number
+          </label>
+          <div id="landline-name-hint" class="govuk-hint">
+              We will only use this to contact you about your application
+          </div>
+          <input class="govuk-input  govuk-!-width-two-thirds" id="contractor-landline" name="contractor-landline" type="contractor-landline" spellcheck="false" aria-describedby="contractor-landline-hint" autocomplete="contractor-landline" value="{{ data['contractor-landline'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contractor-mobile">
+              Landline number
+          </label>
+          <div id="landline-name-hint" class="govuk-hint">
+              We will only use this to contact you about your application
+          </div>
+          <input class="govuk-input  govuk-!-width-two-thirds" id="contractor-mobile" name="contractor-mobile" type="contractor-mobile" spellcheck="false" aria-describedby="contractor-mobile-hint" autocomplete="contractor-mobile" value="{{ data['contractor-mobile'] }}">
+        </div>
+
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Business address</h2>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="contractor-address1">
+                Building and street
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="contractor-address1" name="contractor-address1" type="contractor-address1" spellcheck="false" aria-describedby="contractor-address1-hint" autocomplete="contractor-address1" value="{{ data['contractor-address1'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="contractor-address2">
+
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="contractor-address2" name="contractor-address2" type="contractor-address2" spellcheck="false" aria-describedby="contractor-address2-hint" autocomplete="contractor-address2" value="{{ data['contractor-address2'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="contractor-town">
+                Town
+            </label>
+            <input class="govuk-input govuk-!-width-one-half" id="contractor-town" name="contractor-town" type="contractor-town" spellcheck="false" aria-describedby="contractor-town-hint" autocomplete="contractor-town" value="{{ data['contractor-town'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="contractor-county">
+                County
+            </label>
+            <input class="govuk-input govuk-!-width-one-half" id="contractor-county" name="contractor-county" type="contractor-county" spellcheck="false" aria-describedby="contractor-county-hint" autocomplete="contractor-county" value="{{ data['contractor-county'] }}">
+        </div>
+
+        <div class="govuk-form-group govuk-!-padding-bottom-8">
+            <label class="govuk-label" for="contractor-postcode">
+                Postcode
+            </label>
+            <input class="govuk-input govuk-!-width-one-quarter" id="contractor-postcode" name="contractor-postcode" type="contractor-postcode" spellcheck="false" aria-describedby="contractor-postcode-hint" autocomplete="contractor-postcode" value="{{ data['contractor-postcode'] }}">
+        </div>
+
+        <button class="govuk-button govuk-!-margin-top-6 govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% if data['DETAILS'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
+          >
+            Back to details
+          </button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

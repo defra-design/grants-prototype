@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Sustainable materials
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukCheckboxes({
+                  idPrefix: 'innovation',
+                  name: 'innovation',
+                  fieldset: {
+                      legend: {
+                          text: 'Is your project introducing innovation?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    html: "Collaborations, technologies or techniques that are new to your farm<br><br>Select all that apply"
+                  },
+
+                  items: [
+                {
+                  value: "Technology",
+                  text: "Technology",
+                  hint: {
+                    text: "Machinery or equipment that is new to your funded building. For example, automated ventilation control systems, veterinary equipment."
+                  },
+                  checked: checked("innovation", "technology")
+                },
+                {
+                  value: "Collaboration",
+                  text: "Collaboration",
+                  hint: {
+                    text: "Collaborations that are new to your farm or build significantly on existing partnerships. For example, partnerships with educational institutions, other farms, or the local community."
+                  },
+                  checked: checked("innovation", "collaboration")
+                },
+                {
+                  value: "Techniques",
+                  text: "Techniques",
+                  hint: {
+                    text: "Techniques that improve stockperson skills or animal health and welfare. For example, the use of long-term analgesics for castration/disbudding."
+                  },
+                  checked: checked("innovation", "techniques")
+                },
+
+                {
+                  divider: "or"
+                },
+                {
+                  value: "None",
+                  text: "None of the above",
+                  behaviour: "exclusive",
+                  checked: checked("innovation", "None")
+
+                }
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Get your score</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund projects that introduce innovation, such as:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>technology</li>
+            <li>collaboration</li>
+            <li>techniques</li>
+          </ul>
+
+
+     </div>
+   </div>
+
+{% endblock %}

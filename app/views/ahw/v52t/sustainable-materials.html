@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Sustainable materials
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukCheckboxes({
+                  idPrefix: 'sustainable-materials',
+                  name: 'sustainable-materials',
+                  fieldset: {
+                      legend: {
+                          text: 'Will your building use sustainable materials?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    text: "Select all that apply"
+                  },
+
+                  items: [
+                {
+                  value: "Low-carbon concrete",
+                  text: "Low-carbon concrete",
+                  checked: checked("sustainable-materials", "Low-carbon concrete"),
+                  hint: {
+                    text: "Alternatives to ordinary Portland cement that have higher embodied CO2 (for example lower carbon aggregates, Portland limestone cements or concrete with a cement content of less than 10%)"
+                  }
+                  },
+                {
+                  value: "Steel replacement products",
+                  text: "Steel replacement products",
+                  checked: checked("sustainable-materials", "Steel replacement products"),
+                  hint: {
+                    text: "Fibre reinforced polymer (FRP), resin pilling, carbon fibre"
+                    }
+                  },
+                {
+                  value: "Sustainably sourced timber",
+                  text: "Sustainably sourced timber",
+                  checked: checked("sustainable-materials", "Sustainably sourced timber"),
+                  hint: {
+                    text: "Timber certified by FSC, PEFC, SFI or CSA"
+                   }
+                  },
+
+                {
+                  value: "Reused materials already on site",
+                  text: "Reused materials already on site",
+                  checked: checked("sustainable-materials", "Reused materials already on site"),
+                  hint: {
+                    text: "For example wooden cladding, fencing, pen dividers"
+                  }
+                },
+                {
+                  value: "Reused or secondhand materials from elsewhere",
+                  text: "Reused or secondhand materials from elsewhere",
+                  checked: checked("sustainable-materials", "Reused or secondhand materials from elsewhere"),
+                  hint: {
+                    text: "Supplier quote must state the item has not been previously purchased with public funding, is fit for purpose and is expected to last at least 5 years "
+                  }
+                },
+                {
+                  value: "Recycled materials",
+                  text: "Recycled materials",
+                  checked: checked("sustainable-materials", "Recycled materials"),
+                  hint: {
+                    text: "Materials with a recycled content of more than 40%"
+                  }
+                },
+                {
+                  value: "Something else",
+                  text: "Something else",
+                  checked: checked("sustainable-materials", "Something else")
+                },
+
+                {
+                  divider: "or"
+                },
+                {
+                  value: "None of the above",
+                  text: "None of the above",
+                  behaviour: "exclusive",
+                  checked: checked("sustainable-materials", "None of the above")
+
+                }
+              ]
+              }) }}
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+          {% if data['COMPLETED'] == true %}
+            <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+              class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to score
+            </button>
+          {% endif %}
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p class="govuk-body">RPA wants to fund buildings that use sustainable materials.</p>
+          <p class="govuk-body">You should consult building experts for advice on building materials to ensure they are fit for purpose.</p>
+
+
+
+
+     </div>
+   </div>
+
+{% endblock %}
