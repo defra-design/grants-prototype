@@ -38,6 +38,7 @@ router.use('/ahw/v3', require('./views/ahw/v3/routes/routes'))
 router.use('/ahw/v4', require('./views/ahw/v4/routes/routes'))
 router.use('/ahw/v5', require('./views/ahw/v5/routes/routes'))
 router.use('/ahw/v51', require('./views/ahw/v51/routes/routes'))
+router.use('/ahw/v52t', require('./views/ahw/v52t/routes/routes'))
 
 router.use('/slurrystorage/current', require('./views/slurrystorage/current/routes/routes'))
 router.use('/slurrystorage/v1', require('./views/slurrystorage/v1/routes/routes'))

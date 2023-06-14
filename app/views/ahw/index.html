@@ -21,9 +21,17 @@
 
 
         <p class='govuk-list app-list--definition'>
-        <a href='ahw/current/start' class="govuk-link--no-visited-state">Start page</a><br>
-        Specialist start page, hosted on GOV.UK</p>
+        <a href='ahw/v52t/start' class="govuk-link--no-visited-state">Start page</a><br>
+        Using this link you will be routed into version 5.2 (shortend version) of the prototype.<br>
+        <span class="govuk-body govuk-!-font-size-14">#Last updated on 14 June 2023<br/>
+      </p>
 
+      {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+      {{ govukWarningText({
+        text: "This is not the fully journey",
+        iconFallbackText: "Warning"
+      }) }}
         </div>
 
       <div class="proto-admin">
