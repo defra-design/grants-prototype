@@ -331,7 +331,7 @@ router.get('/water-collection', function (req, res) {
 
 // SCORING JOURNEY - Q7 Innovation
 router.get('/innovation', function (req, res) {
-  var backUrl = 'sustainable-materials'
+  var backUrl = 'sick-pen'
   var nextUrl = 'answers'
   var completedUrl = 'answers'
 
