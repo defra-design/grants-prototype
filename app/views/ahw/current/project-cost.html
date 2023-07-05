@@ -30,14 +30,8 @@
           <div class="govuk-hint">
 
 
-            You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.<br><br>
-            {{ govukWarningText({
-              text: "You can use up to 40% of the total grant amount towards the cost of buying and installing rooftop solar PV panels.",
-              iconFallbackText: "Warning"
-            }) }}
-            
-            For example, if the total grant amount is £100,000, you can use up to £40,000 of the grant for buying and installing rooftop solar PV panels.<br><br>
-            This grant is for:<br><br>
+            You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.
+            <br><br><span class="govuk-body govuk-hint">This grant is for:</span><br><br>
             <ul class="govuk-list govuk-list--bullet govuk-hint"><li>structures, including concrete flooring, walls, roofs, structural reinforcement and drainage facilities</li>
               <li>fixtures, including calf accommodation pens, calf isolation facilities, gates, draught protection, ventilation systems, washing facilities and automatic calf feeders</li>
               <li>fittings, including temperature and humidity data loggers, heat lamps and enrichment items</li>
@@ -56,7 +50,10 @@
 
           </div>
         </div>
-
+        {{ govukWarningText({
+          text: "You can use up to 40% of the total grant amount towards the cost of buying and installing rooftop solar PV panels.",
+          iconFallbackText: "Warning"
+        }) }}
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
 
