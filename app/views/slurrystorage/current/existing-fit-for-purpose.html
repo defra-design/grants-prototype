@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Are your land or premises rented, leased or tenanted?
+Cover for existing stores (Cow and Dairy)
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,7 +14,7 @@
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+  <a class="govuk-back-link" href="cover-existing-stores">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -28,29 +28,30 @@
 
               {{ govukRadios({
                   classes: "govuk-radios--inline",
-                  idPrefix: 'tenancy',
-                  name: 'tenancy',
+                  idPrefix: 'existingfitpurpose',
+                  name: 'existingfitpurpose',
                   fieldset: {
                       legend: {
-                          text: 'Is the planned project on land the business owns?',
+                          text: 'Is your existing store fit for purpose?',
                           isPageHeading: true,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
+
                   hint: {
-                    text: "The location of the slurry store"
-                },
+                    text: "Your existing store must be signed off by a structural engineer by full application. The cost of hiring an engineer will be included in grant funding."
+                    },
 
                   items: [
                 {
                   value: "Yes",
                   text: "Yes",
-                  checked: checked("tenancy", "Yes")
+                  checked: checked("existingfitpurpose", "Yes")
                 },
                 {
                   value: "No",
                   text: "No",
-                  checked: checked("tenancy", "No")
+                  checked: checked("existingfitpurpose", "No")
                 }
               ]
               }) }}
@@ -69,9 +70,8 @@
           <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Eligibility</span>
             </h2>
-            <p>If you are a tenant farmer, either you or your landlord can agree to take responsibility for the 5-year project agreement. </p>
-            <a href="#">
-            </a>
+            <p>A store is no longer fit for purpose if it has reached the end of its design life and may be sat risk of leaks or failure.
+
 
         </div>
       </div>

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Are your land or premises rented, leased or tenanted?
+Cover for existing stores (Cow and Dairy)
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,29 +28,27 @@
 
               {{ govukRadios({
                   classes: "govuk-radios--inline",
-                  idPrefix: 'tenancy',
-                  name: 'tenancy',
+                  idPrefix: 'coverexistingstores',
+                  name: 'coverexistingstores',
                   fieldset: {
                       legend: {
-                          text: 'Is the planned project on land the business owns?',
+                          text: 'Do you need a cover for existing stores?',
                           isPageHeading: true,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
-                  hint: {
-                    text: "The location of the slurry store"
-                },
+                  
 
                   items: [
                 {
                   value: "Yes",
                   text: "Yes",
-                  checked: checked("tenancy", "Yes")
+                  checked: checked("coverexistingstores", "Yes")
                 },
                 {
                   value: "No",
                   text: "No",
-                  checked: checked("tenancy", "No")
+                  checked: checked("coverexistingstores", "No")
                 }
               ]
               }) }}
@@ -69,9 +67,18 @@
           <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Eligibility</span>
             </h2>
-            <p>If you are a tenant farmer, either you or your landlord can agree to take responsibility for the 5-year project agreement. </p>
-            <a href="#">
-            </a>
+            <p>You can use this grant to cover an existing store to increase the storage capacity to 6 months.
+
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    When is a store no longer fit for purpose?
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  A store is no longer fit for purpose if it has reached the end of its design life and may be susceptible to leaks or failure.
+                </div>
+              </details>
 
         </div>
       </div>

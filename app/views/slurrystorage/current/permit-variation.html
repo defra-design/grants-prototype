@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Variation on intensive farming permit
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link govuk-!-margin-top-6" href="intensive-farming-permit">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="legal-status" method="post">
+      <h1 class="govuk-heading-l">
+        You may need to apply for a change to your intensive farming permit</h1>
+
+      <p class="govuk-body">If you have an intensive farming permit, or plan to get one, you may need to apply for a change to your permit.<br><br>
+      This may be required if you are:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>applying to build a new store</li>
+        <li>expanding or replacing an existing store</li>
+        <li>covering an existing store</li>
+        </ul>
+
+      {{ govukWarningText({
+        text: "You must have the change to your permit in place before you receive the final grant payment.",
+        iconFallbackText: "Warning"
+      }) }}
+      <p><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

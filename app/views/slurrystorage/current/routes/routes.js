@@ -36,15 +36,43 @@ router.get('/farmer-type', function (req, res) {
 })
 
 router.post('/farmer-type-answer', function (req, res) {
-  const typeCondition = req.session.data.farmertype
-  // console.log ('typeCondition',typeCondition)
+  var farmerType = req.session.data.farmertype
 
-  if (typeCondition.includes('None of the above')) {
-    res.redirect('farmer-type-fail')
-  }
-  res.redirect('legal-status')
+  if (farmerType === 'Beef' || farmerType === 'Dairy') {
+    res.redirect('legal-status')}
+  else if (farmerType === 'Pig') {
+    res.redirect('intensive-farming-permit')}
+  else if (farmerType === 'None of the above') {
+    res.redirect('farmer-type-fail')}
 })
 
+router.post('/farmer-type-answer-completed', function (req, res) {
+    var farmerType = req.session.data.farmertype
+})
+
+
+// : Q: Intensive farming permit
+router.get('/intensive-farming-permit', function (req, res) {
+  var backUrl = 'farmer-type'
+  var nextUrl = 'intensive-farming-permit-answer'
+  var completedUrl = 'farmer-type-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/intensive-farming-permit-answer', function (req, res) {
+  var intensivePermit = req.session.data.intensivepermit
+
+  if (intensivePermit === 'Yes' || intensivePermit === 'No, but I need one') { res.redirect('permit-variation') } else { res.redirect('legal-status') }
+})
+
+router.post('/intensive-farming-permit-completed', function (req, res) {
+    var intensivePermit = req.session.data.intensivepermit
+})
 
 
 // Q: LEGAL STATUS
@@ -151,18 +179,10 @@ router.post('/tenancy-answer', function (req, res) {
 
   if (tenant === 'Yes' || tenant === 'Contractor') {
     res.redirect('system-type')
-  } else { res.redirect('tenancy-length') }
+  } else { res.redirect('project-responsibility') }
 })
 
-router.post('/tenancy-length-answer', function (req, res) {
-  var tenancyLength = req.session.data['tenancy-length']
 
-  if (tenancyLength === 'No') { res.redirect('tenancy-length-condition') } else { res.redirect('system-type') }
-})
-
-router.post('/tenancy-length-answer-completed', function (req, res) {
-  res.redirect('answers')
-})
 
 // : Q: System type
 router.get('/system-type', function (req, res) {
@@ -207,9 +227,18 @@ router.get('/existing-size-storage', function (req, res) {
 
 router.post('/existing-size-storage-answer', function (req, res) {
   var existingSize = req.session.data['existing-size-storage']
+  var existingSizePig = req.session.data['existing-size-storage-pig']
 
-  if (existingSize === 'At least 6 months') { res.redirect('existing-size-storage-fail') } else { res.redirect('planned-size-storage') }
+  if (existingSize === '6 months' || existingSizePig === '8 months') {
+    res.redirect('existing-size-storage-fail') }
+
+  else if (existingSize === '6 months+ not fit' || existingSizePig === '8 months+ not fit'){
+      res.redirect('planned-size-storage') }
+  else if (existingSize === '6 months+ fit' || existingSizePig === '8 months+ fit'){
+      res.redirect('planned-size-storage') }
 })
+
+
 
 // Q: Planned size Storage
 
@@ -227,14 +256,48 @@ router.get('/planned-size-storage', function (req, res) {
 
 router.post('/planned-size-storage-answer', function (req, res) {
   var plannedSize = req.session.data['planned-size-storage']
+  var plannedSizePig = req.session.data['planned-size-storage-pig']
 
-  if (plannedSize === 'Less than 6 months') { res.redirect('planned-size-storage-fail') } else { res.redirect('project-type') }
+  if (plannedSize === '6 months' || plannedSizePig === '8 months') {
+    res.redirect('planned-size-storage-fail') }
+
+  else if (plannedSize === 'More than 6 months' || plannedSizePig === 'More than 8 months'){
+      res.redirect('applying-for') }
+  else if (plannedSize === 'Less than 6 months' || plannedSizePig === 'Less than 8 months'){
+      res.redirect('applying-for') }
+  })
+
+
+// Q: Applying for
+
+router.get('/applying-for', function (req, res) {
+  var backUrl = 'planned-size-storage'
+  var nextUrl = 'applying-for-answer'
+  var completedUrl = 'project-type-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/applying-for-answer', function (req, res) {
+  var applyingFor = req.session.data.applyingfor
+
+
+if (applyingFor === 'Store') {
+  res.redirect('project-type')}
+else if (applyingFor === 'Cover') {
+  res.redirect('existing-fit-for-purpose')}
+else if (applyingFor === 'None of the above') {
+  res.redirect('applying-for-fail')}
 })
 
 // Q: Project type
 
 router.get('/project-type', function (req, res) {
-  var backUrl = 'planned-size-storage'
+  var backUrl = 'applying-for'
   var nextUrl = 'project-type-answer'
   var completedUrl = 'project-type-answer-completed'
 
@@ -268,8 +331,55 @@ router.get('/covers', function (req, res) {
 router.post('/covers-answer', function (req, res) {
   var coversImp = req.session.data.covers
 
-  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('estimate') }
+  if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('cover-existing-stores') }
 })
+
+
+
+// Q: Cover existing stores
+
+router.get('/cover-existing-stores', function (req, res) {
+  var backUrl = 'covers'
+  var nextUrl = 'cover-existing-stores-answer'
+  var completedUrl = 'cover-existing-stores-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/cover-existing-stores-answer', function (req, res) {
+  var coverExistingstores = req.session.data.coverexistingstores
+
+  if (coverExistingstores === 'No') { res.redirect('estimate') } else { res.redirect('existing-fit-for-purpose') }
+})
+
+// Q: Existing stores - fit for purpose
+
+router.get('/existing-fit-for-purpose', function (req, res) {
+  var backUrl = 'cover-existing-stores'
+  var nextUrl = 'existing-fit-for-purpose-answer'
+  var completedUrl = 'existing-fit-for-purpose-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/existing-fit-for-purpose-answer', function (req, res) {
+  var existingFitPurpose = req.session.data.existingfitpurpose
+
+  if (existingFitPurpose === 'Yes') { res.redirect('estimate') } else { res.redirect('existing-fit-for-purpose-fail') }
+})
+
+
+
+
+
 
 
 
@@ -334,7 +444,7 @@ router.get('/cover-type', function (req, res) {
   })
 
 
-
+ 
 
 
 
