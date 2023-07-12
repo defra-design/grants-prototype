@@ -288,7 +288,7 @@ Standardised costs
         }) }}
         <br><br>
         {{ govukTable({
-          caption: "Agitator",
+          caption: "Agitator and Aereator",
           captionClasses: "govuk-table__caption--m",
           firstCellIsHeader: true,
           head: [
@@ -314,6 +314,14 @@ Standardised costs
             },
             {
             html: "£1,000 per tank"
+            }
+          ],
+          [
+            {
+            html: "Aereator"
+            },
+            {
+            html: "£800 per item"
             }
           ]
           ]
@@ -346,6 +354,30 @@ Standardised costs
             },
             {
             html: "£55 per metre"
+            }
+          ]
+          ]
+        }) }}
+        <br><br>
+        {{ govukTable({
+          caption: "Separation equipment",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Separator"
+            },
+            {
+            html: "£800 per item"
             }
           ]
           ]

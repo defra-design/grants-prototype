@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Covers
+Project type
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,47 +23,48 @@ Covers
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukRadios({
-                  idPrefix: 'covers',
-                  name: 'covers',
+                  idPrefix: 'applyingfor',
+                  name: 'applyingfor',
                   fieldset: {
                       legend: {
-                          text: 'Will the grant-funded store have an impermeable cover?  ',
+                          text: 'What are you applying for?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
 
+
                   items: [
                 {
-                  value: "Yes",
-                  text: "Yes, I need a cover",
-                  checked: checked("covers", "Yes")
-                },
+                  value: "Store",
+                  text: "Building a new store, replacing or expanding an existing store",
+                  checked: checked("applyingfor", "Store"),
+                  hint: {
+                    text: ""
+                    }
+                  },
                 {
-                  value: "Yes2",
-                  text: "Yes, I already have a cover",
-                  checked: checked("covers", "Yes2")
-                },
+                  value: "Cover",
+                  text: "An impermeable cover",
+                  checked: checked("applyingfor", "Cover"),
+                  hint: {
+                    text: "To apply for a cover, you must have an existing store or stores that are fit for purpose"
+                    }
+                  },
 
-                {
-                  value: "acidification",
-                  text: "Not needed, the slurry is treated with acidification",
-                  checked: checked("covers", "acidification")
-                },
                 {
                   divider: "or"
                 },
+
                 {
-                  value: "No",
-                  text: "No",
-                  checked: checked("covers", "No")
+                  value: "None of the above",
+                  text: "None of the above",
+                  checked: checked("applyingfor", "None of the above")
                 }
               ]
               }) }}
 
-
-
-          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+          <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
 
       </form>
@@ -74,17 +75,17 @@ Covers
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">Grant-funded stores must have an impermeable cover unless the slurry is treated with acidification.</p>
+          <p class="govuk-body">A grant-funded store must have an impermeable cover.
+          </p>
 
-          <p class="govuk-body">Slurry acidification systems are not eligible for funding through this grant.</p>
           <details class="govuk-details" data-module="govuk-details">
             <summary class="govuk-details__summary">
               <span class="govuk-details__summary-text">
-                What is acidification?
+                When is a store no longer fit for purpose?
               </span>
             </summary>
             <div class="govuk-details__text">
-              Acidification is the use of acid treatment to lower the pH value of slurry  to stabilise ammonia emissions.
+              A store is no longer fit for purpose if it has reached the end of its design life and may be susceptible to leaks or failure.
             </div>
           </details>
       </div>
