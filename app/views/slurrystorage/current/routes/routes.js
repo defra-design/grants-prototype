@@ -390,22 +390,6 @@ router.post('/existing-fit-for-purpose-answer', function (req, res) {
 router.get('/store-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'standardised-grant-amounts'
-  var nextUrl = 'storage-capacity-increase'
-  var completedUrl = 'answers'
-
-  res.render('./' + req.originalUrl, {
-    backUrl,
-    nextUrl,
-    completedUrl,
-    storeTypeCost
-  })
-})
-
-// Q: Storage capacity increase (renamed from Current storage capacity)
-
-router.get('/storage-capacity-increase', function (req, res) {
-  // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'store-type'
   var nextUrl = 'store-type-answer'
   var completedUrl = 'answers'
 
@@ -417,13 +401,44 @@ router.get('/storage-capacity-increase', function (req, res) {
   })
 })
 
-
-
 router.post('/store-type-answer', function (req, res) {
-  var impermeableCover = req.session.data.covers
+  var storeRouting = req.session.data.farmertype
 
-  if (impermeableCover === 'acidification') { res.redirect('project-items') } else { res.redirect('cover-type') }
+  if (storeRouting === 'Pig') { res.redirect('storage-capacity-increase-pig') } else { res.redirect('storage-capacity-increase') }
 })
+
+// Q: Storage capacity increase
+
+router.get('/storage-capacity-increase', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'store-type'
+  var nextUrl = 'cover-type'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    storeTypeCost
+  })
+})
+
+// Q: Storage capacity increase Pig
+
+router.get('/storage-capacity-increase-pig', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'store-type'
+  var nextUrl = 'cover-type'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    storeTypeCost
+  })
+})
+
 
 
 
@@ -444,7 +459,7 @@ router.get('/cover-type', function (req, res) {
   })
 
 
- 
+
 
 
 
