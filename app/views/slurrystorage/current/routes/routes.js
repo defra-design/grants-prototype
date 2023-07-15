@@ -229,12 +229,12 @@ router.post('/existing-size-storage-answer', function (req, res) {
   var existingSize = req.session.data['existing-size-storage']
   var existingSizePig = req.session.data['existing-size-storage-pig']
 
-  if (existingSize === '6 months' || existingSizePig === '8 months') {
+  if (existingSize === '6 months+ fit' || existingSizePig === '8 months+ fit') {
     res.redirect('existing-size-storage-fail') }
 
   else if (existingSize === '6 months+ not fit' || existingSizePig === '8 months+ not fit'){
       res.redirect('planned-size-storage') }
-  else if (existingSize === '6 months+ fit' || existingSizePig === '8 months+ fit'){
+  else if (existingSize === '6 months' || existingSizePig === '8 months'){
       res.redirect('planned-size-storage') }
 })
 
@@ -258,12 +258,12 @@ router.post('/planned-size-storage-answer', function (req, res) {
   var plannedSize = req.session.data['planned-size-storage']
   var plannedSizePig = req.session.data['planned-size-storage-pig']
 
-  if (plannedSize === '6 months' || plannedSizePig === '8 months') {
+  if (plannedSize === 'Less than 6 months' || plannedSizePig === 'Less than 8 months') {
     res.redirect('planned-size-storage-fail') }
 
   else if (plannedSize === 'More than 6 months' || plannedSizePig === 'More than 8 months'){
       res.redirect('applying-for') }
-  else if (plannedSize === 'Less than 6 months' || plannedSizePig === 'Less than 8 months'){
+  else if (plannedSize === '6 months' || plannedSizePig === '8 months'){
       res.redirect('applying-for') }
   })
 
@@ -372,10 +372,13 @@ router.get('/existing-fit-for-purpose', function (req, res) {
 
 router.post('/existing-fit-for-purpose-answer', function (req, res) {
   var existingFitPurpose = req.session.data.existingfitpurpose
+  var applyingFor = req.session.data.applyingfor
 
-  if (existingFitPurpose === 'Yes') { res.redirect('estimate') } else { res.redirect('existing-fit-for-purpose-fail') }
+if (existingFitPurpose === 'Yes' ) {
+res.redirect('estimate')}
+  else if (existingFitPurpose === 'No' || applyingFor === 'Cover') {
+    res.redirect('existing-fit-for-purpose-fail')}
 })
-
 
 
 

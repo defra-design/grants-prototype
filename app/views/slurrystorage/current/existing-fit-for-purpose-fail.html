@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  You cannot apply for a grant from this scheme
+  You may be able to apply for a grant
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,18 +19,28 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+{% if (data['applyingfor'] == 'Cover') %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
+    <p class="govuk-body">Your existing store must be signed off as fit for purpose by a structural engineer by full application.</p>
+    <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-link govuk-link--no-visited-state"> See other grants you may be eligible for.</a></p>
+    </div>
+</div>
+{% else %}
 
-      <h1 class="govuk-heading-l">
-        You cannot apply for a grant from this scheme
-      </h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You may be able to apply for a grant from this scheme</h1>
+      <p class="govuk-body">You will need to apply for a grant to build a new store, or expand or replace an existing store. </p>
+      {{ govukInsetText({
+        text: "To apply for a cover for your existing store, it must be signed off as fit for purpose by a structural engineer before full application."
+      }) }}
+      <form class="form" action="estimate" method="post">
+        <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+      </form>
+    </div>
+</div>
 
-      <p class="govuk-body">Your existing store must be signed off as fit for purpose by a structural engineer by full application.</p>
-
-      <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-link govuk-link--no-visited-state"> See other grants you may be eligible for.</a></p>
-      </div>
-
-  </div>
-
+{% endif %}
 {% endblock %}
