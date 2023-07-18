@@ -32,10 +32,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">You may be able to apply for a grant from this scheme</h1>
-      <p class="govuk-body">You can continue to check your eligibility for grant funding to build a new store, or expand or replace an existing store.</p>
-      {{ govukInsetText({
-        text: "To apply for a cover, your existing store must be signed off as fit for purpose by a structural engineer by full application."
+      <p class="govuk-body">You will not get grant funding for a cover if the existing store you want to cover is not fit for purpose.</p>
+      {{ govukWarningText({
+        text: "To apply for a cover, your existing store must be signed off as fit for purpose by a structural engineer at full application.",
+        iconFallbackText: "Warning"
       }) }}
+      <p class="govuk-body">You can continue to check your eligibility for grant funding to build a new store, or expand or replace an existing store.</p>
       <form class="form" action="estimate" method="post">
         <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
       </form>
