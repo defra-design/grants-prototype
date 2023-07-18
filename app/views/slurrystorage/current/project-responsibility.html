@@ -20,30 +20,36 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="system-type" method="post">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
                 Will you take full responsibility for the 5-year project agreement?              </h1>
             </legend>
-            <div id="tenancy-length-hint" class="govuk-hint">
-              To receive grant funding, you will need to fulfil a 5-year agreement.<br><br>
 
-              If you are unable to fulfil the agreement, you can agree with your landlord to underwrite it and take responsibility. For example, you could choose this option if you are on a short tenancy agreement.    </div>
             <div class="govuk-radios govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="Yes" {{ checked("tenancy-length", "Yes, I intend to take full responsibility for the project") }}>
+                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="Yes" {{ checked("tenancy-length", "Yes") }}>
                 <label class="govuk-label govuk-radios__label" for="tenancy-length">
                   Yes, I intend to take full responsibility for the project
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="No" {{ checked("tenancy-length", "No, I have confirmed with my landlord that they will underwrite my agreement") }}>
+                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="No, I have confirmed" {{ checked("tenancy-length", "No, I have confirmed") }}>
                 <label class="govuk-label govuk-radios__label" for="tenancy-length-2">
                   No, I have confirmed with my landlord that they will underwrite my agreement
                 </label>
               </div>
+               <div class="govuk-radios__divider">or</div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="tenancy-length-3" name="tenancy-length" type="radio" value="No" {{ checked("tenancy-length", "No") }}>
+                <label class="govuk-label govuk-radios__label" for="tenancy-length-3">
+                  No
+                </label>
+              </div>
+
+
             </div>
           </fieldset>
         </div>
@@ -55,8 +61,21 @@
     </div>
     <div class="govuk-grid-column-one-third">
 
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>To receive grant funding, you will need to fulfil a 5-year agreement.<br><br>
+
+          If you are unable to fulfil the agreement, you can agree with your landlord to underwrite it and take responsibility. For example, you could choose this option if you are on a short tenancy agreement.  </p>
+
+        <a href="#">
+          </a>
+
+      </div>
+      </div>
 
 
       </div>
-    </div>
+
 {% endblock %}
