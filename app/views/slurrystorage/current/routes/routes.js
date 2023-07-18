@@ -184,6 +184,28 @@ router.post('/tenancy-answer', function (req, res) {
 
 
 
+// Q: Project responsibility
+
+router.get('/project-responsibility', function (req, res) {
+  var backUrl = 'tenancy'
+  var nextUrl = 'project-responsibility-answer'
+  var completedUrl = 'project-responsibility-answer-completed'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/project-responsibility-answer', function (req, res) {
+  var projectResponsibility = req.session.data ['tenancy-length']
+
+  if (projectResponsibility === 'No') { res.redirect('project-responsibility-fail') } else { res.redirect('system-type') }
+})
+
+
+
 // : Q: System type
 router.get('/system-type', function (req, res) {
   var backUrl = 'tenancy'
