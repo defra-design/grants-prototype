@@ -10,7 +10,6 @@ const storeTypeCost = {
 }
 
 const coverTypeCost = {
-  rigidCoversConcreteStores: { text: 'Rigid cover for steel or concrete slurry stores', value: 1000, formattedValue: '£1,000', hint: 'Solid roof or lid with a flat deck or conical shape made from inflexible material such as fibreglass panels or polyester sheets', hint2:'Grant amount: £8 per square metre', unit: '£8' },
   fixedFlexibleCovers: { text: 'Fixed flexible cover', value: 2100, formattedValue: '£2,100', hint: 'Taut skin made from flexible or pliant sheet material such as reinforced plastic sheeting or strong canvas', hint2: 'Grant amount: £4 per square metre', unit: '£4' },
   freeFloatingPlastic: { text: 'Floating flexible cover', value: 3250, formattedValue: '£3,250', hint: 'Flexible plastic sheet covers with some form of flotation or fixing to store sides to prevent movement', hint2: 'Grant amount: £3 per square metre', unit: '£3' }
 }

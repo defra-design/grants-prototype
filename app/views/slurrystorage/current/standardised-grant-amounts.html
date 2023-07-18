@@ -118,14 +118,6 @@ Standardised costs
           rows: [
           [
             {
-            html: "Rigid cover for steel or concrete <br>slurry stores"
-            },
-            {
-            html: "£8 per square metre"
-            }
-          ],
-          [
-            {
             html: "Fixed flexible cover"
             },
             {
@@ -138,6 +130,30 @@ Standardised costs
             },
             {
             html: "£3 per square metre"
+            }
+          ]
+          ]
+        }) }}
+        <br><br>
+        {{ govukTable({
+          caption: "Separation equipment",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Item"
+          },
+          {
+            text: "Grant amount"
+          }
+          ],
+          rows: [
+          [
+            {
+            html: "Separator"
+            },
+            {
+            html: "£800 per item"
             }
           ]
           ]
@@ -358,30 +374,7 @@ Standardised costs
           ]
           ]
         }) }}
-        <br><br>
-        {{ govukTable({
-          caption: "Separation equipment",
-          captionClasses: "govuk-table__caption--m",
-          firstCellIsHeader: true,
-          head: [
-          {
-            text: "Item"
-          },
-          {
-            text: "Grant amount"
-          }
-          ],
-          rows: [
-          [
-            {
-            html: "Separator"
-            },
-            {
-            html: "£800 per item"
-            }
-          ]
-          ]
-        }) }}
+
       </div>
     <br>
  <p class="govuk-heading-m">Next steps</p>
