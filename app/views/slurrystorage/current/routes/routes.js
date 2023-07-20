@@ -404,6 +404,26 @@ res.redirect('estimate')}
 
 
 
+router.get('/standardised-grant-amounts', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'estimate'
+  var nextUrl = 'standardised-grant-amounts-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    storeTypeCost
+  })
+})
+
+
+router.post('/standardised-grant-amounts-answer', function (req, res) {
+  var coverOnlyRouting = req.session.data.applyingfor
+
+  if (coverOnlyRouting === 'Cover') { res.redirect('cover-type') } else { res.redirect('store-type') }
+})
 
 
 
@@ -437,7 +457,7 @@ router.post('/store-type-answer', function (req, res) {
 router.get('/storage-capacity-increase', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'store-type'
-  var nextUrl = 'cover-type'
+  var nextUrl = 'storage-capacity-increase-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -447,13 +467,31 @@ router.get('/storage-capacity-increase', function (req, res) {
     storeTypeCost
   })
 })
+
+router.post('/storage-capacity-increase-answer', function (req, res) {
+  var covers = req.session.data['covers']
+  var coverExistingStores = req.session.data['coverexistingstores']
+
+
+
+  if (covers === 'Yes' || coverExistingStores === 'Yes') {
+    res.redirect('cover-type') }
+    else if (covers === 'Yes2' || coverExistingStores === 'Yes') {
+        res.redirect('cover-type') }
+        else if (covers === 'acidification' || coverExistingStores === 'Yes') {
+            res.redirect('separator') }
+
+  })
+
+
+
 
 // Q: Storage capacity increase Pig
 
 router.get('/storage-capacity-increase-pig', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'store-type'
-  var nextUrl = 'cover-type'
+  var nextUrl = 'storage-capacity-increase-pig-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -465,9 +503,24 @@ router.get('/storage-capacity-increase-pig', function (req, res) {
 })
 
 
+router.post('/storage-capacity-increase-pig-answer', function (req, res) {
+  var covers2 = req.session.data.covers
+  var coverExistingStores2 = req.session.data['coverexistingstores']
 
 
-// Q: Cover type
+
+  if (covers2 === 'Yes' || coverExistingStores2 === 'Yes') {
+    res.redirect('cover-type') }
+    else if (covers2 === 'Yes2' || coverExistingStores2 === 'Yes') {
+        res.redirect('cover-type') }
+        else if (covers2 === 'acidification' || coverExistingStores2 === 'Yes') {
+            res.redirect('separator') }
+
+  })
+
+
+
+// Q: Cover type 1. GRAND-FUNDED STORE
 
 router.get('/cover-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
@@ -478,14 +531,31 @@ router.get('/cover-type', function (req, res) {
   // Note: Routing here is based on - if user selected 'None of the above'
 
   router.post('/cover-type-answer', function (req, res) {
-    var coverType = req.session.data ['covertype']
+    var covers3 = req.session.data ['covers']
+    var coverExistingStore3 = req.session.data ['coverexistingstores']
 
-    if (coverType != 'none')  { res.redirect('cover-size') } else { res.redirect('project-items') }
+
+    if (coverExistingStore3 === 'No')  {res.redirect('cover-size') } else  {res.redirect('cover-type2')}
   })
 
 
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    coverTypeCost,
+    storeTypeCost
+  })
+})
 
 
+// Q: Cover type 2. existing STORE
+
+router.get('/cover-type2', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'cover-type'
+  var nextUrl = 'cover-size2'
+  var completedUrl = 'cover-size2-completed'
 
 
 
@@ -503,7 +573,24 @@ router.get('/cover-type', function (req, res) {
 router.get('/cover-size', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'cover-type'
-  var nextUrl = 'project-items'
+  var nextUrl = 'separator'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    coverTypeCost,
+    storeTypeCost
+  })
+})
+
+// Q: Cover size 2
+
+router.get('/cover-size2', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'cover-type2'
+  var nextUrl = 'separator'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -519,7 +606,7 @@ router.get('/cover-size', function (req, res) {
 
 router.get('/project-items', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'cover-size'
+  var backUrl = 'separator'
   var nextUrl = 'project-items-answer'
   var completedUrl = 'project-items-completed'
 

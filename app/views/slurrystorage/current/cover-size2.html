@@ -23,15 +23,34 @@ Cover size
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
 
-        {% if (data['covers'] != "Yes") %}
+
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
                 How big will the cover be?
               </h1>
             </legend>
             <div id="changed-name-hint" class="govuk-hint">
-              Enter the estimated cover surface area of the existing store<br><br>Enter the size in metres squared
+              Enter the estimated cover surface area of the grant-funded store and the existing store<br><br>Enter the size in metres squared
             </div>
+
+
+                    {{ govukInput({
+
+                      label: {
+                        text: "Grant-funded store",
+                        classes: "govuk-input--width-10",
+                        isPageHeading: false
+                      },
+                      classes: "govuk-input--width-5",
+                      id: "cover-size",
+                      name: "cover-size",
+                      suffix: {
+                        html: "m<sup>2</sup>"
+                      },
+                     value: data['cover-size'],
+
+                      spellcheck: false
+                    }) }}
 
 
         {{ govukInput({
@@ -42,46 +61,19 @@ Cover size
             isPageHeading: false
           },
           classes: "govuk-input--width-5",
-          id: "cover-size",
-          name: "cover-size",
+          id: "cover-size2",
+          name: "cover-size2",
           suffix: {
             html: "m<sup>2</sup>"
           },
-         value: data['cover-size'],
+         value: data['cover-size2'],
 
           spellcheck: false
         }) }}
 
 
-        {% else %}
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                How big will the cover be?
-              </h1>
-            </legend>
-            <div id="changed-name-hint" class="govuk-hint">
-              Enter the estimated cover surface area of the replacement, new or expanded store<br><br>Enter the size in metres squared
-            </div>
 
 
-        {{ govukInput({
-
-          label: {
-            text: "Grant-funded store",
-            classes: "govuk-input--width-10",
-            isPageHeading: false
-          },
-          classes: "govuk-input--width-5",
-          id: "cover-size",
-          name: "cover-size",
-          suffix: {
-            html: "m<sup>2</sup>"
-          },
-         value: data['cover-size'],
-
-          spellcheck: false
-        }) }}
-{% endif %}
 
 
           <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
@@ -120,15 +112,9 @@ Cover size
 
             {% if data['covertype'] %}
           <div>
-              {% if (data['applyingfor'] == "Cover") %}
             <h2 class="app-step-nav-related__heading">
-              <span class="app-step-nav-related__pretitle">Existing store cover</span>
+              <span class="app-step-nav-related__pretitle">Grant-funded cover</span>
               </h2>
-              {% else %}
-              <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Grant-funded cover</span>
-                </h2>
-{% endif %}
             <nav role="navigation" aria-labelledby="subsection-title">
               <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
                 <li>
