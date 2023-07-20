@@ -28,7 +28,9 @@ const projectItemsCost = {
   tankWallMixers1200: { text: 'Slurry store wall mixers with store capacity up to 1,200 cubic metres', value: 350, formattedValue: '£350', hint: 'Grant amount: £350',  measuringUnit: 'unit' },
   tankWallMixers8000: { text: 'Slurry store wall mixers with store capacity up to 8,000 cubic metres', value: 1000, formattedValue: '£1,000', hint: 'Grant amount: £1,000',  measuringUnit: 'unit' },
   inspectionSteelTanks: { text: 'Inspection platform with ladder for above-ground concrete and steel slurry stores', value: 800, formattedValue: '£800', hint: 'Grant amount: £800',  measuringUnit: 'unit' },
-  safetyFencingStores: { text: 'Safety fencing for stores constructed below ground level, earth-bank lagoons and slurry bags', value: 55, formattedValue: '£55', hint: 'Grant amount: £55 per metre',  measuringUnit: 'metre' }
+  safetyFencingStores: { text: 'Safety fencing for stores constructed below ground level, earth-bank lagoons and slurry bags', value: 55, formattedValue: '£55', hint: 'Grant amount: £55 per metre',  measuringUnit: 'metre' },
+  aeration: { text: 'Aeration equipment', value: 800, formattedValue: '£800', hint: 'Grant amount: £800',  measuringUnit: 'unit' }
+
 
 }
 

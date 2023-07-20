@@ -23,7 +23,8 @@ Os grid
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <h2 class="govuk-heading-l">What is the OS grid reference for your slurry store?</h2>
         <div id="current-capacity-hint" class="govuk-hint">
-          Enter OS grid reference number in the <a href="https://magic.defra.gov.uk/magicmap.aspx" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Magic Map (opens in new tab)</a> format of 2 letters and 8 numbers, for example NT12836972
+          You can find your slurry store's OS grid reference number using the <a href="https://gridreferencefinder.com/" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">UK grid reference finder (opens in new tab)</a>
+          <br><br>Enter in the format of 2 letters and 10 numbers, for example SP9620733594
         </div>
 
         {{ govukInput({
@@ -37,9 +38,17 @@ Os grid
             value: data['os-grid']
           }) }}
 
+
+
+        {{ govukWarningText({
+          text: "You must provide an accurate grid reference to avoid delays at full application.",
+          iconFallbackText: "Warning"
+        }) }}
+
         {{ govukButton({
           text: "Continue"
         }) }}
+
         {% if data['COMPLETED'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
             class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button">Back to evidence summary

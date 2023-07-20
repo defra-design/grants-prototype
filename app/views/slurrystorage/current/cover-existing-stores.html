@@ -32,7 +32,7 @@ Cover for existing stores (Cow and Dairy)
                   name: 'coverexistingstores',
                   fieldset: {
                       legend: {
-                          text: 'Do you need a cover for existing stores?',
+                          text: 'Do you want to apply for a cover for existing stores?',
                           isPageHeading: true,
                           classes: 'govuk-fieldset__legend--l'
                       }
@@ -67,8 +67,12 @@ Cover for existing stores (Cow and Dairy)
           <h2 class="app-step-nav-related__heading">
             <span class="app-step-nav-related__pretitle">Eligibility</span>
             </h2>
-            <p>You can use this grant to cover an existing store to increase the storage capacity to 6 months.
 
+            {% if (data['farmertype'] == "Pig") %}
+            <p>You can use this grant to cover an existing store to increase the storage capacity to 8 months.
+              {% else %}
+              <p>You can use this grant to cover an existing store to increase the storage capacity to 6 months.
+                {% endif %}
               <details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                   <span class="govuk-details__summary-text">
