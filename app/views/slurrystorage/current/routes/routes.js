@@ -67,7 +67,7 @@ router.get('/intensive-farming-permit', function (req, res) {
 router.post('/intensive-farming-permit-answer', function (req, res) {
   var intensivePermit = req.session.data.intensivepermit
 
-  if (intensivePermit === 'No') { res.redirect('permit-variation') } else { res.redirect('legal-status') }
+  if (intensivePermit === 'Yes') { res.redirect('permit-variation') } else { res.redirect('legal-status') }
 })
 
 router.post('/intensive-farming-permit-completed', function (req, res) {
@@ -78,7 +78,7 @@ router.post('/intensive-farming-permit-completed', function (req, res) {
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = req.session.data.intensivepermit === 'No' ? 'permit-variation' : 'intensive-farming-permit'
+  var backUrl = req.session.data.intensivepermit === 'Yes' ? 'permit-variation' : 'intensive-farming-permit'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
@@ -189,7 +189,7 @@ router.post('/tenancy-answer', function (req, res) {
 
 router.get('/project-responsibility', function (req, res) {
   var backUrl = 'tenancy'
-  var nextUrl = 'project-responsibility-answer'
+  var nextUrl = 'system-type'
   var completedUrl = 'project-responsibility-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -199,18 +199,14 @@ router.get('/project-responsibility', function (req, res) {
   })
 })
 
-router.post('/project-responsibility-answer', function (req, res) {
-  var projectResponsibility = req.session.data ['tenancy-length']
 
-  if (projectResponsibility === 'No') { res.redirect('project-responsibility-fail') } else { res.redirect('system-type') }
-})
 
 
 
 // : Q: System type
 router.get('/system-type', function (req, res) {
   var backUrl = 'tenancy'
-  var backUrl = req.session.data ['tenancy-length'] != 'No' ? 'project-responsibility' : 'tenancy'
+  var backUrl = req.session.data ['tenancy-length'] == 'No' ? 'project-responsibility' : 'tenancy'
   var nextUrl = 'system-type-answer'
   var completedUrl = 'system-type-answer-completed'
 
