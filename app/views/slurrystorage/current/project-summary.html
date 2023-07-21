@@ -57,11 +57,26 @@ Project summary
     {% if data['covertype'] %}
     {% set coverType = data['covertype'] %}
 
+
     {% set grantsTotal = grantsTotal + (coverTypeCost[coverType].value | int) %}
+
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
       <td class="govuk-table__cell">{{coverTypeCost[coverType].unit}}</td>
       <td class="govuk-table__cell">{{data ['cover-size']}}m<sup>2</sup></td>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
+    </tr>
+    {% endif %}
+    {% if data['covertype2'] %}
+    {% set coverType = data['covertype2'] %}
+
+
+    {% set grantsTotal = grantsTotal + (coverTypeCost[coverType].value | int) %}
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].unit}}</td>
+      <td class="govuk-table__cell">{{data ['cover-size2']}}m<sup>2</sup></td>
       <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
     </tr>
     {% endif %}
