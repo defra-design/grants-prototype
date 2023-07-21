@@ -40,9 +40,9 @@ What type of cover will you have?
               {% for item, properties in coverTypeCost %}
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input"
-                    name="covertype" type="radio" value="{{item}}"
+                    name="covertype2" type="radio" value="{{item}}"
                     aria-describedby="covertype-item-hint"
-                    {{ checked("covertype", item) }}
+                    {{ checked("covertype2", item) }}
                   >
                   <label class="govuk-label govuk-radios__label">
                   {{properties.text}}

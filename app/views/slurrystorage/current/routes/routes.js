@@ -67,7 +67,7 @@ router.get('/intensive-farming-permit', function (req, res) {
 router.post('/intensive-farming-permit-answer', function (req, res) {
   var intensivePermit = req.session.data.intensivepermit
 
-  if (intensivePermit === 'Yes' || intensivePermit === 'No, but I need one') { res.redirect('permit-variation') } else { res.redirect('legal-status') }
+  if (intensivePermit === 'No') { res.redirect('permit-variation') } else { res.redirect('legal-status') }
 })
 
 router.post('/intensive-farming-permit-completed', function (req, res) {
@@ -78,7 +78,7 @@ router.post('/intensive-farming-permit-completed', function (req, res) {
 // Q: LEGAL STATUS
 
 router.get('/legal-status', function (req, res) {
-  var backUrl = 'farmer-type'
+  var backUrl = req.session.data.intensivepermit === 'No' ? 'permit-variation' : 'intensive-farming-permit'
   var nextUrl = 'legal-status-answer'
   var completedUrl = 'legal-status-answer-completed'
 
@@ -88,6 +88,7 @@ router.get('/legal-status', function (req, res) {
     completedUrl
   })
 })
+
 
 router.post('/legal-status-answer', function (req, res) {
   var legalStatus = req.session.data['legal-status']
@@ -209,6 +210,7 @@ router.post('/project-responsibility-answer', function (req, res) {
 // : Q: System type
 router.get('/system-type', function (req, res) {
   var backUrl = 'tenancy'
+  var backUrl = req.session.data ['tenancy-length'] != 'No' ? 'project-responsibility' : 'tenancy'
   var nextUrl = 'system-type-answer'
   var completedUrl = 'system-type-answer-completed'
 
@@ -381,7 +383,7 @@ router.post('/cover-existing-stores-answer', function (req, res) {
 // Q: Existing stores - fit for purpose
 
 router.get('/existing-fit-for-purpose', function (req, res) {
-  var backUrl = 'cover-existing-stores'
+  var backUrl = req.session.data ['coverexistingstores'] === 'Yes' ? 'cover-existing-stores' : 'applying-for'
   var nextUrl = 'existing-fit-for-purpose-answer'
   var completedUrl = 'existing-fit-for-purpose-answer-completed'
 
@@ -403,6 +405,24 @@ res.redirect('estimate')}
 })
 
 
+
+//Estimate  - guidance page
+router.get('/estimate', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = req.session.data ['coverexistingstores'] === 'No' ? 'cover-existing-stores' : 'existing-fit-for-purpose'
+  var nextUrl = 'standardised-grant-amounts'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+
+//Standardised grant amounts - guidance page
 
 router.get('/standardised-grant-amounts', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
