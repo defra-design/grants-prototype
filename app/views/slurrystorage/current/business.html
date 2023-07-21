@@ -44,14 +44,22 @@
           <input class="govuk-input" id="business-name" name="business-name" type="text" value="{{ data['business-name'] }}">
         </div>
 
+
         <div class="govuk-form-group">
-          <label class="govuk-label" for="employees">
-              Number of employees
-          </label>
-          <span id="employees-hint" class="govuk-hint">Full-time employees, including the owner</span>
-          <input class="govuk-input govuk-input--width-4" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">
-        </div>
-        <br>
+              <fieldset class="govuk-fieldset" aria-describedby="employees-hint">
+                <legend class="govuk-fieldset__legend">
+                  <h1 class="govuk-fieldset__heading">
+                    Number of employees
+                  </h1>
+                </legend>
+                <div id="employees-hint" class="govuk-hint">
+                  Full-time employees, including the owner
+                </div>
+                 <input class="govuk-input govuk-input--width-4" id="employees" name="employees" type="text" spellcheck="false"  pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">
+               </fieldset>
+               </div>
+
+
         <div class="govuk-form-group">
           <label class="govuk-label" for="turnover">
               Business turnover (£)
@@ -73,13 +81,13 @@
                        If you do not have an SBI, you will need to get one for full application
                      </div>
                       <input class="govuk-input govuk-!-width-one-third" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
-</fieldset>
+                    </fieldset>
                     </div>
 
                      </div>
 
              </div>
-    
+
         <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
           Continue
         </button>
