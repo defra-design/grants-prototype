@@ -206,7 +206,7 @@ router.get('/project-responsibility', function (req, res) {
 // : Q: System type
 router.get('/system-type', function (req, res) {
   var backUrl = 'tenancy'
-  var backUrl = req.session.data ['tenancy-length'] == 'No' ? 'project-responsibility' : 'tenancy'
+  var backUrl = req.session.data ['tenancy'] == 'No' ? 'project-responsibility' : 'tenancy'
   var nextUrl = 'system-type-answer'
   var completedUrl = 'system-type-answer-completed'
 
