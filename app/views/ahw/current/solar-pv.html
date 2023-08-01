@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Solar
+Solar PV
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,48 +23,38 @@ Solar
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
               {{ govukRadios({
-                  classes: "govuk-radios",
-                  idPrefix: 'solar',
-                  name: 'solar',
+                  classes: "govuk-radios--inline",
+                  idPrefix: 'solarpv',
+                  name: 'solarpv',
                   fieldset: {
                       legend: {
-                          text: 'Will the roof be able to support solar PV panels?',
+                          text: 'Will you use the grant for solar PV panels?',
                           isPageHeading: yes,
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
                   hint: {
-                    html: "You must provide confirmation from a building expert, contractor or structural engineer that your roof can support PV panels for your full application. Confirmation is not funded by this grant.<br><br>Your roof is exempt if:<br><br>
-                    <li>the building is listed or on a world heritage site</li>
-                    <li>you're upgrading an existing building and would not otherwise make changes to the roof</li>
-                    <li>the roof faces only north or is heavily shaded</li>
-                    <li>the roof does not have 20m<sup>2</sup> of clear roof space</li>
-                    <li>the roof has a pitch less than 15 degrees or greater than 50 degrees</li>"
+                    text: "You can choose to buy and install solar PV panels on the grant-funded calf housing as part of the grant."
                   },
-
                   items: [
                 {
                   value: "yes",
                   text: "Yes",
-                  checked: checked("solar", "yes")
+                  checked: checked("solarpv", "yes")
                 },
 
                 {
                   value: "no",
                   text: "No",
-                  checked: checked("solar", "no")
-                },
-                {
-                  value: "exempt",
-                  text: "My roof is exempt",
-                  checked: checked("solar", "exempt")
+                  checked: checked("solarpv", "no")
                 }
 
               ]
               }) }}
 
+          <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
-          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
       </form>
     </div>
     <div class="govuk-grid-column-one-third">
@@ -73,10 +63,9 @@ Solar
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p class="govuk-body">The roof must be able to support solar PV panels, allowing for potential use in the future.
+          <p class="govuk-body">You do not have to install solar PV panels to be eligible for the grant.<br><br>The roof of the grant-funded building must be able to support solar PV panels, allowing for potential use in the future.
+
           </p>
-
-
             </div>
    </div>
 
