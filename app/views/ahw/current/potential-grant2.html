@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+
+{% block pageTitle %}
+Potential grant funding
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Potential grant funding
+    </h1>
+
+    <p class="govuk-body">
+
+      {% set grantAmount = data['project-cost'] *0.4 %}
+      {% set projectCost = data['project-cost'] %}
+        {% if projectCost >=1250001 %}
+        <p class="govuk-body">You may be able to apply for a grant of up to £500,000, based on the estimated cost of £{{ data['project-cost'] | toFixed(2) | commafy }}.</p>
+
+        {% else %}
+      <p class="govuk-body">You may be able to apply for a grant of up to £40,000, based on the total estimated cost of £137,500.</p>
+            {% endif %}
+
+            <p class="govuk-body">This grant amount combines:
+              <ul class="govuk-list govuk-list--bullet">
+                <li>£15,000 for cattle housing costs (40% of £37,500)</li>
+                <li>£25,000 for solar PV costs (25% of £100,000)</li>
+                </ul>
+</p>
+
+
+    {{ govukWarningText({
+        text: 'There’s no guarantee the project will receive a grant.',
+        iconFallbackText: 'Warning'
+    }) }}
+
+    <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+      <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

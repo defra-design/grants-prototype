@@ -598,7 +598,7 @@ router.post('/building-other-answer', function (req, res) {
 
 
 
-// Q: Solar PV
+// Q: Solar
 
 router.get('/solar', function (req, res) {
 var backUrl = 'additional-items'
@@ -616,17 +616,39 @@ completedUrl
 router.post('/solar-answer', function (req, res) {
   var solar = req.session.data['solar']
 
-  if (solar === 'no') {
-    res.redirect('solar-fail')
-  }
-
-  else {
-    res.redirect ('project-cost')
-  }
+  if (solar === 'yes') {
+    res.redirect('solar-pv')}
+    else if (solar === 'exempt') {
+      res.redirect('project-cost')}
+    else if (solar === 'no') {
+      res.redirect('solar-fail')}
 
 })
 
+// Q: Solar PV
 
+router.get('/solar-pv', function (req, res) {
+var backUrl = 'solar'
+var nextUrl = 'solar-pv-answer'
+var completedUrl = 'answers'
+
+ res.render('./' + req.originalUrl, {
+backUrl,
+nextUrl,
+completedUrl
+})
+} )
+
+
+router.post('/solar-pv-answer', function (req, res) {
+  var solarPv = req.session.data['solarpv']
+
+  if (solarPv === 'no') {
+    res.redirect('project-cost')}
+
+  else if (solarPv === 'yes'){
+    res.redirect ('project-cost2')}
+})
 
 
 
@@ -635,7 +657,7 @@ router.post('/solar-answer', function (req, res) {
 router.get('/project-cost', function (req, res) {
   req.session.data.currentProjectCost = req.session.data['project-cost']
 
-  var backUrl = 'solar'
+  var backUrl = 'solar-pv'
   var nextUrl = 'project-cost-answer'
   var completedUrl = 'answers'
 
@@ -661,6 +683,29 @@ router.post('/project-cost-answer-completed', function (req, res) {
 })
 
 
+// Q: Project cost 2
+
+router.get('/project-cost2', function (req, res) {
+  req.session.data.currentProjectCost = req.session.data['project-cost']
+
+  var backUrl = 'solar-pv'
+  var nextUrl = 'potential-grant2'
+  var completedUrl = 'answers'
+
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/project-cost2-answer', function (req, res) {
+  var projectCost2 = req.session.data['calfhousing']
+
+  if (projectCost2 > 1250000 || projectCost2 < 37500 )  { res.redirect('project-cost-fail') } else { res.redirect('potential-grant') }
+})
+
 
 
 
@@ -677,6 +722,20 @@ router.get('/potential-grant', function (req, res) {
     completedUrl
   })
 })
+
+// Q: Grant 2
+router.get('/potential-grant2', function (req, res) {
+  var backUrl = 'project-cost2'
+  var nextUrl = 'remaining-costs'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
 
 
 // Q: remaining costs

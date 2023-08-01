@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What are your estimate total project costs?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-heading-l">Estimated project costs</h1>
+          <div class="govuk-hint">
+            <p class="govuk-body govuk-hint">You can apply for a grant of up to:
+              <ul class="govuk-list govuk-list--bullet govuk-hint">
+                <li>40% of the estimated costs of calf housing</li>
+                <li>25% of the estimated costs of buying and installing solar PV panels</li>
+                </ul>
+</p>
+
+
+            The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.<br><br>
+
+            Do not include VAT<br><br>
+            Enter amount, for example 95,000<br>
+
+          </div>
+
+
+
+
+
+
+                      {{ govukInput({
+            id: "calfhousing",
+            name: "calfhousing",
+            label: {
+            text: "Calf housing",
+            classes: "govuk-label--s"
+            },
+            prefix: {
+            text: "£"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+
+
+            {{ govukInput({
+            id: "solar-pv",
+            name: "solar-pv",
+            label: {
+              text: "Buying and installing solar PV panels",
+              classes: "govuk-label--s"
+            },
+            prefix: {
+            text: "£"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+            }) }}
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+
+      </form>
+
+    </div>
+
+{% endblock %}
