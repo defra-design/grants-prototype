@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Meeting the remaining project costs 2
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        {% set estimatedCostTotal = 0 %}
+        {% set calfhousingCost = data['calfhousing-cost'] %}
+        {% set estimatedCostTotal = estimatedCostTotal + calfhousingCost | int %}
+
+        {% set grantAmountTotal = 0 %}
+        {% set grantAmount = data['calfhousing-cost'] *0.4 %}
+        {% set grantAmountTotal = grantAmountTotal + grantAmount | int %}
+
+
+
+
+        {% set solarpvCost = data['solarpv-cost'] %}
+        {% set estimatedCostTotal = estimatedCostTotal + solarpvCost | int %}
+
+        {% set grantAmount2 = data['solarpv-cost'] *0.25 %}
+        {% set grantAmountTotal = grantAmountTotal + grantAmount2 | int %}
+        {% set remainingCost = estimatedCostTotal-grantAmountTotal %}
+
+
+
+      <h1 class="govuk-heading-l">Can you pay the remaining costs of £{{ remainingCost | toFixed(2) | commafy }}?</h1>
+
+
+  <div class="govuk-radios govuk-radios--inline">
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="remaining-costs2" name="remaining-costs2" type="radio" value="yes" {{ checked("remaining-costs2", "yes") }}>
+      <label class="govuk-label govuk-radios__label" for="remaining-costs">
+        Yes
+      </label>
+    </div>
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="remaining-costs2" name="remaining-costs2" type="radio" value="no" {{ checked("remaining-costs2", "no") }}>
+      <label class="govuk-label govuk-radios__label" for="remaining-costs-2">
+        No
+      </label>
+    </div>
+  </div>
+
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+  <!--COMPLETED section:activates when journey reaches 'Check answers' page-->
+
+
+
+
+
+      </form>
+  </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
+          <p>You can use:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>loans</li>
+            <li>overdrafts</li>
+            <li>the Basic Payment Scheme</li>
+
+
+          </ul>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
