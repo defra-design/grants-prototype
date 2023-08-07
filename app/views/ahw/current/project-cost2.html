@@ -41,8 +41,8 @@
           </div>
 
             {{ govukInput({
-            id: "calfhousing",
-            name: "calfhousing",
+            id: "calfhousing-cost",
+            name: "calfhousing-cost",
             label: {
             text: "Calf housing",
             classes: "govuk-label--s"
@@ -51,13 +51,14 @@
             text: "£"
             },
             classes: "govuk-input--width-5",
+            value: data['calfhousing-cost'],
             spellcheck: false
             }) }}
 
 
             {{ govukInput({
-            id: "solar-pv",
-            name: "solar-pv",
+            id: "solarpv-cost",
+            name: "solarpv-cost",
             label: {
               text: "Buying and installing a solar PV system",
               classes: "govuk-label--s"
@@ -66,6 +67,7 @@
             text: "£"
             },
             classes: "govuk-input--width-5",
+            value: data['solarpv-cost'],
             spellcheck: false
             }) }}
         </div>

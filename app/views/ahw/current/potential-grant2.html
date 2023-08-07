@@ -22,25 +22,51 @@ Potential grant funding
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">
-      Potential grant funding
-    </h1>
 
-    <p class="govuk-body">
 
-      {% set grantAmount = data['project-cost'] *0.4 %}
-      {% set projectCost = data['project-cost'] %}
-        {% if projectCost >=1250001 %}
-        <p class="govuk-body">You may be able to apply for a grant of up to £500,000, based on the estimated cost of £{{ data['project-cost'] | toFixed(2) | commafy }}.</p>
 
-        {% else %}
-      <p class="govuk-body">You may be able to apply for a grant of up to £40,000, based on the total estimated cost of £137,500.</p>
-            {% endif %}
+
+      {% set estimatedCostTotal = 0 %}
+      {% set calfhousingCost = data['calfhousing-cost'] %}
+      {% set estimatedCostTotal = estimatedCostTotal + calfhousingCost | int %}
+
+      {% set grantAmountTotal = 0 %}
+      {% set grantAmount = data['calfhousing-cost'] *0.4 %}
+      {% set grantAmountTotal = grantAmountTotal + grantAmount | int %}
+
+
+
+
+      {% set solarpvCost = data['solarpv-cost'] %}
+      {% set estimatedCostTotal = estimatedCostTotal + solarpvCost | int %}
+
+      {% set grantAmount2 = data['solarpv-cost'] *0.25 %}
+      {% set grantAmountTotal = grantAmountTotal + grantAmount2 | int %}
+
+
+      {# Current rule is set to min grant amount #}
+      {# Need to putting a rule to cap grant amount at 500,000 when the value goes over maximum grant amount of 500K #}
+
+
+
+
+
+
+
+
+
+
+        <h1 class="govuk-heading-l">
+          Potential grant funding
+        </h1>
+        <p class="govuk-body">You may be able to apply for a grant of up to £{{ grantAmountTotal | toFixed(2) | commafy }}, based on the estimated cost of £{{ estimatedCostTotal | toFixed(2) | commafy }}.</p>
+
+
 
             <p class="govuk-body">This grant amount combines:
               <ul class="govuk-list govuk-list--bullet">
-                <li>£15,000 for calf housing costs (40% of £37,500)</li>
-                <li>£25,000 for a solar PV system costs (25% of £100,000)</li>
+                <li>£{{ grantAmount | toFixed(2) | commafy }} for calf housing costs (40% of {{ calfhousingCost | toFixed(2) | commafy}})</li>
+                <li>£{{ grantAmount2 | toFixed(2) | commafy }} for solar PV system costs (25% of {{ solarpvCost | toFixed(2) | commafy}})</li>
                 </ul>
 </p>
 
@@ -57,6 +83,8 @@ Potential grant funding
 
 
     </form>
+
+
 
 
   </div>

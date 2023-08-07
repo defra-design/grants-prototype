@@ -14,7 +14,7 @@ Potential grant funding
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
-<a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+<a class="govuk-back-link" href="project-cost2">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -22,46 +22,84 @@ Potential grant funding
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">
-      Potential grant funding
-    </h1>
+
 
     <p class="govuk-body">
 
-      {% set grantAmount = data['project-cost'] *0.4 %}
-      {% set projectCost = data['project-cost'] %}
-        {% if projectCost >=1250001 %}
-        <p class="govuk-body">You may be able to apply for a grant of up to £500,000, based on the estimated cost of £{{ data['project-cost'] | toFixed(2) | commafy }}.</p>
+
+            {% set estimatedCostTotal = 0 %}
+            {% set calfhousingCost = data['calfhousing-cost'] %}
+            {% set estimatedCostTotal = estimatedCostTotal + calfhousingCost | int %}
+
+            {% set grantAmountTotal = 0 %}
+            {% set grantAmount = data['calfhousing-cost'] *0.4 %}
+            {% set grantAmountTotal = grantAmountTotal + grantAmount | int %}
+
+
+
+
+            {% set solarpvCost = data['solarpv-cost'] %}
+            {% set estimatedCostTotal = estimatedCostTotal + solarpvCost | int %}
+
+            {% set grantAmount2 = data['solarpv-cost'] *0.25 %}
+            {% set grantAmountTotal = grantAmountTotal + grantAmount2 | int %}
+            {% set grantAmountCapped = 0 %}
+            {% set grantAmountCapped = 500000 - grantAmount | int %}
+
+
+            {# Current rule is set to min grant amount #}
+            {# Need to putting a rule to cap grant amount at 500,000 when the value goes over maximum grant amount of 500K #}
+
+
+
+
+
+      {% if  grantAmount <500000 %}
+
+
+                  <p class="govuk-body">You may be able to apply for a grant of up to £500,000, based on the estimated cost of £{{ estimatedCostTotal | toFixed(2) | commafy }}.</p>
+                  <p class="govuk-body">This grant amount combines:
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>£{{ grantAmount | toFixed(2) | commafy}} for calf housing costs (40% of £{{ calfhousingCost | toFixed(2) | commafy}})</li>
+                      <li>£{{ grantAmountCapped | toFixed(2) | commafy}} for solar PV system costs (25% of £{{ solarpvCost | toFixed(2) | commafy }}, capped at £{{ grantAmountCapped | toFixed(2) | commafy}})</li>
+
+                      </ul>
+                    </p>
+                  <p class="govuk-body">As calf housing costs take grant funding priority, you may be able to apply for a grant of up to £{{ grantAmountCapped | toFixed(2) | commafy}} for a solar PV system costs. The maximum grant is £500,000.</p>
+
+                {{ govukWarningText({
+                    text: 'There’s no guarantee the project will receive a grant.',
+                    iconFallbackText: 'Warning'
+                }) }}
+
+                <form id="mainForm" class="form" action="remaining-costs3" method="post">
+
+                  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+                </form>
+
+
+
+
 
         {% else %}
-      <p class="govuk-body">You may be able to apply for a grant of up to £500,000, based on the total estimated cost of £1.5 million.
-</p>
-            {% endif %}
 
+        <form id="mainForm" class="form" action="remaining-costs3" method="post">
+        <h1 class="govuk-heading-l">
+          You may be able to apply for a grant from this scheme
+        </h1>
+        <p class="govuk-body">You have requested the maximum grant amount of £500,000 for calf housing.</p>
+        {{ govukWarningText({
+            text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for calf housing.',
+            iconFallbackText: 'Warning'
+        }) }}
+        <p class="govuk-body">You can continue to check your eligibility for grant funding to build or upgrade calf housing.</p>
 
+          <button class="govuk-button " data-module="govuk-button">Continue</button>
 
+        </form>
 
-            <p class="govuk-body">This grant amount combines:
-              <ul class="govuk-list govuk-list--bullet">
-                <li>£400,000 for calf housing costs (40% of £1 million)</li>
-                <li>£100,000 for a solar PV system costs (25% of £500,000, capped at £100,000)</li>
-                </ul>
-              </p>
-      <p class="govuk-body">As calf housing costs take grant funding priority, you may be able to apply for a grant of up to £100,000 for a solar PV system costs. The maximum grant is £500,000.</p>
-
-    {{ govukWarningText({
-        text: 'There’s no guarantee the project will receive a grant.',
-        iconFallbackText: 'Warning'
-    }) }}
-
-    <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-
-      <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-
-
-
-    </form>
-
+      {% endif %}
 
   </div>
 </div>

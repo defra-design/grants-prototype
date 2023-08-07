@@ -619,11 +619,53 @@ router.post('/solar-answer', function (req, res) {
   if (solar === 'yes') {
     res.redirect('solar-pv')}
     else if (solar === 'exempt') {
-      res.redirect('project-cost')}
+      res.redirect('upgrade-existing-building')}
     else if (solar === 'no') {
       res.redirect('solar-fail')}
 
 })
+
+// Q: Upgrading existing building
+
+router.get('/upgrade-existing-building', function (req, res) {
+var backUrl = 'solar'
+var nextUrl = 'upgrade-existing-building-answer'
+var completedUrl = 'answers'
+
+ res.render('./' + req.originalUrl, {
+backUrl,
+nextUrl,
+completedUrl
+})
+} )
+
+
+router.post('/upgrade-existing-building-answer', function (req, res) {
+  var upgradeBuild = req.session.data['upgradebuild']
+
+    if (upgradeBuild === 'yes')  { res.redirect('solar-pv') } else { res.redirect('heritage') }
+  })
+
+  // Q: Heritage site
+
+  router.get('/heritage', function (req, res) {
+  var backUrl = 'upgrade-existing-building'
+  var nextUrl = 'heritage-answer'
+  var completedUrl = 'answers'
+
+   res.render('./' + req.originalUrl, {
+  backUrl,
+  nextUrl,
+  completedUrl
+  })
+  } )
+
+
+  router.post('/heritage-answer', function (req, res) {
+    var heritage = req.session.data['heritage']
+
+      if (heritage === 'yes')  { res.redirect('solar-pv') } else { res.redirect('project-cost') }
+    })
 
 // Q: Solar PV
 
@@ -672,24 +714,17 @@ router.get('/project-cost', function (req, res) {
 router.post('/project-cost-answer', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
-  if (projectCost > 1250000 || projectCost < 37500 )  { res.redirect('project-cost-fail') } else { res.redirect('potential-grant') }
+  if (projectCost < 37500 )  { res.redirect('project-cost-fail') } else { res.redirect('potential-grant') }
 })
 
-router.post('/project-cost-answer-completed', function (req, res) {
-  var projectCost = req.session.data['project-cost']
-
-  if (projectCost > 12500000 || projectCost < 37500  ) { res.redirect('project-cost-fail') } else { res.redirect('answers') }
-
-})
 
 
 // Q: Project cost 2
 
 router.get('/project-cost2', function (req, res) {
-  req.session.data.currentProjectCost = req.session.data['project-cost']
 
   var backUrl = 'solar-pv'
-  var nextUrl = 'potential-grant2'
+  var nextUrl = 'project-cost2-answer'
   var completedUrl = 'answers'
 
 
@@ -701,10 +736,25 @@ router.get('/project-cost2', function (req, res) {
 })
 
 router.post('/project-cost2-answer', function (req, res) {
-  var projectCost2 = req.session.data['calfhousing']
+  var calfhousingCost = req.session.data['calfhousing-cost']
+  var solarpvCost = req.session.data['solarpv-cost']
 
-  if (projectCost2 > 1250000 || projectCost2 < 37500 )  { res.redirect('project-cost-fail') } else { res.redirect('potential-grant') }
+//  if (calfhousingCost < 37500 )  { res.redirect('project-cost-fail2') } else { res.redirect('potential-grant2') }
+//})
+
+
+
+  if (calfhousingCost < 37500) {
+    res.redirect('project-cost-fail2')}
+
+    else if (calfhousingCost > 37501 || calfhousingCost > 1250000){
+      res.redirect ('potential-grant3')}
+
+  else if (calfhousingCost > 37501 || calfhousingCost < 1250000){
+    res.redirect ('potential-grant2')}
 })
+
+
 
 
 
@@ -726,7 +776,7 @@ router.get('/potential-grant', function (req, res) {
 // Q: Grant 2
 router.get('/potential-grant2', function (req, res) {
   var backUrl = 'project-cost2'
-  var nextUrl = 'remaining-costs'
+  var nextUrl = 'remaining-costs2'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -758,12 +808,50 @@ router.post('/remaining-costs-answer', function (req, res) {
 })
 
 
+// Q: remaining costs 2
+router.get('/remaining-costs2', function (req, res) {
 
+  var backUrl = 'potential-grant2'
+  var nextUrl = 'remaining-costs2-answer'
+  var completedUrl = 'answers'
 
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/remaining-costs2-answer', function (req, res) {
+  var remainingCosts2 = req.session.data['remaining-costs2']
+
+  if (remainingCosts2 === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('housing') }
+})
+
+// Q: remaining costs 3
+router.get('/remaining-costs3', function (req, res) {
+
+  var backUrl = 'potential-grant3'
+  var nextUrl = 'remaining-costs3-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/remaining-costs3-answer', function (req, res) {
+  var remainingCosts3 = req.session.data['remaining-costs3']
+
+  if (remainingCosts3 === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('housing') }
+})
 
 // SCORING JOURNEY - Q1 Housing
 router.get('/housing', function (req, res) {
-  var backUrl = 'remaining-costs'
+  
+  var backUrl = req.session.data['remaining-costs2'] === 'Yes' ? 'remaining-costs2' : 'remaining-costs3'
   var nextUrl = 'group-size'
   var completedUrl = 'answers'
 
