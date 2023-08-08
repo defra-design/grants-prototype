@@ -24,7 +24,7 @@ Potential grant funding
 
 
 
-    <p class="govuk-body">
+    
 
 
             {% set estimatedCostTotal = 0 %}
@@ -56,7 +56,9 @@ Potential grant funding
 
       {% if  grantAmount <500000 %}
 
-
+                <h1 class="govuk-heading-l">
+                  Potential grant funding
+                </h1>
                   <p class="govuk-body">You may be able to apply for a grant of up to £500,000, based on the estimated cost of £{{ estimatedCostTotal | toFixed(2) | commafy }}.</p>
                   <p class="govuk-body">This grant amount combines:
                     <ul class="govuk-list govuk-list--bullet">
