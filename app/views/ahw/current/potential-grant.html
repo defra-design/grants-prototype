@@ -32,6 +32,7 @@ Potential grant funding
       {% set projectCost = data['project-cost'] %}
       {% set grantAmount = data['project-cost'] *0.4 %}
         {% if projectCost >=1250001 %}
+        <p class="govuk-body">The maximum grant you can apply for is £500,000.</p>
         <p class="govuk-body">You may be able to apply for a grant of up to £500,000, based on the estimated cost of £{{ data['project-cost'] | toFixed(2) | commafy }}.</p>
 
         {% else %}
