@@ -744,14 +744,16 @@ router.post('/project-cost2-answer', function (req, res) {
 
 
 
-  if (calfhousingCost < 37500) {
-    res.redirect('project-cost-fail2')}
 
-    else if (calfhousingCost > 37501 || calfhousingCost > 1250000){
-      res.redirect ('potential-grant3')}
+if (calfhousingCost < 37500) {
+  res.redirect('project-cost-fail2')}
+  else if (calfhousingCost > 1250000){
+    res.redirect ('potential-grant3')}
 
-  else if (calfhousingCost > 37501 || calfhousingCost < 1250000){
+   else if (calfhousingCost > 37501 || calfhousingCost < 1250000){
     res.redirect ('potential-grant2')}
+
+
 })
 
 
@@ -850,7 +852,7 @@ router.post('/remaining-costs3-answer', function (req, res) {
 
 // SCORING JOURNEY - Q1 Housing
 router.get('/housing', function (req, res) {
-  
+
   var backUrl = req.session.data['remaining-costs2'] === 'Yes' ? 'remaining-costs2' : 'remaining-costs3'
   var nextUrl = 'group-size'
   var completedUrl = 'answers'

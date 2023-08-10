@@ -26,34 +26,72 @@ Potential grant funding
 
 
 
-      {% set estimatedCostTotal = 0 %}
-      {% set calfhousingCost = data['calfhousing-cost'] %}
-      {% set estimatedCostTotal = estimatedCostTotal + calfhousingCost | int %}
+    {% set estimatedCostTotal = 0 %}
+    {% set calfhousingCost = data['calfhousing-cost'] %}
+    {% set estimatedCostTotal = estimatedCostTotal + calfhousingCost | int %}
 
-      {% set grantAmountTotal = 0 %}
-      {% set grantAmount = data['calfhousing-cost'] *0.4 %}
-      {% set grantAmountTotal = grantAmountTotal + grantAmount | int %}
-
-
-
-
-      {% set solarpvCost = data['solarpv-cost'] %}
-      {% set estimatedCostTotal = estimatedCostTotal + solarpvCost | int %}
-
-      {% set grantAmount2 = data['solarpv-cost'] *0.25 %}
-      {% set grantAmountTotal = grantAmountTotal + grantAmount2 | int %}
-
-
-      {# Current rule is set to min grant amount #}
-      {# Need to putting a rule to cap grant amount at 500,000 when the value goes over maximum grant amount of 500K #}
+    {% set grantAmountTotal = 0 %}
+    {% set grantAmount = data['calfhousing-cost'] *0.4 %}
+    {% set grantAmountTotal = grantAmountTotal + grantAmount | int %}
 
 
 
 
+    {% set solarpvCost = data['solarpv-cost'] %}
+    {% set estimatedCostTotal = estimatedCostTotal + solarpvCost | int %}
+
+    {% set grantAmount2 = data['solarpv-cost'] *0.25 %}
+    {% set grantAmountTotal = grantAmountTotal + grantAmount2 | int %}
+    {% if  grantAmountTotal <= 500000 %}
+      {% set grantAmountCapped = grantAmount2 %}
+      {% set potGrantFund = grantAmountTotal %}
+        {% else %}
+    {% set potGrantFund = 500000 %}
+    {% set grantAmountCapped = 0 %}
+    {% set grantAmountCapped = 500000 - grantAmount | int %}
+      {% endif %}
+
+    {# Current rule is set to min grant amount #}
+    {# Need to putting a rule to cap grant amount at 500,000 when the value goes over maximum grant amount of 500K #}
 
 
 
 
+
+  {% if  grantAmount <500000 %}
+
+        <h1 class="govuk-heading-l">
+          Potential grant funding
+        </h1>
+          <p class="govuk-body">You may be able to apply for a grant of up to £{{ potGrantFund | toFixed(2) | commafy}}, based on the estimated cost of £{{ estimatedCostTotal | toFixed(2) | commafy }}.</p>
+          <p class="govuk-body">This grant amount combines:
+            <ul class="govuk-list govuk-list--bullet">
+              <li>£{{ grantAmount | toFixed(2) | commafy}} for calf housing costs (40% of £{{ calfhousingCost | toFixed(2) | commafy}})</li>
+              {% if  grantAmountTotal <= 500000 %}
+                <li>£{{ grantAmountCapped | toFixed(2) | commafy}} for solar PV system costs (25% of £{{ solarpvCost | toFixed(2) | commafy }})</li>
+                {% else %}
+              <li>£{{ grantAmountCapped | toFixed(2) | commafy}} for solar PV system costs (25% of £{{ solarpvCost | toFixed(2) | commafy }}, capped at £{{ grantAmountCapped | toFixed(2) | commafy}})</li>
+              {% endif %}
+              </ul>
+            </p>
+          <p class="govuk-body">As calf housing costs take grant funding priority, you may be able to apply for a grant of up to £{{ grantAmountCapped | toFixed(2) | commafy}} for a solar PV system costs. The maximum grant is £500,000.</p>
+
+        {{ govukWarningText({
+            text: 'There’s no guarantee the project will receive a grant.',
+            iconFallbackText: 'Warning'
+        }) }}
+
+        <form id="mainForm" class="form" action="remaining-costs3" method="post">
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+        </form>
+
+
+
+
+
+{% else %}
 
 
         <h1 class="govuk-heading-l">
@@ -86,6 +124,7 @@ Potential grant funding
 
 
 
+  {% endif %}
 
   </div>
 </div>
