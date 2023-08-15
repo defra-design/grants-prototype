@@ -22,15 +22,21 @@ Os grid
   <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
         <h2 class="govuk-heading-l">What is the OS grid reference for your slurry store?</h2>
-        <div id="current-capacity-hint" class="govuk-hint">
-          You can find your slurry store's OS grid reference number using the <a href="https://gridreferencefinder.com/" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">UK grid reference finder (opens in new tab)</a>
-          <br><br>Enter in the format of 2 letters and 10 numbers, for example SP9620733594
+        <div id="os-grid-hint" class="govuk-hint">You can find your slurry store's OS grid reference using the <a href="https://gridreferencefinder.com/" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">UK grid reference finder (opens in new tab)</a></div>
+        <div id="os-grid-hint" >
+          <p class="govuk-hint">On the OS grid reference finder page:</p>
+          <ol class="govuk-list govuk-list--number govuk-hint ">
+          <li>Enter the postcode of your location into the postcode box.</li>
+          <li>Right click on the map to find a grid reference at that point.</li>
+          <li>Select and right-click to copy the grid reference. </li>
+        </ol>
+        <p class="govuk-hint">Return to this screen and paste it in the format of 2 letters and 10 numbers, for example SP9620733594</p>
         </div>
 
         {{ govukInput({
 
           label: {
-            text: "OS grid reference number"
+            text: "OS grid reference"
           },
             classes: "govuk-input--width-10",
             id: "os-grid",

@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Project responsibility
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="tenancy">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Are you planning to ask your landlord to underwrite your Grant Funding Agreement?</h1>
+            </legend>
+
+            <div class="govuk-radios govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="No" {{ checked("tenancy-length", "No") }}>
+                <label class="govuk-label govuk-radios__label" for="tenancy-length">
+                No, I plan to take full responsibility for meeting the terms and conditions in the Grant Funding Agreement
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="Yes" {{ checked("tenancy-length", "Yes") }}>
+                <label class="govuk-label govuk-radios__label" for="tenancy-length-2">
+                  Yes, I plan to ask my landlord to underwrite my Grant Funding Agreement
+                </label>
+              </div>
+
+
+
+
+            </div>
+          </fieldset>
+        </div>
+        <br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>If you are awarded a grant, you will be issued with a Grant Funding Agreement. This lasts for 5 years after the date you receive your final grant payment.<br><br>
+
+          If you think you might not be able to fulfil the full agreement, you can ask your landlord to countersign and underwrite the Grant Funding Agreement. For example, you could choose this option if you are on a short tenancy agreement.</p>
+
+        <a href="#">
+          </a>
+
+      </div>
+      </div>
+
+
+      </div>
+
+{% endblock %}
