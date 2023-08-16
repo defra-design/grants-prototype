@@ -9,6 +9,13 @@ const storeTypeCost = {
 
 }
 
+const separatorTypeCost = {
+  screenPress3: { text: 'Screen press (3m3 of slurry per hour)', value: 5000, formattedValue: '£5,000', hint2: 'Grant amount: £5,000 per square metre', unit: '£5,000'},
+  screenPress10: { text: 'Screen press (10m3 of slurry per hour)', value: 60000, formattedValue: '£60,000', hint2: 'Grant amount: £60,000 per square metre', unit: '£60,000'},
+  screwPress3: { text: 'Screw press (3m3 of slurry per hour)', value: 5000, formattedValue: '£5,000', hint2: 'Grant amount: £5,000 per square metre', unit: '£5,000'},
+  screwPress10: { text: 'Screen press (10m3 of slurry per hour)', value: 5000, formattedValue: '£5,000', hint2: 'Grant amount: £5,000 per square metre', unit: '£5,000'}
+}
+
 const coverTypeCost = {
   fixedFlexibleCovers: { text: 'Fixed flexible cover', value: 2100, formattedValue: '£2,100', hint: 'Taut skin made from flexible or pliant sheet material such as reinforced plastic sheeting or strong canvas', hint2: 'Grant amount: £4 per square metre', unit: '£4' },
   freeFloatingPlastic: { text: 'Floating flexible cover', value: 3250, formattedValue: '£3,250', hint: 'Flexible plastic sheet covers with some form of flotation or fixing to store sides to prevent movement', hint2: 'Grant amount: £3 per square metre', unit: '£3' }
@@ -34,4 +41,4 @@ const projectItemsCost = {
 
 }
 
-module.exports = { storeTypeCost, coverTypeCost, projectItemsCost }
+module.exports = { storeTypeCost, coverTypeCost, projectItemsCost, separatorTypeCost }

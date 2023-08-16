@@ -44,7 +44,6 @@ Project summary
   <tbody class="govuk-table__body">
     {% if data['storetype'] %}
     {% set storeType = data['storetype'] %}
-
     {% set grantsTotal = grantsTotal + (storeTypeCost[storeType].value | int) %}
       <tr class="govuk-table__row">
         <th scope="row" class="govuk-table__header">{{ storeTypeCost[storeType].text }}</th>
@@ -56,8 +55,6 @@ Project summary
 
     {% if data['covertype'] %}
     {% set coverType = data['covertype'] %}
-
-
     {% set grantsTotal = grantsTotal + (coverTypeCost[coverType].value | int) %}
 
     <tr class="govuk-table__row">
@@ -67,10 +64,9 @@ Project summary
       <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
     </tr>
     {% endif %}
+
     {% if data['covertype2'] %}
     {% set coverType = data['covertype2'] %}
-
-
     {% set grantsTotal = grantsTotal + (coverTypeCost[coverType].value | int) %}
 
     <tr class="govuk-table__row">
@@ -80,6 +76,21 @@ Project summary
       <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
     </tr>
     {% endif %}
+
+    {% if data['sepOpt'] %}
+    {% set sepOpt = data['sepOpt'] %}
+    {% set grantsTotal = grantsTotal + (separatorTypeCost[sepOpt].value | int) %}
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">{{ separatorTypeCost[sepOpt].text }} </th>
+      <td class="govuk-table__cell">{{separatorTypeCost[sepOpt].unit}}</td>
+      <td class="govuk-table__cell">1</td>
+      <td class="govuk-table__cell">{{separatorTypeCost[sepOpt].formattedValue}}</td>
+    </tr>
+    {% endif %}
+
+
+
 
     {% for item in data['projectitems'] %}
       {% if item in projectItemsCost %}
