@@ -67,6 +67,13 @@
           <li>get quotes from suppliers</li>
           <li>apply for planning permission</li>
         </ul>
+
+        <p class="govuk-body">If you need to apply for a variation to your environmental permit, you can use the <a href="https://www.gov.uk/guidance/get-advice-before-you-apply-for-an-environmental-permit">Environment Agency’s (EA) pre-application advice service</a> or discuss it with your EA site officer.</p>
+        {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "If you plan to agree with your landlord to take joint responsibility for the project, they will need to underwrite your Grant Funding Agreement at full application. You should discuss and agree this with your landlord before you begin your full application."
+}) }}
       <p><a href="#" class="govuk-link">What do you think of this service?</a></p>
 
 {% endblock %}

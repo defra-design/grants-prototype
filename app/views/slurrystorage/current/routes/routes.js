@@ -3,7 +3,7 @@ const router = express.Router()
 
 const serviceName = 'Check if you can apply for a Farming Transformation Fund slurry acidification grant'
 
-const { storeTypeCost, coverTypeCost, projectItemsCost } = require('../../utils')
+const { storeTypeCost, coverTypeCost, projectItemsCost, separatorTypeCost } = require('../../utils')
 
 console.log('Service name: ' + serviceName)
 
@@ -618,6 +618,52 @@ router.get('/cover-size2', function (req, res) {
   })
 })
 
+// Q: Separator
+
+router.get('/separator', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'cover-type2'
+  var backUrl = req.session.data ['cover-size2']  ? 'cover-size2' : 'cover-size'
+  var nextUrl = 'separator-answer'
+  var completedUrl = 'answers'
+
+
+    router.post('/separator-answer', function (req, res) {
+      var separator = req.session.data ['separator']
+
+      if (separator === 'Yes')  {res.redirect('separator-options') } else  {res.redirect('project-items')}
+    })
+
+
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    coverTypeCost,
+    storeTypeCost
+  })
+})
+
+// Q: Cover size 2
+
+router.get('/separator-options2', function (req, res) {
+  // var planningPermission = req.session.data['planning-permission']
+  var backUrl = 'cover-type2'
+  var nextUrl = 'separator'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl,
+    coverTypeCost,
+    storeTypeCost,
+    separatorTypeCost
+
+  })
+})
+
 // Q: Other items
 
 router.get('/project-items', function (req, res) {
@@ -697,6 +743,7 @@ res.render('./' + req.originalUrl, {
   completedUrl,
   storeTypeCost,
   coverTypeCost,
+  separatorTypeCost,
   projectItemsCost
 })
 })

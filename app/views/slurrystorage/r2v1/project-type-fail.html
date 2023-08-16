@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="project-type">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot apply for a grant from this scheme
+      </h1>
+
+      <p class="govuk-body">This grant is for:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>replacing an existing store that is no longer fit for purpose with a new store </li>
+        <li>adding a new store to increase existing capacity</li>
+        <li>expanding an existing store (for example, by adding an extra ring to a steel tank)</li>
+        <li>adding an impermeable cover to existing stores to increase storage capacity</li>
+      </ul>
+
+
+
+
+
+
+
+
+      <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments" class="govuk-link govuk-link--no-visited-state"> See other grants you may be eligible for.</a></p>
+      </div>
+
+  </div>
+
+{% endblock %}
