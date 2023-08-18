@@ -23,11 +23,11 @@ Separator options
       <form id="mainForm" class="form" action="project-items" method="post">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
-            Separators
+            Slurry separators
           </h1>
         </legend>
 
-      
+
 
 
               {{ govukRadios({
@@ -35,47 +35,34 @@ Separator options
                   name: 'separatorOpt',
                   fieldset: {
                       legend: {
-                          text: 'What type of separator will you have?',
+                          text: 'What type of slurry separator will you have?',
                           isPageHeading: no,
                           classes: 'govuk-fieldset__legend--m'
                       }
                   },
 
                   hint: {
-                    html: "A screen  or a screw press is capable of processing 3m<sup>3</sup> or 10m<sup>3</sup> of slurry per hour to produce at least 20% dry matter suitable for stores up to 3500 m<sup>3</sup>."
+                    html: "Capable to process 3m<sup>3</sup> of slurry per hour to produce at least 25% dry."
                   },
 
                   items: [
                 {
                   value: "Screen press 3",
-                  html: "Screen press (3m<sup>3</sup> of slurry per hour)",
+                  html: "Screen press processing 3m<sup>3</sup> of slurry per hour",
                   hint: {
                   text: "(Grant amount: £5,000 per unit)"
                 },
                   checked: checked("separatorOpt", "Screen press 3")
                 },
-                {
-                  value: "Screen press 10",
-                  html: "Screen press (10m<sup>3</sup> of slurry per hour)",
-                  hint: {
-                  text: "(Grant amount: £70,000 per unit)"
-                },
-                  checked: checked("separatorOpt", "Screen press 10")
-                },
+
                 {
                   value: "Screw press 3",
-                  html: "Screw press (3m<sup>3</sup> of slurry per hour)",
+                  html: "Screw press processing 3m<sup>3</sup> of slurry per hour",
                   hint: {
                   text: "(Grant amount: £5,000 per unit)"
                 },
-                  checked: checked("separatorOpt", "Screen press 3")
-                },
-                {
-                  value: "Screw press 10",
-                  html: "Screw press (10m<sup>3</sup> of slurry per hour)",
-                  hint: {
-                  text: "(Grant amount: £70,000 per unit)"
-                },
+
+
                   checked: checked("separatorOpt", "Screw press 10")
                 }
 
@@ -96,7 +83,7 @@ Separator options
                   },
 
                   hint: {
-                    html: "£12,000 grant amount for 3m<sup>3</sup> screen or screw press and £50,000 grant amount per unit for 10m<sup>3</sup> screen or screw press."
+                    html: "Grant amount: £50,000 per unit"
                   },
 
                   items: [
@@ -113,20 +100,37 @@ Separator options
                 ]
                 }) }}
 
-                {{ govukRadios({
 
+
+                {% set textHtml %}
+                {{ govukInput({
+                  id: "contact-by-text",
+                  name: "contact-by-text",
+                  type: "tel",
+                  suffix: {
+                    html: "m<sup>2</sup>"
+                  },
+                  autocomplete: "tel",
+                  classes: "govuk-input--width-5",
+                  label: {
+                    text: "Enter size"
+                  }
+                }) }}
+                {% endset -%}
+
+                {{ govukRadios({
                     idPrefix: 'separatorOpt3',
                     name: 'separatorOpt3',
                     fieldset: {
                         legend: {
-                            text: 'Do you want to add solid fraction storage?',
+                            text: 'What type of solid fraction storage will you have?',
                             isPageHeading: no,
                             classes: 'govuk-fieldset__legend--m'
                         }
                     },
 
                     hint: {
-                      html: "Solid fraction storage is here to stay."
+                      html: "A grant-funded slurry seprator must have a solid fraction storage."
                     },
 
                     items: [
@@ -134,7 +138,7 @@ Separator options
                     value: "Concrete pad",
                     html: "Concrete pad",
                     hint: {
-                    text: "(Grant amount: £18,000 per unit)"
+                    text: "(Grant amount: £15,000 per unit)"
                   },
                     checked: checked("separatorOpt3", "Concrete pad")
                   },
@@ -142,7 +146,10 @@ Separator options
                     value: "Concrete bunker",
                     html: "Concrete bunker",
                     hint: {
-                    text: "(Grant amount: 20,000 per unit)"
+                    html: "(Maximum grant amount: 20,000 per 100 m<sup>2</sup>)"
+                  },
+                  conditional: {
+                    html: textHtml
                   },
                     checked: checked("separatorOpt3", "Concrete bunker")
                   },
@@ -151,7 +158,7 @@ Separator options
                   },
                   {
                     value: "I do not want solid fraction storage",
-                    html: "I do not want solid fraction storage",
+                    html: "I already have solid fraction storage",
                     checked: checked("separatorOpt3", "I do not want solid fraction storage")
                   }
                   ]
