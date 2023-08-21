@@ -70,7 +70,7 @@ Potential grant funding
               <li>£{{ grantAmount | toFixed(2) | commafy}} for calf housing costs (40% of £{{ calfhousingCost | toFixed(2) | commafy}})</li>
               <li>£{{ grantAmountCapped | toFixed(2) | commafy}} for solar PV system costs (25% of £{{ solarpvCost | toFixed(2) | commafy }})</li>
             </ul>
-        
+
           {{ govukWarningText({
               text: 'There’s no guarantee the project will receive a grant.',
               iconFallbackText: 'Warning'
@@ -78,7 +78,7 @@ Potential grant funding
                 {% else %}
                 <ul class="govuk-list govuk-list--bullet">
                 <li>£{{ grantAmount | toFixed(2) | commafy}} for calf housing costs (40% of £{{ calfhousingCost | toFixed(2) | commafy}})</li>
-                <li>£{{ grantAmountCapped | toFixed(2) | commafy}} for solar PV system costs (25% of £{{ solarpvCost | toFixed(2) | commafy }}, capped at £{{ grantAmountCapped | toFixed(2) | commafy}})</li>
+                <li>£{{ grantAmountCapped | toFixed(2) | commafy}} for solar PV system costs (25% of £{{ solarpvCost | toFixed(2) | commafy}} is £{{grantAmount2 | toFixed(2) | commafy }}, capped at £{{ grantAmountCapped | toFixed(2) | commafy}})</li>
 
               </ul>
 
