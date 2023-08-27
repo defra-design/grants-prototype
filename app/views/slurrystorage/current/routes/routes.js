@@ -540,7 +540,7 @@ router.post('/storage-capacity-increase-pig-answer', function (req, res) {
 
 router.get('/cover-type', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
-  var backUrl = 'storage-capacity-increase'
+  var backUrl = req.session.data.farmertype === 'Pig' ? 'storage-capacity-increase-pig' : 'storage-capacity-increase'
   var nextUrl = 'cover-type-answer'
   var completedUrl = 'cover-type-completed'
 
@@ -719,7 +719,7 @@ router.get('/project-summary', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'project-summary-back'
   var nextUrl = 'project-summary-answer'
-  var completedUrl = 'store-type'
+  var completedUrl = 'estimate'
 
 // Note: Back button - is routing here is based on 'potentialgrant'
   router.post('/project-summary-back', function (req, res) {
