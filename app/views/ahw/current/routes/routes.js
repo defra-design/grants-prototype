@@ -910,9 +910,9 @@ router.get('/sick-pen', function (req, res) {
 
 
 router.post('/environmental-options', function (req, res) {
-  var solar2 = req.session.data['solar']
+  var solar2 = req.session.data['solarpv']
 
-  if (solar2 === 'My roof is exempt') { res.redirect('water-collection') } else { res.redirect('environmental-impact') }
+  if (solar2 === 'no') { res.redirect('water-collection') } else { res.redirect('environmental-impact') }
 })
 
 
@@ -951,6 +951,7 @@ router.get('/water-collection', function (req, res) {
 // SCORING JOURNEY - Q6 Sustainable materials
 router.get('/sustainable-materials', function (req, res) {
   var backUrl = 'environmental-impact'
+  var backUrl = req.session.data.solarpv === 'no' ? 'water-collection' : 'environmental-impact'
   var nextUrl = 'innovation'
   var completedUrl = 'answers'
 
