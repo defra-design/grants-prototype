@@ -46,6 +46,7 @@ router.use('/slurrystorage/v2', require('./views/slurrystorage/v2/routes/routes'
 router.use('/slurrystorage/v3', require('./views/slurrystorage/v3/routes/routes'))
 router.use('/slurrystorage/v4', require('./views/slurrystorage/v4/routes/routes'))
 router.use('/slurrystorage/r2v1', require('./views/slurrystorage/r2v1/routes/routes'))
+router.use('/slurrystorage/r2v2', require('./views/slurrystorage/r2v2/routes/routes'))
 
 router.use('/addingvalue/current', require('./views/addingvalue/current/routes/routes'))
 router.use('/addingvalue/v3', require('./views/addingvalue/v3/routes/routes'))

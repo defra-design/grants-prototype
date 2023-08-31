@@ -29,7 +29,8 @@ slurrystorage: {
         v2: 'Check if you can apply for a Farming Transformation Fund Slurry Infrastructure Grant',
         v3: 'Check if you can apply for a Farming Transformation Fund Slurry Infrastructure Grant',
         v4: 'Check if you can apply for a Farming Transformation Fund Slurry Infrastructure Grant',
-        r2v1: 'Check if you can apply for a Farming Transformation Fund Slurry Infrastructure Grant'
+        r2v1: 'Check if you can apply for a Farming Transformation Fund Slurry Infrastructure Grant',
+        r2v2: 'Check if you can apply for a Farming Transformation Fund Slurry Infrastructure Grant'
 },
   slurry: {
     current: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
