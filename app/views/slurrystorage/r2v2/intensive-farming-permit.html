@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Intensive farming permit
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'intensivepermit',
+                  name: 'intensivepermit',
+                  fieldset: {
+                      legend: {
+                          text: 'Do you have an environmental permit for intensive farming?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    html: "
+                    "
+                  },
+
+                  items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: checked("intensivepermit", "Yes")
+                },
+                {
+                  value: "No",
+                  text: "No, my farm does not need an environmental permit for intensive farming",
+                  checked: checked("intensivepermit", "No")
+
+                }
+              ]
+              }) }}
+
+          <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Environmental permit</span>
+          </h2>
+          <p class="govuk-body">You must have a permit from the Environment Agency (EA) to rear pigs intensively in an installation if you have more than:</p>
+          <ul class="govuk-list govuk-list--bullet">
+          <li>2,000 places for production pigs (over 30kg)</li>
+          <li>750 places for sows</li>
+          </ul>
+
+          <p class="govuk-body">You may need to apply for a variation to your environmental permit if you change your slurry storage.</p>
+
+     </div>
+   </div>
+
+{% endblock %}

@@ -14,7 +14,7 @@ Os grid
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+  <a class="govuk-back-link" href="/slurrystorage">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -26,11 +26,17 @@ Os grid
         <div id="os-grid-hint" >
 
           <ol class="govuk-list govuk-list--number govuk-hint ">
-          <li>On the OS grid reference finder page, enter the postcode of your location into the postcode box.</li>
-          <li>Find the location of your slurry store on the map. Right-click on the location of your slurry store. Scroll down to view your grid reference in the table below the map. </li>
-          <li>Copy the grid reference.</li>
-        </ol>
-        <p class="govuk-hint">Return to this screen and paste it in the format of 2 letters and 10 numbers without spaces, for example SP9620733594.</p>
+            <li>On the OS grid reference finder page, enter the postcode of your location into the postcode box.</li>
+            <li>Select 'Go'.</li>
+            <li>Find the location of your slurry store on the map. You can select and drag the map to move the location.</li>
+            <li>Right-click on the location of your slurry store. This will bring up a list of information. The grid reference is shown at the top.</li>
+            <li>Select the grid reference (2 letters and 10 numbers) to highlight it, right-click on the grid reference and select 'Copy'.</li>
+            <li>Return to the Slurry Infrastructure Grant checker screen.</li>
+            <li>Right-click on the OS grid reference number box. Select 'Paste'.</li>
+            </ol>
+
+            <p class="govuk-hint">Enter in the format of 2 letters and 10 numbers without spaces, for example SP9620733594.</p>
+          <p class="govuk-hint"></p>
         </div>
 
         {{ govukInput({

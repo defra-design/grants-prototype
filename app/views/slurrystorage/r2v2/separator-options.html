@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Separator options
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="separator">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="project-items" method="post">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Slurry separators
+          </h1>
+        </legend>
+
+
+
+
+              {{ govukRadios({
+                  idPrefix: 'separatorOpt',
+                  name: 'separatorOpt',
+                  fieldset: {
+                      legend: {
+                          text: 'What type of slurry separator will you have?',
+                          isPageHeading: no,
+                          classes: 'govuk-fieldset__legend--m'
+                      }
+                  },
+
+                  hint: {
+                    html: "Capable of processing at least 3m<sup>3</sup> of slurry per hour and producing at least 25% dry matter."
+                  },
+
+                  items: [
+                {
+                  value: "Screen press 3",
+                  html: "Screen press",
+                  hint: {
+                  text: "(Grant amount: £5,000 per unit)"
+                },
+                  checked: checked("separatorOpt", "Screen press 3")
+                },
+
+                {
+                  value: "Screw press 3",
+                  html: "Screw press",
+                  hint: {
+                  text: "(Grant amount: £5,000 per unit)"
+                },
+
+
+                  checked: checked("separatorOpt", "Screw press 10")
+                }
+
+
+              ]
+              }) }}
+
+              {{ govukRadios({
+                  classes: "govuk-radios--inline",
+                  idPrefix: 'separatorOpt2',
+                  name: 'separatorOpt2',
+                  fieldset: {
+                      legend: {
+                          text: 'Do you want to add a gantry?',
+                          isPageHeading: no,
+                          classes: 'govuk-fieldset__legend--m'
+                      }
+                  },
+
+                  hint: {
+                    html: "Grant amount: £50,000 per unit"
+                  },
+
+                  items: [
+                {
+                  value: "Yes",
+                  html: "Yes",
+                  checked: checked("separatorOpt2", "Yes")
+                },
+                {
+                  value: "No",
+                  html: "No",
+                  checked: checked("separatorOpt2", "No")
+                }
+                ]
+                }) }}
+
+
+
+                {% set textHtml %}
+                {{ govukInput({
+                  id: "contact-by-text",
+                  name: "contact-by-text",
+                  type: "tel",
+                  suffix: {
+                    html: "m<sup>2</sup>"
+                  },
+                  autocomplete: "tel",
+                  classes: "govuk-input--width-5",
+                  label: {
+                    text: "Enter size"
+                  }
+                }) }}
+                {% endset -%}
+
+                {{ govukRadios({
+                    idPrefix: 'separatorOpt3',
+                    name: 'separatorOpt3',
+                    fieldset: {
+                        legend: {
+                            text: 'What type of solid fraction storage will you have?',
+                            isPageHeading: no,
+                            classes: 'govuk-fieldset__legend--m'
+                        }
+                    },
+
+                    hint: {
+                      html: "You must stack your solid fraction on an impermeable surface to prevent leaking into the soil."
+                    },
+
+                    items: [
+                  {
+                    value: "Concrete pad",
+                    html: "Concrete pad",
+                    hint: {
+                    text: "(Grant amount: £15,000 per unit)"
+                  },
+                    checked: checked("separatorOpt3", "Concrete pad")
+                  },
+                  {
+                    value: "Concrete bunker",
+                    html: "Concrete bunker",
+                    hint: {
+                    html: "Maximum grant contribution is up to 100 m<sup>2</sup><br> (Grant amount: £2000 per m<sup>2</sup>)"
+                  },
+                  conditional: {
+                    html: textHtml
+                  },
+                    checked: checked("separatorOpt3", "Concrete bunker")
+                  },
+                  {
+                    divider: "or"
+                  },
+                  {
+                    value: "I do not want solid fraction storage",
+                    html: "I already have solid fraction storage",
+                    checked: checked("separatorOpt3", "I do not want solid fraction storage")
+                  }
+                  ]
+                  }) }}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h1 class="app-step-nav-related__heading">
+          <span class="govuk-heading-m">Your project items</span>
+          </h1>
+
+
+          {% if data['storetype'] %}
+          <div>
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Grant-funded store</span>
+              </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set storeType = data['storetype'] %}
+                  {{ storeTypeCost[storeType].text }}
+                </li>
+                <li>
+                  Increase:  {{ data['current-capacity2'] | toFixed(2) | commafy }}m<sup>3</sup>
+                </li>
+
+              </ul>
+            </nav>
+            </div>
+            {% endif %}
+
+
+            {% if data['covertype'] %}
+          <div>
+              {% if (data['applyingfor'] == "Cover") %}
+            <h2 class="app-step-nav-related__heading">
+              <span class="app-step-nav-related__pretitle">Existing store cover</span>
+              </h2>
+              {% else %}
+              <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Grant-funded cover</span>
+                </h2>
+{% endif %}
+            <nav role="navigation" aria-labelledby="subsection-title">
+              <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                <li>
+                  {% set coverType = data['covertype'] %}
+                  {{ coverTypeCost[coverType].text }}
+                </li>
+
+              </ul>
+
+            </nav>
+            </div>
+ {% endif %}
+
+      </div>
+   </div>
+
+{% endblock %}

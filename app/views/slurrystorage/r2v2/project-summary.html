@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Project summary
+{% endblock %}
+
+
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+<a class="govuk-back-link" href="item-sizes-quantities">Back</a>
+{% endblock %}
+
+{% block content %}
+
+{% set grantsTotal = 0 %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+<form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <h2 class="govuk-heading-l">Your project items</h2>
+        <p class="govuk-body">We have calculated your requested total grant amount based on the standardised costs for each item and the approximate size and quantities you entered.
+</p>
+
+
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Breakdown of funding</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Item</th>
+      <th scope="col" class="govuk-table__header">Grant amount per unit</th>
+      <th scope="col" class="govuk-table__header">Quantity or size</th>
+      <th scope="col" class="govuk-table__header">Total</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% if data['storetype'] %}
+    {% set storeType = data['storetype'] %}
+    {% set grantsTotal = grantsTotal + (storeTypeCost[storeType].value | int) %}
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">{{ storeTypeCost[storeType].text }}</th>
+        <td class="govuk-table__cell">{{storeTypeCost[storeType].unit}}</td>
+        <td class="govuk-table__cell">{{data ['current-capacity2']}}m<sup>3</sup></td>
+        <td class="govuk-table__cell">{{storeTypeCost[storeType].formattedValue}}</td>
+      </tr>
+    {% endif %}
+
+    {% if data['covertype'] %}
+    {% set coverType = data['covertype'] %}
+    {% set grantsTotal = grantsTotal + (coverTypeCost[coverType].value | int) %}
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].unit}}</td>
+      <td class="govuk-table__cell">{{data ['cover-size']}}m<sup>2</sup></td>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
+    </tr>
+    {% endif %}
+
+    {% if data['covertype2'] %}
+    {% set coverType = data['covertype2'] %}
+    {% set grantsTotal = grantsTotal + (coverTypeCost[coverType].value | int) %}
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">{{ coverTypeCost[coverType].text }} </th>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].unit}}</td>
+      <td class="govuk-table__cell">{{data ['cover-size2']}}m<sup>2</sup></td>
+      <td class="govuk-table__cell">{{coverTypeCost[coverType].formattedValue}}</td>
+    </tr>
+    {% endif %}
+
+    {% if data['sepOpt'] %}
+    {% set sepOpt = data['sepOpt'] %}
+    {% set grantsTotal = grantsTotal + (separatorTypeCost[sepOpt].value | int) %}
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">{{ separatorTypeCost[sepOpt].text }} </th>
+      <td class="govuk-table__cell">{{separatorTypeCost[sepOpt].unit}}</td>
+      <td class="govuk-table__cell">1</td>
+      <td class="govuk-table__cell">{{separatorTypeCost[sepOpt].formattedValue}}</td>
+    </tr>
+    {% endif %}
+
+
+
+
+    {% for item in data['projectitems'] %}
+      {% if item in projectItemsCost %}
+
+      {% set quantity %}quantity-{{item}}{% endset %}
+
+      {% set thisItemCost = projectItemsCost[item] %}
+
+      {% set thisTotal = thisItemCost.value * (data[quantity] | int)  %}
+
+      {% set grantsTotal = grantsTotal + thisTotal %}
+
+      {% set measuring_unit %}
+        {% if thisItemCost['measuringUnit'] == 'cubic' %}
+          m<sup>3</sup>
+        {% elif thisItemCost['measuringUnit'] == 'metre' %}
+          m
+        {% else %}
+        {% endif %}
+
+      {% endset %}
+
+      <tr class="govuk-table__row"></tr>
+        <th scope="row" class="govuk-table__header">{{thisItemCost.text}}</th>
+        <td class="govuk-table__cell">{{thisItemCost.formattedValue}}</td>
+        <td class="govuk-table__cell">{{data[quantity] | int}}{{measuring_unit | safe}}</td>
+        <td class="govuk-table__cell">£{{thisTotal | toFixed(2) | commafy }}</td>
+      </tr>
+      {% endif %}
+    {% endfor %}
+
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__footer"> Total requested grant amount</th>
+
+
+
+      <td></td>
+      <td></td>
+      <td class="govuk-table__cell"><strong>£{{grantsTotal | toFixed(2) | commafy  }}</strong>
+
+        </td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    The minimum grant you can claim is £25,000. The maximum grant is capped at £250,000.
+  </strong>
+</div>
+
+
+
+  <input name="potentialgrant" type="hidden" value="{{grantsTotal}}">
+
+      <br>  <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+        <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+         class="govuk-button govuk-button--secondary" data-module="govuk-button">Change your items
+       </button></p>
+
+      </form>
+  </div>
+
+
+
+
+
+      </div>
+
+
+{% endblock %}
