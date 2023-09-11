@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Farmer type
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'farmertype',
+                  name: 'farmertype',
+                  fieldset: {
+                      legend: {
+                          text: 'What do you farm mainly?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+                  hint: {
+                    text: "Your main farm enterprise"
+                  },
+
+                  items: [
+                {
+                  value: "Pig",
+                  text: "Pig",
+                  checked: checked("farmertype", "Pig")
+                },
+
+                {
+                  value: "Beef",
+                  text: "Beef",
+                  checked: checked("farmertype", "Beef")
+                },
+                {
+                  value: "Dairy",
+                  text: "Dairy",
+                  checked: checked("farmertype", "Dairy")
+                },
+
+                {
+                  divider: "or"
+                },
+                {
+                  value: "None of the above",
+                  text: "None of the above",
+                  behaviour: "exclusive",
+                  checked: checked("farmertype", "None of the above")
+
+                }
+              ]
+              }) }}
+
+          <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">This grant is for pig, beef or dairy farmers.<br><br>
+            If your main farm enterprise is pig, the grant is to get your slurry storage levels to 8 months.
+
+<br><br>  If beef or dairy is your main farm enterprise, the grant is to get your storage levels to 6 months.
+
+
+          </p>
+     </div>
+   </div>
+
+{% endblock %}

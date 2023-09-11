@@ -351,6 +351,7 @@ router.get('/covers', function (req, res) {
 router.post('/covers-answer', function (req, res) {
   var coversImp = req.session.data.covers
 
+
   if (coversImp === 'No') { res.redirect('covers-fail') } else { res.redirect('cover-existing-stores') }
 })
 
@@ -436,9 +437,9 @@ router.get('/standardised-grant-amounts', function (req, res) {
 
 
 router.post('/standardised-grant-amounts-answer', function (req, res) {
-  var coverOnlyRouting = req.session.data.applyingfor
+  var coverOnlyRouting = req.session.data.projecttype
 
-  if (coverOnlyRouting === 'Cover') { res.redirect('cover-type') } else { res.redirect('store-type') }
+  if (coverOnlyRouting != 'None') { res.redirect('store-type') } else { res.redirect('cover-type') }
 })
 
 
