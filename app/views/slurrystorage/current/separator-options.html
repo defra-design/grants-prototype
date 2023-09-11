@@ -20,15 +20,7 @@ Separator options
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="project-items" method="post">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <h1 class="govuk-fieldset__heading">
-            Slurry separators
-          </h1>
-        </legend>
-
-
-
+      <form id="mainForm" class="form" action="gantry" method="post">
 
               {{ govukRadios({
                   idPrefix: 'separatorOpt',
@@ -36,8 +28,8 @@ Separator options
                   fieldset: {
                       legend: {
                           text: 'What type of slurry separator will you have?',
-                          isPageHeading: no,
-                          classes: 'govuk-fieldset__legend--m'
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
                       }
                   },
 
@@ -50,7 +42,7 @@ Separator options
                   value: "Screen press 3",
                   html: "Screen press",
                   hint: {
-                  text: "(Grant amount: £5,000 per unit)"
+                  text: "(Grant amount: £21,234 per unit)"
                 },
                   checked: checked("separatorOpt", "Screen press 3")
                 },
@@ -59,7 +51,7 @@ Separator options
                   value: "Screw press 3",
                   html: "Screw press",
                   hint: {
-                  text: "(Grant amount: £5,000 per unit)"
+                  text: "(Grant amount: £22,350 per unit)"
                 },
 
 
@@ -70,99 +62,7 @@ Separator options
               ]
               }) }}
 
-              {{ govukRadios({
-                  classes: "govuk-radios--inline",
-                  idPrefix: 'separatorOpt2',
-                  name: 'separatorOpt2',
-                  fieldset: {
-                      legend: {
-                          text: 'Do you want to add a gantry?',
-                          isPageHeading: no,
-                          classes: 'govuk-fieldset__legend--m'
-                      }
-                  },
 
-                  hint: {
-                    html: "Grant amount: £50,000 per unit"
-                  },
-
-                  items: [
-                {
-                  value: "Yes",
-                  html: "Yes",
-                  checked: checked("separatorOpt2", "Yes")
-                },
-                {
-                  value: "No",
-                  html: "No",
-                  checked: checked("separatorOpt2", "No")
-                }
-                ]
-                }) }}
-
-
-
-                {% set textHtml %}
-                {{ govukInput({
-                  id: "contact-by-text",
-                  name: "contact-by-text",
-                  type: "tel",
-                  suffix: {
-                    html: "m<sup>2</sup>"
-                  },
-                  autocomplete: "tel",
-                  classes: "govuk-input--width-5",
-                  label: {
-                    text: "Enter size"
-                  }
-                }) }}
-                {% endset -%}
-
-                {{ govukRadios({
-                    idPrefix: 'separatorOpt3',
-                    name: 'separatorOpt3',
-                    fieldset: {
-                        legend: {
-                            text: 'What type of solid fraction storage will you have?',
-                            isPageHeading: no,
-                            classes: 'govuk-fieldset__legend--m'
-                        }
-                    },
-
-                    hint: {
-                      html: "You must stack your solid fraction on an impermeable surface to prevent leaking into the soil."
-                    },
-
-                    items: [
-                  {
-                    value: "Concrete pad",
-                    html: "Concrete pad",
-                    hint: {
-                    text: "(Grant amount: £15,000 per unit)"
-                  },
-                    checked: checked("separatorOpt3", "Concrete pad")
-                  },
-                  {
-                    value: "Concrete bunker",
-                    html: "Concrete bunker",
-                    hint: {
-                    html: "Maximum grant contribution is up to 100 m<sup>2</sup><br> (Grant amount: £2000 per m<sup>2</sup>)"
-                  },
-                  conditional: {
-                    html: textHtml
-                  },
-                    checked: checked("separatorOpt3", "Concrete bunker")
-                  },
-                  {
-                    divider: "or"
-                  },
-                  {
-                    value: "I do not want solid fraction storage",
-                    html: "I already have solid fraction storage",
-                    checked: checked("separatorOpt3", "I do not want solid fraction storage")
-                  }
-                  ]
-                  }) }}
 
           <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
 
