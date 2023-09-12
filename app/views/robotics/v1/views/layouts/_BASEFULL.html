@@ -6,7 +6,7 @@
 
 {% block pageTitle %}{{title}} - {{serviceName}} - GOV.UK{% endblock %} {% block header %}
 
-{% include "includes/cookie-banner.html" %}
+
 
 {{ govukHeader({    homepageUrl: "/" + folder + "/",    serviceName: serviceName,    serviceUrl: "/",    containerClasses: "govuk-width-container"  }) }} {% endblock %}
 <!-- homepage header will always link to top level of that iteration, for example 'current' -->

@@ -1,8 +1,13 @@
-const express = require('express')
-const router = express.Router()
-const { serviceName, schemeList } = require('./utils')
+//
+// For guidance on how to create routes see:
+// https://prototype-kit.service.gov.uk/docs/create-routes
+//
 
-// Add your routes here - above the module.exports line
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
+
+// Add your routes here
+const { serviceName, schemeList } = require('./utils')
 
 // GET SPRINT NAME - useful for relative templates
 router.use('/', (req, res, next) => {
@@ -61,7 +66,7 @@ router.use('/robotics/v2', require('./views/robotics/v2/routes/routes'))
 router.use('/robotics/v1', require('./views/robotics/v1/routes/routes'))
 
 router.use('/slurry/current', require('./views/slurry/current/routes/routes'))
-router.use('/slurry/v1', require('./views/slurry/v2/routes/routes'))
+router.use('/slurry/v2', require('./views/slurry/v2/routes/routes'))
 router.use('/slurry/v1', require('./views/slurry/v1/routes/routes'))
 
 router.use('/water/current', require('./views/water/current/routes/routes'))
@@ -75,5 +80,3 @@ router.use('/water/v6', require('./views/water/v6/routes/routes'))
 router.use('/water/v7private', require('./views/water/v7private/routes/routes'))
 router.use('/water/v8public', require('./views/water/v8public/routes/routes'))
 router.use('/water/r2v2', require('./views/water/r2v2/routes/routes'))
-
-module.exports = router

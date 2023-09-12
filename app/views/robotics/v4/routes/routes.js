@@ -1,5 +1,6 @@
 const express = require('express')
-const router = express.Router()
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
 
 const serviceName = 'Check if you can apply for a Farming Transformation Fund slurry acidification grant'
 
@@ -379,7 +380,7 @@ router.post('/other-robotic-equipment-answer', function (req, res) {
     } else if (
       projectItems.includes('Other robotic equipment') &&
       (
-        (typeof(projectItems) === 'object' && projectItems.length > 1) 
+        (typeof(projectItems) === 'object' && projectItems.length > 1)
       )
     ){
       res.redirect('other-robotic-fail2')

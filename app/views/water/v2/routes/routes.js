@@ -1,5 +1,6 @@
 const express = require('express')
-const router = express.Router()
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
 
 const serviceName = 'Apply for a large countryside productivity grant for water'
 
