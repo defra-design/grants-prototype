@@ -806,16 +806,13 @@ router.get('/planning-permission', function (req, res) {
 router.post('/planning-permission-answer', function (req, res) {
   var planningPermission = req.session.data['planning-permission']
 
-  if (planningPermission === 'Approved' || planningPermission === 'Applied') {
-    res.redirect('planning-list')
-  }
-
   if (planningPermission === 'Not yet applied') {
     res.redirect('planning-required-condition')
   }
-
-  res.redirect('os-grid')
+  else
+  { res.redirect('planning-list') }
 })
+
 
 // PLANNING PERMISSION CONDITION
 router.get('/planning-required-condition', function (req, res) {
