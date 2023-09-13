@@ -205,11 +205,12 @@ router.post('/planning-permission-answer', function (req, res) {
     res.redirect('project-start')
   }
 
-  if (planningPermission === 'maybe') {
+  else if (planningPermission === 'maybe') {
     res.redirect('planning-required-condition')
   }
-
-  res.redirect('planning-permission-fail')
+  else if (planningPermission === 'No'){
+    res.redirect('planning-permission-fail')
+  }
 })
 
 // PLANNING PERMISSION CONDITION
