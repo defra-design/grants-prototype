@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which items eligible for grant funding are included in the project?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="project-items-hint">
+
+
+
+            <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Which items does your project need?
+        </h1>
+      </legend>
+      <div id="project-items-hint" class="govuk-hint">
+    </div>
+
+<p class="govuk-hint">Select all the items your project needs</p>
+  <div class="govuk-checkboxes">
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="robotic-equipment-2" name="robotic-equipment2" type="checkbox" value="Advanced ventilation control units" {{ checked("robotic-equipment2", "Advanced ventilation control units") }}>
+      <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-2">
+        Advanced ventilation control units
+      </label>
+      <div id="advanced-ventilation-control-units-hint" class="govuk-hint govuk-radios__hint">
+          System to control and monitor ventilation of existing horticultural or livestock buildings to minimise heat loss and reduce greenhouse gas and particulate emissions
+        </div>
+    </div>
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="robotic-equipment-3" name="robotic-equipment2" type="checkbox" value="Wavelength-specific LED lighting" {{ checked("robotic-equipment2", "Wavelength-specific LED lighting") }}>
+        <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-3">
+          Wavelength-specific LED lighting for horticultural crops
+        </label>
+        <div id="wavelength-specific-LED-lighting-hint" class="govuk-hint govuk-radios__hint">
+              Wavelength-specific LED lighting to aid plant growth only
+            </div>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="robotic-equipment-4" name="robotic-equipment2" type="checkbox" value="Robotic equipment item" {{ checked("robotic-equipment2", "Robotic equipment item") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-4">
+                Robotic equipment item
+              </label>
+
+    </div>
+  </fieldset>
+  </div>
+
+    </fieldset>
+  </div>
+
+<button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

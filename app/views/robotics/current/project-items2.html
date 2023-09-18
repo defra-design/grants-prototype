@@ -24,10 +24,148 @@
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
 
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="robotics-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Which robotic items does your project need?
+              </h1>
+            </legend>
+
+            <p>
+              Farming equipment capable of sensing and understanding its environment, making decisions, and planning and controlling its actions in a continuous loop.  <br><br>
+
+              Equipment powered by fossil fuels will only be funded where there is no commercially available electric or renewable energy alternative
+            </p>
+
+
+            <div id="robotics-hint" class="govuk-hint">
+              Select all that apply.
+            </div>
+
+            <h2 class="govuk-heading-m">Robotic equipment</h2>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="robotic-equipment-1" name="robotic-equipment" type="checkbox" value="Robotic harvesting equipment">
+                <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-1">
+                  Robotic harvesting equipment
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="robotic-equipment-2" name="robotic-equipment" type="checkbox" value="Robotic weeding equipment">
+                <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-2">
+                  Robotic weeding equipment
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="robotic-equipment-3" name="robotic-equipment" type="checkbox" value="Robotic spraying equipment">
+                <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-3">
+                  Robotic spraying equipment
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="robotic-equipment-4" name="robotic-equipment" type="checkbox" value="Robotic driverless tractor or platform">
+                <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-4">
+                  Robotic driverless tractor or platform
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="robotic-equipment-5" name="robotic-equipment" type="checkbox" value="Voluntary robotic milking system">
+                <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-5">
+                  Voluntary robotic milking system
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="robotic-equipment-6" name="robotic-equipment" type="checkbox" value="Robotic feeding system">
+                <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-6">
+                  Robotic feeding system
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="robotic-equipment-7" name="robotic-equipment" type="checkbox" value="Robotic transplanting">
+                <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-7">
+                  Robotic transplanting
+                </label>
+              </div>              
+            
+            </div>
+
+            <hr class="govuk-section-break govuk-section-break--m">
+
+
+            <h2 class="govuk-heading-m">Automatic equipment</h2>
+            
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="automatic-equipment-1" name="robotic-equipment" type="checkbox" value="Automatic harvesting equipment">
+                <label class="govuk-label govuk-checkboxes__label" for="automatic-equipment-1">
+                  Automatic harvesting equipment
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="automatic-equipment-2" name="robotic-equipment" type="checkbox" value="Automatic weeding equipment">
+                <label class="govuk-label govuk-checkboxes__label" for="automatic-equipment-2">
+                  Automatic weeding equipment
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="automatic-equipment-3" name="robotic-equipment" type="checkbox" value="Automatic spraying equipment">
+                <label class="govuk-label govuk-checkboxes__label" for="automatic-equipment-3">
+                  Automatic spraying equipment
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="automatic-equipment-4" name="robotic-equipment" type="checkbox" value="Automatic driverless tractor or platform">
+                <label class="govuk-label govuk-checkboxes__label" for="automatic-equipment-4">
+                  Automatic driverless tractor or platform
+                </label>
+              </div>
+
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="automatic-equipment-6" name="robotic-equipment" type="checkbox" value="Automatic feeding system">
+                <label class="govuk-label govuk-checkboxes__label" for="automatic-equipment-6">
+                  Automatic feeding system
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="automatic-equipment-7" name="robotic-equipment" type="checkbox" value="Automatic transplanting">
+                <label class="govuk-label govuk-checkboxes__label" for="automatic-equipment-7">
+                  Automatic transplanting
+                </label>
+              </div>              
+
+              <hr class="govuk-section-break govuk-section-break--m">
+              <div class="govuk-checkboxes__divider">or</div>
+              <hr class="govuk-section-break govuk-section-break--m">
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="other-equipment" name="robotic-equipment" type="checkbox" value="Other robotic equipment">
+                <label class="govuk-label govuk-checkboxes__label" for="other-equipment">
+                  Other robotic or automatic technology
+                </label>
+              </div>   
+            
+           
+
+          </fieldset>
+        </div>
+
+
+
+        <!--
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="project-items-hint">
-
-
 
             <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
@@ -39,14 +177,28 @@
       <div id="project-items-hint" class="govuk-hint">
     </div>
 
-<p class="govuk-hint">Farming equipment capable of sensing and understanding its environment, making decisions, and planning and controlling its actions in a continuous loop. <br><br>Select all the items your project needs</p>
+<p class="govuk-hint">Farming equipment capable of sensing and understanding its environment, making decisions, and planning and controlling its actions in a continuous loop.  <br><br>
+
+  Equipment powered by fossil fuels will only be funded where there is no commercially available electric or renewable energy alternative.</p>
+
+  <br>
+
+  <p class="govuk-hint">Select all the items your project needs</p>
+
 
 
       <div class="govuk-checkboxes">
+        
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+          <h1 class="govuk-fieldset__heading">
+            Robotic equipment
+          </h1>
+        </legend>
+
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="robotic-equipment-1" name="robotic-equipment" type="checkbox" value="Robotic or autonomous harvesting equipment" {{ checked("robotic-equipment", "Robotic or autonomous harvesting equipment") }}>
+          <input class="govuk-checkboxes__input" id="robotic-equipment-1" name="robotic-equipment" type="checkbox" value="Robotic or autonomous harvesting equipment" {{ checked("robotic-equipment", "Robotic harvesting equipment") }}>
           <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-1">
-            Robotic or autonomous harvesting equipment
+            Robotic harvesting equipment
           </label>
 
         </div>
@@ -55,21 +207,21 @@
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="robotic-equipment-3" name="robotic-equipment" type="checkbox" value="Robotic weeding equipment" {{ checked("robotic-equipment", "Robotic weeding equipment") }}>
               <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-3">
-                 Robotic or autonomous weeding equipment
+                 Robotic weeding equipment
               </label>
             </div>
             <div class="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="robotic-equipment-5" name="robotic-equipment" type="checkbox" value="Robotic spraying equipment" {{ checked("robotic-equipment", "Robotic spraying equipment") }}>
                 <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-5">
-                  Robotic or autonomous spraying equipment
+                  Robotic spraying equipment
                 </label>
               </div>
               <div class="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="robotic-equipment-9" name="robotic-equipment" type="checkbox" value="Robotic tractor" {{ checked("robotic-equipment", "Robotic tractor") }}>
                   <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-9">
-                    Robotic or autonomous driverless tractor or platform
+                    Robotic driverless tractor or platform
                   </label>
                 </div>
             <div class="govuk-checkboxes">
@@ -83,14 +235,14 @@
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="robotic-equipment-7" name="robotic-equipment" type="checkbox" value="Robotic feeding systems" {{ checked("robotic-equipment", "Robotic feeding systems") }}>
                   <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-7">
-                    Robotic or autonomous feeding system
+                    Robotic feeding system
                   </label>
                 </div>
                 <div class="govuk-checkboxes">
                   <div class="govuk-checkboxes__item">
                     <input class="govuk-checkboxes__input" id="robotic-equipment-6" name="robotic-equipment" type="checkbox" value="Robotic transplanting" {{ checked("robotic-equipment", "Robotic transplanting") }}>
                     <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-6">
-                      Robotic or autonomous transplanting
+                      Robotic transplanting
                     </label>
                   </div>
                   <div class="govuk-checkboxes">
@@ -103,17 +255,38 @@
                         </fieldset>
                       </div>
 
-
-
-
-
-    </fieldset>
-  </div>
+          </fieldset>
+        </div>
+        -->
 
 <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
       </form>
     </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>RPA will consider items that: </p>
+          <p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>have a sensing system and can understand their environment</li>
+                <li>make decisions and plan </li>
+                <li>can control its actuators (the devices that move robot joints)</li>
+                <li>work in a continuous loop</li>
+              </ul>
+          </p>
+        <a href="#">
+          </a>
+  
+      </div>
+      </div>
+
+
+
   </div>
 
 

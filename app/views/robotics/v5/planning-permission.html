@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Does the project need planning permission?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  {% if data['who-are-you'] === "farmer" %}
+  <a class="govuk-back-link" href="country">Back</a>
+  {% else %}
+  <a class="govuk-back-link" href="legal-status">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Does the project need planning permission?
+              </h1>
+            </legend>
+            <br>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission" name="planning-permission" type="radio" value="Not needed" {{ checked("planning-permission", "Not needed") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission">
+                  Not needed
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-2" name="planning-permission" type="radio" value="Secured" {{ checked("planning-permission", "Secured") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission-2">
+                  Secured
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="maybe" {{ checked("planning-permission", "maybe") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission-3">
+                  Should be in place by 31 December 2022
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="No" {{ checked("planning-permission", "No") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission-3">
+                  Will not be in place by 31 December 2022
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>You must have applied for planning permission before you submit a full application. <br><br>Any planning permission must be in place by 31 December 2022.
+          </p>
+          <a href="#">
+          </a>
+      </div>
+    </div>
+
+{% endblock %}

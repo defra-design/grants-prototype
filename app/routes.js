@@ -60,6 +60,7 @@ router.use('/addingvalue/v2', require('./views/addingvalue/v2/routes/routes'))
 router.use('/addingvalue/v1', require('./views/addingvalue/v1/routes/routes'))
 
 router.use('/robotics/current', require('./views/robotics/current/routes/routes'))
+router.use('/robotics/v5', require('./views/robotics/v5/routes/routes'))
 router.use('/robotics/v4', require('./views/robotics/v4/routes/routes'))
 router.use('/robotics/v3', require('./views/robotics/v3/routes/routes'))
 router.use('/robotics/v2', require('./views/robotics/v2/routes/routes'))
