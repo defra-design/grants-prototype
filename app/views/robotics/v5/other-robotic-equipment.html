@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Other robotic equipment
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="{{ backUrl }}"> Back</a>
+{% endblock %}
+
+{% block content %}
+
+     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+          <div class="govuk-form-group">
+     <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+         <h1 class="govuk-fieldset__heading">
+           Does your other robotic technology fit the eligibility criteria?
+         </h1>
+       </legend>
+       <div id="other-robotic-hint" class="govuk-hint">
+        All items must:
+        <p>
+          <ul class="govuk-list govuk-list--bullet govuk-hint">
+            <li>have a sensing system and can understand their environment</li>
+            <li>make decisions and plan</li>
+            <li>can control its actuators (the devices that move robot joints)</li>
+            <li>work in a continuous loop</li>
+          </ul>
+        </p>
+       </div>
+       <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="other-robotic" name="other-robotic-radio" type="radio" value="yes" data-aria-controls="conditional-other-robotic"{{ checked("other-robotic-radio", "yes") }}>
+        <label class="govuk-label govuk-radios__label" for="other-robotic-radio">
+          Yes
+        </label>
+      </div>
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-other-robotic">
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="250">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="label-as-page-heading">
+                  Enter your item, including the name, a brief description and the benefit to your business
+                </label>
+                <textarea class="govuk-textarea govuk-js-character-count" id="word-count" name="other-robotic-item" rows="10" aria-describedby="word-count-info">{{ data['other-robotic-item'] }}</textarea>
+              </div>
+              <div id="word-count-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+                You can enter up to 250 characters
+              </div>
+            </div>
+        </div>
+        <div class="govuk-radios govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="other-robotic-1" name="other-robotic-radio" type="radio" value="no" {{ checked("other-robotic-radio", "no") }}>
+            <label class="govuk-label govuk-radios__label" for="project-purchase-1">
+               No
+            </label>
+          </div>
+        </div>
+     </fieldset>
+   </div>
+     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+     </form>
+   </div>
+  <div class="govuk-grid-column-one-third">
+  <div class="app-step-nav-related app-step-nav-related--singular">
+     <h2 class="app-step-nav-related__heading">
+      <span class="app-step-nav-related__pretitle">Eligibility</span>
+      </h2>
+      <p>RPA will consider items that: </p>
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>have a sensing system and can understand their environment</li>
+        <li>make decisions and plan</li>
+        <li>can control its actuators (the devices that move robot joints)</li>
+        <li>work in a continuous loop</li>
+      </ul>
+
+  </div>
+
+
+
+{%endblock%}
