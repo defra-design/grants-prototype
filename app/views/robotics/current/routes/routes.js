@@ -308,7 +308,7 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 
 router.get('/project-items', function (req, res) {
   var backUrl = 'tenancy'
-  var nextUrl = 'project-items-answer'
+  var nextUrl = 'robotic-items'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -317,6 +317,8 @@ router.get('/project-items', function (req, res) {
     completedUrl
   })
 })
+
+/*
 
 router.post('/project-items-answer', function (req, res) {
   var projectItems1 = req.session.data['robotic-equipment2']
@@ -336,6 +338,7 @@ router.post('/project-items-answer', function (req, res) {
   res.redirect('project-cost')
 })
 
+*/
 
 // Q: Flow 1 to 4
 
@@ -611,6 +614,19 @@ router.get('/agricultural-sector', function (req, res) {
 // INTRODUCING INNOVATION (ROBOTICS)
 router.get('/introducing-innovation', function (req, res) {
   var backUrl = 'agricultural-sector'
+  var nextUrl = 'labour-saved'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+// Labour saved (ROBOTICS)
+router.get('/labour-saved', function (req, res) {
+  var backUrl = 'introducing-innovation'
   var nextUrl = 'answers'
   var completedUrl = 'answers'
 
