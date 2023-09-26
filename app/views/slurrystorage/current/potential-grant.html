@@ -35,6 +35,11 @@ Potential grant funding
         £{{ data['potentialgrant']| toFixed(2) | commafy  }}.</p>
       {% endif %}
 
+      {% if data['bunkersize'] >= 101 %}
+      <p class="govuk-body">The grant contribution for the concrete bunker is kept at £16,818.</p>
+      {% else %}
+        {% endif %}
+
     {{ govukWarningText({
         text: 'There’s no guarantee the project will receive a grant.',
         iconFallbackText: 'Warning'

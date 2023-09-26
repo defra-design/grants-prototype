@@ -24,13 +24,13 @@ Separator options
 
                 {% set textHtml %}
                 {{ govukInput({
-                  id: "contact-by-text",
-                  name: "contact-by-text",
-                  type: "tel",
+                  id: "bunkersize",
+                  name: "bunkersize",
+                  type: "num",
                   suffix: {
                     html: "m<sup>2</sup>"
                   },
-                  autocomplete: "tel",
+                  autocomplete: "num",
                   classes: "govuk-input--width-5",
                   label: {
                     text: "Enter size"
@@ -66,7 +66,7 @@ Separator options
                     value: "Concrete bunker",
                     html: "Concrete bunker",
                     hint: {
-                    html: "Maximum grant contribution is up to 100 m<sup>2</sup><br> (Grant amount: £168.18 per m<sup>2</sup>)"
+                    html: "(Grant amount: £168.18 per m<sup>2</sup>)<br>You can apply for a maximum of 100m<sup>2</sup> (£16,180)"
                   },
                   conditional: {
                     html: textHtml
