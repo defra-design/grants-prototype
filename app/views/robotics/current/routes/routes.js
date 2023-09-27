@@ -318,6 +318,49 @@ router.get('/project-items', function (req, res) {
   })
 })
 
+
+router.get('/robotic-items', function (req, res) {
+  var backUrl = 'project-items'
+  var nextUrl = 'equipment-eligibility'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+router.get('/equipment-eligibility', function (req, res) {
+  var backUrl = 'robotic-items'
+  var nextUrl = 'project-items-summary'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+
+router.get('/project-items-summary', function (req, res) {
+  var backUrl = 'equipment-eligibility'
+  var nextUrl = 'project-cost'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+
+
+
 /*
 
 router.post('/project-items-answer', function (req, res) {
