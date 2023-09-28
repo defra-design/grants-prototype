@@ -910,12 +910,12 @@ router.get('/applying', function (req, res) {
 })
 
 router.post('/applying-answer', function (req, res) {
-  const { applicant } = req.session.data
+  var appData = req.session.data
 
-  if (applicant === 'Applicant') {
+  if (appData === 'Applicant') {
     res.redirect('applicant-details')
   }
-  if (applicant === 'Contractor') {
+  if (appData === 'Contractor') {
     res.redirect('contractor-details')
   }
 
