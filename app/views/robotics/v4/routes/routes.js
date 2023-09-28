@@ -191,10 +191,10 @@ router.post('/planning-permission-answer', function (req, res) {
     res.redirect('project-start')
   }
 
-  if (planningPermission === 'maybe') {
+ else if (planningPermission === 'maybe') {
     res.redirect('planning-required-condition')
   }
-
+ else
   res.redirect('planning-permission-fail')
 })
 
@@ -295,24 +295,32 @@ router.get('/project-items', function (req, res) {
   })
 })
 
+//router.post('/project-items-answer', function (req, res) {
+//  var projectItems1 = req.session.data['robotic-equipment2']
+//  var roboticEquipment3 = req.session.data ['robotic-equipment2']
+
+//  var otherRoboticEquipmentOptions2 = [
+//    'Robotic equipment item'
+//  ]
+
+//  var otherRoboticEquipmentCond2 = otherRoboticEquipmentOptions2.some(otherRoboticItem22 => (
+//    roboticEquipment3.includes(otherRoboticItem22)
+//    ))
+
+//  if (otherRoboticEquipmentCond2) {
+//    res.redirect ('project-items2')
+//  }
+//  res.redirect('project-cost')
+//})
+
 router.post('/project-items-answer', function (req, res) {
-  var projectItems1 = req.session.data['robotic-equipment2']
-  const roboticEquipment3 = req.session.data ['robotic-equipment2']
-
-  const otherRoboticEquipmentOptions2 = [
-    'Robotic equipment item'
-  ]
-
-  const otherRoboticEquipmentCond2 = otherRoboticEquipmentOptions2.some(otherRoboticItem22 => (
-    roboticEquipment3.includes(otherRoboticItem22)
-    ))
-
-  if (otherRoboticEquipmentCond2) {
-    res.redirect ('project-items2')
+  var proje = req.session.data['robotic-equipment2']
+  if (proje === 'Robotic equipment item') {
+    res.redirect('project-items2')
   }
+else
   res.redirect('project-cost')
 })
-
 
 // Q: Flow 1 to 4
 
@@ -330,13 +338,13 @@ router.get('/project-items2', function (req, res) {
 
 router.post('/project-items2-answer', function (req, res) {
   var projectItems = req.session.data['robotic-equipment']
-  const roboticEquipment2 = req.session.data ['robotic-equipment']
+  var roboticEquipment2 = req.session.data ['robotic-equipment']
 
-  const otherRoboticEquipmentOptions = [
+  var otherRoboticEquipmentOptions = [
     'Other robotic equipment'
   ]
 
-  const otherRoboticEquipmentCond = otherRoboticEquipmentOptions.some(otherRoboticItem => (
+  var otherRoboticEquipmentCond = otherRoboticEquipmentOptions.some(otherRoboticItem => (
     roboticEquipment2.includes(otherRoboticItem)
     ))
 
@@ -519,9 +527,9 @@ router.post('/project-impact-answer', function (req, res) {
   var projectImpact = req.session.data['project-impact']
 
   if (projectImpact !== 'yes') {res.redirect('project-impact-fail')}
-  const roboticEquipment = req.session.data ['robotic-equipment']
+  var roboticEquipment = req.session.data ['robotic-equipment']
 
-  const widerFarmingOptions = [
+  var widerFarmingOptions = [
     'Robotic or autonomous harvesting equipment',
     'Voluntary robotic milking equipment',
     'Robotic spraying equipment',
@@ -531,7 +539,7 @@ router.post('/project-impact-answer', function (req, res) {
     'Other robotic equipment'
   ]
 
-  const widerFarmingCond = widerFarmingOptions.some(widerFarmingItem => (
+  var widerFarmingCond = widerFarmingOptions.some(widerFarmingItem => (
     roboticEquipment.includes(widerFarmingItem)
     ))
 
@@ -654,10 +662,10 @@ router.post('/applying-answer', function (req, res) {
   if (applicant === 'Farmer') {
     res.redirect('farmer-details')
   }
-  if (applicant === 'Contractor') {
+  else if (applicant === 'Contractor') {
     res.redirect('contractor-details')
   }
-
+else
   res.redirect('agent-details')
 })
 
@@ -680,7 +688,8 @@ router.post('/agent-details-answer', function (req, res) {
 
 if (contractorDetermine === 'Contractor') {
   res.redirect('contractor-details')
-} else { res.redirect('farmer-details') }
+}
+else { res.redirect('farmer-details') }
 })
 
 
