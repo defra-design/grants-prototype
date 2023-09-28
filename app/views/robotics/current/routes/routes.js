@@ -587,16 +587,32 @@ router.get('/project-impact', function (req, res) {
 router.post('/project-impact-answer', function (req, res) {
   var projectImpact = req.session.data['project-impact']
 
+  if (projectImpact == 'no') 
+    { res.redirect('project-impact-fail') }
+
+    else { res.redirect('energy-source') }
+  
+})
+
+
+
+
+/*
+
+router.post('/project-impact-answer', function (req, res) {
+  var projectImpact = req.session.data['project-impact']
+
   if (projectImpact !== 'yes') {res.redirect('project-impact-fail')}
   const roboticEquipment = req.session.data ['robotic-equipment']
 
   const widerFarmingOptions = [
-    'Robotic or autonomous harvesting equipment',
-    'Voluntary robotic milking equipment',
-    'Robotic spraying equipment',
-    'Robotic transplanting',
-    'Robotic feeding systems',
-    'Robotic tractor',
+    'Harvesting equipment',
+    'Weeding equipment',
+    'Spraying equipment',
+    'Driverless tractor or platform',
+    'Voluntary robotic milking system',
+    'Feeding system',
+    'Transplanting',
     'Other robotic equipment'
   ]
 
@@ -608,7 +624,8 @@ router.post('/project-impact-answer', function (req, res) {
     res.redirect ('wider-farming')
   }
   res.redirect('energy-source')
-})
+})*/
+
 
 
 
@@ -739,15 +756,15 @@ router.post('/applying-answer', function (req, res) {
     res.redirect('farmer-details')
   }
 
-  if (identityUser === 'contractor' && applicantUser === 'Applicant') {
+  else if (identityUser === 'contractor' && applicantUser === 'Applicant') {
     res.redirect('contractor-details')
   }
-
 
   else
 
   res.redirect('agent-details')
 })
+
 
 
 
