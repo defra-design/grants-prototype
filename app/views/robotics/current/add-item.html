@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you need to add another item?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  {% if data['who-are-you'] === "farmer" %}
+  <a class="govuk-back-link" href="country">Back</a>
+  {% else %}
+  <a class="govuk-back-link" href="legal-status">Back</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you need to add another item?
+              </h1>
+            </legend>
+           <br>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="add-item" name="add-item" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="add-item">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="add-item-2" name="add-item" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="add-item-2">
+                  No
+                </label>
+              </div>
+             
+             
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+    
+
+{% endblock %}
