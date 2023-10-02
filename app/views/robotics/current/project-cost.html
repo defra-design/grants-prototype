@@ -68,28 +68,30 @@
           <span class="app-step-nav-related__pretitle">Eligible items selected</span>
 
           </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
+       
 
 
           <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
            
-            <li>Harvesting equipment</li>
+            {% if (data['project-items'] == "Advanced ventilation control units") %}
 
+            <li>Advanced ventilation control units</li>
+
+            {% elseif (data['project-items'] == "Wavelength-specific LED lighting") %}
+
+            <li>Wavelength-specific LED lighting</li>
+
+            {% elseif (data['project-items'] == "Robotic or automatic technology") %}
+
+            <li>Robotic or automatic technology</li>
+
+            {% endif %}
 
           </ul>
-        </nav>
-  {% if data['other-robotic-item'] %}
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Not yet eligible items</span>
-          </h2>
-        <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
-            <li>
-            Other autonomous robotic technology
-            </li>
-        {% endif %}
-          </ul>
-        </nav>
+       
+  
+        
+       
         </div>
       </div>
 {% endblock %}

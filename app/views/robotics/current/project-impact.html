@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Which items eligible for grant funding are included in the project?
+Will your project use data analytics to improve productivity? 
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,20 +27,28 @@
         <div class="govuk-form-group">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Will the project improve the productivity and profitability of your business?
+                Will your project use data analytics to improve productivity? 
               </h1>
             </legend>
-            <div class="govuk-radios govuk-radios--inline">
+            <p>Software automating data analysis to improve efficiency (for example, analysing white blood cell counts in dairy)</p>
+            <div class="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="project-impact" name="project-impact" type="radio" value="yes">
                 <label class="govuk-label govuk-radios__label" for="project-impact">
-                  Yes
+                  Yes, we have the technology already 
                 </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="project-impact-2" name="project-impact" type="radio" value="willdo">
+                <label class="govuk-label govuk-radios__label" for="project-impact-2">
+                  Yes, we’ll buy the technology as part of the project
+                </label>
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">Software licences cannot be paid for by the grant</div>
               </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="project-impact-2" name="project-impact" type="radio" value="no">
                 <label class="govuk-label govuk-radios__label" for="project-impact-2">
-                  No
+                  No, we will not use any data analytics 
                 </label>
               </div>
             </div>
@@ -58,8 +66,12 @@
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p>Your project must improve the productivity and profitability of your main agricultural or horticultural business.</p>
-          <p>Your project’s positive environmental benefit will be assessed full application stage.  </p>
+         <p>RPA wants to fund projects that:</p>
+         <ul class="govuk-list govuk-list--bullet">
+          <li>improve productivity</li>
+          <li>introduce innovation</li>
+
+         </ul>
 
 
       </div>
