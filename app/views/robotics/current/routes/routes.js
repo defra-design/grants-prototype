@@ -270,7 +270,7 @@ router.post('/project-start-answer-completed', function (req, res) {
   if (projectStart === 'project work') { res.redirect('project-start-fail') } else { res.redirect('answers') }
 })
 
-// Q: Tenancy - modified 15 October 2021, containing contractor rule to skip tenancy changes and go straight to Project items.
+// Q: Tenancy - modified 2 October 2023, changing tenancy length to project responsibility.
 
 router.get('/tenancy', function (req, res) {
   var backUrl = 'project-start'
@@ -289,8 +289,31 @@ router.post('/tenancy-answer', function (req, res) {
 
   if (tenant === 'Yes' || tenant === 'Contractor') {
     res.redirect('project-items')
-  } else { res.redirect('tenancy-length') }
+  } else { res.redirect('project-responsibility') }
 })
+
+
+router.get('/project-responsibility', function (req, res) {
+  var backUrl = 'tenancy'
+  var nextUrl = 'project-responsibility-answer'
+  var completedUrl = 'answers'
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/project-responsibility-answer', function (req, res) {
+  var projectResponsibility = req.session.data['project-responsibility']
+
+  if (projectResponsibility == 'Yes') {
+    res.redirect('project-items')
+  } else { res.redirect('tenancy-length-condition') }
+})
+
+
 
 router.post('/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
@@ -308,7 +331,7 @@ router.post('/tenancy-length-answer-completed', function (req, res) {
 
 router.get('/project-items', function (req, res) {
   var backUrl = 'tenancy'
-  var nextUrl = 'robotic-items'
+  var nextUrl = 'project-items-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -317,6 +340,18 @@ router.get('/project-items', function (req, res) {
     completedUrl
   })
 })
+
+router.post('/project-items-answer', function (req, res) {
+  var projectItems = req.session.data['project-items']
+
+  if (projectItems.includes("Robotic or automatic technology")) {
+    res.redirect('robotic-items')
+  } else { res.redirect('project-cost') }
+})
+
+
+
+
 
 // Choose which robotic or automatic technology type
 
@@ -740,6 +775,29 @@ router.get('/wider-farming', function (req, res) {
 // Energy source
 router.get('/energy-source', function (req, res) {
   var backUrl = 'project-impact'
+  var nextUrl = 'energy-source-answer'
+  var completedUrl = 'answers'
+
+
+  res.render('./' + req.originalUrl, {
+    backUrl,
+    nextUrl,
+    completedUrl
+  })
+})
+
+router.post('/energy-source-answer', function (req, res) {
+  var energySource = req.session.data['energy-source']
+
+  if (energySource.includes ("fossil fuels")) 
+    { res.redirect('fossil-fuel-eligibility') }
+
+    else { res.redirect('agricultural-sector') }
+  
+})
+
+router.get('/fossil-fuel-eligibility', function (req, res) {
+  var backUrl = 'energy-source'
   var nextUrl = 'agricultural-sector'
   var completedUrl = 'answers'
 

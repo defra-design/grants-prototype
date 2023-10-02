@@ -30,31 +30,33 @@
           What type of energy will you use?
         </h1>
       </legend>
+      <p>Equipment powered by fossil fuels will only be funded where there is no commercially available electric or renewable energy alternative
+      </p>
       <div id="energy-source-hint" class="govuk-hint">Select up to 2 options</div>
       <div class="govuk-checkboxes">
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="energy-source" name="energy-source" type="checkbox" value="mains electricity" {{ checked("energy-source", "mains electricity") }}>
+          <input class="govuk-checkboxes__input" id="energy-source" name="energy-source" type="checkbox" value="mains electricity">
           <label class="govuk-label govuk-checkboxes__label" for="energy-source">
             Mains electricity
           </label>
         </div>
         <div class="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="energy-source-1" name="energy-source" type="checkbox" value="renewable electricity generated on the farm" {{ checked("energy-source", "renewable electricity generated on the farm") }}>
+            <input class="govuk-checkboxes__input" id="energy-source-1" name="energy-source" type="checkbox" value="renewable electricity generated on the farm">
             <label class="govuk-label govuk-checkboxes__label" for="energy-source-1">
               Renewable electricity generated on the farm
             </label>
           </div>
           <div class="govuk-checkboxes">
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="energy-source-2" name="energy-source" type="checkbox" value="biofuels" {{ checked("energy-source", "biofuels") }}>
+              <input class="govuk-checkboxes__input" id="energy-source-2" name="energy-source" type="checkbox" value="biofuels">
               <label class="govuk-label govuk-checkboxes__label" for="energy-source-2">
                 Biofuels
               </label>
             </div>
             <div class="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="energy-source-2" name="energy-source" type="checkbox" value="fossil fuels" {{ checked("energy-source", "fossil fuels") }}>
+                <input class="govuk-checkboxes__input" id="energy-source-2" name="energy-source" type="checkbox" value="fossil fuels">
                 <label class="govuk-label govuk-checkboxes__label" for="energy-source-2">
                   Fossil fuels
                 </label>
