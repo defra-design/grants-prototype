@@ -447,8 +447,11 @@ router.post('/equipment-eligibility-answer', function (req, res) {
   
   var addItem = req.session.data['add-item']
   var roboticEquipment = req.session.data['robotic-equipment']
+  var equipmentEligibility = req.session.data['equipment-eligibility']
 
-  if (addItem == 'Yes'){    
+  if (equipmentEligibility.length < 2 ){
+    res.redirect('technology-criteria-fail')
+  } else if (addItem == 'Yes'){    
     res.redirect('project-items-summary')
   } else if (roboticEquipment == 'Other robotic technology'){    
     res.redirect('other-robotic-equipment')
