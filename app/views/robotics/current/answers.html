@@ -87,6 +87,8 @@
       </thead>
       <tbody class="govuk-table__body">
 
+        {% if (data['farming-type'] == "Robotics and automatic technology") %}
+
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Robotic and automatic technology
           <br/><br/>
@@ -103,20 +105,6 @@
           </td>
           <td class="govuk-table__cell"><a href="#">Change</td>
         </tr>
-
-{% if data['wider-farming'] %}
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Data analytics to improve productivity
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9"><li>{{data['wider-farming'] | capitalize}}</li></ul></th>
-          <td class="govuk-table__cell">Weak</td>
-          <td class="govuk-table__cell">
-            <p class="govuk-body govuk-!-font-size-16">
-              Improve productivity<br>
-            introduce innovation</p>
-          </td>
-          <td class="govuk-table__cell"><a href="wider-farming">Change</td>
-        </tr>
-{% endif %}
 
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Type of energy
@@ -157,6 +145,45 @@
           </td>
           <td class="govuk-table__cell"><a href="introducing-innovation">Change</td>
         </tr>
+
+        {% else %}
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Solar technology
+          <br/><br/>
+          <p class="govuk-!-font-size-16">Solar panels</p>
+          </th>
+          <td class="govuk-table__cell">Average</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Include batteries</p>
+          </td>
+          <td class="govuk-table__cell"><a href="#">Change</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Solar PV system size
+          <br/><br/>
+          <p class="govuk-!-font-size-16">100kW to 350kW</p>
+          </th>
+          <td class="govuk-table__cell">Average</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Smaller solar PV systems
+              </p>
+          </td>
+          <td class="govuk-table__cell"><a href="#">Change</td>
+        </tr>
+
+        
+       
+
+
+
+
+        {% endif %}
+
+
       </tbody>
     </table>
 

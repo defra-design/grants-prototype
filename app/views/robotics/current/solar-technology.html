@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What solar technologies does your project need?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+ 
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+
+
+
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="solar-cost" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What solar technologies does your project need?
+              </h1>
+            </legend>
+            <div id="waste-hint" class="govuk-hint">
+              Select all that apply.
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-technology" name="solar-technology" type="checkbox" value="grid">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-technology">
+                  An electrical grid connection
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-technology-2" name="solar-technology" type="checkbox" value="panels">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-technology-2">
+                  Solar panels
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-technology-3" name="solar-technology" type="checkbox" value="inverter">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-technology-3">
+                  An inverter
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-technology-3" name="solar-technology" type="checkbox" value="meter">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-technology-3">
+                  A utility meter
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-technology-3" name="solar-technology" type="checkbox" value="battery">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-technology-3">
+                  A battery
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+
+
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p>RPA wants to fund solar PV systems that include batteries.</p>
+                      
+      </div>
+
+    </div>
+
+  </div>
+
+
+{% endblock %}
