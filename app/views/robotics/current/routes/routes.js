@@ -285,11 +285,15 @@ router.get('/tenancy', function (req, res) {
 })
 
 router.post('/tenancy-answer', function (req, res) {
-  var tenant = req.session.data.tenancy
+  var tenant = req.session.data['tenancy']
+  var farmingType = req.session.data['farming-type']
 
-  if (tenant === 'Yes' || tenant === 'Contractor') {
+  if (tenant === 'Yes' && farmingType == 'Robotics and automatic technology') {
     res.redirect('project-items')
-  } else { res.redirect('project-responsibility') }
+  } else if (tenant === 'Yes' && farmingType == 'Solar') {
+    res.redirect('solar-installation')
+  } else { 
+    res.redirect('project-responsibility') }
 })
 
 
@@ -307,14 +311,29 @@ router.get('/project-responsibility', function (req, res) {
 
 router.post('/project-responsibility-answer', function (req, res) {
   var projectResponsibility = req.session.data['project-responsibility']
+  var farmingType = req.session.data['farming-type']
 
-  if (projectResponsibility == 'Yes') {
+  if (projectResponsibility == 'Yes' && farmingType == 'Robotics and automatic technology') {
     res.redirect('project-items')
+  } else if (projectResponsibility == 'Yes' && farmingType == 'Solar') {
+    res.redirect('solar-installation')
   } else { res.redirect('tenancy-length-condition') }
 })
 
 
+router.post('/tenancy-length-condition-answer', function (req, res) {  
+  var farmingType = req.session.data['farming-type']
 
+  if (farmingType == 'Robotics and automatic technology') {
+    res.redirect('project-items')
+  } else { res.redirect('solar-installation') }
+})
+
+
+
+
+
+/*
 router.post('/tenancy-length-answer', function (req, res) {
   var tenancyLength = req.session.data['tenancy-length']
 
@@ -324,7 +343,7 @@ router.post('/tenancy-length-answer', function (req, res) {
 router.post('/tenancy-length-answer-completed', function (req, res) {
   res.redirect('answers')
 })
-
+*/
 
 
 // Q: Project items (1)
