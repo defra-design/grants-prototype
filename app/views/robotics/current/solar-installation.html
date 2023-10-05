@@ -28,36 +28,36 @@
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="solar-technology" method="post">
 
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Where will you install the solar PV panels?
-            </h1>
-          </legend>
-          <div class="govuk-radios" data-module="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="solar-installation" name="solar-installation" type="radio" value="rooftop">
-              <label class="govuk-label govuk-radios__label" for="solar-installation">
-                On a rooftop
-              </label>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Where will you install the solar PV panels?
+              </h1>
+            </legend>
+           
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-installation" name="solar-installation" type="checkbox" value="rooftop">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-installation">
+                  On a rooftop
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-installation-2" name="solar-installation" type="checkbox" value="existing">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-installation-2">
+                  On an existing hardstanding area
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-installation-3" name="solar-installation" type="checkbox" value="floating">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-installation-3">
+                  Floating (on a reservoir)
+                </label>
+              </div>
             </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="solar-installation-2" name="solar-installation" type="radio" value="existing">
-              <label class="govuk-label govuk-radios__label" for="solar-installation-2">
-                On an existing hardstanding area
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="solar-installation-3" name="solar-installation" type="radio" value="floating">
-              <label class="govuk-label govuk-radios__label" for="solar-installation-3">
-                Floating (on a reservoir)
-              </label>
-            </div>
-            
-          </div>
-        </fieldset>
-      </div>
+          </fieldset>
+        </div>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 
@@ -86,3 +86,6 @@
 
 
 {% endblock %}
+
+
+

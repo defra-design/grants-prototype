@@ -23,7 +23,7 @@ router.get('/start', function (req, res) {
 
 router.get('/farming-type', function (req, res) {
   var backUrl = 'start'
-  var nextUrl = 'who-are-you'
+  var nextUrl = 'farming-type-answer'
   var completedUrl = 'farming-type-answer-completed'
 
   res.render('./' + req.originalUrl, {
@@ -32,6 +32,17 @@ router.get('/farming-type', function (req, res) {
     completedUrl
   })
 })
+
+router.post('/farming-type-answer', function (req, res) {
+  var farmingType = req.session.data['farming-type']
+
+  if (farmingType === 'Robotics and automatic technology') {
+    res.redirect('who-are-you')
+  } else {
+    res.redirect('legal-status')
+  }
+})
+
 
 
 //: Q: Who are you
