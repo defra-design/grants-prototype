@@ -26,29 +26,39 @@
             <h1 class="govuk-fieldset__heading">
                 Are you already using this technology?
             </h1>
-          </legend>
+          </legend>   
 
           <div class="govuk-radios govuk-radios--inline">
+
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="introducing-innovation-1" name="introducing-innovation" type="radio" value="Yes, we’re using it now" {{ checked("introducing-innovation", "Yes, we’re using it now") }}>
               <label class="govuk-label govuk-radios__label" for="introducing-innovation-1">
                 Yes, we’re using it now
               </label>
             </div>
-            <div class="govuk-radios govuk-radios--inline">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="introducing-innovation-2" name="introducing-innovation" type="radio" value="Yes, as a pilot, demonstration or trial" {{ checked("introducing-innovation", "Yes, as a pilot, demonstration or trial") }}>
-                <label class="govuk-label govuk-radios__label" for="introducing-innovation-2">
-                  Yes, as a pilot, demonstration or trial
-                </label>
-              </div>
+  
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="introducing-innovation-3" name="introducing-innovation" type="radio" value="No, we haven’t used it yet" {{ checked("introducing-innovation", "No, we haven’t used it yet") }}>
+              <input class="govuk-radios__input" id="introducing-innovation-2" name="introducing-innovation" type="radio" value="Yes, we're using it now but want to upgrade" {{ checked("introducing-innovation", "Yes, as a pilot, demonstration or trial") }}>
+              <label class="govuk-label govuk-radios__label" for="introducing-innovation-2">
+                Yes, we're using it now but want to upgrade
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="introducing-innovation-3" name="introducing-innovation" type="radio" value="Yes, as a pilot, demonstration or trial" {{ checked("introducing-innovation", "Yes, as a pilot, demonstration or trial") }}>
               <label class="govuk-label govuk-radios__label" for="introducing-innovation-3">
+                Yes, as a pilot, demonstration or trial
+              </label>
+            </div>
+  
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="introducing-innovation-4" name="introducing-innovation" type="radio" value="No, we haven’t used it yet" {{ checked("introducing-innovation", "No, we haven’t used it yet") }}>
+              <label class="govuk-label govuk-radios__label" for="introducing-innovation-4">
                 No, we haven’t used it yet
               </label>
             </div>
-              </div>
+            
+            
             </div>
           </div>
 

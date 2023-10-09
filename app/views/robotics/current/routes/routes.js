@@ -302,7 +302,7 @@ router.post('/tenancy-answer', function (req, res) {
   if (tenant === 'Yes' && farmingType == 'Robotics and automatic technology') {
     res.redirect('project-items')
   } else if (tenant === 'Yes' && farmingType == 'Solar') {
-    res.redirect('solar-installation')
+    res.redirect('solar-existing-system')
   } else { 
     res.redirect('project-responsibility') }
 })
@@ -891,6 +891,21 @@ router.get('/labour-saved', function (req, res) {
     completedUrl
   })
 })
+
+
+
+// Solar journey
+
+
+router.post('/solar-technology-answer', function (req, res) {
+  var solarTechnology = req.session.data['solar-technology']
+
+  if (solarTechnology.includes ("panels")) {
+    res.redirect('solar-installation')
+  } else { 
+    res.redirect('solar-cost') }
+})
+
 
 
 
