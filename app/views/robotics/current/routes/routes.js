@@ -327,7 +327,7 @@ router.post('/project-responsibility-answer', function (req, res) {
   if (projectResponsibility == 'Yes' && farmingType == 'Robotics and automatic technology') {
     res.redirect('project-items')
   } else if (projectResponsibility == 'Yes' && farmingType == 'Solar') {
-    res.redirect('solar-installation')
+    res.redirect('solar-existing-system')
   } else { res.redirect('tenancy-length-condition') }
 })
 
@@ -337,7 +337,7 @@ router.post('/tenancy-length-condition-answer', function (req, res) {
 
   if (farmingType == 'Robotics and automatic technology') {
     res.redirect('project-items')
-  } else { res.redirect('solar-installation') }
+  } else { res.redirect('solar-existing-system') }
 })
 
 
