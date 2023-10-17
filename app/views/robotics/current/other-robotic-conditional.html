@@ -13,7 +13,7 @@
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
-  <a class="govuk-back-link" href="other-robotic-equipment">Back</a>
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,7 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="govuk-body govuk-!-font-size-48">
         <h1 class="govuk-heading-l">
-          Your other robotic technology might get a grant from this scheme
+          Your other technology might get a grant from this scheme
         </h1>
 
         <p class="govuk-body">RPA will assess your item and whether they can fund it.  </p>
@@ -40,7 +40,7 @@
             </div>
 
 
-            <form class="form" action="{{ nextUrl }}" method="post">
+            <form class="form" action="other-robotic-conditional-answer" method="post">
               <button class="govuk-button govuk-!-margin-top-6" data-module="govuk-button">Continue</button>
             </form>
 

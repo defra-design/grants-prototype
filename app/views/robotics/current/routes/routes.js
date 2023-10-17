@@ -577,19 +577,19 @@ router.post('/project-items2-answer', function (req, res) {
 // Q: Other robotic equipment (2)
 
 router.get('/other-robotic-equipment', function (req, res) {
-  var backUrl = 'project-items'
-  var nextUrl = 'other-robotic-equipment-answer'
+  
+  var nextUrl = 'other-robotic-conditional'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl,
+    
     nextUrl,
     completedUrl
   })
 })
 
 
-router.post('/other-robotic-equipment-answer', function (req, res) {
+router.post('/other-robotic-conditional-answer', function (req, res) {
   
   var addItem = req.session.data['add-item']
   
@@ -732,9 +732,17 @@ router.get('/remaining-costs', function (req, res) {
 
 router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
+  var projectItems = req.session.data['project-items']
 
-  if (remainingCosts === 'no') { res.redirect('remaining-costs-fail') } else { res.redirect('project-impact') }
+  if (remainingCosts === 'no') { 
+    res.redirect('remaining-costs-fail') 
+  } else if (remainingCosts === 'yes' && projectItems.includes ("Robotic or automatic technology")) {
+    res.redirect('project-impact')
+  } else { res.redirect('energy-source') } 
 })
+
+
+
 
 router.post('/remaining-costs-answer-completed', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
@@ -854,15 +862,24 @@ router.get('/fossil-fuel-eligibility', function (req, res) {
 
 // Agricultural sector
 router.get('/agricultural-sector', function (req, res) {
-  var backUrl = 'energy-source'
-  var nextUrl = 'introducing-innovation'
+
+  var nextUrl = 'agricultural-sector-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
-    backUrl,
+    
     nextUrl,
     completedUrl
   })
+})
+
+router.post('/agricultural-sector-answer', function (req, res) {
+  var farmingType = req.session.data['farming-type']
+
+  if (farmingType == "Solar") {
+    res.redirect('answers')
+  } else { 
+    res.redirect('introducing-innovation') }
 })
 
 
@@ -902,6 +919,16 @@ router.post('/solar-technology-answer', function (req, res) {
 
   if (solarTechnology.includes ("panels")) {
     res.redirect('solar-installation')
+  } else { 
+    res.redirect('solar-cost') }
+})
+
+
+router.post('/solar-installation-answer', function (req, res) {
+  var solarInstallation = req.session.data['solar-installation']
+
+  if (solarInstallation.includes ("none")) {
+    res.redirect('solar-panel-fail')
   } else { 
     res.redirect('solar-cost') }
 })
