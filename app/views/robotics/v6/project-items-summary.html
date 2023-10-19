@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Labour saved
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="{{ backUrl }}"> Back</a>
+{% endblock %}
+
+{% block content %}
+
+   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-form-group">
+        <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+          <h1 class="govuk-heading-l">Your project items</h1>
+          <p class="govuk-!-padding-bottom-4">You can add or remove equipment you will be using on your project</p>
+          <table class="govuk-table govuk-body govuk-!-font-size-16">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Item</th>
+                <th scope="col" class="govuk-table__header">Type</th>
+                <th scope="col" class="govuk-table__header">Criteria</th>
+                <th scope="col" class="govuk-table__header">Change</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">     
+      
+          
+      
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Harvesting equipment
+                <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">                 
+                </ul>
+              </th>
+                <td class="govuk-table__cell">Robotic</td>
+                <td class="govuk-table__cell">
+                  <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
+                    <li>Sensing system</li>
+                    <li>Makes decisions</li>
+                    <li>Control actuators</li>
+                    <li>Continuous loop</li>
+                  </ul>
+                </td>
+                <td class="govuk-table__cell"><a href="#">Remove</td>
+              </tr>
+
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Weeding equipment
+                  </th>
+                  <td class="govuk-table__cell">Automatic</td>
+                  <td class="govuk-table__cell">
+                    <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
+                      <li>Sensing system</li>                    
+                      <li>Continuous loop</li>
+                    </ul>
+                  </td>
+                  <td class="govuk-table__cell"><a href="#">Remove</td>
+                  </tr>
+      
+    
+            </tbody>
+          </table>
+      
+
+          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+    </form>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>Automatic items must meet at least 2 criteria to be eligible for funding.</p>
+
+          <p>Robotic items must meet all 4 criteria to be eligible for funding.</p>
+
+      </div>
+    </div>
+
+    </div>
+
+
+{%endblock%}

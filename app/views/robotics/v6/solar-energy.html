@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Will you use most of the energy produced by solar on your farm?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+ 
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+
+
+
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="solar-system-size" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Will you use most of the energy produced by solar on your farm?
+            </h1>
+          </legend>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="energy-produced" name="energy-produced" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="energy-produced">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="energy-produced-2" name="energy-produced" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="energy-produced-2">
+                No
+              </label>
+            </div>
+                      
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+
+
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+
+          <p>RPA wants to fund projects that improve the environment. </p>
+
+        </div>
+
+    </div>
+
+  </div>
+
+
+{% endblock %}

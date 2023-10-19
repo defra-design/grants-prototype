@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Where will you install the solar PV panels?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+ 
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+
+
+
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="solar-installation-answer" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Where will you install the solar PV panels?
+              </h1>
+            </legend>
+           
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-installation" name="solar-installation" type="checkbox" value="rooftop">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-installation">
+                  On a rooftop
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-installation-2" name="solar-installation" type="checkbox" value="existing">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-installation-2">
+                  On an existing hardstanding area
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-installation-3" name="solar-installation" type="checkbox" value="floating">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-installation-3">
+                  Floating (on a reservoir)
+                </label>
+              </div>
+              <div class="govuk-checkboxes__divider">or</div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="solar-installation-4" name="solar-installation" type="checkbox" value="none" data-behaviour="exclusive">
+                <label class="govuk-label govuk-checkboxes__label" for="solar-installation-4">
+                  None of the above
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+
+
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>Solar panels must be installed:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>on a rooftop</li>
+            <li>on an existing hardstanding area</li>
+            <li>floating (on a reservoir)</li>
+          </ul>              
+      </div>
+
+    </div>
+
+  </div>
+
+
+{% endblock %}
+
+
+

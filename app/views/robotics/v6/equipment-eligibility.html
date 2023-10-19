@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Eligibility criteria
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="{{ backUrl }}"> Back</a>
+{% endblock %}
+
+{% block content %}
+
+  
+     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="robotics-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Which eligibility criteria does your automatic technology meet?
+                </h1>
+              </legend>
+
+              <br>
+  
+                
+              <div id="robotics-hint" class="govuk-hint">
+                Select all that apply
+              </div>
+
+              
+  
+              
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="robotic-equipment-1" name="equipment-eligibility" type="checkbox" value="Sensing">
+                  <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-1">
+                    Has a sensing system that can understand its envrionment
+                  </label>
+                </div>
+  
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="robotic-equipment-2" name="equipment-eligibility" type="checkbox" value="Decisions">
+                  <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-2">
+                    Makes decisions and plans
+                  </label>
+                </div>
+  
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="robotic-equipment-3" name="equipment-eligibility" type="checkbox" value="Actuators">
+                  <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-3">
+                    Can control its actuators (the devices that move robotic joints)
+                  </label>
+                </div>
+  
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="robotic-equipment-4" name="equipment-eligibility" type="checkbox" value="Continuous">
+                  <label class="govuk-label govuk-checkboxes__label" for="robotic-equipment-4">
+                    Works in a continuous loop
+                  </label>
+                </div>
+  
+              
+              
+              </div>
+  
+  
+              
+               
+  
+                
+  
+                
+              
+             
+  
+            </fieldset>
+          </div>
+  
+  
+  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+  
+        </form>
+   </div>
+
+
+
+
+  <div class="govuk-grid-column-one-third">
+  <div class="app-step-nav-related app-step-nav-related--singular">
+     <h2 class="app-step-nav-related__heading">
+      <span class="app-step-nav-related__pretitle">Eligibility</span>
+      </h2>
+      <p>Automatic items must meet at least 2 criteria to be eligible for grant funding.</p>
+      
+
+  </div>
+
+
+
+{%endblock%}

@@ -45,6 +45,7 @@ slurrystorage: {
          v3: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
          v4: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
          v5: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
+         v6: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant',
          r2v1: 'Check if you can apply for a Farming Transformation Fund Improving Farm Productivity Grant'
   },
   addingvalue: {
