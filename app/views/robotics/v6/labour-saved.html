@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Labour saved
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="{{ backUrl }}"> Back</a>
+{% endblock %}
+
+{% block content %}
+
+   <div class="govuk-grid-row">
+     <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              How much manual labour will this technology replace?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="labour-saved-1" name="labour-saved" type="radio" value="1 to 2">
+              <label class="govuk-label govuk-radios__label" for="labour-saved-1">
+                1 to 2 jobs
+              </label>
+            </div>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="labour-saved-2" name="labour-saved" type="radio" value="3 to 4">
+                <label class="govuk-label govuk-radios__label" for="labour-saved-2">
+                  3 to 4 jobs
+                </label>
+              </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="labour-saved-3" name="labour-saved" type="radio" value="5 or more">
+              <label class="govuk-label govuk-radios__label" for="labour-saved-3">
+                5 or more jobs
+              </label>
+            </div>
+              </div>
+            </div>
+          </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Get your score</button>
+  </form>
+  </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+          <p>RPA wants to fund projects that reduce the need for manual labour.</p>
+
+      </div>
+      </div>
+
+
+{%endblock%}

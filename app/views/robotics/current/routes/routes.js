@@ -460,7 +460,7 @@ router.post('/equipment-eligibility-answer', function (req, res) {
   var roboticEquipment = req.session.data['robotic-equipment']
   var equipmentEligibility = req.session.data['equipment-eligibility']
 
-  if (equipmentEligibility.length < 2 ){
+  if (equipmentEligibility.length < 2 || equipmentEligibility.includes("None")){
     res.redirect('technology-criteria-fail')
   } else if (addItem == 'Yes'){    
     res.redirect('project-items-summary')
@@ -736,8 +736,8 @@ router.post('/remaining-costs-answer', function (req, res) {
 
   if (remainingCosts === 'no') { 
     res.redirect('remaining-costs-fail') 
-  } else if (remainingCosts === 'yes' && projectItems.includes ("Robotic or automatic technology")) {
-    res.redirect('project-impact')
+  } else if (remainingCosts == 'yes' && projectItems.includes ("Robotic or automatic technology")) {
+    res.redirect('improve-productivity')
   } else { res.redirect('energy-source') } 
 })
 
@@ -749,6 +749,18 @@ router.post('/remaining-costs-answer-completed', function (req, res) {
 
   if (remainingCosts === 'no') {res.redirect('remaining-costs-fail')} else {res.redirect('answers')}
 })
+
+
+
+router.post('/improve-productivity-answer', function (req, res) {
+  var improveProductivity = req.session.data['improve-productivity']
+
+  if (improveProductivity == "Yes") {
+    res.redirect('project-impact')
+  } else { 
+    res.redirect('improve-productivity-fail') }
+})
+
 
 
 // PROJECT IMPACT (ROBOTICS) and Wider farming condition
