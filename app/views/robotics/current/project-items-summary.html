@@ -21,16 +21,16 @@
    <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <div class="govuk-form-group">
-        <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        
           <h1 class="govuk-heading-l">Your project items</h1>
-          <p class="govuk-!-padding-bottom-4">You can add or remove equipment you will be using on your project</p>
+          <p class="govuk-!-padding-bottom-4">You can add or remove items you will be using on your project</p>
           <table class="govuk-table govuk-body govuk-!-font-size-16">
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header">Item</th>
                 <th scope="col" class="govuk-table__header">Type</th>
                 <th scope="col" class="govuk-table__header">Criteria</th>
-                <th scope="col" class="govuk-table__header">Change</th>
+                <th scope="col" class="govuk-table__header">Remove</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">     
@@ -73,8 +73,24 @@
           </table>
       
 
-          <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
-    </form>
+         
+
+          <div class="govuk-button-group">
+            <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+            </form>
+            <form id="mainForm" class="form" action="robotic-items" method="post">
+              <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+              Add another item
+            </button>
+            </form>
+          </div>
+
+
+   
       </div>
     </div>
 

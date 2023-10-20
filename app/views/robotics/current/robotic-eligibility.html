@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Other robotic equipment
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+
+
+  <div class="govuk-grid-column-two-thirds">
+    <form id="mainForm" class="form" action="robotic-eligibility-answer" method="post">
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Does your robotic {{ data['robotic-equipment'] | lower }} fit the eligibility criteria?
+          </h1>
+        </legend>
+
+        <p class="govuk-hint">To be eligible, your robotic technology must:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-hint">
+            <li>have a sensing system and can understand their environment</li>
+            <li>make decisions and plan</li>
+            <li>can control its actuators (the devices that move robot joints)</li>
+            <li>work in a continuous loop</li>
+          </ul>
+
+        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="existing-system" name="robotic-eligibility" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="existing-system">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="existing-system-2" name="robotic-eligibility" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="existing-system-2">
+              No
+            </label>
+          </div>
+                    
+        </div>
+      </fieldset>
+    </div>
+
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+
+
+
+  <div class="govuk-grid-column-one-third">
+
+    <div class="app-step-nav-related app-step-nav-related--singular">
+      <h2 class="app-step-nav-related__heading">
+        <span class="app-step-nav-related__pretitle">Eligibility</span>
+        </h2>
+        <p>Robotic items must fit all 4 criteria to be eligible. </p>
+      </div>
+
+  </div>
+
+</div>
+
+
+{%endblock%}
