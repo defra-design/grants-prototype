@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a large grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+     <h1 class="govuk-heading-l">
+        You cannot apply for a grant from this scheme
+     </h1>
+
+    <div class="govuk-body">
+      <p>You can only apply for a grant of up to 25% of the estimated costs.</p>
+    </div>
+
+{{ govukInsetText({
+    text: 'The minimum grant you can apply for is £15,000 (25% of £60,000). The maximum grant is £100,000 (25% of £400,000).'
+}) }}
+
+<p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments"  class="govuk-!-font-size-19"> See other grants you may be eligible for.</a><p>
+      <!--See <a href="">the large countryside productivity grant guidance</a> for further information.-->
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

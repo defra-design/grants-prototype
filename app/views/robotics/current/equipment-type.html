@@ -13,11 +13,8 @@
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
-  {% if data['who-are-you'] === "farmer" %}
-  <a class="govuk-back-link" href="country">Back</a>
-  {% else %}
-  <a class="govuk-back-link" href="legal-status">Back</a>
-  {% endif %}
+
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -30,11 +27,11 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Is the technology robotic or automatic?
+                Is the {{ data['robotic-equipment'] | lower }} robotic or automatic?
               </h1>
             </legend>
 
-            <p class="govuk-hint">To be eligible, your robotic technology must:</p>
+            <p class="govuk-hint">There are 4 eligibility criteria for grant funding.</p>
             <ul class="govuk-list govuk-list--bullet govuk-hint">
               <li>have a sensing system and can understand its environment</li>
               <li>make decisions and plan</li>
@@ -70,9 +67,9 @@
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
-          <p>There are 4 eligibility criteria for grant funding.</p>
-          <p>Robotic items must meet all 4 criteria to be eligible. </p>
-          <p>Automatic items must meet at least 2 criteria to be eligible.</p>
+          
+          <p>Robotic items must fit all 4 criteria to be eligible.</p>
+          <p>Automatic items must fit at least 2 criteria to be eligible.</p>
 
           </a>
       </div>
