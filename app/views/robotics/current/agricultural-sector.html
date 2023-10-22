@@ -30,36 +30,96 @@ Agricultural sector
         </legend>
 
                 <div id="agricultural-sector-hint" class="govuk-hint">Select up to 2 options</div>
-                <div class="govuk-checkboxes">
+               
+               
+               
+                <div class="govuk-checkboxes">                
+
+              
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="agricultural-sector-1" name="agricultural-sector" type="checkbox" value="arable" {{ checked("agricultural-sector", "arable") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-1">
+                    Arable
+                    </label>
+                  </div>
+
+
+                  {% if (data['farming-type'] == "Solar") %}
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="agricultural-sector-1" name="agricultural-sector" type="checkbox" value="beef" {{ checked("agricultural-sector", "beef") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-1">
+                    Beef
+                    </label>
+                  </div>
+                  {% endif %}
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="agricultural-sector-2" name="agricultural-sector" type="checkbox" value="dairy livestock" {{ checked("agricultural-sector", "dairy livestock") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-2">
+                      Dairy livestock
+                    </label>
+                  </div>
+
                   <div class="govuk-checkboxes__item">
                     <input class="govuk-checkboxes__input" id="agricultural-sector" name="agricultural-sector" type="checkbox" value="horticulture" {{ checked("agricultural-sector", "horticulture") }}>
                     <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector">
                       Horticulture
                     </label>
                   </div>
-                  <div class="govuk-checkboxes">
-                    <div class="govuk-checkboxes__item">
-                      <input class="govuk-checkboxes__input" id="agricultural-sector-1" name="agricultural-sector" type="checkbox" value="arable" {{ checked("agricultural-sector", "arable") }}>
-                      <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-1">
-                      Arable
-                      </label>
-                    </div>
-                    <div class="govuk-checkboxes">
-                      <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input" id="agricultural-sector-2" name="agricultural-sector" type="checkbox" value="dairy livestock" {{ checked("agricultural-sector", "dairy livestock") }}>
-                        <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-2">
-                          Dairy livestock
-                        </label>
-                      </div>
-                      <div class="govuk-checkboxes">
-                        <div class="govuk-checkboxes__item">
-                          <input class="govuk-checkboxes__input" id="agricultural-sector-3" name="agricultural-sector" type="checkbox" value="non-dairy livestock" {{ checked("agricultural-sector", "non-dairy livestock") }}>
-                          <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-3">
-                            Non-dairy livestock
-                          </label>
-                        </div>
+               
 
-            </div>
+                  {% if (data['farming-type'] == "Solar") %}
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="agricultural-sector-3" name="agricultural-sector" type="checkbox" value="mixed livestock" {{ checked("agricultural-sector", "mixed livestock") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-3">
+                      Mixed livestock
+                    </label>
+                  </div>    
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="agricultural-sector-3" name="agricultural-sector" type="checkbox" value="pig" {{ checked("agricultural-sector", "pig") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-3">
+                      Pig
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="agricultural-sector-3" name="agricultural-sector" type="checkbox" value="poultry" {{ checked("agricultural-sector", "poultry") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-3">
+                      Poultry
+                    </label>
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="agricultural-sector-3" name="agricultural-sector" type="checkbox" value="sheep" {{ checked("agricultural-sector", "sheep") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-3">
+                      Sheep
+                    </label>
+                  </div>
+                  
+                  {% else%}                  
+                     
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="agricultural-sector-3" name="agricultural-sector" type="checkbox" value="non-dairy livestock" {{ checked("agricultural-sector", "non-dairy livestock") }}>
+                    <label class="govuk-label govuk-checkboxes__label" for="agricultural-sector-3">
+                      Non-dairy livestock
+                    </label>
+                  </div>   
+
+                  {% endif %}
+
+
+                  
+                  
+
+                  
+
+                  
+
+                  </div>               
+                        
+
+           
             </fieldset>
           </div>
           
