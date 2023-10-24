@@ -27,9 +27,19 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
+
+                {% if (data['robotic-equipment'] == "Other technology") %}
+
+                Is the technology robotic or automatic?
+
+                {% else %}
+
                 Is the {{ data['robotic-equipment'] | lower }} robotic or automatic?
+
+                {% endif %}
+                
               </h1>
-            </legend>
+            </legend>        
 
             <p class="govuk-hint">There are 4 eligibility criteria for grant funding.</p>
             <ul class="govuk-list govuk-list--bullet govuk-hint">

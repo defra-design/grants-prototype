@@ -29,7 +29,17 @@
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
-            Does your robotic {{ data['robotic-equipment'] | lower }} fit the eligibility criteria?
+
+              {% if (data['robotic-equipment'] == "Other technology") %}
+
+              Does your robotic technology fit the eligibility criteria?
+
+              {% else %}
+
+              Does your robotic {{ data['robotic-equipment'] | lower }} fit the eligibility criteria?
+
+              {% endif %}
+            
           </h1>
         </legend>
 
