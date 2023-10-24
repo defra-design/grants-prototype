@@ -23,50 +23,44 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-          <div class="govuk-form-group">
-    <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-        <h1 class="govuk-fieldset__heading">
-          What type of energy will you use?
-        </h1>
-      </legend>
-      <p class="govuk-hint">Technology powered by fossil fuels will only be funded where there is no commercially available electric or renewable energy alternative
-      </p>
-      
-      <div class="govuk-checkboxes">
-        <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="energy-source" name="energy-source" type="checkbox" value="mains electricity">
-          <label class="govuk-label govuk-checkboxes__label" for="energy-source">
-            Mains electricity
-          </label>
-        </div>
-        <div class="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="energy-source-1" name="energy-source" type="checkbox" value="renewable electricity generated on the farm">
-            <label class="govuk-label govuk-checkboxes__label" for="energy-source-1">
-              Renewable electricity generated on the farm
-            </label>
-          </div>
-          <div class="govuk-checkboxes">
-            <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="energy-source-2" name="energy-source" type="checkbox" value="biofuels">
-              <label class="govuk-label govuk-checkboxes__label" for="energy-source-2">
-                Biofuels
-              </label>
-            </div>
-            <div class="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="energy-source-2" name="energy-source" type="checkbox" value="fossil fuels">
-                <label class="govuk-label govuk-checkboxes__label" for="energy-source-2">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">  
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What type of energy will you use?
+              </h1>
+            </legend>
+            <p class="govuk-hint">Technology powered by fossil fuels will only be funded where there is no commercially available electric or renewable energy alternative</p>       
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive" name="energy-source" type="radio" value="mains electricity">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                  Mains electricity
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive-2" name="energy-source" type="radio" value="renewable electricity generated on the farm">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+                  Renewable electricity generated on the farm
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive-3" name="energy-source" type="radio" value="biofuels">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+                  Biofuels
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive-4" name="energy-source" type="radio" value="fossil fuels">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive-4">
                   Fossil fuels
                 </label>
               </div>
+            </div>
+          </fieldset>
+        </div>
 
 
-
-      </div>
-    </fieldset>
-  </div>
 
   <button class="govuk-button govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button">
     Continue
@@ -78,7 +72,11 @@
     </button>
   {% endif %}
   </form>
+
+
   </div>
+
+  
     <!--top right column 'Funding priorities'-->
     <div class="govuk-grid-column-one-third">
       <div class="app-step-nav-related app-step-nav-related--singular">
@@ -88,7 +86,11 @@
           <p>RPA wants to fund projects that improve the environment.</p>
       </div>
       </div>
+
+
   </div>
 
 
 {% endblock %}
+
+
