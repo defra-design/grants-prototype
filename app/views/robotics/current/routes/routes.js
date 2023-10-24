@@ -863,7 +863,7 @@ router.get('/energy-source', function (req, res) {
 router.post('/energy-source-answer', function (req, res) {
   var energySource = req.session.data['energy-source']
 
-  if (energySource.includes ("fossil fuels")) 
+  if (energySource == "fossil fuels") 
     { res.redirect('fossil-fuel-eligibility') }
 
     else { res.redirect('agricultural-sector') }

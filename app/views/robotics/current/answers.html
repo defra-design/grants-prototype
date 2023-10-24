@@ -109,9 +109,9 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Type of energy
           <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
-            {% for item in data['energy-source'] %}
-            <li>{{ item | capitalize }}</li>
-            {% endfor %}
+            
+            <li>{{ data['energy-source'] | capitalize }}</li>
+           
           </ul>
         </th>
           <td class="govuk-table__cell">Average</td>
@@ -124,9 +124,9 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Agricultural sector
             <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet">
-              {% for item in data['agricultural-sector'] %}
-              <li>{{ item | capitalize }}</li>
-              {% endfor %}
+             
+              <li>{{ data['agricultural-sector'] | capitalize }}</li>
+              
             </ul></th>
             <td class="govuk-table__cell">Strong</td>
             <td class="govuk-table__cell">
@@ -195,7 +195,7 @@
           <th scope="row" class="govuk-table__header">Agricultural sector
           <br/><br/>          
           <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
-            <li>Arable</li>
+            <li>{{ data['agricultural-sector'] | capitalize }}</li>
           </ul>
           </th>
           <td class="govuk-table__cell">Average</td>
