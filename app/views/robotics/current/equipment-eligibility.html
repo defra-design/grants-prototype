@@ -28,7 +28,17 @@
             <fieldset class="govuk-fieldset" aria-describedby="robotics-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-fieldset__heading">
+
+                  {% if (data['robotic-equipment'] == "Other technology") %}
+
+                  Which eligibility criteria does your technology meet?
+
+                  {% else %}
+
                   Which eligibility criteria does your {{ data['robotic-equipment'] | lower }} meet?
+
+                  {% endif %}
+                  
                 </h1>
               </legend>
 
