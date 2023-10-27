@@ -37,6 +37,9 @@
       
           
       
+              {% if (data['remove-item'] == "yes") %}
+
+              {% else %}
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">Harvesting technology
                 <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">                 
@@ -51,8 +54,11 @@
                     <li>Continuous loop</li>
                   </ul>
                 </td>
-                <td class="govuk-table__cell"><a href="#">Remove</td>
+                <td class="govuk-table__cell"><a href="remove-item">Remove</td>
               </tr>
+
+              {% endif %}
+
 
 
               <tr class="govuk-table__row">

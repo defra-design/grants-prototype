@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Other robotic equipment
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form id="mainForm" class="form" action="technology-description-answer" method="post">
+          <div class="govuk-form-group">
+     <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+         <h1 class="govuk-fieldset__heading">
+          What is your {{ data['equipment-type'] | lower }} technology?
+         </h1>
+       </legend>       
+                
+        <p class="govuk-hint">Technology powered by fossil fuels will only be funded where there is no commercially available electric or renewable energy alternative.</p>
+      
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="more-detail">
+            Enter a brief description of the technology including:
+            <ul class="govuk-list govuk-list--bullet">
+              <li>name</li>
+              <li>brand and model (if available)</li>
+              <li>number of items</li>
+              <li>the benefit to your business</li>
+            </ul>
+
+          </label>
+          <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5"></textarea>
+        </div>
+       
+      
+        
+        
+     </fieldset>
+   </div>
+     <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+     </form>
+   </div>
+  <div class="govuk-grid-column-one-third">
+  <div class="app-step-nav-related app-step-nav-related--singular">
+     <h2 class="app-step-nav-related__heading">
+      <span class="app-step-nav-related__pretitle">Eligibility</span>
+      </h2>
+      <p>To be eligible for grant funding, your robotic technology must: </p>
+      <ul class="govuk-list govuk-list--bullet">
+
+        <li>have a sensing system and can understand their environment</li>
+        <li>make decisions and plan</li>
+        <li>can control its actuators (the devices that move robot joints)</li>
+        <li>work in a continuous loop</li>
+      </ul>
+
+      <p>Automatic technology must fit at least 2 of these eligibility criteria.
+      </p>
+
+  </div>
+
+
+
+{%endblock%}

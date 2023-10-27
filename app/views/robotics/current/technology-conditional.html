@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You may be able to apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-body govuk-!-font-size-48">
+        <h1 class="govuk-heading-l">
+          Your technology might get a grant from this scheme
+        </h1>
+
+        <p class="govuk-body">RPA will assess your technology and whether they can fund it.</p>
+
+  <p class="govuk-body">They will let you know if the technology is eligible before the application window opens and projects are invited to apply.<p>
+
+
+
+                    <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                There’s no guarantee your technology will be funded.
+              </strong>
+            </div>
+
+
+            <form class="form" action="project-cost" method="post">
+              <button class="govuk-button govuk-!-margin-top-6" data-module="govuk-button">Continue</button>
+            </form>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
