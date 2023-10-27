@@ -436,6 +436,20 @@ router.post('/equipment-type-answer', function (req, res) {
 
 router.post('/robotic-eligibility-answer', function (req, res) {
 
+  var roboticEquipment = req.session.data['robotic-equipment']
+  var roboticEligibility = req.session.data['robotic-eligibility']
+  
+  if (roboticEligibility == "no") {    
+    res.redirect('robotic-eligibility-fail')
+  } else {
+    res.redirect('technology-description')
+  }
+})
+
+
+/*
+router.post('/robotic-eligibility-answer', function (req, res) {
+
   var addItem = req.session.data['add-item']
   var roboticEquipment = req.session.data['robotic-equipment']
   var roboticEligibility = req.session.data['robotic-eligibility']
@@ -450,7 +464,7 @@ router.post('/robotic-eligibility-answer', function (req, res) {
     res.redirect('add-item')
   }
 })
-
+*/
 
 
 router.get('/equipment-eligibility', function (req, res) {
@@ -465,6 +479,21 @@ router.get('/equipment-eligibility', function (req, res) {
   })
 })
 
+
+router.post('/equipment-eligibility-answer', function (req, res) {  
+  
+  var roboticEquipment = req.session.data['robotic-equipment']
+  var equipmentEligibility = req.session.data['equipment-eligibility']
+
+  if (equipmentEligibility.length < 2 || equipmentEligibility.includes("None")){
+    res.redirect('technology-criteria-fail')
+  } else {    
+    res.redirect('technology-description')
+  }
+})
+
+
+/*
 router.post('/equipment-eligibility-answer', function (req, res) {
   
   var addItem = req.session.data['add-item']
@@ -481,7 +510,19 @@ router.post('/equipment-eligibility-answer', function (req, res) {
     res.redirect('add-item')
   }
 })
+*/
 
+router.post('/technology-description-answer', function (req, res) {
+  
+  var addItem = req.session.data['add-item']
+ 
+
+  if (addItem == 'Yes'){
+    res.redirect('project-items-summary')
+  } else {    
+    res.redirect('add-item')
+  }
+})
 
 
 // Do you want to add another item?
@@ -505,7 +546,7 @@ router.post('/add-item-answer', function (req, res) {
   if (addItem == "Yes"){    
     res.redirect('robotic-items')
   } else {    
-    res.redirect('project-cost')
+    res.redirect('technology-conditional')
   }
 })
 
@@ -515,7 +556,7 @@ router.post('/add-item-answer', function (req, res) {
 
 router.get('/project-items-summary', function (req, res) {
   var backUrl = 'equipment-eligibility'
-  var nextUrl = 'project-cost'
+  var nextUrl = 'technology-conditional'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -525,6 +566,17 @@ router.get('/project-items-summary', function (req, res) {
   })
 })
 
+
+router.post('/remove-item-answer', function (req, res) {
+  
+  var removeItem = req.session.data['remove-item']
+  
+  if (removeItem == "Yes"){    
+    res.redirect('project-items-summary')
+  } else {    
+    res.redirect('project-items-summary')
+  }
+})
 
 
 
@@ -863,7 +915,7 @@ router.get('/energy-source', function (req, res) {
 router.post('/energy-source-answer', function (req, res) {
   var energySource = req.session.data['energy-source']
 
-  if (energySource == "fossil fuels") 
+  if (energySource.includes ("fossil fuels")) 
     { res.redirect('fossil-fuel-eligibility') }
 
     else { res.redirect('agricultural-sector') }

@@ -14,7 +14,7 @@
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 {% block content %}
 
@@ -109,9 +109,9 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Type of energy
           <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
-            
-            <li>{{ data['energy-source'] | capitalize }}</li>
-           
+            {% for item in data['energy-source'] %}
+            <li>{{ item | capitalize }}</li>
+            {% endfor %}
           </ul>
         </th>
           <td class="govuk-table__cell">Average</td>
@@ -124,9 +124,9 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Agricultural sector
             <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet">
-             
-              <li>{{ data['agricultural-sector'] | capitalize }}</li>
-              
+              {% for item in data['agricultural-sector'] %}
+              <li>{{ item | capitalize }}</li>
+              {% endfor %}
             </ul></th>
             <td class="govuk-table__cell">Strong</td>
             <td class="govuk-table__cell">
@@ -195,7 +195,9 @@
           <th scope="row" class="govuk-table__header">Agricultural sector
           <br/><br/>          
           <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
-            <li>{{ data['agricultural-sector'] | capitalize }}</li>
+              {% for item in data['agricultural-sector'] %}
+              <li>{{ item | capitalize }}</li>
+              {% endfor %}
           </ul>
           </th>
           <td class="govuk-table__cell">Average</td>
