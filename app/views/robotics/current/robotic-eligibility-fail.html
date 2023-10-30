@@ -24,7 +24,7 @@
     <div class="govuk-grid-column-two-thirds">
      
       <h1 class="govuk-heading-l">
-        You cannot apply for a grant from this scheme 
+        You cannot apply for grant funding for this item
       </h1>
 
       <p class="govuk-body">RPA will only fund robotic items that: </p>
@@ -36,6 +36,33 @@
         <li>work in a continuous loop</li>
       </ul>
       <br>
+
+      {% if (data['add-item'] == "Yes") %}
+
+      <div class="govuk-button-group">
+
+        <form id="mainForm" class="form" action="project-items-summary" method="post">
+        <button class="govuk-button" data-module="govuk-button">          
+          Continue with eligible items
+        </button>
+        </form>
+
+        <form id="mainForm" class="form" action="robotic-items" method="post">
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Add another item
+        </button>
+        </form>
+
+      </div>
+
+      {% else %}
+
+      <form id="mainForm" class="form" action="robotic-items" method="post">
+        <button class="govuk-button" data-module="govuk-button">Add another item</button>
+       </form>
+
+      {% endif %}
+
 
 
        <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments"  class="govuk-!-font-size-19">

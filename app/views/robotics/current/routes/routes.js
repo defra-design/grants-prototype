@@ -39,7 +39,7 @@ router.post('/farming-type-answer', function (req, res) {
   if (farmingType === 'Robotics and automatic technology') {
     res.redirect('who-are-you')
   } else {
-    res.redirect('legal-status')
+    res.redirect('who-are-you')
   }
 })
 
@@ -61,9 +61,12 @@ router.get('/who-are-you', function (req, res) {
 
 router.post('/who-are-you-answer', function (req, res) {
   var whoisthisUser = req.session.data['who-are-you']
+  var farmingType = req.session.data['farming-type']
 
   if (whoisthisUser === 'farmer') {
     res.redirect('legal-status')
+  } else if (whoisthisUser === 'contractor' && farmingType == 'Solar') {
+    res.redirect('contractor-fail')
   } else {
     res.redirect('register')
   }
@@ -328,7 +331,7 @@ router.post('/project-responsibility-answer', function (req, res) {
     res.redirect('project-items')
   } else if (projectResponsibility == 'Yes' && farmingType == 'Solar') {
     res.redirect('solar-existing-system')
-  } else { res.redirect('tenancy-length-condition') }
+  } else { res.redirect('project-items') }
 })
 
 
@@ -821,7 +824,7 @@ router.post('/improve-productivity-answer', function (req, res) {
   if (improveProductivity == "Yes") {
     res.redirect('project-impact')
   } else { 
-    res.redirect('improve-productivity-fail') }
+    res.redirect('project-impact') }
 })
 
 
