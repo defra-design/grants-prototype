@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  You may be able to apply for a grant from this scheme
+  You cannot apply for this scheme  
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,25 +13,30 @@
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
+
   <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <div class="govuk-body govuk-!-font-size-48">
-        <h1 class="govuk-heading-l">
-          You may be able to apply for this grant
-        </h1>
+     
+      <h1 class="govuk-heading-l">
+        You cannot apply for a grant from this scheme
+      </h1>
 
-        <p>Any planning permission must be in place by 30 April 2024.</p>
+      <p class="govuk-body">Contractors cannot apply for grant funding for solar project items.</p> 
 
-            <form class="form" action="{{ nextUrl }}" method="post">
-              <button class="govuk-button govuk-!-margin-top-6" data-module="govuk-button">Continue</button>
-            </form>
+      <br>
 
-      </div>
+       <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments"  class="govuk-!-font-size-19">
+          See other grants you may be eligible for
+        </a></p>
+
+
+
     </div>
   </div>
 

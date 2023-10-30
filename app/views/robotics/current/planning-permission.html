@@ -13,11 +13,7 @@
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
-  {% if data['who-are-you'] === "farmer" %}
-  <a class="govuk-back-link" href="country">Back</a>
-  {% else %}
-  <a class="govuk-back-link" href="legal-status">Back</a>
-  {% endif %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% block content %}

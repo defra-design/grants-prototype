@@ -14,7 +14,7 @@ What is your project about?
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -36,18 +36,18 @@ What is your project about?
                       }
                   },
                   hint: {
-                    html: "<p>If you want to apply for both a robotics project and a solar project, you must submit two separate applications.</p> <p>The maximum grant amount for both projects together is £500,000.</p>Select one option"
+                    html: "<p>If you want to apply for both a farm productivity project and a solar project, you must submit 2 separate applications.</p> <p>The maximum grant amount for both projects together is £500,000.</p>Select one option"
                 },
 
                   items: [
                 {
                   value: "Robotics and automatic technology",
-                  text: "Robotics and automatic technology",
+                  text: "Farm productivity project items",
                   checked: checked("farming-type", "Robotics and automatic technology")
                 },
                 {
                   value: "Solar",
-                  text: "Solar technologies",
+                  text: "Solar project items",
                   checked: checked("farming-type", "Solar")
                 }
               ]

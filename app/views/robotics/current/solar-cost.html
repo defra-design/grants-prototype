@@ -13,8 +13,8 @@
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
-
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+  
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 
 {% endblock %}
 
@@ -33,7 +33,7 @@
       <form id="mainForm" class="form" action="solar-cost-answer" method="post">
 
         <div class="govuk-form-group">
-          <h1 class="govuk-heading-l">What is the total estimated cost of the solar PV system?</h1>
+          <h1 class="govuk-heading-l">What is the total estimated cost of the solar project items?</h1>
           <div class="govuk-hint">
             You can only apply for a grant of up to 25% of the estimated costs. The minimum grant you can apply for this project is £15,000 (25% of £60,000), The maximum grant is £100,000 (25% of £400,000).
             <br/><br/>
