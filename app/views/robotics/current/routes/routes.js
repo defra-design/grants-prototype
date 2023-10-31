@@ -274,7 +274,7 @@ router.post('/project-start-answer', function (req, res) {
   if (projectStart === 'project work')
   { res.redirect('project-start-fail') }
  else if (identityUser === 'contractor')
-  { res.redirect('project-items') }
+  { res.redirect('robotic-items') }
   else { res.redirect('tenancy') }
 })
 
@@ -405,7 +405,7 @@ router.post('/robotic-items-answer', function (req, res) {
   
   var roboticEquipment = req.session.data['robotic-equipment']
   
-  if (roboticEquipment == "Driverless robotic tractor or platform"){    
+  if (roboticEquipment == "Driverless robotic tractor or platform" || roboticEquipment == "Voluntary robotic milking system" || roboticEquipment == "Slurry robots"){    
     res.redirect('robotic-eligibility')
   } else {    
     res.redirect('equipment-type')
