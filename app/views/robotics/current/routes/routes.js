@@ -846,7 +846,7 @@ router.post('/project-impact-answer', function (req, res) {
   var projectImpact = req.session.data['project-impact']
 
   if (projectImpact == 'no') 
-    { res.redirect('project-impact-fail') }
+    { res.redirect('energy-source') }
 
     else { res.redirect('energy-source') }
   
