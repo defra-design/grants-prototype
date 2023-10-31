@@ -405,8 +405,8 @@ router.post('/robotic-items-answer', function (req, res) {
   
   var roboticEquipment = req.session.data['robotic-equipment']
   
-  if (roboticEquipment == "Other technology"){    
-    res.redirect('equipment-type')
+  if (roboticEquipment == "Driverless robotic tractor or platform"){    
+    res.redirect('robotic-eligibility')
   } else {    
     res.redirect('equipment-type')
   }
