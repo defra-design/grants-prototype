@@ -1026,7 +1026,7 @@ router.post('/solar-installation-answer', function (req, res) {
 router.post('/solar-cost-answer', function (req, res) {
   var solarCost = req.session.data['solar-cost']
 
-  if (solarCost < 60000) { 
+  if (solarCost <= 59999) { 
     res.redirect('solar-cost-fail') 
   } else { 
     res.redirect('potential-grant') }

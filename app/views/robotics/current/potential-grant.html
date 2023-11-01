@@ -28,12 +28,13 @@ Potential grant funding
     {% set grantAmount = data['solar-cost'] *0.25 %}
     {% set projectCost = data['solar-cost'] %}
 
-      {% if projectCost >=4000001 %}
+      {% if (data['solar-cost'] >= "4000001") %}
       <p class="govuk-body">You may be able to apply for a grant of up to £100,000, based on the estimated cost of £{{ data['solar-cost'] | toFixed(2) | commafy }}.</p>
 
       {% else %}
     <p class="govuk-body">You may be able to apply for a grant of up to £{{ grantAmount | toFixed(2) | commafy }}, based on the estimated cost of £{{ data['solar-cost'] | toFixed(2) | commafy }}.</p>
-          {% endif %}
+      
+    {% endif %}
 
     {{ govukWarningText({
         text: 'There’s no guarantee the project will receive a grant.',
