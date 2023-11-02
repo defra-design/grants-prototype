@@ -26,7 +26,7 @@ Meeting the remaining project costs
   {% set remainingCosts2 = data['project-cost'] -500000 %}
 
 
-      <h1 class="govuk-heading-l">Can you pay the remaining costs{%if remainingCosts > 125001%} of £{{remainingCosts2 | toFixed(2) | commafy}}  {% else%} £{{ remainingCosts | toFixed(2) | commafy }}{% endif%}?</h1>
+      <h1 class="govuk-heading-l">Can you pay the remaining costs{% if (remainingCosts >= 1250001) %} of £{{remainingCosts2 | toFixed(2) | commafy}}  {% else%} £{{ remainingCosts | toFixed(2) | commafy }}{% endif%}?</h1>
 
 
   <div class="govuk-radios govuk-radios--inline">
