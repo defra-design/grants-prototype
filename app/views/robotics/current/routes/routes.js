@@ -760,13 +760,13 @@ router.get('/project-cost', function (req, res) {
 router.post('/project-cost-answer', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
-  if (projectCost < 87500)   { res.redirect('project-cost-fail') } else { res.redirect('grant') }
+  if (projectCost < 62500)   { res.redirect('project-cost-fail') } else { res.redirect('grant') }
 })
 
 router.post('/project-cost-answer-completed', function (req, res) {
   var projectCost = req.session.data['project-cost']
 
-  if (projectCost < 87500)   { res.redirect('project-cost-fail') } else { res.redirect('answers') }
+  if (projectCost < 62500)   { res.redirect('project-cost-fail') } else { res.redirect('answers') }
 })
 
 
