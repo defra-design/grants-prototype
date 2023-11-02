@@ -270,12 +270,13 @@ router.get('/project-start', function (req, res) {
 router.post('/project-start-answer', function (req, res) {
   var projectStart = req.session.data['project-start']
   var identityUser = req.session.data['who-are-you']
+  var projectItems = req.session.data['project-items']
 
-  if (projectStart === 'project work')
-  { res.redirect('project-start-fail') }
- else if (identityUser === 'contractor')
-  { res.redirect('robotic-items') }
-  else { res.redirect('tenancy') }
+  if (projectStart === 'project work') { 
+    res.redirect('project-start-fail') 
+  } else if (identityUser === 'contractor') { 
+    res.redirect('robotic-items')
+  } else { res.redirect('tenancy') }
 })
 
 router.post('/project-start-answer-completed', function (req, res) {
@@ -799,14 +800,14 @@ router.get('/remaining-costs', function (req, res) {
 router.post('/remaining-costs-answer', function (req, res) {
   var remainingCosts = req.session.data['remaining-costs']
   var projectItems = req.session.data['project-items']
-
+  var roboticItems = req.session.data['robotic-items']
+ 
   if (remainingCosts === 'no') { 
     res.redirect('remaining-costs-fail') 
-  } else if (remainingCosts == 'yes' && projectItems.includes ("Robotic or automatic technology")) {
+  } else if (remainingCosts == 'yes' && (projectItems?.includes ("Robotic or automatic technology") || projectItems == undefined)) {
     res.redirect('improve-productivity')
   } else { res.redirect('energy-source') } 
-})
-
+  })
 
 
 
