@@ -34,6 +34,18 @@
 
               Does your robotic technology fit the eligibility criteria?
 
+              {% elseif (data['robotic-equipment'] == "Driverless robotic tractor or platform") %}
+
+              Does your driverless robotic tractor or platform fit the eligibility criteria?
+
+              {% elseif (data['robotic-equipment'] == "Voluntary robotic milking system") %}
+
+              Does your voluntary robotic milking system fit the eligibility criteria?
+
+              {% elseif (data['robotic-equipment'] == "Slurry robots") %}
+
+              Do your slurry robots fit the eligibility criteria?
+
               {% else %}
 
               Does your robotic {{ data['robotic-equipment'] | lower }} fit the eligibility criteria?
