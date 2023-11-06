@@ -806,7 +806,7 @@ router.post('/remaining-costs-answer', function (req, res) {
     res.redirect('remaining-costs-fail') 
   } else if (remainingCosts == 'yes' && (projectItems?.includes ("Robotic or automatic technology") || projectItems == undefined)) {
     res.redirect('improve-productivity')
-  } else { res.redirect('energy-source') } 
+  } else { res.redirect('improve-productivity') } 
   })
 
 
@@ -825,7 +825,7 @@ router.post('/improve-productivity-answer', function (req, res) {
   if (improveProductivity == "Yes") {
     res.redirect('project-impact')
   } else { 
-    res.redirect('project-impact') }
+    res.redirect('improve-productivity-fail') }
 })
 
 
@@ -965,7 +965,7 @@ router.post('/agricultural-sector-answer', function (req, res) {
 // INTRODUCING INNOVATION (ROBOTICS)
 router.get('/introducing-innovation', function (req, res) {
   var backUrl = 'agricultural-sector'
-  var nextUrl = 'labour-saved'
+  var nextUrl = 'introducing-innovation-answer'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -974,6 +974,17 @@ router.get('/introducing-innovation', function (req, res) {
     completedUrl
   })
 })
+
+router.post('/introducing-innovation-answer', function (req, res) {
+  var projectItems = req.session.data['project-items']
+
+
+  if (projectItems?.includes ("Wavelength-specific LED lighting") || projectItems?.includes ("Advanced ventilation control units")) {
+    res.redirect('answers')
+  } else { 
+    res.redirect('labour-saved') }
+})
+
 
 // Labour saved (ROBOTICS)
 router.get('/labour-saved', function (req, res) {
