@@ -24,10 +24,10 @@
     <div class="govuk-grid-column-two-thirds">
      
       <h1 class="govuk-heading-l">
-        You cannot apply for grant funding for this item
+        You cannot apply for grant funding for this technology
       </h1>
 
-      <p class="govuk-body">RPA will only fund robotic items that: </p>
+      <p class="govuk-body">RPA will only fund robotic technology that: </p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>have a sensing system and can understand their environment</li>
@@ -43,13 +43,13 @@
 
         <form id="mainForm" class="form" action="project-items-summary" method="post">
         <button class="govuk-button" data-module="govuk-button">          
-          Continue with eligible items
+          Continue with eligible technology
         </button>
         </form>
 
         <form id="mainForm" class="form" action="robotic-items" method="post">
         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-          Add another item
+          Add another technology
         </button>
         </form>
 
@@ -58,7 +58,7 @@
       {% else %}
 
       <form id="mainForm" class="form" action="robotic-items" method="post">
-        <button class="govuk-button" data-module="govuk-button">Add another item</button>
+        <button class="govuk-button" data-module="govuk-button">Add another technology</button>
        </form>
 
       {% endif %}
