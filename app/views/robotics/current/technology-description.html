@@ -25,23 +25,32 @@
      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
          <h1 class="govuk-fieldset__heading">
-          What is your {{ data['equipment-type'] | lower }} technology?
+          Describe the technology
          </h1>
        </legend>       
                 
-        <p class="govuk-hint">Technology powered by fossil fuels will only be funded where there is no commercially available electric or renewable energy alternative.</p>
+        <p class="govuk-hint">Technology powered by fossil fuels will only be funded where there is no commercially available electric or renewable energy alternative </p>
       
+        <br>
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="width-10">
+            Brand (optional)
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="width-10" name="width10" type="text">
+        </div>
+
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="width-10">
+            Model (optional)
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="width-10" name="width10" type="text">
+        </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="more-detail">
-            Enter a brief description of the technology including:
-            <ul class="govuk-list govuk-list--bullet">
-              <li>name</li>
-              <li>brand and model (if available)</li>
-              <li>number of items</li>
-              <li>the benefit to your business</li>
-            </ul>
-
+            Enter a description, including the name and number of items if there are multiple
           </label>
           <textarea class="govuk-textarea govuk-!-margin-bottom-2" id="more-detail" name="moreDetail" rows="7"></textarea>
           <p class="govuk-hint">You have 250 characters remaining.</p>
