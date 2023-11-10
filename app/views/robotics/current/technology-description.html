@@ -25,7 +25,32 @@
      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
          <h1 class="govuk-fieldset__heading">
-          Describe the technology
+
+          {% if (data['robotic-equipment'] == "Other technology") %}
+
+              Describe the {{ data['equipment-type'] | lower }} technology
+
+              {% elseif (data['robotic-equipment'] == "Driverless robotic tractor or platform") %}
+
+              Describe the driverless robotic tractor or platform
+
+              {% elseif (data['robotic-equipment'] == "Voluntary robotic milking system") %}
+
+              Describe the voluntary robotic milking system
+
+              {% elseif (data['robotic-equipment'] == "Slurry robots") %}
+
+              Describe the slurry robots
+
+              {% else %}
+
+              Describe the {{ data['robotic-equipment'] | lower }}
+
+              {% endif %}
+          
+          
+
+
          </h1>
        </legend>       
                 
@@ -65,23 +90,7 @@
      </form>
    </div>
   <div class="govuk-grid-column-one-third">
-  <div class="app-step-nav-related app-step-nav-related--singular">
-     <h2 class="app-step-nav-related__heading">
-      <span class="app-step-nav-related__pretitle">Eligibility</span>
-      </h2>
-      <p>To be eligible for grant funding, your robotic technology must: </p>
-      <ul class="govuk-list govuk-list--bullet">
-
-        <li>have a sensing system and can understand their environment</li>
-        <li>make decisions and plan</li>
-        <li>can control its actuators (the devices that move robot joints)</li>
-        <li>work in a continuous loop</li>
-      </ul>
-
-      <p>Automatic technology must fit at least 2 of these eligibility criteria.
-      </p>
-
-  </div>
+  
 
 
 
