@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Is the technology robotic or automatic?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="equipment-type3-answer" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+
+                {% if (data['robotic-equipment-3'] == "Other technology") %}
+
+                Is the technology robotic or automatic?
+
+                {% else %}
+
+                Is the {{ data['robotic-equipment-3'] | lower }} robotic or automatic?
+
+                {% endif %}
+                
+              </h1>
+            </legend>        
+
+            <p class="govuk-hint">There are 4 eligibility criteria for grant funding.</p>
+            <p class="govuk-hint">Eligible technology should:</p>
+            
+            <ul class="govuk-list govuk-list--bullet govuk-hint">
+              <li>have a sensing system and can understand its environment</li>
+              <li>make decisions and plan</li>
+              <li>be able to control its actuators (the devices that move robot joints)</li>
+              <li>work in a continuous loop</li>
+            </ul>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="equipment-type" name="equipment-type-3" type="radio" value="Robotic">
+                <label class="govuk-label govuk-radios__label" for="equipment-type">
+                  Robotic
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="equipment-type-2" name="equipment-type-3" type="radio" value="Automatic">
+                <label class="govuk-label govuk-radios__label" for="equipment-type-2">
+                  Automatic
+                </label>
+              </div>
+             
+             
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          
+          <p>Robotic technology must fit all 4 criteria to be eligible.</p>
+          <p>Automatic technology must fit at least 2 criteria to be eligible.</p>
+
+          </a>
+      </div>
+    </div>
+
+{% endblock %}

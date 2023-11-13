@@ -41,17 +41,39 @@
 
               {% else %}
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Harvesting technology
-                <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">                 
+                <th scope="row" class="govuk-table__header">{{ data['robotic-equipment']  }}
+                <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-!-margin-right-9"> 
+                  <li>{{ data['name-of-item'] }}</li>                
                 </ul>
               </th>
-                <td class="govuk-table__cell">Robotic</td>
+                <td class="govuk-table__cell">
+                  
+                  {% if (data['equipment-type'] == null) %}
+
+                  Robotic
+
+                  {% else %}
+
+                  {{ data['equipment-type']  }}
+
+                  {% endif %}
+                  
+                  </td>
                 <td class="govuk-table__cell">
                   <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
+                    {% if (data['equipment-type'] == "Robotic") or (data['equipment-type'] == null) %}
+
                     <li>Sensing system</li>
                     <li>Makes decisions</li>
                     <li>Control actuators</li>
                     <li>Continuous loop</li>
+
+                    {% else %}
+
+                    <li>Sensing system</li>                    
+                    <li>Continuous loop</li>
+
+                    {% endif %}
                   </ul>
                 </td>
                 <td class="govuk-table__cell"><a href="remove-item">Remove</td>
@@ -62,17 +84,93 @@
 
 
               <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">Weeding technology
+                <th scope="row" class="govuk-table__header">{{ data['robotic-equipment-2']  }}
+                  <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-!-margin-right-9"> 
+                    <li>{{ data['name-of-item-2'] }}</li>                
+                  </ul>
                   </th>
-                  <td class="govuk-table__cell">Automatic</td>
+                  <td class="govuk-table__cell">
+                  {% if (data['equipment-type-2'] == null) %}
+
+                  Robotic
+
+                  {% else %}
+
+                  {{ data['equipment-type-2']  }}
+
+                  {% endif %}
+
+                  </td>
                   <td class="govuk-table__cell">
                     <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
+
+                      {% if (data['equipment-type-2'] == "Robotic") or (data['equipment-type-2'] == null) %}
+
+                      <li>Sensing system</li>
+                      <li>Makes decisions</li>
+                      <li>Control actuators</li>
+                      <li>Continuous loop</li>
+
+                      {% else %}
+
                       <li>Sensing system</li>                    
                       <li>Continuous loop</li>
+
+                      {% endif %}
+
+                     
                     </ul>
                   </td>
                   <td class="govuk-table__cell"><a href="#">Remove</td>
                   </tr>
+
+
+                  {% if (data['robotic-equipment-3'] == null) %}
+
+                  {% else %}
+
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">{{ data['robotic-equipment-3']  }}
+                      <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-!-margin-right-9"> 
+                        <li>{{ data['name-of-item-3'] }}</li>                
+                      </ul>
+                      </th>
+                      <td class="govuk-table__cell">
+                      {% if (data['equipment-type-3'] == null) %}
+    
+                      Robotic
+    
+                      {% else %}
+    
+                      {{ data['equipment-type-3']  }}
+    
+                      {% endif %}
+    
+                      </td>
+                      <td class="govuk-table__cell">
+                        <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
+    
+                          {% if (data['equipment-type-3'] == "Robotic") or (data['equipment-type-3'] == null) %}
+    
+                          <li>Sensing system</li>
+                          <li>Makes decisions</li>
+                          <li>Control actuators</li>
+                          <li>Continuous loop</li>
+    
+                          {% else %}
+    
+                          <li>Sensing system</li>                    
+                          <li>Continuous loop</li>
+    
+                          {% endif %}
+    
+                         
+                        </ul>
+                      </td>
+                      <td class="govuk-table__cell"><a href="#">Remove</td>
+                      </tr>
+
+                      {% endif %}
       
     
             </tbody>
@@ -88,7 +186,7 @@
               Continue
             </button>
             </form>
-            <form id="mainForm" class="form" action="robotic-items" method="post">
+            <form id="mainForm" class="form" action="robotic-items-3" method="post">
               <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
               Add another technology
             </button>

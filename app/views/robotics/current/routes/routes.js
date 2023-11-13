@@ -413,6 +413,28 @@ router.post('/robotic-items-answer', function (req, res) {
   }
 })
 
+router.post('/robotic-items2-answer', function (req, res) {
+  
+  var roboticEquipment2 = req.session.data['robotic-equipment-2']
+  
+  if (roboticEquipment2 == "Driverless robotic tractor or platform" || roboticEquipment2 == "Voluntary robotic milking system" || roboticEquipment2 == "Slurry robots"){    
+    res.redirect('robotic-eligibility-2')
+  } else {    
+    res.redirect('equipment-type-2')
+  }
+})
+
+router.post('/robotic-items3-answer', function (req, res) {
+  
+  var roboticEquipment3 = req.session.data['robotic-equipment-3']
+  
+  if (roboticEquipment3 == "Driverless robotic tractor or platform" || roboticEquipment3 == "Voluntary robotic milking system" || roboticEquipment3 == "Slurry robots"){    
+    res.redirect('robotic-eligibility-3')
+  } else {    
+    res.redirect('equipment-type-3')
+  }
+})
+
 // Choose if item is robotic or automatic
 
 router.get('/equipment-type', function (req, res) {
@@ -438,6 +460,28 @@ router.post('/equipment-type-answer', function (req, res) {
   }
 })
 
+router.post('/equipment-type2-answer', function (req, res) {
+
+  var equipmentType2 = req.session.data['equipment-type-2']
+  
+  if (equipmentType2 == 'Robotic'){    
+    res.redirect('robotic-eligibility-2')
+  } else {    
+    res.redirect('equipment-eligibility-2')
+  }
+})
+
+router.post('/equipment-type3-answer', function (req, res) {
+
+  var equipmentType3 = req.session.data['equipment-type-3']
+  
+  if (equipmentType3 == 'Robotic'){    
+    res.redirect('robotic-eligibility-3')
+  } else {    
+    res.redirect('equipment-eligibility-3')
+  }
+})
+
 router.post('/robotic-eligibility-answer', function (req, res) {
 
   var roboticEquipment = req.session.data['robotic-equipment']
@@ -447,6 +491,30 @@ router.post('/robotic-eligibility-answer', function (req, res) {
     res.redirect('robotic-eligibility-fail')
   } else {
     res.redirect('technology-description')
+  }
+})
+
+router.post('/robotic-eligibility2-answer', function (req, res) {
+
+  var roboticEquipment2 = req.session.data['robotic-equipment-2']
+  var roboticEligibility2 = req.session.data['robotic-eligibility-2']
+  
+  if (roboticEligibility2 == "no") {    
+    res.redirect('robotic-eligibility-fail')
+  } else {
+    res.redirect('technology-description-2')
+  }
+})
+
+router.post('/robotic-eligibility3-answer', function (req, res) {
+
+  var roboticEquipment3 = req.session.data['robotic-equipment-3']
+  var roboticEligibility3 = req.session.data['robotic-eligibility-3']
+  
+  if (roboticEligibility3 == "no") {    
+    res.redirect('robotic-eligibility-fail')
+  } else {
+    res.redirect('technology-description-3')
   }
 })
 
@@ -497,6 +565,34 @@ router.post('/equipment-eligibility-answer', function (req, res) {
 })
 
 
+router.post('/equipment-eligibility2-answer', function (req, res) {  
+  
+  var roboticEquipment2 = req.session.data['robotic-equipment-2']
+  var equipmentEligibility2 = req.session.data['equipment-eligibility-2']
+
+  if (equipmentEligibility2.length < 2 || equipmentEligibility2.includes("None")){
+    res.redirect('technology-criteria-fail')
+  } else {    
+    res.redirect('technology-description-2')
+  }
+})
+
+
+router.post('/equipment-eligibility3-answer', function (req, res) {  
+  
+  var roboticEquipment3 = req.session.data['robotic-equipment-3']
+  var equipmentEligibility3 = req.session.data['equipment-eligibility-3']
+
+  if (equipmentEligibility3.length < 2 || equipmentEligibility3.includes("None")){
+    res.redirect('technology-criteria-fail')
+  } else {    
+    res.redirect('technology-description-3')
+  }
+})
+
+
+
+
 /*
 router.post('/equipment-eligibility-answer', function (req, res) {
   
@@ -529,6 +625,7 @@ router.post('/technology-description-answer', function (req, res) {
 })
 
 
+
 // Do you want to add another item?
 
 router.get('/add-item', function (req, res) {
@@ -548,7 +645,7 @@ router.post('/add-item-answer', function (req, res) {
   var addItem = req.session.data['add-item']
   
   if (addItem == "Yes"){    
-    res.redirect('robotic-items')
+    res.redirect('robotic-items-2')
   } else {    
     res.redirect('technology-conditional')
   }

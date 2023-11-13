@@ -20,31 +20,31 @@
 
      <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <form id="mainForm" class="form" action="technology-description-answer" method="post">
+        <form id="mainForm" class="form" action="project-items-summary" method="post">
           <div class="govuk-form-group">
      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
          <h1 class="govuk-fieldset__heading">
 
-          {% if (data['robotic-equipment'] == "Other technology") %}
+          {% if (data['robotic-equipment-2'] == "Other technology") %}
 
-              Describe the {{ data['equipment-type'] | lower }} technology
+              Describe the {{ data['equipment-type-2'] | lower }} technology
 
-              {% elseif (data['robotic-equipment'] == "Driverless robotic tractor or platform") %}
+              {% elseif (data['robotic-equipment-2'] == "Driverless robotic tractor or platform") %}
 
               Describe the driverless robotic tractor or platform
 
-              {% elseif (data['robotic-equipment'] == "Voluntary robotic milking system") %}
+              {% elseif (data['robotic-equipment-2'] == "Voluntary robotic milking system") %}
 
               Describe the voluntary robotic milking system
 
-              {% elseif (data['robotic-equipment'] == "Slurry robots") %}
+              {% elseif (data['robotic-equipment-2'] == "Slurry robots") %}
 
               Describe the slurry robots
 
               {% else %}
 
-              Describe the {{ data['robotic-equipment'] | lower }}
+              Describe the {{ data['robotic-equipment-2'] | lower }}
 
               {% endif %}
           
@@ -62,7 +62,7 @@
           <label class="govuk-label" for="width-10">
             Name of item
           </label>
-          <input class="govuk-input govuk-input--width-20" id="width-10" name="name-of-item" type="text">
+          <input class="govuk-input govuk-input--width-20" id="width-10" name="name-of-item-2" type="text">
         </div>
 
         <div class="govuk-form-group">
