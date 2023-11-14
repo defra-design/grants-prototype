@@ -81,7 +81,9 @@
 
               {% endif %}
 
+              {% if (data['robotic-equipment-2'] == null) %}
 
+              {% else %}
 
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">{{ data['robotic-equipment-2']  }}
@@ -123,6 +125,13 @@
                   </td>
                   <td class="govuk-table__cell"><a href="#">Remove</td>
                   </tr>
+
+                  
+
+
+                  {% endif %}
+
+
 
 
                   {% if (data['robotic-equipment-3'] == null) %}
@@ -186,11 +195,25 @@
               Continue
             </button>
             </form>
+
+
+              {% if (data['robotic-equipment-2'] == null) %}
+
+            <form id="mainForm" class="form" action="robotic-items-2" method="post">
+
+              {% else %}
+
             <form id="mainForm" class="form" action="robotic-items-3" method="post">
+
+              {% endif %}
+
+
               <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
               Add another technology
             </button>
             </form>
+
+
           </div>
 
 

@@ -620,7 +620,7 @@ router.post('/technology-description-answer', function (req, res) {
   if (addItem == 'Yes'){
     res.redirect('project-items-summary')
   } else {    
-    res.redirect('add-item')
+    res.redirect('project-items-summary')
   }
 })
 

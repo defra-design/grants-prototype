@@ -25,9 +25,19 @@ Agricultural sector
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
+            {% if (data['farming-type'] == "Solar") %}
+            What do you farm mainly?
+            {% else %}
             Which  agricultural  sector is your project in?  
+            {% endif %}
           </h1>
         </legend>
+
+        {% if (data['farming-type'] == "Solar") %}
+        <p class="govuk-hint">Your main farm enterprises</p> 
+        {% else %}
+
+        {% endif %}
 
         <p class="govuk-hint">Select up to 2 options</p>                
                
