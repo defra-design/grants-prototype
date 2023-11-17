@@ -48,17 +48,23 @@
                 </label>
               </div>
 
+              {% if (data['who-are-you'] == "contractor")  %}
+
+              {% else %}
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="robotic-equipment-1" name="robotic-equipment-2" type="radio" value="Transplanting technology">
+                <label class="govuk-label govuk-radios__label" for="robotic-equipment">
+                  Transplanting technology
+                </label>
+              </div>
+
+              {% endif %}
+
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="robotic-equipment-1" name="robotic-equipment-2" type="radio" value="Weeding technology">
                 <label class="govuk-label govuk-radios__label" for="robotic-equipment">
                   Weeding technology
-                </label>
-              </div>
-
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="robotic-equipment-1" name="robotic-equipment-2" type="radio" value="Spraying technology">
-                <label class="govuk-label govuk-radios__label" for="robotic-equipment">
-                  Spraying technology
                 </label>
               </div>
 
@@ -68,6 +74,15 @@
                   Driverless robotic tractor or platform
                 </label>
               </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="robotic-equipment-1" name="robotic-equipment-2" type="radio" value="Robotic spraying technology">
+                <label class="govuk-label govuk-radios__label" for="robotic-equipment">
+                  Robotic spraying technology
+                </label>
+              </div>
+
+              
 
               {% if (data['who-are-you'] == "contractor")  %}
 
@@ -81,18 +96,11 @@
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="robotic-equipment-1" name="robotic-equipment-2" type="radio" value="Feeding system">
+                <input class="govuk-radios__input" id="robotic-equipment-1" name="robotic-equipment-2" type="radio" value="Feeding robots">
                 <label class="govuk-label govuk-radios__label" for="robotic-equipment">
-                  Feeding system
+                  Feeding robots
                 </label>
-              </div>
-
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="robotic-equipment-1" name="robotic-equipment-2" type="radio" value="Transplanting technology">
-                <label class="govuk-label govuk-radios__label" for="robotic-equipment">
-                  Transplanting technology
-                </label>
-              </div>
+              </div>            
 
 
               <div class="govuk-radios__item">

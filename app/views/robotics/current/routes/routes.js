@@ -406,7 +406,7 @@ router.post('/robotic-items-answer', function (req, res) {
   
   var roboticEquipment = req.session.data['robotic-equipment']
   
-  if (roboticEquipment == "Driverless robotic tractor or platform" || roboticEquipment == "Voluntary robotic milking system" || roboticEquipment == "Slurry robots"){    
+  if (roboticEquipment == "Driverless robotic tractor or platform" || roboticEquipment == "Voluntary robotic milking system" || roboticEquipment == "Slurry robots" || roboticEquipment == "Feeding robots" || roboticEquipment == "Robotic spraying technology"){    
     res.redirect('robotic-eligibility')
   } else {    
     res.redirect('equipment-type')
@@ -417,7 +417,7 @@ router.post('/robotic-items2-answer', function (req, res) {
   
   var roboticEquipment2 = req.session.data['robotic-equipment-2']
   
-  if (roboticEquipment2 == "Driverless robotic tractor or platform" || roboticEquipment2 == "Voluntary robotic milking system" || roboticEquipment2 == "Slurry robots"){    
+  if (roboticEquipment2 == "Driverless robotic tractor or platform" || roboticEquipment2 == "Voluntary robotic milking system" || roboticEquipment2 == "Slurry robots" || roboticEquipment2 == "Feeding robots" || roboticEquipment2 == "Robotic spraying technology"){    
     res.redirect('robotic-eligibility-2')
   } else {    
     res.redirect('equipment-type-2')
@@ -428,7 +428,7 @@ router.post('/robotic-items3-answer', function (req, res) {
   
   var roboticEquipment3 = req.session.data['robotic-equipment-3']
   
-  if (roboticEquipment3 == "Driverless robotic tractor or platform" || roboticEquipment3 == "Voluntary robotic milking system" || roboticEquipment3 == "Slurry robots"){    
+  if (roboticEquipment3 == "Driverless robotic tractor or platform" || roboticEquipment3 == "Voluntary robotic milking system" || roboticEquipment3 == "Slurry robots" || roboticEquipment3 == "Feeding robots" || roboticEquipment3 == "Robotic spraying technology"){    
     res.redirect('robotic-eligibility-3')
   } else {    
     res.redirect('equipment-type-3')

@@ -46,6 +46,14 @@
 
               Do your slurry robots fit the eligibility criteria?
 
+              {% elseif (data['robotic-equipment-3'] == "Robotic spraying technology") %}
+
+              Does your robotic spraying technology fit the eligibility criteria?
+
+              {% elseif (data['robotic-equipment-3'] == "Feeding robots") %}
+
+              Do your feeding robots fit the eligibility criteria?
+
               {% else %}
 
               Does your robotic {{ data['robotic-equipment-3'] | lower }} fit the eligibility criteria?
