@@ -1,0 +1,113 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Hen Project Type – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="hen-project-type-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What is your hen housing project?
+              </h1>
+            </legend>
+
+            <!-- Option: Building new housing -->
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="hen-housing-type" name="hen-project-type" type="radio" value="new">
+                <label class="govuk-label govuk-radios__label" for="hen-housing-type">
+                  Building new housing
+                </label>
+              </div>
+
+              <!-- Option: Refurbishing -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="hen-housing-type-2" name="hen-project-type" type="radio" value="refurbishing">
+                <label class="govuk-label govuk-radios__label" for="hen-housing-type-2">
+                  Refurbishiing or extending existing housing
+                </label>
+              </div>
+
+                 <!-- Option: Adding veranda -->
+                 <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="hen-housing-type-3" name="hen-project-type" type="radio" value="veranda">
+                  <label class="govuk-label govuk-radios__label" for="hen-housing-type-3">
+                    Adding a veranda only to existing housing
+                  </label>
+                </div>
+
+                <!-- 'or' divider-->
+              <div class="govuk-radios__divider">or</div>
+
+                   <!-- None of the above -->
+                   <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="hen-housing-type-4" name="hen-project-type" type="radio" value="none">
+                    <label class="govuk-label govuk-radios__label" for="hen-housing-type-4">
+                      None of the above
+                    </label>
+                  </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Eligibility sidebar -->
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>The building must have:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>building new housing for laying hens or pullets</li>
+            <li>refurbishing or extending existing laying hens or pullet housing</li>
+            <li>adding a veranda to existing housing</li>
+          </ul>
+          
+          <a href="#">
+          </a>
+
+      </div>
+
+  </div>
+
+{% endblock %}

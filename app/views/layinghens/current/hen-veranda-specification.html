@@ -1,0 +1,100 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Veranda Specification – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="hen-veranda-specification-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will the building have a veranda with the these features?
+              </h1>
+            </legend>
+
+            <p class="govuk-hint">The veranda of the housing must have:</p>
+            
+            <ul class="govuk-list govuk-list--bullet">
+              <li class="govuk-hint">a solid concrete floor</li>
+              <li class="govuk-hint">a waterproof insulated roof</li>
+              <li class="govuk-hint">guttering and a down-pipe to feed into the drainage system of the main building</li>
+              <li class="govuk-hint">a perimeter wall of equal to or more than 1 metre in height</li>
+              <li class="govuk-hint">mesh roller-screen system running underneath the length of the roof, <b>positioned to fall flush with the wall when extended</b></li>
+              <li class="govuk-hint">a dimmable LED lighting system between 0 lux and 60 lux</li>
+             </ul>
+          
+            <!-- Option: Yes -->
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-spec" name="hen-veranda-specification" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="has-spec">
+                  Yes
+                </label>
+              </div>
+
+              <!-- Option: No -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-spec-2" name="hen-veranda-specification" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="has-spec-2">
+                  No
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+     <!-- Eligibility sidebar -->
+     <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+
+          <p>The floor area of the veranda must be excluded from any calculation of stocking density (regardless of whether 24h access is provided)</p>
+  
+          <a href="#">
+          </a>
+
+      </div>
+
+  </div>
+
+{% endblock %}
