@@ -67,6 +67,8 @@ router.use('/robotics/v3', require('./views/robotics/v3/routes/routes'))
 router.use('/robotics/v2', require('./views/robotics/v2/routes/routes'))
 router.use('/robotics/v1', require('./views/robotics/v1/routes/routes'))
 
+router.use('/layinghens/current', require('./views/layinghens/current/routes/routes'))
+
 router.use('/slurry/current', require('./views/slurry/current/routes/routes'))
 router.use('/slurry/v2', require('./views/slurry/v2/routes/routes'))
 router.use('/slurry/v1', require('./views/slurry/v1/routes/routes'))
