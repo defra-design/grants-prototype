@@ -41,6 +41,16 @@ router.post('/hen-building-items-answer', function (req, res) {
     var henBuildingItems = req.session.data['hen-building-items']
 
     if (henBuildingItems == "yes") {
+        res.redirect('hen-inlets')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+
+router.post('/hen-inlets-answer', function (req, res) {
+    var henInlets = req.session.data['hen-inlets']
+
+    if (henInlets == "yes") {
         res.redirect('hen-insulation')
     } else { 
         res.redirect('kickout') }
@@ -61,7 +71,7 @@ router.post('/hen-cleaning-area-answer', function (req, res) {
     var henCleaningArea = req.session.data['hen-cleaning-area']
     
     if (henCleaningArea == "yes") {
-        res.redirect('hen-biolock')
+        res.redirect('hen-egg-store')
     } else { 
         res.redirect('kickout') }
     })
@@ -305,12 +315,140 @@ router.post('/hen-solar-cost-answer', function (req, res) {
     var henSolarCost = req.session.data['hen-solar-cost']
     
     if (henSolarCost >= 1) {
-        res.redirect('hen-scoring')
+        res.redirect('hen-current-system')
     } else { 
         res.redirect('kickout') }
     })
-    
 
+router.post('/hen-current-system-answer', function (req, res) {
+    var henCurrentSystem = req.session.data['hen-current-system']
+    
+    if (henCurrentSystem == "none") {
+        res.redirect('kickout')
+    } else { 
+        res.redirect('hen-level-ramp') }
+    })
+
+router.post('/hen-level-ramp-answer', function (req, res) {
+    var henLevelRamp = req.session.data['hen-level-ramp']
+    
+    if (henLevelRamp == "yes") {
+        res.redirect('hen-highest-tier')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/hen-highest-tier-answer', function (req, res) {
+    var henHighestTier = req.session.data['hen-highest-tier']
+    
+    if (henHighestTier == "yes") {
+        res.redirect('hen-three-tiers')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/hen-three-tiers-answer', function (req, res) {
+    var henThreeTiers = req.session.data['hen-three-tiers']
+    
+    if (henThreeTiers == "yes") {
+        res.redirect('hen-natural-light')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/hen-natural-light-answer', function (req, res) {
+    var henNaturalLight = req.session.data['hen-natural-light']
+    
+    if (henNaturalLight == "yes") {
+        res.redirect('hen-easy-grip')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/hen-easy-grip-answer', function (req, res) {
+    var henEasyGrip = req.session.data['hen-easy-grip']
+    
+    if (henEasyGrip == "yes") {
+        res.redirect('hen-housing-structure')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+
+router.post('/hen-housing-structure-answer', function (req, res) {
+    var henHousingStructure = req.session.data['hen-housing-structure']
+    
+    if (henHousingStructure.includes ("none")) {
+        res.redirect('kickout')
+    } else { 
+        res.redirect('hen-air-space') }
+    })
+
+router.post('/hen-air-space-answer', function (req, res) {
+    var henAirSpace = req.session.data['hen-air-space']
+    
+    if (henAirSpace == "yes") {
+        res.redirect('hen-housing-features')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/hen-housing-features-answer', function (req, res) {
+    var henHousingFeatures = req.session.data['hen-housing-features']
+
+    if (henHousingFeatures.includes ("none")) {
+        res.redirect('kickout')
+    }  else { 
+        res.redirect('hen-energy-sources') }
+    })
+
+router.post('/hen-energy-sources-answer', function (req, res) {
+    var henEnergySources = req.session.data['hen-energy-sources']
+
+    if (henEnergySources.includes ("none")) {
+        res.redirect('kickout')
+    }  else { 
+        res.redirect('hen-bird-data') }
+    })
+
+
+router.post('/hen-bird-data-answer', function (req, res) {
+    var henBirdData = req.session.data['hen-bird-data']
+    
+    if (henBirdData == "yes") {
+        res.redirect('hen-bird-data-type')
+    } else { 
+        res.redirect('hen-environmental-data') }
+    })
+
+
+router.post('/hen-bird-data-type-answer', function (req, res) {
+    var henBirdDataType = req.session.data['hen-bird-data-type']
+
+    if (henBirdDataType.includes ("other")) {
+        res.redirect('hen-environmental-data')
+    }  else { 
+        res.redirect('hen-environmental-data') }
+    })
+
+router.post('/hen-environmental-data-answer', function (req, res) {
+    var henEnvironmentalData = req.session.data['hen-environmental-data']
+    
+    if (henEnvironmentalData == "yes") {
+        res.redirect('hen-environmental-data-type')
+    } else { 
+        res.redirect('hen-business-details') }
+    })
+
+router.post('/hen-environmental-data-type-answer', function (req, res) {
+    var henEnvironmentalDataType = req.session.data['hen-environmental-data-type']
+
+    if (henEnvironmentalDataType.includes ("other")) {
+        res.redirect('hen-business-details')
+    }  else { 
+        res.redirect('hen-business-details') }
+    })
+    
 
 
     

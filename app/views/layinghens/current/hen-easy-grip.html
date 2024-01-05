@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Hen Lighting System Features – {{ serviceName }} – GOV.UK Prototype Kit
+  Height of Highest Tier – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,39 +29,33 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- Path for next page -->
-      <form class="form" action="hen-lighting-features-answer" method="post">
+      <form class="form" action="hen-easy-grip-answer" method="post">
 
         <!-- Page heading -->
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Will the hen house lighting system have these features? 
+                Will the perches have a design feature that help the birds grip the perches?
               </h1>
             </legend>
 
             <!-- Hint text -->
-            <p class="govuk-hint">The building's lighting system must have:</p>
+            <p class="govuk-hint">For example, easy-grip shape, ridged surface, material or coating features</p>
             
-            <ul class="govuk-list govuk-list--bullet">
-              <li class="govuk-hint">the ability to provide an automatic stepped dawn or dusk lighting environment (unless this is already provided as part of an aviary lighting system)</li>
-              <li class="govuk-hint">an option for red light</li>
-              <li class="govuk-hint">a fail-safe standby device in case of electrical or other failure</li>
-             </ul>
-          
             <!-- Option: Yes -->
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-light-features-hen" name="hen-lighting-features" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="has-light-features-hen">
+                <input class="govuk-radios__input" id="has-perches" name="hen-easy-grip" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="has-perches">
                   Yes
                 </label>
               </div>
 
               <!-- Option: No -->
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-light-features-hen-2" name="hen-lighting-features" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="has-light-features-hen-2">
+                <input class="govuk-radios__input" id="has-perches-2" name="hen-easy-grip" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="has-perches-2">
                   No
                 </label>
               </div>
@@ -78,10 +72,21 @@
       </form>
     </div>
 
-    <!-- Eligibility sidebar -->
-    <div class="govuk-grid-column-one-third">
+       <!-- Eligibility sidebar -->
+       <div class="govuk-grid-column-one-third">
 
-     
+        <div class="app-step-nav-related app-step-nav-related--singular">
+          <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Funding priorities</span>
+            </h2>
+  
+            <p>RPA want to support projects which provide easy-grip perches.</p>
+    
+            <a href="#">
+            </a>
+  
+        </div>
+
   </div>
 
 {% endblock %}
