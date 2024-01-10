@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Veranda Biosecurity – {{ serviceName }} – GOV.UK Prototype Kit
+  pullet Cleaning Area – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,30 +29,42 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- Path for next page -->
-      <form class="form" action="hen-veranda-biosecurity-answer" method="post">
+      <form class="form" action="pullet-aviary-system-answer" method="post">
 
         <!-- Page heading -->
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Will the veranda have the capacity to be made biosecure with at least 25mm mesh?
+                Will your rearing aviary system have these features?
               </h1>
             </legend>
-          
+
+            <!-- Hint text -->
+            <p class="govuk-hint">The rearing aviary system must have: </p>
+            
+            <ul class="govuk-list govuk-list--bullet">
+              <li class="govuk-hint">the capacity to provide or retain friable litter while the birds are held within the system</li>
+              <li class="govuk-hint">an integrated manure removal belt-system</li>
+              <li class="govuk-hint">integrated height-adjustable feed lines, nipple drinkers and platforms</li>
+              <li class="govuk-hint">integrated and fully dimmable non-flicker LED lighting</li>
+              <li class="govuk-hint">training ramps when the pullets are 14 days old</li>
+              <li class="govuk-hint">welfare ramps</li>
+             </ul>
+             
             <!-- Option: Yes -->
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-biosec" name="hen-veranda-biosecurity" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="has-biosec">
+                <input class="govuk-radios__input" id="has-cleaning-area-pullet" name="pullet-aviary-system" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="has-cleaning-area-pullet">
                   Yes
                 </label>
               </div>
 
               <!-- Option: No -->
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-biosec-2" name="hen-veranda-biosecurity" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="has-biosec-2">
+                <input class="govuk-radios__input" id="has-cleaning-area-pullet-2" name="pullet-aviary-system" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="has-cleaning-area-pullet-2">
                   No
                 </label>
               </div>
@@ -69,20 +81,10 @@
       </form>
     </div>
 
-     <!-- Eligibility sidebar -->
-     <div class="govuk-grid-column-one-third">
+    <!-- Eligibility sidebar -->
+    <div class="govuk-grid-column-one-third">
 
-      <div class="app-step-nav-related app-step-nav-related--singular">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Eligibility</span>
-          </h2>
-
-          <p>The veranda must be secured with at least 25mm mesh to stop wild birds and rodents from entering.</p>
-  
-          <a href="#">
-          </a>
-
-      </div>
+    
 
   </div>
 

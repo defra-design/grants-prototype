@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Veranda Biosecurity – {{ serviceName }} – GOV.UK Prototype Kit
+  pullet Building Items – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,30 +29,40 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- Path for next page -->
-      <form class="form" action="hen-veranda-biosecurity-answer" method="post">
+      <form class="form" action="pullet-building-items-answer" method="post">
 
         <!-- Page heading -->
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Will the veranda have the capacity to be made biosecure with at least 25mm mesh?
+                Will the pullet housing have these items?
               </h1>
             </legend>
+
+            <!-- Hint text -->
+            <p class="govuk-hint"> The building must have:</p>
+            
+            <ul class="govuk-list govuk-list--bullet">
+              <li class="govuk-hint">a fixed structure with a solid concrete floor</li>
+              <li class="govuk-hint">water-tight roof and walls</li>
+              <li class="govuk-hint">a capped roof and sidewall ventilation inlets and outlets</li>              
+              <li class="govuk-hint">catch trays under all the chimneys and vents</li>
+             </ul>
           
             <!-- Option: Yes -->
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-biosec" name="hen-veranda-biosecurity" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="has-biosec">
+                <input class="govuk-radios__input" id="has-building-item" name="pullet-building-items" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="has-building-item">
                   Yes
                 </label>
               </div>
 
               <!-- Option: No -->
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-biosec-2" name="hen-veranda-biosecurity" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="has-biosec-2">
+                <input class="govuk-radios__input" id="has-building-item-2" name="pullet-building-items" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="has-building-item-2">
                   No
                 </label>
               </div>
@@ -69,16 +79,23 @@
       </form>
     </div>
 
-     <!-- Eligibility sidebar -->
-     <div class="govuk-grid-column-one-third">
+    <!-- Eligibility sidebar -->
+    <div class="govuk-grid-column-one-third">
 
       <div class="app-step-nav-related app-step-nav-related--singular">
         <h2 class="app-step-nav-related__heading">
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
+          <p>The building must have:</p>
 
-          <p>The veranda must be secured with at least 25mm mesh to stop wild birds and rodents from entering.</p>
-  
+          <ul class="govuk-list govuk-list--bullet">
+            <li>a fixed structure with a solid concrete floor</li>
+            <li>water-tight roof and walls</li>
+            <li>a capped roof</li>
+            <li>sidewall ventilation inlets and outlets</li>
+            <li>catch trays under all the chimneys and vents</li>
+           </ul>
+
           <a href="#">
           </a>
 

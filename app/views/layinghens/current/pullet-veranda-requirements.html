@@ -1,0 +1,154 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Housing Structure – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="pullet-veranda-requirements-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will the pullet housing have a veranda that has any of these features?
+              </h1>
+            </legend>
+
+            <!-- Hint text -->
+            <p class="govuk-hint">Select all that apply</p>
+
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type" name="pullet-veranda-requirements" type="checkbox" value="length">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type">
+                    Will be situated along the length of the main housing
+                  </label>
+                </div>
+              
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-2" name="pullet-veranda-requirements" type="checkbox" value="floor">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-2">
+                    Provides additional floor-space, equal to 30% of the indoor bird housing area footprint
+                  </label>
+                </div>              
+              
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="pullet-veranda-requirements" type="checkbox" value="concrete">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
+                    Has a solid concrete floor and waterproof insulated roof
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="pullet-veranda-requirements" type="checkbox" value="perimeter">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
+                    Has a perimeter wall of more than 1 metre in height, with lockable pop holes, unless it is part of a barn system
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="pullet-veranda-requirements" type="checkbox" value="roller">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
+                    A mesh roller-screen system running underneath the length of the roof, positioned to fall flush with the wall when it is extended
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="pullet-veranda-requirements" type="checkbox" value="led">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
+                    A dimmable LED lighting system with a range between 0 lux and 60 lux
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="pullet-veranda-requirements" type="checkbox" value="guttering">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
+                    Guttering and downpipe that feeds into the drainage system of the main building
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="pullet-veranda-requirements" type="checkbox" value="mesh">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
+                    Secured with at least 6mm mesh
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="pullet-veranda-requirements" type="checkbox" value="lockable pop holes">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
+                    Access through lockable pop holes in the wall of the main house
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="pullet-veranda-requirements" type="checkbox" value="floor level">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
+                    Pop holes are sited less than 30cm from floor level or access ramps across the entire pop hole
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="pullet-veranda-requirements" type="checkbox" value="no perches">
+                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
+                    No perches in front of the pop holes
+                  </label>
+                </div>
+
+            </div>
+          </fieldset>
+        </div>
+        
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Funding priorities</span>
+          </h2>
+
+          <p>RPA want to fund pullet housing that includes a veranda which meets the grant funding requirements.</p>
+  
+          <a href="#">
+          </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+{% endblock %}
