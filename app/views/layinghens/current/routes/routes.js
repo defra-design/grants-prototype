@@ -11,7 +11,9 @@ console.log('Service name: ' + serviceName)
 router.post('/poultry-type-answer', function (req, res) {
     var poultryType = req.session.data['poultry-type']
 
-    if (poultryType.includes ("hens")) {
+    if (poultryType.includes("hens") && poultryType.includes("pullets")) {
+        res.redirect('hen-refurbishing')
+    } else if (poultryType.includes ("hens")) {
         res.redirect('hen-project-type')
     } else if (poultryType.includes ("pullets")) {
         res.redirect('pullet-project-type')
@@ -26,8 +28,21 @@ router.post('/hen-project-type-answer', function (req, res) {
 
     if (henProjectType == "new") {
         res.redirect('hen-building-items')
-    } else if (henProjectType == "refurbishing") {
+    } else if (henProjectType == "refurb") {
         res.redirect('hen-building-items')
+    } else if (henProjectType == "veranda") {
+        res.redirect('veranda')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/pullet-project-type-answer', function (req, res) {
+    var pulletProjectType = req.session.data['pullet-project-type']
+
+    if (pulletProjectType == "new") {
+        res.redirect('pullet-building-items')
+    } else if (henProjectType == "refurb") {
+        res.redirect('pullet-building-items')
     } else if (henProjectType == "veranda") {
         res.redirect('veranda')
     } else { 
@@ -36,6 +51,16 @@ router.post('/hen-project-type-answer', function (req, res) {
 
 
 // Hen journey
+
+router.post('/hen-refurbishing-answer', function (req, res) {
+    var henRefurbishing = req.session.data['hen-refurbishing']
+
+    if (henRefurbishing == "yes") {
+        res.redirect('hen-building-items')
+    } else { 
+        res.redirect('kickout') }
+    })
+
 
 router.post('/hen-building-items-answer', function (req, res) {
     var henBuildingItems = req.session.data['hen-building-items']
@@ -838,9 +863,19 @@ router.post('/pullet-easy-grip-answer', function (req, res) {
     var pulletEasyGrip = req.session.data['pullet-easy-grip']
     
     if (pulletEasyGrip == "yes") {
-        res.redirect('pullet-housing-structure')
+        res.redirect('pullet-veranda-requirements')
     } else { 
         res.redirect('kickout') }
+    })
+
+
+router.post('/pullet-veranda-requirements-answer', function (req, res) {
+    var pulletVerandaRequirements = req.session.data['pullet-veranda-requirements']
+    
+    if (pulletVerandaRequirements.includes ("length")) {
+        res.redirect('pullet-housing-structure')
+    } else { 
+        res.redirect('pullet-housing-structure') }
     })
 
 
@@ -906,19 +941,28 @@ router.post('/pullet-environmental-data-answer', function (req, res) {
     if (pulletEnvironmentalData == "yes") {
         res.redirect('pullet-environmental-data-type')
     } else { 
-        res.redirect('score') }
+        res.redirect('pullet-brooders') }
     })
 
 router.post('/pullet-environmental-data-type-answer', function (req, res) {
     var pulletEnvironmentalDataType = req.session.data['pullet-environmental-data-type']
 
     if (pulletEnvironmentalDataType.includes ("other")) {
-        res.redirect('score')
+        res.redirect('pullet-brooders')
     }  else { 
+        res.redirect('pullet-brooders') }
+    })
+
+
+router.post('/pullet-brooders-answer', function (req, res) {
+    var pulletBrooders = req.session.data['pullet-brooders']
+    
+    if (pulletBrooders == "yes") {
+        res.redirect('score')
+    } else { 
         res.redirect('score') }
     })
 
-    
       
 
 
