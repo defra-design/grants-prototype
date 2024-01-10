@@ -496,40 +496,70 @@ router.post('/pullet-cleaning-area-answer', function (req, res) {
     var pulletCleaningArea = req.session.data['pullet-cleaning-area']
     
     if (pulletCleaningArea == "yes") {
-        res.redirect('pullet-egg-store')
+        res.redirect('pullet-vaccination')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/pullet-vaccination-answer', function (req, res) {
+    var pulletVaccination = req.session.data['pullet-vaccination']
+    
+    if (pulletVaccination == "yes") {
+        res.redirect('pullet-density')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/pullet-density-answer', function (req, res) {
+    var pulletDensity = req.session.data['pullet-density']
+    
+    if (pulletDensity == "yes") {
+        res.redirect('pullet-housing-requirements')
     } else { 
         res.redirect('kickout') }
     })
 
 
-router.post('/pullet-biolock-answer', function (req, res) {
-    var pulletBiolock = req.session.data['pullet-biolock']
+router.post('/pullet-housing-requirements-answer', function (req, res) {
+    var pulletHousingRequirements = req.session.data['pullet-housing-requirements']
     
-    if (pulletBiolock == "yes") {
-        res.redirect('pullet-internal-barrier')
+    if (pulletHousingRequirements == "yes") {
+        res.redirect('pullet-which-system')
     } else { 
         res.redirect('kickout') }
     })
-    
 
-router.post('/pullet-internal-barrier-answer', function (req, res) {
-    var pulletInteralBarrier = req.session.data['pullet-internal-barrier']
+router.post('/pullet-which-system-answer', function (req, res) {
+    var pulletWhichSystem = req.session.data['pullet-which-system']
     
-    if (pulletInteralBarrier == "yes") {
-        res.redirect('pullet-egg-store')
-    } else { 
-        res.redirect('kickout') }
-    })
-    
-
-router.post('/pullet-egg-store-answer', function (req, res) {
-    var pulletEggStore = req.session.data['pullet-egg-store']
-    
-    if (pulletEggStore == "yes") {
+    if (pulletWhichSystem == "aviary") {
         res.redirect('pullet-aviary-system')
     } else { 
+        res.redirect('pullet-step-system') }
+    })
+
+
+router.post('/pullet-aviary-system-answer', function (req, res) {
+    var pulletAviarySystem = req.session.data['pullet-aviary-system']
+    
+    if (pulletAviarySystem == "yes") {
+        res.redirect('pullet-ventilation-speed')
+    } else { 
         res.redirect('kickout') }
     })
+
+
+router.post('/pullet-step-system-answer', function (req, res) {
+    var pulletStepSystem = req.session.data['pullet-step-system']
+    
+    if (pulletStepSystem == "yes") {
+        res.redirect('pullet-ventilation-speed')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+
+
 
 
 router.post('/pullet-aviary-system-answer', function (req, res) {
@@ -625,7 +655,7 @@ router.post('/pullet-lighting-features-answer', function (req, res) {
     var pulletLightingFeatures = req.session.data['pullet-lighting-features']
     
     if (pulletLightingFeatures == "yes") {
-        res.redirect('pullet-veranda-size')
+        res.redirect('pullet-concrete-apron')
     } else { 
         res.redirect('kickout') }
     })
@@ -756,6 +786,137 @@ router.post('/pullet-solar-cost-answer', function (req, res) {
 
 
 
+// Pullet scoring questions
+
+
+router.post('/pullet-current-system-answer', function (req, res) {
+    var pulletCurrentSystem = req.session.data['pullet-current-system']
+    
+    if (pulletCurrentSystem == "none") {
+        res.redirect('kickout')
+    } else { 
+        res.redirect('pullet-level-ramp') }
+    })
+
+router.post('/pullet-level-ramp-answer', function (req, res) {
+    var pulletLevelRamp = req.session.data['pullet-level-ramp']
+    
+    if (pulletLevelRamp == "yes") {
+        res.redirect('pullet-highest-tier')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/pullet-highest-tier-answer', function (req, res) {
+    var pulletHighestTier = req.session.data['pullet-highest-tier']
+    
+    if (pulletHighestTier == "yes") {
+        res.redirect('pullet-three-tiers')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/pullet-three-tiers-answer', function (req, res) {
+    var pulletThreeTiers = req.session.data['pullet-three-tiers']
+    
+    if (pulletThreeTiers == "yes") {
+        res.redirect('pullet-natural-light')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/pullet-natural-light-answer', function (req, res) {
+    var pulletNaturalLight = req.session.data['pullet-natural-light']
+    
+    if (pulletNaturalLight == "yes") {
+        res.redirect('pullet-easy-grip')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/pullet-easy-grip-answer', function (req, res) {
+    var pulletEasyGrip = req.session.data['pullet-easy-grip']
+    
+    if (pulletEasyGrip == "yes") {
+        res.redirect('pullet-housing-structure')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+
+router.post('/pullet-housing-structure-answer', function (req, res) {
+    var pulletHousingStructure = req.session.data['pullet-housing-structure']
+    
+    if (pulletHousingStructure.includes ("none")) {
+        res.redirect('kickout')
+    } else { 
+        res.redirect('pullet-air-space') }
+    })
+
+router.post('/pullet-air-space-answer', function (req, res) {
+    var pulletAirSpace = req.session.data['pullet-air-space']
+    
+    if (pulletAirSpace == "yes") {
+        res.redirect('pullet-housing-features')
+    } else { 
+        res.redirect('kickout') }
+    })
+
+router.post('/pullet-housing-features-answer', function (req, res) {
+    var pulletHousingFeatures = req.session.data['pullet-housing-features']
+
+    if (pulletHousingFeatures.includes ("none")) {
+        res.redirect('kickout')
+    }  else { 
+        res.redirect('pullet-energy-sources') }
+    })
+
+router.post('/pullet-energy-sources-answer', function (req, res) {
+    var pulletEnergySources = req.session.data['pullet-energy-sources']
+
+    if (pulletEnergySources.includes ("none")) {
+        res.redirect('kickout')
+    }  else { 
+        res.redirect('pullet-bird-data') }
+    })
+
+
+router.post('/pullet-bird-data-answer', function (req, res) {
+    var pulletBirdData = req.session.data['pullet-bird-data']
+    
+    if (pulletBirdData == "yes") {
+        res.redirect('pullet-bird-data-type')
+    } else { 
+        res.redirect('pullet-environmental-data') }
+    })
+
+
+router.post('/pullet-bird-data-type-answer', function (req, res) {
+    var pulletBirdDataType = req.session.data['pullet-bird-data-type']
+
+    if (pulletBirdDataType.includes ("other")) {
+        res.redirect('pullet-environmental-data')
+    }  else { 
+        res.redirect('pullet-environmental-data') }
+    })
+
+router.post('/pullet-environmental-data-answer', function (req, res) {
+    var pulletEnvironmentalData = req.session.data['pullet-environmental-data']
+    
+    if (pulletEnvironmentalData == "yes") {
+        res.redirect('pullet-environmental-data-type')
+    } else { 
+        res.redirect('score') }
+    })
+
+router.post('/pullet-environmental-data-type-answer', function (req, res) {
+    var pulletEnvironmentalDataType = req.session.data['pullet-environmental-data-type']
+
+    if (pulletEnvironmentalDataType.includes ("other")) {
+        res.redirect('score')
+    }  else { 
+        res.redirect('score') }
+    })
 
     
       

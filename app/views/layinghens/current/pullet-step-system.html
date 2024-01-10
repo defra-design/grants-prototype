@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  pullet Inlets – {{ serviceName }} – GOV.UK Prototype Kit
+  pullet Cleaning Area – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,30 +29,44 @@
     <div class="govuk-grid-column-two-thirds">
 
       <!-- Path for next page -->
-      <form class="form" action="pullet-inlets-answer" method="post">
+      <form class="form" action="pullet-step-system-answer" method="post">
 
         <!-- Page heading -->
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Will the wall inlets and outlets be capped with mesh that is 6 millimetres (mm) or less in thickness?
+                Will your step-up system have these features?
               </h1>
             </legend>
-          
+
+            <!-- Hint text -->
+            <p class="govuk-hint">The step-up system must have:</p>
+            
+            <ul class="govuk-list govuk-list--bullet">
+              <li class="govuk-hint">height-adjustable tiers that may include food and water at, or before, 10 days</li>
+              <li class="govuk-hint">welfare ramps</li>
+              
+             </ul>
+             
+             
+             
+
+
+
             <!-- Option: Yes -->
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-insulation-pullet" name="pullet-inlets" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="has-insulation-pullet">
+                <input class="govuk-radios__input" id="has-cleaning-area-pullet" name="pullet-step-system" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="has-cleaning-area-pullet">
                   Yes
                 </label>
               </div>
 
               <!-- Option: No -->
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-insulation-pullet-2" name="pullet-inlets" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="has-insulation-pullet-2">
+                <input class="govuk-radios__input" id="has-cleaning-area-pullet-2" name="pullet-step-system" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="has-cleaning-area-pullet-2">
                   No
                 </label>
               </div>
@@ -72,16 +86,8 @@
     <!-- Eligibility sidebar -->
     <div class="govuk-grid-column-one-third">
 
-      <div class="app-step-nav-related app-step-nav-related--singular">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Eligibility</span>
-          </h2>
-          <p>The housing must have sidewall ventilation inlets and outlets that are capped with mesh which is less than or equal to 25mm in thickness.</p>
-          
-      </div>
+    
 
   </div>
-
-</div>
 
 {% endblock %}
