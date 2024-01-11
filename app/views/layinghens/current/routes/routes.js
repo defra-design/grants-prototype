@@ -7,6 +7,90 @@ const serviceName =
 
 console.log('Service name: ' + serviceName)
 
+// Select Farmer Type
+
+router.post('/farmer-type-answer', function (req, res) {
+	var farmerType = req.session.data['farmer-type']
+  
+    if (farmerType.includes ("laying hens")) {
+        res.redirect('legal-status')
+    }   else { 
+        res.redirect('kickout') }
+    })
+
+// Common eligibility
+
+router.post('/legal-status-answer', function (req, res) {
+    var legalStatus = req.session.data['legal-status']
+
+    if (legalStatus === 'None') { 
+        res.redirect('legal-status-fail') 
+    }   else {
+    res.redirect('country') }
+
+    })
+
+router.post('/country-answer', function (req, res) {
+    var country = req.session.data['country']
+
+    if (country == 'yes') {
+        res.redirect('planning-permission')
+    } else {
+        res.redirect('country-fail')
+    }
+    })
+
+router.post('/planning-permission-answer', function (req, res) {
+    var planningPermission = req.session.data['planning-permission']
+
+    if (planningPermission === 'Not needed' || planningPermission === 'Secured') {
+        res.redirect('project-start')
+    }
+
+    else if (planningPermission === 'maybe') {
+        res.redirect('planning-required-condition')
+    }
+    else if (planningPermission === 'No'){
+        res.redirect('planning-permission-fail')
+    }
+    })
+
+router.post('/planning-required-condition-answer', function (req, res) {
+    var planningRequiredCondition = req.session.data['planning-required-condition']
+        
+        { res.redirect('tenancy') }
+
+    })
+
+
+router.post('/project-start-answer', function (req, res) {
+    var projectStart = req.session.data['project-start']
+        
+    if (projectStart === 'project work') { 
+        res.redirect('project-start-fail') 
+    } else { res.redirect('tenancy') }
+    })
+
+router.post('/tenancy-answer', function (req, res) {
+    var tenant = req.session.data['tenancy']
+    
+    if (tenant === 'Yes') {
+        res.redirect('poultry-type')
+    } else { 
+        res.redirect('project-responsibility') }
+    })
+
+router.post('/project-responsibility-answer', function (req, res) {
+    var projectResponsibility = req.session.data['project-responsibility']
+    
+    if (projectResponsibility == 'Yes') {
+        res.redirect('poultry-type')
+    } else { res.redirect('poultry-type') }
+    })
+      
+
+
+
 // Select Poultry Type
 
 router.post('/poultry-type-answer', function (req, res) {
@@ -487,20 +571,40 @@ router.post('/hen-environmental-data-answer', function (req, res) {
     if (henEnvironmentalData == "yes") {
         res.redirect('hen-environmental-data-type')
     } else { 
-        res.redirect('score') }
+        res.redirect('hen-score') }
     })
 
 router.post('/hen-environmental-data-type-answer', function (req, res) {
     var henEnvironmentalDataType = req.session.data['hen-environmental-data-type']
 
     if (henEnvironmentalDataType.includes ("other")) {
-        res.redirect('score')
+        res.redirect('hen-score')
     }  else { 
-        res.redirect('score') }
+        res.redirect('hen-score') }
     })
-    
+
+router.post('/hen-score-answer', function (req, res) {
+    var henScore = req.session.data['hen-score']
+    var poultryType = req.session.data['poultry-type']
+
+    if (poultryType.includes("hens") && poultryType.includes("pullets")) {
+        res.redirect('pullet-refurbishing')
+    }  else { 
+        res.redirect('hen-business-details') }
+    })
+
+
 
 // Pullet journey
+
+router.post('/pullet-refurbishing-answer', function (req, res) {
+    var pulletRefurbishing = req.session.data['pullet-refurbishing']
+
+    if (pulletRefurbishing == "yes") {
+        res.redirect('pullet-building-items')
+    } else { 
+        res.redirect('kickout') }
+    })
 
 
 router.post('/pullet-building-items-answer', function (req, res) {
@@ -974,10 +1078,19 @@ router.post('/pullet-brooders-answer', function (req, res) {
     var pulletBrooders = req.session.data['pullet-brooders']
     
     if (pulletBrooders == "yes") {
-        res.redirect('score')
+        res.redirect('pullet-score')
     } else { 
-        res.redirect('score') }
+        res.redirect('pullet-score') }
     })
 
+router.post('/pullet-score-answer', function (req, res) {
+    var pulletScore = req.session.data['pullet-score']
+    var poultryType = req.session.data['poultry-type']
+
+    if (poultryType.includes("pullets")) {
+        res.redirect('pullet-business-details')
+    }  else { 
+        res.redirect('pullet-business-details') }
+    })
 
 module.exports = router

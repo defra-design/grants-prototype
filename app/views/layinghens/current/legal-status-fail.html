@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You cannot apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot apply for a grant from this scheme
+      </h1>
+
+      <p class="govuk-body">Your business does not have an eligible legal status.</p>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Who is eligible
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Sole trader</li>
+              <li>Partnership</li>
+              <li>Limited company</li>
+              <li>Charity</li>
+              <li>Trust</li>
+              <li>Limited liability partnership</li>
+              <li>Community interest company</li>
+              <li>Limited partnership</li>
+              <li>Industrial and provident society</li>
+              <li>Co-operative society (Co-Op)</li>
+              <li>Community benefit society (BenCom)</li>
+            </ul>
+
+
+            </div>
+        </details>
+
+        <!--Nunjucks warning-->
+        {{ govukWarningText({
+            text: 'Other types of business may be supported in future schemes.',
+            iconFallbackText: 'Warning'
+        }) }}
+
+<p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments"  class="govuk-!-font-size-19"> See other grants you may be eligible for.</a><p>
+      <!--See <a href="">the large countryside productivity grant guidance</a> for further information.-->
+    </div>
+  </div>
+
+{% endblock %}
