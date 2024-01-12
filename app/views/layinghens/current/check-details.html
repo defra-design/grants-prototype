@@ -108,7 +108,7 @@
 
       {# include agent details only if applicant is Agent  #}
 
-      {% if (data['applicant'] == "Agent") %}
+      {% if (data['applying'] == "agent") %}
 
       <table class="govuk-table">
           <thead class="govuk-table__head">
@@ -189,105 +189,17 @@
   </table>
 {% endif %}
 
-{# include contractor's details only if applicant is Contractor  #}
-
-{% if (data['who-are-you'] == "contractor") %}
 
 <table class="govuk-table">
     <thead class="govuk-table__head">
         <tr class="govuk-table__row">
             <div class="govuk-summary-list__row--no-border">
                 <dt class="govuk-summary-list__key">
-                    <p class="govuk-heading-m"><strong>Contractor's details</strong></p>
+                    <p class="govuk-heading-m"><strong>Applicant's details</strong></p>
                 </dt>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link govuk-body" href="contractor-details">
-                        Change<span class="govuk-visually-hidden">contractor's details</span>
-                    </a>
-                </dd>
-            </div>
-        </tr>
-        <hr>
-    </thead>
-
-
-
-
-
-
-
-
-
-
-<dl class="govuk-summary-list govuk-!-margin-bottom-9">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Name
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {{data['contractor-firstname']}} {{data['contractor-lastname']}}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Business name
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {{data['contractor-business']}}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-    Contact details
-    </dt>
-    <dd class="govuk-summary-list__value">
-          {{ data['contractor-email'] }}
-      <br>{{ data['contractor-landline'] }}
-      <br>{{ data['contractor-mobile'] }}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-
-    </dd>
-  </div>
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Business address
-    </dt>
-    <dd class="govuk-summary-list__value">
-      {{ data['contractor-address1'] }}
-      <br> {{ data['contractor-address2'] }}
-       {{ data['contractor-county'] }}
-       {{ data['contractor-postcode'] }}
-    </dd>
-    <dd class="govuk-summary-list__actions">
-
-    </dd>
-  </div>
-
-</dl>
-
-</table>
-{% else %}
-
-
-
-
-
-
-<table class="govuk-table">
-    <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-            <div class="govuk-summary-list__row--no-border">
-                <dt class="govuk-summary-list__key">
-                    <p class="govuk-heading-m"><strong>Farmer's details</strong></p>
-                </dt>
-                <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link govuk-body" href="farmer-details">
-                        Change<span class="govuk-visually-hidden">farmer's details</span>
+                    <a class="govuk-link govuk-body" href="applicant-details">
+                        Change<span class="govuk-visually-hidden">applicant's details</span>
                     </a>
                 </dd>
             </div>
@@ -349,13 +261,13 @@
     </dl>
 
 </table>
-{% endif %}
+
 
         </div>
      </div>
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form class="form" action="{{ nextUrl }}" method="post">
+            <form class="form" action="consent" method="post">
                 <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
                     Continue
                 </button>

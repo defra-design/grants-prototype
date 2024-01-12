@@ -87,137 +87,21 @@
       </thead>
       <tbody class="govuk-table__body">
 
-        {% if (data['farming-type'] == "Robotics and automatic technology") %}
-
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Robotic and automatic technology
+          <th scope="row" class="govuk-table__header">Hen housing
           <br/><br/>
           <ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
-            <li>Harvesting equipment</li>
-            <li>Weeding equipment</li>
-          </ul>
-          </th>
-          <td class="govuk-table__cell">Average</td>
-          <td class="govuk-table__cell">
-            <p class="govuk-body govuk-!-font-size-16">
-              Improve productivity<br>
-            Introduce innovation</p>
-          </td>
-          <td class="govuk-table__cell"><a href="#">Change</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Type of energy
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet govuk-!-margin-right-9">
-            {% for item in data['energy-source'] %}
-            <li>{{ item | capitalize }}</li>
-            {% endfor %}
-          </ul>
-        </th>
-          <td class="govuk-table__cell">Average</td>
-          <td class="govuk-table__cell">
-            <p class="govuk-body govuk-!-font-size-16">
-              Improve the environment</p>
-          </td>
-          <td class="govuk-table__cell"><a href="energy-source">Change</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Agricultural sector
-            <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet">
-              {% for item in data['agricultural-sector'] %}
-              <li>{{ item | capitalize }}</li>
-              {% endfor %}
-            </ul></th>
-            <td class="govuk-table__cell">Strong</td>
-            <td class="govuk-table__cell">
-            </td>
-            <td class="govuk-table__cell"><a href="agricultural-sector">Change</td>
-            </tr>
-
-
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Technology use
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['introducing-innovation'] | capitalize}}</li></ul></th>
-          <td class="govuk-table__cell">Average</td>
-          <td class="govuk-table__cell">
-          <p class="govuk-body govuk-!-font-size-16">
-                Introduce innovation</p>
-          </td>
-          <td class="govuk-table__cell"><a href="introducing-innovation">Change</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Labour saved
-          <br/><br/><ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet"><li>{{data['labour-saved'] | capitalize}}</li></ul></th>
-          <td class="govuk-table__cell">Average</td>
-          <td class="govuk-table__cell">
-          <p class="govuk-body govuk-!-font-size-16">
-                Replace manual labour</p>
-          </td>
-          <td class="govuk-table__cell"><a href="introducing-innovation">Change</td>
-        </tr>
-
-        {% else %}
-
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Solar technology
-          <br/><br/>
-            <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
-              <li>Solar panels</li>
-            </ul>
-          </th>
-          <td class="govuk-table__cell">Average</td>
-          <td class="govuk-table__cell">
-            <p class="govuk-body govuk-!-font-size-16">
-              Include batteries</p>
-          </td>
-          <td class="govuk-table__cell"><a href="#">Change</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Solar PV system size
-          <br/><br/>
-          <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
-            <li>51kW to 1000kW</li>
-          </ul>
-          
-          </th>
-          <td class="govuk-table__cell">Average</td>
-          <td class="govuk-table__cell">
-            <p class="govuk-body govuk-!-font-size-16">
-              Smaller solar PV systems
-              </p>
-          </td>
-          <td class="govuk-table__cell"><a href="#">Change</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Agricultural sector
-          <br/><br/>          
-          <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
-              {% for item in data['agricultural-sector'] %}
-              <li>{{ item | capitalize }}</li>
-              {% endfor %}
-          </ul>
-          </th>
-          <td class="govuk-table__cell">Average</td>
-          <td class="govuk-table__cell">
-
-            <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
-              <li>Significant labour shortages</li>
-              <li>Not received many grants in past</li>
-            </ul>
+            <li>Colony cage</li>
             
+          </ul>
+          </th>
+          <td class="govuk-table__cell">Average</td>
+          <td class="govuk-table__cell">
+            <p class="govuk-body govuk-!-font-size-16">
+              Supporting farmers</p>
+          </td>
           <td class="govuk-table__cell"><a href="#">Change</td>
         </tr>
-
-        
-       
-
-
-
-
-        {% endif %}
 
 
       </tbody>

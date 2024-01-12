@@ -116,7 +116,7 @@ router.post('/hen-project-type-answer', function (req, res) {
     } else if (henProjectType == "refurb") {
         res.redirect('hen-building-items')
     } else if (henProjectType == "veranda") {
-        res.redirect('veranda')
+        res.redirect('business')
     } else { 
         res.redirect('kickout') }
     })
@@ -126,10 +126,10 @@ router.post('/pullet-project-type-answer', function (req, res) {
 
     if (pulletProjectType == "new") {
         res.redirect('pullet-building-items')
-    } else if (henProjectType == "refurb") {
+    } else if (pulletProjectType == "refurb") {
         res.redirect('pullet-building-items')
-    } else if (henProjectType == "veranda") {
-        res.redirect('veranda')
+    } else if (pulletProjectType == "veranda") {
+        res.redirect('business')
     } else { 
         res.redirect('kickout') }
     })
@@ -1088,9 +1088,22 @@ router.post('/pullet-score-answer', function (req, res) {
     var poultryType = req.session.data['poultry-type']
 
     if (poultryType.includes("pullets")) {
-        res.redirect('pullet-business-details')
+        res.redirect('business')
     }  else { 
-        res.redirect('pullet-business-details') }
+        res.redirect('business') }
     })
+
+
+    // Business details
+
+router.post('/applying-answer', function (req, res) {
+    var applying = req.session.data['applying']
+    
+    if (applying == "applicant") {
+        res.redirect('applicant-details')
+    } else { 
+        res.redirect('agent-details') }
+    })
+
 
 module.exports = router
