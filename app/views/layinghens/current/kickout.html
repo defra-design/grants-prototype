@@ -13,7 +13,10 @@
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
-  <a class="govuk-back-link" href="other-robotic-equipment">Back</a>
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
 {% endblock %}
 
 {% block content %}
