@@ -1,7 +1,13 @@
 {% extends "layouts/main.html" %}
 
+{% set pageTitle = 'What is your project?' %}
+
+{% if 'pullets' | isIn(data['poultry-type']) %}
+  {% set pageTitle = 'What is your hen housing project?' %}
+{% endif %}
+
 {% block pageTitle %}
-  What is your hen housing project?
+  {{ pageTitle }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -37,9 +43,9 @@
           name: 'hen-refurbishing',
           fieldset: {
             legend: {
-              text: 'What is your hen housing project?',
+              text: pageTitle,
               isPageHeading: true,
-              classes: 'govuk-fieldset__legend--xl'
+              classes: 'govuk-fieldset__legend--l'
             }
           },
           items: [

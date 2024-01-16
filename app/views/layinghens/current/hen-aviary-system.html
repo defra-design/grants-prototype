@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Hen Aviary System – {{ serviceName }} – GOV.UK Prototype Kit
+  Will the housing have a laying hen aviary system?
 {% endblock %}
 
 {% block beforeContent %}
@@ -36,7 +36,7 @@
           <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Will the housing have a laying hen aviary system (excluding combi-cage systems)?
+                Will the housing have a laying hen aviary system?
               </h1>
             </legend>
           
@@ -61,6 +61,11 @@
           </fieldset>
         </div>
 
+        {{ govukWarningText ({
+          text: 'Combi-cage aviary systems are not eligible for grant funding.',
+          iconFallbackText: 'Warning'
+        }) }}
+
         <!-- Continue button -->
         <button class="govuk-button" data-module="govuk-button">
           Continue
@@ -68,6 +73,25 @@
 
       </form>
     </div>
+
+
+    <!-- Eligibility sidebar -->
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>
+            The housing must have a laying hen aviary system.
+          </p>
+          <p>
+            This cannot be a combi-cage aviary system.
+          </p>
+
+      </div>
+
+  </div>
 
   </div>
 

@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Veranda – {{ serviceName }} – GOV.UK Prototype Kit
+  Will the housing have a veranda that is at least the same size as 30% of the indoor bird housing area footprint?
 {% endblock %}
 
 {% block beforeContent %}
@@ -36,12 +36,12 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Will the building have a veranda that is equal to 30% of the size of the indoor bird housing area?
+                Will the housing have a veranda that is at least the same size as 30% of the indoor bird housing area footprint?
               </h1>
             </legend>
 
             <!-- Hint text -->
-            <p class="govuk-hint">Barn system projects that do not have access to an area equal to 30% of the indoor housing area are exempt from this adding a veranda.</p>
+            <p class="govuk-hint">Barn system projects that do not have access to an area at least 30% the size of the indoor housing area are exempt from adding a veranda</p>
 
             <!-- Option: Laying Hens -->
               <div class="govuk-radios" data-module="govuk-radios">
@@ -69,7 +69,7 @@
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="has-veranda-3" name="hen-veranda-size" type="radio" value="exempt">
                   <label class="govuk-label govuk-radios__label" for="has-veranda-3">
-                    My barn system project is exempt
+                    My project is exempt
                   </label>
                 </div>
 
@@ -93,11 +93,9 @@
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
 
-          <p>You must add a veranda that is an equal size to 30% of the indoor bird housing area.</p>
-          <p>Barn system projects that do not have access to an area equal to 30% of the indoor housing area are exempt from this requirement.</p>
-  
-          <a href="#">
-          </a>
+          <p>You must add a veranda that is at least the same size as 30% the indoor bird housing area footprint.</p>
+          <p>Barn system projects that do not have access to an external area at least 30% of the indoor housing area are exempt.</p>
+          <p>You must exclude the veranda's floor area from calculations of stocking density (even if providing 24 hour access).</p>
 
       </div>
 

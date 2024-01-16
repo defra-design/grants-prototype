@@ -226,7 +226,7 @@ router.post('/hen-aviary-system-answer', function (req, res) {
 	if (henAviarySystem == 'yes') {
 		res.redirect('hen-welfare-ramps')
 	} else {
-		res.redirect('kickout')
+		res.redirect('kickout-hen-welfare-ramps')
 	}
 })
 
@@ -254,7 +254,7 @@ router.post('/hen-ventilation-quality-answer', function (req, res) {
 	var henVentilationQuality = req.session.data['hen-ventilation-quality']
 
 	if (henVentilationQuality == 'yes') {
-		res.redirect('hen-ventilation-features')
+		res.redirect('hen-led-lighting')
 	} else {
 		res.redirect('kickout')
 	}
@@ -264,7 +264,7 @@ router.post('/hen-ventilation-features-answer', function (req, res) {
 	var henVentilationFeatures = req.session.data['hen-ventilation-features']
 
 	if (henVentilationFeatures == 'yes') {
-		res.redirect('hen-led-lighting')
+		res.redirect('hen-ventilation-speed')
 	} else {
 		res.redirect('kickout')
 	}
@@ -286,7 +286,7 @@ router.post('/hen-manure-removal-answer', function (req, res) {
 	if (henManureRemoval == 'yes') {
 		res.redirect('hen-aviary-lighting')
 	} else {
-		res.redirect('kickout')
+		res.redirect('kickout-hen-manure-removal')
 	}
 })
 
@@ -294,7 +294,7 @@ router.post('/hen-aviary-lighting-answer', function (req, res) {
 	var henAviaryLighting = req.session.data['hen-aviary-lighting']
 
 	if (henAviaryLighting == 'yes') {
-		res.redirect('hen-ventilation-speed')
+		res.redirect('hen-ventilation-features')
 	} else {
 		res.redirect('kickout')
 	}
@@ -326,17 +326,17 @@ router.post('/hen-veranda-size-answer', function (req, res) {
 	if (henVerandaSize == 'yes' || henVerandaSize == 'exempt') {
 		res.redirect('hen-veranda-placement')
 	} else {
-		res.redirect('kickout')
+		res.redirect('kickout-hen-veranda-size')
 	}
 })
 
 router.post('/hen-veranda-placement-answer', function (req, res) {
 	var henVerandaPlacement = req.session.data['hen-veranda-placement']
 
-	if (henVerandaPlacement == 'yes') {
+	if (henVerandaPlacement == 'yes' || henVerandaPlacement == 'exempt') {
 		res.redirect('hen-veranda-specification')
 	} else {
-		res.redirect('kickout')
+		res.redirect('kickout-hen-veranda-placement')
 	}
 })
 
@@ -346,7 +346,7 @@ router.post('/hen-veranda-specification-answer', function (req, res) {
 	if (henVerandaSpecification == 'yes') {
 		res.redirect('hen-veranda-biosecurity')
 	} else {
-		res.redirect('kickout')
+		res.redirect('kickout-hen-veranda-specification')
 	}
 })
 
@@ -356,7 +356,7 @@ router.post('/hen-veranda-biosecurity-answer', function (req, res) {
 	if (henVerandaBiosecurity == 'yes') {
 		res.redirect('hen-pop-holes')
 	} else {
-		res.redirect('kickout')
+		res.redirect('kickout-hen-veranda-biosecurity')
 	}
 })
 
