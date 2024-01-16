@@ -1,7 +1,13 @@
 {% extends "layouts/main.html" %}
 
+{% set pageTitle = 'What is your project?' %}
+
+{% if 'pullets' | isIn(data['poultry-type']) %}
+  {% set pageTitle = 'What is your hen housing project?' %}
+{% endif %}
+
 {% block pageTitle %}
-  Separate Air Space – {{ serviceName }} – GOV.UK Prototype Kit
+  {{ pageTitle }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,34 +38,37 @@
       <form class="form" action="hen-refurbishing-answer" method="post">
 
         <!-- Page heading -->
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Are you replacing or refurbishing an existing hen housing?
-              </h1>
-            </legend>
-            
-            <!-- Option: Yes -->
-            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-bird-data" name="hen-refurbishing" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="has-bird-data">
-                  Yes
-                </label>
-              </div>
-
-              <!-- Option: No -->
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="has-bird-data-2" name="hen-refurbishing" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="has-bird-data-2">
-                  No
-                </label>
-              </div>
-
-            </div>
-          </fieldset>
-        </div>
+        {{ govukRadios ({
+          idPrefix: 'hen-refurbishing',
+          name: 'hen-refurbishing',
+          fieldset: {
+            legend: {
+              text: pageTitle,
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          items: [
+            {
+              text: 'Replacing existing housing',
+              value: 'replace',
+              checked: true if data['hen-refurbishing'] == 'replace'
+            },
+            {
+              text: 'Refurbishing existing housing',
+              value: 'refurbish',
+              checked: true if data['hen-refurbishing'] == 'refurbish'
+            },
+            {
+              divider: "or"
+            },
+            {
+              text: 'None of the above',
+              value: 'none',
+              checked: true if data['hen-refurbishing'] == 'none'
+            }
+          ]
+        }) }}
 
         <!-- Continue button -->
         <button class="govuk-button" data-module="govuk-button">
@@ -69,7 +78,19 @@
       </form>
     </div>
 
-       
+       <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>
+            You can only apply for grant funding for a veranda-only project for one type of poultry.
+          </p>
+
+      </div>
+
+  </div>
 
   </div>
 

@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Veranda Biosecurity – {{ serviceName }} – GOV.UK Prototype Kit
+  Will the veranda have the capacity to be made biosecure with mesh that has a spacing of 6mm or less?
 {% endblock %}
 
 {% block beforeContent %}
@@ -36,9 +36,13 @@
           <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Will the veranda have the capacity to be made biosecure with at least 25mm mesh?
+                Will the veranda have the capacity to be made biosecure with mesh that has a spacing of 6mm or less?
               </h1>
             </legend>
+
+            <p class="govuk-hint">
+              This is to stop wild birds and rodents from entering during housing orders
+            </p>
           
             <!-- Option: Yes -->
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
@@ -77,7 +81,9 @@
           <span class="app-step-nav-related__pretitle">Eligibility</span>
           </h2>
 
-          <p>The veranda must be secured with at least 25mm mesh to stop wild birds and rodents from entering.</p>
+          <p>
+            You must be able to make the veranda secure with mesh that has a spacing of 6mm or less during disease driven housing orders.
+          </p>
   
           <a href="#">
           </a>

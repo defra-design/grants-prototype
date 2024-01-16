@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Hen LED Lighting System – {{ serviceName }} – GOV.UK Prototype Kit
+  Will the housing lighting system have integrated and fully-adjustable LEDs?
 {% endblock %}
 
 {% block beforeContent %}
@@ -36,9 +36,13 @@
           <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Will the hen housing have an integrated, fully-adjustable LED lighting system?
+                Will the housing lighting system have integrated and fully-adjustable LEDs?
               </h1>
             </legend>
+
+            <p class="govuk-hint">
+              Housing lighting must be ceiling-mounted and cover the whole barn area, including the floor litter
+            </p>
 
             <!-- Option: Yes -->
             <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
@@ -79,8 +83,8 @@
           <p>The lighting must be able to provide:</p>
 
           <ul class="govuk-list govuk-list--bullet">
-            <li>Non-flicker light between approximately 3000 Kelvin and 4000 Kelvin colour temperature</li>
-            <li>Zonal dimming between 0 lux and 60 lux</li>
+            <li>non-flicker light between approximately 3000 Kelvin and 4000 Kelvin colour temperature</li>
+            <li>zonal dimming between 0 lux and 60 lux</li>
            </ul>
 
           <a href="#">
