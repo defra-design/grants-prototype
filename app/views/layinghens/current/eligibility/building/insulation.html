@@ -1,0 +1,89 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set question = 'Will the hen housing have full wall and roof insulation, with a U-Value of less than 0.3W/m2/°C?' %}
+{% if data['project-type'] != 'replace' %}
+    {% set question = 'Will the hen housing have full wall and roof insulation?' %}
+{% endif %}
+
+{% block pageTitle %}
+    {{ question }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'insulation',
+                    name: 'insulation',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: question,
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['insulation'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'changing-area'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['insulation'] == 'No',
+                            attributes: {
+                                    'data-next': '../elimination'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                {% if data['project-type'] == 'replace' %}
+                    <p>
+                        The wall and roof insulation of the hen housing must have a U-Value of less than 0.3W/m2/°C.
+                    </p>
+                    <p>
+                        The U-Value measures the rate of heat transfer from inside a building to outside.
+                    </p>
+                {% else %}
+                    <p>
+                        The hen housing must have full wall and roof insulation.
+                    </p>
+                {% endif %}
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}
