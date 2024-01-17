@@ -31,5 +31,9 @@ filters.isIn = function (value, array) {
 	return array.includes(value)
 }
 
+filters.redirect = function (url) {
+	return '<script> window.location.href ="' + url + '";</script>'
+}
+
 // Add the filters using the addFilter function
 Object.entries(filters).forEach(([name, fn]) => addFilter(name, fn))
