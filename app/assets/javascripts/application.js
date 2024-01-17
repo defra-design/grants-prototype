@@ -4,5 +4,31 @@
 //
 
 window.GOVUKPrototypeKit.documentReady(() => {
-  // Add JavaScript here
+	// Add JavaScript here
+
+	function setFormAction(form, action) {
+		if (form.hasAttribute('method')) {
+			form.removeAttribute('method')
+		}
+		form.setAttribute('action', action)
+	}
+
+	function setFormActionFromRadio(radio) {
+		const form = radio.closest('form')
+		const action = radio.dataset.next
+		setFormAction(form, action)
+	}
+
+	const radios = document.querySelectorAll('input[type="radio"][data-next]')
+
+	radios.forEach((radio) => {
+		if (radio.checked) {
+			setFormActionFromRadio(radio)
+		}
+		radio.addEventListener('change', (event) => {
+			if (event.target.checked) {
+				setFormActionFromRadio(event.target)
+			}
+		})
+	})
 })
