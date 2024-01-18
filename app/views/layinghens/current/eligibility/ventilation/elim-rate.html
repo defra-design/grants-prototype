@@ -1,5 +1,10 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
 {% block pageTitle %}
     You cannot apply for a grant from this scheme
 {% endblock %}
