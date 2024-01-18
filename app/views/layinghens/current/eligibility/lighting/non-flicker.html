@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the aviary system have an integrated LED lighting system?
+    Will the housing lighting system provide non-flicker light from dimmable LEDs?
 {% endblock %}
 
 {% block content %}
@@ -18,34 +18,34 @@
             <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'aviary-lighting',
-                    name: 'aviary-lighting',
+                    idPrefix: 'lighting-non-flicker',
+                    name: 'lighting-non-flicker',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the aviary system have an integrated LED lighting system?',
+                            text: 'Will the housing lighting system provide non-flicker light from dimmable LEDs?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'This provides dimmable non-flicker lighting at each level of the aviary system, including top perches and under the system'
+                        text: 'Housing lighting must be ceiling-mounted and cover the whole barn area, including the floor litter'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['aviary-lighting'] == 'Yes',
+                            checked: true if data['lighting-non-flicker'] == 'Yes',
                             attributes: {
-                                    'data-next': '../ventilation/features'
+                                    'data-next': 'features'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['aviary-lighting'] == 'No',
+                            checked: true if data['lighting-non-flicker'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-lighting'
+                                    'data-next': 'elim-non-flicker'
                                 }
                         }
                     ]
@@ -66,14 +66,14 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    The lighting system must have:
+                    The lighting must be able to provide:
                 </p>
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        non-flicker lighting
+                        non-flicker light between approximately 3000 Kelvin and 4000 Kelvin colour temperature
                     </li>
                     <li>
-                        zonal dimming to provide an automated dawn and dusk
+                        zonal dimming between 0 lux and 60 lux
                     </li>
                 </ul>
             </div>

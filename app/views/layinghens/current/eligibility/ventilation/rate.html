@@ -5,8 +5,13 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
+{% set question = 'Will the ventilation system be able to provide a ventilation rate (MXVR) of 10,800m3 per hour per 1000 hens?' %}
+{% if poultryType != 'hen' %}
+    {% set question = 'Will the ventilation system be able to provide a ventilation rate (MXVR) of 9,000m3 per hour per 1000 pullets?' %}
+{% endif %}
+
 {% block pageTitle %}
-    Will the ventilation system be able to provide a ventilation rate (MXVR) of 10,800m3 per hour per 1000 birds? 
+    {{ question }}
 {% endblock %}
 
 {% block content %}
@@ -23,13 +28,13 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ventilation system be able to provide a ventilation rate (MXVR) of 10,800m3 per hour per 1000 birds? ',
+                            text: question,
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'For birds up to 2.5kg in body mass'
+                        text: 'For birds up to 2.5kg in body mass' if poultryType == 'hen' else 'For birds up to 2kg in body mass'
                     },
                     items: [
                         {
@@ -45,7 +50,7 @@
                             value: 'No',
                             checked: true if data['ventilation-rate'] == 'No',
                             attributes: {
-                                    'data-next': '../elimination'
+                                    'data-next': 'elim-rate'
                                 }
                         }
                     ]
@@ -65,9 +70,15 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                <p>
-                    The ventilation system must be able to provide a ventilation rate (MXVR) of 10,800m3 per hour per 1000 birds in the case of high heat scenarios.
-                </p>
+                {% if poultryType == 'hen' %}
+                    <p>
+                        The ventilation system must be able to provide a ventilation rate (MXVR) of 10,800m3 per hour per 1000 {{ poultryType }}s in the case of high heat scenarios.
+                    </p>
+                {% else %}
+                    <p>
+                        The ventilation system must be able to provide a ventilation rate (MXVR) of 9,000m3 per hour per 1000 pullets in the case of high heat scenarios.
+                    </p>
+                {% endif %}
             </div>
 
         </div>

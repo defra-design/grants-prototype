@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing have these items?
+    Will your step-up system have these features?
 {% endblock %}
 
 {% block content %}
@@ -20,33 +20,27 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        The building must have:
+                        The step-up system must have:
                     </p>
 
                     <ul class="govuk-hint govuk-list govuk-list--bullet">
                         <li>
-                            a fixed structure with a solid concrete floor
+                            height-adjustable tiers that may include food and water at, or before, 10 days
                         </li>
                         <li>
-                            water-tight roof and walls
-                        </li>
-                        <li>
-                            capped roof and wall inlets and outlets
-                        </li>
-                        <li>
-                            catch trays under all chimneys and roof-mounted vents
+                            welfare ramps
                         </li>
                     </ul>
 
                 {% endset %}
 
                 {{ govukRadios ({
-                    idPrefix: 'items',
-                    name: 'items',
+                    idPrefix: 'multi-tier-step-up',
+                    name: 'multi-tier-step-up',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing have these items?',
+                            text: 'Will your step-up system have these features?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -58,17 +52,17 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['items'] == 'Yes',
+                            checked: true if data['multi-tier-step-up'] == 'Yes',
                             attributes: {
-                                    'data-next': 'biosecurity'
+                                    'data-next': '../ventilation/features'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['items'] == 'No',
+                            checked: true if data['multi-tier-step-up'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-items'
+                                    'data-next': 'elim-multi-tier-step-up'
                                 }
                         }
                     ]

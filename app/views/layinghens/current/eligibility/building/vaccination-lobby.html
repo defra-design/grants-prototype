@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing have these items?
+    Will there be a designated vaccination lobby with internal and external access?
 {% endblock %}
 
 {% block content %}
@@ -17,58 +17,35 @@
 
             <form method="post">
 
-                {% set hintHtml %}
-
-                    <p class="govuk-hint">
-                        The building must have:
-                    </p>
-
-                    <ul class="govuk-hint govuk-list govuk-list--bullet">
-                        <li>
-                            a fixed structure with a solid concrete floor
-                        </li>
-                        <li>
-                            water-tight roof and walls
-                        </li>
-                        <li>
-                            capped roof and wall inlets and outlets
-                        </li>
-                        <li>
-                            catch trays under all chimneys and roof-mounted vents
-                        </li>
-                    </ul>
-
-                {% endset %}
-
                 {{ govukRadios ({
-                    idPrefix: 'items',
-                    name: 'items',
+                    idPrefix: 'vaccination-lobby',
+                    name: 'vaccination-lobby',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing have these items?',
+                            text: 'Will there be a designated vaccination lobby with internal and external access?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        html: hintHtml
+                        text: 'Internal access from the bird living area and external access from the loading bay'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['items'] == 'Yes',
+                            checked: true if data['vaccination-lobby'] == 'Yes',
                             attributes: {
-                                    'data-next': 'biosecurity'
+                                    'data-next': 'housing-density'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['items'] == 'No',
+                            checked: true if data['vaccination-lobby'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-items'
+                                    'data-next': 'elim-vaccination-lobby'
                                 }
                         }
                     ]
@@ -79,6 +56,19 @@
                 }) }}
 
             </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The building must have a dedicated area to perform pullet vaccinations, with access to the loading bay.
+                </p>
+            </div>
 
         </div>
 

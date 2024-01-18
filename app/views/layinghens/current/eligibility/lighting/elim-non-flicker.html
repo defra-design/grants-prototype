@@ -1,0 +1,54 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    You cannot apply for a grant from this scheme
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
+
+                <p>
+                    Housing lighting must be ceiling-mounted and cover the whole barn area, including the floor litter.
+                </p>
+
+                {% set insetHtml %}
+
+                    <p>
+                       The lighting must be able to provide: 
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>
+                           non-flicker light between approximately 3000 Kelvin and 4000 Kelvin colour temperature 
+                        </li>
+                        <li>
+                            zonal dimming between 0 lux and 60 lux
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukInsetText ({
+                    html: insetHtml
+                }) }}
+
+                <p>
+                    <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
+                        See other grants you may be eligible for.
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

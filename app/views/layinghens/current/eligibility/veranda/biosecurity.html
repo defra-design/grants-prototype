@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing have these items?
+    Will the veranda have the capacity to be made biosecure with mesh that has a spacing of 6mm or less?
 {% endblock %}
 
 {% block content %}
@@ -17,58 +17,35 @@
 
             <form method="post">
 
-                {% set hintHtml %}
-
-                    <p class="govuk-hint">
-                        The building must have:
-                    </p>
-
-                    <ul class="govuk-hint govuk-list govuk-list--bullet">
-                        <li>
-                            a fixed structure with a solid concrete floor
-                        </li>
-                        <li>
-                            water-tight roof and walls
-                        </li>
-                        <li>
-                            capped roof and wall inlets and outlets
-                        </li>
-                        <li>
-                            catch trays under all chimneys and roof-mounted vents
-                        </li>
-                    </ul>
-
-                {% endset %}
-
                 {{ govukRadios ({
-                    idPrefix: 'items',
-                    name: 'items',
+                    idPrefix: 'veranda-biosecurity',
+                    name: 'veranda-biosecurity',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing have these items?',
+                            text: 'Will the veranda have the capacity to be made biosecure with mesh that has a spacing of 6mm or less?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        html: hintHtml
+                        text: 'This is to stop wild birds and rodents from entering during housing orders'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['items'] == 'Yes',
+                            checked: true if data['veranda-biosecurity'] == 'Yes',
                             attributes: {
-                                    'data-next': 'biosecurity'
+                                    'data-next': '../housing-features/pop-holes'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['items'] == 'No',
+                            checked: true if data['veranda-biosecurity'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-items'
+                                    'data-next': 'elim-biosecurity'
                                 }
                         }
                     ]
@@ -79,6 +56,20 @@
                 }) }}
 
             </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You must be able to make the veranda secure with mesh that has a spacing (aperture) of 6mm or less during disease driven housing orders.
+                </p>
+            </div>
 
         </div>
 
