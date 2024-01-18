@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing have a mechanical ventilation system with these features?
+    Will the hen house lighting system have these features?
 {% endblock %}
 
 {% block content %}
@@ -17,33 +17,38 @@
 
             <form method="post">
 
-                {% set hintHtml %}
+            {% set hintHtml %}
 
-                    <p class="govuk-hint">
-                        The ventilation must have:
-                    </p>
+                <p class="govuk-hint">
+                    The housing lighting system must have:
+                </p>
 
-                    <ul class="govuk-hint govuk-list govuk-list--bullet">
-                        <li>
-                            a control system to automatically measure and record the daily temperature, humidity, and CO2 levels
-                        </li>
-                        <li>
-                            an alarm system (that detects excessive high or low temperatures and system failures) with a power supply independent of mains electricity
-                        </li>
-                        <li>
-                            an emergency power supply, for example a high-capacity generator, in case of electrical or other failures
-                        </li>
-                    </ul>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        the ability to provide an automatic stepped dawn and dusk lighting environment (unless this is already provided as part of an aviary lighting system)
+                    </li>
+                    <li>
+                        an option for red light
+                    </li>
+                    <li>
+                        a fail-safe standby device in case of electrical or other failures
+                    </li>
+                </ul>
 
-                {% endset %}
+            {% endset %}
+
+            {% set nextPage = '../veranda/features' %}
+            {% if poultryType != 'hen' %}
+                {% set nextPage = '../building-features/concrete-apron' %}
+            {% endif %}
 
                 {{ govukRadios ({
-                    idPrefix: 'ventilation-features',
-                    name: 'ventilation-features',
+                    idPrefix: 'lighting-features',
+                    name: 'lighting-features',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing have a mechanical ventilation system with these features?',
+                            text: 'Will the ' + poultryType + ' house lighting system have these features?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -55,15 +60,15 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['ventilation-features'] == 'Yes',
+                            checked: true if data['lighting-features'] == 'Yes',
                             attributes: {
-                                    'data-next': 'air-speed'
+                                    'data-next': nextPage
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['ventilation-features'] == 'No',
+                            checked: true if data['lighting-features'] == 'No',
                             attributes: {
                                     'data-next': 'elim-features'
                                 }

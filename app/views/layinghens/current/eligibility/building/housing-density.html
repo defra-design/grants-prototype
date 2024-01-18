@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the aviary system have an integrated LED lighting system?
+    Will the pullets be housed at a maximum stocking density of 20kg per metres squared (m2) of the total usable area at 16 weeks of age?
 {% endblock %}
 
 {% block content %}
@@ -18,34 +18,34 @@
             <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'aviary-lighting',
-                    name: 'aviary-lighting',
+                    idPrefix: 'housing-density',
+                    name: 'housing-density',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the aviary system have an integrated LED lighting system?',
+                            text: 'Will the pullets be housed at a maximum stocking density of 20kg per metres squared (m2) of the total usable area at 16 weeks of age?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'This provides dimmable non-flicker lighting at each level of the aviary system, including top perches and under the system'
+                        text: 'This must be 33kg per m2 at floor level'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['aviary-lighting'] == 'Yes',
+                            checked: true if data['housing-density'] == 'Yes',
                             attributes: {
-                                    'data-next': '../ventilation/features'
+                                    'data-next': 'pullet-requirements'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['aviary-lighting'] == 'No',
+                            checked: true if data['housing-density'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-lighting'
+                                    'data-next': 'elim-housing-density'
                                 }
                         }
                     ]
@@ -66,14 +66,14 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    The lighting system must have:
+                    The maximum stocking density for multi-tier pullet housing at the age of 16 weeks is:
                 </p>
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        non-flicker lighting
+                        20kg per m2 of the total usable area
                     </li>
                     <li>
-                        zonal dimming to provide an automated dawn and dusk
+                        33kg per m2 of the total usable area at floor level
                     </li>
                 </ul>
             </div>

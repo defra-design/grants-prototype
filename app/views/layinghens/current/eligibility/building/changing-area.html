@@ -37,6 +37,11 @@
 
                 {% endset %}
 
+                {% set nextPage = 'egg-store' %}
+                {% if poultryType != 'hen' %}
+                    {% set nextPage = 'vaccination-lobby' %}
+                {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'changing-area',
                     name: 'changing-area',
@@ -57,7 +62,7 @@
                             value: 'Yes',
                             checked: true if data['changing-area'] == 'Yes',
                             attributes: {
-                                    'data-next': 'egg-store'
+                                    'data-next': nextPage
                                 }
                         },
                         {
@@ -65,7 +70,7 @@
                             value: 'No',
                             checked: true if data['changing-area'] == 'No',
                             attributes: {
-                                    'data-next': '../elimination'
+                                    'data-next': 'elim-changing-area'
                                 }
                         }
                     ]

@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing have these items?
+    Will the veranda have these features?
 {% endblock %}
 
 {% block content %}
@@ -20,33 +20,42 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        The building must have:
+                        The veranda of the housing must have:
                     </p>
 
                     <ul class="govuk-hint govuk-list govuk-list--bullet">
                         <li>
-                            a fixed structure with a solid concrete floor
+                            a solid concrete floor
                         </li>
                         <li>
-                            water-tight roof and walls
+                            a waterproof insulated roof
                         </li>
                         <li>
-                            capped roof and wall inlets and outlets
+                            guttering and a downpipe to feed into the drainage system of the main building
                         </li>
                         <li>
-                            catch trays under all chimneys and roof-mounted vents
+                            a perimeter wall at least 1 metre high
+                        </li>
+                        <li>
+                            lockable pop holes within the perimeter wall, unless the veranda forms part of an indoor barn system
+                        </li>
+                        <li>
+                            mesh roller-screen system running underneath the length of the roof, that fits securely against the wall when extended
+                        </li>
+                        <li>
+                            a dimmable LED lighting system between 0 lux and 60 lux
                         </li>
                     </ul>
 
                 {% endset %}
 
                 {{ govukRadios ({
-                    idPrefix: 'items',
-                    name: 'items',
+                    idPrefix: 'veranda-specification',
+                    name: 'veranda-specification',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing have these items?',
+                            text: 'Will the veranda have these features?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -58,7 +67,7 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['items'] == 'Yes',
+                            checked: true if data['veranda-specification'] == 'Yes',
                             attributes: {
                                     'data-next': 'biosecurity'
                                 }
@@ -66,9 +75,9 @@
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['items'] == 'No',
+                            checked: true if data['veranda-specification'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-items'
+                                    'data-next': 'elim-specification'
                                 }
                         }
                     ]
