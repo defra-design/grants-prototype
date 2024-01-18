@@ -23,7 +23,7 @@
                     The housing lighting system must have:
                 </p>
 
-                <ul class="govuk-list govuk-list--bullet">
+                <ul class="govuk-hint govuk-list govuk-list--bullet">
                     <li>
                         the ability to provide an automatic stepped dawn and dusk lighting environment (unless this is already provided as part of an aviary lighting system)
                     </li>
@@ -39,7 +39,7 @@
 
             {% set nextPage = '../veranda/features' %}
             {% if poultryType != 'hen' %}
-                {% set nextPage = '../building-features/concrete-apron' %}
+                {% set nextPage = '../features/concrete-apron' %}
             {% endif %}
 
                 {{ govukRadios ({
