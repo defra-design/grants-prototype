@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will all roof and wall inlets and outlets be capped with mesh that has a spacing of 6 millimetres (mm) or less?
+    Will the {{ poultryType }} housing have systems to monitor additional environmental data?
 {% endblock %}
 
 {% block content %}
@@ -17,33 +17,43 @@
 
             <form method="post">
 
+                {% set nextPageOnNo = 'results' %}
+                {% if poultryType != 'hen' %}
+                    {% set nextPageOnNo = 'dark-brooders' %}
+                {% endif %}
+
+            <form action="{{ nextPage }}">
+
                 {{ govukRadios ({
-                    idPrefix: 'biosecurity',
-                    name: 'biosecurity',
+                    idPrefix: 'scoring-environment-data',
+                    name: 'scoring-environment-data',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will all roof and wall inlets and outlets be capped with mesh that has a spacing of 25 millimetres (mm) or less?',
+                            text: 'Will the ' + poultryType + ' housing have systems to monitor additional environmental data?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                    hint: {
+                        text: 'This is in addition to the requirement for a control system that automatically measures and records daily temperature, humidity and CO2 levels'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['biosecurity'] == 'Yes',
+                            checked: true if data['scoring-environment-data'] == 'Yes',
                             attributes: {
-                                    'data-next': 'insulation'
-                                }
+                                'data-next': 'environment-data-collection'
+                            }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['biosecurity'] == 'No',
+                            checked: true if data['scoring-environment-data'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-biosecurity'
-                                }
+                                'data-next': nextPageOnNo
+                            }
                         }
                     ]
                 }) }}
@@ -56,15 +66,14 @@
 
         </div>
 
-
         <div class="govuk-grid-column-one-third">
 
             <div class="app-step-nav-related app-step-nav-related--singular">
                 <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    The housing must have roof and wall inlets and outlets that are capped with mesh that has a spacing (aperture) of 25mm or less.
+                    RPA want to fund projects that gather additional environmental data.
                 </p>
             </div>
 

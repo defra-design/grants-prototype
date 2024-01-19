@@ -1,0 +1,115 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the {{ poultryType }} housing have a veranda with these features?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="structure">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        If you add a veranda to your pullet housing, it must:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            be situated along the length of the main housing
+                        </li>
+                        <li>
+                            provide additional floor-space that is at least the same size as 30% of the indoor bird housing area footprint
+                        </li>
+                        <li>
+                            have a solid concrete floor and waterproof insulated roof
+                        </li>
+                        <li>
+                            have a perimeter wall of more than 1 metre in height
+                        </li>
+                        <li>
+                            have lockable pop holes within the perimeter wall, unless the veranda forms part of an indoor barn system
+                        </li>
+                        <li>
+                            have a mesh roller-screen system running underneath the length of the roof, that fits securely against the wall when extended
+                        </li>
+                        <li>
+                            have a dimmable LED lighting system with a range between 0 lux and 60 lux
+                        </li>
+                        <li>
+                            have guttering and downpipe that feeds into the drainage system of the main building
+                        </li>
+                        <li>
+                            have mesh with a spacing of 6mm or less that can make the housing biosecure during housing orders
+                        </li>
+                        <li>
+                            have lockable pop holes in the wall of the main house that are less than 30cm from the floor level, or access ramps across the entire pop hole
+                        </li>
+                        <li>
+                            not have perches in front of the pop holes
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-veranda-requirements',
+                    name: 'scoring-veranda-requirements',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the ' + poultryType + ' housing have a veranda with these features?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['scoring-veranda-requirements'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['scoring-veranda-requirements'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to fund pullet housing that includes a veranda which meets the grant funding requirements.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}
