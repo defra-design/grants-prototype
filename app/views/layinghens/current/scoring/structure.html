@@ -1,0 +1,85 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the {{ poultryType }} housing structure include the following?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="features">
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-structure',
+                    name: 'scoring-structure',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the ' + poultryType + ' housing structure include the following?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select all that apply'
+                    },
+                    items: [
+                        {
+                            text: 'Shower-in-facilities in the housing’s lobby or changing room',
+                            value: 'Shower-in-facilities',
+                            checked: true if 'Shower-in-facilities' | isIn(data['scoring-structure'])
+                        },
+                        {
+                            text: 'An externally accessible storage space with a separate air space',
+                            value: 'An externally accessible storage space',
+                            hint: {
+                                text: 'To create a separate air space, the area must have solid ceiling height walls, providing a secure barrier from the bird living area'
+                            },
+                            checked: true if 'An externally accessible storage space' | isIn(data['scoring-structure'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None of the above',
+                            checked: true if 'None of the above' | isIn(data['scoring-structure']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to support projects that include a high standard of biosecurity measures which protect against the spread of disease and infection.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

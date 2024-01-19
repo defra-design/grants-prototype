@@ -1,0 +1,92 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the {{ poultryType }} housing use sustainable energy sources?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="data">
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-energy',
+                    name: 'scoring-energy',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the ' + poultryType + ' housing use sustainable energy sources?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select all that apply'
+                    },
+                    items: [
+                        {
+                            text: 'Solar or thermal PV system',
+                            value: 'Solar or thermal PV system',
+                            checked: true if 'Solar or thermal PV system' | isIn(data['scoring-energy'])
+                        },
+                        {
+                            text: 'A heat exchanger (heating only)',
+                            value: 'A heat exchanger (heating only)',
+                            checked: true if 'A heat exchanger (heating only)' | isIn(data['scoring-energy'])
+                        },
+                        {
+                            text: 'A heat exchanger with a cooling function',
+                            value: 'A heat exchanger with a cooling function',
+                            checked: true if 'A heat exchanger with a cooling function' | isIn(data['scoring-energy'])
+                        },
+                        {
+                            text: 'Biomass boiler',
+                            value: 'Biomass boiler',
+                            checked: true if 'Biomass boiler' | isIn(data['scoring-energy'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None of the above',
+                            checked: true if 'None of the above' | isIn(data['scoring-energy']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to fund projects that use renewable energy.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

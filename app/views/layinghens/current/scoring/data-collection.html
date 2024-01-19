@@ -1,0 +1,92 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    What {{ poultryType }} data will you collect?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="environment-data">
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-data-collection',
+                    name: 'scoring-data-collection',
+                    fieldset: {
+                        legend: {
+                            text: 'What ' + poultryType + ' data will you collect?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select all that apply'
+                    },
+                    items: [
+                        {
+                            text: 'Bird performance data',
+                            value: 'Bird performance data',
+                            checked: true if 'Bird performance data' | isIn(data['scoring-data-collection'])
+                        },
+                        {
+                            text: 'Body weight',
+                            value: 'Body weight',
+                            checked: true if 'Body weight' | isIn(data['scoring-data-collection'])
+                        },
+                        {
+                            text: 'Disease detection',
+                            value: 'Disease detection',
+                            checked: true if 'Disease detection' | isIn(data['scoring-data-collection'])
+                        },
+                        {
+                            text: 'Feed data or conversion ratios',
+                            value: 'Feed data or conversion ratios',
+                            checked: true if 'Feed data or conversion ratios' | isIn(data['scoring-data-collection'])
+                        },
+                        {
+                            text: 'Location or locomotion',
+                            value: 'Location or locomotion',
+                            checked: true if 'Location or locomotion' | isIn(data['scoring-data-collection'])
+                        },
+                        {
+                            text: 'Movement data',
+                            value: 'Movement data',
+                            checked: true if 'Movement data' | isIn(data['scoring-data-collection'])
+                        },
+                        {
+                            text: 'Nest use',
+                            value: 'Nest use',
+                            checked: true if 'Nest use' | isIn(data['scoring-data-collection'])
+                        },
+                        {
+                            text: 'Sound analysis',
+                            value: 'Sound analysis',
+                            checked: true if 'Sound analysis' | isIn(data['scoring-data-collection'])
+                        },
+                        {
+                            text: 'Other',
+                            value: 'Other',
+                            checked: true if 'Other' | isIn(data['scoring-data-collection'])
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

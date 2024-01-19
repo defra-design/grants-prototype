@@ -1,0 +1,98 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    What type of {{ poultryType }} housing system do you currently use?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="ramps">
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-system',
+                    name: 'scoring-system',
+                    fieldset: {
+                        legend: {
+                            text: 'What type of ' + poultryType + ' housing system do you currently use?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'The housing system you are replacing or refurbishing for this project'
+                    },
+                    items: [
+                        {
+                            text: 'Colony cage',
+                            value: 'Colony cage',
+                            checked: true if data['scoring-system'] == 'Colony cage'
+                        },
+                        {
+                            text: 'Combi-cage',
+                            value: 'Combi-cage',
+                            checked: true if data['scoring-system'] == 'Combi-cage'
+                        },
+                        {
+                            text: 'Indoor (floor or flat-deck)',
+                            value: 'Indoor (floor or flat-deck)',
+                            checked: true if data['scoring-system'] == 'Indoor (floor or flat-deck)'
+                        },
+                        {
+                            text: 'Outdoor (floor or flat-deck)',
+                            value: 'Outdoor (floor or flat-deck)',
+                            checked: true if data['scoring-system'] == 'Outdoor (floor or flat-deck)'
+                        },
+                        {
+                            text: 'Indoor (aviary)',
+                            value: 'Indoor (aviary)',
+                            checked: true if data['scoring-system'] == 'Indoor (aviary)'
+                        },
+                        {
+                            text: 'Outdoor (aviary)',
+                            value: 'Outdoor (aviary)',
+                            checked: true if data['scoring-system'] == 'Outdoor (aviary)'
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None of the above',
+                            checked: true if data['scoring-system'] == 'None of the above'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to prioritise supporting farmers that are transitioning out of using cages, or to high-welfare multi-tier aviary systems.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

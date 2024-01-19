@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will all roof and wall inlets and outlets be capped with mesh that has a spacing of 6 millimetres (mm) or less?
+    Will the multi-tier system have 3 tiers or fewer directly above each other?
 {% endblock %}
 
 {% block content %}
@@ -15,15 +15,15 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form action="natural-light">
 
                 {{ govukRadios ({
-                    idPrefix: 'biosecurity',
-                    name: 'biosecurity',
+                    idPrefix: 'scoring-tiers',
+                    name: 'scoring-tiers',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will all roof and wall inlets and outlets be capped with mesh that has a spacing of 25 millimetres (mm) or less?',
+                            text: 'Will the multi-tier system have 3 tiers or fewer directly above each other?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -32,18 +32,12 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['biosecurity'] == 'Yes',
-                            attributes: {
-                                    'data-next': 'insulation'
-                                }
+                            checked: true if data['scoring-tiers'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['biosecurity'] == 'No',
-                            attributes: {
-                                    'data-next': 'elim-biosecurity'
-                                }
+                            checked: true if data['scoring-tiers'] == 'No'
                         }
                     ]
                 }) }}
@@ -56,15 +50,14 @@
 
         </div>
 
-
         <div class="govuk-grid-column-one-third">
 
             <div class="app-step-nav-related app-step-nav-related--singular">
                 <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    The housing must have roof and wall inlets and outlets that are capped with mesh that has a spacing (aperture) of 25mm or less.
+                    RPA want to fund multi-teir systems that have 3 tiers or fewer.
                 </p>
             </div>
 

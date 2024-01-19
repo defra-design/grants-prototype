@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will all roof and wall inlets and outlets be capped with mesh that has a spacing of 6 millimetres (mm) or less?
+    Will the perches have a design feature that help the {{ poultryType }}s grip the perches?
 {% endblock %}
 
 {% block content %}
@@ -15,35 +15,37 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            {% set nextPage = 'structure' %}
+            {% if poultryType != 'hen' %}
+                {% set nextPage = 'veranda-requirements' %}
+            {% endif %}
+
+            <form action="{{ nextPage }}">
 
                 {{ govukRadios ({
-                    idPrefix: 'biosecurity',
-                    name: 'biosecurity',
+                    idPrefix: 'scoring-grip',
+                    name: 'scoring-grip',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will all roof and wall inlets and outlets be capped with mesh that has a spacing of 25 millimetres (mm) or less?',
+                            text: 'Will the perches have a design feature that help the ' + poultryType + 's grip the perches?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                    hint: {
+                        text: 'For example, easy-grip shape, ridged surface, material or coating features'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['biosecurity'] == 'Yes',
-                            attributes: {
-                                    'data-next': 'insulation'
-                                }
+                            checked: true if data['scoring-grip'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['biosecurity'] == 'No',
-                            attributes: {
-                                    'data-next': 'elim-biosecurity'
-                                }
+                            checked: true if data['scoring-grip'] == 'No'
                         }
                     ]
                 }) }}
@@ -56,15 +58,14 @@
 
         </div>
 
-
         <div class="govuk-grid-column-one-third">
 
             <div class="app-step-nav-related app-step-nav-related--singular">
                 <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    The housing must have roof and wall inlets and outlets that are capped with mesh that has a spacing (aperture) of 25mm or less.
+                    RPA want to support projects which provide easy-grip perches.
                 </p>
             </div>
 
