@@ -1,0 +1,92 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    Estimated solar PV system cost and floorspace size
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Estimated solar PV system cost and floorspace size</h1>
+
+                    <p class="govuk-hint">
+                            There is no minimum funding amount for buying and installing a  solar PV system. 
+                    </p>
+
+                    <p class="govuk-hint"> 
+                            Funding for a solar PV system will be capped at the lowest of these 2 amounts, either:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            the cost of 75m2 of the bird floorspace or
+                        </li>
+                        <li>
+                            25% of the invoice price for purchase and installation of the solar PV system that you will need to submit at full application
+                        </li>
+                    </ul>
+
+                    <p class='govuk-hint'>
+                            Do not include VAT
+                    </p>
+
+                    <p class='govuk-hint'>
+                            Enter total estimated amounts, for example 95,000
+                    </p>
+
+                    <br>
+
+                
+
+                <p><b>Solar PV system costs</b></p>
+
+                {{ govukInput({
+
+                    id: "cost",
+                    name: "cost",
+                    label: {
+                            classes: "govuk-label--l"
+                        },
+                    prefix: {
+                    text: "£"
+                        },
+                    classes: "govuk-input--width-5",
+                    spellcheck: false
+
+                    }) }}
+
+                <p><b>Size of the bird floorspace footprint</b></p>
+
+                {{ govukInput({
+
+                    id: "floorspace",
+                    name: "floorspace",
+                    label: {
+                            classes: "govuk-label--l"
+                        },
+                    suffix: {
+                    text: "m2"
+                        },
+                    classes: "govuk-input--width-5",
+                    spellcheck: false
+
+                    }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
