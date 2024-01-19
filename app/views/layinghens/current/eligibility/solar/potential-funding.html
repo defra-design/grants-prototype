@@ -1,0 +1,36 @@
+{% extends 'layouts/main.html' %}
+
+{% block pageTitle %}
+    Potential grant funding
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">Potential grant funding</h1>
+
+                <p>
+                    You may be able to apply for a grant of up to £XX,XX, based on the estimated cost of £XX,XX.
+                </p>
+
+                {{ govukWarningText({
+                    text: "You can be fined up to £5,000 if you do not register.",
+                    iconFallbackText: "Warning"
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
