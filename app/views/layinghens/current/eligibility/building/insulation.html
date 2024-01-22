@@ -5,9 +5,9 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
-{% set question = 'Will the hen housing have full wall and roof insulation, with a U-Value of less than 0.3W/m2/°C?' %}
+{% set question = 'Will the ' + poultryType + ' housing have full wall and roof insulation, with a U-Value of less than 0.3W/m<sup>2</sup>/°C?' %}
 {% if data['project-type'] != 'replace' %}
-    {% set question = 'Will the hen housing have full wall and roof insulation?' %}
+    {% set question = 'Will the ' + poultryType + ' housing have full wall and roof insulation?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -28,7 +28,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: question,
+                            html: question,
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -70,14 +70,14 @@
                 </h2>
                 {% if data['project-type'] == 'replace' %}
                     <p>
-                        The wall and roof insulation of the hen housing must have a U-Value of less than 0.3W/m2/°C.
+                        The wall and roof insulation of the {{ poultryType }} housing must have a U-Value of less than 0.3W/m<sup>2</sup>/°C.
                     </p>
                     <p>
                         The U-Value measures the rate of heat transfer from inside a building to outside.
                     </p>
                 {% else %}
                     <p>
-                        The hen housing must have full wall and roof insulation.
+                        The {{ poultryType }} housing must have full wall and roof insulation.
                     </p>
                 {% endif %}
             </div>

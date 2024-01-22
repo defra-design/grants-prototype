@@ -15,9 +15,9 @@
 
         <div class="govuk-grid-column-two-thirds">
             
-            {% set nextPage = 'structure' %}
+            {% set nextPage = '../hen-score' %}
             {% if poultryType != 'hen' %}
-                {% set nextPage = 'dark-brooders' %}
+                {% set nextPage = '../pullet-score' %}
             {% endif %}
 
             <form action="{{ nextPage }}">

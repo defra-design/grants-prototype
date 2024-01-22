@@ -12,7 +12,9 @@
 
             <form method="post">
 
-                
+                {% set grantAmount = data['cost'] | float | percent(40) %}
+
+                {% set remainingCost = (data['cost'] | float) - grantAmount %}
 
                 {{ govukRadios ({
                     classes: 'govuk-radios--inline',
@@ -20,7 +22,7 @@
                     name: 'remaining-cost',
                     fieldset: {
                         legend: {
-                            text: 'Can you pay the remaining costs of £XX,XXX?',
+                            text: 'Can you pay the remaining costs of ' + remainingCost | inPounds + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -32,16 +34,16 @@
                         value: 'Yes',
                         checked: true if data['remaining-cost'] == 'Yes',
                         attributes: {
-                                    'data-next': 'current-system'
-                                }
+                            'data-next': '../../scoring/current-system'
+                        }
                     },
                     {
                         text: 'No',
                         value: 'No',
                         checked: true if data['remaining-cost'] == 'No',
                         attributes: {
-                                    'data-next': 'elim-remaining-cost'
-                                }
+                            'data-next': 'elim-remaining-cost'
+                        }
                     }
                     ]
                 }) }}
@@ -70,9 +72,9 @@
 
                 <ul class="govuk-list govuk-list--bullet">
 
-                <li>loans</li>
-                <li>overdrafts</li>
-                <li>the Basic Payment Scheme</li>
+                    <li>loans</li>
+                    <li>overdrafts</li>
+                    <li>the Basic Payment Scheme</li>
 
                 </ul>
             

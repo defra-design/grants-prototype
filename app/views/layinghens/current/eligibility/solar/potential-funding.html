@@ -1,4 +1,4 @@
-{% extends 'layouts/main.html' %}
+{% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
     Potential grant funding
@@ -10,16 +10,16 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form action="remaining-cost">
 
                 <h1 class="govuk-heading-l">Potential grant funding</h1>
 
                 <p>
-                    You may be able to apply for a grant of up to £XX,XX, based on the estimated cost of £XX,XX.
+                    You may be able to apply for a grant of up to {{ data['cost'] | float | percent(40) | inPounds }}, based on the estimated cost of {{ data['cost'] | float | inPounds }}.
                 </p>
 
                 {{ govukWarningText({
-                    text: "You can be fined up to £5,000 if you do not register.",
+                    text: "There's no guarantee the project will receive a grant",
                     iconFallbackText: "Warning"
                 }) }}
 

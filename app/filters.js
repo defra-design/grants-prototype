@@ -35,5 +35,13 @@ filters.redirect = function (url) {
 	return '<script> window.location.href ="' + url + '";</script>'
 }
 
+addFilter('inPounds', (input) => {
+	return '£' + Number(input).toLocaleString()
+})
+
+addFilter('percent', (input, percentage) => {
+	return (Number(input) * (Number(percentage) / 100)).toFixed(2)
+})
+
 // Add the filters using the addFilter function
 Object.entries(filters).forEach(([name, fn]) => addFilter(name, fn))

@@ -1,118 +1,79 @@
-{% extends "layouts/main.html" %}
+{% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
-  Poultry Type – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block beforeContent %}
-<!-- Pink banner -->
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-    text: "prototype",
-    classes: "govuk-tag--pink"
-    },
-      html: 'This is not a full service. It is not production code and you might experience problems .'
-  }) }}
-  
-  <!-- Back button -->
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-
+    What type of poultry is the project for?
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+<div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-two-thirds">
 
-      <!-- Path for next page -->
-      <form class="form" action="poultry-type-answer" method="post">
+            <form method="post">
 
-        <!-- Page heading -->
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                What type of poultry is the project for?
-              </h1>
-            </legend>
+                {{ govukRadios ({
+                    idPrefix: 'poultry-type',
+                    name: 'poultry-type',
+                    fieldset: {
+                        legend: {
+                            text: 'What type of poultry is the project for?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Laying hens (over 15 weeks old)',
+                            value: 'hen',
+                            checked: true if data['poultry-type'] == 'hen',
+                            attributes: {
+                                'data-next': 'project-type'
+                            }
+                        },
+                        {
+                            text: 'Pullets (up to and including 15 weeks old)',
+                            value: 'pullet',
+                            checked: true if data['poultry-type'] == 'pullet',
+                            attributes: {
+                                'data-next': 'project-type'
+                            }
+                        },
+                        {
+                          divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None of the above',
+                            checked: true if data['poultry-type'] == 'none',
+                            attributes: {
+                                'data-next': 'elim-poultry-type'
+                            }
+                        }
+                    ]
+                }) }}
 
-            <!-- Hint text -->
-            <p class="govuk-hint">Select all that apply</p>
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
 
-            <!-- Option: Laying Hens -->
-              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            </form>
 
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="poultry-type" name="poultry-type" type="checkbox" value="hens">
-                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type">
-                    Laying hens (over 15 weeks old)
-                  </label>
-                </div>
+        </div>
 
-                <!-- Option: Pullets -->
-              
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="poultry-type-2" name="poultry-type" type="checkbox" value="pullets">
-                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-2">
-                    Pullets (up to and including 15 weeks old)
-                  </label>
-                </div>
+        <div class="govuk-grid-column-one-third">
 
-              <!-- 'or' divider-->
-              <div class="govuk-radios__divider">or</div>
-
-              <!-- Option: None of the above -->
-              
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="poultry-type-3" name="poultry-type" type="checkbox" value="none" data-behaviour="exclusive">
-                  <label class="govuk-label govuk-checkboxes__label" for="poultry-type-3">
-                    None of the above
-                  </label>
-                </div>
-
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    This grant is for replacing or refurbishing existing housing for laying hens or pullets.
+                </p>
             </div>
 
-          </fieldset>
         </div>
 
-        <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">
-            <span class="govuk-visually-hidden">Warning</span>
-            You can only apply for grant funding for a veranda-only project for one type of poultry.
-          </strong>
-        </div>
-
-
-        
-        <!-- Continue button -->
-        <button class="govuk-button" data-module="govuk-button">
-          Continue
-        </button>
-
-      </form>
-    </div>
-    
-    <!-- Eligibility sidebar -->
-    <div class="govuk-grid-column-one-third">
-
-      <div class="app-step-nav-related app-step-nav-related--singular">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Eligibility</span>
-          </h2>
-          <p>
-            This grant is for replacing or refurbishing existing housing for laying hens or pullets.
-          </p>
-  
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 {% endblock %}
