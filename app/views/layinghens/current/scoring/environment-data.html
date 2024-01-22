@@ -17,9 +17,9 @@
 
             <form method="post">
 
-                {% set nextPageOnNo = 'results' %}
+                {% set nextPageOnNo = '../hen-score' %}
                 {% if poultryType != 'hen' %}
-                    {% set nextPageOnNo = 'dark-brooders' %}
+                    {% set nextPageOnNo = '../pullet-score' %}
                 {% endif %}
 
             <form action="{{ nextPage }}">

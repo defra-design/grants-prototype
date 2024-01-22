@@ -15,7 +15,12 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="energy">
+            {% set nextPage = 'energy' %}
+            {% if poultryType != 'hen' %}
+                {% set nextPage = 'veranda-requirements' %}
+            {% endif %}
+
+            <form action="{{ nextPage }}">
 
                 {{ govukCheckboxes ({
                     idPrefix: 'scoring-features',

@@ -6,20 +6,6 @@
 
 {% block content %}
 
-{% if data['cost'] | float > 37500 %}
-    
-    {% if data['solar-pv-system'] == 'Yes' %}
-
-        {{ 'solar-cost' | redirect | safe }}
-
-    {% else %}
-
-        {{ 'potential-funding' | redirect | safe }}    
-
-    {% endif %}
-
-{% endif %}
-
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
@@ -29,16 +15,23 @@
                 <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
 
                 <p>
-                    The minimum grant you can apply for housing project costs is £15,000 (40% of £37,500). The maximum grant is £500,000.
+                    You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.
                 </p>
 
-                {% if data['solar-pv-system'] == 'Yes' %}
-
-                    {{ govukInsetText ({
-                        text: 'You cannot apply for funding for a solar PV system if you have not requested the minimum funding amount for housing project costs.'
-                    }) }}
-
-                {% endif %}
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        loans
+                    </li>
+                    <li>
+                        overdrafts
+                    </li>
+                    <li>
+                        the Basic Payment Scheme
+                    </li>
+                    <li>
+                        agri-environment schemes such as the Countryside Stewardship Scheme
+                    </li>
+                </ul>
 
                 <p>
                     <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">

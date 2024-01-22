@@ -1,7 +1,12 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
 {% block pageTitle %}
-    Will the internal hen housing have lockable pop holes for the hens to enter the veranda through?    
+    Will the internal {{ poultryType }} housing have lockable pop holes for the hens to enter the veranda through?    
 {% endblock %}
 
 {% block content %}
@@ -18,7 +23,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the internal hen housing have lockable pop holes for the hens to enter the veranda through?',
+                            text: 'Will the internal ' + poultryType + ' housing have lockable pop holes for the hens to enter the veranda through?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

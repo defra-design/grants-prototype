@@ -12,12 +12,12 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form action="potential-funding">
 
                 <h1 class="govuk-heading-l">Estimated solar PV system cost and floorspace size</h1>
 
                     <p class="govuk-hint">
-                            There is no minimum funding amount for buying and installing a  solar PV system. 
+                            There is no minimum funding amount for buying and installing a solar PV system.
                     </p>
 
                     <p class="govuk-hint"> 
@@ -26,7 +26,7 @@
 
                     <ul class="govuk-hint govuk-list govuk-list--bullet">
                         <li>
-                            the cost of 75m2 of the bird floorspace or
+                            the cost of 75m<sup>2</sup> of the bird floorspace or
                         </li>
                         <li>
                             25% of the invoice price for purchase and installation of the solar PV system that you will need to submit at full application
@@ -41,42 +41,32 @@
                             Enter total estimated amounts, for example 95,000
                     </p>
 
-                    <br>
-
-                
-
-                <p><b>Solar PV system costs</b></p>
-
-                {{ govukInput({
-
-                    id: "cost",
-                    name: "cost",
-                    label: {
-                            classes: "govuk-label--l"
+                    {{ govukInput ({
+                        id: 'solar-cost',
+                        name: 'solar-cost',
+                        value: data['solar-cost'] if data['solar-cost'] else '',
+                        classes: 'govuk-input--width-5',
+                        label: {
+                            text: 'Solar PV system costs',
+                            classes: ' '
                         },
-                    prefix: {
-                    text: "£"
-                        },
-                    classes: "govuk-input--width-5",
-                    spellcheck: false
-
+                        prefix: {
+                            text: '£'
+                        }
                     }) }}
 
-                <p><b>Size of the bird floorspace footprint</b></p>
-
-                {{ govukInput({
-
-                    id: "floorspace",
-                    name: "floorspace",
-                    label: {
-                            classes: "govuk-label--l"
+                    {{ govukInput ({
+                        id: 'floorspace',
+                        name: 'floorspace',
+                        value: data['floorspace'] if data['floorspace'] else '',
+                        classes: 'govuk-input--width-5',
+                        label: {
+                            text: 'Size of the bird floorspace footprint',
+                            classes: ' '
                         },
-                    suffix: {
-                    text: "m2"
-                        },
-                    classes: "govuk-input--width-5",
-                    spellcheck: false
-
+                        suffix: {
+                            html: 'm<sup>2</sup>'
+                        }
                     }) }}
 
                 {{ govukButton ({

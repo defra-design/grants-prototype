@@ -10,7 +10,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form action="project-cost-total">
 
                  {% set hintHtml %}
 
@@ -44,8 +44,8 @@
 
                 {{ govukRadios ({
                     classes: 'govuk-radios--inline',
-                    idPrefix: 'Yes',
-                    name: 'Yes',
+                    idPrefix: 'solar-pv-system',
+                    name: 'solar-pv-system',
                     fieldset: {
                         legend: {
                             text: 'Will you buy a solar PV system with this grant?',
@@ -60,18 +60,12 @@
                     {
                         text: 'Yes',
                         value: 'Yes',
-                        checked: true if data['solar-pv-system'] == 'Yes',
-                        attributes: {
-                                    'data-next': 'project-cost'
-                                }
+                        checked: true if data['solar-pv-system'] == 'Yes'
                     },
                     {
                         text: 'No',
                         value: 'No',
-                        checked: true if data['solar-pv-system'] == 'No',
-                        attributes: {
-                                    'data-next': 'elim-solar-pv-system'
-                                }
+                        checked: true if data['solar-pv-system'] == 'No'
                     }
                     ]
                 }) }}
