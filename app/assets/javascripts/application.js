@@ -7,9 +7,7 @@ window.GOVUKPrototypeKit.documentReady(() => {
 	// Add JavaScript here
 
 	function setFormAction(form, action) {
-		if (form.hasAttribute('method')) {
-			form.removeAttribute('method')
-		}
+		form.setAttribute('method', 'post')
 		form.setAttribute('action', action)
 	}
 

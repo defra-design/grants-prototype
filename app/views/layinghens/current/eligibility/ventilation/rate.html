@@ -5,9 +5,9 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
-{% set question = 'Will the ventilation system be able to provide a ventilation rate (MXVR) of 10,800m3 per hour per 1000 hens?' %}
+{% set question = 'Will the ventilation system be able to provide a ventilation rate (MXVR) of 10,800m<sup>3</sup> per hour per 1000 hens?' %}
 {% if poultryType != 'hen' %}
-    {% set question = 'Will the ventilation system be able to provide a ventilation rate (MXVR) of 9,000m3 per hour per 1000 pullets?' %}
+    {% set question = 'Will the ventilation system be able to provide a ventilation rate (MXVR) of 9,000m<sup>3</sup> per hour per 1000 pullets?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -28,7 +28,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: question,
+                            html: question,
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -72,11 +72,11 @@
                 </h2>
                 {% if poultryType == 'hen' %}
                     <p>
-                        The ventilation system must be able to provide a ventilation rate (MXVR) of 10,800m3 per hour per 1000 {{ poultryType }}s in the case of high heat scenarios.
+                        The ventilation system must be able to provide a ventilation rate (MXVR) of 10,800m<sup>3</sup> per hour per 1000 {{ poultryType }}s in the case of high heat scenarios.
                     </p>
                 {% else %}
                     <p>
-                        The ventilation system must be able to provide a ventilation rate (MXVR) of 9,000m3 per hour per 1000 pullets in the case of high heat scenarios.
+                        The ventilation system must be able to provide a ventilation rate (MXVR) of 9,000m<sup>3</sup> per hour per 1000 pullets in the case of high heat scenarios.
                     </p>
                 {% endif %}
             </div>

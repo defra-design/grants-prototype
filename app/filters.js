@@ -36,7 +36,17 @@ filters.redirect = function (url) {
 }
 
 addFilter('inPounds', (input) => {
-	return '£' + Number(input).toLocaleString()
+	const num = Number(input)
+	if (isNaN(num)) {
+		return '£XX.XX'
+	}
+	return (
+		'£' +
+		num.toLocaleString('en-GB', {
+			minimumFractionDigits: 2,
+			maximumFractionDigits: 2,
+		})
+	)
 })
 
 addFilter('percent', (input, percentage) => {
