@@ -17,6 +17,18 @@
 
             <form method="post">
 
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        If you want to apply for grant funding for multiple hen or pullet housing projects, you must submit an application for each project.
+                    </p>
+
+                    <p class="govuk-hint">
+                        If you want to apply for multiple veranda projects you must submit separate applications for each project.
+                    </p>
+
+                {% endset %}
+
                 {{ govukRadios ({
                     idPrefix: 'project-type',
                     name: 'project-type',
@@ -26,6 +38,9 @@
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                    hint{
+                        html: hintHtml
                     },
                     items: [
                         {
@@ -84,13 +99,7 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    You can apply for grant funding for either a housing project or adding a veranda only to existing housing.
-                </p>
-                <p>
-                    The RPA will award grant funding for adding a veranda only to existing housing on a first-come first-served basis. You do not need to complete any eligibility or scoring questions.
-                </p>
-                <p>
-                    To apply for grant funding for housing projects, you need to complete eligibility and scoring questions.
+                    You can apply for grant funding for either housing projects or veranda projects.
                 </p>
             </div>
 
