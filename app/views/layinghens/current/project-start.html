@@ -58,13 +58,10 @@ Have you already started work on the project?
               </fieldset>
             </div>
 
-            <div class="govuk-warning-text">
-              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-              <strong class="govuk-warning-text__text">
-                <span class="govuk-warning-text__assistive">Warning</span>
-                You must not start project work or commit to project costs before receiving your funding agreement.
-              </strong>
-            </div>
+            {{ govukWarningText ({
+              text: 'You must not start project work or commit to project costs before receiving your funding agreement.',
+              iconFallbackText: 'Warning'
+            }) }}
 
 
     <p> <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
