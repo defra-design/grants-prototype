@@ -1,5 +1,10 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
 {% block pageTitle %}
     What is your project?
 {% endblock %}
@@ -47,7 +52,7 @@
                                 text: 'The RPA will award the grant funding for adding a veranda only to existing housing on a first-come first-served basis'
                             },
                             attributes: {
-                                'data-next': 'TODO'
+                                'data-next': 'business-details'
                             }
                         },
                         {
