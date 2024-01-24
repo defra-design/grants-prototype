@@ -1,0 +1,211 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    Likert Scale
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+       
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">To what extent do you agree with the following statements?
+                </h1>
+
+                 <p class="govuk-hint"> 
+                    Select a number where 1 is strongly disagree and 7 is strongly agree
+                </p>
+
+                <h2 class="govuk-heading-m">
+                    Links
+                </h2>
+
+                <ul class="govuk-list">
+                    <li>
+                    <a href="/layinghens/current/start">
+                    Start page
+                    </a>
+                    </li>
+
+                    <li>
+                    <a href="/layinghens/current/poultry-type">
+                    Choose type of project
+                    </a>
+                    </li>
+
+                </ul>
+               
+
+                {{ govukRadios ({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: 'question-one',
+                    name: 'question-one',
+                    fieldset: {
+                        legend: {
+                            text: 'Overall, I am satisfied with the ease of completing this grant eligibility checker',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+
+                    {
+                        text:  '1',
+                        value: '1',
+                        checked: true if data['question-one'] == '1'
+                    },
+                    {
+                        text:  '2',
+                        value: '2',
+                        checked: true if data['question-one'] == '2'
+                    },
+                    {
+                        text:  '3',
+                        value: '3',
+                        checked: true if data['question-one'] == '3'
+                    },
+                    {
+                        text:  '4',
+                        value: '4',
+                        checked: true if data['question-one'] == '4'
+                    },
+                    {
+                        text:  '5',
+                        value: '5',
+                        checked: true if data['question-one'] == '5'
+                    },
+                    {
+                        text:  '6',
+                        value: '6',
+                        checked: true if data['question-one'] == '6'
+                    },
+                    {
+                        text:  '7',
+                        value: '7',
+                        checked: true if data['question-one'] == '7'
+                    }
+
+                    ]
+
+                }) }}
+
+                {{ govukRadios ({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: 'question-two',
+                    name: 'question-two',
+                    fieldset: {
+                        legend: {
+                            text: 'Overall, I am satisfied with the amount of time it took to complete this grant eligibility checker',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+
+                    {
+                        text:  '1',
+                        value: '1',
+                        checked: true if data['question-two'] == '1'
+                    },
+                    {
+                        text:  '2',
+                        value: '2',
+                        checked: true if data['question-two'] == '2'
+                    },
+                    {
+                        text:  '3',
+                        value: '3',
+                        checked: true if data['question-two'] == '3'
+                    },
+                    {
+                        text:  '4',
+                        value: '4',
+                        checked: true if data['question-two'] == '4'
+                    },
+                    {
+                        text:  '5',
+                        value: '5',
+                        checked: true if data['question-two'] == '5'
+                    },
+                    {
+                        text:  '6',
+                        value: '6',
+                        checked: true if data['question-two'] == '6'
+                    },
+                    {
+                        text:  '7',
+                        value: '7',
+                        checked: true if data['question-two'] == '7'
+                    }
+
+                    ]
+            
+                }) }}
+
+                {{ govukRadios ({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: 'question-three',
+                    name: 'question-three',
+                    fieldset: {
+                        legend: {
+                            text: 'Overall, I am satisfied with the support information (on-screen guidance, messages) when completing this grant eligibility checker',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--s'
+                        }
+                    },
+                    items: [
+
+                    {
+                        text:  '1',
+                        value: '1',
+                        checked: true if data['question-three'] == '1'
+                    },
+                    {
+                        text:  '2',
+                        value: '2',
+                        checked: true if data['question-three'] == '2'
+                    },
+                    {
+                        text:  '3',
+                        value: '3',
+                        checked: true if data['question-three'] == '3'
+                    },
+                    {
+                        text:  '4',
+                        value: '4',
+                        checked: true if data['question-three'] == '4'
+                    },
+                    {
+                        text:  '5',
+                        value: '5',
+                        checked: true if data['question-three'] == '5'
+                    },
+                    {
+                        text:  '6',
+                        value: '6',
+                        checked: true if data['question-three'] == '6'
+                    },
+                    {
+                        text:  '7',
+                        value: '7',
+                        checked: true if data['question-three'] == '7'
+                    }
+                        
+
+                    ]
+
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
+
+
