@@ -9,7 +9,7 @@
 
 <div class="govuk-grid-row">
 
-       
+       <div class="govuk-grid-column-three-quarters">
 
             <form method="post">
 
@@ -20,28 +20,8 @@
                     Select a number where 1 is strongly disagree and 7 is strongly agree
                 </p>
 
-                <h2 class="govuk-heading-m">
-                    Links
-                </h2>
-
-                <ul class="govuk-list">
-                    <li>
-                    <a href="/layinghens/current/start">
-                    Start page
-                    </a>
-                    </li>
-
-                    <li>
-                    <a href="/layinghens/current/poultry-type">
-                    Choose type of project
-                    </a>
-                    </li>
-
-                </ul>
-               
-
                 {{ govukRadios ({
-                    classes: 'govuk-radios--inline',
+                    classes: 'govuk-radios--inline govuk-radios--small',
                     idPrefix: 'question-one',
                     name: 'question-one',
                     fieldset: {
@@ -94,7 +74,7 @@
                 }) }}
 
                 {{ govukRadios ({
-                    classes: 'govuk-radios--inline',
+                    classes: 'govuk-radios--inline govuk-radios--small',
                     idPrefix: 'question-two',
                     name: 'question-two',
                     fieldset: {
@@ -147,7 +127,7 @@
                 }) }}
 
                 {{ govukRadios ({
-                    classes: 'govuk-radios--inline',
+                    classes: 'govuk-radios--inline govuk-radios--small',
                     idPrefix: 'question-three',
                     name: 'question-three',
                     fieldset: {
@@ -202,6 +182,29 @@
 
             </form>
 
+        </div>
+
+        <div class="govuk-grid-column-one-quarter">
+
+            <h2 class="govuk-heading-m">
+                Links
+            </h2>
+
+            <ul class="govuk-list">
+                <li>
+                <a href="/layinghens/current/start">
+                Start page
+                </a>
+                </li>
+
+                <li>
+                <a href="/layinghens/current/poultry-type">
+                Choose type of project
+                </a>
+                </li>
+
+            </ul>
+            
         </div>
 
 </div>
