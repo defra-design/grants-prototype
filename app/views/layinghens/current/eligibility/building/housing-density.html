@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the pullets be housed at a maximum stocking density of 20kg per metres squared (m2) of the total usable area at 16 weeks of age?
+    Will the pullets be housed at a maximum stocking density of 20kg per metres squared (m<sup>2</sup>) of the total usable area at 16 weeks of age?
 {% endblock %}
 
 {% block content %}
@@ -23,13 +23,13 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the pullets be housed at a maximum stocking density of 20kg per metres squared (m2) of the total usable area at 16 weeks of age?',
+                            html: 'Will the pullets be housed at a maximum stocking density of 20kg per metres squared (m<sup>2</sup>) of the total usable area at 16 weeks of age?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'This must be 33kg per m2 at floor level'
+                        html: 'This must be 33kg per m<sup>2</sup> at floor level'
                     },
                     items: [
                         {
@@ -70,10 +70,10 @@
                 </p>
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        20kg per m2 of the total usable area
+                        20kg per m<sup>2</sup> of the total usable area
                     </li>
                     <li>
-                        33kg per m2 of the total usable area at floor level
+                        33kg per m<sup>2</sup> of the total usable area at floor level
                     </li>
                 </ul>
             </div>

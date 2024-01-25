@@ -42,14 +42,11 @@
           </div>
       </fieldset>
     </div>
-
-    <div class="govuk-warning-text">
-      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-      <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Warning</span>
-        You can only submit your details once
-      </strong>
-    </div>
+    
+    {{ govukWarningText ({
+      text: 'You can only submit your details once',
+      iconFallbackText: 'Warning'
+    }) }}
 
     <form class="form" action="reference-number" method="post">
       <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
