@@ -1,7 +1,14 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
+{% set grantAmount = data['cost'] | float | percent(40) %}
+{% if grantAmount > 500000 %}
+    {% set grantAmount = 500000 %}
+{% endif %}
+
+{% set remainingCost = (data['cost'] | float) - grantAmount %}
+
 {% block pageTitle %}
-    Can you pay the remaining costs of £XX,XXX?
+    Can you pay the remaining costs of {{ remainingCost | inPounds }}?
 {% endblock %}
 
 {% block content %}
@@ -11,10 +18,6 @@
         <div class="govuk-grid-column-two-thirds">
 
             <form method="post">
-
-                {% set grantAmount = data['cost'] | float | percent(40) %}
-
-                {% set remainingCost = (data['cost'] | float) - grantAmount %}
 
                 {{ govukRadios ({
                     classes: 'govuk-radios--inline',
