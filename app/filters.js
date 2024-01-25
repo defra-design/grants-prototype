@@ -40,13 +40,14 @@ addFilter('inPounds', (input) => {
 	if (isNaN(num)) {
 		return '£XX.XX'
 	}
-	return (
+	var returnStr =
 		'£' +
 		num.toLocaleString('en-GB', {
 			minimumFractionDigits: 2,
 			maximumFractionDigits: 2,
 		})
-	)
+	returnStr = returnStr.replace(/\.00$/, '')
+	return returnStr
 })
 
 addFilter('percent', (input, percentage) => {

@@ -597,7 +597,7 @@ router.post('/hen-score-answer', function (req, res) {
 	if (poultryType.includes('hens') && poultryType.includes('pullets')) {
 		res.redirect('pullet-refurbishing')
 	} else {
-		res.redirect('hen-business-details')
+		res.redirect('business-details')
 	}
 })
 
@@ -1115,9 +1115,9 @@ router.post('/pullet-score-answer', function (req, res) {
 	var poultryType = req.session.data['poultry-type']
 
 	if (poultryType.includes('pullets')) {
-		res.redirect('business')
+		res.redirect('business-details')
 	} else {
-		res.redirect('business')
+		res.redirect('business-details')
 	}
 })
 

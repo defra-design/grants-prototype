@@ -6,6 +6,11 @@
 
 {% block content %}
 
+{% set grantAmount = data['cost'] | float | percent(40) %}
+{% if grantAmount > 500000 %}
+    {% set grantAmount = 500000 %}
+{% endif %}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
@@ -15,7 +20,7 @@
                 <h1 class="govuk-heading-l">Potential grant funding</h1>
 
                 <p>
-                    You may be able to apply for a grant of up to {{ data['cost'] | float | percent(40) | inPounds }}, based on the estimated cost of {{ data['cost'] | float | inPounds }}.
+                    You may be able to apply for a grant of up to {{ grantAmount | inPounds }}, based on the estimated cost of {{ data['cost'] | float | inPounds }}.
                 </p>
 
                 {{ govukWarningText({
