@@ -50,6 +50,20 @@ addFilter('inPounds', (input) => {
 	return returnStr
 })
 
+addFilter('radioAnswersToList', (input) => {
+	var returnStr = '<ul class="govuk-list govuk-list--bullet">'
+	if (input) {
+		if (Array.isArray(input)) {
+			input.forEach((element) => {
+				returnStr += '<li>' + element + '</li>'
+			})
+		} else {
+			returnStr += '<li>' + input + '</li>'
+		}
+	}
+	return returnStr + '</ul>'
+})
+
 addFilter('percent', (input, percentage) => {
 	return (Number(input) * (Number(percentage) / 100)).toFixed(2)
 })
