@@ -17,13 +17,6 @@
 
             <form method="post">
 
-                {% set nextPageOnNo = '../hen-score' %}
-                {% if poultryType != 'hen' %}
-                    {% set nextPageOnNo = '../pullet-score' %}
-                {% endif %}
-
-            <form action="{{ nextPage }}">
-
                 {{ govukRadios ({
                     idPrefix: 'scoring-environment-data',
                     name: 'scoring-environment-data',
@@ -52,7 +45,7 @@
                             value: 'No',
                             checked: true if data['scoring-environment-data'] == 'No',
                             attributes: {
-                                'data-next': nextPageOnNo
+                                'data-next': 'results'
                             }
                         }
                     ]

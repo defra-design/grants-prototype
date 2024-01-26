@@ -50,7 +50,7 @@ addFilter('inPounds', (input) => {
 	return returnStr
 })
 
-addFilter('radioAnswersToList', (input) => {
+addFilter('checkboxAnswersToList', (input) => {
 	var returnStr = '<ul class="govuk-list govuk-list--bullet">'
 	if (input) {
 		if (Array.isArray(input)) {

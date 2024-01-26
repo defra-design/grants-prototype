@@ -17,7 +17,7 @@
 
             <h1 class="govuk-heading-l">Score results</h1>
 
-            {{ data['scoring-data-collection'] }}
+            {{ data['scoring-data-collection'] | checkboxAnswersToList | safe }}
 
         </div>
 
