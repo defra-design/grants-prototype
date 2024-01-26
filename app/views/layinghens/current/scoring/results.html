@@ -15,7 +15,154 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <h1 class="govuk-heading-l">Score results</h1>
+            <h1 class="govuk-heading-xl">Score results</h1>
+
+            <p class="govuk-!-font-size-24">
+                Based on your answers, your project’s score is:
+            </p>
+
+            {% set insetHtml %}
+
+                <span class="govuk-heading-m govuk-!-margin-bottom-2">
+                    Average
+                </span>
+
+                <p>
+                    This means your project might be successful.
+                </p>
+
+            {% endset %}
+
+            {{ govukInsetText ({
+                html: insetHtml
+            }) }}
+
+            {{ govukSummaryList ({
+                rows: [
+                    {
+                        key: {
+                            text: 'Strong'
+                        },
+                        value: {
+                            text: 'Based on your answers, a grant application is likely to be successful.'
+                        }
+                    },
+                    {
+                        key: {
+                            text: 'Average'
+                        },
+                        value: {
+                            text: 'Based on your answers, a grant application might be successful.'
+                        }
+                    },
+                    {
+                        key: {
+                            text: 'Weak'
+                        },
+                        value: {
+                            text: 'Based on your answers, a grant application is unlikely to be successful.'
+                        }
+                    }
+                }
+            }) }}
+
+            {{ govukWarningText ({
+                text: 'The likelihood of a full application being successful will also depend on the number and value of applications we receive.',
+                iconFallbackText: 'Warning'
+            }) }}
+
+            <p>
+               Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score. 
+            </p>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+            <h2 class="govuk-heading-l">
+                Your answers
+            </h2>
+
+            <p>
+                You can go back to change scoring questions as many times as you like but you can only submit your details once.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+    
+
+            <table class="govuk-table">
+                <caption class="govuk-table__caption govuk-table__caption--m">
+                    Scoring results
+                </caption>
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">
+                            Answers
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Your score
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Funding priorities
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Change
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Current system
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-system'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Support the transition out of cages, or to high welfare multi-tier systems
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="current-system?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Level ramp connection
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-ramps'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Reduce the risk of keel bone fractures
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="ramps?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
             {{ data['scoring-data-collection'] | checkboxAnswersToList | safe }}
 

@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="ramps">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="ramps">
+            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-system',

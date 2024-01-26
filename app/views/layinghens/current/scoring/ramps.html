@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="height">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="height">
+            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-ramps',
@@ -31,8 +35,8 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['scoring-ramps'] == 'Yes'
+                            value: 'Yes, every level will be connected by a ramp',
+                            checked: true if data['scoring-ramps'] == 'Yes, every level will be connected by a ramp'
                         },
                         {
                             text: 'No',
