@@ -14,13 +14,8 @@
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
-            
-            {% set nextPage = '../hen-score' %}
-            {% if poultryType != 'hen' %}
-                {% set nextPage = '../pullet-score' %}
-            {% endif %}
 
-            <form action="{{ nextPage }}">
+            <form action="results">
 
                 {{ govukCheckboxes ({
                     idPrefix: 'scoring-environment-data-collection',
