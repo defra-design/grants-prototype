@@ -15,7 +15,13 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="structure">
+            {% set nextPageOnNo = 'environment-data' %}
+
+            {% if data['from-scoring'] == 'true' %}
+                {% set nextPageOnNo = 'results' %}
+            {% endif %}
+
+            <form method="post">
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-data',
@@ -31,8 +37,8 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['scoring-data'] == 'Yes',
+                            value: 'Yes, bird data will be monitered',
+                            checked: true if data['scoring-data'] == 'Yes, bird data will be monitered',
                             attributes: {
                                 'data-next': 'data-collection'
                             }
@@ -42,7 +48,7 @@
                             value: 'No',
                             checked: true if data['scoring-data'] == 'No',
                             attributes: {
-                                'data-next': 'environment-data'
+                                'data-next': nextPageOnNo
                             }
                         }
                     ]

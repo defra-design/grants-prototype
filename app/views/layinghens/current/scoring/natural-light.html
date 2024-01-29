@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="grip">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="grip">
+            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-natural-light',
@@ -34,8 +38,8 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['scoring-natural-light'] == 'Yes'
+                            value: 'Yes, there will be windows',
+                            checked: true if data['scoring-natural-light'] == 'Yes, there will be windows'
                         },
                         {
                             text: 'No',

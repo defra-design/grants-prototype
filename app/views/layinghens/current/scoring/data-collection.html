@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="environment-data">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="environment-data">
+            {% endif %}
 
                 {{ govukCheckboxes ({
                     idPrefix: 'scoring-data-collection',

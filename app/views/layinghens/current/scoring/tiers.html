@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="natural-light">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="natural-light">
+            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-tiers',
@@ -36,8 +40,8 @@
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['scoring-tiers'] == 'No'
+                            value: 'No, there will be more than 3 tiers',
+                            checked: true if data['scoring-tiers'] == 'No, there will be more than 3 tiers'
                         }
                     ]
                 }) }}

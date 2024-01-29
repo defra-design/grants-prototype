@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="energy">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="energy">
+            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-dark-brooders',
@@ -34,8 +38,8 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['scoring-dark-brooders'] == 'Yes'
+                            value: 'Yes, the housing will have dark brooders',
+                            checked: true if data['scoring-dark-brooders'] == 'Yes, the housing will have dark brooders'
                         },
                         {
                             text: 'No',
