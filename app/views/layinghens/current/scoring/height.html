@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="tiers">
+        {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="tiers">
+            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-height',
@@ -31,12 +35,12 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['scoring-height'] == 'Yes'
+                            value: 'Yes, the height is equal or less than 2 metres',
+                            checked: true if data['scoring-height'] == 'Yes, the height is equal or less than 2 metres'
                         },
                         {
                             text: 'No',
-                            value: 'No',
+                            value: 'No, the highest tier is more than 2 metres high',
                             checked: true if data['scoring-height'] == 'No'
                         }
                     ]

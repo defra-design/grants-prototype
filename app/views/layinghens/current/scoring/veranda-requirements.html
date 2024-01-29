@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="dark-brooders">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="dark-brooders">
+            {% endif %}
 
                 {% set hintHtml %}
 
@@ -78,8 +82,8 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['scoring-veranda-requirements'] == 'Yes'
+                            value: 'Yes, the veranda will meet the requirements',
+                            checked: true if data['scoring-veranda-requirements'] == 'Yes, the veranda will meet the requirements'
                         },
                         {
                             text: 'No',

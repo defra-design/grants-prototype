@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="features">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="features">
+            {% endif %}
 
                 {{ govukCheckboxes ({
                     idPrefix: 'scoring-structure',

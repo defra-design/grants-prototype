@@ -20,7 +20,11 @@
                 {% set nextPage = 'veranda-requirements' %}
             {% endif %}
 
-            <form action="{{ nextPage }}">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="{{ nextPage }}">
+            {% endif %}
 
                 {{ govukCheckboxes ({
                     idPrefix: 'scoring-features',

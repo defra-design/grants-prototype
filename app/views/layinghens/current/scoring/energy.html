@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing use sustainable energy sources?
+    Will the {{ poultryType }} housing use renewable energy sources?
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="data">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="data">
+            {% endif %}
 
                 {{ govukCheckboxes ({
                     idPrefix: 'scoring-energy',
@@ -23,7 +27,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing use sustainable energy sources?',
+                            text: 'Will the ' + poultryType + ' housing use renewable energy sources?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
