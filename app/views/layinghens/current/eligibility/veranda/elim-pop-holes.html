@@ -10,53 +10,45 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+           <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
 
-            <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
+            <p>Pop holes must:</p>
 
-               <p>Pop holes must:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                <li>
+                    be at least 35cm high and 40cm wide
+                </li>
 
-                 <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                        be atleast 35cm high and 40cm wide
-                    </li>
+                <li>
+                    extend along the entire length of the building
+                </li>
+            </ul>
 
-                    <li>
-                        extend along the entire length of the building
-                    </li>
-                </ul>
+            <p>
+            The pop hole openings must add up to a total of 2 metres for every 1,000 hens.
+            </p>
 
-                <p>
-                The pop hole openings must add up to a total of 2 metres for every 1,000 hens.
-                </p>
-
-                {% set insetHtml %}
-
-                    <p>
-                       The base of all pop holes must either be less than 30cm from floor level, or have access ramps that are as wide as the pop holes. 
-                    </p>
-
-                    <p>
-                        You must not put perches in front of the pop holes.
-                    </p>
-
-                {% endset %}
-
-                {{ govukInsetText ({
-                    html: insetHtml
-                }) }}
+            {% set insetHtml %}
 
                 <p>
-                    <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
-                        See other grants you may be eligible for.
-                    </a>
+                    The base of all pop holes must either be less than 30cm from floor level, or have access ramps that are as wide as the pop holes. 
                 </p>
-               
-                {{ govukButton ({
-                    html: 'Continue'
-                }) }}
 
-            </form>
+                <p>
+                    You must not put perches in front of the pop holes.
+                </p>
+
+            {% endset %}
+
+            {{ govukInsetText ({
+                html: insetHtml
+            }) }}
+
+            <p>
+                <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
+                    See other grants you may be eligible for.
+                </a>
+            </p>
 
         </div>
 

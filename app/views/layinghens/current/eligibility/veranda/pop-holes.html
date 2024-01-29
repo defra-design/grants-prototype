@@ -17,6 +17,11 @@
 
             <form method="post">
 
+                {% set nextPage = '../features/concrete-apron' %}
+                {% if data['project-type'] == 'veranda' %}
+                    {% set nextPage = '../../business-details' %}
+                {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'pop-holes',
                     name: 'pop-holes',
@@ -37,7 +42,7 @@
                             value: 'Yes',
                             checked: true if data['pop-holes'] == 'Yes',
                             attributes: {
-                                'data-next': '../features/concrete-apron'
+                                'data-next': nextPage
                             }
                         },
                         {
