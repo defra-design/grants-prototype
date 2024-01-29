@@ -15,15 +15,10 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            {% set nextPage = 'structure' %}
-            {% if poultryType != 'hen' %}
-                {% set nextPage = 'veranda-requirements' %}
-            {% endif %}
-
             {% if data['from-scoring'] == 'true' %}
                 <form action="results">
             {% else %}
-                <form action="{{ nextPage }}">
+                <form action="structure">
             {% endif %}
 
                 {{ govukRadios ({
@@ -48,8 +43,8 @@
                         },
                         {
                             text: 'No',
-                            value: 'No',
-                            checked: true if data['scoring-grip'] == 'No'
+                            value: 'No, there will not be easy grip perches',
+                            checked: true if data['scoring-grip'] == 'No, there will not be easy grip perches'
                         }
                     ]
                 }) }}

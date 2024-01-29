@@ -315,7 +315,7 @@
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Housing structure
+                                Housing biosecurity
                             </p>
                                 {{ data['scoring-structure'] | checkboxAnswersToList | safe }}
                         </th>
@@ -335,7 +335,7 @@
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Housing features
+                                Pollution mitigation
                             </p>
                                 {{ data['scoring-features'] | checkboxAnswersToList | safe }}
                         </th>
@@ -396,7 +396,7 @@
                         </td>
                     </tr>
                     
-                    {% if data['scoring-data'] == 'Yes' %}
+                    {% if 'Yes' | isIn(data['scoring-data']) %}
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
@@ -425,7 +425,7 @@
                             </p>
                             <ul class="govuk-list govuk-list--bullet">
                                 <li>
-                                    {{ data['scoring-envrionment-data'] }}
+                                    {{ data['scoring-environment-data'] }}
                                 </li>
                             </ul>
                         </th>
@@ -442,7 +442,7 @@
                         </td>
                     </tr>    
 
-                    {% if data['scoring-envrionment-data'] == 'Yes' %}
+                    {% if 'Yes' | isIn(data['scoring-environment-data']) %}
                      <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
