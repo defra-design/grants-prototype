@@ -1,7 +1,7 @@
 //
 // For guidance on how to create filters see:
 // https://prototype-kit.service.gov.uk/docs/filters
-//
+// arb change
 
 const govukPrototypeKit = require('govuk-prototype-kit')
 const addFilter = govukPrototypeKit.views.addFilter
@@ -10,18 +10,18 @@ const addFilter = govukPrototypeKit.views.addFilter
 
 var filters = {}
 
-	; (filters.commafy = function (number) {
-		return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+;(filters.commafy = function (number) {
+	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}),
+	(filters.toFixed = function (num, digits) {
+		return parseFloat(num).toFixed(digits).replace(/\.00$/, '')
 	}),
-		(filters.toFixed = function (num, digits) {
-			return parseFloat(num).toFixed(digits).replace(/\.00$/, '')
-		}),
-		(filters.joinArray = function (array) {
-			if (!array || array.length === 0) {
-				return ''
-			}
-			return array.join(', ')
-		})
+	(filters.joinArray = function (array) {
+		if (!array || array.length === 0) {
+			return ''
+		}
+		return array.join(', ')
+	})
 
 // Add filter that takes an optional array of items and a value to check if the value is in the array
 filters.isIn = function (value, array) {
@@ -58,18 +58,18 @@ addFilter('checkboxAnswersToList', (input, fallback = '') => {
 				input.forEach((element) => {
 					returnStr += '<li>' + element + '</li>'
 				})
-			} else if (fallback) { 
+			} else if (fallback) {
 				returnStr += '<li>' + fallback + '</li>'
 			}
 		} else {
-			if (fallback) { 
+			if (fallback) {
 				returnStr += '<li>' + fallback + '</li>'
 			} else {
-			returnStr += '<li>' + input + '</li>'
+				returnStr += '<li>' + input + '</li>'
 			}
 		}
 	} else {
-			returnStr += '<li>' + input + '</li>'
+		returnStr += '<li>' + input + '</li>'
 	}
 	return returnStr + '</ul>'
 })
