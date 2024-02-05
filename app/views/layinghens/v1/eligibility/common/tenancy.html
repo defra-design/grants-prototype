@@ -12,9 +12,9 @@
 
             <form method="post">
 
-                {{ govukRadios ({
-                    idPrefix: 'country',
-                    name: 'country',
+                 {{ govukRadios ({
+                    idPrefix: 'tenancy',
+                    name: 'tenancy',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
@@ -30,7 +30,7 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['country'] == 'Yes',
+                            checked: true if data['tenancy'] == 'Yes',
                             attributes: {
                                     'data-next': 'poultry-type'
                                 }
@@ -38,7 +38,7 @@
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['country'] == 'No',
+                            checked: true if data['tenancy'] == 'No',
                             attributes: {
                                     'data-next': 'project-responsibility'
                                 }

@@ -12,6 +12,13 @@
 
             <form method="post">
 
+            {% set nextPage = '../building/items' %}
+            {% if data['project-type'] == 'veranda' %}
+
+                {% set nextPage = '../veranda/veranda-only' %}
+
+            {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'poultry-type',
                     name: 'poultry-type',
@@ -28,7 +35,7 @@
                             value: 'hen',
                             checked: true if data['poultry-type'] == 'hen',
                             attributes: {
-                                'data-next': 'project-type'
+                                'data-next': nextPage
                             }
                         },
                         {
@@ -36,7 +43,7 @@
                             value: 'pullet',
                             checked: true if data['poultry-type'] == 'pullet',
                             attributes: {
-                                'data-next': 'project-type'
+                                'data-next': nextPage
                             }
                         },
                         {
