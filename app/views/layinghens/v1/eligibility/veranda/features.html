@@ -1,0 +1,93 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the housing have a veranda that is at least the same size as 30% of the indoor bird housing area footprint?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'veranda-features',
+                    name: 'veranda-features',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the housing have a veranda that is at least the same size as 30% of the indoor bird housing area footprint?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Housing projects that do not have access to an area at least 30% the size of the indoor housing area are exempt from adding a veranda'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['veranda-features'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'specification'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['veranda-features'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-features'
+                                }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'My project is exempt',
+                            value: 'Exempt',
+                            checked: true if data['veranda-features'] == 'Exempt',
+                            attributes: {
+                                    'data-next': '../features/concrete-apron'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You must add a veranda that is at least the same size as 30% the indoor bird housing area footprint.
+                </p>
+                <p>
+                    Housing projects that do not have access to an external area at least 30% of the indoor housing area are exempt.
+                </p>
+                <p>
+                    You must exclude the veranda's floor area from calculations of stocking density (even if providing 24 hour access).
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

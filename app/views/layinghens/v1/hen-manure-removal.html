@@ -1,0 +1,90 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Will the aviary system automatically remove manure?
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="hen-manure-removal-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will the aviary system automatically remove manure?
+              </h1>
+            </legend>
+          
+            <!-- Option: Yes -->
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-belt" name="hen-manure-removal" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="has-belt">
+                  Yes
+                </label>
+              </div>
+
+              <!-- Option: No -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-belt-2" name="hen-manure-removal" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="has-belt-2">
+                  No
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+         <p>
+          To ensure good air quality, the aviary system must have an integrated automatic manure-removal system.
+         </p>
+          
+
+      </div>
+
+  </div>
+
+
+  </div>
+
+{% endblock %}

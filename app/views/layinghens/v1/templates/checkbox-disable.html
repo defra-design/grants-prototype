@@ -1,0 +1,159 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Which items eligible for grant funding are included in the project?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
+
+
+
+            <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="associated-works-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+        What impact will the project have?
+        </h1>
+      </legend>
+      <div id="changed-name-hint" class="govuk-hint">
+            Select all that apply
+          </div>
+
+<div class="govuk-checkboxes">
+  <div class="govuk-checkboxes__item">
+    <input class="govuk-checkboxes__input" id="project-impact-1" name="project-impact" type="checkbox" value="Improve farm productivity"
+    {{ checked("project-impact", "Improve farm productivity") }}
+    {{ checked("project-impact", "None of the above") and 'disabled' }}>
+    <label class="govuk-label govuk-checkboxes__label" for="project-impact-1">
+    Improve farm productivity
+    </label>
+  </div>
+  <div class="govuk-checkboxes">
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="project-impact-2" name="project-impact" type="checkbox" value="Improve business productivity"
+      {{ checked("project-impact", "Improve business productivity") }}
+      {{ checked("project-impact", "None of the above") and 'disabled' }}>
+      <label class="govuk-label govuk-checkboxes__label" for="project-impact-2">
+      Improve business productivity
+      </label>
+    </div>
+    <div class="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="project-impact-3" name="project-impact" type="checkbox" value="Reduce farm’s environmental impact"
+        {{ checked("project-impact", "Reduce farm’s environmental impact") }}
+        {{ checked("project-impact", "None of the above") and 'disabled' }}>
+
+        <label class="govuk-label govuk-checkboxes__label" for="project-impact-3">
+          Reduce farm’s environmental impact
+        </label>
+        <div id="project-impact-3-hint" class="govuk-hint govuk-radios__hint">
+          resulting in a positive contribution to net zero and GHG reduction
+        </div>
+      </div>
+      <div class="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="project-impact-4" name="project-impact" type="checkbox" value="Improve nutrient and resource management"
+          {{ checked("project-impact", "Improve nutrient and resource management") }}
+          {{ checked("project-impact", "None of the above") and 'disabled' }}>
+          <label class="govuk-label govuk-checkboxes__label" for="project-impact-4">
+            Improve nutrient and resource management
+          </label>
+          <div id="project-impact-4-hint" class="govuk-hint govuk-radios__hint">
+            helping optimise field and livestock operations
+          </div>
+        </div>
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="project-impact-5" name="project-impact" type="checkbox" value="Improve air quality"
+            {{ checked("project-impact", "Improve air quality") }}
+            {{ checked("project-impact", "None of the above") and 'disabled' }}>
+            <label class="govuk-label govuk-checkboxes__label" for="project-impact-5">
+              Improve air quality
+            </label>
+            <div id="project-impact-4-hint" class="govuk-hint govuk-radios__hint">
+              supporting biodiversity
+            </div>
+          </div>
+
+          <div class="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="project-impact-6" name="project-impact" type="checkbox" value="Reduce pollution"
+              {{ checked("project-impact", "None of the above") and 'disabled' }}
+              {{ checked("project-impact", "Reduce pollution") }}>
+              <label class="govuk-label govuk-checkboxes__label" for="project-impact-6">
+                Reduce pollution
+              </label>
+              <div id="project-impact-4-hint" class="govuk-hint govuk-radios__hint">
+                that flows into waterways and is deposited into the air
+              </div>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="none-project-impact" name="project-impact" type="checkbox" value="None of the above" {{ checked("project-impact", "None of the above") }}
+                onclick="
+                  const isChecked = document.getElementById('none-project-impact').checked
+                  const listOptions = document.querySelectorAll('input[id^=project-impact-]')
+
+                  listOptions.forEach(item => {
+                    item.disabled= isChecked
+                  })
+                "
+              >
+                <label class="govuk-label govuk-checkboxes__label" for="none-project-impact">
+                  None of the above
+                </label>
+              </div>
+
+
+
+    </div>
+  </fieldset>
+</div>
+
+    </fieldset>
+  </div>
+
+
+<button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>Projects must achieve at least one of these outcomes. </p>
+
+
+      </div>
+
+      </div>
+  </div>
+
+
+{% endblock %}

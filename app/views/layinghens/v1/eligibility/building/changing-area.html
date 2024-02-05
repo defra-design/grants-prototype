@@ -1,0 +1,106 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the {{ poultryType }} housing have a biosecure changing area at each external pedestrian access point?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The building must have a biosecure changing area at each external pedestrian point with:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            changing facilities, divided by a floor-mounted physical barrier into a clean area and a dirty area
+                        </li>
+                        <li>
+                            in the dirty area, handwashing facilities and storage for clothes and boots that you use outside of the housing
+                        </li>
+                        <li>
+                            in the clean area, a footbath and storage for clothes and boots that you use inside of the shed
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {% set nextPage = 'egg-store' %}
+                {% if poultryType != 'hen' %}
+                    {% set nextPage = 'vaccination-lobby' %}
+                {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'changing-area',
+                    name: 'changing-area',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the ' + poultryType + ' housing have a biosecure changing area at each external pedestrian access point?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['changing-area'] == 'Yes',
+                            attributes: {
+                                    'data-next': nextPage
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['changing-area'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-changing-area'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The {{ poultryType }} housing must have an effective hygiene barrier.
+                </p>
+
+                <p>
+                    If you're refurbishing an existing building and have limited internal space, you can add a shed onto the main entrance as a biosecure changing area.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

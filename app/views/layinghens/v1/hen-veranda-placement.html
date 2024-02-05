@@ -1,0 +1,110 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Veranda Placement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="hen-veranda-placement-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will the veranda be along the length of the hen housing and face onto the outside space?
+              </h1>
+            </legend>
+
+            <p class="govuk-hint">
+              Barn system projects without the required outside space to add the veranda along the length of the hen housing are exempt and can add the veranda where there is space
+            </p>
+          
+            <!-- Option: Yes -->
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-placement" name="hen-veranda-placement" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="has-placement">
+                  Yes
+                </label>
+              </div>
+
+              <!-- Option: No -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-placement-2" name="hen-veranda-placement" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="has-placement-2">
+                  No
+                </label>
+              </div>
+
+              <!-- 'or' divider-->
+              <div class="govuk-radios__divider">or</div>
+
+              <!-- Option: None of the above -->
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="has-placement-3" name="hen-veranda-placement" type="radio" value="exempt">
+                  <label class="govuk-label govuk-radios__label" for="has-placement-3">
+                    My project is exempt
+                  </label>
+                </div>
+
+            </div>
+
+
+
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+     <!-- Eligibility sidebar -->
+     <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>
+            The veranda must use the length of the hen housing, not the width, and face onto the outside space, if accessible.
+          </p>
+
+      </div>
+
+  </div>
+
+  </div>
+
+
+{% endblock %}

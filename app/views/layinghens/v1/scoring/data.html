@@ -1,0 +1,80 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the {{ poultryType }} housing have systems to monitor bird data for poultry management?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% set nextPageOnNo = 'environment-data' %}
+
+            {% if data['from-scoring'] == 'true' %}
+                {% set nextPageOnNo = 'results' %}
+            {% endif %}
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-data',
+                    name: 'scoring-data',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the ' + poultryType + ' housing have systems to monitor bird data for poultry management?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, bird data will be monitored',
+                            checked: true if data['scoring-data'] == 'Yes, bird data will be monitored',
+                            attributes: {
+                                'data-next': 'data-collection'
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, bird data will not be monitored',
+                            checked: true if data['scoring-data'] == 'No, bird data will not be monitored',
+                            attributes: {
+                                'data-next': nextPageOnNo
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to fund projects that gather poultry data.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the veranda have the capacity to be made biosecure with mesh that has a spacing of 6mm or less?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'veranda-biosecurity',
+                    name: 'veranda-biosecurity',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the veranda have the capacity to be made biosecure with mesh that has a spacing of 6mm or less?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'This is to stop wild birds and rodents from entering during housing orders'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['veranda-biosecurity'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'pop-holes'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['veranda-biosecurity'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-biosecurity'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You must be able to make the veranda secure with mesh that has a spacing (aperture) of 6mm or less during disease driven housing orders.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

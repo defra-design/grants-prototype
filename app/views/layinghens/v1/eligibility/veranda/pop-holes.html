@@ -1,0 +1,101 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the internal {{ poultryType }} housing have lockable pop holes for the hens to enter the veranda through?    
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set nextPage = '../features/concrete-apron' %}
+                {% if data['project-type'] == 'veranda' %}
+                    {% set nextPage = '../../business-details' %}
+                {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'pop-holes',
+                    name: 'pop-holes',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the internal ' + poultryType + ' housing have lockable pop holes for the hens to enter the veranda through?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'You must not put perches in front of the pop holes'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['pop-holes'] == 'Yes',
+                            attributes: {
+                                'data-next': nextPage
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['pop-holes'] == 'No',
+                             attributes: {
+                                'data-next': 'elim-pop-holes'
+                            }
+                        } 
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+
+                <p>
+                Pop holes must:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        be at least 35cm high and 40cm wide
+                    </li>
+
+                    <li>
+                        extend along the entire length of the building
+                    </li>
+                </ul>
+
+                <p>
+                The pop hole openings must add up to a total of 2 metres for every 1,000 hens.
+                </p>
+                <p>
+                The base of all pop holes must either be less than 30cm from floor level, or have access ramps that are as wide as the pop holes.
+                </p>
+
+            </div>
+
+         </div>
+
+</div>
+
+{% endblock %}

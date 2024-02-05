@@ -1,0 +1,82 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the housing have a laying hen aviary system?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'aviary-present',
+                    name: 'aviary-present',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the housing have a laying hen aviary system?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['aviary-present'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'welfare'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['aviary-present'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-present'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukWarningText ({
+                    text: 'You must not install a combi-cage system in your grant-funded housing.',
+                    iconFallbackText: 'Warning'
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The housing must have a laying hen aviary system.
+                </p>
+                <p>
+                    This cannot be a combi-cage system.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

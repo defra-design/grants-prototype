@@ -1,0 +1,51 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block beforeContent %}
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+
+    
+             {{ govukPhaseBanner({
+            tag: {
+            text: "Prototype",
+            classes: "govuk-tag--pink"
+             },
+            html: 'This is not a full service. It is not production code and you might experience problems .'
+            }) }}
+
+            {{ govukBackLink ({
+                text: 'Back',
+                href: 'javascript:history.back()'
+            }) }}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+        meta: {
+            items: [
+                {
+                    text: "Give feedback",
+                    href: "/layinghens/user-testing/likert-scale"
+                },
+                {
+                    text: "Manage prototype",
+                    href: "/manage-prototype"
+                }
+            ]
+        }
+    }) }}
+{% endblock %}
+
+

@@ -1,0 +1,85 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the aviary system meet the manufacturer's recommendation for high welfare?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'aviary-welfare',
+                    name: 'aviary-welfare',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the aviary system meet the manufacturer’s recommendation for high welfare?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'The birds must be able to move between levels without flying or jumping more than one metre in height'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['aviary-welfare'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'manure'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['aviary-welfare'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-welfare'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The aviary system must either:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        have welfare ramps and platforms in positions that meet the manufacturer's recommendation for a high welfare system
+                    </li>
+                    <li>
+                        be designed for hens to move between levels without ramps and platforms
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the veranda have these features?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The veranda of the housing must have:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            a solid concrete floor
+                        </li>
+                        <li>
+                            a waterproof insulated roof
+                        </li>
+                        <li>
+                            guttering and a downpipe to feed into the drainage system of the main building
+                        </li>
+                        <li>
+                            a perimeter wall at least 1 metre high
+                        </li>
+                        <li>
+                            lockable pop holes within the perimeter wall, unless the veranda forms part of an indoor barn system
+                        </li>
+                        <li>
+                            mesh roller-screen system running underneath the length of the roof, that fits securely against the wall when extended
+                        </li>
+                        <li>
+                            a dimmable LED lighting system between 0 lux and 60 lux
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'veranda-specification',
+                    name: 'veranda-specification',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the veranda have these features?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['veranda-specification'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'biosecurity'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['veranda-specification'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-specification'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
