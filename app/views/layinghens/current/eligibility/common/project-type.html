@@ -1,10 +1,5 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
-{% set poultryType = 'hen' %}
-{% if data['poultry-type'] %}
-    {% set poultryType = data['poultry-type'] %}
-{% endif %}
-
 {% block pageTitle %}
     What is your project?
 {% endblock %}
@@ -29,6 +24,11 @@
 
                 {% endset %}
 
+                {% set nextPageForVeranda = 'farmer-type' %}
+                {% if data['waitlist-enabled'] == 'true' %}
+                    {% set nextPageForVeranda = '../veranda/waitlist' %}
+                {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'project-type',
                     name: 'project-type',
@@ -48,7 +48,7 @@
                             value: 'replace',
                             checked: true if data['project-type'] == 'replace',
                             attributes: {
-                                'data-next': '../building/items'
+                                'data-next': 'farmer-type'
                             }
                         },
                         {
@@ -56,7 +56,7 @@
                             value: 'refurb',
                             checked: true if data['project-type'] == 'refurb',
                             attributes: {
-                                'data-next': '../building/items'
+                                'data-next': 'farmer-type'
                             }
                         },
                         {
@@ -67,7 +67,7 @@
                                 text: 'The RPA will award the grant funding for adding a veranda only to existing housing on a first-come first-served basis'
                             },
                             attributes: {
-                                'data-next': '../veranda/veranda-only'
+                                'data-next': nextPageForVeranda
                             }
                         },
                         {

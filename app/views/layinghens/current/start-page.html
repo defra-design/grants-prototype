@@ -1,4 +1,4 @@
-{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+{% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
   {{ serviceName }}
@@ -7,20 +7,6 @@
 {% block header %}
   <!-- Blank header with no service name for the start page -->
   {{ govukHeader() }}
-{% endblock %}
-
-{% block beforeContent %}
-
-{{ super() }}
-
- {{ govukPhaseBanner({
-    tag: {
-    text: "Prototype",
-    classes: "govuk-tag--pink"
-    },
-      html: 'This is not a full service. It is not production code and you might experience problems  .'
-  }) }}
-
 {% endblock %}
 
 {% block content %}
@@ -118,7 +104,7 @@
 
       {{ govukButton({
         text: "Start now",
-        href: "eligibility/common/farmer-type",
+        href: "eligibility/common/project-type",
         isStartButton: true
       }) }}
 
@@ -188,5 +174,4 @@
     </div>
 
   </div>
-
 {% endblock %}
