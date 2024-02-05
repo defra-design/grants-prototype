@@ -1,0 +1,72 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will every level of the multi-tier system be connected to another level by a ramp?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="height">
+            {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-ramps',
+                    name: 'scoring-ramps',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will every level of the multi-tier system be connected to another level by a ramp?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, every level will be connected by a ramp',
+                            checked: true if data['scoring-ramps'] == 'Yes, every level will be connected by a ramp'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, every level will not be connected by a ramp',
+                            checked: true if data['scoring-ramps'] == 'No, every level will not be connected by a ramp'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to fund multi-tier systems that incorporate ramps to reduce the risk of keel bone fractures.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Which multi-tier system will the pullet housing have?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'multi-tier',
+                    name: 'multi-tier',
+                    fieldset: {
+                        legend: {
+                            text: 'Which multi-tier system will the pullet housing have?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Rearing aviary',
+                            value: 'Rearing aviary',
+                            checked: true if data['multi-tier'] == 'Rearing aviary',
+                            hint: {
+                                text: 'A system that houses birds in tiers during the first 2 weeks of rearing, that you open to enable them to access the barn floor after 2 weeks'
+                            },
+                            attributes: {
+                                    'data-next': 'multi-tier-aviary'
+                                }
+                        },
+                        {
+                            text: 'Step-up system',
+                            value: 'Step-up system',
+                            checked: true if data['multi-tier'] == 'Step-up system',
+                            hint: {
+                                text: 'A floor system that you can change to match a rearing aviary post-brooding, with adjustable elevated tiers you can add and gradually raise as the birds grow'
+                            },
+                            attributes: {
+                                'data-next': 'multi-tier-step-up'
+                            }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None',
+                            checked: true if data['multi-tier'] == 'None',
+                            attributes: {
+                                'data-next': 'elim-multi-tier'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The pullet housing must have a multi-tier system to enable the birds to transition between levels without flying or jumping more than 1m in height, horizontally or vertically.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

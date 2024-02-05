@@ -1,0 +1,123 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Housing Features – {{ serviceName }} – GOV.UK Prototype Kit TEST
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="hen-housing-features-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will the housing have any of the following?
+              </h1>
+            </legend>
+
+            <!-- Hint text -->
+            <p class="govuk-hint">Select all that apply</p>
+
+            <!-- Option: Dry manure -->
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="housing-feature" name="hen-housing-features" type="checkbox" value="dry manure">
+                  <label class="govuk-label govuk-checkboxes__label" for="housing-feature">
+                    Dry manure using aeration tubes
+                  </label>
+                </div>
+
+                <!-- Option: Filter air entering the building -->
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="housing-feature-2" name="hen-housing-features" type="checkbox" value="filter air enter">
+                  <label class="govuk-label govuk-checkboxes__label" for="housing-feature-2">
+                    Filter air entering the building (biosecurity)
+                  </label>
+                </div>
+
+                <!-- Option: Filter air exiting the building -->
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="housing-feature-3" name="hen-housing-features" type="checkbox" value="filter air exit">
+                  <label class="govuk-label govuk-checkboxes__label" for="housing-feature-3">
+                    Filter air exiting the building (emissions), for example using wet or dry scrubbers
+                  </label>
+                </div>
+
+                <!-- Option: Tree shelter belt -->
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="housing-feature-4" name="hen-housing-features" type="checkbox" value="tree shelter">
+                  <label class="govuk-label govuk-checkboxes__label" for="housing-feature-4">
+                    A tree shelter belt for air exit points
+                  </label>
+                </div>
+
+              <!-- 'or' divider-->
+              <div class="govuk-radios__divider">or</div>
+
+              <!-- Option: None of the above -->
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="housing-feature-5" name="hen-housing-features" type="checkbox" value="none" data-behaviour="exclusive">
+                  <label class="govuk-label govuk-checkboxes__label" for="housing-feature-5">
+                    None of the above
+                  </label>
+                </div>
+
+            </div>
+          </fieldset>
+        </div>
+        
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+           <!-- Eligibility sidebar -->
+           <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+              <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+      
+                <p>RPA want to fund projects that use pollution mitigation practices.</p>
+        
+                <a href="#">
+                </a>
+      
+            </div>
+
+  </div>
+
+{% endblock %}

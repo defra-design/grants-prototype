@@ -1,0 +1,110 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    What is your project?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        If you want to apply for grant funding for multiple hen or pullet housing projects, you must submit an application for each project.
+                    </p>
+
+                    <p class="govuk-hint">
+                        If you want to apply for multiple veranda projects you must submit an application for each project.
+                    </p>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'project-type',
+                    name: 'project-type',
+                    fieldset: {
+                        legend: {
+                            text: 'What is your project?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Replacing existing housing',
+                            value: 'replace',
+                            checked: true if data['project-type'] == 'replace',
+                            attributes: {
+                                'data-next': 'eligibility/building/items'
+                            }
+                        },
+                        {
+                            text: 'Refurbishing existing housing',
+                            value: 'refurb',
+                            checked: true if data['project-type'] == 'refurb',
+                            attributes: {
+                                'data-next': 'eligibility/building/items'
+                            }
+                        },
+                        {
+                            text: 'Adding a veranda only to existing housing',
+                            value: 'veranda',
+                            checked: true if data['project-type'] == 'veranda',
+                            hint: {
+                                text: 'The RPA will award the grant funding for adding a veranda only to existing housing on a first-come first-served basis'
+                            },
+                            attributes: {
+                                'data-next': 'eligibility/veranda/veranda-only'
+                            }
+                        },
+                        {
+                          divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None of the above',
+                            checked: true if data['project-type'] == 'none',
+                            attributes: {
+                                'data-next': 'elim-project-type'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You can apply for grant funding for either housing projects or veranda projects.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

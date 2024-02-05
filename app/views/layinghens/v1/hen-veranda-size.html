@@ -1,0 +1,106 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Will the housing have a veranda that is at least the same size as 30% of the indoor bird housing area footprint?
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="hen-veranda-size-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will the housing have a veranda that is at least the same size as 30% of the indoor bird housing area footprint?
+              </h1>
+            </legend>
+
+            <!-- Hint text -->
+            <p class="govuk-hint">Barn system projects that do not have access to an area at least 30% the size of the indoor housing area are exempt from adding a veranda</p>
+
+            <!-- Option: Laying Hens -->
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="has-veranda" name="hen-veranda-size" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="has-veranda">
+                    Yes
+                  </label>
+                </div>
+
+                <!-- Option: Pullets -->
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="has-veranda-2" name="hen-veranda-size" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="has-veranda-2">
+                    No
+                  </label>
+                </div>
+
+              <!-- 'or' divider-->
+              <div class="govuk-radios__divider">or</div>
+
+              <!-- Option: None of the above -->
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="has-veranda-3" name="hen-veranda-size" type="radio" value="exempt">
+                  <label class="govuk-label govuk-radios__label" for="has-veranda-3">
+                    My project is exempt
+                  </label>
+                </div>
+
+            </div>
+          </fieldset>
+        </div>
+        
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+    
+    <!-- Eligibility sidebar -->
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+
+          <p>You must add a veranda that is at least the same size as 30% the indoor bird housing area footprint.</p>
+          <p>Barn system projects that do not have access to an external area at least 30% of the indoor housing area are exempt.</p>
+          <p>You must exclude the veranda's floor area from calculations of stocking density (even if providing 24 hour access).</p>
+
+      </div>
+
+  </div>
+
+{% endblock %}
+
+

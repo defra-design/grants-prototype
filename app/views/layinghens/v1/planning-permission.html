@@ -1,0 +1,79 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Does the project need planning permission?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="planning-permission-answer" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Does the project have planning permission?
+              </h1>
+            </legend>
+            <br>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission" name="planning-permission" type="radio" value="Not needed">
+                <label class="govuk-label govuk-radios__label" for="planning-permission">
+                  Not needed
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-2" name="planning-permission" type="radio" value="Secured">
+                <label class="govuk-label govuk-radios__label" for="planning-permission-2">
+                  Secured
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="maybe">
+                <label class="govuk-label govuk-radios__label" for="planning-permission-3">
+                  Should be in place by the time I make my full application 
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="planning-permission-3">
+                  Will not be in place by the time I make my full application 
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>You must have secured planning permission before you submit a full application.</p>
+          <p>The application deadline is 31 October 2025.</p>
+          
+          </a>
+      </div>
+    </div>
+
+{% endblock %}

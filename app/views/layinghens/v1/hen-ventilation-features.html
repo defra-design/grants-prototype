@@ -1,0 +1,82 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Will the hen housing have a mechanical ventilation system with the following? 
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="hen-ventilation-features-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will the hen housing have a mechanical ventilation system with the following? 
+              </h1>
+            </legend>
+
+            <p class="govuk-hint"> The ventilation must have:</p>
+            
+            <ul class="govuk-list govuk-list--bullet">
+              <li class="govuk-hint">a control system to automatically measure and record the daily temperature, humidity, and CO<sub>2</sub> levels</li>
+              <li class="govuk-hint">an alarm system (that detects excessive high or low temperatures and system failures) with a power supply independent of mains electricity</li>
+              <li class="govuk-hint">an emergency power supply, for example a high-capacity generator, in case of electrical or other failures</li>
+             </ul>
+          
+            <!-- Option: Yes -->
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-ventilation-feature-hen" name="hen-ventilation-features" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="has-ventilation-feature-hen">
+                  Yes
+                </label>
+              </div>
+
+              <!-- Option: No -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-ventilation-feature-hen-2" name="hen-ventilation-features" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="has-ventilation-feature-hen-2">
+                  No
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+
+{% endblock %}

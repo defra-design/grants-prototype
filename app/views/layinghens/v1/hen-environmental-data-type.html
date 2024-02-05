@@ -1,0 +1,96 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Bird Data Type – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="hen-environmental-data-type-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What data will you collect?
+              </h1>
+            </legend>
+
+            <!-- Hint text -->
+            <p class="govuk-hint">Select all that apply</p>
+
+            <!-- Option: Solar PV system -->
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="env-data-type" name="hen-environmental-data-type" type="checkbox" value="amonia">
+                  <label class="govuk-label govuk-checkboxes__label" for="env-data-type">
+                    Amonia
+                  </label>
+                </div>
+
+                <!-- Option: Heat exchanger -->
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="env-data-type-2" name="hen-environmental-data-type" type="checkbox" value="carbon-monoxide">
+                  <label class="govuk-label govuk-checkboxes__label" for="env-data-type-2">
+                    Carbon monoxide
+                  </label>
+                </div>
+
+                <!-- Option: Ground, air or water source heat -->
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="env-data-type-3" name="hen-environmental-data-type" type="checkbox" value="inhalable-dust">
+                  <label class="govuk-label govuk-checkboxes__label" for="env-data-type-3">
+                    Inhalable dust
+                  </label>
+                </div>
+
+                <!-- Option: Biomass boiler -->
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="env-data-type-4" name="hen-environmental-data-type" type="checkbox" value="other">
+                  <label class="govuk-label govuk-checkboxes__label" for="env-data-type-4">
+                    Other
+                  </label>
+                </div>
+
+            </div>
+          </fieldset>
+        </div>
+        
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the {{ poultryType }} housing have windows to provide natural light?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="grip">
+            {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-natural-light',
+                    name: 'scoring-natural-light',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the ' + poultryType + ' housing have windows to provide natural light?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'The windows in the housing must be fitted with an insulated blind and be equal to at least 3% of size of the bird space footprint'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, there will be windows',
+                            checked: true if data['scoring-natural-light'] == 'Yes, there will be windows'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, there will not be windows',
+                            checked: true if data['scoring-natural-light'] == 'No, there will not be windows'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to support projects which provide natural light.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

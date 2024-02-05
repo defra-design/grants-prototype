@@ -1,0 +1,87 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Hen Egg Store Access – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="hen-egg-store-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will there be direct external access to the egg store separate to the entrance lobby?
+              </h1>
+            </legend>
+          
+            <!-- Option: Yes -->
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-egg-store" name="hen-egg-store" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="has-egg-store">
+                  Yes
+                </label>
+              </div>
+
+              <!-- Option: No -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="has-egg-store-2" name="hen-egg-store" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="has-egg-store-2">
+                  No
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Continue button -->
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Eligibility sidebar -->
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>You must be able to remove eggs and deliver empty egg trays to and from the building's egg store without going into the building's entrance lobby or connected cleaning area.</p>
+          <a href="#">
+          </a>
+
+      </div>
+
+  </div>
+
+{% endblock %}

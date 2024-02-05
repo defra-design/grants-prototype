@@ -1,0 +1,77 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the veranda be at least the same size as 30% of the indoor bird housing area footprint?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'veranda-only',
+                    name: 'veranda-only',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the veranda be at least the same size as 30% of the indoor bird housing area footprint?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['veranda-only'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'specification'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['veranda-only'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-veranda-only'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The veranda must be at least the same size as 30% the indoor bird housing area footprint.
+                </p>
+                <p>
+                    You must exclude the veranda's floor area from calculations of stocking density (even if providing 24 hour access).
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

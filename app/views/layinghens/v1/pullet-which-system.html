@@ -1,0 +1,93 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Hen Project Type – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Pink banner -->
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+  
+  <!-- Back button -->
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Path for next page -->
+      <form class="form" action="pullet-which-system-answer" method="post">
+
+        <!-- Page heading -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Which multi-tier system will the pullet housing have?
+              </h1>
+            </legend>
+
+          
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="hen-housing-type-2" name="pullet-which-system" type="radio" value="aviary">
+                <label class="govuk-label govuk-radios__label" for="hen-housing-type-2">
+                  Rearing aviary
+                </label>
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                  A system that houses birds within tiers during the first 2 weeks of rearing and enables them to access the barn floor after 2 weeks
+                </div>
+              </div>
+
+                <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="hen-housing-type-3" name="pullet-which-system" type="radio" value="step">
+                <label class="govuk-label govuk-radios__label" for="hen-housing-type-3">
+                  Step-up system
+                </label>
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                  A floor system that resembles a rearing aviary post-brooding, with adjustable elevated tiers, which can be added and gradually raised as the birds grow.
+                </div>
+              </div>
+
+
+            </div>
+          </fieldset>
+        
+
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Eligibility sidebar -->
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>The pullet housing must have a multi-tier system to enable the birds to transition between levels without flying or jumping more than 1m in height, horizontally or vertically.</p>  
+    
+
+      </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

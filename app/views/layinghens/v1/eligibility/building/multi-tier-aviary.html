@@ -1,0 +1,90 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will your rearing aviary system have these features?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The rearing aviary system must have:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            the capacity to provide or retain friable litter while the birds are held within the system
+                        </li>
+                        <li>
+                            an integrated manure removal belt-system
+                        </li>
+                        <li>
+                            integrated height-adjustable feed lines, nipple drinkers and platforms
+                        </li>
+                        <li>
+                            integrated and fully dimmable non-flicker LED lighting
+                        </li>
+                        <li>
+                            welfare ramps when the pullets are 14 days old
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'multi-tier-aviary',
+                    name: 'multi-tier-aviary',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will your rearing aviary system have these features?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['multi-tier-aviary'] == 'Yes',
+                            attributes: {
+                                    'data-next': '../ventilation/features'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['multi-tier-aviary'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-multi-tier-aviary'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

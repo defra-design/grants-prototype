@@ -1,0 +1,89 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the housing’s lighting system have these features?
+{% endblock %} 
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+            {% set hintHtml %}
+
+                <p class="govuk-hint">
+                    The housing's lighting system must have:
+                </p>
+
+                <ul class="govuk-hint govuk-list govuk-list--bullet">
+                    <li>
+                        the ability to provide an automatic stepped dawn and dusk lighting environment (unless this is already provided as part of an aviary lighting system)
+                    </li>
+                    <li>
+                        an option for red light
+                    </li>
+                    <li>
+                        a fail-safe standby device in case of electrical or other failures
+                    </li>
+                </ul>
+
+            {% endset %}
+
+            {% set nextPage = '../veranda/features' %}
+            {% if poultryType != 'hen' %}
+                {% set nextPage = '../features/concrete-apron' %}
+            {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'lighting-features',
+                    name: 'lighting-features',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the housing’s lighting system have these features?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['lighting-features'] == 'Yes',
+                            attributes: {
+                                    'data-next': nextPage
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['lighting-features'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-features'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

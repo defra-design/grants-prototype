@@ -1,0 +1,85 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the housing lighting system provide non-flicker light from dimmable LEDs?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'lighting-non-flicker',
+                    name: 'lighting-non-flicker',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the housing lighting system provide non-flicker light from dimmable LEDs?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Housing lighting must be ceiling-mounted and cover the whole barn area, including the floor litter'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['lighting-non-flicker'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'features'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['lighting-non-flicker'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-non-flicker'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The lighting must be able to provide:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        non-flicker light between approximately 3000 Kelvin and 4000 Kelvin colour temperature
+                    </li>
+                    <li>
+                        zonal dimming between 0 lux and 60 lux
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  You cannot apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  {{ govukBackLink ({
+    text: 'Back',
+    href: 'javascript:history.back()'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You cannot apply for a grant from this scheme
+      </h1>
+
+
+      <p class="govuk-body">You're not eligible<p>
+
+      <!--
+      <ul class="govuk-list govuk-list--bullet">
+          <li>have a sensing system and can understand their environment</li>
+          <li>make decisions and plan</li>
+          <li>can control its actuators (the devices that move robot joints)</li>
+          <li>work in a continuous loop</li>
+          </ul>
+      --->
+
+      <p><a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments"  class="govuk-link--no-visited-state govuk-!-font-size-19">
+         See other grants you may be eligible for.
+      </a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
