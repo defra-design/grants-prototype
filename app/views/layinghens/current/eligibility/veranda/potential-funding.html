@@ -7,8 +7,8 @@
 {% block content %}
 
 {% set grantAmount = data['cost'] | float | percent(40) %}
-{% if grantAmount > 80000 %}
-    {% set grantAmount = 80000 %}
+{% if grantAmount > 100000 %}
+    {% set grantAmount = 100000 %}
 {% endif %}
 
 <div class="govuk-grid-row">
@@ -19,9 +19,9 @@
 
                 <h1 class="govuk-heading-l">Potential grant funding</h1>
 
-                {% if grantAmount == 80000 %}
+                {% if grantAmount == 100000 %}
                     <p>
-                        The maximum grant you can apply for is £80,000.
+                        The maximum grant you can apply for is £100,000.
                     </p>
                 {% endif %}
 
