@@ -1,0 +1,49 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    How many {{ poultryType }}s will there be in the house?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../solar/roof-support-for-solar-pv.html">
+
+                <h1 class="govuk-heading-l">
+                    How many {{ poultryType }}s will there be in the house?
+                </h1>
+
+                {{ govukInput ({
+                    id: 'number-of-birds',
+                    name: 'number-of-birds',
+                    value: data['number-of-birds'] if data['number-of-birds'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    label: {
+                        text: 'Number of birds',
+                        classes: 'govuk-input--width-10 govuk-visually-hidden'
+                    },
+                    hint: {
+                        text: 'Enter an amount, for example 5,000'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

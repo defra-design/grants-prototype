@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing have systems to monitor additional environmental data?
+    What additional environmental data will you collect?
 {% endblock %}
 
 {% block content %}
@@ -15,37 +15,51 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form action="results">
 
-                {{ govukRadios ({
+                {{ govukCheckboxes ({
                     idPrefix: 'scoring-environment-data',
                     name: 'scoring-environment-data',
-                    classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing have systems to monitor additional environmental data?',
+                            text: 'What additional environmental data will you collect?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        html: 'This is in addition to the requirement for a control system that automatically measures and records daily temperature, humidity and CO<sub>2</sub> levels'
+                        text: 'Select all that apply'
                     },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes, environmental data will be monitored',
-                            checked: true if data['scoring-environment-data'] == 'Yes, environmental data will be monitored',
-                            attributes: {
-                                'data-next': 'environment-data-collection'
-                            }
+                            text: 'Ammonia',
+                            value: 'Ammonia',
+                            checked: true if 'Ammonia' | isIn(data['scoring-environment-data'])
                         },
                         {
-                            text: 'No',
-                            value: 'No, environmental data will not be monitored',
-                            checked: true if data['scoring-environment-data'] == 'No, environemntal data will not be monitored',
+                            text: 'Carbon monoxide',
+                            value: 'Carbon monoxide',
+                            checked: true if 'Carbon monoxide' | isIn(data['scoring-environment-data'])
+                        },
+                        {
+                            text: 'Inhalable dust',
+                            value: 'Inhalable dust',
+                            checked: true if 'Inhalable dust' | isIn(data['scoring-environment-data'])
+                        },
+                        {
+                            text: 'Other',
+                            value: 'Other',
+                            checked: true if 'Other' | isIn(data['scoring-environment-data'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'I will not monitor additional environmental data',
+                            value: 'I will not collect additional environmental data',
+                            checked: true if 'I will not collect additional environmental data' | isIn(data['scoring-environment-data']),
                             attributes: {
-                                'data-next': 'results'
+                                'data-behaviour': 'exclusive'
                             }
                         }
                     ]
@@ -66,10 +80,10 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    RPA want to fund projects that gather additional environmental data.
+                    RPA want to fund projects that have systems to monitor additional environmental data.
                 </p>
             </div>
-
+ 
         </div>
 
 </div>

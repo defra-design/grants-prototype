@@ -30,7 +30,6 @@
                 {{ govukRadios ({
                     idPrefix: 'multi-tier-other',
                     name: 'multi-tier-other',
-                    classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
                             text: question,
@@ -44,13 +43,21 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes, they will be in a multi-tier system',
-                            checked: true if data['multi-tier-other'] == 'Yes, they will be in a multi-tier system'
+                            value: 'Yes, the ' + poultryType + ' will live in a multi-tier system as hens',
+                            checked: true if data['multi-tier-other'] == 'Yes, the ' + poultryType + ' will live in a multi-tier system as hens'
                         },
                         {
                             text: 'No',
-                            value: 'No, they will not be in a multi-tier system',
-                            checked: true if data['multi-tier-other'] == 'No, they will not be in a multi-tier system'
+                            value: 'No, the ' + poultryType + ' will not live in a multi-tier system as hens',
+                            checked: true if data['multi-tier-other'] == 'No, the ' + poultryType + ' will not live in a multi-tier system as hens'
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'I don’t know',
+                            value: 'I don’t know',
+                            checked: true if data['multi-tier-other'] == 'I don’t know'
                         }
                     ]
                 }) }}

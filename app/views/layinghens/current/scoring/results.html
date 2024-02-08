@@ -131,7 +131,7 @@
                             Average
                         </td>
                         <td class="govuk-table__cell">
-                            Support the transition out of cages, or to high welfare multi-tier systems
+                            Support the transition out of colony cages, or to high welfare multi-tier systems
                         </td>
                         <td class="govuk-table__cell">
                             <a class="govuk-link govuk-link--no-visited-state" href="current-system?from-scoring=true">
@@ -207,6 +207,30 @@
                         </td>
                         <td class="govuk-table__cell">
                             <a class="govuk-link govuk-link--no-visited-state" href="tiers?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Multi-tier system
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['multi-tier-other'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Multi-tier systems that have 3 tiers or fewer
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="multi-tier-other?from-scoring=true">
                                 Change
                             </a>
                         </td>
@@ -375,19 +399,15 @@
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Bird data
+                                Poultry management data
                             </p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>
-                                    {{ data['scoring-data'] }}
-                                </li>
-                            </ul>
+                            {{ data['scoring-data'] | checkboxAnswersToList | safe }}
                         </th>
                         <td class="govuk-table__cell">
                             Average
                         </td>
                         <td class="govuk-table__cell">
-                            Gathering poultry data
+                            Monitoring poultry management data
                         </td>
                         <td class="govuk-table__cell">
                             <a class="govuk-link govuk-link--no-visited-state" href="data?from-scoring=true">
@@ -396,73 +416,25 @@
                         </td>
                     </tr>
                     
-                    {% if 'Yes' | isIn(data['scoring-data']) %}
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Bird data type
+                                Additional environmental data
                             </p>
-                                {{ data['scoring-data-collection'] | checkboxAnswersToList | safe }}
+                            {{ data['scoring-environment-data'] | checkboxAnswersToList | safe }}
                         </th>
                         <td class="govuk-table__cell">
                             Average
                         </td>
                         <td class="govuk-table__cell">
-                            Gathering poultry data
-                        </td>
-                        <td class="govuk-table__cell">
-                            <a class="govuk-link govuk-link--no-visited-state" href="data-collection?from-scoring=true">
-                                Change
-                            </a>
-                        </td>
-                    </tr>
-                    {% endif %}
-                    
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">
-                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Additional envrionmental data
-                            </p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>
-                                    {{ data['scoring-environment-data'] }}
-                                </li>
-                            </ul>
-                        </th>
-                        <td class="govuk-table__cell">
-                            Average
-                        </td>
-                        <td class="govuk-table__cell">
-                            Gathering additional envrionmental data
+                            Monitoring additional environmental data
                         </td>
                         <td class="govuk-table__cell">
                             <a class="govuk-link govuk-link--no-visited-state" href="environment-data?from-scoring=true">
                                 Change
                             </a>
                         </td>
-                    </tr>    
-
-                    {% if 'Yes' | isIn(data['scoring-environment-data']) %}
-                     <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">
-                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Additional envrionmental data type
-                            </p>
-                                {{ data['scoring-environment-data-collection'] | checkboxAnswersToList | safe }}
-                        </th>
-                        <td class="govuk-table__cell">
-                            Average
-                        </td>
-                        <td class="govuk-table__cell">
-                            Gathering additional envrionmental data
-                        </td>
-                        <td class="govuk-table__cell">
-                            <a class="govuk-link govuk-link--no-visited-state" href="environment-data-collection?from-scoring=true">
-                                Change
-                            </a>
-                        </td>
                     </tr>
-                    {% endif %}
                 
 
                 </tbody>
