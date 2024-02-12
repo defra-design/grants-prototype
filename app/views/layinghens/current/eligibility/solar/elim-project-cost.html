@@ -6,11 +6,20 @@
 
 {% block content %}
 
-{% if data['cost'] | float > 37500 %}
+{% set grantAmount = data['cost'] | float | percent(40) %}
+{% if grantAmount > 500000 %}
+    {% set grantAmount = 500000 %}
+{% endif %}
+
+{% if grantAmount >= 15000 %}
     
     {% if data['solar-pv-system'] == 'Yes' %}
 
-        {{ 'solar-cost' | redirect | safe }}
+        {% if grantAmount != 500000 %}
+            {{ 'energy-output' | redirect | safe }}
+        {% else %}
+            {{ 'potential-funding-solar' | redirect | safe }}
+        {% endif %}
 
     {% else %}
 
