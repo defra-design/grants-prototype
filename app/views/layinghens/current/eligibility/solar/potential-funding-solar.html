@@ -1,0 +1,77 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    Potential grant funding
+{% endblock %}
+
+{% block content %}
+
+{% set grantAmount = data['cost'] | float | percent(40) %}
+
+{% set birds = data['number-of-birds'] | float %}
+{% set energy = data['energy'] | float %}
+{% set solarCost = data['solar-cost'] | float %}
+
+{% set energyCap = birds * 0.005 %}
+
+{% set solarFunding = solarCost * 0.25 %}
+
+{% if energy > energyCap %}
+    {% set solarFunding = ((solarCost / energy) * energyCap) * 0.25 %}
+{% endif %}
+
+{% set totalFunding = grantAmount + solarFunding %}
+{% if totalFunding > 500000 %}
+    {% set solarFunding = 500000 - grantAmount %}
+    {% set totalFunding = 500000 %}
+{% endif %} 
+            
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-l">Potential grant funding</h1>
+
+            <pre> 
+                {{ birds }}
+                {{ energy }}
+                {{ solarCost | inPounds }}
+                {{ energyCap }}
+                {{ solarFunding | inPounds }} 
+            </pre>
+
+            {% if grantAmount == 500000 %}
+                <p>
+                    The maximum grant you can apply for is £500,000.
+                </p>
+
+                {{ govukInsetText ({
+                    text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for housing project costs.'
+                }) }}
+
+            {% endif %}
+
+            <p>
+                You may be able to apply for a grant of up to {{ grantAmount | inPounds }}, based on the estimated cost of {{ data['cost'] | float | inPounds }}.
+            </p>
+
+            {{ govukWarningText({
+                text: "There's no guarantee the project will receive a grant",
+                iconFallbackText: "Warning"
+            }) }}
+
+            {% set nextPage = 'remaining-cost' %}
+            {% if grantAmount != 500000 and data['solar-pv-system'] == 'Yes' %}
+                {% set nextPage = 'energy-output' %}
+            {% endif %}
+
+            {{ govukButton ({
+                html: 'Continue',
+                href: nextPage
+            }) }}
+        
+        </div>
+
+</div>
+
+{% endblock %}
