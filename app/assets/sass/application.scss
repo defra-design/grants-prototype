@@ -1,29 +1,51 @@
 //
 // For guidance on how to add CSS and SCSS see:
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
-// 
+//
 
 // Add extra styles here
 
 .css-index-link-block {
-    background: #F8F8F8;
-    border: 0px solid #DEE0E2;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-right: 60px;
+	background: #f8f8f8;
+	border: 0px solid #dee0e2;
+	padding: 10px;
+	box-sizing: border-box;
+	margin-right: 60px;
 }
 
 .proto-admin {
-  background: #f5f5f5;
-  padding: 1.5em;
-  margin-bottom: 1.5em;
+	background: #f5f5f5;
+	padding: 1.5em;
+	margin-bottom: 1.5em;
 }
 
 .proto-admin p.govuk-body {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .proto-admin .govuk-heading-m {
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 }
-@import "grants";
+
+.app-blue-card {
+	background-color: #1d70b8;
+	padding: 40px 20px;
+
+	.govuk-heading-l,
+	p,
+	a:link,
+	.govuk-link:link {
+		color: #fff;
+	}
+
+	a:hover,
+	.govuk-link:hover {
+		color: #b6d4e2;
+	}
+
+	.govuk-button--inverse:hover {
+		color: #1d70b8;
+	}
+}
+
+@import 'grants';
