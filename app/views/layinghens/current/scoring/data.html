@@ -26,14 +26,18 @@
                     name: 'scoring-data',
                     fieldset: {
                         legend: {
-                            text: 'What poultry management data will you monitor?',
+                            text: 'What poultry management data will you automatically collect and store?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    hint: {
-                        text: 'Select all that apply'
-                    },
+                    hint: 
+                        {
+                            text: 'Using digital systems'
+                        },
+                        {
+                            text: 'Select all that apply',
+                        },
                     items: [
                         {
                             text: 'Bird performance data',
@@ -56,14 +60,14 @@
                             checked: true if 'Feed data or conversion ratios' | isIn(data['scoring-data'])
                         },
                         {
-                            text: 'Location or locomotion',
-                            value: 'Location or locomotion',
-                            checked: true if 'Location or locomotion' | isIn(data['scoring-data'])
+                            text: 'Location data',
+                            value: 'Location data',
+                            checked: true if 'Location data' | isIn(data['scoring-data'])
                         },
                         {
-                            text: 'Movement data',
-                            value: 'Movement data',
-                            checked: true if 'Movement data' | isIn(data['scoring-data'])
+                            text: 'Locomotion or movement data',
+                            value: 'Locomotion or movement data',
+                            checked: true if 'Locomotion or movement data' | isIn(data['scoring-data'])
                         },
                         {
                             text: 'Nest use',
@@ -84,9 +88,9 @@
                             divider: 'or'
                         },
                         {
-                            text: 'I will not monitor any poultry management data',
-                            value: 'I will not monitor bird data for poultry management',
-                            checked: true if 'I will not monitor bird data for poultry management' | isIn(data['scoring-data']),
+                            text: 'I will not collect and store any poultry management data',
+                            value: 'I will not collect and store any poultry management data',
+                            checked: true if 'I will not collect and store any poultry management data' | isIn(data['scoring-data']),
                             attributes: {
                                 'data-behaviour': 'exclusive'
                             }
@@ -109,7 +113,7 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    RPA want to fund projects that have systems to monitor data for poultry management.
+                    RPA want to fund projects that have digital systems which automatically collect and store data for poultry management.
                 </p>
             </div>
 
