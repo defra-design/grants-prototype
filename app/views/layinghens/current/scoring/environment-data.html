@@ -22,7 +22,7 @@
                     name: 'scoring-environment-data',
                     fieldset: {
                         legend: {
-                            text: 'What additional environmental data will you collect?',
+                            text: 'What additional environmental data will you automatically collect and store?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -55,9 +55,9 @@
                             divider: 'or'
                         },
                         {
-                            text: 'I will not monitor additional environmental data',
-                            value: 'I will not collect additional environmental data',
-                            checked: true if 'I will not collect additional environmental data' | isIn(data['scoring-environment-data']),
+                            text: 'I will not collect and store additional environmental data',
+                            value: 'I will not collect and store additional environmental data',
+                            checked: true if 'I will not collect and store additional environmental data' | isIn(data['scoring-environment-data']),
                             attributes: {
                                 'data-behaviour': 'exclusive'
                             }
@@ -80,7 +80,7 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    RPA want to fund projects that have systems to monitor additional environmental data.
+                   RPA want to fund projects that have digital systems which automatically collect and store additional environmental data.
                 </p>
             </div>
  
