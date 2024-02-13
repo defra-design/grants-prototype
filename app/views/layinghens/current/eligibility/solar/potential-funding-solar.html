@@ -6,11 +6,15 @@
 
 {% block content %}
 
-{% set grantAmount = data['cost'] | float | percent(40) %}
+{% set projectCost = data['cost'] | float %}
+
+{% set grantAmount = projectCost | percent(40) %}
 
 {% set birds = data['number-of-birds'] | float %}
 {% set energy = data['energy'] | float %}
 {% set solarCost = data['solar-cost'] | float %}
+
+{% set totalProjectCost = solarCost + projectCost %}
 
 {% set energyCap = birds * 0.005 %}
 
@@ -20,7 +24,7 @@
     {% set solarFunding = ((solarCost / energy) * energyCap) * 0.25 %}
 {% endif %}
 
-{% set totalFunding = grantAmount + solarFunding %}
+{% set totalFunding = grantAmount | float + solarFunding | float %}
 {% if totalFunding > 500000 %}
     {% set solarFunding = 500000 - grantAmount %}
     {% set totalFunding = 500000 %}
@@ -32,13 +36,16 @@
 
             <h1 class="govuk-heading-l">Potential grant funding</h1>
 
-            <pre> 
-                {{ birds }}
-                {{ energy }}
-                {{ solarCost | inPounds }}
-                {{ energyCap }}
-                {{ solarFunding | inPounds }} 
-            </pre>
+            {# <pre> 
+               birds {{ birds }}
+               energy {{ energy }}
+               solar cost {{ solarCost | inPounds }}
+               energy cap {{ energyCap }}
+               solar funding {{ solarFunding | inPounds }}
+                total funding {{ totalFunding | inPounds }} 
+                grant amount {{ grantAmount | inPounds }}
+                maths {{ solarFunding | float + grantAmount | float }}
+            </pre> #}
 
             {% if grantAmount == 500000 %}
                 <p>
@@ -49,27 +56,80 @@
                     text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for housing project costs.'
                 }) }}
 
-            {% endif %}
+            {% elseif totalFunding == 500000 %}
 
-            <p>
-                You may be able to apply for a grant of up to {{ grantAmount | inPounds }}, based on the estimated cost of {{ data['cost'] | float | inPounds }}.
-            </p>
+                <p>
+                    You may be able to apply for a grant of up to {{ totalFunding | inPounds }}, based on the estimated cost of {{ totalProjectCost | inPounds }}.
+                </p>
+                 
+                <p>
+                    This grant amount combines:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        {{ grantAmount | inPounds }} for house costs (40% of {{ projectCost | inPounds }})
+                    </li>
+
+                    <li>
+                        {{ solarFunding | inPounds }} for solar PV system costs (25% of {{ solarCost | inPounds }} is {{ solarCost * 0.25 | inPounds }}, capped at {{ solarFunding | inPounds }})
+                    </li>
+                </ul>
+            
+            {% elseif energyCap < energy %}
+            
+                <p>
+                    You may be able to apply for a grant of up to {{ totalFunding | inPounds }}, based on the estimated cost of {{ totalProjectCost | inPounds }}.
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        {{ grantAmount | inPounds }} for house costs 
+                    </li>
+
+                    <li>
+                        {{ solarFunding | inPounds }} for solar PV system costs
+                    </li>
+                </ul>
+
+            {% else %}    
+
+                <p>
+                    You may be able to apply for a grant of up to {{ totalFunding | inPounds }}, based on the estimated cost of {{ totalProjectCost | inPounds }}.
+                </p>
+                 
+                <p>
+                    This grant amount combines:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        {{ grantAmount | inPounds }} for house costs (40% of {{ projectCost | inPounds }})
+                    </li>
+
+                    <li>
+                        {{ solarFunding | inPounds }} for solar PV system costs (25% of {{ solarCost | inPounds }} is {{ solarCost * 0.25 | inPounds }})
+                    </li>
+                </ul>
+
+            {% endif %}
 
             {{ govukWarningText({
                 text: "There's no guarantee the project will receive a grant",
                 iconFallbackText: "Warning"
             }) }}
 
-            {% set nextPage = 'remaining-cost' %}
-            {% if grantAmount != 500000 and data['solar-pv-system'] == 'Yes' %}
-                {% set nextPage = 'energy-output' %}
-            {% endif %}
+            <form action="remaining-cost">
 
-            {{ govukButton ({
-                html: 'Continue',
-                href: nextPage
-            }) }}
-        
+                <input type="hidden" name="potential-funding" value="{{ totalFunding }}">
+                <input type="hidden" name="total-cost" value="{{ totalProjectCost }}">
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
         </div>
 
 </div>

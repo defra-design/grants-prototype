@@ -34,6 +34,9 @@
                     iconFallbackText: "Warning"
                 }) }}
 
+                <input type="hidden" name="potential-funding" value="{{ grantAmount }}">
+                <input type="hidden" name="total-cost" value="{{ data['cost'] | float }}">
+
                 {{ govukButton ({
                     html: 'Continue'
                 }) }}

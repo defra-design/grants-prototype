@@ -1,11 +1,11 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
-{% set grantAmount = data['cost'] | float | percent(40) %}
+{% set grantAmount = data['potential-funding'] | float | percent(40) %}
 {% if grantAmount > 500000 %}
     {% set grantAmount = 500000 %}
 {% endif %}
 
-{% set remainingCost = (data['cost'] | float) - grantAmount %}
+{% set remainingCost = (data['total-cost'] | float) - grantAmount %}
 
 {% block pageTitle %}
     Can you pay the remaining costs of {{ remainingCost | inPounds }}?
