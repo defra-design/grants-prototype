@@ -72,9 +72,13 @@
                     </li>
 
                     <li>
-                        {{ solarFunding | inPounds }} for solar PV system costs (25% of {{ solarCost | inPounds }} is {{ solarCost * 0.25 | inPounds }}, capped at {{ solarFunding | inPounds }})
+                        {{ solarFunding | inPounds }} for solar PV system costs
                     </li>
                 </ul>
+
+                <p>
+                    As house costs take grant funding priority, you may be able to apply for a grant of up to {{ solarFunding | inPounds }} for a solar PV system. The maximum grant is £500,000.
+                </p>
             
             {% elseif energyCap < energy %}
             
@@ -84,7 +88,7 @@
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        {{ grantAmount | inPounds }} for house costs 
+                        {{ grantAmount | inPounds }} for house costs (40% of {{ projectCost | inPounds }})
                     </li>
 
                     <li>
@@ -108,7 +112,7 @@
                     </li>
 
                     <li>
-                        {{ solarFunding | inPounds }} for solar PV system costs (25% of {{ solarCost | inPounds }} is {{ solarCost * 0.25 | inPounds }})
+                        {{ solarFunding | inPounds }} for solar PV system costs (25% of {{ solarCost | inPounds }})
                     </li>
                 </ul>
 
