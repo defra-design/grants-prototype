@@ -29,6 +29,10 @@
     {% set solarFunding = 500000 - grantAmount %}
     {% set totalFunding = 500000 %}
 {% endif %} 
+
+{% if grantAmount > 500000 %}
+    {% set grantAmount = 500000 %}
+{% endif %} 
             
 <div class="govuk-grid-row">
 
