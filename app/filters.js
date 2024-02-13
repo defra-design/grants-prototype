@@ -40,6 +40,12 @@ addFilter('inPounds', (input) => {
 	if (isNaN(num)) {
 		return '£XX.XX'
 	}
+	if (num >= 1000000 && num < 1000000000 && num % 10000 === 0) {
+		let millionValue = (num / 1000000).toFixed(2)
+		// Remove trailing zeros after decimal point
+		millionValue = parseFloat(millionValue).toString()
+		return `£${millionValue} million`
+	}
 	var returnStr =
 		'£' +
 		num.toLocaleString('en-GB', {
