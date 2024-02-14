@@ -102,16 +102,19 @@
 
                 {% set detailsContentHTML %}
                     <p>
-                        Because you have told us that this project will house {{ birds | formatNumber }} birds, you can apply for funding for a solar PV system with a rating of up to {{ energyCap }}kW. Because you are installing a solar PV system with a higher energy rating ({{ energy }}kW), the difference must be self-funded.
+                        Because you have told us that this project will house {{ birds | formatNumber }} birds, you can apply for funding for a solar PV system with a rating of up to {{ energyCap  | formatNumber }}kW (5kW for every thousand birds).
+                    </p>
+                    <p>
+                        Because you are installing a solar PV system with a higher energy rating ({{ energy | formatNumber }}kW), the difference must be self-funded.
                     </p>
                     <p>
                         Based on what you have told us, your solar PV system will cost {{ (solarCost | float / energy | float) | inPounds }} per kW.
                     </p>
                     <p>
-                        As we can fund 25% of the cost of a solar PV system up to a rating of {{ energyCap }}kW, we have calculated the grant-fundable amount for the solar PV system to be {{ ((solarCost | float / energy | float) * energyCap | float) | inPounds }} ({{ (solarCost | float / energy | float) | inPounds }} multiplied by {{ energyCap }}kW).
+                         We have calculated the grant-fundable amount for the solar PV system to be {{ ((solarCost | float / energy | float) * energyCap | float) | inPounds }} ({{ (solarCost | float / energy | float) | inPounds }} multiplied by {{ energyCap | formatNumber }}kW).
                     </p>
                     <p>
-                        As you can apply for 25% of the cost of a solar PV system up to a rating of {{ energyCap }}kW, you can apply for a grant of up to {{ solarFunding | inPounds }} for your solar PV project.
+                        You can apply for 25% of this grant-fundable amount, meaning the maximum grant funding is {{ solarFunding | inPounds }} for your solar PV project.
                     </p>
                     {{ govukTable({
                         caption: 'Solar PV funding calculation',
@@ -120,66 +123,65 @@
                         rows: [
                             [
                                 {
-                                    text: 'Number of birds'
+                                    html: 'Number of birds to be housed in this project<br><span class="govuk-body-s" style="color: #505a5f">(you told us this <a href="../features/number-of-birds">change</a>)</span>'
                                 },
                                 {
-                                    text: birds | formatNumber
+                                    text: (birds | float) | formatNumber,
+                                    format: 'numeric'
                                 }
                             ],
                             [
                                 {
-                                    text: 'Allowable solar PV system rating per 1000 birds'
+                                    html: 'Solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">(you told us this <a href="solar-cost">change</a>)</span>'
                                 },
                                 {
-                                    text: '5kW'
+                                    text: solarCost | inPounds,
+                                    format: 'numeric'
                                 }
                             ],
                             [
                                 {
-                                    text: 'Allowable solar PV system rating for this project'
+                                    html: 'This project’s solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">(you told us this <a href="energy-output">change</a>)</span>'
                                 },
                                 {
-                                    text: energyCap + 'kW'
+                                    text: energy | formatNumber + 'kW',
+                                    format: 'numeric'
                                 }
                             ],
                             [
                                 {
-                                    text: 'Actual solar PV system rating for this project'
+                                    html: 'Cost per kW<br><span class="govuk-body-s" style="color: #505a5f">(' + solarCost | float | inPounds + ' divided by ' + (energy | float) | formatNumber + 'kW)</span>'
                                 },
                                 {
-                                    text: energy + 'kW'
+                                    text: (solarCost | float / energy | float) | inPounds,
+                                    format: 'numeric'
                                 }
                             ],
                             [
                                 {
-                                    text: 'Total solar PV system cost'
+                                    html: 'Maximum grant-funded solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">(5kW for every thousand birds)</span>'
                                 },
                                 {
-                                    text: solarCost | inPounds
+                                    text: energyCap | formatNumber + 'kW',
+                                    format: 'numeric'
                                 }
                             ],
                             [
                                 {
-                                    text: 'Solar PV system cost per kW'
+                                    html: 'This project’s grant-fundable solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">(' + (solarCost | float / energy | float) | inPounds + ' multiplied by ' + (energyCap | float) | formatNumber + 'kw)</span>'
                                 },
                                 {
-                                    text: (solarCost | float / energy | float) | inPounds
+                                    text: ((solarCost | float / energy | float) * energyCap | float) | inPounds,
+                                    format: 'numeric'
                                 }
                             ],
                             [
                                 {
-                                    text: 'Grant-fundable amount for solar PV system'
+                                    html: 'Maximum grant funding for solar PV system<br><span class="govuk-body-s" style="color: #505a5f">(25% of ' + ((solarCost | float / energy | float) * energyCap | float) | inPounds + ')</span>'
                                 },
                                 {
-                                    text: ((solarCost | float / energy | float) * energyCap | float) | inPounds
-                                }
-                            ],
-                            [
-                                {
-                                    text: 'Grant funding allowable for the solar PV system for this project (25% of ' + ((solarCost | float / energy | float) * energyCap | float) | inPounds + ')'
-                                },
-                                {
-                                    text: solarFunding | inPounds
+                                    text: solarFunding | inPounds,
+                                    format: 'numeric'
                                 }
                             ]
                         ]
