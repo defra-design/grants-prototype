@@ -56,6 +56,14 @@ addFilter('inPounds', (input) => {
 	return returnStr
 })
 
+addFilter('formatNumber', (input) => {
+	const num = Number(input)
+	if (isNaN(num)) {
+		return 'XX'
+	}
+	return num.toLocaleString('en-GB')
+})
+
 addFilter('checkboxAnswersToList', (input, fallback = '') => {
 	var returnStr = '<ul class="govuk-list govuk-list--bullet">'
 	if (input) {
