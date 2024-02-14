@@ -100,6 +100,97 @@
                     </li>
                 </ul>
 
+                {% set detailsContentHTML %}
+                    <p>
+                        Because you have told us that this project will house {{ birds | formatNumber }} birds, you can apply for funding for a solar PV system with a rating of up to {{ energyCap }}kW. Because you are installing a solar PV system with a higher energy rating ({{ energy }}kW), the difference must be self-funded.
+                    </p>
+                    <p>
+                        Based on what you have told us, your solar PV system will cost {{ (solarCost | float / energy | float) | inPounds }} per kW.
+                    </p>
+                    <p>
+                        As we can fund 25% of the cost of a solar PV system up to a rating of {{ energyCap }}kW, we have calculated the grant-fundable amount for the solar PV system to be {{ ((solarCost | float / energy | float) * energyCap | float) | inPounds }} ({{ (solarCost | float / energy | float) | inPounds }} multiplied by {{ energyCap }}kW).
+                    </p>
+                    <p>
+                        As you can apply for 25% of the cost of a solar PV system up to a rating of {{ energyCap }}kW, you can apply for a grant of up to {{ solarFunding | inPounds }} for your solar PV project.
+                    </p>
+                    {{ govukTable({
+                        caption: 'Solar PV funding calculation',
+                        captionClasses: "govuk-table__caption--s",
+                        firstCellIsHeader: false,
+                        rows: [
+                            [
+                                {
+                                    text: 'Number of birds'
+                                },
+                                {
+                                    text: birds | formatNumber
+                                }
+                            ],
+                            [
+                                {
+                                    text: 'Allowable solar PV system rating per 1000 birds'
+                                },
+                                {
+                                    text: '5kW'
+                                }
+                            ],
+                            [
+                                {
+                                    text: 'Allowable solar PV system rating for this project'
+                                },
+                                {
+                                    text: energyCap + 'kW'
+                                }
+                            ],
+                            [
+                                {
+                                    text: 'Actual solar PV system rating for this project'
+                                },
+                                {
+                                    text: energy + 'kW'
+                                }
+                            ],
+                            [
+                                {
+                                    text: 'Total solar PV system cost'
+                                },
+                                {
+                                    text: solarCost | inPounds
+                                }
+                            ],
+                            [
+                                {
+                                    text: 'Solar PV system cost per kW'
+                                },
+                                {
+                                    text: (solarCost | float / energy | float) | inPounds
+                                }
+                            ],
+                            [
+                                {
+                                    text: 'Grant-fundable amount for solar PV system'
+                                },
+                                {
+                                    text: ((solarCost | float / energy | float) * energyCap | float) | inPounds
+                                }
+                            ],
+                            [
+                                {
+                                    text: 'Grant funding allowable for the solar PV system for this project (25% of ' + ((solarCost | float / energy | float) * energyCap | float) | inPounds + ')'
+                                },
+                                {
+                                    text: solarFunding | inPounds
+                                }
+                            ]
+                        ]
+                        }) }}
+                {% endset %}
+                
+                {{ govukDetails({
+                    summaryText: 'How is the solar PV funding calculated?',
+                    html: detailsContentHTML
+                }) }}
+
             {% else %}    
 
                 <p>
