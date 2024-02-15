@@ -40,17 +40,6 @@
 
             <h1 class="govuk-heading-l">Potential grant funding</h1>
 
-            {# <pre> 
-               birds {{ birds }}
-               energy {{ energy }}
-               solar cost {{ solarCost | inPounds }}
-               energy cap {{ energyCap }}
-               solar funding {{ solarFunding | inPounds }}
-                total funding {{ totalFunding | inPounds }} 
-                grant amount {{ grantAmount | inPounds }}
-                maths {{ solarFunding | float + grantAmount | float }}
-            </pre> #}
-
             {% if grantAmount == 500000 %}
                 <p>
                     The maximum grant you can apply for is £500,000.
@@ -177,7 +166,7 @@
                             ],
                             [
                                 {
-                                    html: 'Maximum grant funding for solar PV system<br><span class="govuk-body-s" style="color: #505a5f">25% of ' + ((solarCost | float / energy | float) * energyCap | float) | inPounds + '</span>'
+                                    html: 'Potential grant funding for solar PV system<br><span class="govuk-body-s" style="color: #505a5f">25% of ' + ((solarCost | float / energy | float) * energyCap | float) | inPounds + '</span>'
                                 },
                                 {
                                     text: solarFunding | inPounds,
