@@ -108,7 +108,7 @@
                         Because you are installing a solar PV system with a higher energy rating ({{ energy | formatNumber }}kW), the difference must be self-funded.
                     </p>
                     <p>
-                        Based on what you have told us, your solar PV system will cost {{ (solarCost | float / energy | float) | inPounds }} per kW.
+                        Based on what you have told us, your solar PV system will cost {{ (solarCost | float / energy | float) | inPounds }} per kilowatt.
                     </p>
                     <p>
                          We have calculated the grant-fundable amount for the solar PV system to be {{ ((solarCost | float / energy | float) * energyCap | float) | inPounds }} ({{ (solarCost | float / energy | float) | inPounds }} multiplied by {{ energyCap | formatNumber }}kW).
@@ -123,7 +123,7 @@
                         rows: [
                             [
                                 {
-                                    html: 'Number of birds to be housed in this project<br><span class="govuk-body-s" style="color: #505a5f">(you told us this <a href="../features/number-of-birds">change</a>)</span>'
+                                    html: 'Number of birds to be housed in this project<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="../features/number-of-birds">change the number of birds</a></span>'
                                 },
                                 {
                                     text: (birds | float) | formatNumber,
@@ -132,7 +132,7 @@
                             ],
                             [
                                 {
-                                    html: 'Solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">(you told us this <a href="solar-cost">change</a>)</span>'
+                                    html: 'Solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="solar-cost">change the solar PV system cost</a></span>'
                                 },
                                 {
                                     text: solarCost | inPounds,
@@ -141,7 +141,7 @@
                             ],
                             [
                                 {
-                                    html: 'This project’s solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">(you told us this <a href="energy-output">change</a>)</span>'
+                                    html: 'This project’s solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="energy-output">change the solar PV system rating</a></span>'
                                 },
                                 {
                                     text: energy | formatNumber + 'kW',
@@ -150,7 +150,7 @@
                             ],
                             [
                                 {
-                                    html: 'Cost per kW<br><span class="govuk-body-s" style="color: #505a5f">(' + solarCost | float | inPounds + ' divided by ' + (energy | float) | formatNumber + 'kW)</span>'
+                                    html: 'Solar PV system cost per kilowatt<br><span class="govuk-body-s" style="color: #505a5f">' + solarCost | float | inPounds + ' divided by ' + (energy | float) | formatNumber + 'kW</span>'
                                 },
                                 {
                                     text: (solarCost | float / energy | float) | inPounds,
@@ -159,7 +159,7 @@
                             ],
                             [
                                 {
-                                    html: 'Maximum grant-funded solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">(5kW for every thousand birds)</span>'
+                                    html: 'Maximum grant-funded solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">5kW for every thousand birds</span>'
                                 },
                                 {
                                     text: energyCap | formatNumber + 'kW',
@@ -168,7 +168,7 @@
                             ],
                             [
                                 {
-                                    html: 'This project’s grant-fundable solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">(' + (solarCost | float / energy | float) | inPounds + ' multiplied by ' + (energyCap | float) | formatNumber + 'kw)</span>'
+                                    html: 'Grant-fundable solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">' + (solarCost | float / energy | float) | inPounds + ' multiplied by ' + (energyCap | float) | formatNumber + 'kW</span>'
                                 },
                                 {
                                     text: ((solarCost | float / energy | float) * energyCap | float) | inPounds,
@@ -177,7 +177,7 @@
                             ],
                             [
                                 {
-                                    html: 'Maximum grant funding for solar PV system<br><span class="govuk-body-s" style="color: #505a5f">(25% of ' + ((solarCost | float / energy | float) * energyCap | float) | inPounds + ')</span>'
+                                    html: 'Maximum grant funding for solar PV system<br><span class="govuk-body-s" style="color: #505a5f">25% of ' + ((solarCost | float / energy | float) * energyCap | float) | inPounds + '</span>'
                                 },
                                 {
                                     text: solarFunding | inPounds,
