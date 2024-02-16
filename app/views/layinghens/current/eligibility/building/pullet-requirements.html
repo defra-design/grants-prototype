@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the pullet housing have these features?
+    Will the inside of the building have these features?
 {% endblock %}
 
 {% block content %}
@@ -43,7 +43,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the pullet housing have these features?',
+                            text: 'Will the inside of the building have these features?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -57,7 +57,7 @@
                             value: 'Yes',
                             checked: true if data['pullet-requirements'] == 'Yes',
                             attributes: {
-                                    'data-next': 'multi-tier'
+                                    'data-next': 'insulation'
                                 }
                         },
                         {
