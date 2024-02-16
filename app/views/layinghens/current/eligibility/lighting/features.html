@@ -3,10 +3,10 @@
 {% set poultryType = 'hen' %}
 {% if data['poultry-type'] %}
     {% set poultryType = data['poultry-type'] %}
-{% endif %}
+{% endif %} 
 
 {% block pageTitle %}
-    Will the housing’s lighting system have these features?
+    Will the building lighting system have these features? 
 {% endblock %} 
 
 {% block content %}
@@ -20,27 +20,33 @@
             {% set hintHtml %}
 
                 <p class="govuk-hint">
-                    The housing's lighting system must have:
+                    The building lighting system must have:
                 </p>
 
                 <ul class="govuk-hint govuk-list govuk-list--bullet">
                     <li>
-                        the ability to provide an automatic stepped dawn and dusk lighting environment (unless this is already provided as part of an aviary lighting system)
+                        non-flicker LED light with a colour temperature between 2700 and 4000 Kelvin   
                     </li>
                     <li>
-                        an option for red light
+                        capacity for zonal dimming between 0 and 60 lux  
                     </li>
                     <li>
-                        a fail-safe standby device in case of electrical or other failures
+                        coverage of the entire floor-litter (scratch) area  
+                    </li>
+                    <li>
+                        a simulated stepped dawn and dusk (unless this is already provided as part of an aviary lighting system)  
+                    </li>
+                    <li>
+                        an option for red light 
                     </li>
                 </ul>
 
             {% endset %}
 
-            {% set nextPage = '../veranda/features' %}
+            {% set nextPage = '../aviary/welfare' %}
             {% if poultryType != 'hen' %}
-                {% set nextPage = '../features/concrete-apron' %}
-            {% endif %}
+                {% set nextPage = '../building/multi-tier' %}
+            {% endif %} 
 
                 {{ govukRadios ({
                     idPrefix: 'lighting-features',
@@ -48,7 +54,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the housing’s lighting system have these features?',
+                            text: 'Will the building lighting system have these features? ',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -81,6 +87,19 @@
                 }) }}
 
             </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The building must have a lighting system that includes these features to promote positive bird behaviour and reduce stress.
+                </p>
+            </div>
 
         </div>
 

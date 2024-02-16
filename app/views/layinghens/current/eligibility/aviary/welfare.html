@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the aviary system meet the manufacturer's recommendation for high welfare?
+    Will the building have a high welfare aviary housing system?
 {% endblock %}
 
 {% block content %}
@@ -23,13 +23,13 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the aviary system meet the manufacturer’s recommendation for high welfare?',
+                            text: 'Will the building have a high welfare aviary housing system?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'The birds must be able to move between levels without flying or jumping more than one metre in height'
+                        text: 'This system must enable the birds to move between levels without flying or jumping more than one metre in height'
                     },
                     items: [
                         {
@@ -37,7 +37,7 @@
                             value: 'Yes',
                             checked: true if data['aviary-welfare'] == 'Yes',
                             attributes: {
-                                    'data-next': 'manure'
+                                    'data-next': 'features'
                                 }
                         },
                         {
@@ -49,6 +49,11 @@
                                 }
                         }
                     ]
+                }) }}
+
+                {{ govukWarningText ({
+                    text: 'You must not install a combi-cage system in your grant-funded building.',
+                    iconFallbackText: 'Warning'
                 }) }}
 
                 {{ govukButton ({
@@ -66,16 +71,16 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    The aviary system must either:
+                    The building must have a high welfare aviary housing system.
                 </p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                        have welfare ramps and platforms in positions that meet the manufacturer's recommendation for a high welfare system
-                    </li>
-                    <li>
-                        be designed for hens to move between levels without ramps and platforms
-                    </li>
-                </ul>
+                <p>
+                    Some systems are designed to maximise accessibility, while others will need welfare ramps and platforms to meet the high welfare requirement.
+                </p>
+                <p>
+                    You cannot install a combi-cage system in your grant-funded building.
+                </p>
+
+             
             </div>
 
         </div>

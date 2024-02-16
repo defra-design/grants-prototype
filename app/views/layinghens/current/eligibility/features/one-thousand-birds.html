@@ -1,12 +1,7 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
-{% set poultryType = 'hen' %}
-{% if data['poultry-type'] %}
-    {% set poultryType = data['poultry-type'] %}
-{% endif %} 
-
 {% block pageTitle %}
-    Will the building have full wall and roof insulation?
+    Do you have 1,000 or more birds on your farm currently?
 {% endblock %}
 
 {% block content %}
@@ -18,12 +13,12 @@
             <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'insulation',
-                    name: 'insulation',
+                    idPrefix: 'one-thousand-birds',
+                    name: 'one-thousand-birds',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the building have full wall and roof insulation?',
+                            text: 'Do you have 1,000 or more birds on your farm currently?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -32,21 +27,17 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['insulation'] == 'Yes',
-                            attributes: {
-                                    'data-next': '../lighting/features'
-                                }
+                            checked: true if data['one-thousand-birds'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['insulation'] == 'No',
-                            attributes: {
-                                    'data-next': 'elim-insulation'
-                                }
+                            checked: true if data['one-thousand-birds'] == 'No'
                         }
                     ]
                 }) }}
+
+                
 
                 {{ govukButton ({
                     html: 'Continue'
@@ -56,18 +47,14 @@
 
         </div>
 
-
         <div class="govuk-grid-column-one-third">
 
             <div class="app-step-nav-related app-step-nav-related--singular">
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                <p>
-                    The new building must have wall and roof insulation with a U-Value of less than 0.3 watts per square metre, per degree Kelvin (0.3W/m²K).
-                </p>
+                <p>You must have at least 1,000 birds (laying hens, pullets, or both) on your farm currently to be eligible for grant funding.</p>
             </div>
-
         </div>
 
 </div>
