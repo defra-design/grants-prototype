@@ -4,13 +4,32 @@
     Will you buy a solar PV system with this grant?
 {% endblock %}
 
+{% set shouldEliminate = false %}
+{% if data['roof-support-for-solar-pv'] == 'No' and 'None' | isIn(data['solar-exemptions']) %}
+    {% set shouldEliminate = true %}
+{% endif %}
+
+{% set cannotApplyForSolar = false %}
+{% set facesNorth = 'Faces north' | isIn(data['solar-exemptions']) %}
+{% set heavilyShaded = 'Heavily shaded' | isIn(data['solar-exemptions']) %}
+{% set noSpace = 'Lack of clear space' | isIn(data['solar-exemptions']) %}
+{% if facesNorth or heavilyShaded or noSpace %}
+    {% set cannotApplyForSolar = true %}
+{% endif %}
+
 {% block content %}
+
+{% if shouldEliminate %}
+    {{ 'elim-roof-support-for-solar-pv' | redirect | safe }}
+{% elseif cannotApplyForSolar %}
+    {{ '../funding/cost' | redirect | safe }}
+{% endif %}
 
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="project-cost-total">
+            <form action="../funding/cost">
 
                  {% set hintHtml %}
 
@@ -19,7 +38,7 @@
                     </p>
 
                     <p class="govuk-hint"> 
-                    A solar PV system can include:
+                        A solar PV system can include:
                     </p>
 
                     <ul class="govuk-hint govuk-list govuk-list--bullet">

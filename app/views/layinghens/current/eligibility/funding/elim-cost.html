@@ -16,7 +16,7 @@
     {% if data['solar-pv-system'] == 'Yes' %}
 
         {% if grantAmount != 500000 %}
-            {{ 'energy-output' | redirect | safe }}
+            {{ 'number-of-birds' | redirect | safe }}
         {% else %}
             {{ 'potential-funding-solar' | redirect | safe }}
         {% endif %}

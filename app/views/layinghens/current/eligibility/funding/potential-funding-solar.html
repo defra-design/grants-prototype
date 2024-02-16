@@ -112,7 +112,7 @@
                         rows: [
                             [
                                 {
-                                    html: 'Number of birds to be housed in this project<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="../features/number-of-birds">change the number of birds</a></span>'
+                                    html: 'Number of birds to be housed in this project<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="number-of-birds" class="govuk-link--no-visited-state">change the number of birds</a></span>'
                                 },
                                 {
                                     text: (birds | float) | formatNumber,
@@ -121,7 +121,7 @@
                             ],
                             [
                                 {
-                                    html: 'Solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="solar-cost">change the solar PV system cost</a></span>'
+                                    html: 'Solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="solar-cost" class="govuk-link--no-visited-state">change the solar PV system cost</a></span>'
                                 },
                                 {
                                     text: solarCost | inPounds,
@@ -130,7 +130,7 @@
                             ],
                             [
                                 {
-                                    html: 'This project’s solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="energy-output">change the solar PV system rating</a></span>'
+                                    html: 'This project’s solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="energy-output" class="govuk-link--no-visited-state">change the solar PV system rating</a></span>'
                                 },
                                 {
                                     text: energy | formatNumber + 'kW',
