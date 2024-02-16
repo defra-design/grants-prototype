@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the housing lighting system provide non-flicker light from dimmable LEDs?
+    Are you exempt from adding a veranda to this building?
 {% endblock %}
 
 {% block content %}
@@ -17,37 +17,54 @@
 
             <form method="post">
 
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        You are exempt if you do not have space to add a veranda that is either:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet govuk-hint">
+                        <li>
+                            4 metres wide along the length of the bird housing area
+                        </li>
+                        <li>
+                            30% or more of the indoor bird housing area footprint
+                        </li>
+                    </ul>
+
+                {% endset %}
+
                 {{ govukRadios ({
-                    idPrefix: 'lighting-non-flicker',
-                    name: 'lighting-non-flicker',
+                    idPrefix: 'veranda-exempt',
+                    name: 'veranda-exempt',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the housing lighting system provide non-flicker light from dimmable LEDs?',
+                            text: 'Are you exempt from adding a veranda to this building?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'Housing lighting must be ceiling-mounted and cover the whole barn area, including the floor litter'
+                        html: hintHtml
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['lighting-non-flicker'] == 'Yes',
+                            checked: true if data['veranda-exempt'] == 'Yes',
                             attributes: {
-                                    'data-next': 'features'
-                                }
+                                'data-next': 'specification'
+                            }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['lighting-non-flicker'] == 'No',
-                            attributes: {
-                                    'data-next': 'elim-non-flicker'
-                                }
-                        }
+                            checked: true if data['veranda-exempt'] == 'No',
+                             attributes: {
+                                'data-next': 'elim-exempt'
+                            }
+                        } 
                     ]
                 }) }}
 
@@ -65,20 +82,18 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
+
                 <p>
-                    The lighting must be able to provide:
+                    The building must have a veranda.
                 </p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                        non-flicker light between approximately 3000 Kelvin and 4000 Kelvin colour temperature
-                    </li>
-                    <li>
-                        zonal dimming between 0 lux and 60 lux
-                    </li>
-                </ul>
+
+                <p>
+                    There are exemptions to adding a veranda if you do not have the required space.
+                </p>
+    
             </div>
 
-        </div>
+         </div>
 
 </div>
 

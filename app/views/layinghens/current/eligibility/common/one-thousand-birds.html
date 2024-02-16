@@ -1,12 +1,7 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
-{% set poultryType = 'hen' %}
-{% if data['poultry-type'] %}
-    {% set poultryType = data['poultry-type'] %}
-{% endif %}
-
 {% block pageTitle %}
-    Will the aviary system have an integrated LED lighting system?
+    Do you have 1,000 or more birds on your farm currently?
 {% endblock %}
 
 {% block content %}
@@ -18,38 +13,37 @@
             <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'aviary-lighting',
-                    name: 'aviary-lighting',
+                    idPrefix: 'one-thousand-birds',
+                    name: 'one-thousand-birds',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the aviary system have an integrated LED lighting system?',
+                            text: 'Do you have 1,000 or more birds on your farm currently?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
-                    },
-                    hint: {
-                        text: 'This provides dimmable non-flicker lighting at each level of the aviary system, including top perches and under the system'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['aviary-lighting'] == 'Yes',
+                            checked: true if data['one-thousand-birds'] == 'Yes',
                             attributes: {
-                                    'data-next': '../ventilation/features'
-                                }
+                                'data-next': 'legal-status'
+                            }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['aviary-lighting'] == 'No',
+                            checked: true if data['one-thousand-birds'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-lighting'
-                                }
+                                'data-next': 'elim-one-thousand-birds'
+                            }
                         }
                     ]
                 }) }}
+
+                
 
                 {{ govukButton ({
                     html: 'Continue'
@@ -65,19 +59,8 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                <p>
-                    The lighting system must have:
-                </p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                        non-flicker lighting
-                    </li>
-                    <li>
-                        zonal dimming to provide an automated dawn and dusk
-                    </li>
-                </ul>
+                <p>You must have at least 1,000 birds (laying hens, pullets, or both) on your farm currently to be eligible for grant funding.</p>
             </div>
-
         </div>
 
 </div>

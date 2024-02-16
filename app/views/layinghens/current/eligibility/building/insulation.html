@@ -34,7 +34,7 @@
                             value: 'Yes',
                             checked: true if data['insulation'] == 'Yes',
                             attributes: {
-                                    'data-next': '../lighting/features'
+                                    'data-next': 'lighting'
                                 }
                         },
                         {
@@ -63,9 +63,15 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                <p>
-                    The new building must have wall and roof insulation with a U-Value of less than 0.3 watts per square metre, per degree Kelvin (0.3W/m²K).
-                </p>
+                {% if data['project-type'] == 'refurbish' %}
+                    <p>
+                        The building must have full wall and roof insulation.
+                    </p>
+                {% else %}
+                    <p>
+                        The new building must have wall and roof insulation with a U-Value of less than 0.3 watts per square metre, per degree Kelvin (0.3W/m²K).
+                    </p>
+                {% endif %}
             </div>
 
         </div>

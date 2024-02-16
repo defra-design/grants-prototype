@@ -1,7 +1,7 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
-    You cannot apply for a grant from this scheme - Ventilation air quality
+    You cannot apply for a grant from this scheme - Ventilation specifications
 {% endblock %}
 
 {% block content %}
@@ -15,15 +15,15 @@
                 <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
 
                 <p>
-                    The ventilation must maintain air quality (at bird head height of less than 50cm) at a:
+                    In extreme heat, the ventilation system must be able to provide:
                 </p>
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        carbon dioxide level of less than 3,000 parts per million (ppm)
+                        an air speed of 1 metre per second over birds
                     </li>
                     <li>
-                        percentage relative humidity (%rH) level of 40% to 70%
+                        a maximum ventilation rate of {{ minRate }}m<sup>3</sup> per hour per 1000 birds
                     </li>
                 </ul>
 

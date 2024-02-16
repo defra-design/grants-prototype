@@ -14,24 +14,19 @@
 
                 <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
 
-                <p>
-                    The building must have full wall and roof insulation.
-                </p>
-
-                <p>
-                    The new building must have wall and roof insulation with a U-Value of less than 0.3 watts per square metre, per degree Kelvin (0.3W/m²K).
-                </p>
-
-                {# {% if data['project-type'] == 'replace' %}
+                {% if data['project-type'] == 'refurbish' %}
                     <p>
-                        The wall and roof insulation of the housing must have a U-Value of less than 0.3W/m<sup>2</sup>/°C.
+                        The building must have full wall and roof insulation.
                     </p>
                 {% else %}
                     <p>
-                        The housing must have full wall and roof insulation.
+                        The building must have full wall and roof insulation.
+                    </p>
+
+                    <p>
+                        The new building must have wall and roof insulation with a U-Value of less than 0.3 watts per square metre, per degree Kelvin (0.3W/m²K).
                     </p>
                 {% endif %}
-                #}
 
                 <p>
                     <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
