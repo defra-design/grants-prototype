@@ -5,8 +5,13 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
+{% set minRate = '10,800' %}
+{% if poultryType != 'hen' %}
+    {% set minRate = '9,000' %}
+{% endif %}
+
 {% block pageTitle %}
-    Will your step-up system have these features?
+    Will the ventilation system be fit for purpose in extreme heat?
 {% endblock %}
 
 {% block content %}
@@ -20,27 +25,27 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        The step-up system must have:
+                        In extreme heat, the ventilation system must be able to provide:
                     </p>
 
-                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                    <ul class="govuk-list govuk-list--bullet govuk-hint">
                         <li>
-                            height-adjustable tiers that may include food and water at, or before, 10 days
+                            an air speed of 1 metre per second over birds
                         </li>
                         <li>
-                            welfare ramps
+                            a maximum ventilation rate of {{ minRate }}m<sup>3</sup> per hour per 1000 birds
                         </li>
                     </ul>
 
                 {% endset %}
 
                 {{ govukRadios ({
-                    idPrefix: 'multi-tier-step-up',
-                    name: 'multi-tier-step-up',
+                    idPrefix: 'ventilation-specifications',
+                    name: 'ventilation-specifications',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will your step-up system have these features?',
+                            text: 'Will the ventilation system be fit for purpose in extreme heat?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -52,17 +57,17 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['multi-tier-step-up'] == 'Yes',
+                            checked: true if data['ventilation-specifications'] == 'Yes',
                             attributes: {
-                                    'data-next': '../ventilation/features'
+                                    'data-next': '../veranda/present'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['multi-tier-step-up'] == 'No',
+                            checked: true if data['ventilation-specifications'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-multi-tier-step-up'
+                                    'data-next': 'elim-specifications'
                                 }
                         }
                     ]
@@ -73,6 +78,19 @@
                 }) }}
 
             </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The ventilation system must be able prevent the heat that the birds generate from increasing the house temperature by more than 3°C above the external ambient temperature.
+                </p>
+            </div>
 
         </div>
 

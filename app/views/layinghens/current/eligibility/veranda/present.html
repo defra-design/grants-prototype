@@ -1,7 +1,12 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
 {% block pageTitle %}
-    Do you have 1,000 or more birds on your farm currently?
+    Will the building have a veranda?
 {% endblock %}
 
 {% block content %}
@@ -13,12 +18,12 @@
             <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'one-thousand-birds',
-                    name: 'one-thousand-birds',
+                    idPrefix: 'veranda-present',
+                    name: 'veranda-present',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Do you have 1,000 or more birds on your farm currently?',
+                            text: 'Will the building have a veranda?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -27,17 +32,21 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['one-thousand-birds'] == 'Yes'
+                            checked: true if data['veranda-present'] == 'Yes',
+                            attributes: {
+                                'data-next': 'size'
+                            }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['one-thousand-birds'] == 'No'
-                        }
+                            checked: true if data['veranda-present'] == 'No',
+                             attributes: {
+                                'data-next': 'exempt'
+                            }
+                        } 
                     ]
                 }) }}
-
-                
 
                 {{ govukButton ({
                     html: 'Continue'
@@ -53,9 +62,18 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                <p>You must have at least 1,000 birds (laying hens, pullets, or both) on your farm currently to be eligible for grant funding.</p>
+
+                <p>
+                    The building must have a veranda.
+                </p>
+
+                <p>
+                    There are exemptions to adding a veranda if you do not have the required space.
+                </p>
+    
             </div>
-        </div>
+
+         </div>
 
 </div>
 

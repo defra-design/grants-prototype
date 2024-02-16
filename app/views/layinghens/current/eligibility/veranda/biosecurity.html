@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the veranda have the capacity to be made biosecure with mesh that has a spacing of 6mm or less?
+    Will the veranda be biosecure?
 {% endblock %}
 
 {% block content %}
@@ -17,19 +17,36 @@
 
             <form method="post">
 
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The veranda must have:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            a mesh roller screen with a mesh hole size of 6mm or less running underneath the length of the roof, that fits securely against the wall when extended
+                        </li>
+                        <li>
+                            closable pop holes along the length of the building which are at least 35cm high and 40cm wide, unless the veranda is part of an indoor barn system
+                        </li>
+                    </ul>
+
+                {% endset %}
+
                 {{ govukRadios ({
                     idPrefix: 'veranda-biosecurity',
                     name: 'veranda-biosecurity',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the veranda have the capacity to be made biosecure with mesh that has a spacing of 6mm or less?',
+                            text: 'Will the veranda be biosecure?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'This is to stop wild birds and rodents from entering during housing orders'
+                        html: hintHtml
                     },
                     items: [
                         {
@@ -67,8 +84,22 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    You must be able to make the veranda secure with mesh that has a spacing (aperture) of 6mm or less during disease driven housing orders.
+                    You must be able to make the veranda biosecure with mesh during housing orders.
                 </p>
+                <p>
+                    The pop hole openings must add up to a total of 2 metres for every 1,000 hens.
+                </p>
+                <p>
+                    The base of all pop holes must either:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        be less than 30cm from floor level
+                    </li>
+                    <li>
+                        have access ramps that are as wide as the pop holes
+                    </li>
+                </ul>
             </div>
 
         </div>

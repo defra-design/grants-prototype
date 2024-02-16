@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the ventilation maintain the required air quality parameters?
+    Will your step-up system have these features?
 {% endblock %}
 
 {% block content %}
@@ -20,27 +20,27 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        The ventilation must maintain air quality (at bird head height of less than 50cm) at a:
+                        The step-up system must have:
                     </p>
 
                     <ul class="govuk-hint govuk-list govuk-list--bullet">
                         <li>
-                            carbon dioxide level of less than 3,000 parts per million (ppm)
+                            height-adjustable tiers that may include food and water at, or before, 10 days
                         </li>
                         <li>
-                            percentage relative humidity (%rH) level of 40% to 70%
+                            welfare ramps
                         </li>
                     </ul>
 
                 {% endset %}
 
                 {{ govukRadios ({
-                    idPrefix: 'ventilation-air-quality',
-                    name: 'ventilation-air-quality',
+                    idPrefix: 'multi-tier-step-up',
+                    name: 'multi-tier-step-up',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ventilation maintain the required air quality parameters?',
+                            text: 'Will your step-up system have these features?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -52,17 +52,17 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['ventilation-air-quality'] == 'Yes',
+                            checked: true if data['multi-tier-step-up'] == 'Yes',
                             attributes: {
-                                    'data-next': '../lighting/non-flicker'
+                                    'data-next': 'housing-density'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['ventilation-air-quality'] == 'No',
+                            checked: true if data['multi-tier-step-up'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-air-quality'
+                                    'data-next': 'elim-multi-tier-step-up'
                                 }
                         }
                     ]
