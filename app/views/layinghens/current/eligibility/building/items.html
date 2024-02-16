@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing have these items?
+    Will the building have these features?
 {% endblock %}
 
 {% block content %}
@@ -38,6 +38,11 @@
                         </li>
                     </ul>
 
+                {% set nextPage = 'insulation' %}
+                {% if data['poultry-type'] == 'pullet' %}
+                    {% set nextPage = 'pullet-requirements' %}
+                {% endif %}    
+
                 {% endset %}
 
                 {{ govukRadios ({
@@ -46,7 +51,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing have these items?',
+                            text: 'Will the building have these features?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -60,7 +65,7 @@
                             value: 'Yes',
                             checked: true if data['items'] == 'Yes',
                             attributes: {
-                                    'data-next': 'insulation'
+                                    'data-next': nextPage
                                 }
                         },
                         {

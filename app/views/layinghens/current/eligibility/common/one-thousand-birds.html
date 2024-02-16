@@ -1,7 +1,7 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
-    Do you have 1,000 or more birds on your farm currently?
+    Do you have at least 1,000 birds on your farm currently?
 {% endblock %}
 
 {% block content %}
@@ -18,10 +18,13 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Do you have 1,000 or more birds on your farm currently?',
+                            text: 'Do you have at least 1,000 birds on your farm currently?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                     hint: {
+                        text: 'This can be laying hens, pullets or both'
                     },
                     items: [
                         {
