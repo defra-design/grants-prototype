@@ -15,6 +15,18 @@
 
         <div class="govuk-grid-column-two-thirds">
 
+            {% set hintHtml %}
+
+                <p class="govuk-hint">
+                    Using digital systems
+                </p>
+
+                <p class="govuk-hint"> 
+                    Select all that apply
+                </p>
+
+            {% endset %}
+
             {% if data['from-scoring'] == 'true' %}
                 <form action="results">
             {% else %}
@@ -33,10 +45,7 @@
                     },
                     hint: 
                         {
-                            text: 'Using digital systems'
-                        },
-                        {
-                            text: 'Select all that apply',
+                            html: hintHtml
                         },
                     items: [
                         {
