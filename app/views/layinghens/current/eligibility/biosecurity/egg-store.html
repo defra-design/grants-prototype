@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will there be a designated vaccination lobby with internal and external access?
+    Will there be direct external access to the egg store separate to the entrance lobby?
 {% endblock %}
 
 {% block content %}
@@ -18,34 +18,34 @@
             <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'vaccination-lobby',
-                    name: 'vaccination-lobby',
+                    idPrefix: 'egg-store',
+                    name: 'egg-store',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will there be a designated vaccination lobby with internal and external access?',
+                            text: 'Will there be direct external access to the egg store separate to the entrance lobby?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'Internal access from the bird living area and external access from the loading bay'
+                        html: hintHtml
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['vaccination-lobby'] == 'Yes',
+                            checked: true if data['egg-store'] == 'Yes',
                             attributes: {
-                                    'data-next': 'housing-density'
+                                    'data-next': 'concrete-apron'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['vaccination-lobby'] == 'No',
+                            checked: true if data['egg-store'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-vaccination-lobby'
+                                    'data-next': 'elim-egg-store'
                                 }
                         }
                     ]
@@ -66,7 +66,7 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    The building must have a dedicated area to perform pullet vaccinations, with access to the loading bay.
+                    You must be able to remove eggs and deliver empty egg trays to and from the building's egg store without going into the building's entrance lobby or connected changing area.
                 </p>
             </div>
 
