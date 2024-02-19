@@ -1,7 +1,7 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
-    You cannot apply for a grant from this scheme - Project cost
+    The minimum grant you can apply for is £15,000 (40% of £37,500)
 {% endblock %}
 
 {% block content %}
@@ -35,23 +35,34 @@
 
             <form method="post">
 
-                <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
+                <h1 class="govuk-heading-l">The minimum grant you can apply for is £15,000 (40% of £37,500)</h1>
 
                 <p>
-                    The minimum grant you can apply for housing project costs is £15,000 (40% of £37,500).
+                    You can apply for grant funding for multiple building projects. You must submit an application for each building project.
+                </p>
+
+                <p>
+                    If the total grant funding for your combined building projects is more than £15,000 (40% of £37,500), you may still be eligible to apply for grant funding.
                 </p>
 
                 {% if data['solar-pv-system'] == 'Yes' %}
 
                     {{ govukInsetText ({
-                        text: 'You cannot apply for funding for a solar PV system if you have not requested the minimum funding amount for housing project costs.'
+                        text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for building project costs.'
                     }) }}
 
                 {% endif %}
 
                 <p>
+                    If you are applying for grant funding for a single building project, you can
                     <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
                         See other grants you may be eligible for.
+                    </a>
+                </p>
+
+                <p>
+                    <a href='number-of-birds'>
+                        I am applying for multiple building projects.
                     </a>
                 </p>
 
