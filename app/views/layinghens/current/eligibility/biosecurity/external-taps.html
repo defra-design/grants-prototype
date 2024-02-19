@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing have an external tap at each main pedestrian access point?
+    Will the building have an external tap at each main pedestrian access point?
 {% endblock %}
 
 {% block content %}
@@ -23,7 +23,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing have an external tap at each main pedestrian access point?',
+                            text: 'Will the building have an external tap at each main pedestrian access point?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -35,7 +35,7 @@
                             value: 'Yes',
                             checked: true if data['external-taps'] == 'Yes',
                             attributes: {
-                                'data-next': 'number-of-birds'
+                                'data-next': '../solar/roof-support-for-solar-pv'
                             }
                         },
                         {

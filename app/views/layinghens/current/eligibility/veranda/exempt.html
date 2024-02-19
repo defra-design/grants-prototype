@@ -17,6 +17,11 @@
 
             <form method="post">
 
+                {% set nextPageOnNo = '../biosecurity/egg-store' %}
+                {% if poultryType != 'hen' %}
+                    {% set nextPageOnNo = '../biosecurity/vaccination-lobby' %}
+                {% endif %}
+
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
@@ -54,7 +59,7 @@
                             value: 'Yes',
                             checked: true if data['veranda-exempt'] == 'Yes',
                             attributes: {
-                                'data-next': 'specification'
+                                'data-next': nextPageOnNo
                             }
                         },
                         {
