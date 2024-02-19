@@ -5,8 +5,13 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
+{% set projectDescriptor = 'replacing' %}
+{% if data['project-type'] == 'refurb' %}
+    {% set projectDescriptor = 'refurbishing' %}
+{% endif %}
+
 {% block pageTitle %}
-    What is the total estimated cost of the {{ poultryType }} housing?
+    What is the total estimated cost of {{ projectDescriptor }} the building?
 {% endblock %}
 
 {% block content %}
@@ -18,11 +23,18 @@
             <form action="elim-cost">
 
                 <h1 class="govuk-heading-l">
-                    What is the total estimated cost of the {{ poultryType }} housing?
+                    What is the estimated cost of {{ projectDescriptor }} the building?
                 </h1>
 
                 <p class="govuk-hint">
-                    You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £15,000 (40% of £37,500). The maximum grant is £500,000.
+                    You can only apply for a grant of up to 40% of the estimated costs.
+                    {% if data['solar-pv-system'] == 'Yes' %}
+                        Do not include the solar PV system costs in the estimated building project costs.
+                    {% endif %}
+                </p>
+
+                <p class="govuk-hint">
+                    The minimum grant each business can apply for is £15,000 (40% of £37,500). The maximum total grant amount each business can apply for is £500,000.
                 </p>
 
                 {% set hintHtml %}
