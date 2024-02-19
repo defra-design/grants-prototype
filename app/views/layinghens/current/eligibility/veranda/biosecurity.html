@@ -39,6 +39,10 @@
                     {% set nextPage = '../biosecurity/vaccination-lobby' %}
                 {% endif %}
 
+                {% if data['project-type'] == 'veranda' %}
+                    {% set nextPage = 'project-cost-total' %}
+                {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'veranda-biosecurity',
                     name: 'veranda-biosecurity',

@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the veranda be at least the same size as 30% of the indoor bird housing area footprint?
+    How big will the veranda be?
 {% endblock %}
 
 {% block content %}
@@ -18,32 +18,43 @@
             <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'veranda-only',
-                    name: 'veranda-only',
+                    idPrefix: 'veranda-size',
+                    name: 'veranda-size',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the veranda be at least the same size as 30% of the indoor bird housing area footprint?',
+                            text: 'How big will the veranda be?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['veranda-only'] == 'Yes',
+                            text: '4 metres wide along the length of the bird housing area',
+                            value: '4 metres wide along the length of the bird housing area',
+                            checked: true if data['veranda-size'] == '4 metres wide along the length of the bird housing area',
                             attributes: {
-                                    'data-next': 'specification'
-                                }
+                                'data-next': 'specification'
+                            }
                         },
                         {
-                            text: 'No',
-                            value: 'No',
-                            checked: true if data['veranda-only'] == 'No',
-                            attributes: {
-                                    'data-next': 'elim-veranda-only'
-                                }
+                            text: '30% or more of the size of the indoor bird housing area footprint',
+                            value: '30% or more of the size of the indoor bird housing area footprint',
+                            checked: true if data['veranda-size'] == '30% or more of the size of the indoor bird housing area footprint',
+                             attributes: {
+                                'data-next': 'specification'
+                            }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None of the above',
+                            checked: true if data['veranda-size'] == 'None of the above',
+                             attributes: {
+                                'data-next': 'elim-size'
+                            }
                         }
                     ]
                 }) }}
@@ -62,15 +73,23 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
+
                 <p>
-                    The veranda must be at least the same size as 30% of the indoor bird housing area footprint.
+                    The veranda must be either:
                 </p>
-                <p>
-                    You must exclude the veranda's floor area from calculations of stocking density (even if providing 24 hour access).
-                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        4 metres wide along the length of the bird housing area
+                    </li>
+                    <li>
+                        30% or more of the size of the indoor bird housing area footprint
+                    </li>
+                </ul>
+    
             </div>
 
-        </div>
+         </div>
 
 </div>
 
