@@ -34,6 +34,11 @@
 
                 {% endset %}
 
+                {% set nextPage = '../biosecurity/egg-store-access' %}
+                {% if data['poultry-type'] == 'pullet' %}
+                    {% set nextPage = '../biosecurity/vaccination-lobby' %}
+                {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'veranda-biosecurity',
                     name: 'veranda-biosecurity',
