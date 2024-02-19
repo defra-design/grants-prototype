@@ -10,9 +10,9 @@
 
 {% set grantAmount = projectCost | percent(40) %}
 
-{% set birds = data['number-of-birds'] | float %}
-{% set energy = data['energy'] | float %}
-{% set solarCost = data['solar-cost'] | float %}
+{% set birds = data['number-of-birds'] | float if data['number-of-birds'] else 0 %}
+{% set energy = data['energy'] | float if data['energy'] else 0 %}
+{% set solarCost = data['solar-cost'] | float if data['solar-cost'] else 0 %}
 
 {% set totalProjectCost = solarCost + projectCost %}
 

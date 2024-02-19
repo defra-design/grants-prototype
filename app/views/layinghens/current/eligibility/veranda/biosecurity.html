@@ -34,8 +34,8 @@
 
                 {% endset %}
 
-                {% set nextPage = '../biosecurity/egg-store-access' %}
-                {% if data['poultry-type'] == 'pullet' %}
+                {% set nextPage = '../biosecurity/egg-store' %}
+                {% if poultryType != 'hen' %}
                     {% set nextPage = '../biosecurity/vaccination-lobby' %}
                 {% endif %}
 
@@ -59,7 +59,7 @@
                             value: 'Yes',
                             checked: true if data['veranda-biosecurity'] == 'Yes',
                             attributes: {
-                                    'data-next': '../building/egg-store'
+                                    'data-next': nextPage
                                 }
                         },
                         {
