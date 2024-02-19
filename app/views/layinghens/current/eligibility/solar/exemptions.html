@@ -20,7 +20,7 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        The roof must be able to support solar PV panels, allowing for potential use in the future. Some limited exemptions apply.
+                        The roof of the building does not have to be able to support solar PV panels if one or more of these exemptions apply.
                     </p>
 
                     <p class="govuk-hint">
@@ -102,8 +102,21 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    The roof must be able to support solar PV panels, allowing for potential use in the future.
+                    You can apply for grant funding to buy and install a solar PV system if:
                 </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        the building is listed
+                    </li>
+                    <li>
+                        the building is on a World Heritage Site
+                    </li>
+                    {% if data['project-type'] == 'refurb' %}
+                        <li>
+                            you are not making changes to the roof
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
 
         </div>
