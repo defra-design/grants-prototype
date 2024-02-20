@@ -1,0 +1,47 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    Check if your project is eligible for a grant
+{% endblock %}
+
+{% block content %}
+
+<div class="app-blue-card">
+
+    <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-two-thirds">
+
+                <h1 class="govuk-heading-l">
+                    2. Check how well your project meets our funding priorities
+                </h1>
+
+                <p>
+                    Based on your answers, your project meets the minimum criteria to apply for this grant.
+                </p>
+
+                <p>
+                    This section will check how well your project meets the funding priorities. Your answers past this point will not stop you from applying.
+                </p>
+
+                <h2 class="govuk-heading-m">
+                    Scoring
+                </h2>
+
+                <p>
+                    At the end of this section, your project will be given a score. You can then make changes to see how you could make your application better.
+                </p>
+                
+                {{ govukButton ({
+                    text: 'Continue',
+                    href: 'current-system',
+                    classes: 'govuk-button--inverse'
+                }) }}
+
+            </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
