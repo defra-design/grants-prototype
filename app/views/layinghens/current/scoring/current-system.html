@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    What type of {{ poultryType }} housing system do you currently use?
+    What type of {{ poultryType }}  housing system do you currently use in the building?
 {% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@
             {% if data['from-scoring'] == 'true' %}
                 <form action="results">
             {% else %}
-                <form action="ramps">
+                <form action="current-multi-tier-system">
             {% endif %}
 
                 {{ govukRadios ({
@@ -26,7 +26,7 @@
                     name: 'scoring-system',
                     fieldset: {
                         legend: {
-                            text: 'What type of ' + poultryType + ' housing system do you currently use?',
+                            text: 'What type of ' + poultryType + '  housing system do you currently use in the building?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -46,24 +46,19 @@
                             checked: true if data['scoring-system'] == 'Combi-cage'
                         },
                         {
-                            text: 'Indoor (floor or flat-deck)',
-                            value: 'Indoor (floor or flat-deck)',
-                            checked: true if data['scoring-system'] == 'Indoor (floor or flat-deck)'
+                            text: 'Barn',
+                            value: 'Barn',
+                            checked: true if data['scoring-system'] == 'Barn'
                         },
                         {
-                            text: 'Outdoor (floor or flat-deck)',
-                            value: 'Outdoor (floor or flat-deck)',
-                            checked: true if data['scoring-system'] == 'Outdoor (floor or flat-deck)'
+                            text: 'Free-range',
+                            value: 'Free-range',
+                            checked: true if data['scoring-system'] == 'Free-range'
                         },
                         {
-                            text: 'Indoor (aviary)',
-                            value: 'Indoor (aviary)',
-                            checked: true if data['scoring-system'] == 'Indoor (aviary)'
-                        },
-                        {
-                            text: 'Outdoor (aviary)',
-                            value: 'Outdoor (aviary)',
-                            checked: true if data['scoring-system'] == 'Outdoor (aviary)'
+                            text: 'Organic',
+                            value: 'Organic',
+                            checked: true if data['scoring-system'] == 'Organic'
                         },
                         {
                             divider: 'or'
@@ -91,7 +86,7 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    RPA want to prioritise supporting farmers that are transitioning out of using colony cages, or to high-welfare multi-tier aviary systems.
+                    RPA want to prioritise supporting farmers that are transitioning out of using colony cages.
                 </p>
             </div>
 
