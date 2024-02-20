@@ -61,7 +61,7 @@
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        {{ grantAmount | inPounds }} for house costs (40% of {{ projectCost | inPounds }})
+                        {{ grantAmount | inPounds }} for building project costs (40% of {{ projectCost | inPounds }})
                     </li>
 
                     <li>
@@ -70,7 +70,7 @@
                 </ul>
 
                 <p>
-                    As house costs take grant funding priority, you may be able to apply for a grant of up to {{ solarFunding | inPounds }} for a solar PV system. The maximum grant is £500,000.
+                    As building project costs take grant funding priority, you may be able to apply for a grant of up to {{ solarFunding | inPounds }} for a solar PV system. The maximum grant is £500,000.
                 </p>
             
             {% elseif energyCap < energy %}
@@ -81,7 +81,7 @@
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        {{ grantAmount | inPounds }} for house costs (40% of {{ projectCost | inPounds }})
+                        {{ grantAmount | inPounds }} for building project costs (40% of {{ projectCost | inPounds }})
                     </li>
 
                     <li>
@@ -178,7 +178,7 @@
                 {% endset %}
                 
                 {{ govukDetails({
-                    summaryText: 'How is the solar PV funding calculated?',
+                    summaryText: 'How is the solar PV system grant funding calculated?',
                     html: detailsContentHTML
                 }) }}
 
@@ -194,7 +194,7 @@
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        {{ grantAmount | inPounds }} for house costs (40% of {{ projectCost | inPounds }})
+                        {{ grantAmount | inPounds }} for building project costs (40% of {{ projectCost | inPounds }})
                     </li>
 
                     <li>
