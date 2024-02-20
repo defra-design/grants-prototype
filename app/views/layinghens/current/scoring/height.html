@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the maximum height of the highest tier with direct access to the floor of the {{ poultryType }} housing be 2 metres or less?
+    Will the highest tier with direct access to the floor be 2 metres high or less?
 {% endblock %}
 
 {% block content %}
@@ -27,11 +27,14 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the maximum height of the highest tier with direct access to the floor of the ' + poultryType + ' housing be 2 metres or less?',
+                            text: 'Will the highest tier with direct access to the floor be 2 metres high or less?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                    hint: {
+                        text: 'The height of the highest tier in the multi-tier system from the litter floor area to the underside of the manure belt.'
+                    }
                     items: [
                         {
                             text: 'Yes',
@@ -61,10 +64,7 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    RPA want to fund projects that prevent birds falling from heights of more than 2 metres.
-                </p>
-                <p>
-                    This height should be measured from the solid floor (with litter) to the underside of the highest tier or manure belt.
+                    RPA want to fund projects that prevent birds falling from heights of more than 2 metres, to reduce the risk of keel bone fractures.
                 </p>
             </div>
 
