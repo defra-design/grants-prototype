@@ -31,8 +31,12 @@
 	background-color: #1d70b8;
 	padding: 40px 20px;
 
+	.govuk-heading-s,
+	.govuk-heading-m,
 	.govuk-heading-l,
+	.govuk-heading-xl,
 	p,
+	.govuk-list,
 	a:link,
 	.govuk-link:link {
 		color: #fff;
@@ -45,6 +49,28 @@
 
 	.govuk-button--inverse:hover {
 		color: #1d70b8;
+	}
+}
+
+.app-interruption-steps {
+	margin-bottom: 2.5rem;
+	li {
+		display: grid;
+		grid-template-columns: 2em 1fr;
+		margin-bottom: 1.5rem;
+		.app-interruption-step-number {
+			font-size: 1em;
+			font-weight: bold;
+			text-align: center;
+			color: #1d70b8;
+			background: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			width: 1.25em;
+			height: 1.25em;
+		}
 	}
 }
 
