@@ -5,9 +5,9 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
-{% set question = 'Will the hens in your grant-funded housing live in a multi-tier system when they are pullets?' %}
+{% set question = 'Will the hens in your grant-funded building be reared in a multi-tier system as pullets?' %}
 {% if poultryType != 'hen' %}
-    {% set question = 'Will the pullets in your grant-funded housing live in a multi-tier system when they are hens?' %}
+    {% set question = 'Will the pullets in your grant-funded building live in a multi-tier system as hens?' %}
 {% endif %}
 
 {% block content %}
@@ -78,7 +78,7 @@
                 </h2>
                 {% if poultryType == 'hen' %}
                     <p>
-                        RPA want to fund projects that will rear pullets in multi-tier aviary systems before they move to the grant-funded housing.
+                        RPA want to fund projects where pullets are reared in multi-tier aviary systems before they move into the grant-funded aviary housing as layer hens.
                     </p>
                 {% else %}
                     <p>

@@ -5,8 +5,13 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
 {% block pageTitle %}
-    Will the perches have a design feature that help the {{ poultryType }}s grip the perches?
+    Does your current building include a multi-tier aviary system?
 {% endblock %}
 
 {% block content %}
@@ -18,33 +23,33 @@
             {% if data['from-scoring'] == 'true' %}
                 <form action="results">
             {% else %}
-                <form action="structure">
+                <form action="ramps">
             {% endif %}
 
                 {{ govukRadios ({
-                    idPrefix: 'scoring-grip',
-                    name: 'scoring-grip',
+                    idPrefix: 'scoring-current-multi-tier-system',
+                    name: 'scoring-current-multi-tier-system',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the perches have a design feature that help the ' + poultryType + 's grip the perches?',
+                            text: 'Does your current building include a multi-tier aviary system?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    hint: {
-                        text: 'For example, sufficient grip size or a comfortable material coating'
+                     hint: {
+                        text: 'The building you are replacing or refurbishing for this project'
                     },
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes, there will be easy-grip perches',
-                            checked: true if data['scoring-grip'] == 'Yes, there will be easy-grip perches'
+                            value: 'Yes, my current building includes a multi-tier aviary system',
+                            checked: true if data['scoring-ramps'] == 'Yes, my current building includes a multi-tier aviary system'
                         },
                         {
                             text: 'No',
-                            value: 'No, there will not be easy-grip perches',
-                            checked: true if data['scoring-grip'] == 'No, there will not be easy-grip perches'
+                            value: 'No, my current building does not include a multi-tier aviary system',
+                            checked: true if data['scoring-ramps'] == 'No, my current building does not include a multi-tier aviary system'
                         }
                     ]
                 }) }}
@@ -64,7 +69,7 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    RPA want to support projects which provide perches that are easy to grip to increase bird safety and reduce falls. 
+                    RPA want to encourage investment in high-welfare multi-tier aviary systems.
                 </p>
             </div>
 
