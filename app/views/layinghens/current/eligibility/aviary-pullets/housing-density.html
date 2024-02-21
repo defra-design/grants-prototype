@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the pullets be housed at a maximum stocking density of 20kg per metres squared (m<sup>2</sup>) of the total usable area at 16 weeks of age?
+    Will the pullets be within the maximum stocking density of the multi-tier housing when they are 16 weeks old?  
 {% endblock %}
 
 {% block content %}
@@ -17,19 +17,36 @@
 
             <form method="post">
 
+            {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The maximum stocking density for multi-tier pullet housing at the age of 16 weeks is: 
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            20kg per m<sup>2</sup> of the total usable area
+                        </li>
+                        <li>
+                            33kg per m<sup>2</sup> of the total usable area at floor level
+                        </li>
+                    </ul>
+
+                {% endset %}
+
                 {{ govukRadios ({
                     idPrefix: 'housing-density',
                     name: 'housing-density',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            html: 'Will the pullets be housed at a maximum stocking density of 20kg per metres squared (m<sup>2</sup>) of the total usable area at 16 weeks of age?',
+                            html: 'Will the pullets be within the maximum stocking density of the multi-tier housing when they are 16 weeks old?  ',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        html: 'This must be 33kg per m<sup>2</sup> at floor level'
+                        html: hintHtml
                     },
                     items: [
                         {
@@ -58,28 +75,7 @@
             </form>
 
         </div>
-
-        <div class="govuk-grid-column-one-third">
-
-            <div class="app-step-nav-related app-step-nav-related--singular">
-                <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Eligibility</span>
-                </h2>
-                <p>
-                    The maximum stocking density for multi-tier pullet housing at the age of 16 weeks is:
-                </p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                        20kg per m<sup>2</sup> of the total usable area
-                    </li>
-                    <li>
-                        33kg per m<sup>2</sup> of the total usable area at floor level
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
+        
 </div>
 
 {% endblock %}
