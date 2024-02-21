@@ -6,7 +6,7 @@
 {% endif %} 
 
 {% block pageTitle %}
-    Will the building lighting system have these features? 
+    Will the housing lighting system have these features?  
 {% endblock %} 
 
 {% block content %}
@@ -19,8 +19,9 @@
 
             {% set hintHtml %}
 
+            
                 <p class="govuk-hint">
-                    The building lighting system must have:
+                    The housing lighting system must have:
                 </p>
 
                 <ul class="govuk-hint govuk-list govuk-list--bullet">
@@ -34,7 +35,12 @@
                         coverage of the entire floor-litter (scratch) area
                     </li>
                     <li>
-                        a simulated stepped dawn and dusk (unless this is already provided as part of an aviary lighting system)
+                        a simulated stepped dawn and dusk 
+                        
+                        {% if poultryType == 'hen' %}
+                        (unless this is already provided as part of an aviary lighting system)
+                        {% endif %}
+                        
                     </li>
                     <li>
                         an option for red light
@@ -97,7 +103,7 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    The building must have a lighting system that includes these features to promote positive bird behaviour and reduce stress.
+                    The housing lighting system must have these features to promote positive bird behaviour and reduce stress.
                 </p>
             </div>
 
