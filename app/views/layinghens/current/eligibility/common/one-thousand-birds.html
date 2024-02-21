@@ -4,6 +4,17 @@
     Do you have at least 1,000 birds on your farm currently?
 {% endblock %}
 
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set poultryDescriptor = 'laying hens' %}
+{% if poultryType != 'hen' %}
+    {% set poultryDescriptor = 'pullets' %}
+{% endif %}
+
+
 {% block content %}
 
 {% if not 'Laying hens' | isIn(data['farmer-type']) %}
@@ -22,7 +33,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Do you have at least 1,000 birds on your farm currently?',
+                            text: 'Do you keep at least 1,000 ' + poultryDescriptor + ' on your farm currently?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -36,7 +47,7 @@
                             value: 'Yes',
                             checked: true if data['one-thousand-birds'] == 'Yes',
                             attributes: {
-                                'data-next': 'legal-status'
+                                'data-next': 'l../building/items'
                             }
                         },
                         {
