@@ -39,6 +39,11 @@
 
                 {% endset %}
 
+                {% set nextPage = '../veranda/present' %}
+                {% if poultryType != 'hen' %}
+                    {% set nextPage = '../biosecurity/concrete-apron' %}
+                {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'ventilation-specifications',
                     name: 'ventilation-specifications',
@@ -59,7 +64,7 @@
                             value: 'Yes',
                             checked: true if data['ventilation-specifications'] == 'Yes',
                             attributes: {
-                                    'data-next': '../veranda/present'
+                                    'data-next': nextPage
                                 }
                         },
                         {
