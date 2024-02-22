@@ -34,11 +34,7 @@
 
                 {% endset %}
 
-                {% set nextPage = '../biosecurity/egg-store' %}
-                {% if poultryType != 'hen' %}
-                    {% set nextPage = '../biosecurity/vaccination-lobby' %}
-                {% endif %}
-
+                {% set nextPage = '../biosecurity/concrete-apron' %}
                 {% if data['project-type'] == 'veranda' %}
                     {% set nextPage = 'project-cost-total' %}
                 {% endif %}
