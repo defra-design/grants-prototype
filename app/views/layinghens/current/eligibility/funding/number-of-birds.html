@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    How many {{ poultryType }}s will there be in the house?
+    How many birds will the building be able to house?
 {% endblock %}
 
 {% block content %}
@@ -16,9 +16,25 @@
         <div class="govuk-grid-column-two-thirds">
 
             <form action="solar-cost">
+            
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The RPA want to fund a solar PV system with a power capacity that can support the building's high welfare features (lighting, ventilation system) for the amount of birds in the building.
+                    </p>
+
+                    <p class="govuk-hint">
+                        The power capacity for grant funding is 5 kilowatts (kW) per 1,000 birds.
+                    </p>
+
+                    <p class="govuk-hint">
+                        Enter estimated amount, for example 600
+                    </p>
+
+                {% endset %}
 
                 <h1 class="govuk-heading-l">
-                    How many {{ poultryType }}s will there be in the house?
+                    How many birds will the building be able to house?
                 </h1>
 
                 {{ govukInput ({
@@ -32,7 +48,7 @@
                         classes: 'govuk-input--width-10 govuk-visually-hidden'
                     },
                     hint: {
-                        text: 'Enter an amount, for example 5,000'
+                        html: hintHtml
                     }
                 }) }}
 
