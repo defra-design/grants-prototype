@@ -91,20 +91,25 @@
 
                 {% set detailsContentHTML %}
                     <p>
-                        Because you have told us that this project will house {{ birds | formatNumber }} birds, you can apply for funding for a solar PV system with a rating of up to {{ energyCap  | formatNumber }}kW (5kW for every thousand birds).
+                        The solar PV system you plan to buy and install has a higher power capacity than 5kW of power per 1,000 birds.
                     </p>
+
                     <p>
-                        Because you are installing a solar PV system with a higher energy rating ({{ energy | formatNumber }}kW), the difference must be self-funded.
+                        Based on the building's bird capacity ({{ birds | formatNumber }} birds), you can apply 25% of the costs of a solar PV system with a power capacity of up to {{ energyCap  | formatNumber }}kW.
                     </p>
+
                     <p>
-                        Based on what you have told us, your solar PV system will cost {{ (solarCost | float / energy | float) | inPounds }} per kilowatt.
+                        This is based on the solar PV system costs ({{ (solarCost | float) | inPounds }}) divided by the solar PV system's power capacity ({{ (energy | float) | formatNumber }}kW). With these figures, the cost of the solar PV system is equal to {{ (solarCost | float / energy | float) | inPounds }} per kW.
                     </p>
+
                     <p>
-                         We have calculated the grant-fundable amount for the solar PV system to be {{ ((solarCost | float / energy | float) * energyCap | float) | inPounds }} ({{ (solarCost | float / energy | float) | inPounds }} multiplied by {{ energyCap | formatNumber }}kW).
+                        You can apply for grant funding of {{ solarFunding | inPounds }} for solar PV system costs. This is 25% of {{ ((solarCost | float / energy | float) * energyCap | float) | inPounds }}, the amount based on your solar PV system costing {{ (solarCost | float / energy | float) | inPounds }} per kW, multiplied by the power rating of {{ energyCap  | formatNumber }}kW.
                     </p>
+
                     <p>
-                        You can apply for 25% of this grant-fundable amount, meaning the maximum grant funding is {{ solarFunding | inPounds }} for your solar PV project.
+                        You must pay the remaining solar PV system costs over {{ solarFunding | inPounds }}.
                     </p>
+
                     {{ govukTable({
                         caption: 'Solar PV funding calculation',
                         captionClasses: "govuk-table__caption--s",
@@ -205,7 +210,7 @@
             {% endif %}
 
             {{ govukWarningText({
-                text: "There's no guarantee the project will receive a grant",
+                text: "There is no guarantee you will receive a grant",
                 iconFallbackText: "Warning"
             }) }}
 
