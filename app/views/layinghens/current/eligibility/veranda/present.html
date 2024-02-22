@@ -17,10 +17,16 @@
 
             <form method="post">
 
+                {% set nextPageOnYes = 'size' %}
+                {% set nextPageOnNo = 'exempt' %}
+                {% if poultryType != 'hen' %}
+                    {% set nextPageOnYes = '../biosecurity/concrete-apron' %}
+                    {% set nextPageOnNo = '../biosecurity/concrete-apron' %}
+                {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'veranda-present',
                     name: 'veranda-present',
-                    classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
                             text: 'Will the building have a veranda?',
@@ -28,21 +34,35 @@
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                    hint : {
+                        text: 'You do not have to add a veranda to the building for pullets'
+                    } if poultryType != 'hen',
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['veranda-present'] == 'Yes',
+                            text: 'Yes, on pasture',
+                            value: 'Yes, on pasture',
+                            checked: true if data['veranda-present'] == 'Yes, on pasture',
                             attributes: {
-                                'data-next': 'size'
+                                'data-next': nextPageOnYes
                             }
+                        },
+                        {
+                            text: 'Yes, on a hardstanding surface',
+                            value: 'Yes, on a hardstanding surface',
+                            checked: true if data['veranda-present'] == 'Yes, on a hardstanding surface',
+                            attributes: {
+                                'data-next': nextPageOnYes
+                            }
+                        },
+                        {
+                            divider: 'or'
                         },
                         {
                             text: 'No',
                             value: 'No',
                             checked: true if data['veranda-present'] == 'No',
                              attributes: {
-                                'data-next': 'exempt'
+                                'data-next': nextPageOnNo
                             }
                         } 
                     ]
@@ -56,24 +76,28 @@
 
         </div>
 
-        <div class="govuk-grid-column-one-third">
+        {% if poultryType == 'hen' %}
 
-            <div class="app-step-nav-related app-step-nav-related--singular">
-                <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Eligibility</span>
-                </h2>
+            <div class="govuk-grid-column-one-third">
 
-                <p>
-                    The building must have a veranda.
-                </p>
+                <div class="app-step-nav-related app-step-nav-related--singular">
+                    <h2 class="app-step-nav-related__heading">
+                    <span class="app-step-nav-related__pretitle">Eligibility</span>
+                    </h2>
 
-                <p>
-                    There are exemptions to adding a veranda if you do not have the required space.
-                </p>
-    
+                    <p>
+                        The building must have a veranda.
+                    </p>
+
+                    <p>
+                        There are exemptions to adding a veranda if you do not have the required space.
+                    </p>
+        
+                </div>
+
             </div>
 
-         </div>
+         {% endif %}
 
 </div>
 

@@ -15,7 +15,7 @@
                  {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        You can choose to buy and install a solar PV system that will provide energy to the building as part of this grant.
+                        You can choose to buy a solar PV system that provides power to this building as part of the grant. You must install the solar PV panels on the roof of this building.
                     </p>
 
                     <p class="govuk-hint"> 
@@ -39,6 +39,11 @@
                             a battery
                         </li>
                     </ul>
+
+                    {{ govukWarningText ({
+                        text: 'You cannot buy a solar PV system if the roof of the building only faces north or is heavily shaded.',
+                        iconFallbackText: 'Warning'
+                    }) }}
 
                 {% endset %}
 

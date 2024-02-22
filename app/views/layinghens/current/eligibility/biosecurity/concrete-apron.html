@@ -5,8 +5,15 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
+{% set verandaIsOnHardstanding = data['veranda-present'] == 'Yes, on a hardstanding surface' %}
+
+{% set question = 'Will the building have a continuous concrete apron around its perimeter?' %}
+{% if verandaIsOnHardstanding %}
+    {% set question = 'Will the building and veranda have a continuous concrete apron around the perimeter?' %}
+{% endif %}
+
 {% block pageTitle %}
-    Will the building have a continuous concrete apron around its perimeter?
+    {{ question }}
 {% endblock %}
 
 {% block content %}
@@ -17,19 +24,21 @@
 
             <form method="post">
 
+            {% set nextPage = 'vehicle-washing-area' %}
+            {% if poultryType != 'hen' %}
+                {% set nextPage = 'vaccination-lobby' %}
+            {% endif %}
+
             {{ govukRadios ({
                 idPrefix: 'concrete-apron',
                 name: 'concrete-apron',
                 classes: 'govuk-radios--inline',
                 fieldset: {
                     legend: {
-                        text: 'Will the building have a continuous concrete apron around its perimeter?',
+                        text: question,
                         isPageHeading: true,
                         classes: 'govuk-fieldset__legend--l'
                     }
-                },
-                hint: {
-                    text: 'If there is no range next to the building, there must also be a concrete apron around the veranda'
                 },
                 items: [
                     {
@@ -37,7 +46,7 @@
                         value: 'Yes',
                         checked: true if data['concrete-apron'] == 'Yes',
                         attributes: {
-                                'data-next': 'vehicle-washing-area'
+                                'data-next': nextPage
                             }
                     },
                      {
@@ -65,10 +74,15 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-
-                <p>
-                    The building and veranda must be surrounded by a continuous strip of concrete.
-                </p>
+                {% if verandaIsOnHardstanding %}
+                    <p>
+                        The building and veranda must be surrounded by a continuous strip of concrete.
+                    </p>
+                {% else %}
+                    <p>
+                        The building must be surrounded by a continuous strip of concrete.
+                    </p>
+                {% endif %}
             </div>
 
         </div>
