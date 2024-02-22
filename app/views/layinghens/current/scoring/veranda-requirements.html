@@ -6,10 +6,14 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the {{ poultryType }} housing have a veranda with these features?
+    Will the veranda have these features?
 {% endblock %}
 
 {% block content %}
+
+{% if data['veranda-present'] == 'No' %}
+    {{ 'dark-brooders' | redirect | safe }}
+{% endif %}
 
 <div class="govuk-grid-row">
 
@@ -24,40 +28,27 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        If you add a veranda to your pullet housing, it must:
+                        The veranda must:
                     </p>
 
                     <ul class="govuk-hint govuk-list govuk-list--bullet">
                         <li>
-                            be situated along the length of the main housing
-                        </li>
-                        <li>
-                            provide additional floor-space that is at least the same size as 30% of the indoor bird housing area footprint
+                            be 4 metres wide or more along the length of the bird housing area, or 30% or more of the size of the indoor bird housing area footprint
                         </li>
                         <li>
                             have a solid concrete floor and waterproof insulated roof
                         </li>
                         <li>
-                            have a perimeter wall of more than 1 metre in height
-                        </li>
-                        <li>
-                            have lockable pop holes within the perimeter wall, unless the veranda forms part of an indoor barn system
-                        </li>
-                        <li>
-                            have a mesh roller-screen system running underneath the length of the roof, that fits securely against the wall when extended
+                            have a perimeter wall of more than one metre in height
                         </li>
                         <li>
                             have a dimmable LED lighting system with a range between 0 lux and 60 lux
                         </li>
                         <li>
-                            have guttering and downpipe that feeds into the drainage system of the main building
+                            have a mesh roller-screen system running underneath the length of the roof, that fits securely against the wall when extended to make the housing biosecure during housing orders
                         </li>
                         <li>
-                            have mesh with a spacing of 6mm or less that can make the housing biosecure during housing orders
-                        </li>
-                        <li>
-                            have lockable pop holes in the wall of the main house that are less than 30cm from the floor level, or access ramps across the entire pop hole
-                        </li>
+                            have closable pop holes in the wall of the main house (unless the veranda forms part of an indoor barn system) that are less than 30cm from the floor level, or access ramps across the entire pop hole
                         <li>
                             not have perches in front of the pop holes
                         </li>
@@ -71,7 +62,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the ' + poultryType + ' housing have a veranda with these features?',
+                            text: 'Will the veranda have these features?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
