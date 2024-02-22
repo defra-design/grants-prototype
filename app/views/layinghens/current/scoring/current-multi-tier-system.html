@@ -22,6 +22,14 @@
         {{ 'ramps' | redirect | safe }}
     {% endif %}
 
+    {% set pageHeading = data['poultry-type'] %}
+    {% if pageHeading != 'hen' %}
+        {% set pageHeading = 'Does your current building include a multi-tier system?' %}
+    {% else %}
+        {% set pageHeading = 'Does your current building include a multi-tier aviary system?' %}
+    {% endif %}
+    
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
@@ -38,7 +46,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Does your current building include a multi-tier aviary system?',
+                            html: pageHeading,
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -74,9 +82,17 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
+
+                {% if data['poultry-type'] == 'hen' %}
                 <p>
                     RPA want to encourage investment in high-welfare multi-tier aviary systems.
                 </p>
+                {% elseif data['poultry-type'] == 'pullet' %}
+                <p>
+                    RPA want to encourage investment in high welfare multi-tier systems. 
+                </p>
+                {% endif %}
+                
             </div>
 
         </div>
