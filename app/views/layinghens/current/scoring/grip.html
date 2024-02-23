@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the perches have a design feature that help the hens grip the perches?
+    Will the perches have a design feature that help the {{ poultryType }}s grip the perches?
 {% endblock %}
 
 {% block content %}
@@ -27,7 +27,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the perches have a design feature that help the hens grip the perches?',
+                            text: 'Will the perches have a design feature that help the ' + poultryType + 's grip the perches?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

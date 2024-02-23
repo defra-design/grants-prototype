@@ -17,6 +17,16 @@
 
             <form action="results">
 
+                {% set hintHtml %}
+                    <p class="govuk-hint">
+                        Using digital systems
+                    </p>
+
+                    <p class="govuk-hint"> 
+                        Select all that apply
+                    </p>
+                {% endset %}
+
                 {{ govukCheckboxes ({
                     idPrefix: 'scoring-environment-data',
                     name: 'scoring-environment-data',
@@ -28,7 +38,7 @@
                         }
                     },
                     hint: {
-                        text: 'Select all that apply'
+                        html: hintHtml
                     },
                     items: [
                         {
