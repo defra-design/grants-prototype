@@ -5,8 +5,13 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
+{% set question = 'How many birds will the new building be able to house?' %}
+{% if data['project-type'] == 'refurb' %}
+    {% set question = 'How many birds will the refurbished part of the building be able to house?' %}
+{% endif %}
+
 {% block pageTitle %}
-    How many birds will the building be able to house?
+    {{ question }}
 {% endblock %}
 
 {% block content %}
@@ -34,8 +39,18 @@
                 {% endset %}
 
                 <h1 class="govuk-heading-l">
-                    How many birds will the building be able to house?
+                    {{ question }}
                 </h1>
+
+                {% if data['project-type'] != 'refurb' %}
+                    <p class="govuk-hint">
+                        The RPA want to fund a solar PV system with a power capacity that can support the building's high welfare features (lighting, ventilation system) for the amount of birds in the building.
+                    </p>
+                {% else %}
+                    <p class="govuk-hint">
+                        The RPA want to fund a solar PV system with a power capacity that can support the building's high welfare features (lighting, ventilation system) for the amount of birds in the refurbished part of the building.
+                    </p>
+                {% endif %}
 
                 {{ govukInput ({
                     id: 'number-of-birds',
@@ -48,7 +63,7 @@
                         classes: 'govuk-input--width-10 govuk-visually-hidden'
                     },
                     hint: {
-                        html: hintHtml
+                        text: 'Enter an amount, for example 8,000' 
                     }
                 }) }}
 
