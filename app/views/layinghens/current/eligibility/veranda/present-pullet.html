@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the perches have a design feature that help the hens grip the perches?
+    Will the building have a veranda?
 {% endblock %}
 
 {% block content %}
@@ -15,36 +15,38 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            {% if data['from-scoring'] == 'true' %}
-                <form action="results">
-            {% else %}
-                <form action="structure">
-            {% endif %}
+            <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'scoring-grip',
-                    name: 'scoring-grip',
+                    idPrefix: 'veranda-present',
+                    name: 'veranda-present',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the perches have a design feature that help the hens grip the perches?',
+                            text: 'Will the building have a veranda?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'You can replace an aviary’s standard circular metal perches with perches that have design features to help birds grip them (for example, a ridged surface, comfortable material or coating)'
+                        text: 'You do not have to add a veranda to the building for pullets'
                     },
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes, there will be easy-grip perches',
-                            checked: true if data['scoring-grip'] == 'Yes, there will be easy-grip perches'
+                            value: 'Yes',
+                            checked: true if data['veranda-present'] == 'Yes',
+                            attributes: {
+                                'data-next': 'pasture'
+                            }
                         },
                         {
                             text: 'No',
-                            value: 'No, there will not be easy-grip perches',
-                            checked: true if data['scoring-grip'] == 'No, there will not be easy-grip perches'
+                            value: 'No',
+                            checked: true if data['veranda-present'] == 'No',
+                            attributes: {
+                                'data-next': '../biosecurity/concrete-apron'
+                            }
                         }
                     ]
                 }) }}
@@ -61,11 +63,13 @@
 
             <div class="app-step-nav-related app-step-nav-related--singular">
                 <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
+
                 <p>
-                    RPA want to support projects that ensure perches are easy to grip to increase bird safety and reduce falls.
+                    The building must have a veranda.
                 </p>
+    
             </div>
 
         </div>

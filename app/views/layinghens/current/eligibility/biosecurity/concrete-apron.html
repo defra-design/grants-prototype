@@ -5,11 +5,15 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
-{% set verandaIsOnHardstanding = data['veranda-present'] == 'Yes, on a hardstanding surface' %}
+{% set justBuilding = true %}
 
-{% set question = 'Will the building have a continuous concrete apron around its perimeter?' %}
-{% if verandaIsOnHardstanding %}
-    {% set question = 'Will the building and veranda have a continuous concrete apron around the perimeter?' %}
+{% if data['veranda-present'] == 'Yes' and data['veranda-pasture'] == 'No' %}
+    {% set justBuilding = false %}
+{% endif %}
+
+{% set question = 'Will the building and veranda have a continuous concrete apron around the perimeter?' %}
+{% if justBuilding %}
+    {% set question = 'Will the building have a continuous concrete apron around its perimeter?' %}
 {% endif %}
 
 {% block pageTitle %}
@@ -74,13 +78,13 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                {% if verandaIsOnHardstanding %}
+                {% if justBuilding %}
                     <p>
-                        The building and veranda must be surrounded by a continuous strip of concrete.
+                        The building must be surrounded by a continuous strip of concrete.
                     </p>
                 {% else %}
                     <p>
-                        The building must be surrounded by a continuous strip of concrete.
+                        The building and veranda must be surrounded by a continuous strip of concrete.
                     </p>
                 {% endif %}
             </div>

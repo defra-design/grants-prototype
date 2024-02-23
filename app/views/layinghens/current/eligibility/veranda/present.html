@@ -17,12 +17,26 @@
 
             <form method="post">
 
-                {% set nextPageOnYes = 'size' %}
-                {% set nextPageOnNo = 'exempt' %}
-                {% if poultryType != 'hen' %}
-                    {% set nextPageOnYes = '../biosecurity/concrete-apron' %}
-                    {% set nextPageOnNo = '../biosecurity/concrete-apron' %}
-                {% endif %}
+                {% set nextPageOnYes = 'specification' %}
+                {% set nextPageOnNo = 'elim-size' %}
+                {% set nextPageOnExempt = '../biosecurity/concrete-apron' %}
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        You are exempt if you do not have space to add a veranda that is either:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet govuk-hint">
+                        <li>
+                            4 metres wide or more along the length of the bird housing area
+                        </li>
+                        <li>
+                            30% or more of the indoor bird housing area footprint
+                        </li>
+                    </ul>
+
+                {% endset %}
 
                 {{ govukRadios ({
                     idPrefix: 'veranda-present',
@@ -34,35 +48,35 @@
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    hint : {
-                        text: 'You do not have to add a veranda to the building for pullets'
-                    } if poultryType != 'hen',
+                    hint: {
+                        html: hintHtml
+                    },
                     items: [
                         {
-                            text: 'Yes, on pasture',
-                            value: 'Yes, on pasture',
-                            checked: true if data['veranda-present'] == 'Yes, on pasture',
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['veranda-present'] == 'Yes',
                             attributes: {
                                 'data-next': nextPageOnYes
                             }
                         },
                         {
-                            text: 'Yes, on a hardstanding surface',
-                            value: 'Yes, on a hardstanding surface',
-                            checked: true if data['veranda-present'] == 'Yes, on a hardstanding surface',
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['veranda-present'] == 'No',
                             attributes: {
-                                'data-next': nextPageOnYes
+                                'data-next': nextPageOnNo
                             }
                         },
                         {
                             divider: 'or'
                         },
                         {
-                            text: 'No',
-                            value: 'No',
-                            checked: true if data['veranda-present'] == 'No',
+                            text: 'My building is exempt',
+                            value: 'My building is exempt',
+                            checked: true if data['veranda-present'] == 'My building is exempt',
                              attributes: {
-                                'data-next': nextPageOnNo
+                                'data-next': nextPageOnExempt
                             }
                         } 
                     ]
@@ -76,28 +90,20 @@
 
         </div>
 
-        {% if poultryType == 'hen' %}
+        <div class="govuk-grid-column-one-third">
 
-            <div class="govuk-grid-column-one-third">
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
 
-                <div class="app-step-nav-related app-step-nav-related--singular">
-                    <h2 class="app-step-nav-related__heading">
-                    <span class="app-step-nav-related__pretitle">Eligibility</span>
-                    </h2>
-
-                    <p>
-                        The building must have a veranda.
-                    </p>
-
-                    <p>
-                        There are exemptions to adding a veranda if you do not have the required space.
-                    </p>
-        
-                </div>
-
+                <p>
+                    The building must have a veranda.
+                </p>
+    
             </div>
 
-         {% endif %}
+        </div>
 
 </div>
 

@@ -40,6 +40,9 @@
                 {% endset %}
 
                 {% set nextPage = '../veranda/present' %}
+                {% if poultryType != 'hen' %}
+                    {% set nextPage = '../veranda/present-pullet' %}
+                {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'ventilation-specifications',

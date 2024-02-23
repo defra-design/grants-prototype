@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the perches have a design feature that help the hens grip the perches?
+    Will the veranda have direct access to pasture?
 {% endblock %}
 
 {% block content %}
@@ -15,36 +15,35 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            {% if data['from-scoring'] == 'true' %}
-                <form action="results">
-            {% else %}
-                <form action="structure">
-            {% endif %}
+            <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'scoring-grip',
-                    name: 'scoring-grip',
+                    idPrefix: 'veranda-pasture',
+                    name: 'veranda-pasture',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the perches have a design feature that help the hens grip the perches?',
+                            text: 'Will the veranda have direct access to pasture?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    hint: {
-                        text: 'You can replace an aviary’s standard circular metal perches with perches that have design features to help birds grip them (for example, a ridged surface, comfortable material or coating)'
-                    },
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes, there will be easy-grip perches',
-                            checked: true if data['scoring-grip'] == 'Yes, there will be easy-grip perches'
+                            value: 'Yes',
+                            checked: true if data['veranda-pasture'] == 'Yes',
+                            attributes: {
+                                'data-next': '../biosecurity/concrete-apron'
+                            }
                         },
                         {
                             text: 'No',
-                            value: 'No, there will not be easy-grip perches',
-                            checked: true if data['scoring-grip'] == 'No, there will not be easy-grip perches'
+                            value: 'No',
+                            checked: true if data['veranda-pasture'] == 'No',
+                            attributes: {
+                                'data-next': '../biosecurity/concrete-apron'
+                            }
                         }
                     ]
                 }) }}
@@ -61,11 +60,13 @@
 
             <div class="app-step-nav-related app-step-nav-related--singular">
                 <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
+
                 <p>
-                    RPA want to support projects that ensure perches are easy to grip to increase bird safety and reduce falls.
+                    If your veranda has direct access to pasture, it does not need to be surrounded by a continuous concrete apron.
                 </p>
+    
             </div>
 
         </div>
