@@ -5,6 +5,11 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
+{% set minRate = '10,800' %}
+{% if poultryType != 'hen' %}
+    {% set minRate = '9,000' %}
+{% endif %}
+
 {% block pageTitle %}
     Will the building have a mechanical ventilation system with these features? 
 {% endblock %}
