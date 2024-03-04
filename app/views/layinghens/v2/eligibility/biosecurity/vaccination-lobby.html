@@ -1,0 +1,90 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will there be a designated vaccination lobby with internal and external access?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'vaccination-lobby',
+                    name: 'vaccination-lobby',
+                    fieldset: {
+                        legend: {
+                            text: 'Will there be a designated vaccination lobby with internal and external access?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Internal access from the bird living area and external access from the loading bay'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['vaccination-lobby'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'changing-area'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['vaccination-lobby'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-vaccination-lobby'
+                                }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'No, I am rearing organic pullets',
+                            value: 'No, I am rearing organic pullets',
+                            checked: true if data['vaccination-lobby'] == 'No, I am rearing organic pullets',
+                            attributes: {
+                                    'data-next': 'changing-area'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The building must have a dedicated area to perform pullet vaccinations, with access to the loading bay. 
+                </p>
+                <p>
+                    If you are rearing organic pullets, you are exempt from adding a vaccination lobby.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set justBuilding = true %}
+
+{% if data['veranda-present'] == 'Yes' and data['veranda-pasture'] == 'No' %}
+    {% set justBuilding = false %}
+{% endif %}
+
+{% set question = 'Will the building and veranda have a continuous concrete apron around the perimeter?' %}
+{% if justBuilding %}
+    {% set question = 'Will the building have a continuous concrete apron around its perimeter?' %}
+{% endif %}
+
+{% block pageTitle %}
+    {{ question }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+            {% set nextPage = 'vehicle-washing-area' %}
+            {% if poultryType != 'hen' %}
+                {% set nextPage = 'vaccination-lobby' %}
+            {% endif %}
+
+            {{ govukRadios ({
+                idPrefix: 'concrete-apron',
+                name: 'concrete-apron',
+                classes: 'govuk-radios--inline',
+                fieldset: {
+                    legend: {
+                        text: question,
+                        isPageHeading: true,
+                        classes: 'govuk-fieldset__legend--l'
+                    }
+                },
+                items: [
+                    {
+                        text: 'Yes',
+                        value: 'Yes',
+                        checked: true if data['concrete-apron'] == 'Yes',
+                        attributes: {
+                                'data-next': nextPage
+                            }
+                    },
+                     {
+                        text: 'No',
+                        value: 'No',
+                        checked: true if data['concrete-apron'] == 'No',
+                        attributes: {
+                                'data-next': 'elim-concrete-apron'
+                            }
+                    }
+                ]
+            }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                {% if justBuilding %}
+                    <p>
+                        The building must be surrounded by a continuous strip of concrete.
+                    </p>
+                {% else %}
+                    <p>
+                        The building and veranda must be surrounded by a continuous strip of concrete.
+                    </p>
+                {% endif %}
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    Will you buy a solar PV system with this grant?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../funding/cost">
+
+                 {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        You can choose to buy a solar PV system that provides power to this building as part of the grant. You must install the solar PV panels on the roof of this building.
+                    </p>
+
+                    <p class="govuk-hint"> 
+                        A solar PV system can include:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            an electrical grid connection (your housing must have an existing energy supply)
+                        </li>
+                        <li>
+                            solar panels
+                        </li>
+                        <li>
+                            an inverter
+                        </li>
+                        <li>
+                            a utility meter
+                        </li>
+                        <li>
+                            a battery
+                        </li>
+                    </ul>
+
+                    {{ govukWarningText ({
+                        text: 'You cannot buy a solar PV system if the roof of the building only faces north or is heavily shaded.',
+                        iconFallbackText: 'Warning'
+                    }) }}
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: 'solar-pv-system',
+                    name: 'solar-pv-system',
+                    fieldset: {
+                        legend: {
+                            text: 'Will you buy a solar PV system with this grant?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                    {
+                        text: 'Yes',
+                        value: 'Yes',
+                        checked: true if data['solar-pv-system'] == 'Yes'
+                    },
+                    {
+                        text: 'No',
+                        value: 'No',
+                        checked: true if data['solar-pv-system'] == 'No'
+                    }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+          <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>You do not have to buy and install a solar PV system to be eligible for this grant.</p>
+            </div>
+        </div>
+
+</div>
+
+{% endblock %}

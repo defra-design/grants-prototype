@@ -1,0 +1,75 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the multi-tier system have 3 tiers or fewer directly above each other?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="energy">
+            {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-dark-brooders',
+                    name: 'scoring-dark-brooders',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the housing include dark brooders?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'A suspended horizontal heat source enclosed by a curtain to exclude light'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, the housing will have dark brooders',
+                            checked: true if data['scoring-dark-brooders'] == 'Yes, the housing will have dark brooders'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, the housing will not have dark brooders',
+                            checked: true if data['scoring-dark-brooders'] == 'No, the housing will not have dark brooders'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to fund pullet housing that has dark brooders.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

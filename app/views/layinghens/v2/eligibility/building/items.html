@@ -1,0 +1,105 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the building have these features?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The building must have:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            a fixed structure with a solid concrete floor
+                        </li>
+                        <li>
+                            water-tight roof and walls
+                        </li>
+                        <li>
+                            mesh capping applied to any roof or wall inlets and outlets capped with mesh (with a mesh hole size of 25 millimetres or less)
+                        </li>
+                        <li>
+                            catch trays under all chimneys and roof-mounted vents
+                        </li>
+                    </ul>
+
+                {% set nextPage = 'insulation' %}
+                {% if data['poultry-type'] == 'pullet' %}
+                    {% set nextPage = 'pullet-requirements' %}
+                {% endif %}    
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'items',
+                    name: 'items',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the building have these features?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['items'] == 'Yes',
+                            attributes: {
+                                    'data-next': nextPage
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['items'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-items'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+         <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The building must have these design features to meet the grant priority of improving biosecurity.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

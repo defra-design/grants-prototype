@@ -1,0 +1,76 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the veranda have direct access to pasture?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'veranda-pasture',
+                    name: 'veranda-pasture',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the veranda have direct access to pasture?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['veranda-pasture'] == 'Yes',
+                            attributes: {
+                                'data-next': '../biosecurity/concrete-apron'
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['veranda-pasture'] == 'No',
+                            attributes: {
+                                'data-next': '../biosecurity/concrete-apron'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+
+                <p>
+                    If your veranda has direct access to pasture, it does not need to be surrounded by a continuous concrete apron.
+                </p>
+    
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

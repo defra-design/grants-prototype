@@ -1,0 +1,81 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the pullets be housed within the maximum stocking density when they are 16 weeks old?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+            {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The maximum stocking density for multi-tier pullet housing at the age of 16 weeks is:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            20kg per m<sup>2</sup> of the total usable area
+                        </li>
+                        <li>
+                            33kg per m<sup>2</sup> of the total usable area at floor level
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'housing-density',
+                    name: 'housing-density',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            html: 'Will the pullets be housed within the maximum stocking density when they are 16 weeks old?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['housing-density'] == 'Yes',
+                            attributes: {
+                                    'data-next': '../ventilation/features'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['housing-density'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-housing-density'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+        
+</div>
+
+{% endblock %}

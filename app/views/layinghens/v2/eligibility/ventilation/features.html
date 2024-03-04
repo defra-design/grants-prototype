@@ -1,0 +1,102 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set minRate = '10,800' %}
+{% if poultryType != 'hen' %}
+    {% set minRate = '9,000' %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the building have a mechanical ventilation system with these features? 
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The mechanical ventilation system must have:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            a control system to automatically measure and record the daily temperature, humidity, and CO<sub>2</sub> levels
+                        </li>
+                        <li>
+                            an alarm system (that detects excessive high or low temperatures and system failures) with a power supply independent of mains electricity
+                        </li>
+                        <li>
+                            an emergency power supply, for example a high-capacity generator, in case of electrical or other failures
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'ventilation-features',
+                    name: 'ventilation-features',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the building have a mechanical ventilation system with these features? ',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['ventilation-features'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'specifications'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['ventilation-features'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-features'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The ventilation system must be able to protect the birds in extreme heat. It must also be able to assess indoor air quality by monitoring indoor CO<sub>2</sub> levels.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the building have a veranda?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set nextPageOnYes = 'specification' %}
+                {% set nextPageOnNo = 'elim-size' %}
+                {% set nextPageOnExempt = '../biosecurity/concrete-apron' %}
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        You are exempt if you do not have space to add a veranda that is either:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet govuk-hint">
+                        <li>
+                            4 metres wide or more along the length of the bird housing area
+                        </li>
+                        <li>
+                            30% or more of the indoor bird housing area footprint
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'veranda-present',
+                    name: 'veranda-present',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the building have a veranda?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['veranda-present'] == 'Yes',
+                            attributes: {
+                                'data-next': nextPageOnYes
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['veranda-present'] == 'No',
+                            attributes: {
+                                'data-next': nextPageOnNo
+                            }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'My building is exempt',
+                            value: 'My building is exempt',
+                            checked: true if data['veranda-present'] == 'My building is exempt',
+                             attributes: {
+                                'data-next': nextPageOnExempt
+                            }
+                        } 
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+
+                <p>
+                    The building must have a veranda.
+                </p>
+    
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    What type of {{ poultryType }}  housing system do you currently use in the building?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="current-multi-tier-system">
+            {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-system',
+                    name: 'scoring-system',
+                    fieldset: {
+                        legend: {
+                            text: 'What type of ' + poultryType + '  housing system do you currently use in the building?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'The housing system you are replacing or refurbishing for this project'
+                    },
+                    items: [
+                        {
+                            text: 'Colony cage',
+                            value: 'Colony cage',
+                            checked: true if data['scoring-system'] == 'Colony cage'
+                        },
+                        {
+                            text: 'Combi-cage',
+                            value: 'Combi-cage',
+                            checked: true if data['scoring-system'] == 'Combi-cage'
+                        },
+                        {
+                            text: 'Barn',
+                            value: 'Barn',
+                            checked: true if data['scoring-system'] == 'Barn'
+                        },
+                        {
+                            text: 'Free-range',
+                            value: 'Free-range',
+                            checked: true if data['scoring-system'] == 'Free-range'
+                        },
+                        {
+                            text: 'Organic',
+                            value: 'Organic',
+                            checked: true if data['scoring-system'] == 'Organic'
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'Other housing system',
+                            checked: true if data['scoring-system'] == 'Other housing system'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to prioritise supporting farmers that are transitioning out of using colony cages.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

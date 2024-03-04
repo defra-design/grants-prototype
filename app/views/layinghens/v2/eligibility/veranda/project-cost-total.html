@@ -1,0 +1,66 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    What is the estimated cost of the veranda project?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="elim-project-cost">
+
+                <h1 class="govuk-heading-l">
+                   What is the estimated cost of the veranda project?
+                </h1>
+
+                <p class="govuk-hint">
+                    You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £5,000 (40% of £12,500). The maximum grant is £100,000.
+                </p>
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        Do not include VAT
+                    </p>
+
+                    <p class="govuk-hint">
+                        Enter amount, for example 50,000
+                    </p>
+
+                {% endset %}
+
+                {{ govukInput ({
+                    id: 'cost',
+                    name: 'cost',
+                    value: data['cost'] if data['cost'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    prefix: { text: '£' },
+                    hint: {
+                        html: hintHtml
+                    },
+                    label: {
+                        text: 'Total estimated project cost',
+                        classes: 'govuk-visually-hidden'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

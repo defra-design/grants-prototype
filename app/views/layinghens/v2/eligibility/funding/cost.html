@@ -1,0 +1,87 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set projectDescriptor = 'replacing' %}
+{% if data['project-type'] == 'refurb' %}
+    {% set projectDescriptor = 'refurbishing' %}
+{% endif %}
+
+{% block pageTitle %}
+    What is the total estimated cost of {{ projectDescriptor }} the building?
+{% endblock %}
+
+{% set shouldEliminate = false %}
+{% if data['roof-support-for-solar-pv'] == 'No' and 'None' | isIn(data['solar-exemptions']) %}
+    {% set shouldEliminate = true %}
+{% endif %}
+
+{% block content %}
+
+{% if shouldEliminate %}
+    {{ 'elim-roof-support-for-solar-pv' | redirect | safe }}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="elim-cost">
+
+                <h1 class="govuk-heading-l">
+                    What is the estimated cost of {{ projectDescriptor }} the building?
+                </h1>
+
+                <p class="govuk-hint">
+                    You can only apply for a grant of up to 40% of the estimated costs.
+                    {% if data['solar-pv-system'] == 'Yes' %}
+                        Do not include the solar PV system costs in the estimated building project costs.
+                    {% endif %}
+                </p>
+
+                <p class="govuk-hint">
+                    The minimum grant each business can apply for is £15,000 (40% of £37,500). The maximum total grant amount each business can apply for is £500,000.
+                </p>
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        Do not include VAT
+                    </p>
+
+                    <p class="govuk-hint">
+                        Enter amount, for example 95,000
+                    </p>
+
+                {% endset %}
+
+                {{ govukInput ({
+                    id: 'cost',
+                    name: 'cost',
+                    value: data['cost'] if data['cost'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    prefix: { text: '£' },
+                    hint: {
+                        html: hintHtml
+                    },
+                    label: {
+                        text: 'Total estimated project cost',
+                        classes: 'govuk-visually-hidden'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
