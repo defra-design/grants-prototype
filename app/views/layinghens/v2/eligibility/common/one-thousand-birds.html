@@ -1,0 +1,81 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    Do you have at least 1,000 birds on your farm currently?
+{% endblock %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set poultryDescriptor = 'laying hens' %}
+{% if poultryType != 'hen' %}
+    {% set poultryDescriptor = 'pullets' %}
+{% endif %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'one-thousand-birds',
+                    name: 'one-thousand-birds',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you keep at least 1,000 ' + poultryDescriptor + ' on your farm currently?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['one-thousand-birds'] == 'Yes',
+                            attributes: {
+                                'data-next': '../building/items'
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['one-thousand-birds'] == 'No',
+                            attributes: {
+                                'data-next': 'elim-one-thousand-birds'
+                            }
+                        }
+                    ]
+                }) }}
+
+                
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You must keep at least 1,000 {{ poultryType }}s on your farm currently to be eligible for grant funding.
+                </p>
+            </div>
+        </div>
+
+</div>
+
+{% endblock %}

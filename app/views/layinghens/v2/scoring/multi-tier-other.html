@@ -1,0 +1,94 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set question = 'Will the hens in your grant-funded building be reared in a multi-tier system as pullets?' %}
+{% if poultryType != 'hen' %}
+    {% set question = 'Will the pullets in your grant-funded building live in a multi-tier system as hens?' %}
+{% endif %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="natural-light">
+            {% endif %}
+
+                {% set hintText = 'When they are under 15 weeks old' %}
+                {% if poultryType != 'hen' %}
+                    {% set hintText = 'When they are over 15 weeks old' %}
+                {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'multi-tier-other',
+                    name: 'multi-tier-other',
+                    fieldset: {
+                        legend: {
+                            text: question,
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: hintText
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, the ' + poultryType + ' will live in a multi-tier system as hens',
+                            checked: true if data['multi-tier-other'] == 'Yes, the ' + poultryType + ' will live in a multi-tier system as hens'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, the ' + poultryType + ' will not live in a multi-tier system as hens',
+                            checked: true if data['multi-tier-other'] == 'No, the ' + poultryType + ' will not live in a multi-tier system as hens'
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'I don’t know',
+                            value: 'I don’t know',
+                            checked: true if data['multi-tier-other'] == 'I don’t know'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                {% if poultryType == 'hen' %}
+                    <p>
+                        RPA want to fund projects where pullets are reared in multi-tier aviary systems before they move into the grant-funded aviary housing as layer hens.
+                    </p>
+                {% else %}
+                    <p>
+                        RPA want to fund projects that will house hens in multi-tier aviary systems when they move out of the grant-funded housing.
+                    </p>
+                {% endif %}
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

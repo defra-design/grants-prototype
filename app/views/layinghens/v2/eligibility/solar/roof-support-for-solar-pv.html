@@ -1,0 +1,116 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    Will the roof of the building be able to support solar PV panels?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        You must provide confirmation from a building expert, contractor or structural engineer that your roof can support solar PV panels for your full application. This grant does not fund the confirmation.
+                    </p>
+
+                    <p class="govuk-hint">
+                        Your roof is exempt if:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            the building is listed
+                        </li>
+                        <li>
+                            the building is on a World Heritage Site
+                        </li>
+                        <li>
+                            you're upgrading an existing building and would not otherwise make changes to the roof
+                        </li>
+                        <li>
+                            the roof faces only north
+                        </li>
+                        <li>
+                            the roof is heavily shaded
+                        </li>
+                        <li>
+                            the roof does not have 100m<sup>2</sup> of clear roof space
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'roof-support-for-solar-pv',
+                    name: 'roof-support-for-solar-pv',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the roof of the building be able to support solar PV panels?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['roof-support-for-solar-pv'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'solar-pv-system'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['roof-support-for-solar-pv'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-roof-support-for-solar-pv'
+                                }
+                        },
+                        {    divider: 'or'
+
+                        },
+                        {
+                            text: 'My roof is exempt',
+                            value: 'My roof is exempt',
+                            checked: true if data['roof-support-for-solar-pv'] == 'My roof is exempt',
+                            attributes: {
+                                    'data-next': 'solar-pv-system'
+                                }
+                        }
+                    ]
+                }) }}
+
+                
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+            <div class="govuk-grid-column-one-third">
+
+                <div class="app-step-nav-related app-step-nav-related--singular">
+                    <h2 class="app-step-nav-related__heading">
+                    <span class="app-step-nav-related__pretitle">Eligibility</span>
+                    </h2>
+                    <p>
+                        The roof must be able to support solar PV panels, allowing for potential use in the future.
+                    </p>
+                </div>
+            </div>
+
+</div>
+
+{% endblock %}

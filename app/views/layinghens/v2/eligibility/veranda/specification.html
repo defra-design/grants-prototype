@@ -1,0 +1,87 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the veranda have these features?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The veranda must have a:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            solid concrete floor
+                        </li>
+                        <li>
+                            waterproof insulated roof
+                        </li>
+                        <li>
+                            perimeter wall at least 1 metre high
+                        </li>
+                        <li>
+                            dimmable LED lighting system between 0 lux and 60 lux
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'veranda-specification',
+                    name: 'veranda-specification',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the veranda have these features?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['veranda-specification'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'biosecurity'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['veranda-specification'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-specification'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

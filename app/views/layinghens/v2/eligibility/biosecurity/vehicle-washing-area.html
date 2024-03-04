@@ -1,0 +1,81 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the building have a designated area for washing and disinfecting vehicles?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+            {% set hintHtml %}
+
+                <p class="govuk-hint">
+                    This must include:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet govuk-hint">
+                    <li>   
+                        an area of concrete parking which is appropriate to the size of the vehicles entering the facility (minimum width of 3 metres)
+                    </li>
+                    <li>
+                        a drainage system and storage tanks for soiled water
+                    </li>
+                </ul>
+
+            {% endset %}
+
+            {{ govukRadios ({
+                idPrefix: 'vehicle-washing-area',
+                name: 'vehicle-washing-area',
+                classes: 'govuk-radios--inline',
+                fieldset: {
+                    legend: {
+                        text: 'Will the building have a designated area for washing and disinfecting vehicles?',
+                        isPageHeading: true,
+                        classes: 'govuk-fieldset__legend--l'
+                    }
+                },
+                hint: {
+                    html: hintHtml
+                },
+                items: [
+                {
+                    text: 'Yes',
+                    value: 'Yes',
+                    checked: true if data['vehicle-washing-area'] == 'Yes',
+                    attributes: {
+                                'data-next': 'external-taps'
+                            }
+                },
+                 {
+                    text: 'No',
+                    value: 'No',
+                    checked: true if data['vehicle-washing-area'] == 'No',
+                    attributes: {
+                                'data-next': 'elim-vehicle-washing-area'
+                            }
+                }
+                ]
+            }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

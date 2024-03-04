@@ -1,0 +1,95 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the aviary system have these features?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The aviary system must have integrated:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet govuk-hint">
+                        <li>
+                            automatic manure removal belts
+                        </li>
+                        <li>
+                            non-flicker LED lighting at each level (including under the system) capable of automatically simulating dawn and dusk
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+
+                {{ govukRadios ({
+                    idPrefix: 'aviary-features',
+                    name: 'aviary-features',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the aviary system have these features?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['aviary-features'] == 'Yes',
+                            attributes: {
+                                    'data-next': '../ventilation/features'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['aviary-features'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-features'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The aviary system must have an integrated automatic manure removal belt and non-flicker LED lighting system
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

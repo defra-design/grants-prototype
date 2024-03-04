@@ -1,0 +1,80 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set question = 'How many birds will the new building be able to house?' %}
+{% if data['project-type'] == 'refurb' %}
+    {% set question = 'How many birds will the refurbished part of the building be able to house?' %}
+{% endif %}
+
+{% block pageTitle %}
+    {{ question }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="solar-cost">
+            
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The RPA want to fund a solar PV system with a power capacity that can support the building's high welfare features (lighting, ventilation system) for the amount of birds in the building.
+                    </p>
+
+                    <p class="govuk-hint">
+                        The power capacity for grant funding is 5 kilowatts (kW) per 1,000 birds.
+                    </p>
+
+                    <p class="govuk-hint">
+                        Enter estimated amount, for example 600
+                    </p>
+
+                {% endset %}
+
+                <h1 class="govuk-heading-l">
+                    {{ question }}
+                </h1>
+
+                {% if data['project-type'] != 'refurb' %}
+                    <p class="govuk-hint">
+                        The RPA want to fund a solar PV system with a power capacity that can support the building's high welfare features (lighting, ventilation system) for the amount of birds in the building.
+                    </p>
+                {% else %}
+                    <p class="govuk-hint">
+                        The RPA want to fund a solar PV system with a power capacity that can support the building's high welfare features (lighting, ventilation system) for the amount of birds in the refurbished part of the building.
+                    </p>
+                {% endif %}
+
+                {{ govukInput ({
+                    id: 'number-of-birds',
+                    name: 'number-of-birds',
+                    value: data['number-of-birds'] if data['number-of-birds'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    label: {
+                        text: 'Number of birds',
+                        classes: 'govuk-input--width-10 govuk-visually-hidden'
+                    },
+                    hint: {
+                        text: 'Enter an amount, for example 8,000' 
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

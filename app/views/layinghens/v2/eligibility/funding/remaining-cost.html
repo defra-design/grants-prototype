@@ -1,0 +1,90 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set grantAmount = data['potential-funding'] | float %}
+{% if grantAmount > 500000 %}
+    {% set grantAmount = 500000 %}
+{% endif %}
+
+{% set remainingCost = (data['total-cost'] | float) - (grantAmount | float) %}
+
+{% block pageTitle %}
+    Can you pay the remaining costs of {{ remainingCost | inPounds }}?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: 'remaining-cost',
+                    name: 'remaining-cost',
+                    fieldset: {
+                        legend: {
+                            text: 'Can you pay the remaining costs of ' + remainingCost | inPounds + '?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+    
+                    items: [
+                    {
+                        text: 'Yes',
+                        value: 'Yes',
+                        checked: true if data['remaining-cost'] == 'Yes',
+                        attributes: {
+                            'data-next': '../../scoring/interruption'
+                        }
+                    },
+                    {
+                        text: 'No',
+                        value: 'No',
+                        checked: true if data['remaining-cost'] == 'No',
+                        attributes: {
+                            'data-next': 'elim-remaining-cost'
+                        }
+                    }
+                    ]
+                }) }}
+
+                <input type="hidden" name="from-scoring" value="false">
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.</p>
+
+                <p>
+                You can use:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+
+                    <li>loans</li>
+                    <li>overdrafts</li>
+                    <li>the Basic Payment Scheme</li>
+
+                </ul>
+            
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

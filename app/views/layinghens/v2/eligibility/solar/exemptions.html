@@ -1,0 +1,126 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Do any of these exemptions apply to the building?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../funding/cost">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The roof of the building does not have to be able to support solar PV panels if one or more of these exemptions apply.
+                    </p>
+
+                    <p class="govuk-hint">
+                        Select all that apply
+                    </p>
+
+                {% endset %}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'solar-exemptions',
+                    name: 'solar-exemptions',
+                    fieldset: {
+                        legend: {
+                            text: 'Do any of these exemptions apply to the building?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'The building is listed',
+                            value: 'The building is listed',
+                            checked: true if 'The building is listed' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            text: 'The building is on a World Heritage Site',
+                            value: 'The building is on a World Heritage Site',
+                            checked: true if 'The building is on a World Heritage Site' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            text: 'I am not making changes to this building’s roof',
+                            value: 'I am not making changes to this building’s roof',
+                            checked: true if 'I am not making changes to this building’s roof' | isIn(data['solar-exemptions'])
+                        } if data['project-type'] == 'refurb',
+                        {
+                            text: 'The roof only faces north',
+                            value: 'Faces north',
+                            checked: true if 'Faces north' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            text: 'The roof is heavily shaded',
+                            value: 'Heavily shaded',
+                            checked: true if 'Heavily shaded' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            html: 'The roof does not have 100m<sup>2</sup> of clear roof space',
+                            value: 'Lack of clear space',
+                            checked: true if 'Lack of clear space' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None',
+                            checked: true if 'None' | isIn(data['solar-exemptions']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    You can apply for grant funding to buy and install a solar PV system if:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        the building is listed
+                    </li>
+                    <li>
+                        the building is on a World Heritage Site
+                    </li>
+                    {% if data['project-type'] == 'refurb' %}
+                        <li>
+                            you are not making changes to the roof
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

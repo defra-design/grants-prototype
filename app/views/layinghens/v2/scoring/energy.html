@@ -1,0 +1,121 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the {{ poultryType }} housing use renewable energy sources?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="data">
+            {% endif %}
+
+                {% set heatExhangerOptionsHtml %}
+
+                    {{ govukRadios ({
+                        idPrefix: 'scoring-energy-heat-exchanger',
+                        name: 'scoring-energy-heat-exchanger',
+                        fieldset: {
+                            legend: {
+                                text: 'Which type of heat exchanger will you have?',
+                                isPageHeading: false,
+                                classes: 'govuk-fieldset__legend--s'
+                            }
+                        },
+                        items: [
+                            {
+                                text: 'Heating only',
+                                value: 'Heating only',
+                                checked: true if data['scoring-energy-heat-exchanger'] == 'Heating only'
+                            },
+                            {
+                                text: 'Heating and cooling',
+                                value: 'Heating and cooling',
+                                checked: true if data['scoring-energy-heat-exchanger'] == 'Heating and cooling'
+                            }
+                        ]
+                    }) }}
+
+                {% endset %}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-energy',
+                    name: 'scoring-energy',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the ' + poultryType + ' housing use renewable energy sources?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select all that apply'
+                    },
+                    items: [
+                        {
+                            text: 'Solar or thermal PV system',
+                            value: 'Solar or thermal PV system',
+                            checked: true if 'Solar or thermal PV system' | isIn(data['scoring-energy'])
+                        },
+                        {
+                            text: 'A heat exchanger',
+                            value: 'A heat exchanger',
+                            checked: true if 'A heat exchanger' | isIn(data['scoring-energy']),
+                            conditional: {
+                                html: heatExhangerOptionsHtml
+                            }
+                        },
+                        {
+                            text: 'Biomass boiler',
+                            value: 'Biomass boiler',
+                            checked: true if 'Biomass boiler' | isIn(data['scoring-energy'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'No renewable energy use',
+                            checked: true if 'No renewable energy use' | isIn(data['scoring-energy']),
+                            attributes: {
+                                'data-behavior': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to fund projects that use renewable energy.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

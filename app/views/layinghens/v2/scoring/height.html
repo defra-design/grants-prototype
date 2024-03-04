@@ -1,0 +1,75 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the highest tier with direct access to the floor be 2 metres high or less?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+        {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="tiers">
+            {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-height',
+                    name: 'scoring-height',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the highest tier with direct access to the floor be 2 metres high or less?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'The height of the highest tier in the multi-tier system from the litter floor area to the underside of the manure belt'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, the highest tier will be 2 metres high or less',
+                            checked: true if data['scoring-height'] == 'Yes, the highest tier will be 2 metres high or less'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, the highest tier will be more than 2 metres high',
+                            checked: true if data['scoring-height'] == 'No, the highest tier will be more than 2 metres high'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to fund projects that prevent birds falling from heights of more than 2 metres, to reduce the risk of keel bone fractures.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}
