@@ -26,6 +26,7 @@ var services = {
 		description: 'This service is for laying hens',
 		basefolder: './app/views/layinghens/current/',
 		baseurl: '/layinghens/current/',
+		exclude: ['templates', 'views'],
 	},
 }
 
@@ -37,30 +38,41 @@ const populateServicePageStructure = (services) => {
 		const service = services[serviceKey]
 		const basefolder = service.basefolder
 		const baseurl = service.baseurl
-		service.structure = populateFolder(basefolder, baseurl)
+		const excludedDirectories = service.exclude
+		service.structure = populateFolder(basefolder, baseurl, excludedDirectories)
 	})
 }
 
-const populateFolder = (folderPath, baseurl) => {
+const populateFolder = (folderPath, baseurl, excludedDirectories) => {
+	var excludedDirectories = excludedDirectories || []
 	const structure = {}
 	const files = fs.readdirSync(folderPath)
 	files.forEach((file) => {
 		const fullPath = path.join(folderPath, file)
 		const relativePath = path.relative(baseurl, fullPath)
 		if (fs.statSync(fullPath).isDirectory()) {
+			const directoryName = file
+			var isExcluded = false
+			excludedDirectories.forEach((excludedDirectory) => {
+				if (directoryName === excludedDirectory) {
+					isExcluded = true
+				}
+			})
 			const children = populateFolder(fullPath, baseurl)
-			structure[file] = {
-				type: 'folder',
-				name: file,
-				url: fs.existsSync(path.join(fullPath, 'index.html'))
-					? trimStartOfString(relativePath, baseurl)
-					: null,
-				children: Object.keys(children).length > 0 ? children : null,
+			if (Object.keys(children).length !== 0 && !isExcluded) {
+				structure[file] = {
+					type: 'folder',
+					name: userFriendlyName(file),
+					url: fs.existsSync(path.join(fullPath, 'index.html'))
+						? trimStartOfString(relativePath, baseurl)
+						: null,
+					children: Object.keys(children).length > 0 ? children : null,
+				}
 			}
 		} else if (file.endsWith('.html')) {
 			structure[file.replace('.html', '')] = {
 				type: 'page',
-				name: file.replace('.html', ''),
+				name: userFriendlyName(file),
 				url: trimStartOfString(relativePath, baseurl),
 			}
 		}
@@ -74,6 +86,18 @@ const trimStartOfString = (fullString, matchString) => {
 		return fullString.substring(index)
 	}
 	return fullString
+}
+
+const userFriendlyName = (name) => {
+	const isElimination = name.includes('elim-')
+	return (
+		name
+			.replace('elim-', '')
+			.replace('.html', '')
+			.replace(/-/g, ' ')
+			.replace(/\b\w/g, (l) => l.toUpperCase())
+		+ (isElimination ? ' - Elimination' : '')
+	)
 }
 
 populateServicePageStructure(services)

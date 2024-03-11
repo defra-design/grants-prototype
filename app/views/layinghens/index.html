@@ -5,9 +5,26 @@
 {% set pageStructure = data.services['layinghens'].structure  %}
 
 {% macro renderStructure(structure) %}
-    <ul>
+    <ul class="govuk-list app-file-structure">
         {% for name, page in structure %}
             <li>
+              {% if page.children %}
+                {% set containedHtml %}
+                  {{ renderStructure(page.children) }}
+                {% endset %}
+                  <details> 
+                    <summary>
+                      {% if page.type == 'page' %}
+                        <a class="govuk-link--no-visited-state" href="{{ page.url }}">
+                          {{ page.name }}
+                        </a>
+                      {% else %}
+                        {{ page.name }}
+                      {% endif %}
+                    </summary>
+                    {{ containedHtml | safe }}
+                  </details>
+              {% else %}
                 {% if page.type == 'page' %}
                     <a href="{{ page.url }}">{{ page.name }}</a>
                 {% else %}
@@ -16,6 +33,7 @@
                         {{ renderStructure(page.children) }}
                     {% endif %}
                 {% endif %}
+              {% endif %}
             </li>
         {% endfor %}
     </ul>
@@ -75,5 +93,15 @@
 {{ pageStructure | dump }}
 </code>
 
+<style>
+ul.app-file-structure {
+  list-style-type: none;
+  padding-left: 0;
+}
+ul.app-file-structure ul {
+padding-left: 1em;
+border-left: 4px solid lightgrey;
+}
+</style>
 
 {% endblock %}
