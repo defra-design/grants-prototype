@@ -6,7 +6,7 @@
 
 {% macro renderStructure(structure) %}
     <ul class="govuk-list app-file-structure">
-        {% for name, page in structure %}
+        {% for page in structure | sort(false, true, 'name') %}
             <li>
               {% if page.children %}
                 {% set containedHtml %}
@@ -89,9 +89,6 @@
       {{ renderStructure(pageStructure) }}
       </div>
 </div>
-<code>
-{{ pageStructure | dump }}
-</code>
 
 <style>
 ul.app-file-structure {

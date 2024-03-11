@@ -18,6 +18,7 @@ Example usage:
 */
 
 const fs = require('fs')
+const { trim } = require('jquery')
 const path = require('path')
 
 var services = {
@@ -45,7 +46,7 @@ const populateServicePageStructure = (services) => {
 
 const populateFolder = (folderPath, baseurl, excludedDirectories) => {
 	var excludedDirectories = excludedDirectories || []
-	const structure = {}
+	const structure = []
 	const files = fs.readdirSync(folderPath)
 	files.forEach((file) => {
 		const fullPath = path.join(folderPath, file)
@@ -60,21 +61,21 @@ const populateFolder = (folderPath, baseurl, excludedDirectories) => {
 			})
 			const children = populateFolder(fullPath, baseurl)
 			if (Object.keys(children).length !== 0 && !isExcluded) {
-				structure[file] = {
+				structure.push({
 					type: 'folder',
-					name: userFriendlyName(file),
-					url: fs.existsSync(path.join(fullPath, 'index.html'))
-						? trimStartOfString(relativePath, baseurl)
-						: null,
-					children: Object.keys(children).length > 0 ? children : null,
-				}
+					name: userFriendlyName(directoryName),
+					slug: directoryName,
+					children: children
+
+				})
 			}
 		} else if (file.endsWith('.html')) {
-			structure[file.replace('.html', '')] = {
+			structure.push({
 				type: 'page',
 				name: userFriendlyName(file),
+				slug: file.replace('.html', ''),
 				url: trimStartOfString(relativePath, baseurl),
-			}
+			})
 		}
 	})
 	return structure
