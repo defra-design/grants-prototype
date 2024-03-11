@@ -21,22 +21,6 @@
         <div class="govuk-grid-column-two-thirds">
 
             <form action="solar-cost">
-            
-                {% set hintHtml %}
-
-                    <p class="govuk-hint">
-                        The RPA want to fund a solar PV system with a power capacity that can support the building's high welfare features (lighting, ventilation system) for the amount of birds in the building.
-                    </p>
-
-                    <p class="govuk-hint">
-                        The power capacity for grant funding is 5 kilowatts (kW) per 1,000 birds.
-                    </p>
-
-                    <p class="govuk-hint">
-                        Enter estimated amount, for example 600
-                    </p>
-
-                {% endset %}
 
                 <h1 class="govuk-heading-l">
                     {{ question }}
@@ -46,9 +30,17 @@
                     <p class="govuk-hint">
                         The RPA want to fund a solar PV system with a power capacity that can support the building's high welfare features (lighting, ventilation system) for the amount of birds in the building.
                     </p>
+
+                    <p class="govuk-hint">
+                        The power capacity for grant funding is 5 kilowatts (kW) per 1,000 birds.
+                    </p>
                 {% else %}
                     <p class="govuk-hint">
                         The RPA want to fund a solar PV system with a power capacity that can support the building's high welfare features (lighting, ventilation system) for the amount of birds in the refurbished part of the building.
+                    </p>
+
+                    <p class="govuk-hint">
+                        The power capacity for grant funding is 5 kilowatts (kW) per 1,000 birds.
                     </p>
                 {% endif %}
 

@@ -10,24 +10,22 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
+{% set pageHeading = 'Does your current building include a multi-tier aviary system?' %}
+{% if pageHeading != 'hen' %}
+    {% set pageHeading = 'Does your current building include a multi-tier system?' %}
+{% endif %}
+
 {% block pageTitle %}
-    Does your current building include a multi-tier aviary system?
+    {{ pageHeading }}
 {% endblock %}
 
 {% block content %}
 
-    {% set currentSystem = data['scoring-system'] %}
+{% set currentSystem = data['scoring-system'] %}
 
-    {% if currentSystem == 'Colony cage' %}
-        {{ 'ramps' | redirect | safe }}
-    {% endif %}
-
-    {% set pageHeading = data['poultry-type'] %}
-    {% if pageHeading != 'hen' %}
-        {% set pageHeading = 'Does your current building include a multi-tier system?' %}
-    {% else %}
-        {% set pageHeading = 'Does your current building include a multi-tier aviary system?' %}
-    {% endif %}
+{% if currentSystem == 'Colony cage' %}
+    {{ 'ramps' | redirect | safe }}
+{% endif %}
     
 
 <div class="govuk-grid-row">
@@ -83,11 +81,11 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
 
-                {% if data['poultry-type'] == 'hen' %}
+                {% if poultryType == 'hen' %}
                 <p>
                     RPA want to encourage investment in high-welfare multi-tier aviary systems.
                 </p>
-                {% elseif data['poultry-type'] == 'pullet' %}
+                {% else %}
                 <p>
                     RPA want to encourage investment in high welfare multi-tier systems. 
                 </p>

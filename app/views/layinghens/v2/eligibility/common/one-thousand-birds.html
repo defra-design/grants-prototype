@@ -23,6 +23,13 @@
 
             <form method="post">
 
+                {% set nextPage = '../building/items' %}
+                {% if data['project-type'] == 'veranda' %}
+
+                    {% set nextPage = '../veranda/size' %}
+
+                {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'one-thousand-birds',
                     name: 'one-thousand-birds',
@@ -40,7 +47,7 @@
                             value: 'Yes',
                             checked: true if data['one-thousand-birds'] == 'Yes',
                             attributes: {
-                                'data-next': '../building/items'
+                                'data-next': nextPage
                             }
                         },
                         {
@@ -71,7 +78,7 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    You must keep at least 1,000 {{ poultryType }}s on your farm currently to be eligible for grant funding.
+                    You must keep at least 1,000 {{ poultryDescriptor }} on your farm currently to be eligible for grant funding.
                 </p>
             </div>
         </div>

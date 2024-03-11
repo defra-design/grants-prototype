@@ -13,11 +13,6 @@
             <form method="post">
 
             {% set nextPage = 'one-thousand-birds' %}
-            {% if data['project-type'] == 'veranda' %}
-
-                {% set nextPage = '../veranda/size' %}
-
-            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'poultry-type',
