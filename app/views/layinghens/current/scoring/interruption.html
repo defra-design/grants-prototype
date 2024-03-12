@@ -1,46 +1,38 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
-    Your project meets the eligibility criteria to apply for this grant
+    We will now score your project against our funding priorities
 {% endblock %}
 
 {% block content %}
+
+<div class="app-blue-card">
 
     <div class="govuk-grid-row">
 
             <div class="govuk-grid-column-two-thirds">
 
                 <h1 class="govuk-heading-l">
-                    Your project meets the eligibility criteria to apply for this grant
+                    We will now score your project against our funding priorities
                 </h1>
 
                 <p>
-                   You are eligible to apply for this grant.
+                   Your answers to the next questions will not stop you from applying.
                 </p>
-
-                 {{ govukInsetText ({
-                    text: "Your answers to the next questions will not change your project's eligibility"
-                }) }}
-
-                <h2 class="govuk-heading-m">
-                    Scoring
-                </h2>
 
                 <p>
-                    The next questions will score your project against the funding priorities of the grant.
-                </p>
-
-                 <p>
-                    Your project will get a score at the end of these questions. You can then make changes to see how you can improve your grant funding application.
+                    Your project will get a score of weak, average or strong. You can then make changes to improve your score.
                 </p>
                 
                 {{ govukButton ({
                     text: 'Continue',
-                    href: 'current-system'
+                    href: 'current-system',
+                    classes: 'govuk-button--inverse'
                 }) }}
 
             </div>
 
     </div>
 
+</div>
 {% endblock %}
