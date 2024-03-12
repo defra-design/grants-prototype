@@ -1,7 +1,7 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
-    Will you buy a solar PV system with this grant?
+    Will you buy a solar PV system for this building with the grant?
 {% endblock %}
 
 {% block content %}
@@ -10,41 +10,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="../funding/cost">
+            <form action="">
 
                  {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        You can choose to buy a solar PV system that provides power to this building as part of the grant. You must install the solar PV panels on the roof of this building.
+                        You have the option to buy and install a solar PV system with the grant. The solar PV panels must be installed on the roof of this building.
                     </p>
-
-                    <p class="govuk-hint"> 
-                        A solar PV system can include:
-                    </p>
-
-                    <ul class="govuk-hint govuk-list govuk-list--bullet">
-                        <li>
-                            an electrical grid connection (your housing must have an existing energy supply)
-                        </li>
-                        <li>
-                            solar panels
-                        </li>
-                        <li>
-                            an inverter
-                        </li>
-                        <li>
-                            a utility meter
-                        </li>
-                        <li>
-                            a battery
-                        </li>
-                    </ul>
-
-                    {{ govukWarningText ({
-                        text: 'You cannot buy a solar PV system if the roof of the building only faces north or is heavily shaded.',
-                        iconFallbackText: 'Warning'
-                    }) }}
-
+                    
                 {% endset %}
 
                 {{ govukRadios ({
@@ -53,7 +26,7 @@
                     name: 'solar-pv-system',
                     fieldset: {
                         legend: {
-                            text: 'Will you buy a solar PV system with this grant?',
+                            text: 'Will you buy a solar PV system for this building with the grant?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -65,14 +38,25 @@
                     {
                         text: 'Yes',
                         value: 'Yes',
-                        checked: true if data['solar-pv-system'] == 'Yes'
+                        checked: true if data['solar-pv-system'] == 'Yes',
+                        attributes: {
+                                    'data-next': '../funding/cost'
+                                }
                     },
                     {
                         text: 'No',
                         value: 'No',
-                        checked: true if data['solar-pv-system'] == 'No'
+                        checked: true if data['solar-pv-system'] == 'No',
+                        attributes: {
+                                    'data-next': 'exemptions'
+                                }
                     }
                     ]
+                }) }}
+
+                {{ govukWarningText ({
+                    text: 'You cannot buy a solar PV system with this grant if the roof of the building only faces north or is heavily shaded.',
+                    iconFallbackText: 'Warning'
                 }) }}
 
                 {{ govukButton ({
