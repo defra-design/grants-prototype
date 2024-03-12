@@ -18,7 +18,13 @@
             {% if data['from-scoring'] == 'true' %}
                 <form action="results">
             {% else %}
-                <form action="grip">
+            
+                {% if poultryType == 'hen' %}
+                    <form action="grip">
+                {% else %}
+                    <form action="dark-brooders">
+                {% endif %}
+
             {% endif %}
 
                 {% set hintHtml %}

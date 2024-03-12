@@ -31,20 +31,33 @@
 
             <form action="elim-cost">
 
+            {% set detailsText %}
+
+                <p>
+                    Enter the costs of {{ projectDescriptor }} for this building only.
+                </p>
+
+                <p>
+                    You must submit a separate application for each building.
+                </p>
+
+            {% endset %}
+            
                 <h1 class="govuk-heading-l">
                     What is the estimated cost of {{ projectDescriptor }} the building?
                 </h1>
 
                 <p class="govuk-hint">
-                    You can only apply for a grant of up to 40% of the estimated costs.
+                    You can apply for a grant of up to 40% of the estimated building project costs.
                     {% if data['solar-pv-system'] == 'Yes' %}
                         Do not include the solar PV system costs in the estimated building project costs.
                     {% endif %}
                 </p>
 
-                <p class="govuk-hint">
-                    The minimum grant each business can apply for is £15,000 (40% of £37,500). The maximum total grant amount each business can apply for is £500,000.
-                </p>
+                {{ govukDetails({
+                    summaryText: "I am replacing or refurbishing multiple buildings",
+                    html: detailsText
+                }) }}
 
                 {% set hintHtml %}
 
@@ -81,6 +94,22 @@
             </form>
 
         </div>
+
+            <div class="govuk-grid-column-one-third">
+
+                <div class="app-step-nav-related app-step-nav-related--singular">
+                    <h2 class="app-step-nav-related__heading">
+                    <span class="app-step-nav-related__pretitle">Eligibility</span>
+                    </h2>
+                    <p>
+                        The minimum grant each business can apply for is £15,000 (40% of £37,500). 
+                    </p>
+                    <p>
+                        The maximum total grant amount each business can apply for is £500,000 (40% of £1.25 million).
+                    </p>
+                </div>
+
+            </div>
 
 </div>
 

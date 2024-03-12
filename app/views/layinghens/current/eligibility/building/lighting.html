@@ -21,27 +21,30 @@
 
             
                 <p class="govuk-hint">
-                    The housing lighting system must have:
+                    When the project is complete, the house lighting system must have:
                 </p>
 
                 <ul class="govuk-hint govuk-list govuk-list--bullet">
                     <li>
                         non-flicker LED light with a colour temperature between 2700 and 4000 Kelvin
                     </li>
+
                     <li>
                         capacity for zonal dimming between 0 and 60 lux
                     </li>
+
                     <li>
                         coverage of the entire floor-litter (scratch) area
                     </li>
-                    <li>
-                        a simulated stepped dawn and dusk 
+
+                    {% if poultryType == 'pullet' %}
+                        <li>
                         
-                        {% if poultryType == 'hen' %}
-                        (unless this is already provided as part of an aviary lighting system)
-                        {% endif %}
-                        
-                    </li>
+                            a simulated stepped dawn and dusk 
+                            (unless this is provided as part of a rearing aviary system)
+                        </li>
+                    {% endif %}
+                    
                     <li>
                         an option for red light to reduce feather pecking
                     </li>

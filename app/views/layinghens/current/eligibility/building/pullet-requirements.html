@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the inside of the building have these features?
+    Will the pullet housing have these features?
 {% endblock %}
 
 {% block content %}
@@ -31,7 +31,7 @@
                             height adjustable perches at equal to or more than 8cm per pullet
                         </li>
                         <li>
-                            a minimum of 50% of the floor area covered in litter
+                            a minimum of 50% of the floor area available for litter
                         </li>
                     </ul>
 
@@ -43,7 +43,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the inside of the building have these features?',
+                            text: 'Will the pullet housing have these features?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -57,7 +57,7 @@
                             value: 'Yes',
                             checked: true if data['pullet-requirements'] == 'Yes',
                             attributes: {
-                                    'data-next': 'insulation'
+                                    'data-next': 'lighting'
                                 }
                         },
                         {

@@ -27,20 +27,23 @@
                     <li>
                         non-flicker LED light with a colour temperature between 2700 and 4000 Kelvin
                     </li>
+                    
                     <li>
                         capacity for zonal dimming between 0 and 60 lux
                     </li>
+
                     <li>
                         coverage of the entire floor-litter (scratch) area
                     </li>
+
+                    {% if poultryType == 'pullet' %}
                     <li>
                         a simulated stepped dawn and dusk 
-                        
-                        {% if poultryType == 'hen' %}
-                            (unless this is already provided as part of an aviary lighting system)
-                        {% endif %}
-
+                        (unless this is already provided as part of an aviary lighting system)
+        
                     </li>
+                    {% endif %}
+
                     <li>
                         an option for red light
                     </li>

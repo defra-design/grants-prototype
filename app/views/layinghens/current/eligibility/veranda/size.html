@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    How big will the veranda be?
+    Will the building have a veranda that is the required size?
 {% endblock %}
 
 {% block content %}
@@ -23,7 +23,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'How big will the veranda be?',
+                            text: 'Will the building have a veranda that is the required size?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -49,9 +49,9 @@
                             divider: 'or'
                         },
                         {
-                            text: 'None of the above',
-                            value: 'None of the above',
-                            checked: true if data['veranda-size'] == 'None of the above',
+                            text: 'I do not have the outside space to add a veranda of this size',
+                            value: 'I do not have the outside space to add a veranda of this size',
+                            checked: true if data['veranda-size'] == 'I do not have the outside space to add a veranda of this size',
                              attributes: {
                                 'data-next': 'elim-size'
                             }
