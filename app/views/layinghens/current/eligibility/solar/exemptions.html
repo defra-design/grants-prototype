@@ -15,7 +15,8 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="../funding/cost">
+
+            <form action="roof-support-for-solar-pv">
 
                 {% set hintHtml %}
 
@@ -102,21 +103,8 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    You can apply for grant funding to buy and install a solar PV system if:
+                    The roof of this building must be able to support solar PV panels, allowing for potential use in the future, unless any of these statements apply.
                 </p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                        the building is listed
-                    </li>
-                    <li>
-                        the building is on a World Heritage Site
-                    </li>
-                    {% if data['project-type'] == 'refurb' %}
-                        <li>
-                            you are not making changes to the roof
-                        </li>
-                    {% endif %}
-                </ul>
             </div>
 
         </div>
