@@ -65,8 +65,7 @@ const populateFolder = (folderPath, baseurl, excludedDirectories) => {
 					type: 'folder',
 					name: userFriendlyName(directoryName),
 					slug: directoryName,
-					children: children
-
+					children: children,
 				})
 			}
 		} else if (file.endsWith('.html')) {
@@ -96,8 +95,8 @@ const userFriendlyName = (name) => {
 			.replace('elim-', '')
 			.replace('.html', '')
 			.replace(/-/g, ' ')
-			.replace(/\b\w/g, (l) => l.toUpperCase())
-		+ (isElimination ? ' - Elimination' : '')
+			.replace(/^./, (l) => l.toUpperCase()) +
+		(isElimination ? ' - Elimination' : '')
 	)
 }
 

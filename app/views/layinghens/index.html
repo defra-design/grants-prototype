@@ -26,7 +26,7 @@
                   </details>
               {% else %}
                 {% if page.type == 'page' %}
-                    <a href="{{ page.url }}">{{ page.name }}</a>
+                    <a class="govuk-link--no-visited-state" href="{{ page.url }}">{{ page.name }}</a>
                 {% else %}
                     {{ page.name }}
                     {% if page.children %}
