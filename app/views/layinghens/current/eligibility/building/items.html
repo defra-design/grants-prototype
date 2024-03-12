@@ -20,7 +20,7 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        The building must have:
+                        When the project is complete, the building must have:
                     </p>
 
                     <ul class="govuk-hint govuk-list govuk-list--bullet">
@@ -34,14 +34,9 @@
                             mesh capping applied to any roof or wall inlets and outlets capped with mesh (with a mesh hole size of 25 millimetres or less)
                         </li>
                         <li>
-                            catch trays under all chimneys and roof-mounted vents
+                            catch trays under any chimneys and roof-mounted vents
                         </li>
                     </ul>
-
-                {% set nextPage = 'insulation' %}
-                {% if data['poultry-type'] == 'pullet' %}
-                    {% set nextPage = 'pullet-requirements' %}
-                {% endif %}    
 
                 {% endset %}
 
@@ -65,7 +60,7 @@
                             value: 'Yes',
                             checked: true if data['items'] == 'Yes',
                             attributes: {
-                                    'data-next': nextPage
+                                    'data-next': 'insulation'
                                 }
                         },
                         {
@@ -94,7 +89,7 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    The building must have these design features to meet the grant priority of improving biosecurity.
+                    When the project is complete, the building must have these design features to meet the grant priority of improving biosecurity.
                 </p>
             </div>
 

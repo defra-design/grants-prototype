@@ -17,6 +17,11 @@
 
             <form method="post">
 
+            {% set nextPage = 'lighting' %}
+                {% if data['poultry-type'] == 'pullet' %}
+                    {% set nextPage = 'pullet-requirements' %}
+                {% endif %}
+
                 {{ govukRadios ({
                     idPrefix: 'insulation',
                     name: 'insulation',
@@ -34,7 +39,7 @@
                             value: 'Yes',
                             checked: true if data['insulation'] == 'Yes',
                             attributes: {
-                                    'data-next': 'lighting'
+                                    'data-next': nextPage
                                 }
                         },
                         {
@@ -65,7 +70,7 @@
                 </h2>
                 {% if data['project-type'] == 'refurb' %}
                     <p>
-                        The building must have full wall and roof insulation.
+                        When the project is complete, the building must have full wall and roof insulation.
                     </p>
                 {% else %}
                     <p>

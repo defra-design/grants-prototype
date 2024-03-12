@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the perches have a design feature that help the {{ poultryType }}s grip the perches?
+    Will the perches have a design feature that helps the birds grip the perches?
 {% endblock %}
 
 {% block content %}
@@ -21,19 +21,33 @@
                 <form action="structure">
             {% endif %}
 
+            {% set hintHtml %}
+
+            {% if poultryType == 'hen' %}
+                <p class="govuk-hint">
+                        You can replace an aviary's standard circular metal perches with perches that have design features to help birds grip them (for example, a ridged surface, comfortable material or coating) 
+                </p>
+            {% else %}
+                <p class="govuk-hint">
+                        You can replace a multi-tier system's standard circular metal perches with perches that have design features to help birds grip them (for example, a ridged surface, comfortable material or coating) 
+                </p>
+            {% endif %}
+        
+            {% endset %}
+
                 {{ govukRadios ({
                     idPrefix: 'scoring-grip',
                     name: 'scoring-grip',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the perches have a design feature that help the ' + poultryType + 's grip the perches?',
+                            text: 'Will the perches have a design feature that helps the birds grip the perches?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'Additional design features (for example, a ridged surface, comfortable material or coating) you can add to the circular metal perches that are often standard in aviary systems'
+                        html: hintHtml
                     },
                     items: [
                         {

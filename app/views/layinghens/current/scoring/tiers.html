@@ -9,6 +9,16 @@
     Will the multi-tier system have 3 tiers or fewer directly above each other?
 {% endblock %}
 
+{% set question = 'Will the aviary system have 3 tiers or fewer directly above each other?' %}
+{% if poultryType != 'hen' %}
+    {% set question = 'Will the multi-tier system have 3 tiers or fewer directly above each other?' %}
+{% endif %}
+
+{% set hintHtml = 'The floor and the perches at the top of the aviary system are not tiers' %}
+{% if poultryType != 'hen' %}
+    {% set hintHtml = 'The floor and the perches at the top of the multi-tier system are not tiers' %}
+{% endif %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -27,10 +37,13 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the multi-tier system have 3 tiers or fewer directly above each other?',
+                            html: question,
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                    hint: {
+                        html: hintHtml
                     },
                     items: [
                         {
@@ -60,9 +73,15 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
-                <p>
-                    RPA want to fund multi-tier systems that have 3 tiers or fewer directly above each other, to reduce the risk of keel bone fractures from collisions and falls.
-                </p>
+                 {% if poultryType == 'hen' %}
+                    <p>
+                        RPA want to fund aviary systems that have 3 tiers or fewer directly above each other, to reduce the risk of keel bone fractures from collisions and falls. 
+                    </p>
+                {% else %}
+                    <p>
+                        RPA want to fund multi-tier systems that have 3 tiers or fewer directly above each other, to reduce the risk of keel bone fractures from collisions and falls. 
+                    </p>
+                {% endif %}
             </div>
 
         </div>

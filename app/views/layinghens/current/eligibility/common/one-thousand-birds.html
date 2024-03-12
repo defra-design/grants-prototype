@@ -1,7 +1,7 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
-    Do you have at least 1,000 birds on your farm currently?
+    Are you the registered keeper of at least 1,000 birds?
 {% endblock %}
 
 {% set poultryType = 'hen' %}
@@ -23,11 +23,13 @@
 
             <form method="post">
 
-                {% set nextPage = '../building/items' %}
+                {% set nextPage = '../veranda/size' %}
                 {% if data['project-type'] == 'veranda' %}
-
                     {% set nextPage = '../veranda/size' %}
-
+                {% elseif poultryType == 'hen' %}
+                    {% set nextPage = '../veranda/size' %}
+                {% elseif poultryType == 'pullet' %}
+                    {% set nextPage = '../building/items' %}
                 {% endif %}
 
                 {{ govukRadios ({
@@ -36,7 +38,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Do you keep at least 1,000 ' + poultryDescriptor + ' on your farm currently?',
+                            text: 'Are you the registered keeper of at least 1,000 ' + poultryDescriptor + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

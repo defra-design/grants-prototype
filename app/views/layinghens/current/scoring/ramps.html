@@ -5,8 +5,13 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
+{% set question = 'When the project is complete, will every level of the aviary system be connected to another level by a ramp?' %}
+{% if poultryType != 'hen' %}
+    {% set question = 'When the project is complete, will every level of the multi-tier system be connected to another level by a ramp?' %}
+{% endif %}
+
 {% block pageTitle %}
-    Will every level of the multi-tier system be connected to another level by a ramp?
+    When the project is complete, will every level of the aviary system be connected to another level by a ramp?
 {% endblock %}
 
 {% block content %}
@@ -27,7 +32,7 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will every level of the multi-tier system be connected to another level by a ramp?',
+                            html: question,
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -60,9 +65,15 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
-                <p>
-                    RPA want to fund multi-tier systems that have ramps to reduce the risk of keel bone fractures and benefit birds that have keel bone fractures.
-                </p>
+                {% if poultryType == 'hen' %}
+                    <p>
+                        RPA want to fund aviary systems that have ramps to reduce the risk of keel bone fractures and benefit birds that have keel bone fractures.
+                    </p>
+                {% else %}
+                    <p>
+                        RPA want to fund multi-tier systems that have ramps to reduce the risk of keel bone fractures and benefit birds that have keel bone fractures.
+                    </p>
+                {% endif %}
             </div>
 
         </div>

@@ -21,33 +21,17 @@
                 <form action="data">
             {% endif %}
 
-                {% set heatExhangerOptionsHtml %}
-
-                    {{ govukRadios ({
-                        idPrefix: 'scoring-energy-heat-exchanger',
-                        name: 'scoring-energy-heat-exchanger',
-                        fieldset: {
-                            legend: {
-                                text: 'Which type of heat exchanger will you have?',
-                                isPageHeading: false,
-                                classes: 'govuk-fieldset__legend--s'
-                            }
-                        },
-                        items: [
-                            {
-                                text: 'Heating only',
-                                value: 'Heating only',
-                                checked: true if data['scoring-energy-heat-exchanger'] == 'Heating only'
-                            },
-                            {
-                                text: 'Heating and cooling',
-                                value: 'Heating and cooling',
-                                checked: true if data['scoring-energy-heat-exchanger'] == 'Heating and cooling'
-                            }
-                        ]
-                    }) }}
-
-                {% endset %}
+        {% if data['hasEnergyError'] == 'true' %}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                        text: 'Select one type of heat exchanger',
+                        href: "#scoring-energy"
+                    }
+                    ]
+            }) }}
+        {% endif %}
 
                 {{ govukCheckboxes ({
                     idPrefix: 'scoring-energy',
@@ -62,6 +46,9 @@
                     hint: {
                         text: 'Select all that apply'
                     },
+                    errorMessage: {
+                        text: 'Select one type of heat exchanger'
+                    } if data['hasEnergyError'] == 'true',
                     items: [
                         {
                             text: 'Solar or thermal PV system',
@@ -69,12 +56,14 @@
                             checked: true if 'Solar or thermal PV system' | isIn(data['scoring-energy'])
                         },
                         {
-                            text: 'A heat exchanger',
-                            value: 'A heat exchanger',
-                            checked: true if 'A heat exchanger' | isIn(data['scoring-energy']),
-                            conditional: {
-                                html: heatExhangerOptionsHtml
-                            }
+                            text: 'A heat exchanger (heating only)',
+                            value: 'A heat exchanger (heating only)',
+                            checked: true if 'A heat exchanger (heating only)' | isIn(data['scoring-energy'])
+                        },
+                        {
+                            text: 'A heat exchanger (heating and cooling)',
+                            value: 'A heat exchanger (heating and cooling)',
+                            checked: true if 'A heat exchanger (heating and cooling)' | isIn(data['scoring-energy'])
                         },
                         {
                             text: 'Biomass boiler',
@@ -94,6 +83,8 @@
                         }
                     ]
                 }) }}
+
+                <input type="hidden" name="hasEnergyError" value="false">
 
                 {{ govukButton ({
                     html: 'Continue'

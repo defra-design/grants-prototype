@@ -11,6 +11,10 @@
 
 {% block content %}
 
+{% if 'A heat exchanger (heating only)' | isIn(data['scoring-energy']) and 'A heat exchanger (heating and cooling)' | isIn(data['scoring-energy']) %}
+    {{ 'energy?hasEnergyError=true' | redirect | safe }}
+{% endif %}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
@@ -78,11 +82,13 @@
                             value: 'Locomotion or movement data',
                             checked: true if 'Locomotion or movement data' | isIn(data['scoring-data'])
                         },
+                
                         {
                             text: 'Nest use',
                             value: 'Nest use',
                             checked: true if 'Nest use' | isIn(data['scoring-data'])
-                        },
+                    
+                        } if poultryType == 'hen',
                         {
                             text: 'Sound analysis',
                             value: 'Sound analysis',
