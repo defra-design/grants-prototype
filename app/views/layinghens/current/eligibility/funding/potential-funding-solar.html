@@ -110,6 +110,11 @@
                         You must pay the remaining solar PV system costs over {{ solarFunding | inPounds }}.
                     </p>
 
+                    {% set numberOfBirdsTitle = 'Number of birds the new building will house' %}
+                    {% if data['project-type'] == 'refurb' %}
+                        {% set numberOfBirdsTitle = 'Number of birds the refurbished part of the building will house' %}
+                    {% endif %}
+
                     {{ govukTable({
                         caption: 'Solar PV funding calculation',
                         captionClasses: "govuk-table__caption--s",
@@ -117,7 +122,7 @@
                         rows: [
                             [
                                 {
-                                    html: 'Number of birds to be housed in this project<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="number-of-birds" class="govuk-link--no-visited-state">change the number of birds</a></span>'
+                                    html: numberOfBirdsTitle + '<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="number-of-birds" class="govuk-link--no-visited-state">change the number of birds</a></span>'
                                 },
                                 {
                                     text: (birds | float) | formatNumber,
