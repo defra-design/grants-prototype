@@ -5,6 +5,13 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
+{% set poultryType = 'hen' %}
+{% set poultryTypeInverse = 'pullet' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+    {% set poultryTypeInverse = 'pullet' if data['poultry-type'] == 'hen' else 'hen' %}
+{% endif %}
+
 {% block beforeContent %}
 
     <div class="govuk-grid-row">
@@ -42,6 +49,10 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
                 {
                     text: "Manage prototype",
                     href: "/manage-prototype"
+                },
+                {
+                    text: "Switch type to " + poultryTypeInverse + "s",
+                    href: "#pageUrl#?poultry-type=" + poultryTypeInverse
                 }
             ]
         }
