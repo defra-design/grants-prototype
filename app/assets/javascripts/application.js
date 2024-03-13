@@ -29,4 +29,23 @@ window.GOVUKPrototypeKit.documentReady(() => {
 			}
 		})
 	})
+
+	// For form actions and a hrefs, change '#pageUrl#' to the current page URL minus any query strings or hashes
+	const pageUrl = window.location.href.split(/[?#]/)[0]
+	const formActions = document.querySelectorAll('form[action*="#pageUrl#"]')
+	const hrefs = document.querySelectorAll('a[href*="#pageUrl#"]')
+
+	formActions.forEach((formAction) => {
+		formAction.setAttribute(
+			'action',
+			formAction.getAttribute('action').replace(/#pageUrl#/g, pageUrl)
+		)
+	})
+
+	hrefs.forEach((href) => {
+		href.setAttribute(
+			'href',
+			href.getAttribute('href').replace(/#pageUrl#/g, pageUrl)
+		)
+	})
 })
