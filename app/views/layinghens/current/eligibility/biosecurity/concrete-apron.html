@@ -5,17 +5,7 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
-{% set justBuilding = true %}
-
-{% if data['veranda-present'] == 'Yes' and data['veranda-pasture'] == 'No' %}
-    {% set justBuilding = false %}
-{% endif %}
-
-{% set question = 'Will the building and veranda have a continuous concrete apron around the perimeter?' %}
-{% if justBuilding %}
-    {% set question = 'Will the building have a continuous concrete apron around its perimeter?' %}
-{% endif %}
-
+{% set question = 'Will the structure be surrounded by a concrete apron?' %}
 {% block pageTitle %}
     {{ question }}
 {% endblock %}
@@ -43,6 +33,9 @@
                         isPageHeading: true,
                         classes: 'govuk-fieldset__legend--l'
                     }
+                },
+                hint: {
+                    text: 'This should be continuous, unless there needs to be a gap where birds have direct access to pasture'
                 },
                 items: [
                     {
@@ -78,15 +71,9 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                {% if justBuilding %}
-                    <p>
-                        The building must be surrounded by a continuous strip of concrete.
-                    </p>
-                {% else %}
-                    <p>
-                        The building and veranda must be surrounded by a continuous strip of concrete.
-                    </p>
-                {% endif %}
+                <p>
+                    The building (and veranda if there is one) must be surrounded by a concrete apron.
+                </p>
             </div>
 
         </div>

@@ -20,15 +20,15 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        The veranda must have a:
+                        The veranda must have:
                     </p>
 
                     <ul class="govuk-hint govuk-list govuk-list--bullet">
                         <li>
-                            solid concrete floor
+                            a solid concrete floor
                         </li>
                         <li>
-                            waterproof insulated roof
+                            a waterproof insulated roof
                         </li>
                         <li>
                             a dimmable LED lighting system with a range between 0 lux and 60 lux
@@ -48,6 +48,11 @@
                     </ul>
 
                 {% endset %}
+
+                {% set nextPage = '../building/items' %}
+                {% if data['project-type'] == 'veranda' %}
+                    {% set nextPage = 'project-cost-total' %}
+                {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'veranda-specification',
@@ -69,7 +74,7 @@
                             value: 'Yes',
                             checked: true if data['veranda-specification'] == 'Yes',
                             attributes: {
-                                    'data-next': '../building/items'
+                                    'data-next': nextPage
                                 }
                         },
                         {

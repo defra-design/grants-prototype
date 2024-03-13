@@ -15,8 +15,13 @@
                  {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        You have the option to buy and install a solar PV system with the grant. The solar PV panels must be installed on the roof of this building.
+                        You have the option to buy and install a solar PV system with the grant. The solar PV panels must be installed on the roof of this building
                     </p>
+
+                    {{ govukWarningText ({
+                        text: 'You cannot buy a solar PV system with this grant if the roof of the building only faces north or is heavily shaded.',
+                        iconFallbackText: 'Warning'
+                    }) }}
                     
                 {% endset %}
 
@@ -40,23 +45,18 @@
                         value: 'Yes',
                         checked: true if data['solar-pv-system'] == 'Yes',
                         attributes: {
-                                    'data-next': '../funding/cost'
-                                }
+                            'data-next': '../funding/cost'
+                        }
                     },
                     {
                         text: 'No',
                         value: 'No',
                         checked: true if data['solar-pv-system'] == 'No',
                         attributes: {
-                                    'data-next': 'exemptions'
-                                }
+                            'data-next': 'exemptions'
+                        }
                     }
                     ]
-                }) }}
-
-                {{ govukWarningText ({
-                    text: 'You cannot buy a solar PV system with this grant if the roof of the building only faces north or is heavily shaded.',
-                    iconFallbackText: 'Warning'
                 }) }}
 
                 {{ govukButton ({
@@ -73,7 +73,9 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                <p>You do not have to buy and install a solar PV system to be eligible for this grant.</p>
+                <p>
+                    You do not have to buy and install a solar PV system to be eligible for this grant.
+                </p>
             </div>
         </div>
 
