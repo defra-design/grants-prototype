@@ -1,7 +1,7 @@
 {% extends 'layinghens/current/views/layouts/layout.html' %}
 
 {% block pageTitle %}
-    What is your project?
+    What work are you doing to this building?
 {% endblock %}
 
 {% block content %}
@@ -15,11 +15,7 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        You must submit an application for each building or veranda project.  
-                    </p>
-
-                    <p class="govuk-hint">
-                        The maximum grant funding each business can apply for is £500,000 for building projects, or £100,000 for veranda projects.
+                        If you are applying for multiple projects, you must submit a separate application for each one  
                     </p>
 
                 {% endset %}
@@ -34,7 +30,7 @@
                     name: 'project-type',
                     fieldset: {
                         legend: {
-                            text: 'What is your project?',
+                            text: 'What work are you doing to this building?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -44,30 +40,36 @@
                     },
                     items: [
                         {
-                            text: 'Refurbishing an existing laying hen or pullet building',
-                            value: 'refurb',
-                            checked: true if data['project-type'] == 'refurb',
-                            attributes: {
-                                'data-next': 'farmer-type'
-                            }
-                        },
-                        {
-                            text: 'Replacing an existing laying hen or pullet building with a new building',
-                            value: 'replace',
-                            checked: true if data['project-type'] == 'replace',
-                            attributes: {
-                                'data-next': 'farmer-type'
-                            }
-                        },
-                        {
-                            text: 'Adding a veranda only to an existing laying hen or pullet building ',
+                            text: 'Adding a veranda only to an existing building',
                             value: 'veranda',
                             checked: true if data['project-type'] == 'veranda',
                             hint: {
-                                text: 'The RPA will award veranda grant funding on a first-come first-served basis'
+                                text: 'The RPA will award veranda-only grant funding on a first come, first served basis'
                             },
                             attributes: {
                                 'data-next': nextPageForVeranda
+                            }
+                        },
+                        {
+                            text: 'Refurbishing an existing building',
+                            value: 'refurb',
+                            checked: true if data['project-type'] == 'refurb',
+                            hint: {
+                                text: 'Adding features to an existing building, like a mechanical ventilation system, lighting system, aviary or multi-tier system'
+                            },
+                            attributes: {
+                                'data-next': 'farmer-type'
+                            }
+                        },
+                        {
+                            text: 'Replacing the entire building with a new building',
+                            value: 'replace',
+                            checked: true if data['project-type'] == 'replace',
+                            hint: {
+                                text: 'This must include the required high welfare features, like a mechanical ventilation system, lighting system, aviary or multi-tier system'
+                            },
+                            attributes: {
+                                'data-next': 'farmer-type'
                             }
                         },
                         {
@@ -99,23 +101,16 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    You can apply for grant funding for either building projects or veranda projects.
+                    This grant is only for laying hen or pullet projects.
                 </p>
 
                 <p>
-                    This grant is for:
+                    You can apply for grant funding for either building projects or veranda-only projects.
                 </p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                        refurbishing an existing laying hen or pullet building
-                    </li>
-                    <li>
-                        replacing an existing laying hen or pullet building with a new building
-                    </li>
-                    <li>
-                        adding a veranda to an existing laying hen or pullet building
-                    </li>
-                </ul>
+                
+                <p>
+                    The maximum grant funding each business can apply for is £500,000 for building projects, or £100,000 for veranda-only projects.
+                </p>
 
             </div>
 
