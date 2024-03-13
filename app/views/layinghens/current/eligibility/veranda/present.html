@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Will the building have a veranda?
+    Will the building have a veranda that is the required size?
 {% endblock %}
 
 {% block content %}
@@ -17,33 +17,30 @@
 
             <form method="post">
 
-                {% set nextPageOnYes = 'specification' %}
-                {% set nextPageOnNo = 'elim-size' %}
-                {% set nextPageOnExempt = '../biosecurity/concrete-apron' %}
-
-                {% set hintHtml %}
+            {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        You are exempt if you do not have space to add a veranda that is either:
+                        When the project is complete, the building must have a veranda that is at least either:
                     </p>
 
-                    <ul class="govuk-list govuk-list--bullet govuk-hint">
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
                         <li>
-                            4 metres wide or more along the length of the bird housing area
+                            4 metres wide along the length of the hen housing area
                         </li>
                         <li>
-                            30% or more of the indoor bird housing area footprint
+                            30% of the indoor hen housing area footprint
                         </li>
                     </ul>
 
                 {% endset %}
 
                 {{ govukRadios ({
-                    idPrefix: 'veranda-present',
-                    name: 'veranda-present',
+                    idPrefix: 'veranda-size',
+                    name: 'veranda-size',
+                    classes: 'govuk-radios',
                     fieldset: {
                         legend: {
-                            text: 'Will the building have a veranda?',
+                            text: 'Will the building have a veranda that is the required size?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -55,30 +52,30 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['veranda-present'] == 'Yes',
+                            checked: true if data['veranda-size'] == 'Yes',
                             attributes: {
-                                'data-next': nextPageOnYes
+                                'data-next': 'specification'
                             }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['veranda-present'] == 'No',
-                            attributes: {
-                                'data-next': nextPageOnNo
+                            checked: true if data['veranda-size'] == 'No',
+                             attributes: {
+                                'data-next': 'elim-present'
                             }
                         },
                         {
                             divider: 'or'
                         },
                         {
-                            text: 'My building is exempt',
-                            value: 'My building is exempt',
-                            checked: true if data['veranda-present'] == 'My building is exempt',
+                            text: 'I do not have the outside space to add a veranda of this size',
+                            value: 'I do not have the outside space to add a veranda of this size',
+                            checked: true if data['veranda-size'] == 'I do not have the outside space to add a veranda of this size',
                              attributes: {
-                                'data-next': nextPageOnExempt
+                                'data-next': '../building/items'
                             }
-                        } 
+                        }
                     ]
                 }) }}
 
@@ -98,12 +95,12 @@
                 </h2>
 
                 <p>
-                    The building must have a veranda.
+                    You must add a veranda if you have the required space.
                 </p>
     
             </div>
 
-        </div>
+         </div>
 
 </div>
 

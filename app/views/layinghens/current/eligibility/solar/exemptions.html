@@ -6,7 +6,7 @@
 {% endif %}
 
 {% block pageTitle %}
-    Do any of these exemptions apply to the building?
+    Which of these statements apply to this project?
 {% endblock %}
 
 {% block content %}
@@ -19,11 +19,7 @@
             <form action="roof-support-for-solar-pv">
 
                 {% set hintHtml %}
-
-                    <p class="govuk-hint">
-                        The roof of the building does not have to be able to support solar PV panels if one or more of these exemptions apply.
-                    </p>
-
+                
                     <p class="govuk-hint">
                         Select all that apply
                     </p>
@@ -35,7 +31,7 @@
                     name: 'solar-exemptions',
                     fieldset: {
                         legend: {
-                            text: 'Do any of these exemptions apply to the building?',
+                            text: 'Which of these statements apply to this project?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }

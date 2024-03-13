@@ -23,10 +23,8 @@
 
             <form method="post">
 
-                {% set nextPage = '../veranda/size' %}
+                {% set nextPage = '../veranda/present' %}
                 {% if data['project-type'] == 'veranda' %}
-                    {% set nextPage = '../veranda/size' %}
-                {% elseif poultryType == 'hen' %}
                     {% set nextPage = '../veranda/size' %}
                 {% elseif poultryType == 'pullet' %}
                     {% set nextPage = '../building/items' %}

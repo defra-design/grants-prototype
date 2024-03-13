@@ -23,7 +23,7 @@
 
 {% set currentSystem = data['scoring-system'] %}
 
-{% if currentSystem == 'Colony cage' %}
+{% if currentSystem == 'Colony cage' or currentSystem == 'Combi-cage' %}
     {{ 'ramps' | redirect | safe }}
 {% endif %}
     
