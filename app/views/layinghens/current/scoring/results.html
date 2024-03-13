@@ -140,6 +140,38 @@
                         </td>
                     </tr>
 
+                    {% if not currentSystem == 'Colony cage' or currentSystem == 'Combi-cage' %}
+
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                    {% if poultryType != 'hen' %}
+                                        Multi-tier system currently
+                                    {% else %}
+                                        Aviary system currently
+                                    {% endif %}
+                                </p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>
+                                        {{ data['scoring-current-multi-tier-system'] }}
+                                    </li>
+                                </ul>
+                            </th>
+                            <td class="govuk-table__cell">
+                                Average
+                            </td>
+                            <td class="govuk-table__cell">
+                                Support projects that provide a consistent housing type for birds between rearing and laying
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link govuk-link--no-visited-state" href="current-multi-tier-system?from-scoring=true">
+                                    Change
+                                </a>
+                            </td>
+                        </tr>
+
+                    {% endif %}
+
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
@@ -260,6 +292,32 @@
                         </td>
                     </tr>  
 
+                    {% if poultryType == 'pullet' %}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Dark brooders
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-dark-brooders'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Support projects which provide dark brooders
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="dark-brooders?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr> 
+                    {% endif %}
+
                      <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
@@ -304,32 +362,6 @@
                         </td>
                         <td class="govuk-table__cell">
                             <a class="govuk-link govuk-link--no-visited-state" href="veranda-requirements?from-scoring=true">
-                                Change
-                            </a>
-                        </td>
-                    </tr> 
-                    {% endif %}
-
-                    {% if poultryType == 'pullet' %}
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">
-                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Dark brooders
-                            </p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>
-                                    {{ data['scoring-dark-brooders'] }}
-                                </li>
-                            </ul>
-                        </th>
-                        <td class="govuk-table__cell">
-                            Average
-                        </td>
-                        <td class="govuk-table__cell">
-                            Support projects which provide dark brooders
-                        </td>
-                        <td class="govuk-table__cell">
-                            <a class="govuk-link govuk-link--no-visited-state" href="dark-brooders?from-scoring=true">
                                 Change
                             </a>
                         </td>
