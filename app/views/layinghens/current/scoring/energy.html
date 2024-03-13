@@ -51,9 +51,9 @@
                     } if data['hasEnergyError'] == 'true',
                     items: [
                         {
-                            text: 'Solar or thermal PV system',
-                            value: 'Solar or thermal PV system',
-                            checked: true if 'Solar or thermal PV system' | isIn(data['scoring-energy'])
+                            text: 'Solar PV system',
+                            value: 'Solar PV system',
+                            checked: true if 'Solar PV system' | isIn(data['scoring-energy'])
                         },
                         {
                             text: 'A heat exchanger (heating only)',

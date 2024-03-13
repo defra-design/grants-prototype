@@ -43,6 +43,9 @@
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
+                    hint: {
+                        text: 'You must have at least 1000 ' + poultryDescriptor + ' on your farm in the last 6 months'
+                    },
                     items: [
                         {
                             text: 'Yes',
@@ -80,7 +83,10 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    You must keep at least 1,000 {{ poultryDescriptor }} on your farm currently to be eligible for grant funding.
+                    Be the registered keeper of at least 1,000 {{ poultryDescriptor }}.
+                </p>
+                <p>
+                    Have housed at least 1,000 {{ poultryDescriptor }} on your farm in the last 6 months.
                 </p>
             </div>
         </div>

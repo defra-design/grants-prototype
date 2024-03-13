@@ -53,9 +53,14 @@
                         },
                     items: [
                         {
-                            text: 'Bird performance data',
-                            value: 'Bird performance data',
-                            checked: true if 'Bird performance data' | isIn(data['scoring-data'])
+                            text: 'Bird location',
+                            value: 'Bird location',
+                            checked: true if 'Bird location' | isIn(data['scoring-data'])
+                        },
+                        {
+                            text: 'Bird performance',
+                            value: 'Bird performance',
+                            checked: true if 'Bird performance' | isIn(data['scoring-data'])
                         },
                         {
                             text: 'Body weight',
@@ -71,11 +76,6 @@
                             text: 'Feed data or conversion ratios',
                             value: 'Feed data or conversion ratios',
                             checked: true if 'Feed data or conversion ratios' | isIn(data['scoring-data'])
-                        },
-                        {
-                            text: 'Location data',
-                            value: 'Location data',
-                            checked: true if 'Location data' | isIn(data['scoring-data'])
                         },
                         {
                             text: 'Locomotion or movement data',
@@ -103,9 +103,9 @@
                             divider: 'or'
                         },
                         {
-                            text: 'I will not collect and store any poultry management data',
-                            value: 'I will not collect and store any poultry management data',
-                            checked: true if 'I will not collect and store any poultry management data' | isIn(data['scoring-data']),
+                            text: 'None of the above',
+                            value: 'None of the above',
+                            checked: true if 'None of the above' | isIn(data['scoring-data']),
                             attributes: {
                                 'data-behaviour': 'exclusive'
                             }

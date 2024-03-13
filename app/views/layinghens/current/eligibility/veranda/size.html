@@ -17,6 +17,23 @@
 
             <form method="post">
 
+            {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        When the project is complete, the building must have a veranda that is at least either:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            4 metres wide along the length of the hen housing area
+                        </li>
+                        <li>
+                            30% of the indoor hen housing area footprint
+                        </li>
+                    </ul>
+
+                {% endset %}
+
                 {{ govukRadios ({
                     idPrefix: 'veranda-size',
                     name: 'veranda-size',
@@ -30,19 +47,19 @@
                     },
                     items: [
                         {
-                            text: '4 metres wide or more along the length of the bird housing area',
-                            value: '4 metres wide or more along the length of the bird housing area',
-                            checked: true if data['veranda-size'] == '4 metres wide or more along the length of the bird housing area',
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['veranda-size'] == 'Yes',
                             attributes: {
                                 'data-next': 'specification'
                             }
                         },
                         {
-                            text: '30% or more of the size of the indoor bird housing area footprint',
-                            value: '30% or more of the size of the indoor bird housing area footprint',
-                            checked: true if data['veranda-size'] == '30% or more of the size of the indoor bird housing area footprint',
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['veranda-size'] == 'No',
                              attributes: {
-                                'data-next': 'specification'
+                                'data-next': 'elim-size'
                             }
                         },
                         {
@@ -53,7 +70,7 @@
                             value: 'I do not have the outside space to add a veranda of this size',
                             checked: true if data['veranda-size'] == 'I do not have the outside space to add a veranda of this size',
                              attributes: {
-                                'data-next': 'elim-size'
+                                'data-next': 'specification'
                             }
                         }
                     ]
@@ -75,17 +92,8 @@
                 </h2>
 
                 <p>
-                    The veranda must be either:
+                    You must add a veranda if you have the required space.
                 </p>
-
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>
-                        4 metres wide or more along the length of the bird housing area
-                    </li>
-                    <li>
-                        30% or more of the size of the indoor bird housing area footprint
-                    </li>
-                </ul>
     
             </div>
 
