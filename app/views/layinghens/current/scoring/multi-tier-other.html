@@ -22,11 +22,6 @@
                 <form action="natural-light">
             {% endif %}
 
-                {% set hintText = 'When they are under 15 weeks old' %}
-                {% if poultryType != 'hen' %}
-                    {% set hintText = 'When they are over 15 weeks old' %}
-                {% endif %}
-
                 {{ govukRadios ({
                     idPrefix: 'multi-tier-other',
                     name: 'multi-tier-other',
@@ -36,9 +31,6 @@
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
-                    },
-                    hint: {
-                        text: hintText
                     },
                     items: [
                         {

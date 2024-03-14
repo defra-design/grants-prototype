@@ -5,13 +5,8 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
-{% set poultryType = 'hen' %}
-{% if data['poultry-type'] %}
-    {% set poultryType = data['poultry-type'] %}
-{% endif %}
-
 {% set pageHeading = 'Does your current building include an aviary system?' %}
-{% if pageHeading != 'hen' %}
+{% if poultryType != 'hen' %}
     {% set pageHeading = 'Does your current building include a multi-tier system?' %}
 {% endif %}
 
