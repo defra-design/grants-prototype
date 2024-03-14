@@ -33,6 +33,5 @@ If you need access to information about this prototype, would like to contribute
 
 | Name           | Email address                |
 | -------------- | ---------------------------- |
-| Hassan Mahmood | hassan.mahmood@capgemini.com |
 | David Todd     | david.todd@capgemini.com     |
 | Harnick Virdee | harnick.virdee@capgemini.com |
