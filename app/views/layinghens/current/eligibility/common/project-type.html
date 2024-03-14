@@ -15,7 +15,7 @@
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        If you are applying for multiple projects, you must submit a separate application for each one  
+                        If you are applying for grant funding for multiple buildings, you must submit a separate application for each one
                     </p>
 
                 {% endset %}
@@ -55,7 +55,7 @@
                             value: 'refurb',
                             checked: true if data['project-type'] == 'refurb',
                             hint: {
-                                text: 'Adding features to an existing building, like a mechanical ventilation system, lighting system, aviary or multi-tier system'
+                                text: 'Adding features to an existing building, like a mechanical ventilation system, LED lighting system, aviary or multi-tier system'
                             },
                             attributes: {
                                 'data-next': 'farmer-type'
@@ -66,7 +66,7 @@
                             value: 'replace',
                             checked: true if data['project-type'] == 'replace',
                             hint: {
-                                text: 'This must include the required high welfare features, like a mechanical ventilation system, lighting system, aviary or multi-tier system'
+                                text: 'This must include the required high welfare features, like a mechanical ventilation system, LED lighting system, aviary or multi-tier system'
                             },
                             attributes: {
                                 'data-next': 'farmer-type'
@@ -105,11 +105,11 @@
                 </p>
 
                 <p>
-                    You can apply for grant funding for either building projects or veranda-only projects.
+                    You can apply for grant funding for either comprehensive or veranda-only projects.
                 </p>
                 
                 <p>
-                    The maximum grant funding each business can apply for is £500,000 for building projects, or £100,000 for veranda-only projects.
+                    The maximum grant funding each business can apply for is £500,000 for comprehensive projects, or £100,000 for veranda-only projects.
                 </p>
 
             </div>
