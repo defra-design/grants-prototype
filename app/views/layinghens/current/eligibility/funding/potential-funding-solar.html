@@ -61,7 +61,7 @@
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        {{ grantAmount | inPounds }} for building project costs (40% of {{ projectCost | inPounds }})
+                        {{ grantAmount | inPounds }} for building costs (40% of {{ projectCost | inPounds }})
                     </li>
 
                     <li>
@@ -70,7 +70,7 @@
                 </ul>
 
                 <p>
-                    As building project costs take grant funding priority, you may be able to apply for a grant of up to {{ solarFunding | inPounds }} for a solar PV system. The maximum grant is £500,000.
+                    As building costs take grant funding priority, you may be able to apply for a grant of up to {{ solarFunding | inPounds }} for a solar PV system. The maximum grant is £500,000.
                 </p>
             
             {% elseif energyCap < energy %}
@@ -81,7 +81,7 @@
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        {{ grantAmount | inPounds }} for building project costs (40% of {{ projectCost | inPounds }})
+                        {{ grantAmount | inPounds }} for building costs (40% of {{ projectCost | inPounds }})
                     </li>
 
                     <li>
@@ -94,8 +94,13 @@
                         The solar PV system you plan to buy and install has a higher power capacity than 5kW of power per 1,000 birds.
                     </p>
 
+                    {% set numberOfBirdsDescriptor = 'number of birds the new building will house' %}
+                    {% if data['project-type'] == 'refurb' %}
+                        {% set numberOfBirdsDescriptor = 'number of birds the refurbished part of the building will house' %}
+                    {% endif %}
+
                     <p>
-                        Based on the building's bird capacity ({{ birds | formatNumber }} birds), you can apply 25% of the costs of a solar PV system with a power capacity of up to {{ energyCap  | formatNumber }}kW.
+                        Based on the {{ numberOfBirdsDescriptor }} ({{ birds | formatNumber }} birds), you can apply 25% of the costs of a solar PV system with a power capacity of up to {{ energyCap  | formatNumber }}kW.
                     </p>
 
                     <p>
@@ -116,7 +121,7 @@
                     {% endif %}
 
                     {{ govukTable({
-                        caption: 'Solar PV funding calculation',
+                        caption: 'Solar PV system grant funding calculation ',
                         captionClasses: "govuk-table__caption--s",
                         firstCellIsHeader: false,
                         rows: [
@@ -204,7 +209,7 @@
 
                 <ul class="govuk-list govuk-list--bullet">
                     <li>
-                        {{ grantAmount | inPounds }} for building project costs (40% of {{ projectCost | inPounds }})
+                        {{ grantAmount | inPounds }} for building costs (40% of {{ projectCost | inPounds }})
                     </li>
 
                     <li>

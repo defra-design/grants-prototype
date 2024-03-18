@@ -5,10 +5,12 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
-{% set pageHeading = 'Does your current building include an aviary system?' %}
+{% set systemType = 'an aviary system' %}
 {% if poultryType != 'hen' %}
-    {% set pageHeading = 'Does your current building include a multi-tier system?' %}
+    {% set systemType = 'a multi-tier system' %}
 {% endif %}
+
+{% set pageHeading = 'Does your current building include ' + systemType + '?' %}
 
 {% block pageTitle %}
     {{ pageHeading }}
@@ -50,13 +52,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes, my current building includes a multi-tier aviary system',
-                            checked: true if data['scoring-ramps'] == 'Yes, my current building includes a multi-tier aviary system'
+                            value: 'Yes, my current building includes ' + systemType,
+                            checked: true if data['scoring-ramps'] == 'Yes, my current building includes ' + systemType
                         },
                         {
                             text: 'No',
-                            value: 'No, my current building does not include a multi-tier aviary system',
-                            checked: true if data['scoring-ramps'] == 'No, my current building does not include a multi-tier aviary system'
+                            value: 'No, my current building does not include ' + systemType,
+                            checked: true if data['scoring-ramps'] == 'No, my current building does not include ' + systemType
                         }
                     ]
                 }) }}

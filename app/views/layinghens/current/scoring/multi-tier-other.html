@@ -5,10 +5,14 @@
     {% set poultryType = data['poultry-type'] %}
 {% endif %}
 
-{% set question = 'Will the hens in this building be reared in a multi-tier system as pullets?' %}
+{% set systemType = 'a multi-tier system' %}
+{% set poultryTypeInverse = 'pullet' %}
 {% if poultryType != 'hen' %}
-    {% set question = 'Will the pullets in this building live in an aviary system as hens?' %}
+    {% set systemType = 'an aviary system' %}
+    {% set poultryTypeInverse = 'hen' %}
 {% endif %}
+
+{% set question = 'Will the hens in this building be reared in ' + systemType + ' as ' + poultryTypeInverse + 's?' %}}
 
 {% block content %}
 
@@ -35,13 +39,13 @@
                     items: [
                         {
                             text: 'Yes',
-                            value: 'Yes, the ' + poultryType + ' will live in a multi-tier system as hens',
-                            checked: true if data['multi-tier-other'] == 'Yes, the ' + poultryType + ' will live in a multi-tier system as hens'
+                            value: 'Yes, the ' + poultryType + ' will live in ' + systemType + ' as hens',
+                            checked: true if data['multi-tier-other'] == 'Yes, the ' + poultryType + 's will live in ' + systemType + ' as ' + poultryTypeInverse + 's'
                         },
                         {
                             text: 'No',
-                            value: 'No, the ' + poultryType + ' will not live in a multi-tier system as hens',
-                            checked: true if data['multi-tier-other'] == 'No, the ' + poultryType + ' will not live in a multi-tier system as hens'
+                            value: 'No, the ' + poultryType + ' will not live in ' + systemType + ' as hens',
+                            checked: true if data['multi-tier-other'] == 'No, the ' + poultryType + ' will not live in ' + systemType + ' as ' + poultryTypeInverse + 's'
                         },
                         {
                             divider: 'or'

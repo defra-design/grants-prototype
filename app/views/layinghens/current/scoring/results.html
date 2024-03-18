@@ -131,7 +131,7 @@
                             Average
                         </td>
                         <td class="govuk-table__cell">
-                            Support the transition out of colony cages, or to high welfare multi-tier systems
+                            Support the transition out of colony cages
                         </td>
                         <td class="govuk-table__cell">
                             <a class="govuk-link govuk-link--no-visited-state" href="current-system?from-scoring=true">
@@ -140,7 +140,15 @@
                         </td>
                     </tr>
 
-                    {% if not currentSystem == 'Colony cage' or currentSystem == 'Combi-cage' %}
+                    {% set shouldShowCurrentMultiTier = true %}
+                    {% if data['scoring-system'] == 'Colony cage' %}
+                        {% set shouldShowCurrentMultiTier = false %}
+                    {% endif %}
+                    {% if data['scoring-system'] == 'Combi-cage' %}
+                        {% set shouldShowCurrentMultiTier = false %}
+                    {% endif %}
+
+                    {% if shouldShowCurrentMultiTier %}
 
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell">
@@ -161,7 +169,11 @@
                                 Average
                             </td>
                             <td class="govuk-table__cell">
-                                Support projects that provide a consistent housing type for birds between rearing and laying
+                                {% if poultryType != 'hen' %}
+                                    Encourage investment in high welfare multi-tier systems
+                                {% else %}
+                                    Encourage investment in high welfare aviary systems
+                                {% endif %}
                             </td>
                             <td class="govuk-table__cell">
                                 <a class="govuk-link govuk-link--no-visited-state" href="current-multi-tier-system?from-scoring=true">
@@ -247,7 +259,7 @@
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Multi-tier system
+                                Consistent housing
                             </p>
                             <ul class="govuk-list govuk-list--bullet">
                                 <li>
@@ -259,7 +271,7 @@
                             Average
                         </td>
                         <td class="govuk-table__cell">
-                            Supports the use of multi-tier aviary systems
+                            Support projects that provide a consistent housing type for birds between rearing and laying
                         </td>
                         <td class="govuk-table__cell">
                             <a class="govuk-link govuk-link--no-visited-state" href="multi-tier-other?from-scoring=true">
@@ -321,7 +333,7 @@
                      <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Easy-grip perches
+                                Perch grip feature
                             </p>
                             <ul class="govuk-list govuk-list--bullet">
                                 <li>
