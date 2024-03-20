@@ -1,0 +1,95 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+{% block pageTitle %}
+    What is your business?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'business-type',
+                    name: 'business-type',
+                    fieldset: {
+                        legend: {
+                            text: 'What is your business?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'A grower or producer of agricultural or horticultural produce',
+                            value: 'agricultural',
+                            checked: true if data['business-type'] == 'agricultural',
+                            hint: {
+                                text: 'For example, arable or livestock farmer, fruit producer, salad grower'
+                            },
+                            attributes: {
+                                'data-next': 'legal-status'
+                            }
+                        },
+                        {
+                            text: 'A business processing agricultural or horticultural products that is at least 50% owned by agricultural or horticultural producers',
+                            value: 'refurb',
+                            checked: true if data['business-type'] == 'refurb',
+                            hint: {
+                                text: 'For example, cheese processing business owned by a dairy farmer'
+                            },
+                            attributes: {
+                                'data-next': 'legal-status'
+                            }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'none',
+                            checked: true if data['business-type'] == 'none',
+                            attributes: {
+                                'data-next': 'elim-business-type'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    This grant is for businesses who:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        are agricultural or horticultural growers or producers
+                    </li>
+                    <li>
+                        are a business processing agricultural or horticultural products that is at least 50% owned by agricultural or horticultural producers
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

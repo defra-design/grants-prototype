@@ -1,0 +1,82 @@
+
+
+{% extends "slurry/current/views/layouts/_BASEFULL.html" %}
+
+{% set pageStructure = data.services['addingvalue'].structure  %}
+
+{% macro renderStructure(structure) %}
+    <ul class="govuk-list app-file-structure">
+        {% for page in structure | sort(false, true, 'name') %}
+            <li>
+              {% if page.children %}
+                {% set containedHtml %}
+                  {{ renderStructure(page.children) }}
+                {% endset %}
+                  <details> 
+                    <summary>
+                      {% if page.type == 'page' %}
+                        <a class="govuk-link--no-visited-state" href="{{ page.url }}">
+                          {{ page.name }}
+                        </a>
+                      {% else %}
+                        {{ page.name }}
+                      {% endif %}
+                    </summary>
+                    {{ containedHtml | safe }}
+                  </details>
+              {% else %}
+                {% if page.type == 'page' %}
+                    <a class="govuk-link--no-visited-state" href="{{ page.url }}">{{ page.name }}</a>
+                {% else %}
+                    {{ page.name }}
+                    {% if page.children %}
+                        {{ renderStructure(page.children) }}
+                    {% endif %}
+                {% endif %}
+              {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+{% block service %}
+
+<!--
+<span class="govuk-caption-xl">Prototypes</span>
+-->
+<title>Adding value (2024) prototype admin</title>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">Adding value grant</span>
+      <h1 class="govuk-heading-xl">
+        Adding value prototype admin
+      </h1>
+
+      <div class="proto-admin">
+        <h2 class="govuk-heading-l">User research</h2>
+         
+        <p class='govuk-list app-list--definition'>
+            <a href='/adding-value-2024/current/start-page' class="govuk-link--no-visited-state">Start page</a></p>
+            
+      </div>
+
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Page structure</h2>
+      {{ renderStructure(pageStructure) }}
+      </div>
+</div>
+
+<style>
+ul.app-file-structure {
+  list-style-type: none;
+  padding-left: 0;
+}
+ul.app-file-structure ul {
+padding-left: 1em;
+border-left: 4px solid lightgrey;
+}
+</style>
+
+{% endblock %}

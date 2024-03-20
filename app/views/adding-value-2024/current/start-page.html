@@ -1,0 +1,126 @@
+{% set hideBackButton = true %}
+
+{% extends 'adding-value-2024/layout.html' %}
+
+{% block pageTitle %}
+  Check if you can apply for a Farming Transformation Fund Adding Value Grant
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Check if you can apply for a Farming Transformation Fund Adding Value Grant
+      </h1>
+
+      <p>
+        Use this service to check:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          check if you can apply for a grant for your project (takes about 5 minutes)
+        </li>
+        <li>
+          check how well your project fits the funding priorities (takes about 15 minutes if you have all the project details)
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        Who can apply
+      </h2>
+
+      <p>
+        You can apply if you:
+      </p>
+        
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          are a grower or producer of agricultural or horticultural produce
+        </li>
+        <li>
+          are a business processing agricultural or horticultural products that is at least 50% owned by agricultural or horticultural producers
+        </li>
+        <li>
+            will do the grant-funded work in England
+        </li>
+        <li>
+            estimate the project costs are over £62,500
+        </li>
+      </ul>
+
+      {{ govukInsetText ({
+        text: 'If your project is eligible, you can submit your answers to the Rural Payments Agency (RPA) to request the full application form.'
+      }) }}
+
+      {{ govukButton({
+        text: "Start now",
+        href: "eligibility/common/business-type",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+      <p>
+        To  use the checker, you need:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          information about your business (for example, number of employees, turnover)
+        </li>
+        <li>
+          information about the project (for example, the types of products being processed and how you will add value, the impact the project will have)
+        </li>
+        <li>
+          a list of the items you'd like to buy for the project
+        </li>
+        <li>
+            an estimate of the total cost of the items
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        Problems using the online service
+      </h2>
+
+      <p>
+        If you have any problems using the online service, contact the RPA.
+      </p>
+
+      <h3 class="govuk-heading-s">
+        Telelephone
+      </h3>
+
+      <p>
+        Telephone: 03000 200 301
+      </p>
+
+      <p>
+        Monday to Friday, 9am to 5pm (except public holidays)
+      </p>
+
+      <p>
+        <a href="#">
+          Find out about call charges
+        </a>
+      </p>
+
+      <h3 class="govuk-heading-s">
+        Email
+      </h3>
+
+      <p>
+        <a href="mailto:FTF@rpa.gov.uk">
+          FTF@rpa.gov.uk
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+{% endblock %}

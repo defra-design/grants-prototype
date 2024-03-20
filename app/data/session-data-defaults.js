@@ -23,10 +23,17 @@ const path = require('path')
 
 var services = {
 	layinghens: {
-		name: 'Laying Hens',
+		name: 'Laying hens',
 		description: 'This service is for laying hens',
 		basefolder: './app/views/layinghens/current/',
 		baseurl: '/layinghens/current/',
+		exclude: ['templates', 'views'],
+	},
+	addingvalue: {
+		name: 'Adding value 2024',
+		description: 'This service is for adding value',
+		basefolder: './app/views/adding-value-2024/current/',
+		baseurl: '/adding-value-2024/current/',
 		exclude: ['templates', 'views'],
 	},
 }
