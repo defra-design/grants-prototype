@@ -1,0 +1,99 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set minRate = '10,800' %}
+{% if poultryType != 'hen' %}
+    {% set minRate = '9,000' %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the ventilation system be fit for purpose in extreme heat?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        In extreme heat, the ventilation system must be able to provide:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet govuk-hint">
+                        <li>
+                            an air speed of one metre per second over birds
+                        </li>
+                        <li>
+                            a maximum ventilation rate of {{ minRate }}m<sup>3</sup> per hour per 1,000 birds
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'ventilation-specifications',
+                    name: 'ventilation-specifications',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the ventilation system be fit for purpose in extreme heat?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['ventilation-specifications'] == 'Yes',
+                            attributes: {
+                                    'data-next': '../biosecurity/concrete-apron'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['ventilation-specifications'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-specifications'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The ventilation system must be able to prevent the heat that the birds generate from increasing the house temperature by more than 3°C above the external ambient temperature.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

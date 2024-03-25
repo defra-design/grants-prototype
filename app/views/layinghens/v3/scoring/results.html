@@ -1,0 +1,516 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Score results
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-xl">Score results</h1>
+
+            <p class="govuk-!-font-size-24">
+                Based on your answers, your project’s score is:
+            </p>
+
+            {% set insetHtml %}
+
+                <span class="govuk-heading-m govuk-!-margin-bottom-2">
+                    Average
+                </span>
+
+                <p>
+                    This means your project might be successful.
+                </p>
+
+            {% endset %}
+
+            {{ govukInsetText ({
+                html: insetHtml
+            }) }}
+
+            {{ govukSummaryList ({
+                rows: [
+                    {
+                        key: {
+                            text: 'Strong'
+                        },
+                        value: {
+                            text: 'Based on your answers, a grant application is likely to be successful.'
+                        }
+                    },
+                    {
+                        key: {
+                            text: 'Average'
+                        },
+                        value: {
+                            text: 'Based on your answers, a grant application might be successful.'
+                        }
+                    },
+                    {
+                        key: {
+                            text: 'Weak'
+                        },
+                        value: {
+                            text: 'Based on your answers, a grant application is unlikely to be successful.'
+                        }
+                    }
+                }
+            }) }}
+
+            {{ govukWarningText ({
+                text: 'The likelihood of a full application being successful will also depend on the number and value of applications we receive.',
+                iconFallbackText: 'Warning'
+            }) }}
+
+            <p>
+               Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score. 
+            </p>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+            <h2 class="govuk-heading-l">
+                Your answers
+            </h2>
+
+            <p>
+                You can go back to change scoring questions as many times as you like but you can only submit your details once.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+    
+
+            <table class="govuk-table">
+                <caption class="govuk-table__caption govuk-table__caption--m">
+                    Scoring results
+                </caption>
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">
+                            Answers
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Your score
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Funding priorities
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Change
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Current system
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-system'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Support the transition out of colony cages
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="current-system?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% set shouldShowCurrentMultiTier = true %}
+                    {% if data['scoring-system'] == 'Colony cage' %}
+                        {% set shouldShowCurrentMultiTier = false %}
+                    {% endif %}
+                    {% if data['scoring-system'] == 'Combi-cage' %}
+                        {% set shouldShowCurrentMultiTier = false %}
+                    {% endif %}
+
+                    {% if shouldShowCurrentMultiTier %}
+
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                    {% if poultryType != 'hen' %}
+                                        Multi-tier system currently
+                                    {% else %}
+                                        Aviary system currently
+                                    {% endif %}
+                                </p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>
+                                        {{ data['scoring-current-multi-tier-system'] }}
+                                    </li>
+                                </ul>
+                            </th>
+                            <td class="govuk-table__cell">
+                                Average
+                            </td>
+                            <td class="govuk-table__cell">
+                                {% if poultryType != 'hen' %}
+                                    Encourage investment in high welfare multi-tier systems
+                                {% else %}
+                                    Encourage investment in high welfare aviary systems
+                                {% endif %}
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link govuk-link--no-visited-state" href="current-multi-tier-system?from-scoring=true">
+                                    Change
+                                </a>
+                            </td>
+                        </tr>
+
+                    {% endif %}
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Level ramp connection
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-ramps'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Reduce the risk of keel bone fractures
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="ramps?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Maximum height of highest tier
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-height'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Prevent birds falling from heights of more than 2 metres
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="ramps?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                3 tiers or fewer
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-tiers'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Multi-tier systems that have 3 tiers or fewer
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="tiers?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Consistent housing
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['multi-tier-other'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Support projects that provide a consistent housing type for birds between rearing and laying
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="multi-tier-other?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Natural light
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-natural-light'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Support projects which provide natural light
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="natural-light?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>  
+
+                    {% if poultryType == 'pullet' %}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Dark brooders
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-dark-brooders'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Support projects which provide dark brooders
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="dark-brooders?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr> 
+                    {% endif %}
+
+                     <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Perch grip feature
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-grip'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Support projects which provide easy-grip perches
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="grip?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr> 
+
+                    {% if poultryType == 'pullet' %}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Veranda requirements
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-veranda-requirements'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Verandas that meet all funding requirements
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="veranda-requirements?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr> 
+                    {% endif %}
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Housing biosecurity
+                            </p>
+                                {{ data['scoring-structure'] | checkboxAnswersToList | safe }}
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Protection against the spread of disease and infection
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="structure?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Pollution mitigation
+                            </p>
+                                {{ data['scoring-features'] | checkboxAnswersToList | safe }}
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Use of polution mitigation practices
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="features?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>   
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Renewable energy
+                            </p>
+                                {{ data['scoring-energy'] | checkboxAnswersToList | safe }}
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Use of renewable energy
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="energy?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Poultry management data
+                            </p>
+                            {{ data['scoring-data'] | checkboxAnswersToList | safe }}
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Collecting and storing poultry management data
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="data?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Additional environmental data
+                            </p>
+                            {{ data['scoring-environment-data'] | checkboxAnswersToList | safe }}
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Collecting and storing additional environmental data
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="environment-data?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+                
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+            
+            <h2 class="govuk-heading-l">
+                Next steps
+            </h2>
+
+            <p>
+                Next, add your business and contact details and submit them to the RPA (you should only do this once).
+            </p>
+
+            <p>
+                You’ll get an email with your score and answers, and a reference number.
+            </p>
+
+            {{ govukButton ({
+                text: 'Continue',
+                href: '../details/business-details'
+            }) }}
+
+        </div>
+
+</div>
+
+{% endblock %}

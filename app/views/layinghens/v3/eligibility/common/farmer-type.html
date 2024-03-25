@@ -1,0 +1,107 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    What type of farmer are you?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="legal-status" method="post">
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'farmer-type',
+                    name: 'farmer-type',
+                    fieldset: {
+                        legend: {
+                            text: 'What type of farmer are you?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select all that apply'
+                    },
+                    items: [
+                        {
+                            text: 'Laying hens (including pullets)',
+                            value: 'Laying hens',
+                            checked: true if 'Laying hens' | isIn(data['farmer-type'])
+                        },
+                        {
+                            text: 'Meat chickens',
+                            value: 'Meat chickens',
+                            checked: true if 'Meat chickens' | isIn(data['farmer-type'])
+                        },
+                        {
+                            text: 'Beef (including calf rearing)',
+                            value: 'Beef',
+                            checked: true if 'Beef' | isIn(data['farmer-type'])
+                        },
+                        {
+                            text: 'Dairy (including calf rearing)',
+                            value: 'Dairy',
+                            checked: true if 'Dairy' | isIn(data['farmer-type'])
+                        },
+                        {
+                            text: 'Pigs',
+                            value: 'Pigs',
+                            checked: true if 'Pigs' | isIn(data['farmer-type'])
+                        },
+                        {
+                            text: 'Sheep',
+                            value: 'Sheep',
+                            checked: true if 'Sheep' | isIn(data['farmer-type'])
+                        },
+                        {
+                            text: 'Aquaculture',
+                            value: 'Aquaculture',
+                            checked: true if 'Aquaculture' | isIn(data['farmer-type'])
+                        },
+                        {
+                            text: 'Horticulture',
+                            value: 'Horticulture',
+                            checked: true if 'Horticulture' | isIn(data['farmer-type'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None',
+                            checked: true if 'None' | isIn(data['farmer-type']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    This grant is for laying hen or pullet farmers.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

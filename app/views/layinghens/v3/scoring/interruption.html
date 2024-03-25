@@ -1,0 +1,38 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    We will now score your project against our funding priorities
+{% endblock %}
+
+{% block content %}
+
+<div class="app-blue-card">
+
+    <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-two-thirds">
+
+                <h1 class="govuk-heading-l">
+                    We will now score your project against our funding priorities
+                </h1>
+
+                <p>
+                   Your answers to the next questions will not stop you from applying.
+                </p>
+
+                <p>
+                    Your project will get a score of weak, average or strong. You can then make changes to improve your score.
+                </p>
+                
+                {{ govukButton ({
+                    text: 'Continue',
+                    href: 'current-system',
+                    classes: 'govuk-button--inverse'
+                }) }}
+
+            </div>
+
+    </div>
+
+</div>
+{% endblock %}

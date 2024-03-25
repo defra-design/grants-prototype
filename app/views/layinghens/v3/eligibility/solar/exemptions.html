@@ -1,0 +1,110 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Which of these statements apply to this project?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+
+            <form action="roof-support-for-solar-pv">
+
+                {% set hintHtml %}
+                
+                    <p class="govuk-hint">
+                        Select all that apply
+                    </p>
+
+                {% endset %}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'solar-exemptions',
+                    name: 'solar-exemptions',
+                    fieldset: {
+                        legend: {
+                            text: 'Which of these statements apply to this project?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'The building is listed',
+                            value: 'The building is listed',
+                            checked: true if 'The building is listed' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            text: 'The building is on a World Heritage Site',
+                            value: 'The building is on a World Heritage Site',
+                            checked: true if 'The building is on a World Heritage Site' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            text: 'I am not making changes to this building’s roof',
+                            value: 'I am not making changes to this building’s roof',
+                            checked: true if 'I am not making changes to this building’s roof' | isIn(data['solar-exemptions'])
+                        } if data['project-type'] == 'refurb',
+                        {
+                            text: 'The roof only faces north',
+                            value: 'Faces north',
+                            checked: true if 'Faces north' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            text: 'The roof is heavily shaded',
+                            value: 'Heavily shaded',
+                            checked: true if 'Heavily shaded' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            html: 'The roof does not have 100m<sup>2</sup> of clear roof space',
+                            value: 'Lack of clear space',
+                            checked: true if 'Lack of clear space' | isIn(data['solar-exemptions'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None',
+                            checked: true if 'None' | isIn(data['solar-exemptions']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The roof of this building must be able to support solar PV panels, allowing for potential use in the future, unless any of these statements apply.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

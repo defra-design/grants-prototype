@@ -1,0 +1,75 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    The minimum grant you can apply for is £15,000 (40% of £37,500)
+{% endblock %}
+
+{% block content %}
+
+{% set grantAmount = data['cost'] | float | percent(40) %}
+{% if grantAmount > 500000 %}
+    {% set grantAmount = 500000 %}
+{% endif %}
+
+{% if grantAmount >= 15000 %}
+    
+    {% if data['solar-pv-system'] == 'Yes' %}
+
+        {% if grantAmount != 500000 %}
+            {{ 'number-of-birds' | redirect | safe }}
+        {% else %}
+            {{ 'potential-funding-solar' | redirect | safe }}
+        {% endif %}
+
+    {% else %}
+
+        {{ 'potential-funding' | redirect | safe }}    
+
+    {% endif %}
+
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">The minimum grant you can apply for is £15,000 (40% of £37,500)</h1>
+
+                <p>
+                    You can apply for grant funding for multiple buildings. You must submit an application for each building.
+                </p>
+
+                <p>
+                    If the total grant funding for your combined buildings is more than £15,000 (40% of £37,500), you may still be eligible to apply for grant funding.
+                </p>
+
+                {% if data['solar-pv-system'] == 'Yes' %}
+
+                    {{ govukInsetText ({
+                        text: 'You cannot apply for funding for a solar PV system if you have not requested the minimum grant funding amount for a building.'
+                    }) }}
+
+                {% endif %}
+
+                <p>
+                    If you are applying for grant funding for a single building, you can
+                    <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
+                        see other grants you may be eligible for.
+                    </a>
+                </p>
+
+                <p>
+                    <a href="potential-funding">
+                        I am applying for multiple buildings
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

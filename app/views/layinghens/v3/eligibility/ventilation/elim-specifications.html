@@ -1,0 +1,42 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    You cannot apply for a grant from this scheme - Ventilation specifications
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
+
+                <p>
+                    In extreme heat, the ventilation system must be able to provide:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        an air speed of 1 metre per second over birds
+                    </li>
+                    <li>
+                        a maximum ventilation rate of {{ minRate }}m<sup>3</sup> per hour per 1,000 birds
+                    </li>
+                </ul>
+
+                <p>
+                    <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
+                        See other grants you may be eligible for.
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

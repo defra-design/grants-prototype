@@ -1,0 +1,130 @@
+{% extends 'layinghens/current/views/layouts/layout-old.html' %}
+
+{% block pageTitle %}
+  Agent details
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" id="mainForm" action="check-details" method="post">
+        <h1 class="govuk-heading-l"> Agent's details</h1>
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Name</h2>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="agent-firstname">
+            First name
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="agent-firstname" name="agent-firstname" type="text" spellcheck="false" autocomplete="name" value="{{ data['agent-firstname'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="agent-lastname">
+            Last name
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="agent-lastname" name="agent-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['agent-lastname'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="agent-business">
+            Business name
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="agent-business" name="agent-business" type="text" spellcheck="false" autocomplete="name" value="{{ data['agent-business'] }}">
+        </div>
+
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="agent-email">
+              Email address
+              <div id="event-name-hint" class="govuk-hint">
+                  We’ll only use this to send you confirmation
+              </div>
+          </label>
+          <input class="govuk-input  govuk-!-width-two-thirds" id="agent-email" name="agent-email" type="agent-email" spellcheck="false" aria-describedby="agent-email-hint" autocomplete="agent-email" value="{{ data['agent-email'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="agent-landline">
+              Mobile number
+          </label>
+          <div id="landline-name-hint" class="govuk-hint">
+              We will only use this to contact you about your application
+          </div>
+          <input class="govuk-input  govuk-!-width-two-thirds" id="agent-landline" name="agent-landline" type="agent-landline" spellcheck="false" aria-describedby="agent-landline-hint" autocomplete="agent-landline" value="{{ data['agent-landline'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="agent-mobile">
+              Landline number
+          </label>
+          <div id="landline-name-hint" class="govuk-hint">
+              We will only use this to contact you about your application
+          </div>
+          <input class="govuk-input  govuk-!-width-two-thirds" id="agent-mobile" name="agent-mobile" type="agent-mobile" spellcheck="false" aria-describedby="agent-mobile-hint" autocomplete="agent-mobile" value="{{ data['agent-mobile'] }}">
+        </div>
+
+        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Business address</h2>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="agent-address1">
+              Address line 1
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="agent-address1" name="agent-address1" type="agent-address1" spellcheck="false" aria-describedby="agent-address1-hint" autocomplete="agent-address1" value="{{ data['agent-address1'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="agent-address2">
+              Address line 2 (optional)
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="agent-address2" name="agent-address2" type="agent-address2" spellcheck="false" aria-describedby="agent-address2-hint" autocomplete="agent-address2" value="{{ data['agent-address2'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="agent-town">
+                Town
+            </label>
+            <input class="govuk-input govuk-!-width-one-half" id="agent-town" name="agent-town" type="agent-town" spellcheck="false" aria-describedby="agent-town-hint" autocomplete="agent-town" value="{{ data['agent-town'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="agent-county">
+                County
+            </label>
+            <input class="govuk-input govuk-!-width-one-half" id="agent-county" name="agent-county" type="agent-county" spellcheck="false" aria-describedby="agent-county-hint" autocomplete="agent-county" value="{{ data['agent-county'] }}">
+        </div>
+
+        <div class="govuk-form-group govuk-!-padding-bottom-8">
+            <label class="govuk-label" for="agent-postcode">
+                Postcode
+            </label>
+            <input class="govuk-input govuk-!-width-one-quarter" id="agent-postcode" name="agent-postcode" type="agent-postcode" spellcheck="false" aria-describedby="agent-postcode-hint" autocomplete="agent-postcode" value="{{ data['agent-postcode'] }}">
+        </div>
+
+        <button class="govuk-button govuk-!-margin-top-6 govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% if data['DETAILS'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk-!-margin-top-6" data-module="govuk-button"
+          >
+            Back to details
+          </button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

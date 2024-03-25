@@ -1,0 +1,101 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    What additional environmental data will you collect?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="results">
+
+                {% set hintHtml %}
+                    <p class="govuk-hint">
+                        Using digital systems
+                    </p>
+
+                    <p class="govuk-hint"> 
+                        Select all that apply
+                    </p>
+                {% endset %}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-environment-data',
+                    name: 'scoring-environment-data',
+                    fieldset: {
+                        legend: {
+                            text: 'What additional environmental data will you automatically collect and store?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Ammonia',
+                            value: 'Ammonia',
+                            checked: true if 'Ammonia' | isIn(data['scoring-environment-data'])
+                        },
+                        {
+                            text: 'Carbon monoxide',
+                            value: 'Carbon monoxide',
+                            checked: true if 'Carbon monoxide' | isIn(data['scoring-environment-data'])
+                        },
+                        {
+                            text: 'Inhalable dust',
+                            value: 'Inhalable dust',
+                            checked: true if 'Inhalable dust' | isIn(data['scoring-environment-data'])
+                        },
+                        {
+                            text: 'Other',
+                            value: 'Other',
+                            checked: true if 'Other' | isIn(data['scoring-environment-data'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None of the above',
+                            checked: true if 'None of the above' | isIn(data['scoring-environment-data']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                   RPA want to fund projects that have digital systems which automatically collect and store additional environmental data.
+                </p>
+            </div>
+ 
+        </div>
+
+</div>
+
+{% endblock %}

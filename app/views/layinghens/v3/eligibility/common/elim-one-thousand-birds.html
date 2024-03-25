@@ -1,0 +1,51 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    You cannot apply for a grant from this scheme - One thousand birds
+{% endblock %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set poultryDescriptor = 'laying hens' %}
+{% if poultryType != 'hen' %}
+    {% set poultryDescriptor = 'pullets' %}
+{% endif %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
+
+                <p>
+                    You must:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        be the registered keeper of at least 1,000 {{ poultryDescriptor }}
+                    </li>
+                    <li>
+                        have housed at least 1,000 {{ poultryDescriptor }} on your farm in the last 6 months
+                    </li>
+                </ul>
+
+                <p>
+                    <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
+                        See other grants you may be eligible for.
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

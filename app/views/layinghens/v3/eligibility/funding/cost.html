@@ -1,0 +1,116 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set projectDescriptor = 'replacing' %}
+{% if data['project-type'] == 'refurb' %}
+    {% set projectDescriptor = 'refurbishing' %}
+{% endif %}
+
+{% block pageTitle %}
+    What is the total estimated cost of {{ projectDescriptor }} this building?
+{% endblock %}
+
+{% set shouldEliminate = false %}
+{% if data['roof-support-for-solar-pv'] == 'No' and 'None' | isIn(data['solar-exemptions']) %}
+    {% set shouldEliminate = true %}
+{% endif %}
+
+{% block content %}
+
+{% if shouldEliminate %}
+    {{ 'elim-roof-support-for-solar-pv' | redirect | safe }}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="elim-cost">
+
+            {% set detailsText %}
+
+                <p>
+                    Enter the costs of {{ projectDescriptor }} for this building only.
+                </p>
+
+                <p>
+                    You must submit a separate application for each building.
+                </p>
+
+            {% endset %}
+            
+                <h1 class="govuk-heading-l">
+                    What is the estimated cost of {{ projectDescriptor }} this building?
+                </h1>
+
+                <p class="govuk-hint">
+                    You can apply for a grant of up to 40% of the estimated costs of {{ projectDescriptor }} this building.
+                    {% if data['solar-pv-system'] == 'Yes' %}
+                        Do not include the solar PV system costs.
+                    {% endif %}
+                </p>
+
+                {{ govukDetails({
+                    summaryText: "I am replacing or refurbishing multiple buildings",
+                    html: detailsText
+                }) }}
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        Do not include VAT
+                    </p>
+
+                    <p class="govuk-hint">
+                        Enter amount, for example 95,000
+                    </p>
+
+                {% endset %}
+
+                {{ govukInput ({
+                    id: 'cost',
+                    name: 'cost',
+                    value: data['cost'] if data['cost'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    prefix: { text: '£' },
+                    hint: {
+                        html: hintHtml
+                    },
+                    label: {
+                        text: 'Total estimated project cost',
+                        classes: 'govuk-visually-hidden'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+            <div class="govuk-grid-column-one-third">
+
+                <div class="app-step-nav-related app-step-nav-related--singular">
+                    <h2 class="app-step-nav-related__heading">
+                    <span class="app-step-nav-related__pretitle">Eligibility</span>
+                    </h2>
+                    <p>
+                        The minimum grant each business can apply for is £15,000 (40% of £37,500). 
+                    </p>
+                    <p>
+                        The maximum total grant amount each business can apply for is £500,000 (40% of £1.25 million).
+                    </p>
+                </div>
+
+            </div>
+
+</div>
+
+{% endblock %}

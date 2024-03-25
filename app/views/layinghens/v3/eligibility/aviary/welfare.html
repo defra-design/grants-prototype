@@ -1,0 +1,85 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the building have a high welfare aviary system?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'aviary-welfare',
+                    name: 'aviary-welfare',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the building have a high welfare aviary system?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'This system must enable the birds to move between levels without flying or jumping more than one metre in height'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['aviary-welfare'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'features'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['aviary-welfare'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-welfare'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukWarningText ({
+                    text: 'You must not install a combi-cage system in your grant-funded building.',
+                    iconFallbackText: 'Warning'
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The building must have a high welfare aviary system.
+                </p>
+                <p>
+                    The aviary system must have welfare ramps and platforms if the hens would need to jump or fly more than one metre in height to move between levels.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

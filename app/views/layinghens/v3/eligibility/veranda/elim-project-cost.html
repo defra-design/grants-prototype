@@ -1,0 +1,50 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    You cannot apply for a grant from this scheme - Project cost
+{% endblock %}
+
+{% block content %}
+
+{% if data['cost'] | float > 12500 %}
+    
+    {{ 'potential-funding' | redirect | safe }} 
+
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
+
+                <p>
+                    You can apply for grant funding to add verandas to multiple buildings. You must submit a separate application for each veranda.
+                </p>
+
+                <p>
+                    If the total grant funding for your combined veranda projects is more than £5,000 (40% of 12,500), you may still be eligible to apply for grant funding.
+                </p>
+
+                <p>
+                    If you are applying for grant funding for a single veranda, you can
+                    <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
+                        see other grants you may be eligible for
+                    </a>.
+                </p>
+
+                <p>
+                    <a href="potential-funding">
+                        I am applying to add verandas to multiple buildings
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

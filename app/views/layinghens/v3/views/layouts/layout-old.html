@@ -1,0 +1,25 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block footer %}
+    {{ govukFooter({
+        meta: {
+            items: [
+                {
+                    text: "Give feedback",
+                    href: "/layinghens/user-testing/likert-scale"
+                },
+                {
+                    text: "Clear data",
+                    href: "/clear-data"
+                }
+            ]
+        }
+    }) }}
+{% endblock %}
+
+

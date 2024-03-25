@@ -1,0 +1,97 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% set systemType = 'an aviary system' %}
+{% if poultryType != 'hen' %}
+    {% set systemType = 'a multi-tier system' %}
+{% endif %}
+
+{% set pageHeading = 'Does your current building include ' + systemType + '?' %}
+
+{% block pageTitle %}
+    {{ pageHeading }}
+{% endblock %}
+
+{% block content %}
+
+{% set currentSystem = data['scoring-system'] %}
+
+{% if currentSystem == 'Colony cage' or currentSystem == 'Combi-cage' %}
+    {{ 'ramps' | redirect | safe }}
+{% endif %}
+    
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="ramps">
+            {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-current-multi-tier-system',
+                    name: 'scoring-current-multi-tier-system',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            html: pageHeading,
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                     hint: {
+                        text: 'The building you are replacing or refurbishing for this project'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, my current building includes ' + systemType,
+                            checked: true if data['scoring-ramps'] == 'Yes, my current building includes ' + systemType
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, my current building does not include ' + systemType,
+                            checked: true if data['scoring-ramps'] == 'No, my current building does not include ' + systemType
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+
+                {% if poultryType == 'hen' %}
+                <p>
+                    RPA want to encourage investment in high welfare aviary systems.
+                </p>
+                {% else %}
+                <p>
+                    RPA want to encourage investment in high welfare multi-tier systems. 
+                </p>
+                {% endif %}
+                
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    What is the estimated cost of buying and installing the solar PV system?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="energy-output">
+
+                <h1 class="govuk-heading-l">
+                    What is the estimated cost of buying and installing the solar PV system?
+                </h1>
+
+                <p class="govuk-hint">
+                    You can apply for up to 25% of the estimated costs of buying and installing a solar PV system which has a power capacity of up to 5kW per 1,000 birds.
+                </p>
+
+                <p class="govuk-hint">
+                    The maximum grant funding each business can apply for is £500,000 for building and solar PV system costs combined.
+                </p>
+
+                <p class='govuk-hint'>
+                    Enter estimated amount, for example 200,000
+                </p>
+
+                {{ govukInput ({
+                        id: 'solar-cost',
+                        name: 'solar-cost',
+                        value: data['solar-cost'] if data['solar-cost'] else '',
+                        classes: 'govuk-input--width-10',
+                        label: {
+                            text: 'Solar PV system costs',
+                            classes: 'govuk-visually-hidden'
+                        },
+                        prefix: {
+                            text: '£'
+                        }
+                    }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

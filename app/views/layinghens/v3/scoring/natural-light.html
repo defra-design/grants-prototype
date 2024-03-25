@@ -1,0 +1,115 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the building have windows that provide natural light to the indoor housing?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+            
+                {% if poultryType == 'hen' %}
+                    <form action="grip">
+                {% else %}
+                    <form action="dark-brooders">
+                {% endif %}
+
+            {% endif %}
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        The windows must be: 
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet govuk-hint">
+                        <li>
+                            fitted with an insulated blind to manage light intensity and housing temperature
+                        </li>
+                        <li>
+                            equal to at least 3% of size of the bird space footprint
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-natural-light',
+                    name: 'scoring-natural-light',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the building have windows that provide natural light to the indoor housing?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, there will be windows',
+                            checked: true if data['scoring-natural-light'] == 'Yes, there will be windows'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, there will not be windows',
+                            checked: true if data['scoring-natural-light'] == 'No, there will not be windows'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to support projects which provide indoor housing with natural light.
+                </p>
+                <p>
+                    Hens and pullets prefer natural light spectrums.
+                </p>
+                <p>
+                    Natural light can:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        promote positive, active behaviour
+                    </li>
+                    <li>
+                        improved visibility to help reduce collisions between birds 
+                    </li>
+                    <li>
+                        increase range use
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

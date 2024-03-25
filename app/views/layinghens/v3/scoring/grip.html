@@ -1,0 +1,89 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the perches have a design feature that helps the birds grip the perches?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="structure">
+            {% endif %}
+
+            {% set hintHtml %}
+
+            {% if poultryType == 'hen' %}
+                <p class="govuk-hint">
+                    You can replace an aviary's standard circular metal perches with perches that have design features to help birds grip them (for example, a ridged surface, comfortable material or coating)
+                </p>
+            {% else %}
+                <p class="govuk-hint">
+                    You can replace a multi-tier system's standard circular metal perches with perches that have design features to help birds grip them (for example, a ridged surface, comfortable material or coating)
+                </p>
+            {% endif %}
+        
+            {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-grip',
+                    name: 'scoring-grip',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the perches have a design feature that helps the birds grip the perches?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, there will be easy-grip perches',
+                            checked: true if data['scoring-grip'] == 'Yes, there will be easy-grip perches'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, there will not be easy-grip perches',
+                            checked: true if data['scoring-grip'] == 'No, there will not be easy-grip perches'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to support projects that ensure perches are easy to grip to increase bird safety and reduce falls.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

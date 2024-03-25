@@ -1,0 +1,121 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the building have a veranda with these features?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+            
+                <form action="energy">
+            {% endif %}
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        If you add a veranda to your building, it must:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            be at least 4 metres wide along the length of the pullet housing area, or equal to at least 30% of the indoor pullet housing area footprint
+                        </li>
+                        <li>
+                            have a dimmable LED lighting system with a range between 0 lux and 60 lux
+                        </li>
+                        <li>
+                            have a solid concrete floor and waterproof insulated roof
+                        </li>
+                        <li>
+                            have a perimeter wall, at least one metre high, that includes a biosecure entrance for cleaning access
+                        </li>
+                        <li>
+                            have closable pop holes in the perimeter wall, unless the veranda forms part of an indoor barn system
+                        </li>
+                        <li>
+                            have internal access along the length of the wall of the pullet house through closable pop holes that are at least 35cm high and 40cm wide
+                        </li>
+
+                        <li>
+                            have a total of 2 metres of pop hole openings along the length of the pullet house for every 1,000 pullets in the building
+                        </li>
+
+                        <li>
+                            have all pop holes less than 10cm from the floor level and have access ramps as wide as the pop holes that are higher than 10cm from the floor level
+                        </li>
+
+                        <li>
+                            not have perches in front of the pop holes
+                        </li>
+
+                        <li>
+                            have a mesh roller screen running underneath the length of the roof, that fits securely against the wall when you roll it down
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-veranda-requirements',
+                    name: 'scoring-veranda-requirements',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the building have a veranda with these features?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes, the veranda will meet the requirements',
+                            checked: true if data['scoring-veranda-requirements'] == 'Yes, the veranda will meet the requirements'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No, the veranda will not meet the requirements',
+                            checked: true if data['scoring-veranda-requirements'] == 'No, the veranda will not meet the requirements'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to fund pullet housing that includes a veranda which meets the grant funding requirements.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

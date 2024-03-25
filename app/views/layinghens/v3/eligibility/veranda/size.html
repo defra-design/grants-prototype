@@ -1,0 +1,96 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    How big will the veranda be?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'veranda-size',
+                    name: 'veranda-size',
+                    classes: 'govuk-radios',
+                    fieldset: {
+                        legend: {
+                            text: 'How big will the veranda be?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: '4 meters wide or more along the length of the bird housing area',
+                            value: '4 meters wide or more along the length of the bird housing area',
+                            checked: true if data['veranda-size'] == '4 meters wide or more along the length of the bird housing area',
+                            attributes: {
+                                'data-next': 'specification'
+                            }
+                        },
+                        {
+                            text: '30% or more of the size of the indoor bird housing area footprint',
+                            value: '30% or more of the size of the indoor bird housing area footprint',
+                            checked: true if data['veranda-size'] == '30% or more of the size of the indoor bird housing area footprint',
+                             attributes: {
+                                'data-next': 'specification'
+                            }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None of the above',
+                            checked: true if data['veranda-size'] == 'None of the above',
+                             attributes: {
+                                'data-next': 'elim-size'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+
+                <p>
+                    The veranda must be at least either:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        4 meters wide along the length of the bird housing area
+                    </li>
+                    <li>
+                        30% of the size of the indoor bird housing area footprint
+                    </li>
+                </ul>
+    
+            </div>
+
+         </div>
+
+</div>
+
+{% endblock %}

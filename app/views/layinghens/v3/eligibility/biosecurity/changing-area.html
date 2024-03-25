@@ -1,0 +1,101 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the building have a biosecurity changing area at each external pedestrian access point?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        Each biosecurity changing area must include:
+                    </p>
+
+                    <ul class="govuk-hint govuk-list govuk-list--bullet">
+                        <li>
+                            changing facilities, with a step-over barrier between the outer and inner areas
+                        </li>
+                        <li>
+                           in the outer area, handwashing facilities with running water and storage for clothes and boots you use outside this building
+                        </li>
+                        <li>
+                            in the inner area, a footbath and storage for clothes and boots that you use inside of the bird living area
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'changing-area',
+                    name: 'changing-area',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the building have a biosecurity changing area at each external pedestrian access point?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['changing-area'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'external-taps'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['changing-area'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-changing-area'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    The building must have a biosecurity changing area at each external pedestrian point.
+                </p>
+
+                <p>
+                    If you’re refurbishing an existing building and have limited internal space, you can add a shed onto the main entrance as a biosecure changing area.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

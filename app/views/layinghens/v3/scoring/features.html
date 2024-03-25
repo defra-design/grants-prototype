@@ -1,0 +1,100 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the {{ poultryType }} housing have any of the following?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% set nextPage = 'energy' %}
+            {% if poultryType != 'hen' %}
+                {% set nextPage = 'veranda-requirements' %}
+            {% endif %}
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="{{ nextPage }}">
+            {% endif %}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-features',
+                    name: 'scoring-features',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the ' + poultryType + ' housing have any of the following?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select all that apply'
+                    },
+                    items: [
+                        {
+                            text: 'Manure drying',
+                            value: 'Manure drying',
+                            checked: true if 'Manure drying' | isIn(data['scoring-features'])
+                        },
+                        {
+                            text: 'Air filtration at inlets',
+                            value: 'Air filtration at inlets',
+                            checked: true if 'Air filtration at inlets' | isIn(data['scoring-features'])
+                        },
+                        {
+                            text: 'Air filtration at outlets, for example using wet or dry scrubbers',
+                            value: 'Air filtration at outlets',
+                            checked: true if 'Air filtration at outlets' | isIn(data['scoring-features'])
+                        },
+                        {
+                            text: 'A tree shelter belt near air outlets',
+                            value: 'Tree shelter belt',
+                            checked: true if 'Tree shelter belt' | isIn(data['scoring-features'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'No additional pollution mitigation',
+                            checked: true if 'No additional pollution mitigation' | isIn(data['scoring-features']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to fund projects that improve biosecurity and use pollution mitigation practices.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %} 
+
+{% block pageTitle %}
+    Will the house lighting system have these features?
+{% endblock %} 
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+            {% set hintHtml %}
+
+            
+                <p class="govuk-hint">
+                    When the project is complete, the house lighting system must have:
+                </p>
+
+                <ul class="govuk-hint govuk-list govuk-list--bullet">
+                    <li>
+                        non-flicker LED light with a colour temperature between 2,700 and 4,000 Kelvin
+                    </li>
+
+                    <li>
+                        capacity for zonal dimming between 0 and 60 lux
+                    </li>
+
+                    <li>
+                        full coverage of the exposed floor-litter (scratch) area
+                    </li>
+
+                    {% if poultryType == 'pullet' %}
+                        <li>
+                            a simulated stepped dawn and dusk 
+                            (unless this is provided as part of a rearing aviary system)
+                        </li>
+                    {% endif %}
+                    
+                    <li>
+                        an option for red light to reduce feather pecking
+                    </li>
+                </ul>
+
+            {% endset %}
+
+            {% set nextPage = '../aviary/welfare' %}
+            {% if poultryType != 'hen' %}
+                {% set nextPage = '../aviary-pullets/multi-tier' %}
+            {% endif %} 
+
+                {{ govukRadios ({
+                    idPrefix: 'lighting-features',
+                    name: 'lighting-features',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the house lighting system have these features?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['lighting-features'] == 'Yes',
+                            attributes: {
+                                    'data-next': nextPage
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['lighting-features'] == 'No',
+                            attributes: {
+                                    'data-next': 'elim-lighting'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    When the project is complete, the house lighting system must have these features to promote positive bird behaviour and reduce stress.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

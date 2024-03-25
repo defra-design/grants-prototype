@@ -1,0 +1,92 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the building structure include the following?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="features">
+            {% endif %}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-structure',
+                    name: 'scoring-structure',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the building structure include the following?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select all that apply'
+                    },
+                    items: [
+                        {
+                            text: 'Shower facilities in the biosecurity changing area',
+                            value: 'Shower facilities',
+                            checked: true if 'Shower facilities' | isIn(data['scoring-structure'])
+                        },
+                        {
+                            text: 'An integrated externally accessible storage room with a separate air space',
+                            value: 'An integrated externally accessible storage room',
+                            hint: {
+                                text: 'To create a separate air space, the area must have solid ceiling height walls, providing a secure barrier from the bird living area'
+                            },
+                            checked: true if 'An integrated externally accessible storage room' | isIn(data['scoring-structure'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'No additional biosecurity measures',
+                            checked: true if 'No additional pollution mitigation' | isIn(data['scoring-structure']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA want to support projects that include a high standard of biosecurity measures which protect against the spread of disease and infection.
+                </p>
+                <p>
+                    An integrated storage room can provide biosecure storage for items for the building such as litter, enrichment items and welfare ramps.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,242 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% block pageTitle %}
+    Potential grant funding
+{% endblock %}
+
+{% block content %}
+
+{% set projectCost = data['cost'] | float %}
+
+{% set grantAmount = projectCost | percent(40) %}
+
+{% set birds = data['number-of-birds'] | float if data['number-of-birds'] else 0 %}
+{% set energy = data['energy'] | float if data['energy'] else 0 %}
+{% set solarCost = data['solar-cost'] | float if data['solar-cost'] else 0 %}
+
+{% set totalProjectCost = solarCost + projectCost %}
+
+{% set energyCap = birds * 0.005 %}
+
+{% set solarFunding = solarCost * 0.25 %}
+
+{% if energy > energyCap %}
+    {% set solarFunding = ((solarCost / energy) * energyCap) * 0.25 %}
+{% endif %}
+
+{% set totalFunding = grantAmount | float + solarFunding | float %}
+{% if totalFunding > 500000 %}
+    {% set solarFunding = 500000 - grantAmount %}
+    {% set totalFunding = 500000 %}
+{% endif %} 
+
+{% if grantAmount > 500000 %}
+    {% set grantAmount = 500000 %}
+{% endif %} 
+            
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-l">Potential grant funding</h1>
+
+            {% if grantAmount == 500000 %}
+                <p>
+                    The maximum grant you can apply for is £500,000.
+                </p>
+
+                {{ govukInsetText ({
+                    text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for housing project costs.'
+                }) }}
+
+            {% elseif totalFunding == 500000 %}
+
+                <p>
+                    You may be able to apply for a grant of up to {{ totalFunding | inPounds }}, based on the estimated cost of {{ totalProjectCost | inPounds }}.
+                </p>
+                 
+                <p>
+                    This grant amount combines:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        {{ grantAmount | inPounds }} for building costs (40% of {{ projectCost | inPounds }})
+                    </li>
+
+                    <li>
+                        {{ solarFunding | inPounds }} for solar PV system costs
+                    </li>
+                </ul>
+
+                <p>
+                    As building costs take grant funding priority, you may be able to apply for a grant of up to {{ solarFunding | inPounds }} for a solar PV system. The maximum grant is £500,000.
+                </p>
+            
+            {% elseif energyCap < energy %}
+            
+                <p>
+                    You may be able to apply for a grant of up to {{ totalFunding | inPounds }}, based on the estimated cost of {{ totalProjectCost | inPounds }}.
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        {{ grantAmount | inPounds }} for building costs (40% of {{ projectCost | inPounds }})
+                    </li>
+
+                    <li>
+                        {{ solarFunding | inPounds }} for solar PV system costs
+                    </li>
+                </ul>
+
+                {% set detailsContentHTML %}
+                    <p>
+                        The solar PV system you plan to buy and install has a higher power capacity than 5kW of power per 1,000 birds.
+                    </p>
+
+                    {% set numberOfBirdsDescriptor = 'number of birds the new building will house' %}
+                    {% if data['project-type'] == 'refurb' %}
+                        {% set numberOfBirdsDescriptor = 'number of birds the refurbished part of the building will house' %}
+                    {% endif %}
+
+                    <p>
+                        Based on the {{ numberOfBirdsDescriptor }} ({{ birds | formatNumber }} birds), you can apply 25% of the costs of a solar PV system with a power capacity of up to {{ energyCap  | formatNumber }}kW.
+                    </p>
+
+                    <p>
+                        This is based on the solar PV system costs ({{ (solarCost | float) | inPounds }}) divided by the solar PV system's power capacity ({{ (energy | float) | formatNumber }}kW). With these figures, the cost of the solar PV system is equal to {{ (solarCost | float / energy | float) | inPounds }} per kW.
+                    </p>
+
+                    <p>
+                        You can apply for grant funding of {{ solarFunding | inPounds }} for solar PV system costs. This is 25% of {{ ((solarCost | float / energy | float) * energyCap | float) | inPounds }}, the amount based on your solar PV system costing {{ (solarCost | float / energy | float) | inPounds }} per kW, multiplied by the power rating of {{ energyCap  | formatNumber }}kW.
+                    </p>
+
+                    <p>
+                        You must pay the remaining solar PV system costs over {{ solarFunding | inPounds }}.
+                    </p>
+
+                    {% set numberOfBirdsTitle = 'Number of birds the new building will house' %}
+                    {% if data['project-type'] == 'refurb' %}
+                        {% set numberOfBirdsTitle = 'Number of birds the refurbished part of the building will house' %}
+                    {% endif %}
+
+                    {{ govukTable({
+                        caption: 'Solar PV system grant funding calculation ',
+                        captionClasses: "govuk-table__caption--s",
+                        firstCellIsHeader: false,
+                        rows: [
+                            [
+                                {
+                                    html: numberOfBirdsTitle + '<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="number-of-birds" class="govuk-link--no-visited-state">change the number of birds</a></span>'
+                                },
+                                {
+                                    text: (birds | float) | formatNumber,
+                                    format: 'numeric'
+                                }
+                            ],
+                            [
+                                {
+                                    html: 'Solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="solar-cost" class="govuk-link--no-visited-state">change the solar PV system cost</a></span>'
+                                },
+                                {
+                                    text: solarCost | inPounds,
+                                    format: 'numeric'
+                                }
+                            ],
+                            [
+                                {
+                                    html: 'This project’s solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">You told us this <a href="energy-output" class="govuk-link--no-visited-state">change the solar PV system rating</a></span>'
+                                },
+                                {
+                                    text: energy | formatNumber + 'kW',
+                                    format: 'numeric'
+                                }
+                            ],
+                            [
+                                {
+                                    html: 'Solar PV system cost per kilowatt<br><span class="govuk-body-s" style="color: #505a5f">' + solarCost | float | inPounds + ' divided by ' + (energy | float) | formatNumber + 'kW</span>'
+                                },
+                                {
+                                    text: (solarCost | float / energy | float) | inPounds,
+                                    format: 'numeric'
+                                }
+                            ],
+                            [
+                                {
+                                    html: 'Maximum grant-funded solar PV system rating<br><span class="govuk-body-s" style="color: #505a5f">5kW for every thousand birds</span>'
+                                },
+                                {
+                                    text: energyCap | formatNumber + 'kW',
+                                    format: 'numeric'
+                                }
+                            ],
+                            [
+                                {
+                                    html: 'Grant-fundable solar PV system cost<br><span class="govuk-body-s" style="color: #505a5f">' + (solarCost | float / energy | float) | inPounds + ' multiplied by ' + (energyCap | float) | formatNumber + 'kW</span>'
+                                },
+                                {
+                                    text: ((solarCost | float / energy | float) * energyCap | float) | inPounds,
+                                    format: 'numeric'
+                                }
+                            ],
+                            [
+                                {
+                                    html: 'Potential grant funding for solar PV system<br><span class="govuk-body-s" style="color: #505a5f">25% of ' + ((solarCost | float / energy | float) * energyCap | float) | inPounds + '</span>'
+                                },
+                                {
+                                    text: solarFunding | inPounds,
+                                    format: 'numeric'
+                                }
+                            ]
+                        ]
+                        }) }}
+                {% endset %}
+                
+                {{ govukDetails({
+                    summaryText: 'How is the solar PV system grant funding calculated?',
+                    html: detailsContentHTML
+                }) }}
+
+            {% else %}    
+
+                <p>
+                    You may be able to apply for a grant of up to {{ totalFunding | inPounds }}, based on the estimated cost of {{ totalProjectCost | inPounds }}.
+                </p>
+                 
+                <p>
+                    This grant amount combines:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        {{ grantAmount | inPounds }} for building costs (40% of {{ projectCost | inPounds }})
+                    </li>
+
+                    <li>
+                        {{ solarFunding | inPounds }} for solar PV system costs (25% of {{ solarCost | inPounds }})
+                    </li>
+                </ul>
+
+            {% endif %}
+
+            {{ govukWarningText({
+                text: "There is no guarantee you will receive a grant",
+                iconFallbackText: "Warning"
+            }) }}
+
+            <form action="remaining-cost">
+
+                <input type="hidden" name="potential-funding" value="{{ totalFunding }}">
+                <input type="hidden" name="total-cost" value="{{ totalProjectCost }}">
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

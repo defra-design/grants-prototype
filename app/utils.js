@@ -56,6 +56,7 @@ const serviceName = {
 	layinghens: {
 		current:
 			'Check if you can apply for a Laying Hen Housing for Health and Welfare Grant',
+		v3: 'Check if you can apply for a Laying Hen Housing for Health and Welfare Grant',
 		v2: 'Check if you can apply for a Laying Hen Housing for Health and Welfare Grant',
 		v1: 'Check if you can apply for a Laying Hen Housing for Health and Welfare Grant',
 	},
