@@ -13,7 +13,7 @@
         <form method="post" action="applicant-details">
 
             <h1 class="govuk-heading-l">
-                Agent details
+                Agent's details
             </h1>
 
             {{ govukInput ({
@@ -78,7 +78,20 @@
                     text: 'We will only use this to contact you about your application'
                 },
                 label: {
-                    text: 'Telephone number'
+                    text: 'Landline number'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'agent-mobile',
+                name: 'agent-mobile',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['agent-mobile'] if data['agent-mobile'] else '',
+                hint: {
+                    text: 'We will only use this to contact you about your application'
+                },
+                label: {
+                    text: 'Mobile number'
                 }
             }) }}
 

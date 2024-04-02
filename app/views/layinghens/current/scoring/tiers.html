@@ -28,13 +28,19 @@
             {% if data['from-scoring'] == 'true' %}
                 <form action="results">
             {% else %}
-                <form action="multi-tier-other">
+            
+                {% if poultryType == 'hen' %}
+                    <form action="multi-tier-hen">
+                {% else %}
+                    <form action="multi-tier-pullet">
+                {% endif %}
+
             {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-tiers',
                     name: 'scoring-tiers',
-                    classes: 'govuk-radios--inline',
+                    classes: 'govuk-radios',
                     fieldset: {
                         legend: {
                             html: question,
@@ -47,14 +53,14 @@
                     },
                     items: [
                         {
-                            text: '2 or 3 tiers',
-                            value: '2 or 3 tiers',
-                            checked: true if data['scoring-tiers'] == '2 or 3 tiers'
+                            text: '3 tiers or fewer',
+                            value: '3 tiers or fewer',
+                            checked: true if data['scoring-tiers'] == '3 tiers or fewer'
                         },
                         {
-                            text: '4 or more tiers',
-                            value: '4 or more tiers',
-                            checked: true if data['scoring-tiers'] == '4 or more tiers'
+                            text: '4 tiers or more',
+                            value: '4 tiers or more',
+                            checked: true if data['scoring-tiers'] == '4 tiers or more'
                         }
                     ]
                 }) }}
