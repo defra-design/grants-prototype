@@ -9,14 +9,14 @@
     Will the multi-tier system have 3 tiers or fewer directly above each other?
 {% endblock %}
 
-{% set question = 'Will the aviary system have 3 tiers or fewer directly above each other?' %}
+{% set question = 'How many tiers will be positioned directly above each other in the aviary system?' %}
 {% if poultryType != 'hen' %}
-    {% set question = 'Will the multi-tier system have 3 tiers or fewer directly above each other?' %}
+    {% set question = 'How many tiers will be positioned directly above each other in the multi-tier system?' %}
 {% endif %}
 
-{% set hintHtml = 'The floor and the perches at the top of the aviary system are not tiers' %}
+{% set hintHtml = 'The floor and the perches at the top of the aviary system are not counted as tiers'%}
 {% if poultryType != 'hen' %}
-    {% set hintHtml = 'The floor and the perches at the top of the multi-tier system are not tiers' %}
+    {% set hintHtml = 'The floor and the perches at the top of the multi-tier system are not counted as tiers' %}
 {% endif %}
 
 {% block content %}
@@ -47,14 +47,14 @@
                     },
                     items: [
                         {
-                            text: 'Yes',
-                            value: 'Yes',
-                            checked: true if data['scoring-tiers'] == 'Yes'
+                            text: '2 or 3 tiers',
+                            value: '2 or 3 tiers',
+                            checked: true if data['scoring-tiers'] == '2 or 3 tiers'
                         },
                         {
-                            text: 'No',
-                            value: 'No, there will be more than 3 tiers',
-                            checked: true if data['scoring-tiers'] == 'No, there will be more than 3 tiers'
+                            text: '4 or more tiers',
+                            value: '4 or more tiers',
+                            checked: true if data['scoring-tiers'] == '4 or more tiers'
                         }
                     ]
                 }) }}

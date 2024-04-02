@@ -60,6 +60,16 @@
             }) }}
 
             {{ govukInput ({
+                id: 'confirm-email',
+                name: 'confirm-email',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['confirm-email'] if data['confirm-email'] else '',
+                label: {
+                    text: 'Confirm email address'
+                }
+            }) }}
+
+            {{ govukInput ({
                 id: 'agent-landline',
                 name: 'agent-landline',
                 classes: 'govuk-!-width-two-thirds',
@@ -113,15 +123,32 @@
                 autocomplete: 'address-town'
               }) }}
 
-              {{ govukInput({
-                label: {
-                  text: 'County (optional)'
-                },
+              
+              {{ govukSelect({
                 id: 'agent-county',
                 name: 'agent-county',
-                classes: 'govuk-!-width-one-half',
-                value: data['agent-county'] if data['agent-county'] else '',
-                autocomplete: 'address-county'
+                label: {
+                  text: 'County'
+                },
+                items: [
+                  {
+                    value: 'greater-london',
+                    text: 'Greater London'
+                  },
+                  {
+                    value: 'west-midlands',
+                    text: 'West Midlands',
+                    selected: true
+                  },
+                  {
+                    value: 'greater-manchester',
+                    text: 'Greater Manchester'
+                  },
+                  {
+                    value: 'west-yorkshire',
+                    text: 'West Yorkshire'
+                  }
+                ]
               }) }}
 
               {{ govukInput({
