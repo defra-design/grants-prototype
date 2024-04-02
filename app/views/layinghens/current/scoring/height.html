@@ -17,15 +17,9 @@
 
          {% set hintHtml %}
 
-            {% if poultryType == 'hen' %}
-                <p class="govuk-hint">
-                    The height of the highest tier in the aviary system from the litter floor area to the underside of the manure belt
-                </p>
-            {% else %}
-                <p class="govuk-hint">
-                    The height of the highest tier in the multi-tier system from the litter floor area to the underside of the manure belt
-                </p>
-            {% endif %}
+            <p class="govuk-hint">
+                Measured from the litter floor area to the underside of the manure belt
+            </p>
 
         {% endset %}
 
@@ -77,15 +71,11 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
-                 {% if poultryType == 'hen' %}
+
                     <p>
-                        RPA want to fund aviary systems that have ramps to reduce the risk of keel bone fractures and benefit birds that have keel bone fractures.
+                        RPA want to fund projects that prevent birds falling from heights of more than 2 metres, to reduce the risk of keel bone fractures.
                     </p>
-                {% else %}
-                    <p>
-                        RPA want to fund multi-tier systems that have ramps to reduce the risk of keel bone fractures and benefit birds that have keel bone fractures.
-                    </p>
-                {% endif %}
+
             </div>
 
         </div>

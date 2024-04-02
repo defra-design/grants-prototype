@@ -58,10 +58,11 @@
                             checked: true if 'Bird location' | isIn(data['scoring-data'])
                         },
                         {
-                            text: 'Bird performance',
-                            value: 'Bird performance',
-                            checked: true if 'Bird performance' | isIn(data['scoring-data'])
-                        },
+                            text: 'Egg production parameters',
+                            value: 'Egg production parameters',
+                            checked: true if 'Egg production parameters' | isIn(data['scoring-data'])
+                            
+                        } if poultryType == 'hen',
                         {
                             text: 'Body weight',
                             value: 'Body weight',
