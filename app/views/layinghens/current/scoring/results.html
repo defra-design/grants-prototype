@@ -256,6 +256,7 @@
                         </td>
                     </tr>
 
+                    {% if poultryType == 'hen' %}
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
@@ -263,7 +264,7 @@
                             </p>
                             <ul class="govuk-list govuk-list--bullet">
                                 <li>
-                                    {{ data['multi-tier-other'] }}
+                                    {{ data['multi-tier-hen'] }}
                                 </li>
                             </ul>
                         </th>
@@ -279,6 +280,33 @@
                             </a>
                         </td>
                     </tr>
+                    {% endif %}
+
+                    {% if poultryType == 'pullet' %}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Consistent housing
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['multi-tier-pullet'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Support projects that provide a consistent housing type for birds between rearing and laying
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="multi-tier-other?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+                    {% endif %}
 
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
