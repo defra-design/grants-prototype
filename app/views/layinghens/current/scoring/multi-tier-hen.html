@@ -1,0 +1,87 @@
+{% extends 'layinghens/current/views/layouts/layout.html' %}
+
+{% set poultryType = 'hen' %}
+{% if data['poultry-type'] %}
+    {% set poultryType = data['poultry-type'] %}
+{% endif %}
+
+{% block pageTitle %}
+    Will the hens in this building be reared in a multi-tier system as pullets?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'multi-tier-hen',
+                    name: 'multi-tier-hen',
+                    classes: 'govuk-radios',
+                    fieldset: {
+                        legend: {
+                            text: 'Will the hens in this building be reared in a multi-tier system as pullets?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['multi-tier-hen'] == 'Yes',
+                            attributes: {
+                                'data-next': 'natural-light'
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['multi-tier-hen'] == 'No',
+                             attributes: {
+                                'data-next': 'natural-light'
+                            }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'I don’t know',
+                            value: 'I don’t know',
+                            checked: true if data['multi-tier-hen'] == 'I don’t know',
+                             attributes: {
+                                'data-next': 'natural-light'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+
+                <p>
+                    RPA want to fund projects that encourage a consistent housing type for birds between rearing and laying.
+                </p>
+    
+            </div>
+
+         </div>
+
+</div>
+
+{% endblock %}
