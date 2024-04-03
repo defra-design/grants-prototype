@@ -264,7 +264,7 @@
                             </p>
                             <ul class="govuk-list govuk-list--bullet">
                                 <li>
-                                    {{ data['multi-tier-hen'] }}
+                                    {{ data['scoring-consistent-housing'] }}
                                 </li>
                             </ul>
                         </th>
@@ -275,9 +275,15 @@
                             Support projects that provide a consistent housing type for birds between rearing and laying
                         </td>
                         <td class="govuk-table__cell">
-                            <a class="govuk-link govuk-link--no-visited-state" href="multi-tier-other?from-scoring=true">
-                                Change
-                            </a>
+                            {% if poultryType == 'hen' %}
+                                <a class="govuk-link govuk-link--no-visited-state" href="multi-tier-hen?from-scoring=true">
+                                    Change
+                                </a>
+                            {% else %}
+                                <a class="govuk-link govuk-link--no-visited-state" href="multi-tier-pullet?from-scoring=true">
+                                    Change
+                                </a>
+                            {% endif %}
                         </td>
                     </tr>
                     {% endif %}

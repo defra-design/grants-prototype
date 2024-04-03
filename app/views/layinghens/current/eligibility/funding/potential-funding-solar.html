@@ -41,6 +41,11 @@
             <h1 class="govuk-heading-l">Potential grant funding</h1>
 
             {% if grantAmount == 500000 %}
+
+                <p>
+                    You may be able to apply for a grant of up to {{ totalFunding | inPounds }}, based on the estimated cost of {{ totalProjectCost | inPounds }}.
+                </p>
+
                 <p>
                     The maximum grant you can apply for is £500,000.
                 </p>
