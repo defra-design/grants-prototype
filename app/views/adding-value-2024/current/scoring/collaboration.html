@@ -10,7 +10,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="environment">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form method="post" action="environment">
+            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-collaboration',

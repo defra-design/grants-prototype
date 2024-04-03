@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Is the planned project on land the business owns?
+    Will this project replace any manual labour?
 {% endblock %}
 
 {% block content %}
@@ -11,37 +11,38 @@
         <div class="govuk-grid-column-two-thirds">
 
             <form method="post">
+                {% set nextPageOnNo = 'environment' %}
+                {% if data['from-scoring'] == 'true' %}
+                    {% set nextPageOnNo = 'results' %}
+                {% endif %}
 
                 {{ govukRadios ({
-                    idPrefix: 'tenancy',
-                    name: 'tenancy',
+                    idPrefix: 'scoring-manual-labour',
+                    name: 'scoring-manual-labour',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Is the planned project on land the business owns?',
+                            text: 'Will this project replace any manual labour?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
-                    },
-                    hint: {
-                        text: 'The site where the work will happen'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['tenancy'] == 'Yes',
+                            checked: true if data['scoring-manual-labour'] == 'Yes',
                             attributes: {
-                                    'data-next': '../adding-value/smaller-abattoir'
-                                }
+                                'data-next': 'manual-labour-amount'
+                            }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['tenancy'] == 'No',
+                            checked: true if data['scoring-manual-labour'] == 'No',
                             attributes: {
-                                    'data-next': 'project-responsibility'
-                                }
+                                'data-next': nextPageOnNo
+                            }
                         }
                     ]
                 }) }}
@@ -62,7 +63,7 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    If you are a tenant farmer, you have the option to ask your landlord to underwrite your agreement.
+                    RPA wants to fund projects that increases the use of automation due to the current manual labour shortage.
                 </p>
             </div>
 

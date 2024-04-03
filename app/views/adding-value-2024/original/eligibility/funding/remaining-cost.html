@@ -1,32 +1,11 @@
 {% extends 'adding-value-2024/layout.html' %}
 
-{% if data['solar-pv'] == 'Yes' %}
-
-    {% set itemsCost = data['cost'] | float %}
-    {% set solarCost = data['solar-pv-cost'] | float if data['solar-pv-cost'] else 0 %}
-    {% set totalCost = itemsCost + solarCost %}
-
-    {% set itemsGrantAmount = itemsCost | float | percent(40) %}
-    {% if itemsGrantAmount > 500000 %}
-        {% set itemsGrantAmount = 500000 %}
-    {% endif %}
-
-    {% set solarGrantAmount = solarCost | float | percent(25) %}
-
-    {% set grantAmount = itemsGrantAmount | float + solarGrantAmount | float %}
-
-{% else %}
-
-    {% set totalCost = data['cost'] | float %}
-
-    {% set grantAmount = totalCost | float | percent(40) %}
-    {% if grantAmount > 500000 %}
-        {% set grantAmount = 500000 %}
-    {% endif %}
-
+{% set grantAmount = data['potential-funding'] | float %}
+{% if grantAmount > 500000 %}
+    {% set grantAmount = 500000 %}
 {% endif %}
 
-{% set remainingCost = (totalCost | float) - (grantAmount | float) %}
+{% set remainingCost = (data['total-cost'] | float) - (grantAmount | float) %}
 
 {% block pageTitle %}
     Can you pay the remaining costs of {{ remainingCost | inPounds }}?

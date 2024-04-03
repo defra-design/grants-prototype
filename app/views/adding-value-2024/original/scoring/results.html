@@ -185,34 +185,6 @@
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Replaces manual labour
-                            </p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>
-                                    {% if data['scoring-manual-labour'] == 'Yes' %}
-                                        Yes, {{ data['scoring-manual-labour-amount'] }}
-                                    {% else %}
-                                        No
-                                    {% endif %}
-                                </li>
-                            </ul>
-                        </th>
-                        <td class="govuk-table__cell">
-                            Average
-                        </td>
-                        <td class="govuk-table__cell">
-                            Increases the use of automation
-                        </td>
-                        <td class="govuk-table__cell">
-                            <a class="govuk-link govuk-link--no-visited-state" href="manual-labour?from-scoring=true">
-                                Change
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">
-                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 Future customers
                             </p>
                             {{ data['scoring-customers'] | checkboxAnswersToList | safe }}

@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Is the planned project on land the business owns?
+    Will you work in partnership or collaborate with other farmers or producers?
 {% endblock %}
 
 {% block content %}
@@ -10,38 +10,32 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form method="post" action="environment">
 
                 {{ govukRadios ({
-                    idPrefix: 'tenancy',
-                    name: 'tenancy',
+                    idPrefix: 'scoring-collaboration',
+                    name: 'scoring-collaboration',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Is the planned project on land the business owns?',
+                            text: 'Will you work in partnership or collaborate with other farmers or producers?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'The site where the work will happen'
+                        text: 'For example, in a formal partnership or contract supply arrangement for raw materials'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['tenancy'] == 'Yes',
-                            attributes: {
-                                    'data-next': '../adding-value/smaller-abattoir'
-                                }
+                            checked: true if data['scoring-collaboration'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['tenancy'] == 'No',
-                            attributes: {
-                                    'data-next': 'project-responsibility'
-                                }
+                            checked: true if data['scoring-collaboration'] == 'No'
                         }
                     ]
                 }) }}
@@ -62,8 +56,16 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    If you are a tenant farmer, you have the option to ask your landlord to underwrite your agreement.
+                    RPA wants to fund projects that:
                 </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        improve processing and supply chains
+                    </li>
+                    <li>
+                        encourage collaboration and partnerships
+                    </li>
+                </ul>
             </div>
 
         </div>

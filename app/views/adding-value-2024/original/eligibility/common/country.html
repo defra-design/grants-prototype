@@ -1,10 +1,14 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Is the planned project on land the business owns?
+    Is the planned project in England?
 {% endblock %}
 
 {% block content %}
+
+{% if data['legal-status'] == 'None' %}
+    {{ 'elim-legal-status' | redirect | safe }}
+{% endif %}
 
 <div class="govuk-grid-row">
 
@@ -13,12 +17,12 @@
             <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'tenancy',
-                    name: 'tenancy',
+                    idPrefix: 'country',
+                    name: 'country',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Is the planned project on land the business owns?',
+                            text: 'Is the planned project in England?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -30,17 +34,17 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['tenancy'] == 'Yes',
+                            checked: true if data['country'] == 'Yes',
                             attributes: {
-                                    'data-next': '../adding-value/smaller-abattoir'
+                                    'data-next': 'planning-permission'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['tenancy'] == 'No',
+                            checked: true if data['country'] == 'No',
                             attributes: {
-                                    'data-next': 'project-responsibility'
+                                    'data-next': 'elim-country'
                                 }
                         }
                     ]
@@ -62,7 +66,10 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    If you are a tenant farmer, you have the option to ask your landlord to underwrite your agreement.
+                    This grant is only for projects in England.
+                </p>
+                <p>
+                    Scotland, Wales and Northern Ireland have other grants available.
                 </p>
             </div>
 
