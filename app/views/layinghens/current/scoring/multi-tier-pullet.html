@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results" method="post">
+            {% else %}
+                <form action="natural-light" method="post">
+            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-consistent-housing',
@@ -32,18 +36,12 @@
                         {
                             text: 'Yes',
                             value: 'Yes, the pullets will be housed in an aviary system as adults',
-                            checked: true if data['scoring-consistent-housing'] == 'Yes, the pullets will be housed in an aviary system as adults',
-                            attributes: {
-                                'data-next': 'natural-light'
-                            }
+                            checked: true if data['scoring-consistent-housing'] == 'Yes, the pullets will be housed in an aviary system as adults'
                         },
                         {
                             text: 'No',
                             value: 'No, the pullets will not be housed in an aviary system as adults',
-                            checked: true if data['scoring-consistent-housing'] == 'No, the pullets will not be housed in an aviary system as adults',
-                             attributes: {
-                                'data-next': 'natural-light'
-                            }
+                            checked: true if data['scoring-consistent-housing'] == 'No, the pullets will not be housed in an aviary system as adults'
                         },
                         {
                             divider: 'or'
@@ -51,10 +49,7 @@
                         {
                             text: 'I don’t know',
                             value: 'I don’t know',
-                            checked: true if data['multi-tier-hen'] == 'I don’t know',
-                             attributes: {
-                                'data-next': 'natural-light'
-                            }
+                            checked: true if data['multi-tier-hen'] == 'I don’t know'
                         }
                     ]
                 }) }}

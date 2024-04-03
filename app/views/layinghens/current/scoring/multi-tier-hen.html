@@ -15,7 +15,11 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results" method="post">
+            {% else %}
+                <form action="natural-light" method="post">
+            {% endif %}
 
                 {{ govukRadios ({
                     idPrefix: 'scoring-consistent-housing',
@@ -32,18 +36,12 @@
                         {
                             text: 'Yes',
                             value: 'Yes, the hens will be reared in a multi-tier system as pullets',
-                            checked: true if data['scoring-consistent-housing'] == 'Yes, the hens will be reared in a multi-tier system as pullets',
-                            attributes: {
-                                'data-next': 'natural-light'
-                            }
+                            checked: true if data['scoring-consistent-housing'] == 'Yes, the hens will be reared in a multi-tier system as pullets'
                         },
                         {
                             text: 'No',
                             value: 'No, the hens will not be reared in a multi-tier system as pullets',
-                            checked: true if data['scoring-consistent-housing'] == 'No, the hens will not be reared in a multi-tier system as pullets',
-                             attributes: {
-                                'data-next': 'natural-light'
-                            }
+                            checked: true if data['scoring-consistent-housing'] == 'No, the hens will not be reared in a multi-tier system as pullets'
                         },
                         {
                             divider: 'or'
@@ -51,10 +49,7 @@
                         {
                             text: 'I don’t know',
                             value: 'I don’t know',
-                            checked: true if data['scoring-consistent-housing'] == 'I don’t know',
-                             attributes: {
-                                'data-next': 'natural-light'
-                            }
+                            checked: true if data['scoring-consistent-housing'] == 'I don’t know'
                         }
                     ]
                 }) }}
