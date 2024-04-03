@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Is the planned project on land the business owns?
+    Does your project also need storage facilities?
 {% endblock %}
 
 {% block content %}
@@ -10,40 +10,38 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            <form method="post" action="../funding/cost">
 
                 {{ govukRadios ({
-                    idPrefix: 'tenancy',
-                    name: 'tenancy',
-                    classes: 'govuk-radios--inline',
+                    idPrefix: 'storage',
+                    name: 'storage',
                     fieldset: {
                         legend: {
-                            text: 'Is the planned project on land the business owns?',
+                            text: 'Does your project also need storage facilities?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'The site where the work will happen'
+                        text: 'For example, cold stores or controlled atmosphere storage'
                     },
                     items: [
                         {
-                            text: 'Yes',
+                            text: 'Yes, we will need storage facilities',
                             value: 'Yes',
-                            checked: true if data['tenancy'] == 'Yes',
-                            attributes: {
-                                    'data-next': '../adding-value/smaller-abattoir'
-                                }
+                            checked: true if data['storage'] == 'Yes'
                         },
                         {
-                            text: 'No',
+                            text: 'No, we don’t need it',
                             value: 'No',
-                            checked: true if data['tenancy'] == 'No',
-                            attributes: {
-                                    'data-next': 'project-responsibility'
-                                }
+                            checked: true if data['storage'] == 'No'
                         }
                     ]
+                }) }}
+
+                {{ govukWarningText ({
+                    text: 'Storage facilities cannot be more than 50% of the total grant funding.',
+                    iconFallbackText: 'Warning'
                 }) }}
 
                 {{ govukButton ({
@@ -54,16 +52,15 @@
 
         </div>
 
-
         <div class="govuk-grid-column-one-third">
 
             <div class="app-step-nav-related app-step-nav-related--singular">
                 <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                <span class="app-step-nav-related__pretitle">Selected items</span>
                 </h2>
-                <p>
-                    If you are a tenant farmer, you have the option to ask your landlord to underwrite your agreement.
-                </p>
+                
+                {{ data['items-needed'] | checkboxAnswersToList | safe }}
+
             </div>
 
         </div>

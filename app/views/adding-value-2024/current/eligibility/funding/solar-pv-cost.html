@@ -1,0 +1,55 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+
+{% block pageTitle %}
+    What is the estimated cost of buying and installing the solar PV system?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="potential-funding">
+
+            
+                <h1 class="govuk-heading-l">
+                    What is the estimated cost of buying and installing the solar PV system?
+                </h1>
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        Enter amount, for example 135,000
+                    </p>
+
+                {% endset %}
+
+                {{ govukInput ({
+                    id: 'solar-pv-cost',
+                    name: 'solar-pv-cost',
+                    value: data['solar-pv-cost'] if data['solar-pv-cost'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    prefix: { text: '£' },
+                    hint: {
+                        html: hintHtml
+                    },
+                    label: {
+                        text: 'Solar PV system cost',
+                        classes: 'govuk-visually-hidden'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

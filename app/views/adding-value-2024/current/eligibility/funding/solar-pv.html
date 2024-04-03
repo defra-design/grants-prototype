@@ -1,0 +1,81 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+{% block pageTitle %}
+    Will you buy a solar PV system for this building with the grant?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="cost">
+
+                 {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        You have the option to buy and install a solar PV system with the grant. The solar PV panels must be installed on the building’s roof.
+                    </p>
+
+                    {{ govukWarningText ({
+                        text: 'You cannot buy a solar PV system with this grant if the roof only faces north or is heavily shaded.',
+                        iconFallbackText: 'Warning'
+                    }) }}
+                    
+                {% endset %}
+
+                {{ govukRadios ({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: 'solar-pv',
+                    name: 'solar-pv',
+                    fieldset: {
+                        legend: {
+                            text: 'Will you buy a solar PV system for this building with the grant?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                    {
+                        text: 'Yes',
+                        value: 'Yes',
+                        checked: true if data['solar-pv'] == 'Yes'
+                    },
+                    {
+                        text: 'No',
+                        value: 'No',
+                        checked: true if data['solar-pv'] == 'No'
+                    }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+          <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You do not have to buy and install a solar PV system to be eligible for this grant.
+                </p>
+                <p>
+                    If you choose to buy a solar PV system with this grant it must only be installed on the roof of the building related to your project.
+                </p>
+            </div>
+        </div>
+
+</div>
+
+{% endblock %}
