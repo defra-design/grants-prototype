@@ -6,7 +6,7 @@
 
 {% block content %}
 
-{% set grantAmount = data['cost'] | float | percent(40) %}
+{% set grantAmount = data['cost'] | float | percent(50) %}
 
 {% if grantAmount > 500000 %}
     {% set grantAmount = 500000 %}

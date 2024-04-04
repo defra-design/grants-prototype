@@ -10,7 +10,7 @@
     {% set solarCost = data['solar-pv-cost'] | float if data['solar-pv-cost'] else 0 %}
     {% set totalCost = itemsCost + solarCost %}
 
-    {% set itemsGrantAmount = itemsCost | float | percent(40) %}
+    {% set itemsGrantAmount = itemsCost | float | percent(50) %}
     {% if itemsGrantAmount > 500000 %}
         {% set itemsGrantAmount = 500000 %}
     {% endif %}
@@ -23,7 +23,7 @@
 
     {% set totalCost = data['cost'] | float %}
 
-    {% set grantAmount = totalCost | float | percent(40) %}
+    {% set grantAmount = totalCost | float | percent(50) %}
     {% if grantAmount > 500000 %}
         {% set grantAmount = 500000 %}
     {% endif %}
