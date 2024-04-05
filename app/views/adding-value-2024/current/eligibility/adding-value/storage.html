@@ -56,7 +56,9 @@
 
             <div class="app-step-nav-related app-step-nav-related--singular">
                 <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Selected items</span>
+                    <span class="app-step-nav-related__pretitle">
+                        Selected items
+                    </span>
                 </h2>
                 
                 {{ data['items-needed'] | checkboxAnswersToList | safe }}
