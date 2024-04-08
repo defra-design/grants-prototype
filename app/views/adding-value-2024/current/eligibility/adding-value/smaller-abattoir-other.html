@@ -1,0 +1,50 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+{% block pageTitle %}
+    Will this abattoir provide services for other farms?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="items-needed">
+
+                {{ govukRadios ({
+                    idPrefix: 'smaller-abattoir-other',
+                    name: 'smaller-abattoir-other',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will this abattoir provide services for other farms?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['smaller-abattoir-other'] == 'Yes'
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['smaller-abattoir-other'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

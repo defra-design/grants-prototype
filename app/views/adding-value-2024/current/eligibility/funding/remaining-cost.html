@@ -1,30 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
-{% if data['solar-pv'] == 'Yes' %}
-
-    {% set itemsCost = data['cost'] | float %}
-    {% set solarCost = data['solar-pv-cost'] | float if data['solar-pv-cost'] else 0 %}
-    {% set totalCost = itemsCost + solarCost %}
-
-    {% set itemsGrantAmount = itemsCost | float | percent(50) %}
-    {% if itemsGrantAmount > 500000 %}
-        {% set itemsGrantAmount = 500000 %}
-    {% endif %}
-
-    {% set solarGrantAmount = solarCost | float | percent(25) %}
-
-    {% set grantAmount = itemsGrantAmount | float + solarGrantAmount | float %}
-
-{% else %}
-
-    {% set totalCost = data['cost'] | float %}
-
-    {% set grantAmount = totalCost | float | percent(50) %}
-    {% if grantAmount > 500000 %}
-        {% set grantAmount = 500000 %}
-    {% endif %}
-
-{% endif %}
+{% set totalCost = data['total-cost'] if data['total-cost'] else 900000 %}
+{% set grantAmount = data['potential-funding'] if data['potential-funding'] else 450000 %}
 
 {% set remainingCost = (totalCost | float) - (grantAmount | float) %}
 
@@ -105,9 +82,6 @@
                     <li>loans</li>
                     <li>overdrafts</li>
                     <li>the Basic Payment Scheme</li>
-                    <li>
-                        agri-environment schemes such as the Countryside Stewardship Scheme
-                    </li>
 
                 </ul>
             

@@ -19,7 +19,13 @@
                 </h1>
 
                 <p class="govuk-hint">
-                    You can only apply for a grant of up to 50% of the estimated costs.<br>
+                    You can apply for a grant of up to 50% of the estimated cost of the project items.
+                    {% if data['solar-pv'] == 'Yes' %}
+                        Do not include the solar PV system costs.
+                    {% endif %}
+                </p>
+
+                <p class="govuk-hint">
                     The minimum grant you can apply for this project is £20,000 (50% of £40,000).<br>
                     The maximum grant is £500,000.
                 </p>

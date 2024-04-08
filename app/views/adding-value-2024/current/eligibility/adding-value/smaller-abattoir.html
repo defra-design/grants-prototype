@@ -10,7 +10,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="items-needed">
+            <form method="post">
 
                 {% set hintHtml %}
 
@@ -47,12 +47,18 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['smaller-abattoir'] == 'Yes'
+                            checked: true if data['smaller-abattoir'] == 'Yes',
+                            attributes: {
+                                'data-next': 'smaller-abattoir-other'
+                            }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['smaller-abattoir'] == 'No'
+                            checked: true if data['smaller-abattoir'] == 'No',
+                            attributes: {
+                                'data-next': 'items-needed'
+                            }
                         }
                     ]
                 }) }}
