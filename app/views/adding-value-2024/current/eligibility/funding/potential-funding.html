@@ -17,9 +17,9 @@
 
     {% set solarGrantAmount = solarCost | float | percent(25) %}
 
-    {% set solarCap = itemsGrantAmount %}
-
     {% set solarIsCapped = false %}
+
+    {% set solarCap = itemsGrantAmount %}
 
     {% if solarCap | float > 100000 %}
         {% set solarCap = 100000 %}
