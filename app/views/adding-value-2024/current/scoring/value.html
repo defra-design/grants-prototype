@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    How will your project add value to the produce?
+    How will this project add value to the produce?
 {% endblock %}
 
 {% block content %}
@@ -21,7 +21,7 @@
                     name: 'scoring-value',
                     fieldset: {
                         legend: {
-                            text: 'How will your project add value to the produce?',
+                            text: 'How will this project add value to the produce?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -31,11 +31,19 @@
                     },
                     items: [
                         {
+                            text: 'Controlled atmosphere or dynamic controlled atmosphere storage',
+                            value: 'Controlled atmosphere or dynamic controlled atmosphere storage',
+                            checked: true if data['scoring-value'] == 'Controlled atmosphere or dynamic controlled atmosphere storage',
+                            hint: {
+                                text: 'For example, maintaining the quality and increasing the storage time of fresh fruits, vegetables or cut flowers'
+                            }
+                        },
+                        {
                             text: 'Creating a new product',
                             value: 'Creating a new product',
                             checked: true if data['scoring-value'] == 'Creating a new product',
                             hint: {
-                                text: 'For example, slaughtering, cut and packed meat. yogurt to cheese, brewing or distilling'
+                                text: 'For example, slaughtering, cut and packed meat, yogurt to cheese, brewing or distilling'
                             }
                         },
                         {
@@ -47,17 +55,17 @@
                             }
                         },
                         {
+                            text: 'New retail facility to sell direct to consumers',
+                            value: 'New retail facility to sell direct to consumers',
+                            checked: true if data['scoring-value'] == 'New retail facility to sell direct to consumers'
+                        },
+                        {
                             text: 'Packing produce',
                             value: 'Packing produce',
                             checked: true if data['scoring-value'] == 'Packing produce',
                             hint: {
                                 text: 'For example, packing top fruit, bagging vegetables, bottling wine'
                             }
-                        },
-                        {
-                            text: 'New retail facility to sell direct to consumers',
-                            value: 'New retail facility to sell direct to consumers',
-                            checked: true if data['scoring-value'] == 'New retail facility to sell direct to consumers'
                         }
                     ]
                 }) }}

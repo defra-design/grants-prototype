@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    How much manual labour will this project replace?
+    How much labour will this project replace?
 {% endblock %}
 
 {% block content %}
@@ -21,29 +21,29 @@
                     name: 'scoring-manual-labour-amount',
                     fieldset: {
                         legend: {
-                            text: 'How much manual labour will this project replace?',
+                            text: 'How much labour will this project replace?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'One job is equal to 30 hours or more per week'
+                        text: 'Based on your current staff numbers'
                     },
                     items: [
                         {
-                            text: '1 to 2 jobs',
-                            value: '1 to 2 jobs',
-                            checked: true if data['scoring-manual-labour-amount'] == '1 to 2 jobs'
+                            text: 'Up to 5%',
+                            value: 'Up to 5%',
+                            checked: true if data['scoring-manual-labour-amount'] == 'Up to 5%'
                         },
                         {
-                            text: '3 to 4 jobs',
-                            value: '3 to 4 jobs',
-                            checked: true if data['scoring-manual-labour-amount'] == '3 to 4 jobs'
+                            text: 'Between 5% and 10%',
+                            value: 'Between 5% and 10%',
+                            checked: true if data['scoring-manual-labour-amount'] == 'Between 5% and 10%'
                         },
                         {
-                            text: '5 or more jobs',
-                            value: '5 or more jobs',
-                            checked: true if data['scoring-manual-labour-amount'] == '5 or more jobs'
+                            text: 'More than 10%',
+                            value: 'More than 10%',
+                            checked: true if data['scoring-manual-labour-amount'] == 'More than 10%'
                         },
                         {
                             divider: 'or'
@@ -72,7 +72,7 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    RPA wants to fund projects that increases the use of automation due to the current manual labour shortage.
+                    RPA wants to fund projects that reduce the need for manual labour due to the current shortage.
                 </p>
             </div>
 

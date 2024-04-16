@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    What impact will the project have?
+    What impact will this project have?
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
             {% if data['from-scoring'] == 'true' %}
                 <form action="results">
             {% else %}
-                <form method="post" action="manual-labour">
+                <form method="post" action="manual-labour-amount">
             {% endif %}
 
                 {{ govukCheckboxes ({
@@ -21,7 +21,7 @@
                     name: 'scoring-impact',
                     fieldset: {
                         legend: {
-                            text: 'What impact will the project have?',
+                            text: 'What impact will this project have?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -31,14 +31,17 @@
                     },
                     items: [
                         {
+                            text: 'Allow selling direct to consumer',
+                            value: 'Allow selling direct to consumer',
+                            hint: {
+                                text: 'For example, retail and internet sales'
+                            },
+                            checked: true if 'Allow selling direct to consumer' | isIn(data['scoring-impact'])
+                        },
+                        {
                             text: 'Creating added-value products for the first time',
                             value: 'Creating added-value products for the first time',
                             checked: true if 'Creating added-value products for the first time' | isIn(data['scoring-impact'])
-                        },
-                        {
-                            text: 'Increasing volume of added-value products',
-                            value: 'Increasing volume of added-value products',
-                            checked: true if 'Increasing volume of added-value products' | isIn(data['scoring-impact'])
                         },
                         {
                             text: 'Increasing range of added-value products',
@@ -46,9 +49,9 @@
                             checked: true if 'Increasing range of added-value products' | isIn(data['scoring-impact'])
                         },
                         {
-                            text: 'Allow selling direct to consumer',
-                            value: 'Allow selling direct to consumer',
-                            checked: true if 'Allow selling direct to consumer' | isIn(data['scoring-impact'])
+                            text: 'Increasing volume of added-value products',
+                            value: 'Increasing volume of added-value products',
+                            checked: true if 'Increasing volume of added-value products' | isIn(data['scoring-impact'])
                         }
                     ]
                 }) }}

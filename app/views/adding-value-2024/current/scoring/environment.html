@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    How will the project improve the environment?
+    How will this project improve the environment?
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
                     name: 'scoring-environment',
                     fieldset: {
                         legend: {
-                            text: 'How will the project improve the environment?',
+                            text: 'How will this project improve the environment?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -27,14 +27,6 @@
                     },
                     items: [
                         {
-                            text: 'Renewable energy',
-                            value: 'Renewable energy',
-                            checked: true if 'Renewable energy' | isIn(data['scoring-environment']),
-                            hint: {
-                                text: 'For example, majority of energy for the project is generated on site'
-                            }
-                        },
-                        {
                             text: 'Energy efficiency',
                             value: 'Energy efficiency',
                             checked: true if 'Energy efficiency' | isIn(data['scoring-environment']),
@@ -43,19 +35,19 @@
                             }
                         },
                         {
-                            text: 'Water efficiency',
-                            value: 'Water efficiency',
-                            checked: true if 'Water efficiency' | isIn(data['scoring-environment']),
+                            text: 'Reduce harmful emissions or pollutants',
+                            value: 'Reduce harmful emissions or pollutants',
+                            checked: true if 'Reduce harmful emissions or pollutants' | isIn(data['scoring-environment']),
                             hint: {
-                                text: 'For example, majority of water for the project is harvested or recycled on site'
+                                text: 'For example, reducing pollutants in waste water'
                             }
                         },
                         {
-                            text: 'Waste efficiency',
-                            value: 'Waste efficiency',
-                            checked: true if 'Waste efficiency' | isIn(data['scoring-environment']),
+                            text: 'Renewable energy',
+                            value: 'Renewable energy',
+                            checked: true if 'Renewable energy' | isIn(data['scoring-environment']),
                             hint: {
-                                text: 'For example, majority of the project waste is recycled or reused instead of going to landfill'
+                                text: 'For example, majority of energy for the project is generated on site'
                             }
                         },
                         {
@@ -67,11 +59,19 @@
                             }
                         },
                         {
-                            text: 'Reduce harmful emissions or pollutants',
-                            value: 'Reduce harmful emissions or pollutants',
-                            checked: true if 'Reduce harmful emissions or pollutants' | isIn(data['scoring-environment']),
+                            text: 'Waste efficiency',
+                            value: 'Waste efficiency',
+                            checked: true if 'Waste efficiency' | isIn(data['scoring-environment']),
                             hint: {
-                                text: 'For example, reducing pollutants in waste water'
+                                text: 'For example, majority of the project waste is recycled or reused instead of going to landfill'
+                            }
+                        },
+                        {
+                            text: 'Water efficiency',
+                            value: 'Water efficiency',
+                            checked: true if 'Water efficiency' | isIn(data['scoring-environment']),
+                            hint: {
+                                text: 'For example, majority of water for the project is harvested or recycled on site'
                             }
                         },
                         {

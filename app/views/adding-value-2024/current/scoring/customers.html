@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Who will your new customers be after the project?
+    Who will your new customers be after this project?
 {% endblock %}
 
 
@@ -35,7 +35,7 @@
                     name: 'scoring-customers',
                     fieldset: {
                         legend: {
-                            text: 'Who will your new customers be after the project?',
+                            text: 'Who will your new customers be after this project?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -45,19 +45,9 @@
                     },
                     items: [
                         {
-                            text: 'Producers or growers',
-                            value: 'Producers or growers',
-                            checked: true if 'Producers or growers' | isIn(data['scoring-customers'])
-                        },
-                        {
                             text: 'Processors',
                             value: 'Processors',
                             checked: true if 'Processors' | isIn(data['scoring-customers'])
-                        },
-                        {
-                            text: 'Wholesalers',
-                            value: 'Wholesalers',
-                            checked: true if 'Wholesalers' | isIn(data['scoring-customers'])
                         },
                         {
                             text: 'Retailers',
@@ -68,6 +58,11 @@
                             text: 'Selling direct to consumers',
                             value: 'Selling direct to consumers',
                             checked: true if 'Selling direct to consumers' | isIn(data['scoring-customers'])
+                        },
+                        {
+                            text: 'Wholesalers',
+                            value: 'Wholesalers',
+                            checked: true if 'Wholesalers' | isIn(data['scoring-customers'])
                         },
                         {
                             divider: 'or'

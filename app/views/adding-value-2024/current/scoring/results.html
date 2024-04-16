@@ -187,21 +187,13 @@
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 Replaces manual labour
                             </p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>
-                                    {% if data['scoring-manual-labour'] == 'Yes' %}
-                                        Yes, {{ data['scoring-manual-labour-amount'] }}
-                                    {% else %}
-                                        No
-                                    {% endif %}
-                                </li>
-                            </ul>
+                            {{ data['manual-labour-amount'] | checkboxAnswersToList | safe }}
                         </th>
                         <td class="govuk-table__cell">
                             Average
                         </td>
                         <td class="govuk-table__cell">
-                            Increases the use of automation
+                            Reduce the need for manual labour due to current shortage
                         </td>
                         <td class="govuk-table__cell">
                             <a class="govuk-link govuk-link--no-visited-state" href="manual-labour?from-scoring=true">
