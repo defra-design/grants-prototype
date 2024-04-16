@@ -1,14 +1,28 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-  Confirm and send
+  Check all your answers
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems .'
+  }) }}
+ 
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <div class="govuk-form-group govuk-!-margin-bottom-4">
+    <div class="govuk-form-group govuk-!-margin-bottom-9">
       <fieldset class="govuk-fieldset" aria-describedby="consent-to-terms-hint">
         <h1 class="govuk-heading-l">Confirm and send</h1>
         <p>I confirm that, to the best of my knowledge, the details I have provided are correct.</p>
@@ -16,26 +30,36 @@
         <p>I am aware the information I submit will be checked.</p>
         <p>I am happy to be contacted by Defra and RPA (or a third-party on their behalf) about my application.</p>
 
-        <p>So that we can continue to improve our services and schemes, we may wish to contact you in the future. Please confirm if you are happy for us. or a third party working for us, to contact you.</p>
+        {% if data['waitlist-enabled'] == 'true' and data['project-type'] == 'veranda' %}
+          {{ govukInsetText ({
+            text: 'I understand that the RPA will award the grant funding for adding a veranda only to an existing housing on a first come first served basis'
+          }) }}
+        {% endif %}
+
+
+        <h3 class="govuk-heading-s">Improving our schemes</h3>
+
+        <p class="govuk-body govuk-!-margin-bottom-2">As we develop new services we get feedback from farmers and agents. </p>
+        <p> You may be contacted by us or a third party that we work with. </p>
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="confirm" name="confirmation" type="checkbox" value="{{ data['confirmation'] }}">
             <label class="govuk-label govuk-checkboxes__label" for="confirm">
-            (Optional) I confirm.
+            (Optional) I consent to being contacted by Defra or a third party about service improvements
             </label>
           </div>
       </fieldset>
     </div>
-    
-    {{ govukWarningText ({
-      text: 'You can only submit your details once',
-      iconFallbackText: 'Warning'
-    }) }}
-
-    <form class="form" action="reference-number" method="post">
+  
+    <form class="form" action="confirmation" method="post">
       <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
         Confirm and send
       </button>
     </form>
+
+    {{ govukWarningText ({
+                text: 'You can only submit your details once',
+                iconFallbackText: 'Warning'
+            }) }}
 
 </div>
     <div class="govuk-body govuk-grid-column-full">

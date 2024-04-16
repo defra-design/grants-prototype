@@ -77,7 +77,7 @@
 
                         {% if data['solar-pv'] == 'Yes' %}
                             {{ govukInsetText ({
-                                text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount.'
+                                text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for project items.'
                             }) }}
                         {% endif %}
 
@@ -124,9 +124,6 @@
                                             You can apply for a maximum of £100,000 for solar PV system costs.
                                         </p>
                                     {% else %}
-                                        <p>
-                                            You can apply for 25% of the cost of buying and installing a solar PV system.
-                                        </p>
 
                                         <p>
                                             The grant funding for a solar PV system cannot be more than the grant funding for your project costs.

@@ -90,6 +90,7 @@
 
           </dd>
         </div>
+
         <div class="govuk-summary-list__row">
 
           <dt class="govuk-summary-list__key">
@@ -103,12 +104,26 @@
 
           </dd>
         </div>
-      </dl>
 
+        <div class="govuk-summary-list__row">
+
+          <dt class="govuk-summary-list__key">
+            County parish holding (CPH) number
+
+          </dt>
+          <dd class="govuk-summary-list__value">
+          {{ data['cph'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+
+          </dd>
+        </div>
+
+      </dl>
 
       {# include agent details only if applicant is Agent  #}
 
-      {% if (data['applying'] == "agent") %}
+      {% if (data['applying'] == "Agent") %}
 
       <table class="govuk-table">
           <thead class="govuk-table__head">
@@ -126,15 +141,6 @@
               </tr>
               <hr>
           </thead>
-
-
-
-
-
-
-
-
-
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
