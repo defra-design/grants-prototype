@@ -13,7 +13,31 @@
             {% if data['from-scoring'] == 'true' %}
                 <form action="results">
             {% else %}
-                <form method="post" action="manual-labour-amount">
+                <form action="manual-labour-amount">
+            {% endif %}
+
+            {% if data['hasVolumeError'] == 'true'%}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                        text: 'You cannot select these options together',
+                        href: "#scoring-impact"
+                    }
+                    ]
+            }) }}
+            {% endif %}
+
+            {% if data['hasRangeError'] == 'true' %}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                        text: 'You cannot select these options together',
+                        href: "#scoring-impact"
+                    }
+                    ]
+            }) }}
             {% endif %}
 
                 {{ govukCheckboxes ({
@@ -29,6 +53,9 @@
                     hint: {
                         text: 'Select all that apply'
                     },
+                    errorMessage: {
+                        text: 'You cannot select these options together'
+                    } if data['hasVolumeError'] == 'true' or data['hasRangeError'] == 'true',
                     items: [
                          {
                             text: 'Creating added-value products for the first time',
@@ -55,6 +82,9 @@
                         }
                     ]
                 }) }}
+
+                <input type="hidden" name="hasVolumeError" value="false">
+                <input type="hidden" name="hasRangeError" value="false">
 
                 {{ govukButton ({
                     html: 'Continue'
