@@ -1,0 +1,78 @@
+{% extends 'ahw-adult-cattle-housing/layout.html' %}
+
+{% block pageTitle %}
+    Will you take full responsibility for your project?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../adding-value/smaller-abattoir" method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        If you are on a short tenancy, you can ask your landlord to underwrite your agreement. This means they will take over your agreement if your tenancy ends.
+                    </p>
+
+                    <p class="govuk-hint">
+                        This approach is optional and we will only ask for details at full application.
+                    </p>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'project-responsibility',
+                    name: 'project-responsibility',
+                    fieldset: {
+                        legend: {
+                            text: 'Will you take full responsibility for your project?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes, I plan to take full responsibility for my project',
+                            value: 'Yes',
+                            checked: true if data['project-responsibility'] == 'Yes'
+                        },
+                        {
+                            text: 'No, I plan to ask my landlord to underwrite my agreement',
+                            value: 'No',
+                            checked: true if data['project-responsibility'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You must complete your project and keep the grant-funded items fit for purpose for 5 years after the date you receive your final grant payment.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

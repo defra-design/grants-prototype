@@ -1,0 +1,37 @@
+{% extends 'ahw-adult-cattle-housing/layout.html' %}
+
+{% block pageTitle %}
+    You cannot apply for a grant from this scheme - Project start
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">You cannot apply for a grant from this scheme</h1>
+
+                <p>
+                    You cannot apply for a grant if you have already started work on the project.
+                </p>
+
+                {{ govukInsetText ({
+                    text: 'Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.'
+                }) }}
+
+                <p>
+                    <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
+                        See other grants you may be eligible for.
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
