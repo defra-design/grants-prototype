@@ -61,6 +61,17 @@
                             hint: {
                                 text: 'For example, shops or display cabinets'
                             }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None',
+                            checked: true if 'None' | isIn(data['items-needed']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
                         }
                     ]
                 }) }}
