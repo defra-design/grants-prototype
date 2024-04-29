@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    How much labour will this project replace?
+    How much manual labour will the automation be equal to?
 {% endblock %}
 
 {% block content %}
@@ -21,7 +21,7 @@
                     name: 'scoring-manual-labour-amount',
                     fieldset: {
                         legend: {
-                            text: 'How much labour will this project replace?',
+                            text: 'How much manual labour will the automation be equal to?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -44,14 +44,6 @@
                             text: 'More than 10%',
                             value: 'More than 10%',
                             checked: true if data['scoring-manual-labour-amount'] == 'More than 10%'
-                        },
-                        {
-                            divider: 'or'
-                        },
-                        {
-                            text: 'None of the above',
-                            value: 'None of the above',
-                            checked: true if data['scoring-manual-labour-amount'] == 'None of the above'
                         }
                     ]
                 }) }}
