@@ -1,37 +1,52 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Will this project replace any manual labour?
+    Will this project use automation?
 {% endblock %}
 
 {% block content %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing range of added-value products' | isIn(data['scoring-impact']) and 'Increasing volume of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasBothError=true' | redirect | safe }}
+{% endif %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing volume of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasVolumeError=true' | redirect | safe }}
+{% endif %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing range of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasRangeError=true' | redirect | safe }}
+{% endif %}
 
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
 
             <form method="post">
-                {% set nextPageOnNo = 'environment' %}
+                {% set nextPageOnNo = 'customers' %}
                 {% if data['from-scoring'] == 'true' %}
                     {% set nextPageOnNo = 'results' %}
                 {% endif %}
 
                 {{ govukRadios ({
-                    idPrefix: 'scoring-manual-labour',
-                    name: 'scoring-manual-labour',
+                    idPrefix: 'scoring-automation',
+                    name: 'scoring-automation',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will this project replace any manual labour?',
+                            text: 'Will this project use automation?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                    hint: {
+                        text: 'Automation is the use of computer-controlled devices, machines and technical systems to complete tasks and processes, for example fruit grading and sorting using computer vision image processing'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['scoring-manual-labour'] == 'Yes',
+                            checked: true if data['scoring-automation'] == 'Yes',
                             attributes: {
                                 'data-next': 'manual-labour-amount'
                             }
@@ -39,7 +54,7 @@
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['scoring-manual-labour'] == 'No',
+                            checked: true if data['scoring-automation'] == 'No',
                             attributes: {
                                 'data-next': nextPageOnNo
                             }
@@ -63,7 +78,7 @@
                 <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    RPA wants to fund projects that increases the use of automation due to the current manual labour shortage.
+                    RPA wants to fund projects that increase the use of automation due to the current manual labour shortage.
                 </p>
             </div>
 

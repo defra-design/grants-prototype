@@ -18,25 +18,20 @@
                     What is the total estimated cost of the items?
                 </h1>
 
-                <p class="govuk-hint">
-                    You can apply for a grant of up to 50% of the estimated cost of the project items.
-                    {% if data['solar-pv'] == 'Yes' %}
-                        Do not include the solar PV system costs.
-                    {% endif %}
-                </p>
-
-                <p class="govuk-hint">
-                    The minimum grant you can apply for this project is £20,000 (50% of £40,000). The maximum grant is £500,000.
-                </p>
-
                 {% set hintHtml %}
-
+                    
+                {% if data['solar-pv'] == 'No'%}
                     <p class="govuk-hint">
                         Do not include VAT.
                     </p>
+                {% else %}
+                    <p class="govuk-hint">
+                        Do not include the solar PV system costs or VAT
+                    </p>
+                {% endif %}
 
                     <p class="govuk-hint">
-                        Enter amount, for example 695,000
+                        Enter cost of items, for example 695,000
                     </p>
 
                 {% endset %}
