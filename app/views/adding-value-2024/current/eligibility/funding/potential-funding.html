@@ -83,11 +83,17 @@
 
                     {% else %}
 
+                    {% if data['solar-pv'] == 'No' %}
                         <p>
-                            You may be able to apply for a grant of up to {{ grantAmount | inPounds }}, based on the total estimated cost of {{ totalCost | inPounds }}.
+                            You may be able to apply for a grant of up to {{ grantAmount | inPounds }} (50% of {{ totalCost | inPounds }}).
                         </p>
+                    {% endif %}
 
                         {% if data['solar-pv'] == 'Yes' %}
+
+                            <p>
+                            You may be able to apply for a grant of up to {{ grantAmount | inPounds }}, based on the total estimated cost of {{ totalCost | inPounds }}.
+                            </p>
 
                             <p>
                                 This grant amount combines:
