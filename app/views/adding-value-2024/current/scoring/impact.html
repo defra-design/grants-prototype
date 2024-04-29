@@ -13,33 +13,76 @@
             {% if data['from-scoring'] == 'true' %}
                 <form action="results">
             {% else %}
-                <form action="manual-labour-amount">
+                <form action="automation">
             {% endif %}
 
-            {% if data['hasVolumeError'] == 'true'%}
+            {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        If you are creating added-value products for the first time, you cannot also increase the volume or range of those products. 
+                    </p>
+
+                    <p class="govuk-hint">
+                        Select all that apply
+                    </p>
+
+                {% endset %}
+
+        
+            {% set errorMessageHtml %}
+
+                 {% if data['hasBothError'] == 'true' %}
+                    <p class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select either 'Creating added-value products for the first time' or 'Increasing volume' and 'Increasing range'.
+                    </p>
+
+                {% elif data['hasRangeError'] == 'true' %}
+                    <p class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select either 'Creating added-value products for the first time' or 'Increasing range'.
+                    </p>
+            
+                {% elif data['hasVolumeError'] == 'true' %}
+                    <p class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select either 'Creating added-value products for the first time' or 'Increasing volume'.
+                    </p>
+                {% endif %}
+
+            {% endset %}
+
+            {% if data['hasBothError'] == 'true'%}
             {{ govukErrorSummary({
                 titleText: "There is a problem",
                 errorList: [
                     {
-                        text: 'You cannot select these options together',
+                        text: "Select either 'Creating added-value products for the first time' or 'Increasing volume' and 'Increasing range'.",
+                        href: "#scoring-impact"
+                    }
+                    ]
+            }) }}
+            
+            {% elif data['hasVolumeError'] == 'true'%}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                        text: "Select either 'Creating added-value products for the first time' or 'Increasing volume'.",
+                        href: "#scoring-impact"
+                    }
+                    ]
+            }) }}
+        
+            {% elif data['hasRangeError'] == 'true' %}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                        text: "Select either 'Creating added-value products for the first time' or 'Increasing range'.",
                         href: "#scoring-impact"
                     }
                     ]
             }) }}
             {% endif %}
-
-            {% if data['hasRangeError'] == 'true' %}
-            {{ govukErrorSummary({
-                titleText: "There is a problem",
-                errorList: [
-                    {
-                        text: 'You cannot select these options together',
-                        href: "#scoring-impact"
-                    }
-                    ]
-            }) }}
-            {% endif %}
-
+            
                 {{ govukCheckboxes ({
                     idPrefix: 'scoring-impact',
                     name: 'scoring-impact',
@@ -51,11 +94,11 @@
                         }
                     },
                     hint: {
-                        text: 'Select all that apply'
+                        html: hintHtml
                     },
                     errorMessage: {
-                        text: 'You cannot select these options together'
-                    } if data['hasVolumeError'] == 'true' or data['hasRangeError'] == 'true',
+                        html: errorMessageHtml
+                    } if data['hasBothError'] == 'true' or data['hasVolumeError'] == 'true' or data['hasRangeError'] == 'true' else null,
                     items: [
                          {
                             text: 'Creating added-value products for the first time',
@@ -79,12 +122,26 @@
                                 text: 'For example, retail and internet sales'
                             },
                             checked: true if 'Allow selling direct to consumer' | isIn(data['scoring-impact'])
+                        },
+
+                        {
+                            divider: 'or'
+                        },
+
+                        {
+                            text: 'This project will not have an impact on my business',
+                            value: 'This project will not have an impact on my business',
+                            checked: true if 'This project will not have an impact on my business' | isIn(data['scoring-impact']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
                         }
                     ]
                 }) }}
 
                 <input type="hidden" name="hasVolumeError" value="false">
                 <input type="hidden" name="hasRangeError" value="false">
+                <input type="hidden" name="hasBothError" value="false">
 
                 {{ govukButton ({
                     html: 'Continue'
