@@ -6,6 +6,18 @@
 
 {% block content %}
 
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing range of added-value products' | isIn(data['scoring-impact']) and 'Increasing volume of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasBothError=true' | redirect | safe }}
+{% endif %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing volume of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasVolumeError=true' | redirect | safe }}
+{% endif %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing range of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasRangeError=true' | redirect | safe }}
+{% endif %}
+
 <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
@@ -189,7 +201,7 @@
                             </p>
                         {% if data['scoring-automation'] == 'Yes'%}
                             <li>
-                            Yes, {{ data['scoring-manual-labour-amount'] }}
+                            Yes, {{  data['scoring-manual-labour-amount'] }}
                             </li>
                         {% else %}
                             <li>
