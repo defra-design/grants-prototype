@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Will this abattoir provide services for other farms?
+    Will this abattoir provide services to other farmers?
 {% endblock %}
 
 {% block content %}
@@ -18,21 +18,30 @@
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will this abattoir provide services for other farms?',
+                            text: 'Will this abattoir provide services to other farmers?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                    hint: {
+                        text: 'For example, you slaughter animals for a fee and the carcasses remain your property'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
                             checked: true if data['smaller-abattoir-other'] == 'Yes'
+                            attributes: {
+                                'data-next': 'items-needed'
+                            }
                         },
                         {
                             text: 'No',
                             value: 'No',
                             checked: true if data['smaller-abattoir-other'] == 'No'
+                            attributes: {
+                                'data-next': 'elim-small-abattoir-other'
+                            }
                         }
                     ]
                 }) }}
@@ -42,6 +51,19 @@
                 }) }}
 
             </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    If you are building a new smaller abattoir, you must provide some abattoir services to other farmers.
+                </p>
+            </div>
 
         </div>
 
