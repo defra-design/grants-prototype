@@ -122,19 +122,6 @@
                                 text: 'For example, retail and internet sales'
                             },
                             checked: true if 'Allow selling direct to consumer' | isIn(data['scoring-impact'])
-                        },
-
-                        {
-                            divider: 'or'
-                        },
-
-                        {
-                            text: 'This project will not have an impact on my business',
-                            value: 'This project will not have an impact on my business',
-                            checked: true if 'This project will not have an impact on my business' | isIn(data['scoring-impact']),
-                            attributes: {
-                                'data-behaviour': 'exclusive'
-                            }
                         }
                     ]
                 }) }}
