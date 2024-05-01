@@ -199,7 +199,7 @@
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 Mechanisation
                             </p>
-                        {% if data['scoring-automation'] == 'Yes'%}
+                        {% if data['scoring-mechanisation'] == 'Yes'%}
                             <li>
                             Yes, {{  data['scoring-manual-labour-amount'] }}
                             </li>
@@ -216,7 +216,7 @@
                             Increase the use of mechanisation due to the current manual labour shortage
                         </td>
                         <td class="govuk-table__cell">
-                            <a class="govuk-link govuk-link--no-visited-state" href="automation?from-scoring=true">
+                            <a class="govuk-link govuk-link--no-visited-state" href="mechanisation?from-scoring=true">
                                 Change
                             </a>
                         </td>

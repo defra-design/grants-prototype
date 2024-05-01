@@ -29,8 +29,8 @@
                 {% endif %}
 
                 {{ govukRadios ({
-                    idPrefix: 'scoring-automation',
-                    name: 'scoring-automation',
+                    idPrefix: 'scoring-mechanisation',
+                    name: 'scoring-mechanisation',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
@@ -46,7 +46,7 @@
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['scoring-automation'] == 'Yes',
+                            checked: true if data['scoring-mechanisation'] == 'Yes',
                             attributes: {
                                 'data-next': 'manual-labour-amount'
                             }
@@ -54,7 +54,7 @@
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['scoring-automation'] == 'No',
+                            checked: true if data['scoring-mechanisation'] == 'No',
                             attributes: {
                                 'data-next': nextPageOnNo
                             }
