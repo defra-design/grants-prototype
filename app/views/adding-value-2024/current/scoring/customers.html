@@ -50,6 +50,11 @@
                             checked: true if 'Processors' | isIn(data['scoring-customers'])
                         },
                         {
+                            text: 'Wholesalers',
+                            value: 'Wholesalers',
+                            checked: true if 'Wholesalers' | isIn(data['scoring-customers'])
+                        },
+                        {
                             text: 'Retailers',
                             value: 'Retailers',
                             checked: true if 'Retailers' | isIn(data['scoring-customers'])
@@ -58,11 +63,6 @@
                             text: 'Selling direct to consumers',
                             value: 'Selling direct to consumers',
                             checked: true if 'Selling direct to consumers' | isIn(data['scoring-customers'])
-                        },
-                        {
-                            text: 'Wholesalers',
-                            value: 'Wholesalers',
-                            checked: true if 'Wholesalers' | isIn(data['scoring-customers'])
                         },
                         {
                             divider: 'or'
