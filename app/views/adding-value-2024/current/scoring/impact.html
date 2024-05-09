@@ -57,20 +57,15 @@
                         text: 'You cannot select these options together'
                     } if data['hasVolumeError'] == 'true' or data['hasRangeError'] == 'true',
                     items: [
-                         {
-                            text: 'Creating added-value products for the first time',
-                            value: 'Creating added-value products for the first time',
-                            checked: true if 'Creating added-value products for the first time' | isIn(data['scoring-impact'])
+                        {
+                            text: 'Increasing range of added-value products',
+                            value: 'Increasing range of added-value products',
+                            checked: true if 'Increasing range of added-value products' | isIn(data['scoring-impact'])
                         },
                         {
                             text: 'Increasing volume of added-value products',
                             value: 'Increasing volume of added-value products',
                             checked: true if 'Increasing volume of added-value products' | isIn(data['scoring-impact'])
-                        },
-                        {
-                            text: 'Increasing range of added-value products',
-                            value: 'Increasing range of added-value products',
-                            checked: true if 'Increasing range of added-value products' | isIn(data['scoring-impact'])
                         },
                         {
                             text: 'Allow selling direct to consumer',
@@ -79,6 +74,11 @@
                                 text: 'For example, retail and internet sales'
                             },
                             checked: true if 'Allow selling direct to consumer' | isIn(data['scoring-impact'])
+                        },
+                        {
+                            text: 'Creating added-value products for the first time',
+                            value: 'Creating added-value products for the first time',
+                            checked: true if 'Creating added-value products for the first time' | isIn(data['scoring-impact'])
                         }
                     ]
                 }) }}
