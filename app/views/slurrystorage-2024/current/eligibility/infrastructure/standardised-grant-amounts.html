@@ -14,14 +14,14 @@ Standardised costs
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
-<a class="govuk-back-link" href="estimate">Back</a>
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-       <form id="mainForm" class="form" action="{{nextUrl}}" method="post">
+       <form id="mainForm" class="form" action="store-type" method="post">
 
          <div class="govuk-form-group">
         <h2 class="govuk-heading-l">Grant amounts for eligible items</h2>

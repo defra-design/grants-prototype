@@ -20,7 +20,7 @@ Project type
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" method="post">
 
               {{ govukRadios({
                   idPrefix: 'projecttype',
@@ -38,17 +38,26 @@ Project type
                 {
                   value: "Replace",
                   text: "Replace an existing store that is no longer fit for purpose with a new store",
-                  checked: checked("projecttype", "Replace")
+                  checked: checked("projecttype", "Replace"),
+                  attributes: {
+                    "data-next": "covers"
+                  } 
                 },
                 {
                   value: "Reconstruct an existing store that is no longer serviceable",
                   text: "Add a new store to increase existing capacity ",
-                  checked: checked("projecttype", "Reconstruct an existing store that is no longer serviceable")
+                  checked: checked("projecttype", "Reconstruct an existing store that is no longer serviceable"),
+                  attributes: {
+                    "data-next": "covers"
+                  } 
                 },
                 {
                   value: "Expand an existing store",
                   text: "Expand an existing store",
-                  checked: checked("projecttype", "Expand an existing store")
+                  checked: checked("projecttype", "Expand an existing store"),
+                  attributes: {
+                    "data-next": "covers"
+                  } 
                 },
                 {
                   divider: "or"
@@ -58,6 +67,9 @@ Project type
                   value: "None",
                   text: "None of the above",
                   checked: checked("projecttype", "None")
+                  attributes: {
+                    "data-next": "project-type-fail"
+                  } 
                 }
               ]
               }) }}

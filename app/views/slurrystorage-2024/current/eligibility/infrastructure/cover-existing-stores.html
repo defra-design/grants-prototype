@@ -24,7 +24,7 @@ Cover for existing stores (Cow and Dairy)
 
 
 
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" method="post">
 
               {{ govukRadios({
                   classes: "govuk-radios--inline",
@@ -43,12 +43,18 @@ Cover for existing stores (Cow and Dairy)
                 {
                   value: "Yes",
                   text: "Yes",
-                  checked: checked("coverexistingstores", "Yes")
+                  checked: checked("coverexistingstores", "Yes"),
+                  attributes: {
+                    "data-next": "existing-fit-for-purpose"
+                  }
                 },
                 {
                   value: "No",
                   text: "No",
-                  checked: checked("coverexistingstores", "No")
+                  checked: checked("coverexistingstores", "No"),
+                  attributes: {
+                    "data-next": "estimate"
+                  }
                 }
               ]
               }) }}

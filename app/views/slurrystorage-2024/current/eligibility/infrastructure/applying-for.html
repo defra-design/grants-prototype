@@ -20,7 +20,7 @@ Applying for
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" method="post">
 
               {{ govukRadios({
                   idPrefix: 'applyingfor',
@@ -41,6 +41,9 @@ Applying for
                   checked: checked("applyingfor", "Store"),
                   hint: {
                     text: "This includes adding a cover to the new or existing stores"
+                    },
+                  attributes: {
+                    "data-next": "project-type"
                     }
                   },
                 {
@@ -49,6 +52,9 @@ Applying for
                   checked: checked("applyingfor", "Cover"),
                   hint: {
                     text: "To apply for a cover, you must have an existing store or stores that are fit for purpose"
+                    },
+                  attributes: {
+                    "data-next": "existing-fit-for-purpose"
                     }
                   },
 
@@ -59,7 +65,10 @@ Applying for
                 {
                   value: "None of the above",
                   text: "None of the above",
-                  checked: checked("applyingfor", "None of the above")
+                  checked: checked("applyingfor", "None of the above"),
+                  attributes: {
+                    "data-next": "applying-for-fail"
+                    }
                 }
               ]
               }) }}

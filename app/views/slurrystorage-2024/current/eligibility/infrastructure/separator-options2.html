@@ -14,13 +14,13 @@ Separator options
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
 
-  <a class="govuk-back-link" href="separator">Back</a>
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="project-items" method="post">
+      <form id="mainForm" class="form" method="post">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
             Separators

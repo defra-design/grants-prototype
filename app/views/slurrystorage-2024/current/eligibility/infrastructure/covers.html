@@ -23,7 +23,7 @@ Covers
     {% if (data['existingfitpurpose'] == "No") %}
     <form id="mainForm" class="form" action="estimate" method="post">
       {% else %}
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" method="post">
     {% endif %}
 
               {{ govukRadios({
