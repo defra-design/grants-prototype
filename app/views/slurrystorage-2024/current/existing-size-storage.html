@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Existing size storage
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        {% if (data['farmertype'] == "Pig") %}
+        {{ govukRadios({
+            idPrefix: 'existing-size-storage-pig',
+            name: 'existing-size-storage-pig',
+            fieldset: {
+                legend: {
+                    text: 'How many months’ slurry storage capacity do you have?',
+                    isPageHeading: yes,
+                    classes: 'govuk-fieldset__legend--l'
+                }
+            },
+
+            hint: {
+              text: "Based on your current animal numbers"
+            },
+
+            items: [
+          {
+            value: "8 months",
+            text: "Less than 8 months",
+            checked: checked("existing-size-storage-pig", "8 months")
+          },
+
+          {
+            value: "8 months+ not fit",
+            text: "8 months or more, but it is no longer fit for purpose",
+            checked: checked("existing-size-storage-pig", "8 months+ not fit")
+          },
+          {
+            value: "8 months+ fit",
+            text: "8 months or more, and it is fit for purpose",
+            checked: checked("existing-size-storage-pig", "8 months+ fit")
+          }
+        ]
+        }) }}
+          {% else %}
+              {{ govukRadios({
+                  idPrefix: 'existing-size-storage',
+                  name: 'existing-size-storage',
+                  fieldset: {
+                      legend: {
+                          text: 'How many months’ slurry storage capacity do you have?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+                  hint: {
+                    text: "Based on your current animal numbers"
+                  },
+
+                  items: [
+                {
+                  value: "6 months",
+                  text: "Less than 6 months",
+                  checked: checked("existing-size-storage", "6 months")
+                },
+
+                {
+                  value: "6 months+ not fit",
+                  text: "6 months or more, but it is no longer fit for purpose",
+                  checked: checked("existing-size-storage", "6 months+ not fit")
+                },
+                {
+                  value: "6 months+ fit",
+                  text: "6 months or more, and it is fit for purpose",
+                  checked: checked("existing-size-storage", "6 months+ fit")
+                }
+              ]
+              }) }}
+              {% endif %}
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          {% if (data['farmertype'] == "Pig") %}
+          <p class="govuk-body">This grant is to get your storage levels to 8 months.<br><br>
+            For example, if you have 4 months’ storage, we will fund another 4 months. If you have 2 months’ storage and increase to 12 months, we will fund 6 months.<br><br>
+            You cannot apply for the grant if you already have 8 months' storage that is fit for purpose.<br>
+            {%else %}
+
+          <p class="govuk-body">This grant is to get your storage levels to 6 months.<br><br>
+            For example, if you have 4 months’ storage, we will fund another 2 months. If you have 2 months’ storage and increase to 12 months, we will fund 4 months.<br><br>
+            You cannot apply for the grant if you already have 6 months' storage that is fit for purpose.<br>
+
+            {% endif %}
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  When is a store no longer fit for purpose?
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                A store is no longer fit for purpose if it has reached the end of its design life and may be at risk of to leaks or failure.
+              </div>
+            </details>
+
+     </div>
+   </div>
+
+{% endblock %}

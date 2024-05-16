@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Project responsibility
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="tenancy">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Will you take full responsibility for your project?</h1>
+            </legend>
+            <div id="changed-name-hint" class="govuk-hint">
+              If you are on a short tenancy, you can ask your landlord to underwrite your agreement. This means they will take over your agreement if your tenancy ends. For example, your landlord could pass the agreed project to the new tenant. <br><br>This approach is optional and we will only ask for details at full application.
+            </div>
+            <div class="govuk-radios govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="No" {{ checked("tenancy-length", "No") }}>
+                <label class="govuk-label govuk-radios__label" for="tenancy-length">
+                Yes, I plan to take full responsibility for my project
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="Yes" {{ checked("tenancy-length", "Yes") }}>
+                <label class="govuk-label govuk-radios__label" for="tenancy-length-2">
+               No, I plan to ask my landlord to underwrite my agreement
+                </label>
+              </div>
+
+
+
+
+            </div>
+          </fieldset>
+        </div>
+        <br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>You must complete your project and keep the grant-funded items fit for purpose for 5 years after the date your receive your final grant payment.</p>
+
+        <a href="#">
+          </a>
+
+      </div>
+      </div>
+
+
+      </div>
+
+{% endblock %}

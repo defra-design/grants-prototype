@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Planned size storage
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+        {% if (data['farmertype'] == "Pig") %}
+        {{ govukRadios({
+            idPrefix: 'planned-size-storage-pig',
+            name: 'planned-size-storage-pig',
+            fieldset: {
+                legend: {
+                    text: 'How many months’ slurry storage capacity will you have after the project?',
+                    isPageHeading: yes,
+                    classes: 'govuk-fieldset__legend--l'
+                }
+            },
+
+            hint: {
+              text: "Based on your current animal numbers"
+            },
+
+            items: [
+          {
+            value: "8 months",
+            text: "8 months",
+            checked: checked("planned-size-storage-pig", "8 months")
+          },
+
+          {
+            value: "More than 8 months",
+            text: "More than 8 months",
+            checked: checked("planned-size-storage-pig", "More than 8 months")
+          },
+          {
+            value: "Less than 8 months",
+            text: "Less than 8 months",
+            checked: checked("planned-size-storage-pig", "Less than 8 months")
+          }
+        ]
+        }) }}
+        {% else %}
+              {{ govukRadios({
+                  idPrefix: 'planned-size-storage',
+                  name: 'planned-size-storage',
+                  fieldset: {
+                      legend: {
+                          text: 'How many months’ slurry storage capacity will you have after the project?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+                  hint: {
+                    text: "Based on your current animal numbers"
+                  },
+
+                  items: [
+                {
+                  value: "6 months",
+                  text: "6 months",
+                  checked: checked("planned-size-storage", "6 months")
+                },
+
+                {
+                  value: "More than 6 months",
+                  text: "More than 6 months",
+                  checked: checked("planned-size-storage", "More than 6 months")
+                },
+                {
+                  value: "Less than 6 months",
+                  text: "Less than 6 months",
+                  checked: checked("planned-size-storage", "Less than 6 months")
+                }
+              ]
+              }) }}
+            {% endif %}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+      {% if (data['farmertype'] == "Pig") %}
+          <p class="govuk-body">This grant is to get your storage levels to 8 months.<br><br>
+            For example, if you have 4 months’ storage, we will fund another 4 months. If you have 2 months’ storage and increase to 12 months, we will fund 6 months.<br><br>
+            Any capacity above 8 months is not covered by the grant.<br><br>
+            You must maintain at least 8 months’ capacity for the duration of the 5-year grant funding agreement.</p>
+      {% else %}
+          <p class="govuk-body">This grant is to get your storage levels to 6 months.<br><br>
+            For example, if you have 4 months’ storage, we will fund another 2 months. If you have 2 months’ storage and increase to 12 months, we will fund 4 months.<br><br>
+            Any capacity above 6 months is not covered by the grant.<br><br>
+            You must maintain at least 6 months’ capacity for the duration of the 5-year grant funding agreement.</p>
+        {% endif %}
+        {{ govukDetails({
+          summaryText: "What if I am using a slurry separator?",
+          text: "If you are using a slurry separator, select the capacity your slurry store will hold after the stackable material has been removed."
+        }) }}
+      </div>
+   </div>
+
+{% endblock %}

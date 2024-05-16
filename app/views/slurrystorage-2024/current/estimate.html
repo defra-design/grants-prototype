@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You may be able to apply for a grant from this scheme
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="{{backUrl}}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-body govuk-!-font-size-48">
+        <h1 class="govuk-heading-l">
+          Estimate how much grant you <br>could get
+        </h1>
+
+        <p>Add some information about the project (for example, type of store and capacity, type of cover and size, approximate size and quantity of other items you need) so we can estimate how much grant you could get.</p>
+
+            <form class="form" action="standardised-grant-amounts" method="post">
+              <button class="govuk-button" data-module="govuk-button">Continue</button>
+            </form>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
