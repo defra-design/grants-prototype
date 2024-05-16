@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Applying for
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+
+              {{ govukRadios({
+                  idPrefix: 'applyingfor',
+                  name: 'applyingfor',
+                  fieldset: {
+                      legend: {
+                          text: 'What are you applying for?',
+                          isPageHeading: yes,
+                          classes: 'govuk-fieldset__legend--l'
+                      }
+                  },
+
+
+                  items: [
+                {
+                  value: "Store",
+                  text: "Building a new store, replacing or expanding an existing store",
+                  checked: checked("applyingfor", "Store"),
+                  hint: {
+                    text: "This includes adding a cover to the new or existing stores"
+                    }
+                  },
+                {
+                  value: "Cover",
+                  text: "An impermeable cover only",
+                  checked: checked("applyingfor", "Cover"),
+                  hint: {
+                    text: "To apply for a cover, you must have an existing store or stores that are fit for purpose"
+                    }
+                  },
+
+                {
+                  divider: "or"
+                },
+
+                {
+                  value: "None of the above",
+                  text: "None of the above",
+                  checked: checked("applyingfor", "None of the above")
+                }
+              ]
+              }) }}
+
+          <p>  <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p class="govuk-body">A grant-funded store must have an impermeable cover unless the slurry is treated with acidification.
+          </p>
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                When is a store no longer fit for purpose?
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              A store is no longer fit for purpose if it has reached the end of its design life and may be at risk of leaks or failure.
+            </div>
+          </details>
+      </div>
+   </div>
+
+{% endblock %}
