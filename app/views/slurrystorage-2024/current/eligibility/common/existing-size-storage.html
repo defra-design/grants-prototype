@@ -20,7 +20,7 @@ Existing size storage
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" method="post">
 
         {% if (data['farmertype'] == "Pig") %}
         {{ govukRadios({
@@ -42,18 +42,27 @@ Existing size storage
           {
             value: "8 months",
             text: "Less than 8 months",
-            checked: checked("existing-size-storage-pig", "8 months")
+            checked: checked("existing-size-storage-pig", "8 months"),
+            attributes: {
+                    "data-next": "planned-size-storage"
+                  }
           },
 
           {
             value: "8 months+ not fit",
             text: "8 months or more, but it is no longer fit for purpose",
-            checked: checked("existing-size-storage-pig", "8 months+ not fit")
+            checked: checked("existing-size-storage-pig", "8 months+ not fit"),
+            attributes: {
+                    "data-next": "planned-size-storage"
+                  }
           },
           {
             value: "8 months+ fit",
             text: "8 months or more, and it is fit for purpose",
-            checked: checked("existing-size-storage-pig", "8 months+ fit")
+            checked: checked("existing-size-storage-pig", "8 months+ fit"),
+            attributes: {
+                    "data-next": "existing-size-storage-fail"
+                  }
           }
         ]
         }) }}
@@ -77,18 +86,27 @@ Existing size storage
                 {
                   value: "6 months",
                   text: "Less than 6 months",
-                  checked: checked("existing-size-storage", "6 months")
+                  checked: checked("existing-size-storage", "6 months"),
+                  attributes: {
+                    "data-next": "planned-size-storage"
+                  }
                 },
 
                 {
                   value: "6 months+ not fit",
                   text: "6 months or more, but it is no longer fit for purpose",
-                  checked: checked("existing-size-storage", "6 months+ not fit")
+                  checked: checked("existing-size-storage", "6 months+ not fit"),
+                  attributes: {
+                    "data-next": "planned-size-storage"
+                  }
                 },
                 {
                   value: "6 months+ fit",
                   text: "6 months or more, and it is fit for purpose",
-                  checked: checked("existing-size-storage", "6 months+ fit")
+                  checked: checked("existing-size-storage", "6 months+ fit"),
+                  attributes: {
+                    "data-next": "existing-size-storage-fail"
+                  }
                 }
               ]
               }) }}

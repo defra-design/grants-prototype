@@ -20,7 +20,7 @@ Planned size storage
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" method="post">
 
         {% if (data['farmertype'] == "Pig") %}
         {{ govukRadios({
@@ -42,18 +42,27 @@ Planned size storage
           {
             value: "8 months",
             text: "8 months",
-            checked: checked("planned-size-storage-pig", "8 months")
+            checked: checked("planned-size-storage-pig", "8 months"),
+            attributes: {
+                    "data-next": "../infrastructure/applying-for"
+                  }
           },
 
           {
             value: "More than 8 months",
             text: "More than 8 months",
-            checked: checked("planned-size-storage-pig", "More than 8 months")
+            checked: checked("planned-size-storage-pig", "More than 8 months"),
+            attributes: {
+                    "data-next": "../infrastructure/applying-for"
+                  }
           },
           {
             value: "Less than 8 months",
             text: "Less than 8 months",
-            checked: checked("planned-size-storage-pig", "Less than 8 months")
+            checked: checked("planned-size-storage-pig", "Less than 8 months"),
+            attributes: {
+                    "data-next": "planned-size-storage-fail"
+                  }
           }
         ]
         }) }}
@@ -77,18 +86,27 @@ Planned size storage
                 {
                   value: "6 months",
                   text: "6 months",
-                  checked: checked("planned-size-storage", "6 months")
+                  checked: checked("planned-size-storage", "6 months"),
+                  attributes: {
+                    "data-next": "../infrastructure/applying-for"
+                  }
                 },
 
                 {
                   value: "More than 6 months",
                   text: "More than 6 months",
-                  checked: checked("planned-size-storage", "More than 6 months")
+                  checked: checked("planned-size-storage", "More than 6 months"),
+                  attributes: {
+                    "data-next": "../infrastructure/applying-for"
+                  }
                 },
                 {
                   value: "Less than 6 months",
                   text: "Less than 6 months",
-                  checked: checked("planned-size-storage", "Less than 6 months")
+                  checked: checked("planned-size-storage", "Less than 6 months"),
+                  attributes: {
+                    "data-next": "plan-size-storage-fail"
+                  }
                 }
               ]
               }) }}
