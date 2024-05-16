@@ -13,14 +13,14 @@
     },
       html: 'This is not a full service. It is not production code and you might experience problems  .'
   }) }}
-  <a class="govuk-back-link" href="tenancy">Back</a>
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" method="post">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -32,13 +32,13 @@
             </div>
             <div class="govuk-radios govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="No" {{ checked("tenancy-length", "No") }}>
+                <input class="govuk-radios__input" id="tenancy-length" name="tenancy-length" type="radio" value="No" {{ checked("tenancy-length", "No") }} data-next='system-type'>
                 <label class="govuk-label govuk-radios__label" for="tenancy-length">
                 Yes, I plan to take full responsibility for my project
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="Yes" {{ checked("tenancy-length", "Yes") }}>
+                <input class="govuk-radios__input" id="tenancy-length-2" name="tenancy-length" type="radio" value="Yes" {{ checked("tenancy-length", "Yes") }} data-next='system-type'>
                 <label class="govuk-label govuk-radios__label" for="tenancy-length-2">
                No, I plan to ask my landlord to underwrite my agreement
                 </label>

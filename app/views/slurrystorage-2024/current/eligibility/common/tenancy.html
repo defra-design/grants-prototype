@@ -24,7 +24,7 @@
 
 
 
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" method="post">
 
               {{ govukRadios({
                   classes: "govuk-radios--inline",
@@ -45,12 +45,18 @@
                 {
                   value: "Yes",
                   text: "Yes",
-                  checked: checked("tenancy", "Yes")
+                  checked: checked("tenancy", "Yes"),
+                  attributes: {
+                    "data-next": "system-type"
+                  }
                 },
                 {
                   value: "No",
                   text: "No",
-                  checked: checked("tenancy", "No")
+                  checked: checked("tenancy", "No"),
+                  attributes: {
+                    "data-next": "project-responsibility"
+                  }
                 }
               ]
               }) }}

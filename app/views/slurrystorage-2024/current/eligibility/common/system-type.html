@@ -4,6 +4,8 @@
 What is your current manure management system?
 {% endblock %}
 
+{% set farmerType = data['farmerType']%}
+
 {% block beforeContent %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
   {{ govukPhaseBanner({
@@ -20,7 +22,7 @@ What is your current manure management system?
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form id="mainForm" class="form" method="post">
 
               {{ govukRadios({
                   idPrefix: 'systemtype',
@@ -37,26 +39,38 @@ What is your current manure management system?
                 {
                   value: "Slurry-based system only",
                   text: "Slurry-based system",
-                  checked: checked("systemtype", "Slurry-based system only")
+                  checked: checked("systemtype", "Slurry-based system only"),
+                  attributes: {
+                    "data-next": "existing-size-storage"
+                  }
                 },
 
                 {
                   value: "Straw-bedded system with slurry production",
                   text: "Farmyard manure and slurry system",
-                  checked: checked("systemtype", "Straw-bedded system with slurry production")
+                  checked: checked("systemtype", "Straw-bedded system with slurry production"),
+                  attributes: {
+                    "data-next": "existing-size-storage"
+                  }
                 },
 
                 {
                   value: "straw-bedded system",
                   text: "Farmyard manure system that does not produce slurry",
-                  checked: checked("systemtype", "straw-bedded system")
+                  checked: checked("systemtype", "straw-bedded system"),
+                  attributes: {
+                    "data-next": "system-type-fail"
+                  }
                 },
 
                 {
                   value: "no system",
                   text: "I do not have a slurry system",
                   checked: checked("systemtype", "no system"),
-                  behaviour: "exclusive"
+                  behaviour: "exclusive",
+                  attributes: {
+                    "data-next": "system-type-fail"
+                  }
                 }
               ]
               }) }}
