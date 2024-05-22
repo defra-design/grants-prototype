@@ -1,10 +1,14 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Will this abattoir provide services to other farmers?
+    Is the planned project in England?
 {% endblock %}
 
 {% block content %}
+
+{% if data['legal-status'] == 'None' %}
+    {{ 'elim-legal-status' | redirect | safe }}
+{% endif %}
 
 <div class="govuk-grid-row">
 
@@ -13,35 +17,35 @@
             <form method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'smaller-abattoir-other',
-                    name: 'smaller-abattoir-other',
+                    idPrefix: 'country',
+                    name: 'country',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will this abattoir provide services to other farmers?',
+                            text: 'Is the planned project in England?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'For example, farmers pay you to slaughter their livestock'
+                        text: 'The site where the work will happen'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['smaller-abattoir-other'] == 'Yes',
+                            checked: true if data['country'] == 'Yes',
                             attributes: {
-                                'data-next': 'produce'
-                            }
+                                    'data-next': 'planning-permission'
+                                }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['smaller-abattoir-other'] == 'No',
+                            checked: true if data['country'] == 'No',
                             attributes: {
-                                'data-next': 'elim-smaller-abattoir-other'
-                            }
+                                    'data-next': 'elim-country'
+                                }
                         }
                     ]
                 }) }}
@@ -54,6 +58,7 @@
 
         </div>
 
+
         <div class="govuk-grid-column-one-third">
 
             <div class="app-step-nav-related app-step-nav-related--singular">
@@ -61,7 +66,10 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    You must provide some abattoir services to other farmers.
+                    This grant is only for projects in England.
+                </p>
+                <p>
+                    Scotland, Wales and Northern Ireland have other grants available.
                 </p>
             </div>
 

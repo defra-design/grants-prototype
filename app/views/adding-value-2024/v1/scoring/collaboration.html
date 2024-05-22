@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Will this abattoir provide services to other farmers?
+    Will you work in partnership or collaborate with other farmers or producers?
 {% endblock %}
 
 {% block content %}
@@ -10,38 +10,36 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form method="post" action="environment">
+            {% endif %}
 
                 {{ govukRadios ({
-                    idPrefix: 'smaller-abattoir-other',
-                    name: 'smaller-abattoir-other',
+                    idPrefix: 'scoring-collaboration',
+                    name: 'scoring-collaboration',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will this abattoir provide services to other farmers?',
+                            text: 'Will you work in partnership or collaborate with other farmers or producers?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                     hint: {
-                        text: 'For example, farmers pay you to slaughter their livestock'
+                        text: 'For example, in a formal partnership or contract supply arrangement for raw materials'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['smaller-abattoir-other'] == 'Yes',
-                            attributes: {
-                                'data-next': 'produce'
-                            }
+                            checked: true if data['scoring-collaboration'] == 'Yes'
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['smaller-abattoir-other'] == 'No',
-                            attributes: {
-                                'data-next': 'elim-smaller-abattoir-other'
-                            }
+                            checked: true if data['scoring-collaboration'] == 'No'
                         }
                     ]
                 }) }}
@@ -54,15 +52,24 @@
 
         </div>
 
+
         <div class="govuk-grid-column-one-third">
 
             <div class="app-step-nav-related app-step-nav-related--singular">
                 <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
                 </h2>
                 <p>
-                    You must provide some abattoir services to other farmers.
+                    RPA wants to fund projects that:
                 </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        improve processing and supply chains
+                    </li>
+                    <li>
+                        encourage collaboration and partnerships
+                    </li>
+                </ul>
             </div>
 
         </div>

@@ -17,11 +17,6 @@
 
             <form method="post">
 
-                {% set nextPage = '../../scoring/value' %}
-                {% if data['scoring-produce'] == 'Horticultural produce' and data['top-fruit-storage'] == 'Yes' %}
-                    {% set nextPage = '../../scoring/mechanisation' %}
-                {% endif %}
-
                 {{ govukRadios ({
                     classes: 'govuk-radios--inline',
                     idPrefix: 'remaining-cost',
@@ -40,7 +35,7 @@
                         value: 'Yes',
                         checked: true if data['remaining-cost'] == 'Yes',
                         attributes: {
-                            'data-next': nextPage
+                            'data-next': '../../scoring/produce'
                         }
                     },
                     {
