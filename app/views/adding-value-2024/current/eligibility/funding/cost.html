@@ -68,15 +68,21 @@
                 </h2>
                 
                 <ul class="govuk-list govuk-list--bullet">
-                    {% for item in data['items-needed'] %}
+                    {% if data['top-fruit-storage'] == 'Yes' %}
                         <li>
-                            {{ item }}
+                            Controlled atmosphere storage for top fruit
                         </li>
-                    {% endfor %}
-                    {% if data['storage'] == 'Yes' %}
+                    {% else %}
+                        {% for item in data['items-needed'] %}
                             <li>
-                                Storage facilities
+                                {{ item }}
                             </li>
+                        {% endfor %}
+                        {% if data['storage'] == 'Yes' %}
+                                <li>
+                                    Storage facilities
+                                </li>
+                        {% endif %}
                     {% endif %}
                 </ul>
 
