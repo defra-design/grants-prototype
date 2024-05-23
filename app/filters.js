@@ -92,5 +92,23 @@ addFilter('percent', (input, percentage) => {
 	return (Number(input) * (Number(percentage) / 100)).toFixed(2)
 })
 
+// lowerCase, upperCase, sentenceCase, titleCase
+addFilter('lowerCase', (input) => {
+	return input.toLowerCase()
+})
+addFilter('upperCase', (input) => {
+	return input.toUpperCase()
+})
+addFilter('sentenceCase', (input) => {
+	return input.charAt(0).toUpperCase() + input.slice(1)
+})
+addFilter('titleCase', (input) => {
+	return input
+		.toLowerCase()
+		.split(' ')
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(' ')
+})
+
 // Add the filters using the addFilter function
 Object.entries(filters).forEach(([name, fn]) => addFilter(name, fn))
