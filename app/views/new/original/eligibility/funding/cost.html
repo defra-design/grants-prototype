@@ -1,0 +1,89 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+
+{% block pageTitle %}
+    What is the total estimated cost of the items?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="elim-cost">
+
+            
+                <h1 class="govuk-heading-l">
+                    What is the total estimated cost of the items?
+                </h1>
+
+                <p class="govuk-hint">
+                    You can only apply for a grant of up to 40% of the estimated costs.<br>
+                    The minimum grant you can apply for this project is £25,000 (40% of £62,500).<br>
+                    The maximum grant is £300,000.
+                </p>
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        Do not include VAT.
+                    </p>
+
+                    <p class="govuk-hint">
+                        Enter amount, for example 95,000
+                    </p>
+
+                {% endset %}
+
+                {{ govukInput ({
+                    id: 'cost',
+                    name: 'cost',
+                    value: data['cost'] if data['cost'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    prefix: { text: '£' },
+                    hint: {
+                        html: hintHtml
+                    },
+                    label: {
+                        text: 'Total estimated project cost',
+                        classes: 'govuk-visually-hidden'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Selected items</span>
+                </h2>
+                
+                <ul class="govuk-list govuk-list--bullet">
+                    {% for item in data['items-needed'] %}
+                        <li>
+                            {{ item }}
+                        </li>
+                    {% endfor %}
+                    {% if data['storage'] == 'Yes' %}
+                            <li>
+                                Storage facilities
+                            </li>
+                    {% endif %}
+                </ul>
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

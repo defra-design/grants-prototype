@@ -66,7 +66,14 @@ const serviceName = {
 		v1: 'Check if you can apply for a Farming Transformation Fund Adding Value grant',
 		v2: 'Check if you can apply for a Farming Transformation Fund Adding Value grant',
 	},
+	newproto: {
+		current:
+			'Check if you can apply for a New Proto grant',
+		v1: 'Check if you can apply for a New Proto grant',
+		v2: 'Check if you can apply for a New Proto grant',
+	},
 }
+
 
 const schemeList = Object.keys(serviceName)
 

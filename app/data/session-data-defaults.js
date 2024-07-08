@@ -36,6 +36,13 @@ var services = {
     baseurl: "/adding-value-2024/current/",
     exclude: ["templates", "views"],
   },
+  newproto: {
+    name: "New proto July 2024",
+    description: "This service is for a new proto",
+    basefolder: "./app/views/new/current/",
+    baseurl: "/new/current/",
+    exclude: ["templates", "views"],
+  },
 };
 
 // Write a function called populateServicePageStructure that recursively looks into each file and folder inside the 'basefolder' for each service (listed in the services object), each loop should maintain an object called 'structure' that represents the structure of the service's pages. The structure object should have the following format: { type: 'folder || page', name: 'foldername [strip .html if needed]', url: [optional if there is an index.html file in the folder], children: [array of child objects] } or { type: 'file', name: 'filename', url: 'url' }

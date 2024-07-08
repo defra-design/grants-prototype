@@ -1,0 +1,95 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+{% block pageTitle %}
+    How will your project add value to the produce?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="impact">
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-value',
+                    name: 'scoring-value',
+                    fieldset: {
+                        legend: {
+                            text: 'How will your project add value to the produce?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select the main option that applies'
+                    },
+                    items: [
+                        {
+                            text: 'Creating a new product',
+                            value: 'Creating a new product',
+                            checked: true if data['scoring-value'] == 'Creating a new product',
+                            hint: {
+                                text: 'For example, slaughtering, cut and packed meat. yogurt to cheese, brewing or distilling'
+                            }
+                        },
+                        {
+                            text: 'Grading or sorting produce',
+                            value: 'Grading or sorting produce',
+                            checked: true if data['scoring-value'] == 'Grading or sorting produce',
+                            hint: {
+                                text: 'For example, washing and grading vegetables, egg grading optical grading of top fruit'
+                            }
+                        },
+                        {
+                            text: 'Packing produce',
+                            value: 'Packing produce',
+                            checked: true if data['scoring-value'] == 'Packing produce',
+                            hint: {
+                                text: 'For example, packing top fruit, bagging vegetables, bottling wine'
+                            }
+                        },
+                        {
+                            text: 'New retail facility to sell direct to consumers',
+                            value: 'New retail facility to sell direct to consumers',
+                            checked: true if data['scoring-value'] == 'New retail facility to sell direct to consumers'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                
+                <p>
+                    RPA wants to fund projects that:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        improve processing and supply chains
+                    </li>
+                    <li>
+                        grow your business
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 {% set hideBackButton = true %}
 
-{% extends 'ahw-adult-cattle-housing/layout.html' %}
+{% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
   Check if you can apply for a Farming Transformation Fund Adding Value Grant
@@ -33,7 +33,7 @@
       </h2>
 
       <p>
-        You can apply if you:
+        You can apply if you either:
       </p>
         
       <ul class="govuk-list govuk-list--bullet">
@@ -44,28 +44,20 @@
           are a business processing agricultural or horticultural products that is at least 50% owned by agricultural or horticultural producers
         </li>
         <li>
-          produce wild venison products as part of woodland management        
-        </li>
-        <li>
-          will do the grant-funded work in England
+          produce wild venison products as part of woodland management       
         </li>
       </ul>
 
       <p>
-        You may be able to apply for up to:
+        You must do the grant-funded work in England.
       </p>
 
-       <ul class="govuk-list govuk-list--bullet">
-        <li>
-          50% of the estimated cost of project items
-        </li>
-        <li>
-          25% of the estimated cost of buying and installing a solar PV system 
-        </li>
-      </ul>
+      <p>
+        You can apply for up to 50% of the estimated cost of project items. You have the option to apply for up to 25% of the estimated cost of buying and installing a solar PV system.
+      </p>
 
       <p>
-        The maximum grant you can apply for is £500,000 (50% of £1 million). The minimum grant is £20,000 (50% of £40,000).
+        The minimum grant for project items is £20,000 (50% of £40,000). The maximum grant you can apply for, including solar, is £500,000. 
       </p>
 
       {{ govukInsetText ({
@@ -74,7 +66,7 @@
 
       {{ govukButton({
         text: "Start now",
-        href: "eligibility/common/legal-status",
+        href: "eligibility/common/business-type",
         isStartButton: true
       }) }}
 

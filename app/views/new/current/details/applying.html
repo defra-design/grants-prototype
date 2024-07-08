@@ -1,0 +1,57 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+{% block pageTitle %}
+    Who is applying for this grant?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+            {{ govukRadios ({
+                idPrefix: 'applying',
+                name: 'applying',
+                fieldset: {
+                    legend: {
+                        text: 'Who is applying for this grant?',
+                        isPageHeading: true,
+                        classes: 'govuk-fieldset__legend--l'
+                    }
+                },
+                items: [
+                    {
+                        text: 'Applicant',
+                        value: 'Applicant',
+                        checked: true if data['applying'] == 'Applicant',
+                        attributes: {
+                                'data-next': 'applicant-details'
+                            }
+                    },
+                     {
+                        text: 'Agent',
+                        value: 'Agent',
+                        checked: true if data['applying'] == 'Agent',
+                        attributes: {
+                                'data-next': 'agent-details'
+                            }
+                    }
+                ]
+            }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        
+
+</div>
+
+{% endblock %}
