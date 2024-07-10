@@ -26,12 +26,15 @@
                     </p>
                 {% else %}
                     <p class="govuk-hint">
-                        Do not include the solar PV system costs or VAT
-                    </p>
+                        You can only apply for a grant of up to 40% of the estimated costs.
+                        The minimum grant you can apply for this project is £25,000 (40% of £62,500).
+                        The maximum grant is £300,000.</p>
+
+                    <p class="govuk-hint">Do not include VAT.</p>
                 {% endif %}
 
                     <p class="govuk-hint">
-                        Enter cost of items, for example 695,000
+                        Enter cost of items, for example 95,000
                     </p>
 
                 {% endset %}
@@ -74,9 +77,10 @@
                         </li>
                     {% else %}
                         {% for item in data['items-needed'] %}
-                            <li>
-                                {{ item }}
-                            </li>
+                            <li>Constructing or improving buildings for processing</li>
+                            <li>Processing equipment or machinery</li>
+                            <li>Retail facilities</li>
+                            <li>Storage facilities</li>
                         {% endfor %}
                         {% if data['storage'] == 'Yes' %}
                                 <li>

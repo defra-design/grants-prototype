@@ -10,12 +10,12 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="storage">
+            <form method="post" action="../funding/cost">
 
                 {% set hintHtml %}
 
                     <p class="govuk-hint">
-                        Storage facilities will only be funded as part of a bigger project and cannot be more than 50% of the total grant funding.
+                        Housing facilities will only be funded as part of a bigger project and cannot be more than 50% of the total grant funding.
                     </p>
 
                     <p class="govuk-hint">
@@ -39,11 +39,11 @@
                     },
                     items: [
                         {
-                            text: 'Constructing or improving buildings for processing',
-                            value: 'Constructing or improving buildings for processing',
+                            text: 'Constructing or improving buildings for housing',
+                            value: 'Constructing or improving buildings for housing',
                             checked: true if 'Constructing or improving buildings for processing' | isIn(data['items-needed']),
                             hint: {
-                                text: 'For example, a new building for cheese making, extending an existing building to install a new meat-cutting and packing line'
+                                text: 'For example, extending an existing building  to house more cattle'
                             }
                         },
                         {
