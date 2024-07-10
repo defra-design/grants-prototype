@@ -59,10 +59,10 @@
                         {
                             divider: 'or'
                         },
-                         {
+                        {
                             text: 'None of the above',
-                            value: 'None',
-                            checked: true if data['legal-status'] == 'None'
+                            value: 'none',
+                            checked: true if data['business-type'] == 'none',
                             attributes: {
                                 'data-next': 'elim-business-type'
                             }
