@@ -84,7 +84,10 @@
                         {
                             text: 'None of the above',
                             value: 'None',
-                            checked: true if data['legal-status'] == 'None'
+                            checked: true if data['legal-status'] == 'None',
+                            attributes: {
+                                'data-next': 'elim-legal-status'
+                            }
                         }
                     ]
                 }) }}
