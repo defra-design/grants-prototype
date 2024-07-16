@@ -229,7 +229,7 @@ router.get('/project-items', function (req, res) {
 router.get('/planning-permission', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'country'
-  var nextUrl = 'planning-permission-answer'
+  var nextUrl = 'project-start'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
