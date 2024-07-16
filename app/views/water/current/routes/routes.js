@@ -347,7 +347,7 @@ router.get('/water-SSSI', function (req, res) {
 
 // ABSTRACTION LICENCE COMPLETED
 
-router.post('/abstraction-licence-answer-completed', function (req, res) {
+router.post('/abstraction-licence', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
 
   if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') {
