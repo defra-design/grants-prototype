@@ -1,12 +1,7 @@
-{% extends 'layinghens/current/views/layouts/layout.html' %}
-
-{% set poultryType = 'hen' %}
-{% if data['poultry-type'] %}
-    {% set poultryType = data['poultry-type'] %}
-{% endif %} 
+{% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Will the building have full wall and roof insulation?
+    Is the planned project on land the business owns?
 {% endblock %}
 
 {% block content %}
@@ -17,37 +12,35 @@
 
             <form method="post">
 
-                {% set nextPage = 'lighting' %}
-                {% if data['poultry-type'] == 'pullet' %}
-                    {% set nextPage = 'pullet-requirements' %}
-                {% endif %}
-
                 {{ govukRadios ({
-                    idPrefix: 'insulation',
-                    name: 'insulation',
+                    idPrefix: 'tenancy',
+                    name: 'tenancy',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the building have full wall and roof insulation?',
+                            text: 'Is the planned project on land the business owns?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                    hint: {
+                        text: 'The site where the work will happen'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['insulation'] == 'Yes',
+                            checked: true if data['tenancy'] == 'Yes',
                             attributes: {
-                                    'data-next': nextPage
+                                    'data-next': '../adding-value/smaller-abattoir'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['insulation'] == 'No',
+                            checked: true if data['tenancy'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-insulation'
+                                    'data-next': 'project-responsibility'
                                 }
                         }
                     ]
@@ -68,15 +61,9 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                {% if data['project-type'] == 'refurb' %}
-                    <p>
-                        When the project is complete, the building must have full wall and roof insulation.
-                    </p>
-                {% else %}
-                    <p>
-                        The new building must have wall and roof insulation with a U-Value of less than 0.3 watts per square metre, per degree Kelvin (0.3W/m²K).
-                    </p>
-                {% endif %}
+                <p>
+                    If you are a tenant farmer, you have the option to ask your landlord to underwrite your agreement.
+                </p>
             </div>
 
         </div>
@@ -84,3 +71,4 @@
 </div>
 
 {% endblock %}
+

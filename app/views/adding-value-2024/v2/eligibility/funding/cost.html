@@ -1,0 +1,95 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+
+{% block pageTitle %}
+    What is the estimated cost of the items?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="elim-cost">
+
+            
+                <h1 class="govuk-heading-l">
+                    What is the estimated cost of the items?
+                </h1>
+
+                {% set hintHtml %}
+                    
+                {% if data['solar-pv'] == 'No'%}
+                    <p class="govuk-hint">
+                        Do not include VAT.
+                    </p>
+                {% else %}
+                    <p class="govuk-hint">
+                        Do not include the solar PV system costs or VAT
+                    </p>
+                {% endif %}
+
+                    <p class="govuk-hint">
+                        Enter cost of items, for example 695,000
+                    </p>
+
+                {% endset %}
+
+                {{ govukInput ({
+                    id: 'cost',
+                    name: 'cost',
+                    value: data['cost'] if data['cost'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    prefix: { text: '£' },
+                    hint: {
+                        html: hintHtml
+                    },
+                    label: {
+                        text: 'Total estimated project cost',
+                        classes: 'govuk-visually-hidden'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Selected items</span>
+                </h2>
+                
+                <ul class="govuk-list govuk-list--bullet">
+                    {% if data['top-fruit-storage'] == 'Yes' %}
+                        <li>
+                            Controlled atmosphere storage for top fruit
+                        </li>
+                    {% else %}
+                        {% for item in data['items-needed'] %}
+                            <li>
+                                {{ item }}
+                            </li>
+                        {% endfor %}
+                        {% if data['storage'] == 'Yes' %}
+                                <li>
+                                    Storage facilities
+                                </li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

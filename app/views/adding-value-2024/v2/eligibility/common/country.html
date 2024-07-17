@@ -1,15 +1,14 @@
-{% extends 'layinghens/current/views/layouts/layout.html' %}
-
-{% set poultryType = 'hen' %}
-{% if data['poultry-type'] %}
-    {% set poultryType = data['poultry-type'] %}
-{% endif %} 
+{% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Will the building have full wall and roof insulation?
+    Is the planned project in England?
 {% endblock %}
 
 {% block content %}
+
+{% if data['legal-status'] == 'None' %}
+    {{ 'elim-legal-status' | redirect | safe }}
+{% endif %}
 
 <div class="govuk-grid-row">
 
@@ -17,37 +16,35 @@
 
             <form method="post">
 
-                {% set nextPage = 'lighting' %}
-                {% if data['poultry-type'] == 'pullet' %}
-                    {% set nextPage = 'pullet-requirements' %}
-                {% endif %}
-
                 {{ govukRadios ({
-                    idPrefix: 'insulation',
-                    name: 'insulation',
+                    idPrefix: 'country',
+                    name: 'country',
                     classes: 'govuk-radios--inline',
                     fieldset: {
                         legend: {
-                            text: 'Will the building have full wall and roof insulation?',
+                            text: 'Is the planned project in England?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
+                    },
+                    hint: {
+                        text: 'The site where the work will happen'
                     },
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['insulation'] == 'Yes',
+                            checked: true if data['country'] == 'Yes',
                             attributes: {
-                                    'data-next': nextPage
+                                    'data-next': 'planning-permission'
                                 }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['insulation'] == 'No',
+                            checked: true if data['country'] == 'No',
                             attributes: {
-                                    'data-next': 'elim-insulation'
+                                    'data-next': 'elim-country'
                                 }
                         }
                     ]
@@ -68,15 +65,12 @@
                 <h2 class="app-step-nav-related__heading">
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
-                {% if data['project-type'] == 'refurb' %}
-                    <p>
-                        When the project is complete, the building must have full wall and roof insulation.
-                    </p>
-                {% else %}
-                    <p>
-                        The new building must have wall and roof insulation with a U-Value of less than 0.3 watts per square metre, per degree Kelvin (0.3W/m²K).
-                    </p>
-                {% endif %}
+                <p>
+                    This grant is only for projects in England.
+                </p>
+                <p>
+                    Scotland, Wales and Northern Ireland have other grants available.
+                </p>
             </div>
 
         </div>

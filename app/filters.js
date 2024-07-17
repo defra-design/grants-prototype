@@ -89,7 +89,7 @@ addFilter('checkboxAnswersToList', (input, fallback = '') => {
 })
 
 addFilter('percent', (input, percentage) => {
-	return (Number(input) * (Number(percentage) / 100)).toFixed(2)
+	return Number(input) * (Number(percentage) / 100)
 })
 
 // lowerCase, upperCase, sentenceCase, titleCase
