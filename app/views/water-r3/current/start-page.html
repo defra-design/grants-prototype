@@ -1,6 +1,6 @@
 {% set hideBackButton = true %}
 
-{% extends 'new/layout.html' %}
+{% extends 'water-r3/layout.html' %}
 
 {% block pageTitle %}
   Check if you can apply for an Adult Cattle Housing Grant
@@ -12,57 +12,26 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Check if you can apply for an Adult Cattle Housing Grant
+        Check if you can apply for a Water Management Grant
       </h1>
 
-      <p>
-        Use this service to check:
-      </p>
+      <p>Use this service to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>check if you can apply for a grant for your project (takes about 5 minutes)</li>
+          <li>check how well your project fits the funding priorities (takes about 15 minutes if you have all the project details)</li>
+        </ul>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          if you are eligible to apply for a grant for your project (takes about 5 minutes)
-        </li>
-        <li>
-          how well your project scores against the funding priorities (takes about 15 minutes if you have all the project details)
-        </li>
-      </ul>
+          <h2 class="govuk-heading-m">Who can apply</h2>
+          <p>You can apply if you:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>grow crops for the food industry, are a nursery growing ornamentals or are a forestry nursery</li>
+            <li>will do the grant-funded work in England</li>
+            <li>an estimate the project costs will be over £87,500</li>
+          </ul>
 
-      <h2 class="govuk-heading-m">
-        Who can apply
-      </h2>
-
-      <p>
-        You can apply if you either:
-      </p>
-        
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          are a grower or producer of agricultural or horticultural produce
-        </li>
-        <li>
-          are a business processing agricultural or horticultural products that is at least 50% owned by agricultural or horticultural producers
-        </li>
-        <li>
-          produce wild venison products as part of woodland management       
-        </li>
-      </ul>
-
-      <p>
-        You must do the grant-funded work in England.
-      </p>
-
-      <p>
-        You can apply for up to 50% of the estimated cost of project items. You have the option to apply for up to 25% of the estimated cost of buying and installing a solar PV system.
-      </p>
-
-      <p>
-        The minimum grant for project items is £20,000 (50% of £40,000). The maximum grant you can apply for, including solar, is £500,000. 
-      </p>
-
-      {{ govukInsetText ({
-        text: 'If your project is eligible, you will be able to submit your online application to the Rural Payments Agency (RPA).'
-      }) }}
+        <div class="govuk-inset-text">
+          If your project is eligible, you can submit your answers to the Rural Payments Agency (RPA) to request the full application form.
+        </div>
 
       {{ govukButton({
         text: "Start now",
@@ -70,66 +39,34 @@
         isStartButton: true
       }) }}
 
-      <h2 class="govuk-heading-m">
-        Before you start
-      </h2>
+        <h2 class="govuk-heading-m">Before you start</h2>
+          <p>You need:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>information about your business (for example, number of employees and turnover)</li>
+            <li>information about the project (for example, irrigated land in hectares)</li>
+            <li>estimated total cost of the items you need</li>
+          </ul>
+          <p class="govuk-body govuk-!-margin-bottom-8">If you do not enter any information for more than 20 minutes, your
+          application will time out and you will have to start again. </p>
+          
+          <h3 class="govuk-heading-m govuk-!-margin-top-2">Problems using the online service</h3>
+          <p class="govuk-body">If you have any problems with the service, contact the RPA.</p>
+         
+          <h3 class="govuk-heading-s">Telephone</h3>
+          <ul class="govuk-list">
+            <li>Telephone: 03000 200 301</li>
+            <li>Monday to Friday, 9am to 5pm (except public holidays)</li>
+          </ul>
 
-      <p>
-        To  use the checker, you need:
-      </p>
+          <p class="govuk-body">
+            <a class="govuk-link" href="https://www.gov.uk/call-charges">Find out about call charges</a>
+          </p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          information about your business (for example, number of employees, turnover)
-        </li>
-        <li>
-          information about the project (for example, the types of products being processed and how you will add value, the impact the project will have)
-        </li>
-        <li>
-          a list of the items you'd like to buy for the project
-        </li>
-        <li>
-            an estimate of the total cost of the items
-        </li>
-      </ul>
-
-      <h2 class="govuk-heading-m">
-        Problems using the online service
-      </h2>
-
-      <p>
-        If you have any problems using the online service, contact the RPA.
-      </p>
-
-      <h3 class="govuk-heading-s">
-        Telephone
-      </h3>
-
-      <p>
-        Telephone: 03000 200 301
-      </p>
-
-      <p>
-        Monday to Friday, 9am to 5pm (except public holidays)
-      </p>
-
-      <p>
-        <a href="#">
-          Find out about call charges
-        </a>
-      </p>
-
-      <h3 class="govuk-heading-s">
-        Email
-      </h3>
-
-      <p>
-        <a href="mailto:FTF@rpa.gov.uk">
-          FTF@rpa.gov.uk
-        </a>
-      </p>
+          <h3 class="govuk-heading-s">Email</h3>
+          <ul class="govuk-list">
+            <li><a class="govuk-link" href="mailto:FTF@rpa.gov.uk">FTF@rpa.gov.uk</a></li>
+          </ul>
 
     </div>
-
   </div>
 {% endblock %}
