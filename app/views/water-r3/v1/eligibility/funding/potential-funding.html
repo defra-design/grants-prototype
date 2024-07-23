@@ -1,0 +1,174 @@
+{% extends 'new/layout.html' %}
+
+{% block pageTitle %}
+    Potential grant funding
+{% endblock %}
+
+{% if data['solar-pv'] == 'Yes' %}
+
+    {% set itemsCost = data['cost'] | float %}
+    {% set solarCost = data['solar-pv-cost'] | float if data['solar-pv-cost'] else 0 %}
+    {% set totalCost = itemsCost + solarCost %}
+
+    {% set itemsGrantAmount = itemsCost | float | percent(50) %}
+    {% if itemsGrantAmount > 500000 %}
+        {% set itemsGrantAmount = 500000 %}
+    {% endif %}
+
+    {% set solarGrantAmount = solarCost | float | percent(25) %}
+
+    {% set solarIsCapped = false %}
+
+    {% set solarCap = itemsGrantAmount %}
+
+    {% if solarCap | float > 100000 %}
+        {% set solarCap = 100000 %}
+    {% endif %}
+
+    {% if solarGrantAmount | float > solarCap | float %}
+        {% set solarIsCapped = true %}
+        {% set solarGrantAmount = solarCap %}
+    {% endif %}
+
+    {% set grantAmount = itemsGrantAmount | float + solarGrantAmount | float %}
+
+    {% set solarExceedsMaxGrant = false %}
+
+    {% if grantAmount > 500000 %}
+        {% set solarIsCapped = true %}
+        {% set solarExceedsMaxGrant = true %}
+        {% set grantAmount = 500000 %}
+        {% set solarGrantAmount = 500000 - (itemsGrantAmount | float) %}
+    {% endif %}
+
+
+{% else %}
+
+    {% set totalCost = data['cost'] | float %}
+
+    {% set grantAmount = totalCost | float | percent(50) %}
+    {% if grantAmount > 500000 %}
+        {% set grantAmount = 500000 %}
+    {% endif %}
+
+    {% set itemsGrantAmount = grantAmount | float %}
+
+{% endif %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+
+            <div class="govuk-grid-column-two-thirds">
+
+                <form action="remaining-cost">
+
+                    <h1 class="govuk-heading-l">Potential grant funding</h1>
+
+                    {% if itemsGrantAmount == 500000 %}
+
+                        <p>
+                            You may be able to apply for grant funding of up to £500,000, based on the project items cost of {{ totalCost | inPounds }}.
+                        </p>
+                        
+                        <p>
+                            The maximum grant you can apply for is £500,000.
+                        </p>
+
+                        {% if data['solar-pv'] == 'Yes' %}
+                            {{ govukInsetText ({
+                                text: 'You cannot apply for funding for a solar PV system if you have requested the maximum funding amount for project items.'
+                            }) }}
+                        {% endif %}
+
+                    {% else %}
+
+                    {% if data['solar-pv'] == 'No' %}
+                        <p>
+                            You may be able to apply for a grant of up to {{ grantAmount | inPounds }} (50% of {{ totalCost | inPounds }}).
+                        </p>
+                    {% endif %}
+
+                        {% if data['solar-pv'] == 'Yes' %}
+
+                            <p>
+                            You may be able to apply for a grant of up to {{ grantAmount | inPounds }}, based on the total estimated cost of {{ totalCost | inPounds }}.
+                            </p>
+
+                            <p>
+                                This grant amount combines:
+                            </p>
+
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ itemsGrantAmount | inPounds }} for project costs (50% of {{ itemsCost | inPounds }})
+                                </li>
+                                {% if solarIsCapped %}
+                                    <li>
+                                        {{ solarGrantAmount | inPounds }} for solar PV system costs
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        {{ solarGrantAmount | inPounds }} for solar PV system costs (25% of {{ solarCost | inPounds }})
+                                    </li>
+                                {% endif %}
+                            </ul>
+
+                            {% if solarIsCapped %}
+                                
+                                {% set detailsContentHTML %}
+                                    {% if solarExceedsMaxGrant %}
+                                        <p>
+                                            The maximum grant you can apply for is £500,000.
+                                        </p>
+
+                                        <p>
+                                            As project item costs take priority, you can apply for {{ solarGrantAmount | inPounds }} for solar PV system costs.
+                                        </p>
+                                    {% elif solarCap == 100000 %}
+                                        <p>
+                                            You can apply for a maximum of £100,000 for solar PV system costs.
+                                        </p>
+                                    {% else %}
+
+                                        <p>
+                                            The grant funding for a solar PV system cannot be more than the grant funding for your project costs.
+                                        </p>
+
+                                        <p>
+                                            As your project grant funding is {{ itemsGrantAmount | inPounds }}, you can apply for {{ solarCap | inPounds }} for solar PV system costs.
+                                        </p>
+                                    {% endif %}
+                                    
+                                {% endset %}
+                                
+                                {{ govukDetails({
+                                    summaryText: 'How is the solar PV system grant funding calculated?',
+                                    html: detailsContentHTML
+                                }) }}
+
+                            {% endif %}
+
+                        {% endif %}
+
+                    {% endif %}
+
+                    {{ govukWarningText({
+                        text: "There's no guarantee the project will receive a grant",
+                        iconFallbackText: "Warning"
+                    }) }}
+
+                    <input type="hidden" name="potential-funding" value="{{ grantAmount | float }}">
+                    <input type="hidden" name="total-cost" value="{{ totalCost | float }}">
+
+                    {{ govukButton ({
+                        html: 'Continue'
+                    }) }}
+
+                </form>
+
+            </div>
+
+    </div>
+
+{% endblock %}
