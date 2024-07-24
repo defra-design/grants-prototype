@@ -1,7 +1,7 @@
 {% extends 'adding-value-2024/layout.html' %}
 
 {% block pageTitle %}
-    Do you want to build a new smaller abattoir?
+    Do you have a tenancy agreement for 5 years after the final grant payment?
 {% endblock %}
 
 {% block content %}
@@ -10,54 +10,34 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post">
-
-                {% set hintHtml %}
-
-                    <p class="govuk-hint">
-                        A smaller abattoir is a:
-                    </p>
-
-                    <ul class="govuk-list govuk-list--bullet govuk-hint">
-                        <li>
-                            red meat abattoir that processes up to 10,000 livestock units each year
-                        </li>
-                        <li>
-                            poultry abattoir that slaughters up to 500,000 birds each year
-                        </li>
-                    </ul>
-
-                {% endset %}
+            <form action="../adding-value/smaller-abattoir" method="post">
 
                 {{ govukRadios ({
-                    idPrefix: 'smaller-abattoir',
-                    name: 'smaller-abattoir',
-                    classes: 'govuk-radios--inline',
+                    idPrefix: 'tenancy-agreement',
+                    name: 'tenancy-agreement',
                     fieldset: {
                         legend: {
-                            text: 'Do you want to build a new smaller abattoir?',
+                            text: 'Do you have a tenancy agreement for 5 years after the final grant payment?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    hint: {
-                        html: hintHtml
-                    },
+
                     items: [
                         {
                             text: 'Yes',
                             value: 'Yes',
-                            checked: true if data['smaller-abattoir'] == 'Yes',
+                            checked: true if data['tenancy-agreement'] == 'Yes',
                             attributes: {
-                                'data-next': 'smaller-abattoir-other'
+                                'data-next': '../adding-value/smaller-abattoir'
                             }
                         },
                         {
                             text: 'No',
                             value: 'No',
-                            checked: true if data['smaller-abattoir'] == 'No',
+                            checked: true if data['tenancy-agreement'] == 'No',
                             attributes: {
-                                'data-next': 'top-fruit-storage'
+                                'data-next': 'elim-tenancy-agreement'
                             }
                         }
                     ]
@@ -71,6 +51,7 @@
 
         </div>
 
+
         <div class="govuk-grid-column-one-third">
 
             <div class="app-step-nav-related app-step-nav-related--singular">
@@ -78,7 +59,7 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    For this type of project, you must stun all animals before slaughter.
+                    You must own the land or have a tenancy in place for 5 years after the final grant payment.
                 </p>
             </div>
 

@@ -142,9 +142,10 @@
                             </td>
                             <td class="govuk-table__cell">
                                 <strong class="govuk-tag govuk-tag--light-blue">
-          Average
-        </strong> <br><br>
-                                Our funding priorities: Create and expand processing capacity to provide more English-grown food for consumers to buy
+                                    Average
+                                </strong> <br><br>
+                                Our funding priorities:<br><br> 
+                                Create and expand processing capacity to provide more English-grown food for consumers to buy
                             </td>
                             <td class="govuk-table__cell">
                                 <a class="govuk-link govuk-link--no-visited-state" href="produce?from-scoring=true">
@@ -153,21 +154,21 @@
                             </td>
                         </tr>
 
-                        {# <tr class="govuk-table__row">
+                        <tr class="govuk-table__row">
                             <td class="govuk-table__cell">
                                 <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                     Adding value
                                 </p>
-                                <ul class="govuk-list govuk-list--bullet">
-                                    <li>
-                                        {{ data['scoring-value'] }}
-                                    </li>
-                                </ul>
                             </th>
                             <td class="govuk-table__cell">
-                                Average
+                               {{ data['scoring-value'] }}
                             </td>
                             <td class="govuk-table__cell">
+                                 <strong class="govuk-tag govuk-tag--light-blue">
+                                    Average
+                                </strong> <br><br>
+                                Our funding priorities: <br><br>
+
                                 Improve processing and supply chains<br><br>
                                 Grow your business
                             </td>
@@ -183,12 +184,17 @@
                                 <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                     Project impact
                                 </p>
-                                {{ data['scoring-impact'] | checkboxAnswersToList | safe }}
                             </th>
                             <td class="govuk-table__cell">
-                                Average
+                               <!-- {{ data['scoring-impact'] | checkboxAnswersToList | safe }} -->
+                               {{ data['scoring-impact'] }}
                             </td>
                             <td class="govuk-table__cell">
+                              <strong class="govuk-tag govuk-tag--light-blue">
+                                    Average
+                                </strong> <br><br>
+                                Our funding priorities: <br><br>
+
                                 Improve processing and supply chains<br><br>
                                 Grow your business
                             </td>
@@ -197,29 +203,28 @@
                                     Change
                                 </a>
                             </td>
-                        </tr> #}
+                        </tr>
 
                     {% endif %}
 
-                    {# <tr class="govuk-table__row">
+                    <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 Mechanisation
                             </p>
-                        {% if data['scoring-mechanisation'] == 'Yes'%}
-                            <li>
-                            Yes, {{  data['scoring-manual-labour-amount'] | lowerCase }}
-                            </li>
-                        {% else %}
-                            <li>
-                            No, this project will not use mechanisation
-                            </li>
-                        {% endif %}
                         </th>
                         <td class="govuk-table__cell">
-                            Average
+                        {% if data['scoring-mechanisation'] == 'Yes'%}
+                            Yes, {{  data['scoring-manual-labour-amount'] | lowerCase }}
+                        {% else %}
+                            No, this project will not use mechanisation
+                        {% endif %}
                         </td>
                         <td class="govuk-table__cell">
+                                <strong class="govuk-tag govuk-tag--light-blue">
+                                    Average
+                                </strong> <br><br>
+                                Our funding priorities: <br><br>
                             Increase the use of mechanisation due to the current manual labour shortage
                         </td>
                         <td class="govuk-table__cell">
@@ -229,17 +234,21 @@
                         </td>
                     </tr>
 
-                    <tr class="govuk-table__row">
+                 <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 New customers
                             </p>
-                            {{ data['scoring-customers'] | checkboxAnswersToList | safe }}
                         </th>
                         <td class="govuk-table__cell">
-                            Average
+                            <!--  {{ data['scoring-customers'] | checkboxAnswersToList | safe }} -->
+                            {{ data['scoring-customers'] }}
                         </td>
                         <td class="govuk-table__cell">
+                            <strong class="govuk-tag govuk-tag--light-blue">   
+                                Average
+                            </strong> <br><br>
+                            Our funding priorities: <br><br>
                             Improve processing and supply chains<br><br>
                             Grow your business
                         </td>
@@ -250,21 +259,20 @@
                         </td>
                     </tr>
 
-                    <tr class="govuk-table__row">
+                <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 Collaboration
                             </p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>
-                                    {{ data['scoring-collaboration'] }}
-                                </li>
-                            </ul>
                         </th>
                         <td class="govuk-table__cell">
-                            Average
+                             {{ data['scoring-collaboration'] }}
                         </td>
                         <td class="govuk-table__cell">
+                            <strong class="govuk-tag govuk-tag--light-blue">   
+                                Average
+                            </strong> <br><br>
+                            Our funding priorities: <br><br>
                             Improve processing and supply chains<br><br>
                             Encourage collaboration and partnerships
                         </td>
@@ -275,17 +283,21 @@
                         </td>
                     </tr>
 
-                    <tr class="govuk-table__row">
+                  <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 Environmental impact
                             </p>
-                            {{ data['scoring-environment'] | checkboxAnswersToList | safe }}
                         </th>
                         <td class="govuk-table__cell">
-                            Average
+                         {{ data['scoring-environment'] | checkboxAnswersToList | safe }}
                         </td>
                         <td class="govuk-table__cell">
+                              <strong class="govuk-tag govuk-tag--light-blue">   
+                                Average
+                            </strong> <br><br>
+                            Our funding priorities: <br><br>
+                            Improve processing and supply chains<br><br>
                             Improve the environment
                         </td>
                         <td class="govuk-table__cell">
@@ -293,7 +305,7 @@
                                 Change
                             </a>
                         </td>
-                    </tr> #}
+                    </tr>
 
                 </tbody>
             </table>

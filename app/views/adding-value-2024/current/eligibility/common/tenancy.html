@@ -23,9 +23,6 @@
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                    hint: {
-                        text: 'The site where the work will happen'
-                    },
                     items: [
                         {
                             text: 'Yes',
@@ -40,7 +37,7 @@
                             value: 'No',
                             checked: true if data['tenancy'] == 'No',
                             attributes: {
-                                    'data-next': 'project-responsibility'
+                                    'data-next': 'tenancy-agreement'
                                 }
                         }
                     ]
@@ -62,7 +59,7 @@
                 <span class="app-step-nav-related__pretitle">Eligibility</span>
                 </h2>
                 <p>
-                    If you are a tenant farmer, you have the option to ask your landlord to underwrite your agreement.
+                    You must own the land or have a tenancy in place for 5 years after the final grant payment.
                 </p>
             </div>
 
