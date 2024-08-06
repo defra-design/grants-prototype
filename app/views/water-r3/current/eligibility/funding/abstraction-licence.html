@@ -35,12 +35,14 @@
             {
               value: "Should be in place by 31 January 2024",
               text: "Should be in place by 31 January 2024",
-              checked: true if 'Should be in place by 31 January 2024' | isIn(data['abstraction-licence'])
+              checked: true if 'Should be in place by 31 January 2024' | isIn(data['abstraction-licence']),
+              attributes: {'data-next': 'abstraction-required-condition'}
             },
             {
               value: "Will not be in place by 31 January 2024",
               text: "Will not be in place by 31 January 2024",
-              checked: true if 'Will not be in place by 31 January 2024' | isIn(data['abstraction-licence'])
+              checked: true if 'Will not be in place by 31 January 2024' | isIn(data['abstraction-licence']),
+              attributes: {'data-next': 'abstraction-license-fail'}
             }
           ]
         }) }}
