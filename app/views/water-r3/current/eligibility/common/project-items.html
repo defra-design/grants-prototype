@@ -17,7 +17,7 @@
       <form method="post" action="storage">
 
                {{ govukCheckboxes({
-                  name: "checkbox1",
+                  name: "Reservoir construction and infrastructure",
                   fieldset: {
                     legend: {
                       text: "Reservoir construction and infrastructure",
@@ -35,10 +35,6 @@
                       text: "Overflow/spillway",
                       checked: true if 'Overflow/spillway' | isIn(data['items-needed'])
                     }, {
-                      value: "Construction of reservoir walls",
-                      text: "Construction of reservoir walls",
-                      checked: true if 'Construction of reservoir walls' | isIn(data['items-needed'])
-                    }, {
                       value: "Synthetic liner",
                       text: "Synthetic liner",
                       checked: true if 'Synthetic liner' | isIn(data['items-needed'])
@@ -51,182 +47,100 @@
                       text: "Fencing for synthetically lined reservoir",
                       checked: true if 'Fencing for synthetically lined reservoir' | isIn(data['items-needed'])
                     }, {
-                      value: "Construction of reservoir walls",
-                      text: "Construction of reservoir walls",
-                      checked: true if 'Construction of reservoir walls' | isIn(data['items-needed'])
+                      value: "Filtration equipment",
+                      text: "Filtration equipment",
+                      checked: true if 'Filtration equipment' | isIn(data['items-needed'])
                     }, {
-                      value: "Construction of reservoir walls",
-                      text: "Construction of reservoir walls",
-                      checked: true if 'Construction of reservoir walls' | isIn(data['items-needed'])
+                      value: "Irrigation pumps and controls",
+                      text: "Irrigation pumps and controls",
+                      checked: true if 'Irrigation pumps and controls' | isIn(data['items-needed'])
                     }, {
-                      value: "Construction of reservoir walls",
-                      text: "Construction of reservoir walls",
-                      checked: true if 'Construction of reservoir walls' | isIn(data['items-needed'])
+                      value: "Pipework to fill the reservoir",
+                      text: "Pipework to fill the reservoir",
+                      checked: true if 'Pipework to fill the reservoir' | isIn(data['items-needed'])
                     }, {
-                      value: "Construction of reservoir walls",
-                      text: "Construction of reservoir walls",
-                      checked: true if 'Construction of reservoir walls' | isIn(data['items-needed'])
+                      value: "Pumphouse",
+                      text: "Pumphouse",
+                      checked: true if 'Pumphouse' | isIn(data['items-needed'])
                     }, {
-                      value: "Construction of reservoir walls",
-                      text: "Construction of reservoir walls",
-                      checked: true if 'Construction of reservoir walls' | isIn(data['items-needed'])
+                      value: "Underground water distribution main and hydrants",
+                      text: "Underground water distribution main and hydrants",
+                      checked: true if 'Underground water distribution main and hydrants' | isIn(data['items-needed'])
                     }, {
-                      value: "Construction of reservoir walls",
-                      text: "Construction of reservoir walls",
-                      checked: true if 'Construction of reservoir walls' | isIn(data['items-needed'])
-                    } 
+                      value: "Electricity installation for pumphouse ",
+                      text: "Electricity installation for pumphouse ",
+                      checked: true if 'Electricity installation for pumphouse' | isIn(data['items-needed'])
+                    },{
+                      value: "Water meter",
+                      text: "Water meter",
+                      checked: true if 'Water meter' | isIn(data['items-needed'])
+                    }
+                  ]
+                }) }}
+
+                 {{ govukCheckboxes({
+                  name: "Irrigation equipment",
+                  fieldset: {
+                    legend: {
+                      text: "Irrigation equipment",
+                      classes: "govuk-fieldset__legend--m govuk-!-margin-top-2"
+                    }
+                  },
+                  items: [
+                    {
+                      value: "Boom",
+                      text: "Boom",
+                      checked: true if 'Boom' | isIn(data['items-needed'])
+                    },
+                    {
+                      value: "Trickle",
+                      text: "Trickle",
+                      checked: true if 'Trickle' | isIn(data['items-needed'])
+                    }, {
+                      value: "Ebb and flow",
+                      text: "Ebb and flow",
+                      checked: true if 'Ebb and flow' | isIn(data['items-needed'])
+                    }, {
+                      value: "Capillary bed",
+                      text: "Capillary bed",
+                      checked: true if 'Capillary bed' | isIn(data['items-needed'])
+                    }, {
+                      value: "Sprinklers",
+                      text: "Sprinklers",
+                      checked: true if 'Sprinklers' | isIn(data['items-needed'])
+                    }, {
+                      value: "Mist",
+                      text: "Mist",
+                      checked: true if 'Mist' | isIn(data['items-needed'])
+                    }
+                  ]
+                }) }}
+
+                 {{ govukCheckboxes({
+                  name: "Technology",
+                  fieldset: {
+                    legend: {
+                      text: "Technology",
+                      classes: "govuk-fieldset__legend--m govuk-!-margin-top-2"
+                    }
+                  },
+                  items: [
+                    {
+                      value: "Equipment to monitor soil moisture levels and schedule irrigation",
+                      text: "Equipment to monitor soil moisture levels and schedule irrigation",
+                      checked: true if 'Equipment to monitor soil moisture levels and schedule irrigation' | isIn(data['items-needed'])
+                    },
+                    {
+                      value: "Equipment such as sensors to optimise water application",
+                      text: "Equipment such as sensors to optimise water application",
+                      checked: true if 'Equipment such as sensors to optimise water application' | isIn(data['items-needed'])
+                    }
                   ]
                 }) }}
 
                 {{ govukButton ({
                     html: 'Continue'
                 }) }}
-
-         
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="project-items-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                What eligible items do you need for your project?
-              </h1>
-            </legend>
-            <br>
-            <span id="project-items-hint" class="govuk-hint">
-              Select all the items your project needs
-            </span>
-          <h2 class="govuk-heading-m govuk-!-margin-top-6">Reservoir construction and infrastructure</h2>
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-1" name="project-items" type="checkbox" value="dam walls" {{ checked("project-items", "dam walls") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-1">
-                  Construction of reservoir walls
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-3" name="project-items" type="checkbox" value="overflow/spillway" {{ checked("project-items", "overflow/spillway") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-3">
-                  Overflow/spillway
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-4" name="project-items" type="checkbox" value="synthetic liner" {{ checked("project-items", "synthetic liner") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-4">
-                  Synthetic liner
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-5" name="project-items" type="checkbox" value="abstraction point including pump" {{ checked("project-items", "abstraction point including pump") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-5">
-                  Abstraction point including pump
-                </label>
-              </div>
-
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-7" name="project-items" type="checkbox" value="fencing" {{ checked("project-items", "fencing") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-7">
-                  Fencing for synthetically lined reservoir
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-8" name="project-items" type="checkbox" value="filtration equipment" {{ checked("project-items", "filtration equipment") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-8">
-                  Filtration equipment
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-9" name="project-items" type="checkbox" value="irrigation pump and controls" {{ checked("project-items", "irrigation pump and controls") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-9">
-                  Irrigation pumps and controls
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-10" name="project-items" type="checkbox" value="pipework" {{ checked("project-items", "pipework") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-10">
-                  Pipework to fill the reservoir
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-11" name="project-items" type="checkbox" value="pumphouse" value="Pumphouse" {{ checked("project-items", "Pumphouse") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-11">
-                  Pumphouse
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-12" name="project-items" type="checkbox" value="underground water distribution main and hydrants"
-                  {{ checked("project-items", "underground water distribution main and hydrants") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-12">
-                  Underground water distribution main and hydrants
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-13" name="project-items" type="checkbox" value="Electricity installation for pump house" {{ checked("project-items", "Electricity installation for pump house") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-13">
-                  Electricity installation for pumphouse
-                </label>
-              </div>
-
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="project-items-14" name="project-items" type="checkbox" value="Water meter" {{ checked("project-items", "Water meter") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="project-items-14">
-                  Water meter
-                </label>
-              </div>
-              <h2 class="govuk-heading-m govuk-!-margin-top-6">Irrigation equipment</h2>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="Irrigation equipment-1" name="Irrigation equipment" type="checkbox" value="Boom " {{ checked("Irrigation equipment", "Boom") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="Irrigation equipment-1">
-                  Boom
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="Irrigation equipment-2" name="Irrigation equipment" type="checkbox" value="Trickle" {{ checked("Irrigation equipment", "Trickle") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="Irrigation equipment-2">
-                  Trickle
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="Irrigation equipment-3" name="Irrigation equipment" type="checkbox" value="Ebb and flow" {{ checked("Irrigation equipment", "Ebb and flow") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="Irrigation equipment-3">
-                  Ebb and flow
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="Irrigation equipment-4" name="Irrigation equipment" type="checkbox" value="Capillary bed" {{ checked("Irrigation equipment", "Capillary bed") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="Irrigation equipment-4">
-                  Capillary bed
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="Irrigation equipment-5" name="Irrigation equipment" type="checkbox" value="Sprinklers" {{ checked("Irrigation equipment", "Sprinklers") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="Irrigation equipment-5">
-                  Sprinklers
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="Irrigation equipment-6" name="Irrigation equipment" type="checkbox" value="Mist" {{ checked("Irrigation equipment", "Mist") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="Irrigation equipment-6">
-                  Mist
-                </label>
-              </div>
-              <h2 class="govuk-heading-m govuk-!-margin-top-6">Technology</h2>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="Technology-1" name="Technology" type="checkbox" value="computer software" {{ checked("Technology", "computer software") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="Technology-1">
-                  Equipment to monitor soil moisture levels and schedule irrigation
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="Technology-2" name="Technology" type="checkbox" value="software and sensors" {{ checked("Technology", "software and sensors") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="Technology-2">
-                  Equipment such as sensors to optimise water application
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-        <br>
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
 
       </form>
 
