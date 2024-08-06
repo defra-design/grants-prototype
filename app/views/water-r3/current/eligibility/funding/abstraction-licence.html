@@ -1,68 +1,57 @@
-{% extends "layout.html" %}
+{% extends 'water-r3/layout.html' %}
 
 {% block pageTitle %}
-  Does the project need an abstraction licence?
-{% endblock %}
-
-{% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-    text: "prototype",
-    classes: "govuk-tag--pink"
-    },
-      html: 'This is not a full service. It is not production code and you might experience problems.'
-  }) }}
-       <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+     Does the project need an abstraction licence or a variation of one?
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <!-- <form id="mainForm" class="form" action="{{ nextUrl }}" method="post"> -->
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Does the project need an abstraction licence or a variation of one?
-              </h1>
-            </legend>
 
-            <div class="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence" name="abstraction-licence" type="radio" value="Not needed" {{ checked("abstraction-licence", "Not needed") }}>
-                <label class="govuk-label govuk-radios__label" for="abstraction-licence">
-                  Not needed
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence-2" name="abstraction-licence" type="radio" value="Secured" {{ checked("abstraction-licence", "Secured") }}>
-                <label class="govuk-label govuk-radios__label" for="abstraction-licence-2">
-                  Secured
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="should" {{ checked("abstraction-licence", "should") }}>
-                <label class="govuk-label govuk-radios__label" for="abstraction-licence-3">
-                  Should be in place by 31 January 2024
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="abstraction-licence-3" name="abstraction-licence" type="radio" value="won’t have by 21 October 2021" {{ checked("abstraction-licence", "won’t have by 21 October 2021") }}>
-                <label class="govuk-label govuk-radios__label" for="abstraction-licence-3">
-                  Will not be in place by 31 January 2024
-                </label>
-              </div>
-            </div>
+      <form method="post" action="current-irrigating">
 
-          </fieldset>
-        </div>
+        {{ govukRadios ({
+          idPrefix: 'abstraction-licence',
+          name: 'abstraction-licence',
+          fieldset: {
+            legend: {
+              text: 'Does the project need an abstraction licence or a variation of one?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          items: [
+            {
+              value: "Not needed",
+              text: "Not needed",
+              checked: true if 'Not needed' | isIn(data['abstraction-licence'])
+            },
+            {
+              value: "Secured",
+              text: "Secured",
+              checked: true if 'Secured' | isIn(data['abstraction-licence'])
+            },
+            {
+              value: "Should be in place by 31 January 2024",
+              text: "Should be in place by 31 January 2024",
+              checked: true if 'Should be in place by 31 January 2024' | isIn(data['abstraction-licence'])
+            },
+            {
+              value: "Will not be in place by 31 January 2024",
+              text: "Will not be in place by 31 January 2024",
+              checked: true if 'Will not be in place by 31 January 2024' | isIn(data['abstraction-licence'])
+            }
+          ]
+        }) }}
 
-        <a href="current-irrigating"><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></a>
+          {{ govukButton ({
+                    html: 'Continue'
+                }) }}
 
-
+        </form>
     </div>
+
     <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
       <aside class="app-related-items">
           <h3 class="govuk-heading-s"> Eligibility </h3>
