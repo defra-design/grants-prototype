@@ -1,12 +1,9 @@
 {% extends 'water-r3/layout.html' %}
 
-{% set totalCost = data['total-cost'] if data['total-cost'] else 900000 %}
-{% set grantAmount = data['potential-funding'] if data['potential-funding'] else 450000 %}
-
-{% set remainingCost = (totalCost | float) - (grantAmount | float) %}
+ {% set remainingCosts = data['project-cost'] * 0.6 %}
 
 {% block pageTitle %}
-    Can you pay the remaining costs of {{ remainingCost | inPounds }}?
+    Can you pay the remaining costs of {{ remainingCosts | inPounds }}?
 {% endblock %}
 
 {% block content %}
@@ -17,18 +14,13 @@
 
             <form method="post">
 
-                {% set nextPage = '../../scoring/produce' %}
-                {% if data['top-fruit-storage'] == 'Yes' %}
-                    {% set nextPage = '../../scoring/mechanisation' %}
-                {% endif %}
-
                 {{ govukRadios ({
                     classes: 'govuk-radios--inline',
                     idPrefix: 'remaining-cost',
                     name: 'remaining-cost',
                     fieldset: {
                         legend: {
-                            text: 'Can you pay the remaining costs of ' + remainingCost | inPounds + '?',
+                            text: 'Can you pay the remaining costs of ' + remainingCosts | inPounds + '?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
@@ -40,7 +32,7 @@
                         value: 'Yes',
                         checked: true if data['remaining-cost'] == 'Yes',
                         attributes: {
-                            'data-next': nextPage
+                            'data-next': 'abstraction-licence'
                         }
                     },
                     {
@@ -74,20 +66,18 @@
                     You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.
                 </p>
 
-                <p>
+             <!--   <p>
                     You also cannot use money from a producer organisation under the Fresh Fruit and Vegetable Aid Scheme.
-                </p>
+                </p> -->
 
                 <p>
                     For example, you can use:
                 </p>
 
                 <ul class="govuk-list govuk-list--bullet">
-
                     <li>loans</li>
                     <li>overdrafts</li>
                     <li>delinked payments</li>
-
                 </ul>
             
             </div>

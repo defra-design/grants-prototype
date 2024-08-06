@@ -2,7 +2,7 @@
 
 
 {% block pageTitle %}
-    What is the estimated cost of the items?
+    What is the total estimated cost of the items?
 {% endblock %}
 
 {% block content %}
@@ -11,34 +11,19 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form action="../../scoring/impact">
-
+            <form action="potential-funding">
             
                 <h1 class="govuk-heading-l">
-                    What is the estimated cost of the items?
+                    What is the total estimated cost of the items?
                 </h1>
 
-                {% set hintHtml %}
-                    
-                {% if data['solar-pv'] == 'No'%}
                     <p class="govuk-hint">
-                        Do not include VAT.
-                    </p>
-                {% else %}
-                    <p class="govuk-hint">
-                        You can only apply for a grant of up to 40% of the estimated costs.
-                        The minimum grant you can apply for this project is £25,000 (40% of £62,500).
-                        The maximum grant is £300,000.</p>
+                      You can only apply for a grant of up to 40% of the estimated costs. 
+                      The minimum grant you can apply for this project is £35,000 (40% of £87,500). 
+                      The maximum grant is £500,000.</p>
 
                     <p class="govuk-hint">Do not include VAT.</p>
-                {% endif %}
-
-                    <p class="govuk-hint">
-                        Enter cost of items, for example 95,000
-                    </p>
-
-                {% endset %}
-
+     
                 {{ govukInput ({
                     id: 'cost',
                     name: 'cost',
@@ -47,7 +32,7 @@
                     type: 'number',
                     prefix: { text: '£' },
                     hint: {
-                        html: hintHtml
+                       text: "Enter cost of items, for example 95,000"
                     },
                     label: {
                         text: 'Total estimated project cost',
@@ -65,32 +50,20 @@
 
         <div class="govuk-grid-column-one-third">
 
-            <div class="app-step-nav-related app-step-nav-related--singular">
-                <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Selected items</span>
+             <aside class="app-related-items" role="complementary">
+                <h2 class="govuk-heading-s" id="subsection-title">
+                Items selected
                 </h2>
-                
-                <ul class="govuk-list govuk-list--bullet">
-                    {% if data['top-fruit-storage'] == 'Yes' %}
-                        <li>
-                            Controlled atmosphere storage for top fruit
-                        </li>
-                    {% else %}
-                        {% for item in data['items-needed'] %}
-                            <li>Constructing or improving buildings for processing</li>
-                            <li>Processing equipment or machinery</li>
-                            <li>Retail facilities</li>
-                            <li>Storage facilities</li>
-                        {% endfor %}
-                        {% if data['storage'] == 'Yes' %}
-                                <li>
-                                    Storage facilities
-                                </li>
-                        {% endif %}
-                    {% endif %}
+                <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                    {% for item in data['project-items'] %}
+                    <li>
+                        {{ item | capitalize }}
+                    </li>
+                    {% endfor %}
                 </ul>
-
-            </div>
+                </nav>
+            </aside>
 
         </div>
 
