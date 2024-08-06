@@ -1,0 +1,116 @@
+{% extends 'new/layout.html' %}
+
+{% block pageTitle %}
+    What is the legal status of the business?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="country" method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'legal-status',
+                    name: 'legal-status',
+                    fieldset: {
+                        legend: {
+                            text: 'What is the legal status of the business?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Sole trader',
+                            value: 'Sole trader',
+                            checked: true if data['legal-status'] == 'Sole trader'
+                        },
+                        {
+                            text: 'Partnership',
+                            value: 'Partnership',
+                            checked: true if data['legal-status'] == 'Partnership'
+                        },
+                        {
+                            text: 'Limited company',
+                            value: 'Limited company',
+                            checked: true if data['legal-status'] == 'Limited company'
+                        },
+                        {
+                            text: 'Charity',
+                            value: 'Charity',
+                            checked: true if data['legal-status'] == 'Charity'
+                        },
+                        {
+                            text: 'Trust',
+                            value: 'Trust',
+                            checked: true if data['legal-status'] == 'Trust'
+                        },
+                        {
+                            text: 'Limited liability partnership',
+                            value: 'Limited liability partnership',
+                            checked: true if data['legal-status'] == 'Limited liability partnership'
+                        },
+                        {
+                            text:  'Community interest company',
+                            value: 'Community interest company',
+                            checked: true if data['legal-status'] == 'Community interest company'
+                        },
+                        {
+                            text: 'Limited partnership',
+                            value: 'Limited partnership',
+                            checked: true if data['legal-status'] == 'Limited partnership'
+                        },
+                        {
+                            text: 'Industrial and provident society',
+                            value: 'Industrial and provident society',
+                            checked: true if data['legal-status'] == 'Industrial and provident society'
+                        },
+                        {
+                            text: 'Co-operative society (Co-Op)',
+                            value: 'Co-operative society (Co-Op)',
+                            checked: true if data['legal-status'] == 'Co-operative society (Co-Op)'
+                        },
+                        {
+                            text: 'Community benefit society (BenCom)',
+                            value: 'Community benefit society (BenCom)',
+                            checked: true if data['legal-status'] == 'Community benefit society (BenCom)'
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None',
+                            checked: true if data['legal-status'] == 'None'
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    Public organisations and local authorities cannot apply for this grant.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

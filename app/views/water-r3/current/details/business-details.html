@@ -1,0 +1,95 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    Business details
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="applying">
+
+            <h1 class="govuk-heading-l">
+                Business details
+            </h1>
+
+            {{ govukInput ({
+                id: 'project-name',
+                name: 'project-name',
+                value: data['project-name'] if data['project-name'] else '',
+                hint: {
+                    text: 'For example, Browns Hill Farm vegetable washing and sorting project'
+                },
+                label: {
+                    text: 'Project name'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'business-name',
+                name: 'business-name',
+                value: data['business-name'] if data['business-name'] else '',
+                hint: {
+                    text: 'If you’re registered on the Rural Payments system, enter business name as registered'
+                },
+                label: {
+                    text: 'Business name'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'employees',
+                name: 'employees',
+                classes: 'govuk-input--width-4',
+                value: data['employees'] if data['employees'] else '',
+                type: 'number',
+                hint: {
+                    text: 'Full-time employees, including the owner'
+                },
+                label: {
+                    text: 'Number of employees'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'turnover',
+                name: 'turnover',
+                classes: 'govuk-input--width-10',
+                value: data['turnover'] if data['turnover'] else '',
+                type: 'number',
+                label: {
+                    text: 'Annual business turnover (£)'
+                },
+                prefix: {
+                    text: '£'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'sbi',
+                name: 'sbi',
+                classes: 'govuk-input--width-20',
+                value: data['sbi'] if data['sbi'] else '',
+                hint: {
+                    text: 'If you do not have an SBI, you will need to get one for full application'
+                },
+                label: {
+                    text: 'Single Business Identifier (SBI) (optional)'
+                }
+            }) }}
+
+            {{ govukButton ({
+                html: 'Continue'
+            }) }}
+
+        </form>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

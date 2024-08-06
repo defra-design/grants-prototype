@@ -1,0 +1,194 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+{% block pageTitle %}
+    Applicant details
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="check-details">
+
+            <h1 class="govuk-heading-l">
+                Applicant's details
+            </h1>
+
+            {{ govukInput ({
+                id: 'farmer-firstname',
+                name: 'farmer-firstname',
+                classes: 'govuk-!-width-one-half',
+                value: data['farmer-firstname'] if data['farmer-firstname'] else '',
+                label: {
+                    text: 'First name'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'farmer-lastname',
+                name: 'farmer-lastname',
+                classes: 'govuk-!-width-one-half',
+                value: data['farmer-lastname'] if data['farmer-lastname'] else '',
+                label: {
+                    text: 'Last name'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'farmer-email',
+                name: 'farmer-email',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['farmer-email'] if data['farmer-email'] else '',
+                hint: {
+                    text: 'We will only use this to send you a confirmation'
+                },
+                label: {
+                    text: 'Email address'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'confirm-email',
+                name: 'confirm-email',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['confirm-email'] if data['confirm-email'] else '',
+                label: {
+                    text: 'Confirm email address'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'farmer-landline',
+                name: 'farmer-landline',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['farmer-landline'] if data['farmer-landline'] else '',
+                hint: {
+                    text: 'We will only use this to contact you about your application'
+                },
+                label: {
+                    text: 'Landline number'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'farmer-mobile',
+                name: 'farmer-mobile',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['farmer-mobile'] if data['farmer-mobile'] else '',
+                hint: {
+                    text: 'We will only use this to contact you about your application'
+                },
+                label: {
+                    text: 'Mobile number'
+                }
+            }) }}
+
+            {% call govukFieldset({
+              legend: {
+                text: 'Business address',
+                classes: 'govuk-fieldset__legend--m',
+                isPageHeading: true
+              }
+            }) %}
+
+              {{ govukInput({
+                label: {
+                  text: 'Address line 1'
+                },
+                id: 'farmer-address1',
+                name: 'farmer-address1',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['farmer-address1'] if data['farmer-address1'] else '',
+                autocomplete: 'address-line1'
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Address line 2 (optional)'
+                },
+                id: 'farmer-address2',
+                name: 'farmer-address2',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['farmer-address2'] if data['farmer-address2'] else '',
+                autocomplete: 'address-line2'
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Town'
+                },
+                id: 'farmer-town',
+                name: 'farmer-town',
+                classes: 'govuk-!-width-one-half',
+                value: data['farmer-town'] if data['farmer-town'] else '',
+                autocomplete: 'address-town'
+              }) }}
+
+              {{ govukSelect({
+                id: 'farmer-county',
+                name: 'farmer-county',
+                label: {
+                  text: 'County'
+                },
+                items: [
+                  {
+                    value: 'greater-london',
+                    text: 'Greater London'
+                  },
+                  {
+                    value: 'west-midlands',
+                    text: 'West Midlands',
+                    selected: true
+                  },
+                  {
+                    value: 'greater-manchester',
+                    text: 'Greater Manchester'
+                  },
+                  {
+                    value: 'west-yorkshire',
+                    text: 'West Yorkshire'
+                  }
+                ]
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Business postcode'
+                },
+                id: 'farmer-postcode',
+                name: 'farmer-postcode',
+                classes: 'govuk-!-width-one-quarter',
+                value: data['farmer-postcode'] if data['farmer-postcode'] else '',
+                autocomplete: 'address-business-postcode'
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Project postcode'
+                },
+                id: 'project-postcode',
+                name: 'project-postcode',
+                classes: 'govuk-!-width-one-quarter',
+                value: data['project-postcode'] if data['project-postcode'] else '',
+                hint: {
+                    text: 'The site postcode where the work will happen'
+                },
+                autocomplete: 'address-project-postcode'
+              }) }}
+
+            {% endcall %}
+
+            {{ govukButton ({
+                html: 'Continue'
+            }) }}
+
+        </form>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

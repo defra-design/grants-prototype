@@ -1,0 +1,88 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    Does the project have planning permission?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'planning-permission',
+                    name: 'planning-permission',
+                    fieldset: {
+                        legend: {
+                            text: 'Does the project have planning permission?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Not needed',
+                            value: 'Not needed',
+                            checked: true if data['planning-permission'] == 'Not needed',
+                            attributes: {
+                                    'data-next': 'project-start'
+                                }
+                        },
+                        {
+                            text: 'Secured',
+                            value: 'Secured',
+                            checked: true if data['planning-permission'] == 'Secured',
+                            attributes: {
+                                    'data-next': 'project-start'
+                                }
+                        },
+                        {
+                            text: 'Should be in place by 31 January 2024',
+                            value: 'Should be',
+                            checked: true if data['planning-permission'] == 'Should be',
+                            attributes: {
+                                    'data-next': 'project-start'
+                                }
+                        },
+                        {
+                            text: 'Will not be in place by 31 January 2024',
+                            value: 'Will not be',
+                            checked: true if data['planning-permission'] == 'Will not be',
+                            attributes: {
+                                    'data-next': 'elim-planning-permission'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You must have secured planning permission before you submit a full application.
+                </p>
+                <p>
+                    Any planning permission must be in place by 31 January 2024.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

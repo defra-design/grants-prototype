@@ -108,13 +108,13 @@
                 <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">
-                            Answers
+                            Topic
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Your answer
                         </th>
                         <th scope="col" class="govuk-table__header">
                             Your score
-                        </th>
-                        <th scope="col" class="govuk-table__header">
-                            Funding priorities
                         </th>
                         <th scope="col" class="govuk-table__header">
                             Change
@@ -124,95 +124,107 @@
 
                 <tbody class="govuk-table__body">
 
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">
-                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Produce processed
-                            </p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>
-                                    {{ data['scoring-produce'] }}
-                                </li>
-                            </ul>
-                        </th>
-                        <td class="govuk-table__cell">
-                            Average
-                        </td>
-                        <td class="govuk-table__cell">
-                            Create and expand processing capacity to provide more English-grown food for consumers to buy
-                        </td>
-                        <td class="govuk-table__cell">
-                            <a class="govuk-link govuk-link--no-visited-state" href="produce?from-scoring=true">
-                                Change
-                            </a>
-                        </td>
-                    </tr>
+                    {% if data['top-fruit-storage'] != 'Yes' %}
 
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">
-                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Adding value
-                            </p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>
-                                    {{ data['scoring-value'] }}
-                                </li>
-                            </ul>
-                        </th>
-                        <td class="govuk-table__cell">
-                            Average
-                        </td>
-                        <td class="govuk-table__cell">
-                            Improve processing and supply chains<br><br>
-                            Grow your business
-                        </td>
-                        <td class="govuk-table__cell">
-                            <a class="govuk-link govuk-link--no-visited-state" href="value?from-scoring=true">
-                                Change
-                            </a>
-                        </td>
-                    </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                    Produce processed
+                                </p>
+                            </th>
+                            <td class="govuk-table__cell">
+                                {# <ul class="govuk-list govuk-list--bullet">
+                                    <li>
+                                        {{ data['scoring-produce'] }}
+                                    </li>
+                                </ul> #}
+                                {{ data['scoring-produce'] }}
+                            </td>
+                            <td class="govuk-table__cell">
+                                <strong class="govuk-tag govuk-tag--light-blue">
+                                    Average
+                                </strong> <br><br>
+                                Our funding priorities:<br><br> 
+                                Create and expand processing capacity to provide more English-grown food for consumers to buy
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link govuk-link--no-visited-state" href="produce?from-scoring=true">
+                                    Change
+                                </a>
+                            </td>
+                        </tr>
 
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">
-                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
-                                Project impact
-                            </p>
-                            {{ data['scoring-impact'] | checkboxAnswersToList | safe }}
-                        </th>
-                        <td class="govuk-table__cell">
-                            Average
-                        </td>
-                        <td class="govuk-table__cell">
-                            Improve processing and supply chains<br><br>
-                            Grow your business
-                        </td>
-                        <td class="govuk-table__cell">
-                            <a class="govuk-link govuk-link--no-visited-state" href="impact?from-scoring=true">
-                                Change
-                            </a>
-                        </td>
-                    </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                    Adding value
+                                </p>
+                            </th>
+                            <td class="govuk-table__cell">
+                               {{ data['scoring-value'] }}
+                            </td>
+                            <td class="govuk-table__cell">
+                                 <strong class="govuk-tag govuk-tag--light-blue">
+                                    Average
+                                </strong> <br><br>
+                                Our funding priorities: <br><br>
+
+                                Improve processing and supply chains<br><br>
+                                Grow your business
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link govuk-link--no-visited-state" href="value?from-scoring=true">
+                                    Change
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                    Project impact
+                                </p>
+                            </th>
+                            <td class="govuk-table__cell">
+                               <!-- {{ data['scoring-impact'] | checkboxAnswersToList | safe }} -->
+                               {{ data['scoring-impact'] }}
+                            </td>
+                            <td class="govuk-table__cell">
+                              <strong class="govuk-tag govuk-tag--light-blue">
+                                    Average
+                                </strong> <br><br>
+                                Our funding priorities: <br><br>
+
+                                Improve processing and supply chains<br><br>
+                                Grow your business
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link govuk-link--no-visited-state" href="impact?from-scoring=true">
+                                    Change
+                                </a>
+                            </td>
+                        </tr>
+
+                    {% endif %}
 
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 Mechanisation
                             </p>
-                        {% if data['scoring-mechanisation'] == 'Yes'%}
-                            <li>
-                            Yes, {{  data['scoring-manual-labour-amount'] }}
-                            </li>
-                        {% else %}
-                            <li>
-                            No, this project will not use mechanisation
-                            </li>
-                        {% endif %}
                         </th>
                         <td class="govuk-table__cell">
-                            Average
+                        {% if data['scoring-mechanisation'] == 'Yes'%}
+                            Yes, {{  data['scoring-manual-labour-amount'] | lowerCase }}
+                        {% else %}
+                            No, this project will not use mechanisation
+                        {% endif %}
                         </td>
                         <td class="govuk-table__cell">
+                                <strong class="govuk-tag govuk-tag--light-blue">
+                                    Average
+                                </strong> <br><br>
+                                Our funding priorities: <br><br>
                             Increase the use of mechanisation due to the current manual labour shortage
                         </td>
                         <td class="govuk-table__cell">
@@ -222,17 +234,21 @@
                         </td>
                     </tr>
 
-                    <tr class="govuk-table__row">
+                 <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 New customers
                             </p>
-                            {{ data['scoring-customers'] | checkboxAnswersToList | safe }}
                         </th>
                         <td class="govuk-table__cell">
-                            Average
+                            <!--  {{ data['scoring-customers'] | checkboxAnswersToList | safe }} -->
+                            {{ data['scoring-customers'] }}
                         </td>
                         <td class="govuk-table__cell">
+                            <strong class="govuk-tag govuk-tag--light-blue">   
+                                Average
+                            </strong> <br><br>
+                            Our funding priorities: <br><br>
                             Improve processing and supply chains<br><br>
                             Grow your business
                         </td>
@@ -243,21 +259,20 @@
                         </td>
                     </tr>
 
-                    <tr class="govuk-table__row">
+                <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 Collaboration
                             </p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>
-                                    {{ data['scoring-collaboration'] }}
-                                </li>
-                            </ul>
                         </th>
                         <td class="govuk-table__cell">
-                            Average
+                             {{ data['scoring-collaboration'] }}
                         </td>
                         <td class="govuk-table__cell">
+                            <strong class="govuk-tag govuk-tag--light-blue">   
+                                Average
+                            </strong> <br><br>
+                            Our funding priorities: <br><br>
                             Improve processing and supply chains<br><br>
                             Encourage collaboration and partnerships
                         </td>
@@ -268,17 +283,21 @@
                         </td>
                     </tr>
 
-                    <tr class="govuk-table__row">
+                  <tr class="govuk-table__row">
                         <td class="govuk-table__cell">
                             <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
                                 Environmental impact
                             </p>
-                            {{ data['scoring-environment'] | checkboxAnswersToList | safe }}
                         </th>
                         <td class="govuk-table__cell">
-                            Average
+                         {{ data['scoring-environment'] | checkboxAnswersToList | safe }}
                         </td>
                         <td class="govuk-table__cell">
+                              <strong class="govuk-tag govuk-tag--light-blue">   
+                                Average
+                            </strong> <br><br>
+                            Our funding priorities: <br><br>
+                            Improve processing and supply chains<br><br>
                             Improve the environment
                         </td>
                         <td class="govuk-table__cell">

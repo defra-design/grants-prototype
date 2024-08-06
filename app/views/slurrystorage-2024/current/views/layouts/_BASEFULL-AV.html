@@ -1,0 +1,47 @@
+{% set serviceName = "Check if you can apply for a Farming Transformation Fund Adding Value grant" %}
+
+{% extends "layout.html" %}
+
+<!-- add elements that we want consistently across the service -->
+
+{% block pageTitle %}{{title}} - {{serviceName}} - GOV.UK{% endblock %} {% block header %}
+
+
+
+{{ govukHeader({    homepageUrl: "/" + folder + "/",    serviceName: serviceName,    serviceUrl: "/",    containerClasses: "govuk-width-container"  }) }} {% endblock %}
+<!-- homepage header will always link to top level of that iteration, for example 'current' -->
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+
+<a class="govuk-back-link" onclick="history.back();">Back</a>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- start of service specific block -->
+    {% block service %}Text goes here, override this by overriding the block{% endblock %}
+    <!-- end service specific block-->
+
+  </div>
+
+  <!--<div class="govuk-grid-column-one-third">
+    <div id="ad-helpline">
+      <p class="govuk-heading-m">Get help</p>
+      <p class="govuk-heading-s">Telephone</p>
+      <p class="govuk-body">0800 169 0154</p>
+      <p class="govuk-body">Monday to Friday, 8am to 6pm</p>
+      <p class="govuk-body">Closed public holidays</p>
+    </div>
+  </div>-->
+
+</div>
+{% endblock %}

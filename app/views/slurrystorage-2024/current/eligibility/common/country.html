@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Where is the business located?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Is the planned project in England?
+              </h1>
+            </legend>
+
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div id="changed-name-hint" class="govuk-hint">
+      The location of the slurry store
+    </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="country" name="country" type="radio" value="yes" data-aria-controls="conditional-country-postcode" {{ checked("country", "yes") }} data-next="project-start">
+                <label class="govuk-label govuk-radios__label" for="country">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="country-2" name="country" type="radio" value="no" {{ checked("country", "no") }} data-next="country-fail">
+                <label class="govuk-label govuk-radios__label" for="country-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>This grant is only for projects in England.</p>
+          <p>Scotland, Wales and Northern Ireland have other grants available.</p>
+          <a href="#">
+          </a>
+
+      </div>
+
+
+
+{% endblock %}
