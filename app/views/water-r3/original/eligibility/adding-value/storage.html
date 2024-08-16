@@ -1,0 +1,70 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    Does your project also need storage facilities?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="../funding/cost">
+
+                {{ govukRadios ({
+                    idPrefix: 'storage',
+                    name: 'storage',
+                    fieldset: {
+                        legend: {
+                            text: 'Does your project also need storage facilities?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'For example, cold stores or controlled atmosphere storage'
+                    },
+                    items: [
+                        {
+                            text: 'Yes, we will need storage facilities',
+                            value: 'Yes',
+                            checked: true if data['storage'] == 'Yes'
+                        },
+                        {
+                            text: 'No, we don’t need it',
+                            value: 'No',
+                            checked: true if data['storage'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukWarningText ({
+                    text: 'Storage facilities cannot be more than 50% of the total grant funding.',
+                    iconFallbackText: 'Warning'
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Selected items</span>
+                </h2>
+                
+                {{ data['items-needed'] | checkboxAnswersToList | safe }}
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

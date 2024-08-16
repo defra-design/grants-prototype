@@ -1,0 +1,48 @@
+{% extends 'layouts/main.html' %}
+
+{% block pageTitle %}
+    new page
+{% endblock %}
+
+{% block beforeContent %}
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+
+            {{ super() }}
+
+            {{ govukBackLink ({
+                text: 'Back',
+                href: 'javascript:history.back()'
+            }) }}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-xl">new page</h1>
+
+                
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

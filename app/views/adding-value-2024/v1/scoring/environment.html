@@ -1,0 +1,113 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+{% block pageTitle %}
+    How will this project improve the environment?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="results">
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-environment',
+                    name: 'scoring-environment',
+                    fieldset: {
+                        legend: {
+                            text: 'How will this project improve the environment?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select all that apply'
+                    },
+                    items: [
+                         {
+                            text: 'Renewable energy',
+                            value: 'Renewable energy',
+                            checked: true if 'Renewable energy' | isIn(data['scoring-environment']),
+                            hint: {
+                                text: 'For example, majority of energy for the project is generated on site'
+                            }
+                        },
+                        {
+                            text: 'Energy efficiency',
+                            value: 'Energy efficiency',
+                            checked: true if 'Energy efficiency' | isIn(data['scoring-environment']),
+                            hint: {
+                                text: 'For example, using variable speed motors or heat exchangers'
+                            }
+                        },
+                         {
+                            text: 'Water efficiency',
+                            value: 'Water efficiency',
+                            checked: true if 'Water efficiency' | isIn(data['scoring-environment']),
+                            hint: {
+                                text: 'For example, majority of water for the project is harvested or recycled on site'
+                            }
+                        },
+                         {
+                            text: 'Waste efficiency',
+                            value: 'Waste efficiency',
+                            checked: true if 'Waste efficiency' | isIn(data['scoring-environment']),
+                            hint: {
+                                text: 'For example, majority of the project waste is recycled or reused instead of going to landfill'
+                            }
+                        },
+                        {
+                            text: 'Sustainable packaging measures',
+                            value: 'Sustainable packaging measures',
+                            checked: true if 'Sustainable packaging measures' | isIn(data['scoring-environment']),
+                            hint: {
+                                text: 'For example, removing unnecessary packaging, replacing plastic packaging'
+                            }
+                        },
+                        {
+                            text: 'Reduce harmful emissions or pollutants',
+                            value: 'Reduce harmful emissions or pollutants',
+                            checked: true if 'Reduce harmful emissions or pollutants' | isIn(data['scoring-environment']),
+                            hint: {
+                                text: 'For example, reducing pollutants in waste water'
+                            }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'My project will not improve the environment',
+                            value: 'My project will not improve the environment',
+                            checked: true if 'My project will not improve the environment' | isIn(data['scoring-environment'])
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                
+                <p>
+                    RPA wants to fund projects that improve the environment.
+                </p>
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

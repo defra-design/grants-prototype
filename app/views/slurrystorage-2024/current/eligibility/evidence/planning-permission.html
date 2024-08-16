@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Does the project need planning permission?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  {% if (data['applyingfor'] == "Store") %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Does the project have planning permission?
+              </h1>
+            </legend>
+            <br>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission" name="planning-permission" type="radio" value="Approved" {{ checked("planning-permission", "Approved") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission">
+                  Approved
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-2" name="planning-permission" type="radio" value="Applied" {{ checked("planning-permission", "Applied") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission-2">
+                  Applied for but not yet approved
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="planning-permission-3" name="planning-permission" type="radio" value="Not yet applied" {{ checked("planning-permission", "Not yet applied") }}>
+                <label class="govuk-label govuk-radios__label" for="planning-permission-3">
+                  Not yet applied for but expected to be secured before I submit my full application</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+      </form>
+    </div>
+
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>You must have secured planning permission before you submit a full application. <br><br>The application deadline is 27 June 2025.
+          </p>
+          <a href="#">
+          </a>
+
+
+
+{% else %}
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <form id="mainForm" class="form" action="answers" method="post">
+                  <h2 class="govuk-heading-l">What is the OS grid reference for your slurry store?</h2>
+                  <div id="os-grid-hint" >
+                    <ol class="govuk-list govuk-list--number govuk-hint ">
+                      <li>On the <a href="https://gridreferencefinder.com/" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">UK grid reference finder (opens in new tab)</a> page, enter the postcode of your location into the postcode box.</li>
+                      <li>Select 'Go'.</li>
+                      <li>Find the location of your slurry store on the map. You can select and drag the map to move the location.</li>
+                      <li>Right-click on the location of your slurry store. This will add your grid reference and location details to a table below the map. </li>
+                      <li>Scroll down to view your grid reference in the table below the map.</li>
+                      <li>Select the grid reference (2 letters and 10 numbers) to highlight it, right-click on the grid reference and select 'Copy'.</li>
+                      <li>Return to the Slurry Infrastructure Grant checker screen.</li>
+                      <li>Right-click on the OS grid reference box. Select 'Paste'.</li>
+                      </ol>
+
+                      <p class="govuk-hint">Enter in the format of 2 letters and 10 numbers, for example SP 96207 33594</p>
+                    <p class="govuk-hint"></p>
+                  </div>
+
+                  {{ govukInput({
+
+                    label: {
+                      text: "OS grid reference"
+                    },
+                      classes: "govuk-input--width-10",
+                      id: "os-grid",
+                      name: "os-grid",
+                      value: data['os-grid']
+                    }) }}
+
+
+
+                  {{ govukWarningText({
+                    text: "You must provide the correct location of your slurry store to avoid delays at full application.",
+                    iconFallbackText: "Warning"
+                  }) }}
+
+                  {{ govukButton({
+                    text: "Get your results"
+                  }) }}
+
+
+                </form>
+          {% endif %}
+      </div>
+    </div>
+
+{% endblock %}
