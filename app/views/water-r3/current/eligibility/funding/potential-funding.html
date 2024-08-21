@@ -15,9 +15,9 @@
 
                     <h1 class="govuk-heading-l">Potential grant funding</h1>
 
-                       {% set grantAmount = data['project-cost'] * 0.4 %}
+                       {% set grantAmount = data['cost'] * 0.4 %}
 
-                        <p class="govuk-body">You may be able to apply for a grant of up to £{{ grantAmount | toFixed(0) | commafy }}, based on the estimated cost of £{{ data['project-cost'] | toFixed(2) | commafy }}.</p>
+                        <p class="govuk-body">You may be able to apply for a grant of up to £{{ grantAmount | toFixed(0) | commafy }}, based on the estimated cost of £{{ data['cost'] | toFixed(2) | commafy }}.</p>
 
                         {{ govukWarningText({
                         text: "There's no guarantee the project will receive a grant.",
