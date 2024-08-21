@@ -1,6 +1,6 @@
 {% extends 'water-r3/layout.html' %}
 
- {% set remainingCosts = data['project-cost'] * 0.6 %}
+ {% set remainingCosts = data['cost'] * 0.6 %}
 
 {% block pageTitle %}
     Can you pay the remaining costs of {{ remainingCosts | inPounds }}?

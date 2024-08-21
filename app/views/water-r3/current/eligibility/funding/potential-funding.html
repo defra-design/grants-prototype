@@ -4,6 +4,16 @@
     Potential grant funding
 {% endblock %}
 
+{% set grantAmount = data['cost'] * 0.4 %}
+{% set maxProjectGrantAmount = 500000 %}
+
+{# [X if X else 0] makes sure we've always got a number to work with #}
+{% set projectCost = data['cost'] | float if data['cost'] else 0 %}
+
+    {% if grantAmount > maxProjectGrantAmount %}
+        {% set grantAmount = maxProjectGrantAmount %}
+        {% set projectGrantIsCapped = true %}
+    {% endif %}
 
 {% block content %}
 
@@ -15,9 +25,15 @@
 
                     <h1 class="govuk-heading-l">Potential grant funding</h1>
 
-                       {% set grantAmount = data['cost'] * 0.4 %}
+                            {% if projectGrantIsCapped %}
+                                <p>
+                                    You can apply for a maximum of {{ maxProjectGrantAmount | inPounds }} for project costs.
+                                </p>
+                            {% else %}
 
-                        <p class="govuk-body">You may be able to apply for a grant of up to £{{ grantAmount | toFixed(0) | commafy }}, based on the estimated cost of £{{ data['cost'] | toFixed(2) | commafy }}.</p>
+                                <p class="govuk-body">You may be able to apply for a grant of up to £{{ grantAmount | toFixed(0) | commafy }}, based on the estimated cost of £{{ data['cost'] | toFixed(2) | commafy }}.</p>
+
+                            {% endif %}
 
                         {{ govukWarningText({
                         text: "There's no guarantee the project will receive a grant.",

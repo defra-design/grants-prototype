@@ -8,17 +8,9 @@
 
 {% set grantAmount = data['cost'] | float | percent(40) %}
 
-{% if grantAmount >= 35000 %}
+{% if grantAmount >= 35000%}
 
-    {# {% if data['solar-pv'] == 'Yes' %}
-
-        {{ 'solar-pv-cost' | redirect | safe }}
-
-    {% else %}
-     #}
-        {{ 'potential-funding' | redirect | safe }}
-
-    {# {% endif %} #}
+     {{ 'potential-funding' | redirect | safe }}
 
 {% endif %}
 
