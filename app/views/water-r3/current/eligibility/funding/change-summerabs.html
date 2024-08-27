@@ -22,8 +22,84 @@ Changing the summer abstraction and mains
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      
+      {% if data['current-irrigating'] == 'No' %}
 
-        <div class="govuk-form-group">
+       {{ govukRadios ({
+        classes: 'govuk-radios--inline',
+        idPrefix: 'change-summerabs', 
+        name: 'change-summerabs', 
+  
+        fieldset: {
+          legend: {
+            text: 'Will you increase your use of summer abstraction or mains?',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--l'
+          }
+        },
+
+        items: [
+          {
+            value: 'Yes',
+            text: 'Yes',
+            checked: true if 'Yes' | isIn(data['change-summerabs']),
+            attributes: {
+                   'data-next': 'summerabs-fail'
+             }
+          },
+          {
+            value: 'No',
+            text: 'No',
+            checked: true if 'No' | isIn(data['change-summerabs']),
+            attributes: {
+                    'data-next': 'water-source'
+             }
+          }
+        ]
+      }) }}
+
+      {% else %}
+
+          {{ govukRadios ({
+        classes: 'govuk-radios--inline',
+        idPrefix: 'change-summerabs', 
+        name: 'change-summerabs', 
+  
+        fieldset: {
+          legend: {
+            text: 'Will you use water from summer abstraction or mains?',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--l'
+          }
+        },
+
+        items: [
+          {
+            value: 'Yes',
+            text: 'Yes',
+            checked: true if 'Yes' | isIn(data['change-summerabs']),
+            attributes: {
+                   'data-next': 'summerabs-fail'
+             }
+          },
+          {
+            value: 'No',
+            text: 'No',
+            checked: true if 'No' | isIn(data['change-summerabs']),
+            attributes: {
+                   'data-next': 'water-source-2'
+             }
+          }
+        ]
+      }) }}
+
+      {% endif %}
+
+        {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+        {# <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               {% if data['current-irrigating'] == 'Yes' %}
@@ -53,7 +129,7 @@ Changing the summer abstraction and mains
             </div>
         </div>
 
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button> #}
 
       </form>
     </div>

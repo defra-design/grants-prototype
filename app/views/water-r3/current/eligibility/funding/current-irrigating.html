@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  current-irrigating
+  Are you currently irrigating?
 {% endblock %}
 
 {% block beforeContent %}
@@ -38,12 +38,18 @@
           {
             value: 'Yes',
             text: 'Yes',
-            checked: true if 'Yes' | isIn(data['current-irrigating'])
+            checked: true if 'Yes' | isIn(data['current-irrigating']),
+             attributes: {
+                   'data-next': 'change-summerabs'
+             }
           },
           {
             value: 'No',
             text: 'No',
-            checked: true if 'No' | isIn(data['current-irrigating'])
+            checked: true if 'No' | isIn(data['current-irrigating']),
+             attributes: {
+                   'data-next': 'change-summerabs'
+             }
           }
         ]
       }) }}
