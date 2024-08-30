@@ -1,28 +1,114 @@
-{% extends "layout.html" %}
+{% extends 'water-r3/layout.html' %}
 
 {% block pageTitle %}
-  Water source 2
-{% endblock %}
-
-{% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-    text: "prototype",
-    classes: "govuk-tag--pink"
-    },
-      html: 'This is not a full service. It is not production code and you might experience problems.'
-  }) }}
-  <a class="govuk-back-link" href="change-summerabs">Back</a>
+    Water source<
 {% endblock %}
 
 {% block content %}
 
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-          <h1 class="govuk-heading-l">Water source</h1>
+      <form action="" method="post">
+
+        <h1 class="govuk-heading-l">Water source</h1>
+          
+           {{ govukCheckboxes ({ 
+            classes: 'govuk-checkboxes',
+            idPrefix: 'water-source-2-current',
+            name: 'water-source-2-current',
+            fieldset: {
+                        legend: {
+                          html: '<h2 class="govuk-heading-m">What is your current main water source?</h2>',
+                          isPageHeading: false
+                        }
+                      },
+            hint: {
+              text: 'Select all that apply'
+            },
+            items: [
+              {
+                text: 'Summer water surface abstraction',
+                value: 'Summer abstraction',
+                checked: true if data['water-source-2-current'] == 'Summer abstraction'
+              },
+              {
+                text: 'Mains',
+                value: 'Mains',
+                checked: true if data['water-source-2-current'] == 'Mains'
+              },
+              {
+                text: 'Winter peak-flow abstraction',
+                value: 'Peak flow',
+                checked: true if data['water-source-2-current'] == 'Peak flow'
+              },
+              {
+                text: 'Rain water harvesting',
+                value: 'Rain water harvesting',
+                checked: true if data['water-source-2-current'] == 'Rain water harvesting'
+              },
+              {
+                text: 'Bore hole/aquifer',
+                value: 'Bore hole',
+                checked: true if data['water-source-2-current'] == 'Bore hole'
+              }
+            ]
+          }) }}
+
+          {{ govukCheckboxes ({ 
+            classes: 'govuk-checkboxes',
+            idPrefix: 'water-source-2-target',
+            name: 'water-source-2-target',
+            fieldset: {
+              legend: {
+                          html: '<h2 class="govuk-heading-m">What will the irrigated water come from?</h2>',
+                          isPageHeading: false
+                        }
+            },
+            hint: {
+              text: 'Select all that apply'
+            },
+            items: [
+              {
+                text: 'Summer water surface abstraction',
+                value: 'Summer abstraction',
+                checked: true if data['water-source-2-target'] == 'Summer abstraction'
+              },
+              {
+                text: 'Mains',
+                value: 'Mains',
+                checked: true if data['water-source-2-target'] == 'Mains'
+              },
+              {
+                text: 'Winter peak-flow abstraction',
+                value: 'Peak flow',
+                checked: true if data['water-source-2-target'] == 'Peak flow'
+              },
+              {
+                text: 'Rain water harvesting',
+                value: 'Rain water harvesting',
+                checked: true if data['water-source-2-target'] == 'Rain water harvesting'
+              },
+              {
+                text: 'Bore hole/aquifer',
+                value: 'Bore hole',
+                checked: true if data['water-source-2-target'] == 'Bore hole'
+              }
+            ]
+          }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {% if data['COMPLETED'] == true %}
+          {{ govukButton({
+            text: "Back to score",
+            classes: "govuk-button--secondary",
+            url: completedUrl
+          }) }}
+        {% endif %}
+          
+      {# <h1 class="govuk-heading-l">Water source</h1>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -65,9 +151,6 @@
                   Bore hole/aquifer
                 </label>
               </div>
-
-
-
             </div>
           </fieldset>
         </div>
@@ -130,7 +213,7 @@
             Back to score
           </button>
         {% endif %}
-
+ #}
 
       </form>
   </div>
