@@ -18,145 +18,139 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
-        <h1 class="govuk-heading-l">Irrigation systems</h1>
+      <form action="irrigated-crops" method="post">
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h2 class="govuk-fieldset__heading">
-                What is your current irrigation system?</h2>
-            </legend>
+        <h1 class="govuk-heading-l">Irrigation Systems</h1>
 
-            <div id="irrigation-systems" class="govuk-hint">
-            Select up to 2 options</div>
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-current-1" name="irrigation-systems-current" type="checkbox" value="Boom" {{ checked("irrigation-systems-current", "Boom") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-1">
-                  Boom
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-current-2" name="irrigation-systems-current" type="checkbox" value="Capillary Bed" {{ checked("irrigation-systems-current", "Capillary Bed") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-2">
-                  Capillary bed
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-current-3" name="irrigation-systems-current" type="checkbox" value="Ebb and flood" {{ checked("irrigation-systems-current", "Ebb and flood") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-3">
-                  Ebb and flow
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-current-4" name="irrigation-systems-current" type="checkbox" value="Mist" {{ checked("irrigation-systems-current", "Mist") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-4">
-                  Mist
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-current-5" name="irrigation-systems-current" type="checkbox" value="Rain gun" {{ checked("irrigation-systems-current", "Rain gun") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-5">
-                  Rain gun
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-current-6" name="irrigation-systems-current" type="checkbox" value="Sprinklers" {{ checked("irrigation-systems-current", "Sprinklers") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-6">
-                  Sprinklers
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="irrigation-systems-current-7" name="irrigation-systems-current" type="checkbox" value="Trickle" {{ checked("irrigation-systems-current", "Trickle") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-7">
-                  Trickle
-                </label>
-              </div>
-            </div>
+        {{ govukCheckboxes ({
+          classes: 'govuk-checkboxes',
+          idPrefix: 'irrigation-systems-current',
+          name: 'irrigation-systems-current',
+          fieldset: {
+            legend: {
+              text: 'What systems are currently used to irrigate?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--m'
+            }
+          },
+          hint: {
+            text: 'Select up to 2 options'
+          },
+          items: [
+            {
+              text: 'Trickle',
+              value: 'Trickle',
+              checked: true if data['irrigation-systems-current'] == 'Trickle'
+            },
+            {
+              text: 'Boom',
+              value: 'Boom',
+              checked: true if data['irrigation-systems-current'] == 'Boom'
+            },
+            {
+              text: 'Ebb and flow',
+              value: 'Ebb and flow',
+              checked: true if data['irrigation-systems-current'] == 'Ebb and flow'
+            },
+            {
+              text: 'Capillary bed',
+              value: 'Capillary bed',
+              checked: true if data['irrigation-systems-current'] == 'Capillary bed'
+            },
+            {
+              text: 'Sprinklers',
+              value: 'Sprinklers',
+              checked: true if data['irrigation-systems-current'] == 'Sprinklers'
+            },
+            {
+              text: 'Mist',
+              value: 'Mist',
+              checked: true if data['irrigation-systems-current'] == 'Mist'
+            },
+            {
+              text: 'Rain gun',
+              value: 'Rain gun',
+              checked: true if data['irrigation-systems-current'] == 'Rain gun'
+            }
+          ]
+        }) }}
 
-          </fieldset>
-        </div>
+           {{ govukCheckboxes ({
+          classes: 'govuk-checkboxes',
+          idPrefix: 'irrigation-systems-target',
+          name: 'irrigation-systems-target',
+          fieldset: {
+            legend: {
+              text: 'What systems will be used to irrigate?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--m'
+            }
+          },
+          hint: {
+            text: 'Select up to 2 options'
+          },
+          items: [
+            {
+              text: 'Trickle',
+              value: 'Trickle',
+              checked: true if data['irrigation-systems-target'] == 'Trickle'
+            },
+            {
+              text: 'Boom',
+              value: 'Boom',
+              checked: true if data['irrigation-systems-target'] == 'Boom'
+            },
+            {
+              text: 'Ebb and flow',
+              value: 'Ebb and flow',
+              checked: true if data['irrigation-systems-target'] == 'Ebb and flow'
+            },
+            {
+              text: 'Capillary bed',
+              value: 'Capillary bed',
+              checked: true if data['irrigation-systems-target'] == 'Capillary bed'
+            },
+            {
+              text: 'Sprinklers',
+              value: 'Sprinklers',
+              checked: true if data['irrigation-systems-target'] == 'Sprinklers'
+            },
+            {
+              text: 'Mist',
+              value: 'Mist',
+              checked: true if data['irrigation-systems-target'] == 'Mist'
+            },
+            {
+              text: 'Rain gun',
+              value: 'Rain gun',
+              checked: true if data['irrigation-systems-target'] == 'Rain gun'
+            }
+          ]
+        }) }}
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h2 class="govuk-fieldset__heading">
-                What systems will be used to irrigate?
-              </h2>
-            </legend>
-
-            <div id="irrigation-systems-target" class="govuk-hint">
-              Select up to 2 options</div>
-              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-1" name="irrigation-systems-target" type="checkbox" value="Boom" {{ checked("irrigation-systems-target", "Boom") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-1">
-                    Boom
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-2" name="irrigation-systems-target" type="checkbox" value="Capillary Bed" {{ checked("irrigation-systems-target", "Capillary Bed") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-2">
-                    Capillary bed
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-3" name="irrigation-systems-target" type="checkbox" value="Ebb and flow" {{ checked("irrigation-systems-target", "Ebb and flow") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-3">
-                    Ebb and flow
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-4" name="irrigation-systems-target" type="checkbox" value="Mist" {{ checked("irrigation-systems-target", "Mist") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-4">
-                    Mist
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-5" name="irrigation-systems-target" type="checkbox" value="Rain gun" {{ checked("irrigation-systems-target", "Rain gun") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-5">
-                    Rain gun
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-6" name="irrigation-systems-target" type="checkbox" value="Sprinklers" {{ checked("irrigation-systems-target", "Sprinklers") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-6">
-                    Sprinklers
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-7" name="irrigation-systems-target" type="checkbox" value="Trickle" {{ checked("irrigation-systems-target", "Trickle") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-7">
-                    Trickle
-                  </label>
-                </div>
-              </div>
-
-          </fieldset>
-        </div>
-
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-          Continue
-        </button>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
         {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-            class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button"
-          >
-            Back to score
-          </button>
+          {{ govukButton({
+            text: "Back to score",
+            classes: "govuk-button--secondary",
+            url: completedUrl
+          }) }}
         {% endif %}
+
       </form>
     </div>
+
+
     <div class="govuk-grid-column-one-third">
       <aside class="app-related-items">
         <h3 class="govuk-heading-s"> Funding  priorities</h3>
         <div class="govuk-body govuk-!-font-size-19">
           <p>RPA wants to fund projects that move from less efficient irrigation systems to more efficient ones. <br><br>For example, moving from rain gun to trickle.</p>
-
         </div>
       </aside>
     </div>
