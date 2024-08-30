@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What systems will be used to irrigate?
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="irrigated-crops" method="post">
+
+        {{ govukCheckboxes ({
+          classes: 'govuk-checkboxes',
+          idPrefix: 'irrigation-systems-target',
+          name: 'irrigation-systems-target',
+          fieldset: {
+            legend: {
+              text: 'What systems will be used to irrigate?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          hint: {
+            text: 'Select up to 2 options'
+          },
+          items: [
+            {
+              text: 'Trickle',
+              value: 'Trickle',
+              checked: true if data['irrigation-systems-target'] == 'Trickle'
+            },
+            {
+              text: 'Boom',
+              value: 'Boom',
+              checked: true if data['irrigation-systems-target'] == 'Boom'
+            },
+            {
+              text: 'Ebb and flow',
+              value: 'Ebb and flow',
+              checked: true if data['irrigation-systems-target'] == 'Ebb and flow'
+            },
+            {
+              text: 'Capillary bed',
+              value: 'Capillary bed',
+              checked: true if data['irrigation-systems-target'] == 'Capillary bed'
+            },
+            {
+              text: 'Sprinklers',
+              value: 'Sprinklers',
+              checked: true if data['irrigation-systems-target'] == 'Sprinklers'
+            },
+            {
+              text: 'Mist',
+              value: 'Mist',
+              checked: true if data['irrigation-systems-target'] == 'Mist'
+            },
+            {
+              text: 'Rain gun',
+              value: 'Rain gun',
+              checked: true if data['irrigation-systems-target'] == 'Rain gun'
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {% if data['COMPLETED'] == true %}
+          {{ govukButton({
+            text: "Back to score",
+            classes: "govuk-button--secondary",
+            url: completedUrl
+          }) }}
+        {% endif %}
+
+       </form>
+    </div>
+    
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-s"> Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">
+          RPA wants to fund projects that move from less efficient irrigation systems to more efficient ones. <br><br>For example, moving from rain gun to trickle.
+        </div>
+      </aside>
+    </div>
+
+{% endblock %}

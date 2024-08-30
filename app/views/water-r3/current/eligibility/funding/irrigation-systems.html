@@ -1,0 +1,164 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Irrigation systems
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems.'
+  }) }}
+  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+        <h1 class="govuk-heading-l">Irrigation systems</h1>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                What is your current irrigation system?</h2>
+            </legend>
+
+            <div id="irrigation-systems" class="govuk-hint">
+            Select up to 2 options</div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-1" name="irrigation-systems-current" type="checkbox" value="Boom" {{ checked("irrigation-systems-current", "Boom") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-1">
+                  Boom
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-2" name="irrigation-systems-current" type="checkbox" value="Capillary Bed" {{ checked("irrigation-systems-current", "Capillary Bed") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-2">
+                  Capillary bed
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-3" name="irrigation-systems-current" type="checkbox" value="Ebb and flood" {{ checked("irrigation-systems-current", "Ebb and flood") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-3">
+                  Ebb and flow
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-4" name="irrigation-systems-current" type="checkbox" value="Mist" {{ checked("irrigation-systems-current", "Mist") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-4">
+                  Mist
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-5" name="irrigation-systems-current" type="checkbox" value="Rain gun" {{ checked("irrigation-systems-current", "Rain gun") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-5">
+                  Rain gun
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-6" name="irrigation-systems-current" type="checkbox" value="Sprinklers" {{ checked("irrigation-systems-current", "Sprinklers") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-6">
+                  Sprinklers
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="irrigation-systems-current-7" name="irrigation-systems-current" type="checkbox" value="Trickle" {{ checked("irrigation-systems-current", "Trickle") }}>
+                <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-current-7">
+                  Trickle
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                What systems will be used to irrigate?
+              </h2>
+            </legend>
+
+            <div id="irrigation-systems-target" class="govuk-hint">
+              Select up to 2 options</div>
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-1" name="irrigation-systems-target" type="checkbox" value="Boom" {{ checked("irrigation-systems-target", "Boom") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-1">
+                    Boom
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-2" name="irrigation-systems-target" type="checkbox" value="Capillary Bed" {{ checked("irrigation-systems-target", "Capillary Bed") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-2">
+                    Capillary bed
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-3" name="irrigation-systems-target" type="checkbox" value="Ebb and flow" {{ checked("irrigation-systems-target", "Ebb and flow") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-3">
+                    Ebb and flow
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-4" name="irrigation-systems-target" type="checkbox" value="Mist" {{ checked("irrigation-systems-target", "Mist") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-4">
+                    Mist
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-5" name="irrigation-systems-target" type="checkbox" value="Rain gun" {{ checked("irrigation-systems-target", "Rain gun") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-5">
+                    Rain gun
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-6" name="irrigation-systems-target" type="checkbox" value="Sprinklers" {{ checked("irrigation-systems-target", "Sprinklers") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-6">
+                    Sprinklers
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="irrigation-systems-target-7" name="irrigation-systems-target" type="checkbox" value="Trickle" {{ checked("irrigation-systems-target", "Trickle") }}>
+                  <label class="govuk-label govuk-checkboxes__label" for="irrigation-systems-target-7">
+                    Trickle
+                  </label>
+                </div>
+              </div>
+
+          </fieldset>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to score
+          </button>
+        {% endif %}
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-s"> Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">
+          <p>RPA wants to fund projects that move from less efficient irrigation systems to more efficient ones. <br><br>For example, moving from rain gun to trickle.</p>
+
+        </div>
+      </aside>
+    </div>
+
+{% endblock %}
