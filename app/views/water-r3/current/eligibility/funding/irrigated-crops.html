@@ -1,26 +1,15 @@
-{% extends "layout.html" %}
+{% extends 'water-r3/layout.html' %}
 
 {% block pageTitle %}
-  Irrigated crops
-{% endblock %}
-
-{% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-    text: "prototype",
-    classes: "govuk-tag--pink"
-    },
-      html: 'This is not a full service. It is not production code and you might experience problems.'
-  }) }}
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+    Irrigated crops
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      <form action="irrigated-land" method="post">
+      
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">

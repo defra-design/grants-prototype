@@ -32,8 +32,6 @@ Project type
                           classes: 'govuk-fieldset__legend--l'
                       }
                   },
-
-
                   items: [
                 {
                   value: "Replace",
@@ -62,11 +60,10 @@ Project type
                 {
                   divider: "or"
                 },
-
                 {
                   value: "None",
                   text: "None of the above",
-                  checked: checked("projecttype", "None")
+                  checked: checked("projecttype", "None"),
                   attributes: {
                     "data-next": "project-type-fail"
                   } 
