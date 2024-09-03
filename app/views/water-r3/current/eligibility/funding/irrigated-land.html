@@ -12,6 +12,8 @@
 
         <h1 class="govuk-heading-l">Irrigated land</h1>
 
+         {% if data['current-irrigating'] == 'Yes' %}
+        
           {{ govukInput({
             id: "irrigated-land-current",
             name: "irrigated-land-current",
@@ -50,42 +52,35 @@
             },
             classes: "govuk-input--width-5",
             spellcheck: false
-          }) }} 
-          
-          {# <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="irrigated-land">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h2 class="govuk-fieldset__heading">
-                How much land is currently irrigated per year?
-              </h2>
-              </legend>
-                <div id="irrigated-land" class="govuk-hint">
-                  Enter figure in hectares (ha), for example 543.5
-                </div>
+          }) }}
 
-                <div class="govuk-input__wrapper govuk-!-margin-bottom-8">
-                  <input class="govuk-input govuk-input--width-5" id="irrigated-land-current" name="irrigated-land-current" type="text" spellcheck="false" aria-describedby="irrigated-land-current-hint"  value="{{ data['irrigated-land-current'] }}">
-                  <div class="govuk-input__suffix" aria-hidden="true">ha</div>
-                </div>
-                  <fieldset class="govuk-fieldset" aria-describedby="irrigated-land">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                      <h2 class="govuk-fieldset__heading">
-                        How much land will be irrigated per year after the project?
-                      </h2>
-                      </legend>
-                        <div id="irrigated-land" class="govuk-hint">
-                          Enter figure in hectares (ha), for example 543.5
-                        </div>
-                        <div class="govuk-input__wrapper govuk-!-margin-bottom-7">
-                          <input class="govuk-input govuk-input--width-5" id="irrigated-land-target" name="irrigated-land-target" type="text" spellcheck="false" aria-describedby="irrigated-land-target-hint" value="{{ data['irrigated-land-target'] }}">
-                          <div class="govuk-input__suffix" aria-hidden="true">ha</div>
-                        </div>
-                    </fieldset>
-               #}
+        {% else %}
 
-              <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-                Continue
-              </button>
+          {{ govukInput({
+            id: "irrigated-land-target",
+            name: "irrigated-land-target",
+            value: data['irrigated-land-target'] if data['irrigated-land-target'] else '',
+            label: {
+              text: "How much land will be irrigated per year after the project?",
+              classes: "govuk-label--m",
+              isPageHeading: false
+            },
+            hint: {
+              text: "Enter figure in hectares (ha), for example 543.5",
+              classes: "govuk-hint"
+            },
+            suffix: {
+              text: "ha"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+          }) }}
+
+        {% endif %}
+
+          {{ govukButton ({
+              html: 'Continue'
+            }) }}
 
               {% if data['COMPLETED'] == true %}
                 <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
