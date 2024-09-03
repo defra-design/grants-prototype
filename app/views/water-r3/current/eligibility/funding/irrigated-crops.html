@@ -9,41 +9,39 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form action="irrigated-land" method="post">
-      
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                What main crops will be irrigated?
-              </h1>
-            </legend>
-            <br>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="irrigated-crops-1" name="irrigated-crops" type="radio" value="field-scale crops" {{ checked("irrigated-crops", "field-scale crops") }}>
-                <label class="govuk-label govuk-radios__label" for="irrigated-crops-1">
-                  Field-scale crops (for example potatoes, onions, carrots)
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="irrigated-crops-2" name="irrigated-crops" type="radio" value="protected cropping" {{ checked("irrigated-crops", "protected cropping") }}>
-                <label class="govuk-label govuk-radios__label" for="irrigated-crops-2">
-                  Protected cropping (for example glasshouse or poly tunnel)
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="irrigated-crops-3" name="irrigated-crops" type="radio" value="Fruit" {{ checked("irrigated-crops", "Fruit") }}>
-                <label class="govuk-label govuk-radios__label" for="irrigated-crops-3">
-                  Fruit (for example fruit, bush fruit)
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
 
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-          Continue
-        </button>
+       {{ govukRadios ({
+        idPrefix: 'irrigated-crops',
+        name: 'irrigated-crops',
+        fieldset: {
+          legend: {
+            text: 'What main crops will be irrigated?',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--l'
+          }
+        },
+        items: [
+          {
+            text: 'Field-scale crops (for example potatoes, onions, carrots)',
+            value: 'field-scale crops',
+            checked: true if data['irrigated-crops'] == 'field-scale crops'
+          },
+          {
+            text: 'Protected cropping (for example glasshouse or poly tunnel)',
+            value: 'protected cropping',
+            checked: true if data['irrigated-crops'] == 'protected cropping'
+          },
+          {
+            text: 'Fruit (for example fruit, bush fruit)',
+            value: 'Fruit',
+            checked: true if data['irrigated-crops'] == 'Fruit'
+          }
+        ]
+       }) }}
+
+        {{ govukButton ({
+          html: 'Continue'
+        }) }}
 
         {% if data['COMPLETED'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
@@ -52,19 +50,22 @@
             Back to score
           </button>
         {% endif %}
+
       </form>
     </div>
-     <div class="govuk-grid-column-one-third">
-      <aside class="app-related-items">
-          <h3 class="govuk-heading-s"> Funding  priorities </h3>
-          <div class="govuk-body">
-             RPA wants to fund projects that:
-                   <ul>
-                    <li>improve productivity</li>
-                   </ul>
-          </div>
-      </aside>
-    </div>
+    
+      <div class="govuk-grid-column-one-third">
+        <aside class="app-related-items">
+            <h3 class="govuk-heading-s">Funding  priorities</h3>
+            <div class="govuk-body">
+              RPA wants to fund projects that:
+                    <ul>
+                        <li>improve productivity</li>
+                    </ul>
+            </div>
+        </aside>
+      </div>
+
   </div>
 
 {% endblock %}
