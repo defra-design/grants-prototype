@@ -6,6 +6,11 @@
 
 {% block content %}
 
+{% set selected_sources = data['water-source-2-target'] %}
+{% if 'Mains' in selected_sources and 'Summer abstraction' in selected_sources %}
+    {{ 'unsustainable-watersource' | redirect | safe }}
+{% endif %}
+
 {% if data['water-source-2-target'] == 'Mains' %}
     {{ 'mains-only' | redirect | safe }}
 {% endif %}
