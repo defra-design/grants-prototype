@@ -8,7 +8,8 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="" method="post">
+
+      <form method="post" action="change-summerabs">
 
         <h1 class="govuk-heading-l">Water source</h1>
           
@@ -29,27 +30,27 @@
               {
                 text: 'Summer water surface abstraction',
                 value: 'Summer abstraction',
-                checked: true if data['water-source-2-current'] == 'Summer abstraction'
+                checked: true if ['water-source-2-current'] == 'Summer abstraction'
               },
               {
                 text: 'Mains',
                 value: 'Mains',
-                checked: true if data['water-source-2-current'] == 'Mains'
+                checked: true if ['water-source-2-current'] == 'Mains'
               },
               {
                 text: 'Winter peak-flow abstraction',
                 value: 'Peak flow',
-                checked: true if data['water-source-2-current'] == 'Peak flow'
+                checked: true if ['water-source-2-current'] == 'Peak flow'
               },
               {
                 text: 'Rain water harvesting',
                 value: 'Rain water harvesting',
-                checked: true if data['water-source-2-current'] == 'Rain water harvesting'
+                checked: true if ['water-source-2-current'] == 'Rain water harvesting'
               },
               {
                 text: 'Bore hole/aquifer',
                 value: 'Bore hole',
-                checked: true if data['water-source-2-current'] == 'Bore hole'
+                checked: true if ['water-source-2-current'] == 'Bore hole'
               }
             ]
           }) }}
@@ -71,27 +72,27 @@
               {
                 text: 'Summer water surface abstraction',
                 value: 'Summer abstraction',
-                checked: true if data['water-source-2-target'] == 'Summer abstraction'
+                checked: true if ['water-source-2-target'] == 'Summer abstraction'
               },
-              {
+             {
                 text: 'Mains',
                 value: 'Mains',
-                checked: true if data['water-source-2-target'] == 'Mains'
+                checked: true if ['water-source-2-target'] == 'Mains'
               },
               {
                 text: 'Winter peak-flow abstraction',
                 value: 'Peak flow',
-                checked: true if data['water-source-2-target'] == 'Peak flow'
+                checked: true if ['water-source-2-target'] == 'Peak flow'
               },
               {
                 text: 'Rain water harvesting',
                 value: 'Rain water harvesting',
-                checked: true if data['water-source-2-target'] == 'Rain water harvesting'
+                checked: true if ['water-source-2-target'] == 'Rain water harvesting'
               },
               {
                 text: 'Bore hole/aquifer',
                 value: 'Bore hole',
-                checked: true if data['water-source-2-target'] == 'Bore hole'
+                checked: true if ['water-source-2-target'] == 'Bore hole'
               }
             ]
           }) }}
@@ -108,115 +109,10 @@
           }) }}
         {% endif %}
           
-      {# <h1 class="govuk-heading-l">Water source</h1>
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h2 class="govuk-fieldset__heading">
-                What is your current water source?
-              </h2>
-            </legend>
-
-            <div id="water-source" class="govuk-hint">
-            Select all that apply</div>
-
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-current-4" name="water-source-2-current" type="checkbox" value="Summer abstraction" {{ checked("water-source-2-current", "Summer abstraction") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="water-source-2-current-4">
-                  Summer water surface abstraction
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-current-5" name="water-source-2-current" type="checkbox" value="Mains" {{ checked("water-source-2-current", "Mains") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="water-source-2-current-5">
-                  Mains
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-current-1" name="water-source-2-current" type="checkbox" value="Peak flow" {{ checked("water-source-2-current", "Peak flow") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="water-source-2-current-1">
-                  Winter peak-flow abstraction
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-current-3" name="water-source-2-current" type="checkbox" value="Rain water harvesting" {{ checked("water-source-2-current", "Rain water harvesting") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="water-source-2-current-3">
-                  Rain water harvesting
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-current-2" name="water-source-2-current" type="checkbox" value="Bore hole" {{ checked("water-source-2-current", "Bore hole") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="water-source-2-current-2">
-                  Bore hole/aquifer
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                <h2 class="govuk-fieldset__heading">
-                  Where will the irrigation water come from?
-                </h2>
-              </legend>
-
-              <div id="water-source" class="govuk-hint">
-              Select all that apply</div>
-              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="water-source-2-target-4" name="water-source-2-target" type="checkbox" value="Summer abstraction" {{ checked("water-source-2-target", "Summer abstraction") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="water-source-2-target-4">
-                    Summer water surface abstraction
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="water-source-2-target-5" name="water-source-2-target" type="checkbox" value="Mains" {{ checked("water-source-2-target", "Mains") }}>
-                  <label class="govuk-label govuk-checkboxes__label" for="water-source-2-target-5">
-                    Mains
-                  </label>
-                </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-target-1" name="water-source-2-target" type="checkbox" value="Peak flow" {{ checked("water-source-2-target", "Peak flow") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="water-source-2-target-1">
-                  Winter peak-flow abstraction
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-target-3" name="water-source-2-target" type="checkbox" value="Rain water harvesting" {{ checked("water-source-2-target", "Rain water harvesting") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="water-source-2-target-3">
-                  Rain water harvesting
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="water-source-2-target-2" name="water-source-2-target" type="checkbox" value="Bore hole" {{ checked("water-source-2-target", "Bore hole") }}>
-                <label class="govuk-label govuk-checkboxes__label" for="water-source-2-target-2">
-                  Bore hole/aquifer
-                </label>
-              </div>
-
-
-            </div>
-          </fieldset>
-        </div>
-
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-          Continue
-        </button>
-
-        {% if data['COMPLETED'] == true %}
-          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
-            class="govuk-button govuk-button--secondary" data-module="govuk-button"
-          >
-            Back to score
-          </button>
-        {% endif %}
- #}
-
       </form>
+
   </div>
+
   <div class="govuk-grid-column-one-third">
       <aside class="app-related-items">
         <h3 class="govuk-heading-s"> Funding  priorities</h3>
@@ -235,7 +131,19 @@
         </div>
       </aside>
   </div>
-  </div>
+</div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var mainsCheckbox = document.getElementById('mains-checkbox');
+    if (mainsCheckbox) {
+      mainsCheckbox.addEventListener('change', function() {
+        if (mainsCheckbox.checked) {
+          window.location.href = 'mains-only.html';
+        }
+      });
+    }
+  });
+</script>
 
 {% endblock %}

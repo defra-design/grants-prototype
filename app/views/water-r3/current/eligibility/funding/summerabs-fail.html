@@ -1,19 +1,7 @@
-{% extends "layout.html" %}
+{% extends 'water-r3/layout.html' %}
 
 {% block pageTitle %}
-  Remaining costs fail
-{% endblock %}
-
-{% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-    text: "prototype",
-    classes: "govuk-tag--pink"
-    },
-      html: 'This is not a full service. It is not production code and you might experience problems.'
-  }) }}
-  <a class="govuk-back-link" href="change-summerabs">Back</a>
+   You cannot apply for a grant from this scheme
 {% endblock %}
 
 {% block content %}
