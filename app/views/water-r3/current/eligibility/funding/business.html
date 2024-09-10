@@ -13,7 +13,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
+      <form action="applying" method="post">
 
         <h1 class="govuk-heading-l">
           Business details
@@ -94,13 +94,13 @@
                     html: 'Continue'
                 }) }}
 
-        {% if data['DETAILS'] == true %}
+        {# {% if data['DETAILS'] == true %}
            {{ govukButton ({
             html: 'Back to details',
             url: detailsUrl, 
             class: 'govuk-button--secondary'
            }) }}
-        {% endif %}
+        {% endif %} #}
 
       </form>
         
