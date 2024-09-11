@@ -11,11 +11,167 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
+
+      <form class="form" action="check-details" method="post">
+
         <h1 class="govuk-heading-l"> Agent's details</h1>
         <div id="agent-hint" class="govuk-hint govuk-!-padding-bottom-2">Enter the agent and agent business details
           </div>
-        <h2 class="govuk-heading-m">Name</h2>
+
+          <h2 class="govuk-heading-m">Name</h2>
+
+          {{ govukInput
+            ({
+              id: 'agent-firstname',
+              name: 'agent-firstname',
+              value: data['agent-firstname'] if data['agent-firstname'] else '',
+              classes: 'govuk-input--width-20',
+              type: 'text',
+              label: { text: 'First name' }
+            })
+          }}
+
+          {{ govukInput
+            ({
+              id: 'agent-lastname',
+              name: 'agent-lastname',
+              value: data['agent-lastname'] if data['agent-lastname'] else '',
+              classes: 'govuk-input--width-20',
+              type: 'text',
+              label: { text: 'Last name' }
+            })
+          }}
+
+          {{ govukInput
+            ({
+              id: 'business-name',
+              name: 'business-name',
+              value: data['business-name'] if data['business-name'] else '',
+              classes: 'govuk-input--width-20',
+              type: 'text',
+              label: { text: 'Business name' }
+            })
+          }}
+
+          <h2 class="govuk-heading-m govuk-!-padding-top-6">Contact details</h2>
+          {{ govukInput
+            ({
+              id: 'agent-email',
+              name: 'agent-email',
+              value: data['agent-email'] if data['agent-email'] else '',
+              classes: 'govuk-input--width-20',
+              type: 'agent-email',
+              hint: { text: 'We will only use this to send you confirmation' },
+              label: { text: 'Email address' }
+            })
+          }}
+
+          {{ govukInput
+            ({
+              id: 'confirm-agent-email',
+              name: 'confirm-agent-email',
+              value: data['confirm-agent-email'] if data['confirm-agent-email'] else '',
+              classes: 'govuk-input--width-20',
+              type: 'confirm-agent-email',
+              label: { text: 'Confirm email address' }
+            })
+          }}
+
+          {{ govukInput
+            ({
+              id: 'agent-landline',
+              name: 'agent-landline',
+              value: data['agent-landline'] if data['agent-landline'] else '',
+              classes: 'govuk-input--width-10',
+              type: 'agent-landline',
+              hint: { text: 'We will only use this to contact you about your application' },
+              label: { text: 'Mobile phone number' }
+            })
+          }}
+
+          {{ govukInput
+            ({
+              id: 'agent-mobile',
+              name: 'agent-mobile',
+              value: data['agent-mobile'] if data['agent-mobile'] else '',
+              classes: 'govuk-input--width-10',
+              type: 'agent-mobile',
+              hint: { text: 'We will only use this to contact you about your application' },
+              label: { text: 'Landline number' }
+            })
+          }}
+
+          <h2 class="govuk-heading-m govuk-!-padding-top-6">Business address</h2>
+          {{ govukInput
+            ({
+              id: 'agent-address1',
+              name: 'agent-address1',
+              value: data['agent-address1'] if data['agent-address1'] else '',
+              classes: 'govuk-input--width-two-thirds',
+              type: 'agent-address1',
+              label: { text: 'Address line 1' }
+            })
+          }}
+
+          {{ govukInput
+            ({
+              id: 'agent-address2',
+              name: 'agent-address2',
+              value: data['agent-address2'] if data['agent-address2'] else '',
+              classes: 'govuk-input--width-two-thirds',
+              type: 'agent-address2',
+              label: { text: 'Address line 2 (optional)' }
+            })
+          }}
+
+          {{ govukInput
+            ({
+              id: 'agent-town',
+              name: 'agent-town',
+              value: data['agent-town'] if data['agent-town'] else '',
+              classes: 'govuk-input--width-20',
+              type: 'agent-town',
+              label: { text: 'Town' }
+            })
+          }}
+
+          {{ govukInput
+            ({
+              id: 'agent-county',
+              name: 'agent-county',
+              value: data['agent-county'] if data['agent-county'] else '',
+              classes: 'govuk-input--width-20',
+              type: 'agent-county',
+              label: { text: 'County' }
+            })
+          }}
+
+          {{ govukInput
+            ({
+              id: 'agent-postcode',
+              name: 'agent-postcode',
+              value: data['agent-postcode'] if data['agent-postcode'] else '',
+              classes: 'govuk-input--width-10',
+              type: 'agent-postcode',
+              label: { text: 'Postcode' }
+            })
+          }}
+
+          {{ govukButton
+            ({
+              html: 'Continue'
+            })
+          }}
+
+          {# {% if data['DETAILS'] == true %}
+            <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
+              class="govuk-button govuk-button--secondary " data-module="govuk-button"
+            >
+              Back to details
+            </button>
+          {% endif %} #}
+
+        {# <h2 class="govuk-heading-m">Name</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="agent-firstname">
             First name
@@ -112,14 +268,14 @@
 
         <button class="govuk-button" data-module="govuk-button">
           Continue
-        </button>
+        </button> 
         {% if data['DETAILS'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
             class="govuk-button govuk-button--secondary " data-module="govuk-button"
           >
             Back to details
           </button>
-        {% endif %}
+        {% endif %} #}
 
       </form>
     </div>
