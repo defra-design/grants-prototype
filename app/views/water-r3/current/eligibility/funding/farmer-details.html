@@ -1,18 +1,15 @@
-{% extends "layout.html" %}
+{% extends 'water-r3/layout.html' %}
 
 {% block pageTitle %}
-  Applicant's details
-{% endblock %}
-
-{% block beforeContent %}
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+    Applicant's details
 {% endblock %}
 
 {% block content %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="" method="post">
+      <form class="form" action="check-details" method="post">
 
         <h1 class="govuk-heading-l">Applicant's details</h1>
 
@@ -23,7 +20,7 @@
               id: 'farmer-firstname',
               name: 'farmer-firstname',
               value: data['farmer-firstname'] if data['farmer-firstname'] else '',
-              classes: 'govuk-input--width-one-half',
+              classes: 'govuk-input--width-20',
               type: 'text',
               label: {
                 text: 'First name'
@@ -34,7 +31,7 @@
               id: 'farmer-lastname',
               name: 'farmer-lastname',
               value: data['farmer-lastname'] if data['farmer-lastname'] else '',
-              classes: 'govuk-input--width-one-half',
+              classes: 'govuk-input--width-20',
               type: 'text',
               label: {
                 text: 'Last name'
@@ -47,7 +44,7 @@
               id: 'farmer-email',
               name: 'farmer-email',
               value: data['farmer-email'] if data['farmer-email'] else '',
-              classes: 'govuk-input--width-two-thirds',
+              classes: 'govuk-input--width-20',
               type: 'farmer-email',
               hint: {
                 text: 'We will only use this to send you confirmation'
@@ -61,7 +58,7 @@
               id: 'confirm-farmer-email',
               name: 'confirm-farmer-email',
               value: data['confirm-farmer-email'] if data['confirm-farmer-email'] else '',
-              classes: 'govuk-input--width-two-thirds',
+              classes: 'govuk-input--width-20',
               type: 'confirm-farmer-email',
               label: {
                 text: 'Confirm email address'
@@ -72,7 +69,7 @@
               id: 'farmer-landline',
               name: 'farmer-landline',
               value: data['farmer-landline'] if data['farmer-landline'] else '',
-              classes: 'govuk-input--width-two-thirds',
+              classes: 'govuk-input--width-10',
               type: 'farmer-landline',
               hint: {
                 text: 'We will only use this to contact you about your application'
@@ -86,7 +83,7 @@
               id: 'farmer-mobile',
               name: 'farmer-mobile',
               value: data['farmer-mobile'] if data['farmer-mobile'] else '',
-              classes: 'govuk-input--width-two-thirds',
+              classes: 'govuk-input--width-10',
               type: 'farmer-mobile',
               hint: {
                 text: 'We will only use this to contact you about your application'
@@ -103,7 +100,6 @@
               id: 'farmer-address1',
               name: 'farmer-address1',
               value: data['farmer-address1'] if data['farmer-address1'] else '',
-              classes: 'govuk-input--width-two-thirds',
               type: 'farmer-address1',
               label: {
                 text: 'Address line 1'
@@ -114,7 +110,6 @@
               id: 'farmer-address2',
               name: 'farmer-address2',
               value: data['farmer-address2'] if data['farmer-address2'] else '',
-              classes: 'govuk-input--width-two-thirds',
               type: 'farmer-address2',
               label: {
                 text: 'Address line 2 (optional)'
@@ -125,7 +120,7 @@
               id: 'farmer-town',
               name: 'farmer-town',
               value: data['farmer-town'] if data['farmer-town'] else '',
-              classes: 'govuk-input--width-one-half',
+              classes: "govuk-!-width-two-thirds",
               type: 'farmer-town',
               label: {
                 text: 'Town'
@@ -136,7 +131,7 @@
               id: 'farmer-county',
               name: 'farmer-county',
               value: data['farmer-county'] if data['farmer-county'] else '',
-              classes: 'govuk-input--width-one-half',
+              classes: "govuk-!-width-two-thirds",
               type: 'farmer-county',
               label: {
                 text: 'County'
@@ -147,7 +142,7 @@
               id: 'business-postcode',
               name: 'business-postcode',
               value: data['business-postcode'] if data['business-postcode'] else '',
-              classes: 'govuk-input--width-one-quarter',
+              classes: 'govuk-input--width-10',
               type: 'business-postcode',
               label: {
                 text: 'Business postcode'
@@ -158,7 +153,7 @@
               id: 'project-postcode',
               name: 'project-postcode',
               value: data['project-postcode'] if data['project-postcode'] else '',
-              classes: 'govuk-input--width-one-quarter',
+              classes: 'govuk-input--width-10',
               type: 'project-postcode',
               hint: {
                 text: 'The site postcode where the work will happen'
