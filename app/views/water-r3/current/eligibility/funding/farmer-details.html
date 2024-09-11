@@ -12,11 +12,167 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" id="mainForm" action="{{ nextUrl }}" method="post">
-        <h1 class="govuk-heading-l"> Applicant's details</h1>
-        <div id="applicant-hint" class="govuk-hint govuk-!-padding-bottom-2">Enter farmer and farm business details</div>
-        <h2 class="govuk-heading-m">Name</h2>
-        <div class="govuk-form-group">
+      <form class="form" action="" method="post">
+
+        <h1 class="govuk-heading-l">Applicant's details</h1>
+
+          <div id="applicant-hint" class="govuk-hint govuk-!-padding-bottom-2">Enter farmer and farm business details</div>
+            <h2 class="govuk-heading-m">Name</h2>
+
+            {{ govukInput ({
+              id: 'farmer-firstname',
+              name: 'farmer-firstname',
+              value: data['farmer-firstname'] if data['farmer-firstname'] else '',
+              classes: 'govuk-input--width-one-half',
+              type: 'text',
+              label: {
+                text: 'First name'
+              }
+            }) }}
+
+            {{ govukInput ({
+              id: 'farmer-lastname',
+              name: 'farmer-lastname',
+              value: data['farmer-lastname'] if data['farmer-lastname'] else '',
+              classes: 'govuk-input--width-one-half',
+              type: 'text',
+              label: {
+                text: 'Last name'
+              }
+            }) }}
+
+            <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
+
+            {{ govukInput ({
+              id: 'farmer-email',
+              name: 'farmer-email',
+              value: data['farmer-email'] if data['farmer-email'] else '',
+              classes: 'govuk-input--width-two-thirds',
+              type: 'farmer-email',
+              hint: {
+                text: 'We will only use this to send you confirmation'
+              },
+              label: {
+                text: 'Email address'
+              }
+            }) }}
+
+            {{ govukInput ({
+              id: 'confirm-farmer-email',
+              name: 'confirm-farmer-email',
+              value: data['confirm-farmer-email'] if data['confirm-farmer-email'] else '',
+              classes: 'govuk-input--width-two-thirds',
+              type: 'confirm-farmer-email',
+              label: {
+                text: 'Confirm email address'
+              }
+            }) }}
+
+            {{ govukInput ({
+              id: 'farmer-landline',
+              name: 'farmer-landline',
+              value: data['farmer-landline'] if data['farmer-landline'] else '',
+              classes: 'govuk-input--width-two-thirds',
+              type: 'farmer-landline',
+              hint: {
+                text: 'We will only use this to contact you about your application'
+              },
+              label: {
+                text: 'Mobile phone number'
+              }
+            }) }}
+
+            {{ govukInput ({
+              id: 'farmer-mobile',
+              name: 'farmer-mobile',
+              value: data['farmer-mobile'] if data['farmer-mobile'] else '',
+              classes: 'govuk-input--width-two-thirds',
+              type: 'farmer-mobile',
+              hint: {
+                text: 'We will only use this to contact you about your application'
+              },
+              label: {
+                text: 'Landline number'
+              }
+            
+            }) }}
+
+            <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-3">Business address</h2>
+
+            {{ govukInput ({
+              id: 'farmer-address1',
+              name: 'farmer-address1',
+              value: data['farmer-address1'] if data['farmer-address1'] else '',
+              classes: 'govuk-input--width-two-thirds',
+              type: 'farmer-address1',
+              label: {
+                text: 'Address line 1'
+              }
+            }) }}
+
+            {{ govukInput ({
+              id: 'farmer-address2',
+              name: 'farmer-address2',
+              value: data['farmer-address2'] if data['farmer-address2'] else '',
+              classes: 'govuk-input--width-two-thirds',
+              type: 'farmer-address2',
+              label: {
+                text: 'Address line 2 (optional)'
+              }
+            }) }}
+
+            {{ govukInput ({
+              id: 'farmer-town',
+              name: 'farmer-town',
+              value: data['farmer-town'] if data['farmer-town'] else '',
+              classes: 'govuk-input--width-one-half',
+              type: 'farmer-town',
+              label: {
+                text: 'Town'
+              }
+            }) }}
+
+            {{ govukInput ({
+              id: 'farmer-county',
+              name: 'farmer-county',
+              value: data['farmer-county'] if data['farmer-county'] else '',
+              classes: 'govuk-input--width-one-half',
+              type: 'farmer-county',
+              label: {
+                text: 'County'
+              }
+            }) }}
+
+            {{ govukInput ({
+              id: 'business-postcode',
+              name: 'business-postcode',
+              value: data['business-postcode'] if data['business-postcode'] else '',
+              classes: 'govuk-input--width-one-quarter',
+              type: 'business-postcode',
+              label: {
+                text: 'Business postcode'
+              }
+            }) }}  
+
+            {{ govukInput ({
+              id: 'project-postcode',
+              name: 'project-postcode',
+              value: data['project-postcode'] if data['project-postcode'] else '',
+              classes: 'govuk-input--width-one-quarter',
+              type: 'project-postcode',
+              hint: {
+                text: 'The site postcode where the work will happen'
+              },
+              label: {
+                text: 'Project postcode'
+              }
+            }) }}  
+
+            {{ govukButton ({
+              html: 'Continue'
+            }) }}
+        
+              {# <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-firstname">
             First name
           </label>
@@ -28,9 +184,9 @@
             Last name
           </label>
           <input class="govuk-input govuk-!-width-one-half" id="farmer-lastname" name="farmer-lastname" type="text" spellcheck="false" autocomplete="name" value="{{ data['farmer-lastname'] }}">
-        </div>
+        </div> #}
 
-        <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
+        {# <h2 class="govuk-heading-m govuk-!-padding-top-6 govuk-!-padding-bottom-2">Contact details</h2>
         <div class="govuk-form-group">
           <label class="govuk-label" for="farmer-email">
               Email address
@@ -115,10 +271,10 @@
 
         <button class="govuk-button" data-module="govuk-button">
           Continue
-        </button>
-
+        </button> #}
 
       </form>
+
     </div>
   </div>
 

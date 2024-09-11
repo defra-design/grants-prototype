@@ -1,46 +1,50 @@
-{% extends "layout.html" %}
+{% extends 'water-r3/layout.html' %}
 
 {% block pageTitle %}
-  Who is applying for this grant?
-{% endblock %}
-
-{% block beforeContent %}
-  <a class="govuk-back-link" href="{{ backUrl }}">Back</a>
+    Who is applying for this grant?
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="{{ nextUrl }}" method="post">
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Who is applying for this grant?
-              </h1>
-            </legend>
-            <br><br>
-            <div class="govuk-radios govuk-radios--inline">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="applicant-1" name="applicant" type="radio" value="Farmer" {{ checked("applicant", "Farmer") }}>
-                <label class="govuk-label govuk-radios__label" for="applicant-1">
-                  Applicant
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="applicant-3" name="applicant" type="radio" value="Agent" {{ checked("applicant", "Agent") }}>
-                <label class="govuk-label govuk-radios__label" for="applicant-3">
-                  Agent
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-        
-        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-          Continue
-        </button>
+
+      <form class="form" action="farmer-details" method="post">
+
+      {{ govukRadios ({
+        classes: 'govuk-radios--inline',
+        idPrefix: 'applicant',
+        name: 'applicant',
+        fieldset: {
+          legend: {
+            text: 'Who is applying for this grant?',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--l'
+          }
+        },
+        items: [
+          {
+            value: 'Farmer',
+            text: 'Farmer',
+            checked: true if 'Farmer' | isIn(data['applying']),
+             attributes: {
+                   'data-next': 'farmer-details'
+             }
+          },
+          {
+            value: 'Agent',
+            text: 'Agent',
+            checked: true if 'Agent' | isIn(data['applying']),
+            attributes: {
+                   'data-next': 'agent-details'
+             }
+          }
+        ]
+      }) }}
+
+      {{ govukButton ({
+        html: 'Continue'
+      }) }}
 
       </form>
 
