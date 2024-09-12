@@ -1,23 +1,16 @@
-{% extends "layout.html" %}
+{% extends 'water-r3/layout.html' %}
+
+{% set hideBackButton = true %}
 
 {% block pageTitle %}
-  Confirmation of submitted details
+     Confirmation
 {% endblock %}
 
-{% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-    text: "prototype",
-    classes: "govuk-tag--pink"
-    },
-      html: 'This is not a full service. It is not production code and you might experience problems.'
-  }) }}
-{% endblock %}
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+
     <div class="govuk-panel govuk-panel--confirmation">
        <h1 class="govuk-panel__title">
         Details submitted
@@ -25,10 +18,9 @@
     <div class="govuk-panel__body">
       Your reference number<br><strong>WM-VMA-A54</strong>
     </div>
-   </div>
+  </div>
 
-
-      <p class="govuk-body">We have sent you a confirmation email with a record of your answers.  </p>
+      <p class="govuk-body">We have sent you a confirmation email with a record of your answers.</p>
       <p>If you do not get an email within 72 hours, please call the RPA helpline and follow the options for the Farming Transformation Fund scheme:</p>
       <h2 class="govuk-heading-m">RPA helpline</h2>
 
