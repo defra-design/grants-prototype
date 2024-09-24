@@ -69,12 +69,23 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
             </dd>
           </div>
-             <div class="govuk-summary-list__row">
+          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Is the planned project on land the business owns?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['tenancy'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What eligible items do you need for your project?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['items-needed'] | checkboxAnswersToList | safe }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
