@@ -26,17 +26,17 @@
                         {
                             text: 'Crops for the food industry',
                             value: 'Crops for the food industry',
-                            checked: true if data['legal-status'] == 'Crops for the food industry'
+                            checked: true if data['farming-type'] == 'Crops for the food industry'
                         },
                         {
                             text: 'Horticulture',
                             value: 'Horticulture',
-                            checked: true if data['legal-status'] == 'Horticulture'
+                            checked: true if data['farming-type'] == 'Horticulture'
                         },                     
                         {
                             text: 'Something else',
                             value: 'Something else',
-                            checked: true if data['legal-status'] == 'Something else',
+                            checked: true if data['farming-type'] == 'Something else',
                             attributes: {
                                 'data-next': 'elim-legal-status'
                             }

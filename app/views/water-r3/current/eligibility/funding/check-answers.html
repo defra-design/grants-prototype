@@ -4,200 +4,142 @@
     Check your answers
 {% endblock %}
 
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
+ 
+ <div class="govuk-width-container">
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
 
-      <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
-
-      <h2 class="govuk-heading-m">Personal details</h2>
-
-      {{ govukSummaryList({
-        classes: "govuk-!-margin-bottom-9",
-        rows: [
-          {
-            key: {
-              text: "Name"
-            },
-            value: {
-              text: "Sarah Philips"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Date of birth"
-            },
-            value: {
-              text: "5 January 1978"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "date of birth"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Customer reference"
-            },
-            value: {
-              text: "Not provided"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "customer reference"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              html: "72 Guild Street<br>London<br>SE23 6FH"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "address"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Contact details"
-            },
-            value: {
-              html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">Application details</h2>
-
-      {{ govukSummaryList({
-        classes: "govuk-!-margin-bottom-9",
-        rows: [
-          {
-            key: {
-              text: "Previous application number"
-            },
-            value: {
-              text: "502135326"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "previous application number"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Licence type"
-            },
-            value: {
-              text: "For personal use"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "licence type"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Home address"
-            },
-            value: {
-              html: "72 Guild Street<br>London<br>SE23 6FH"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "home address"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Licence period"
-            },
-            value: {
-              text: "Valid for 6 months"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "licence period"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">Now send your application</h2>
-
-      <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
-
-      <form action="/form-handler" method="post" novalidate>
-
-        <input type="hidden" name="answers-checked" value="true">
-
-        {{ govukButton({
-          text: "Accept and send"
-        }) }}
-
-      </form>
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+        <h2 class="govuk-heading-m">Project details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What crops are you growing?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['farming-type'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="farming-type">Change<span class="govuk-visually-hidden"> what crops are you going?</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Legal status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['legal-status'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> legal status</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Project in England?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['country'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> project in England</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Project have planning permission?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['planning-permission'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> planning permission</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Already started work on the project?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['project-start'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+            </dd>
+          </div>
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Is the planned project on land the business owns?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['tenancy'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+            </dd>
+          </div>
+        </dl>
+        <h2 class="govuk-heading-m">Application details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Previous application number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              502135326
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              For personal use
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              72 Guild Street<br>London<br>SE23 6FH
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence period
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Valid for 6 months
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+        </dl>
+        <h2 class="govuk-heading-m">Now send your application</h2>
+        <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+        <form action="/form-handler" method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Accept and send
+          </button>
+        </form>
+      </div>
 
     </div>
-  </div>
+  </main>
+</div>
 
 {% endblock %}
