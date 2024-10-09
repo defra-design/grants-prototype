@@ -1,0 +1,135 @@
+{% set hideBackButton = true %}
+
+{% extends 'generic/layout.html' %}
+
+{% block pageTitle %}
+ Generic checker screens
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Generic checker screens
+      </h1>
+
+      <p>
+        Use this service to check:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          if you are eligible to apply for a grant for your project (takes about 5 minutes)
+        </li>
+        <li>
+          how well your project scores against the funding priorities (takes about 15 minutes if you have all the project details)
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        Who can apply
+      </h2>
+
+      <p>
+        You can apply if you either:
+      </p>
+        
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          are a grower or producer of agricultural or horticultural produce
+        </li>
+        <li>
+          are a business processing agricultural or horticultural products that is at least 50% owned by agricultural or horticultural producers
+        </li>
+        <li>
+          produce wild venison products as part of woodland management       
+        </li>
+      </ul>
+
+      <p>
+        You must do the grant-funded work in England.
+      </p>
+
+      <p>
+        You can apply for up to 50% of the estimated cost of project items. You have the option to apply for up to 25% of the estimated cost of buying and installing a solar PV system.
+      </p>
+
+      <p>
+        The minimum grant for project items is £20,000 (50% of £40,000). The maximum grant you can apply for, including solar, is £500,000. 
+      </p>
+
+      {{ govukInsetText ({
+        text: 'If your project is eligible, you will be able to submit your online application to the Rural Payments Agency (RPA).'
+      }) }}
+
+      {{ govukButton({
+        text: "Start now",
+        href: "eligibility/common/legal-status",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+      <p>
+        To  use the checker, you need:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          information about your business (for example, number of employees, turnover)
+        </li>
+        <li>
+          information about the project (for example, the types of products being processed and how you will add value, the impact the project will have)
+        </li>
+        <li>
+          a list of the items you'd like to buy for the project
+        </li>
+        <li>
+            an estimate of the total cost of the items
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        Problems using the online service
+      </h2>
+
+      <p>
+        If you have any problems using the online service, contact the RPA.
+      </p>
+
+      <h3 class="govuk-heading-s">
+        Telephone
+      </h3>
+
+      <p>
+        Telephone: 03000 200 301
+      </p>
+
+      <p>
+        Monday to Friday, 9am to 5pm (except public holidays)
+      </p>
+
+      <p>
+        <a href="#">
+          Find out about call charges
+        </a>
+      </p>
+
+      <h3 class="govuk-heading-s">
+        Email
+      </h3>
+
+      <p>
+        <a href="mailto:FTF@rpa.gov.uk">
+          FTF@rpa.gov.uk
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+{% endblock %}
