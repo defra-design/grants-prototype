@@ -1,4 +1,4 @@
-{% extends 'new/layout.html' %}
+{% extends 'generic/layout.html' %}
 
 {% block pageTitle %}
     Is the planned project in England?
@@ -36,7 +36,7 @@
                             value: 'Yes',
                             checked: true if data['country'] == 'Yes',
                             attributes: {
-                                    'data-next': 'planning-permission'
+                                    'data-next': '../../details/consent'
                                 }
                         },
                         {
