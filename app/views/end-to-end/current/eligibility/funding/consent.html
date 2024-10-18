@@ -1,15 +1,7 @@
-{% extends "layout.html" %}
+{% extends 'end-to-end/layout-account.html' %}
 
 {% block pageTitle %}
-  Consent page (confirm and send)
-{% endblock %}
-
-{% block beforeContent %}
-{% if (data['applicant'] == "Agent")%}
-  <a class="govuk-back-link" href="check-details">Back</a>
-{%else%}
-  <a class="govuk-back-link" href="check-details">Back</a>
-{%endif%}
+    Consent (confirm and send)
 {% endblock %}
 
 {% block content %}

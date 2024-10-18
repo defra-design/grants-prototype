@@ -1,4 +1,4 @@
-{% extends 'water-r3/layout.html' %}
+{% extends 'end-to-end/layout-account.html' %}
 
 {% set hideBackButton = true %}
 
@@ -59,6 +59,14 @@
           <li>get quotes from suppliers</li>
           <li>apply for planning permission or an abstraction licence</li>
         </ul>
+
+          <br>
+          <form class="form" action="login" method="post">
+              {{ govukButton ({
+                    html: 'Sign out'
+                }) }}
+          </form>
+
       <p><a href="#" class="govuk-link">What do you think of this service?</a></p>
 
 {% endblock %}
