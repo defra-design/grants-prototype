@@ -1,0 +1,77 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    What is the estimated cost of buying and installing the solar PV system?
+{% endblock %}
+
+{% set totalCost = data['cost'] | float %}
+
+{% set grantAmount = totalCost | float | percent(50) %}
+{% set solarCap = grantAmount %}
+
+{% if solarCap | float > 100000 %}
+    {% set solarCap = 100000 %}
+{% endif %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="potential-funding">
+
+            
+                <h1 class="govuk-heading-l">
+                    What is the estimated cost of buying and installing the solar PV system?
+                </h1>
+
+                {% set hintHtml %}
+
+                    {% if solarCap == 100000 %}
+
+                        <p class="govuk-hint">
+                            Based on the cost of your items, the maximum grant you can apply for the solar PV system is £100,000 (25% of £400,000).
+                        </p>
+
+                    {% else %}
+
+                        <p class="govuk-hint">
+                            Based on the cost of your items, the maximum grant you can apply for the solar PV system is {{ solarCap | inPounds }} (25% of {{ (solarCap | float * 4) | inPounds }}).
+                        </p>
+
+                    {% endif %}
+
+                    <p class="govuk-hint">
+                        Enter amount, for example 135,000
+                    </p>
+
+                {% endset %}
+
+                {{ govukInput ({
+                    id: 'solar-pv-cost',
+                    name: 'solar-pv-cost',
+                    value: data['solar-pv-cost'] if data['solar-pv-cost'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    prefix: { text: '£' },
+                    hint: {
+                        text: 'Enter solar PV system costs, for example 135,000'
+                    },
+                    label: {
+                        text: 'Solar PV system cost',
+                        classes: 'govuk-visually-hidden'
+                    }
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}
