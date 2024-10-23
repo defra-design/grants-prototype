@@ -1,5 +1,7 @@
 {% extends 'end-to-end/layout-account.html' %}
 
+ {% set remainingCosts = data['cost'] * 0.6 %}
+
 {% block pageTitle %}
     Check your answers
 {% endblock %}
@@ -88,10 +90,77 @@
                {{ data['items-needed'] | checkboxAnswersToList | safe }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> eligible items needed for your project</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the total estimated cost of the items?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['cost'] | inPounds | safe }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> eligible items needed for your project</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Can you pay the remaining costs of {{ remainingCosts | inPounds }}?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['remaining-cost'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> can you pay the remainig costs</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Does the project need an abstraction licence or a variation of one?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['abstraction-licence'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> can you pay the remainig costs</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Are you currently irrigating?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['current-irrigating'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> can you pay the remainig costs</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Will you increase your use of summer abstraction or mains?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['change-summerabs'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> can you pay the remainig costs</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Where will the irrigation water come from?
+            </dt>
+            <dd class="govuk-summary-list__value">
+                 {{ data['water-source'] | checkboxAnswersToList | safe }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> can you pay the remainig costs</span></a>
             </dd>
           </div>
         </dl>
+        
         <h2 class="govuk-heading-m">Application details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
@@ -139,8 +208,35 @@
             </dd>
           </div>
         </dl>
+
+        <!-- Moved from consent.html to align with best practice - user can see what they're agreeing to on same page as per GDS pattern -->
         <h2 class="govuk-heading-m">Now send your application</h2>
-        <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+          <p class="govuk-body">I confirm that, to the best of my knowledge, the details I have provided are correct.</p>
+          <p class="govuk-body">I understand the project’s eligibility and score is based on the answers I provided.</p>
+          
+          <p class="govuk-body">I am aware that the information I submit will be:</p>  
+            <ul class="govuk-list govuk-list--bullet">
+              <li>checked by the RPA</li>
+              <li>shared with the Environment Agency so that they can check the details of my planned project</li>
+            </ul>
+           
+          <p class="govuk-body">I am happy to be contacted by Defra and RPA (or a third-party on their behalf) about my application.</p>
+          
+            <div class="govuk-checkboxes__item govuk-!-margin-top-6">
+              <input class="govuk-checkboxes__input" id="consent-to-terms-hint" name="consent-to-terms-hint" type="checkbox" value="{{ data['confirmation'] }}">
+                <label class="govuk-label govuk-checkboxes__label" for="consent-to-terms-hint">
+                  (Optional)   I consent to being contacted about improving services
+                </label>
+            </div>
+
+            {{ govukWarningText({
+              text: "You can only submit your details once.",
+              iconFallbackText: "Warning",
+              classes: "govuk-!-margin-top-6"
+            }) }}
+
+          <!-- End consent copy -->
+
         <form action="/form-handler" method="post" novalidate>
           <input type="hidden" name="answers-checked" value="true">
           <button type="submit" class="govuk-button" data-module="govuk-button">

@@ -21,7 +21,41 @@
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form action="irrigation-system" method="post">
-        <div class="govuk-form-group">
+
+       {{ govukCheckboxes ({ 
+          idPrefix: 'water-source',
+          name: 'water-source',
+          fieldset: {
+            legend: {
+              text: 'Where will the irrigation water come from?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          items: [
+            {
+              text: 'Winter peak-flow abstraction',
+              value: 'Peak flow',
+              checked: 'Peak flow' in data['water-source']
+            },
+            {
+              text: 'Rain water harvesting',
+              value: 'Rain water harvesting',
+              checked: 'Rain water harvesting' in data['water-source']
+            },
+            {
+              text: 'Bore hole/aquifer',
+              value: 'Bore hole',
+              checked: 'Bore hole' in data['water-source']
+            }
+          ]
+       }) }}
+
+         {{ govukButton ({
+            html: 'Continue'
+          }) }}
+
+        {# <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">Where will the irrigation water come from?
@@ -62,7 +96,7 @@
 
         <button class="govuk-button " data-module="govuk-button">
           Continue
-        </button>
+        </button> #}
 
         {% if data['COMPLETED'] == true %}
           <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
