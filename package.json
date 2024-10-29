@@ -9,6 +9,7 @@
     "@govuk-prototype-kit/common-templates": "2.0.1",
     "@govuk-prototype-kit/step-by-step": "2.2.3",
     "@govuk-prototype-kit/task-list": "2.0.0",
+    "accessible-autocomplete": "^3.0.1",
     "govuk-frontend": "5.5.0",
     "govuk-prototype-kit": "13.16.2",
     "hmrc-frontend": "6.27.0",

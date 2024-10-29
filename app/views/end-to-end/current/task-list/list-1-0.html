@@ -1,6 +1,14 @@
 {% set hideBackButton = true %}
 
-{% extends 'end-to-end/layout-account.html' %}
+{% if data['nosignin'] == 'true' %}
+
+    {% extends 'end-to-end/layout.html' %}  
+
+{% else %}     
+
+    {% extends 'end-to-end/layout-account.html' %}
+
+{% endif %}
 
 {% block pageTitle %}
     Water Management Grant - Round 3
@@ -21,6 +29,9 @@
                     Application deadline is 11:59pm on <strong>7 Jan 2025</strong>.
                 </div>
             </span>
+
+            <label for="my-autocomplete">Select your country</label>
+            <div id="my-autocomplete-container"></div>
 
 
             <ol class="govuk-prototype-kit-task-list">

@@ -52,10 +52,16 @@
 
                         <div class="govuk-button-group">
                             {{ govukButton({
+                                id: 'signin',
+                                name: 'signin',
+                                value: data['signin'] if data['signin'] else '',
                                 text: "Sign in"
                             }) }}
 
                             {{ govukButton({
+                                id: 'nosignin',
+                                name: 'nosignin',
+                                value: data['nosignin'] if data['nosignin'] else '',
                                 text: "Continue without signing in",
                                 classes: "govuk-button--secondary"
                             }) }}
