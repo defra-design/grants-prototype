@@ -44,9 +44,22 @@
                         name: "width20"
                         }) }}
 
-                        {{ govukButton ({
+                        {# {{ govukButton ({
                             html: 'Sign in'
                         }) }}
+
+                        {% from "govuk/components/button/macro.njk" import govukButton %} #}
+
+                        <div class="govuk-button-group">
+                            {{ govukButton({
+                                text: "Sign in"
+                            }) }}
+
+                            {{ govukButton({
+                                text: "Continue without signing in",
+                                classes: "govuk-button--secondary"
+                            }) }}
+                        </div>
 
                         <p><a href="#">I have forgotten my password</a></p>
 
