@@ -1,22 +1,22 @@
 {% extends 'end-to-end/layout-account.html' %}
 
 {% block pageTitle %}
-    Agent details
+Agent details
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
 
-        <form method="post" action="applicant-details">
+    <form method="post" action="applicant-details">
 
-            <h1 class="govuk-heading-l">
-                Agent's details
-            </h1>
+      <h1 class="govuk-heading-l">
+        Agent's details
+      </h1>
 
-            {{ govukInput ({
+      {{ govukInput ({
                 id: 'agent-firstname',
                 name: 'agent-firstname',
                 classes: 'govuk-!-width-one-half',
@@ -26,7 +26,7 @@
                 }
             }) }}
 
-            {{ govukInput ({
+      {{ govukInput ({
                 id: 'agent-lastname',
                 name: 'agent-lastname',
                 classes: 'govuk-!-width-one-half',
@@ -36,7 +36,7 @@
                 }
             }) }}
 
-            {{ govukInput ({
+      {{ govukInput ({
                 id: 'agent-business',
                 name: 'agent-business',
                 classes: 'govuk-!-width-one-half',
@@ -46,7 +46,7 @@
                 }
             }) }}
 
-            {{ govukInput ({
+      {{ govukInput ({
                 id: 'agent-email',
                 name: 'agent-email',
                 classes: 'govuk-!-width-two-thirds',
@@ -59,7 +59,7 @@
                 }
             }) }}
 
-            {{ govukInput ({
+      {{ govukInput ({
                 id: 'confirm-email',
                 name: 'confirm-email',
                 classes: 'govuk-!-width-two-thirds',
@@ -69,7 +69,7 @@
                 }
             }) }}
 
-            {{ govukInput ({
+      {{ govukInput ({
                 id: 'agent-landline',
                 name: 'agent-landline',
                 classes: 'govuk-!-width-two-thirds',
@@ -82,7 +82,7 @@
                 }
             }) }}
 
-            {{ govukInput ({
+      {{ govukInput ({
                 id: 'agent-mobile',
                 name: 'agent-mobile',
                 classes: 'govuk-!-width-two-thirds',
@@ -95,7 +95,7 @@
                 }
             }) }}
 
-            {% call govukFieldset({
+      {% call govukFieldset({
               legend: {
                 text: 'Business address',
                 classes: 'govuk-fieldset__legend--m',
@@ -103,7 +103,7 @@
               }
             }) %}
 
-              {{ govukInput({
+      {{ govukInput({
                 label: {
                   text: 'Address line 1'
                 },
@@ -114,7 +114,7 @@
                 autocomplete: 'address-line1'
               }) }}
 
-              {{ govukInput({
+      {{ govukInput({
                 label: {
                   text: 'Address line 2 (optional)'
                 },
@@ -125,7 +125,7 @@
                 autocomplete: 'agent-line2'
               }) }}
 
-              {{ govukInput({
+      {{ govukInput({
                 label: {
                   text: 'Town'
                 },
@@ -136,8 +136,8 @@
                 autocomplete: 'address-town'
               }) }}
 
-              
-              {{ govukSelect({
+
+      {{ govukSelect({
                 id: 'agent-county',
                 name: 'agent-county',
                 label: {
@@ -164,7 +164,7 @@
                 ]
               }) }}
 
-              {{ govukInput({
+      {{ govukInput({
                 label: {
                   text: 'Postcode'
                 },
@@ -175,15 +175,15 @@
                 autocomplete: 'address-business-postcode'
               }) }}
 
-            {% endcall %}
+      {% endcall %}
 
-            {{ govukButton ({
+      {{ govukButton ({
                 html: 'Continue'
             }) }}
 
-        </form>
+    </form>
 
-    </div>
+  </div>
 
 </div>
 
