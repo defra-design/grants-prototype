@@ -31,53 +31,24 @@
                 <tbody class="govuk-table__body">
                     <tr class="govuk-table__row--no-border">
                         <th  scope="row" class="govuk-table__header">
-                            <strong>Title</strong>
+                            <strong>Name</strong>
                         </th>
                         <td class="govuk-table__cell">
-                           {{ data['farmer-title'] or 'Mr' }} 
+                            <p>{{ data['farmer-firstname'] }} {{ data['farmer-lastname'] }}</p>
                         </td>
                     </tr>
+
+
                     <tr class="govuk-table__row--no-border">
                         <th  scope="row" class="govuk-table__header">
-                            <strong>First name</strong>
+                            <strong> Contact details</strong>
                         </th>
                         <td class="govuk-table__cell">
-                           {{ data['farmer-firstname'] or 'John' }}
+                           <p> {{ data['farmer-email'] }} </p>
+                           <p> {{ data['farmer-mobile'] }} </p>
+                           <p> {{ data['farmer-landline'] }} </p>
                         </td>
                     </tr>
-                    <tr class="govuk-table__row--no-border">
-                        <th  scope="row" class="govuk-table__header">
-                            <strong>Last name</strong>
-                        </th>
-                        <td class="govuk-table__cell">
-                          {{ data['farmer-lastname'] or 'Smith'}}
-                        </td>
-                    </tr>
-                    <tr class="govuk-table__row--no-border">
-                        <th  scope="row" class="govuk-table__header">
-                            <strong> Email address</strong>
-                        </th>
-                        <td class="govuk-table__cell">
-                           {{ data['farmer-email'] or 'john.smith@imaginary.co.uk' }} 
-                        </td>
-                    </tr>
-                    <tr class="govuk-table__row--no-border">
-                        <th  scope="row" class="govuk-table__header">
-                            <strong> Mobile number</strong>
-                        </th>
-                        <td class="govuk-table__cell">
-                            {{ data['farmer-mobile'] or '07421 589 658'  }}
-                        </td>
-                    </tr>
-                    <tr class="govuk-table__row--no-border">
-                        <th  scope="row" class="govuk-table__header">
-                            <strong> Landline number</strong>
-                        </th>
-                        <td class="govuk-table__cell">
-                            {{ data['farmer-landline'] or '01295 544 778'  }}
-                        </td>
-                    </tr>
-  
                     <tr class="govuk-table__row--no-border">
                         <th  scope="row" class="govuk-table__header">
                             <strong>Business address</strong>
@@ -88,6 +59,8 @@
                            <p> {{ data['farmer-county'] }} </p>
                            <p> {{ data['farmer-postcode'] }} </p>
                         </td>
+
+
                     </tr>
                     <tr class="govuk-table__row--no-border">
                         <th  scope="row" class="govuk-table__header">
