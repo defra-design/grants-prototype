@@ -19,8 +19,9 @@
 {% endif %}
 
 <div class="govuk-grid-row">
-
         <div class="govuk-grid-column-two-thirds">
+
+            <form action="../../task-list/list-1-1" method="post">
 
             <h1 class="govuk-heading-xl">Score results</h1>
 
@@ -315,11 +316,24 @@
                 You’ll get an email with your score and answers, and a reference number.
             </p>
 
-            {{ govukButton ({
-                text: 'Continue',
-                href: '../../task-list/list-1-1'
-            }) }}
-
+            <div class="govuk-button-group">
+                {{ govukButton({
+                    id: 'Continue',
+                    name: 'continue',
+                    text: "Continue"
+                }) }}   
+        
+            </form>
+        
+            <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/sign-out" method="post">
+                {{ govukButton({
+                    id: 'nosignin',
+                    name: 'nosignin',
+                    text: "Save and come back later",
+                    classes: "govuk-button--secondary"
+                }) }}
+            </form>
+        
         </div>
 
 </div>

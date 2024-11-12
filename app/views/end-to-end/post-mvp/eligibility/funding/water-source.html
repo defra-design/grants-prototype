@@ -1,19 +1,7 @@
-{% extends "layout.html" %}
+{% extends 'end-to-end/layout-account.html' %}
 
 {% block pageTitle %}
-  Where will the irrigation water come from?
-{% endblock %}
-
-{% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-    text: "prototype",
-    classes: "govuk-tag--pink"
-    },
-      html: 'This is not a full service. It is not production code and you might experience problems.'
-  }) }}
-  <a class="govuk-back-link" href="change-summerabs">Back</a>
+    Where will the irrigation water come from?
 {% endblock %}
 
 {% block content %}
@@ -36,24 +24,38 @@
             {
               text: 'Winter peak-flow abstraction',
               value: 'Peak flow',
-              checked: 'Peak flow' in data['water-source']
+              checked: true if 'Peak flow' | isIn(data['water-source'])
             },
             {
               text: 'Rain water harvesting',
               value: 'Rain water harvesting',
-              checked: 'Rain water harvesting' in data['water-source']
+              checked: true if 'Rain water harvesting' | isIn(data['water-source'])
             },
             {
               text: 'Bore hole/aquifer',
               value: 'Bore hole',
-              checked: 'Bore hole' in data['water-source']
+              checked: true if 'Rain water harvesting' | isIn(data['water-source'])
             }
           ]
        }) }}
 
-         {{ govukButton ({
-            html: 'Continue'
-          }) }}
+       <div class="govuk-button-group">
+        {{ govukButton({
+            id: 'Continue',
+            name: 'continue',
+            text: "Continue"
+        }) }}   
+
+    </form>
+
+    <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/sign-out" method="post">
+        {{ govukButton({
+            id: 'nosignin',
+            name: 'nosignin',
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+        }) }}
+    </form>
 
         {# <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -106,7 +108,7 @@
           </button>
         {% endif %}
 
-      </form>
+        </div>
   </div>
   <div class="govuk-grid-column-one-third ">
       <aside class="app-related-items">

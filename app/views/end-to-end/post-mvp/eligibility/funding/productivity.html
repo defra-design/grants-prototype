@@ -55,9 +55,23 @@
         })
       }}
 
-      {{ govukButton({
-        html: 'Continue'
-      }) }}
+      <div class="govuk-button-group">
+        {{ govukButton({
+            id: 'Continue',
+            name: 'continue',
+            text: "Continue"
+        }) }}   
+
+    </form>
+
+    <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/sign-out" method="post">
+        {{ govukButton({
+            id: 'nosignin',
+            name: 'nosignin',
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+        }) }}
+    </form>
 
       {% if data['COMPLETED'] == true %}
       <button
@@ -68,8 +82,10 @@
         Back to score
       </button>
       {% endif %}
-    </form>
+
+    </div>
   </div>
+  
 <div class="govuk-grid-column-one-third">
       <aside class="app-related-items">
         <h3 class="govuk-heading-s"> Funding  priorities</h3>
