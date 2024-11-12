@@ -44,8 +44,6 @@
                     ]
                 }) }}
 
-                
-
                 <div class="govuk-button-group">
                     {{ govukButton({
                         id: 'Continue',
@@ -55,7 +53,7 @@
 
                 </form>
 
-                <form class="signout" style="display:flex;" action="sign-out" method="post">
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/sign-out" method="post">
                     {{ govukButton({
                         id: 'nosignin',
                         name: 'nosignin',
@@ -64,14 +62,7 @@
                     }) }}
                 </form>
             
-                </div>
-            
-
-                {# {{ govukButton ({
-                    html: 'Continue'
-                }) }} #}
-
-           </form>
+            </div>
 
         </div>
 

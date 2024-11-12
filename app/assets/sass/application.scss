@@ -3,8 +3,8 @@
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
 //
 
-// Add extra styles here
 
+// START sign out button - make button full width on mobile and stop form component killing button group alignment
 .signout {
 	display:flex;
 }
@@ -14,6 +14,7 @@
 	  width: 100%
 	}
 }
+// END sign out button
 
 .css-index-link-block {
 	background: #f8f8f8;
