@@ -5,6 +5,16 @@
 
 // Add extra styles here
 
+.signout {
+	display:flex;
+}
+
+@media (max-width: 40.0625em) {
+	.signout {
+	  width: 100%
+	}
+}
+
 .css-index-link-block {
 	background: #f8f8f8;
 	border: 0px solid #dee0e2;

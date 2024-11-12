@@ -44,11 +44,34 @@
                     ]
                 }) }}
 
-                {{ govukButton ({
-                    html: 'Continue'
-                }) }}
+                
 
-            </form>
+                <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="sign-out" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+            
+                </div>
+            
+
+                {# {{ govukButton ({
+                    html: 'Continue'
+                }) }} #}
+
+           </form>
 
         </div>
 
