@@ -1,8 +1,7 @@
-{% set hideBackButton = true %}
-{% extends 'end-to-end/layout.html' %}
+{% extends 'end-to-end/layout-account.html' %}
 
 {% block pageTitle %}
-    Signed out
+    Application saved
 {% endblock %}
 
 {% block content %}
@@ -18,10 +17,11 @@
             <form method="post" action="#">
 
                 <h1 class="govuk-heading-l">
-                    Signed out
+                    Application progress saved
                 </h1>
 
-                       <p>You have signed out. Go to some other stuff here.</p>
+                 <p>You have saved your progress. Now you can either go to your <a href="#">RPS dashboard</a> or <a href="/end-to-end/post-mvp/eligibility/common/sign-out">sign out</a>.</p>
+
             </form>
 
         </div>
