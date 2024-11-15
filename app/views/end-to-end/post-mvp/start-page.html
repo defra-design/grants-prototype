@@ -18,7 +18,7 @@
       <p>Use this service to apply for a Water Management grant</p>
       {{ govukInsetText({
         text: "This is round 3 of the water management grant. Applications    
-          must be submitted by 11.59pm on 3 February 2025"
+          must be submitted by 11.59pm on 3 February 2025."
       }) }}
           
         </inset>
@@ -39,7 +39,9 @@
             <li>Submit your full application by 3 January 2026.</li>
           </ol>
 
-          
+          {{ govukInsetText({
+            text: "We cannot guarantee you’ll receive a grant until we assess your full application."
+          }) }}
 
           <h2 class="govuk-heading-m">Before you apply</h2>
             <p>Read the latest guidance on the water management grant to learn about our grant funding priorities.</p>  
