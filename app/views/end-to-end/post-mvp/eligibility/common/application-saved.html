@@ -14,7 +14,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="#">
+            <form method="post" action="sign-out">
 
                 <h1 class="govuk-heading-l">
                     Your application has been saved
@@ -22,7 +22,16 @@
 
                 <p>Any information you entered has been saved.</p>
 
-                 <p>You can <a href="javascript:history.back()">return to your application</a>, view your <a href="#">Rural Payments account</a>  or <a href="/end-to-end/post-mvp/eligibility/common/sign-out">sign out</a>.</p>
+                 <p>You can <a href="javascript:history.back()">return to your application</a> or view your <a href="#">Rural Payments account</a>.</p>
+
+                <br>   
+                 {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        value: data['nosignin'] if data['nosignin'] else '',
+                        text: "Sign out",
+                        classes: "govuk-button"
+                    }) }}
 
             </form>
 
