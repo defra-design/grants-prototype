@@ -1,14 +1,6 @@
 {% set hideBackButton = true %}
 
-{% if nosignin == 'true' %}
-
-    {% extends 'end-to-end/layout.html' %}  
-
-{% else %}     
-
-    {% extends 'end-to-end/layout-account.html' %}
-
-{% endif %}
+{% extends 'end-to-end/layout-account.html' %}
 
 {% block pageTitle %}
     Water Management Grant - Round 3
@@ -20,67 +12,74 @@
         <div class="govuk-grid-column-two-thirds">
 
            <span class="govuk-caption-xl">Browns Hill Farm reservoir (WM-VMA-1234)</span>
-            <h1 class="govuk-heading-xl">Apply for a Water Management grant</h1>
+            <h1 class="govuk-heading-xl">Water Management Grant - Round 3</h1>
+
+            <span class="content-section">
+                <!-- EOI approved, application ready to start -->
+                <h3 class="govuk-heading-m">You can continue your expression of interest</h3>
+                <div class="govuk-inset-text">
+                    Application deadline is 11:59pm on <strong>7 Jan 2025</strong>.
+                </div>
+            </span>
+
 
             <ol class="govuk-prototype-kit-task-list">
             <li>
 
                 <!-- EOI Scenario 3b -->
                 <h2 class="govuk-prototype-kit-task-list__section">
-                    <span class="govuk-prototype-kit-task-list__section-number">1. </span> Tell us about your project
+                    <span class="govuk-prototype-kit-task-list__section-number">1. </span> Expression of interest
                 </h2>
-                <p>You must complete this stage by 11.59pm on <strong>3 February 2025</strong></p>
-
+                
                 <ul class="govuk-task-list">
                 <li class="govuk-task-list__item govuk-task-list__item--with-link">
                     <div class="govuk-task-list__name-and-hint">
-                    <a class="govuk-link govuk-task-list__link" href="/end-to-end/post-mvp/eligibility/funding/check-details" aria-describedby="expression-of-interest-1-status">Enter your organisation's details</a>
+                    <a class="govuk-link govuk-task-list__link" href="../eligibility/common/farming-type" aria-describedby="expression-of-interest-1-status">Check eligibility and scoring</a>
                     </div>
-                        <div class="govuk-task-list__status" id="expression-of-interest-1-status">
-                            Completed
-                     </div>
+                    <div class="govuk-task-list__status" id="expression-of-interest-1-status">
+                           Completed
+                    </div>
                 </li>
                 <li class="govuk-task-list__item govuk-task-list__item--with-link">
                     <div class="govuk-task-list__name-and-hint">
-                        <a class="govuk-link govuk-task-list__link" href="../eligibility/common/farming-type" aria-describedby="expression-of-interest-2-status">Check your project meets our funding priorities</a>
+                    <a class="govuk-link govuk-task-list__link" href="../eligibility/funding/check-details" aria-describedby="expression-of-interest-2-status">Check your details</a>
                     </div>
-                    <div class="govuk-task-list__status" id="application-1-status">
-                        <strong class="govuk-tag govuk-tag--blue">
-                        Not yet started
-                        </strong>
+                    <div class="govuk-task-list__status" id="expression-of-interest-1-status">
+                           Completed
                     </div>
                 </li>
+                    <li class="govuk-task-list__item govuk-task-list__item--with-link">
+                        <div class="govuk-task-list__name-and-hint">
+                            <a class="govuk-link govuk-task-list__link" href="../eligibility/funding/consent" aria-describedby="expression-of-interest-3-status">Register your interest</a>
+                        </div>
+                        <div class="govuk-task-list__status" id="application-1-status">
+                            <strong class="govuk-tag govuk-tag--blue">
+                            Not yet started
+                            </strong>
+                        </div>
+                    </li>
                 <li class="govuk-task-list__item">
-                    <div class="govuk-task-list__name-and-hint">
-                        Submit your project details for us to review
-                    </div>
-                    <div class="govuk-task-list__status" id="expression-of-interest-3-status">
-                        Cannot start yet
-                    </div>
-                </li>
-                {# <li class="govuk-task-list__item">
                     <div class="govuk-task-list__name-and-hint">
                         Expression of interest outcome
                     </div>
                     <div class="govuk-task-list__status" id="expression-of-interest-4-status">
                         Cannot start yet
                     </div>
-                </li> #}
+                </li>
                 </ul>
             </li>
-            <p class="govuk-body" style="margin-top: 0em; margin-bottom: 2em;">We’ll let you know the outcome of our review by <strong>19 May 2025</strong></p>
     
                 <li>
                     <!-- Application Scenario 2a -->
                 <h2 class="govuk-prototype-kit-task-list__section">
-                    <span class="govuk-prototype-kit-task-list__section-number">2. </span> Prepare your application
+                    <span class="govuk-prototype-kit-task-list__section-number">2. </span> Apply
                 </h2>
 
                 <ul class="govuk-task-list">
 
                     <li class="govuk-task-list__item">
                         <div class="govuk-task-list__name-and-hint">
-                            Download your application forms
+                            Download application forms
                         </div>
                         <div class="govuk-task-list__status" id="application-1-status">
                             Cannot start yet
@@ -96,7 +95,7 @@
                     </div>
                 </li>
 
-                {# <li class="govuk-task-list__item">
+                <li class="govuk-task-list__item">
                     <div class="govuk-task-list__name-and-hint">
                     <div>Check your details</div>
                     </div>
@@ -112,7 +111,7 @@
                     <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="application-4-status">
                     Cannot start yet
                     </div>
-                </li> #}
+                </li>
                 
                 </ul>
             </li>
@@ -120,21 +119,20 @@
 
             <!-- Agreement Scenario 1 -->
             <h2 class="govuk-prototype-kit-task-list__section">
-            <span class="govuk-prototype-kit-task-list__section-number">3. </span> Submit your application
+            <span class="govuk-prototype-kit-task-list__section-number">3. </span> Sign agreement
             </h2>
-            <p>You must submit your full application by 11.59pm on <strong>3 January 2026</strong></p>
 
             <ul class="govuk-task-list">
             <li class="govuk-task-list__item">
                 <div class="govuk-task-list__name-and-hint">
-                <div>Submit your application</div>
+                <div>Read agreement</div>
                 </div>
                 <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="agreement-1-status">
                 Cannot start yet
                 </div>
             </li>
 
-            {# <li class="govuk-task-list__item">
+            <li class="govuk-task-list__item">
                 <div class="govuk-task-list__name-and-hint">
                 <div>Read terms and conditions</div>
                 </div>
@@ -150,13 +148,46 @@
                 <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="agreement-3-status">
                 Cannot start yet
                 </div>
-            </li> #}
-
+            </li>
             </ul>
         </li>
         <li>
 
-   </li>
+            <!-- Claim 01 Scenario 1 -->
+            <h2 class="govuk-prototype-kit-task-list__section">
+            <span class="govuk-prototype-kit-task-list__section-number">4. </span> Submit first claim
+            </h2>
+            
+            <ul class="govuk-task-list">
+            <li class="govuk-task-list__item">
+                <div class="govuk-task-list__name-and-hint">
+                <div>Download claim form</div>
+                </div>
+                <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="claim-01-1-status">
+                Cannot start yet
+                </div>
+            </li>
+
+            <li class="govuk-task-list__item">
+                <div class="govuk-task-list__name-and-hint">
+                <div>Upload claim form and evidence</div>
+                </div>
+                <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="claim-01-2-status">
+                Cannot start yet
+                </div>
+            </li>
+
+            <li class="govuk-task-list__item">
+                <div class="govuk-task-list__name-and-hint">
+                <div>Submit claim</div>
+                </div>
+                <div class="govuk-task-list__status govuk-task-list__status--cannot-start-yet" id="claim-01-3-status">
+                Cannot start yet
+                </div>
+            </li>
+        </ul>
+
+    </li>
 </ol>
     
     
