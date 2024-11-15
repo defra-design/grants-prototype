@@ -2,7 +2,7 @@
 {% extends 'end-to-end/layout.html' %}
 
 {% block pageTitle %}
-    Signed out
+    You've signed out
 {% endblock %}
 
 {% block content %}
@@ -18,10 +18,18 @@
             <form method="post" action="#">
 
                 <h1 class="govuk-heading-l">
-                    Signed out
+                    You've signed out
                 </h1>
 
-                       <p>You have signed out. Go to some other stuff here.</p>
+                <p>You have signed out. Go to some other stuff here.</p>
+                
+                <p>You can return to your grant application through:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>the <a href="../../start-page">Apply for a Water Management grant service</a></li>
+                    <li>your <a href="https://www.ruralpayments.service.gov.uk/customer-account/login">Rural Payments account</a></li>
+                    <li>the email we sent when you started your application</li>
+                </ul>
+
             </form>
 
         </div>
