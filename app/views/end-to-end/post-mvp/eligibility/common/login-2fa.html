@@ -1,0 +1,82 @@
+{% extends 'end-to-end/layout.html' %}
+
+{% block pageTitle %}
+    Check your phone
+{% endblock %}
+
+{% block content %}
+
+{% if data['legal-status'] == 'None' %}
+    {{ 'elim-legal-status' | redirect | safe }}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="../../task-list/list-1-0">
+
+                <h1 class="govuk-heading-l">
+                    Check your phone
+                </h1>
+
+                <p>We’ve sent a code to your phone ending <strong>4325</strong>.</p>
+
+                <p>It may take a few minutes to arrive. The code will expire in 15 minutes.</p>
+
+                       {{ govukInput({
+                        label: {
+                            text: "Enter the 6-digit code"
+                        },
+                        hint: {
+                            text: "Your Rural Payments service password"
+                        },
+                        classes: "govuk-input--width-10",
+                        id: "width-10",
+                        name: "width10"
+                        }) }}
+
+                        {# {{ govukButton ({
+                            html: 'Sign in'
+                        }) }}
+
+                        {% from "govuk/components/button/macro.njk" import govukButton %} #}
+
+                        <div class="govuk-button-group">
+                            {{ govukButton({
+                                id: 'signin',
+                                name: 'signin',
+                                value: data['signin'] if data['signin'] else '',
+                                text: "Sign in"
+                            }) }}
+
+                 
+                        </div>
+
+                        <p><a href="#">Didn't receieve a code?</a></p>
+
+                       
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            {# <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    This grant is only for projects in England.
+                </p>
+                <p>
+                    Scotland, Wales and Northern Ireland have other grants available.
+                </p>
+            </div> #}
+
+        </div>
+
+</div>
+
+{% endblock %}

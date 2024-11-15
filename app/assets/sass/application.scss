@@ -3,6 +3,11 @@
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
 //
 
+@media (min-width: 40.0625em) {
+	.start-guidance {
+		margin-top: 10em;
+	}	
+}
 
 // START sign out button - make button full width on mobile and stop form component killing button group alignment
 .signout {

@@ -3,7 +3,7 @@
 {% extends 'end-to-end/layout.html' %}
 
 {% block pageTitle %}
-  Apply for a water management grant
+  Check if you can apply for a Water Management Grant
 {% endblock %}
 
 {% block content %}
@@ -12,16 +12,14 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Apply for a water management grant
+        Check if you can apply for a Water Management Grant
       </h1>
 
-      <p>Use this service to apply for a water management grant.</p>
-      {{ govukInsetText({
-        text: "This is round 3 of the water management grant. Applications    
-          must be submitted by 11.59pm on 3 February 2025"
-      }) }}
-          
-        </inset>
+      <p>Use this service to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>check if you can apply for a grant for your project (takes about 5 minutes)</li>
+          <li>check how well your project fits the funding priorities (takes about 15 minutes if you have all the project details)</li>
+        </ul>
 
           <h2 class="govuk-heading-m">Who can apply</h2>
           <p>You can apply if you:</p>
@@ -31,28 +29,17 @@
             <li>an estimate the project costs will be over £87,500</li>
           </ul>
 
-          <h2 class="govuk-heading-m">Before you apply</h2>
-            <p>Read the latest guidance on the water management grant to learn about our grant funding priorities.</p>  
-
-            <p>What you'll need:</p>
-            <p>You’ll need to give us:</p>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>information about your business (for example, number of employees and turnover)</li>
-              <li>information about the project (for example, irrigated land in hectares)</li>
-              <li>estimated total cost of the items you need</li>
-            </ul>
-
-        {# <div class="govuk-inset-text">
+        <div class="govuk-inset-text">
           If your project is eligible, you can submit your answers to the Rural Payments Agency (RPA) to request the full application form.
-        </div> #}
-        <br>
+        </div>
+
       {{ govukButton({
         text: "Start now",
         href: "eligibility/common/login",
         isStartButton: true
       }) }}
 
-        {# <h2 class="govuk-heading-m">Before you start</h2>
+        <h2 class="govuk-heading-m">Before you start</h2>
           <p>You need:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>information about your business (for example, number of employees and turnover)</li>
@@ -78,25 +65,8 @@
           <h3 class="govuk-heading-s">Email</h3>
           <ul class="govuk-list">
             <li><a class="govuk-link" href="mailto:FTF@rpa.gov.uk">FTF@rpa.gov.uk</a></li>
-          </ul> #}
+          </ul>
 
     </div>
-
-        <div class="govuk-grid-column-one-third">
-
-          <div class="app-step-nav-related app-step-nav-related--singular start-guidance"> 
-              <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Related content</span>
-              </h2>
-                <p>
-                  <a href="#">About the grant, what it can pay for and who can apply</a></p>
-                </p>
-                <p>
-                  <a href="#">Quick guide to our funding priorities</a>
-                </p>
-          </div>
-
-      </div>
-
   </div>
 {% endblock %}

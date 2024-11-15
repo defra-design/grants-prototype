@@ -1,7 +1,7 @@
 {% extends 'end-to-end/layout.html' %}
 
 {% block pageTitle %}
-    Sign in using your Rural Payments account
+    Sign in
 {% endblock %}
 
 {% block content %}
@@ -17,23 +17,15 @@
             <form method="post" action="login-2fa">
 
                 <h1 class="govuk-heading-l">
-                    Sign in using your Rural Payments account
+                    Sign in
                 </h1>
 
-                <p>By signing in you'll be able to:</p>
-
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>save your progress at any time</li>
-                    <li>return to your application and edit it before submitting</li>
-                    <li>check the progress of your application online</li>
-                 </ul>   
-                    
                         {{ govukInput({
                         label: {
                             text: "Customer reference number (CRN)"
                         },
                         hint: {
-                            text: "This is the 10-digit number emailed to you when you created your account"
+                            text: "The 10 digit number emailed to you when you registered with the Rural Payments service"
                         },
                         classes: "govuk-input--width-20",
                         id: "width-20",
@@ -43,6 +35,9 @@
                      {{ govukInput({
                         label: {
                             text: "Password"
+                        },
+                        hint: {
+                            text: "Your Rural Payments service password"
                         },
                         classes: "govuk-input--width-20",
                         id: "width-20",
@@ -72,7 +67,7 @@
                             }) }}
                         </div>
 
-                        <p><a href="#">Forgotten your password?</a></p>
+                        <p><a href="#">I have forgotten my password</a></p>
 
                         <br>
                         <details class="govuk-details">
