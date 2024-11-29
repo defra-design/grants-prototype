@@ -1,4 +1,4 @@
-{% extends 'end-to-end/layout-account.html' %}
+{% extends 'end-to-end/layout.html' %}
 
 {% block pageTitle %}
     Does the project have planning permission?
@@ -31,7 +31,7 @@
                                 text: 'For example, quotes from suppliers, applying for planning permission'
                             },
                             attributes: {
-                                    'data-next': 'tenancy'
+                                    'data-next': '../funding/abstraction-licence'
                                 }
                         },
                         {
@@ -50,7 +50,7 @@
                             value: 'No, we have not done any work on this project yet',
                             checked: true if data['project-start'] == 'No, we have not done any work on this project yet',
                             attributes: {
-                                    'data-next': 'tenancy'
+                                    'data-next': '../funding/abstraction-licence'
                                 }
                         }
                     ]
@@ -65,14 +65,14 @@
 
                 </form>
 
-                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+                {# <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
                     {{ govukButton({
                         id: 'nosignin',
                         name: 'nosignin',
                         text: "Save and come back later",
                         classes: "govuk-button--secondary"
                     }) }}
-                </form>
+                </form> #}
 
             </div>
 

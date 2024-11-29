@@ -1,4 +1,4 @@
-{% extends 'end-to-end/layout-account.html' %}
+{% extends 'end-to-end/layout.html' %}
 
 {% block pageTitle %}
     Does the project have planning permission?
@@ -67,14 +67,14 @@
 
                 </form>
 
-                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+                {# <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
                     {{ govukButton({
                         id: 'nosignin',
                         name: 'nosignin',
                         text: "Save and come back later",
                         classes: "govuk-button--secondary"
                     }) }}
-                </form>
+                </form> #}
 
             </div>
 
