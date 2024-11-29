@@ -1,0 +1,74 @@
+{% extends 'end-to-end/layout-account.html' %}
+
+{% block pageTitle %}
+     Will water be supplied to other farms?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="results" method="post">
+
+      {{ govukRadios ({
+        classes: 'govuk-radios--inline',
+        idPrefix: 'collaboration',
+        name: 'collaboration',
+        fieldset: {
+          legend: {
+            text: 'Will water be supplied to other farms?',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--l'
+          }
+        },
+        hint: {
+          text: 'For example, if you intend to supply water via a water sharing agreement as a result of this project.'
+        },
+        items: [
+          {
+            value: 'Yes',
+            text: 'Yes',
+            checked: true if 'Yes' | isIn(data['collaboration'])
+          },
+          {
+            value: 'No',
+            text: 'No',
+            checked: true if 'No' | isIn(data['collaboration'])
+            }]
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+            id: 'Continue',
+            name: 'continue',
+            text: "Continue"
+        }) }}   
+
+    </form>
+
+    <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+      {{ govukButton({
+            id: 'nosignin',
+            name: 'nosignin',
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+        }) }}
+    </form>
+
+  </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third ">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-s">Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">
+            RPA wants to fund projects that:
+                   <ul>
+                    <li>improve water sustainability  </li>
+                   </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+{% endblock %}

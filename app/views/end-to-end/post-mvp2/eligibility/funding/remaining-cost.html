@@ -1,0 +1,103 @@
+{% extends 'end-to-end/layout-account.html' %}
+
+ {% set remainingCosts = data['cost'] * 0.6 %}
+
+{% block pageTitle %}
+    Can you pay the remaining costs of {{ remainingCosts | inPounds }}?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: 'remaining-cost',
+                    name: 'remaining-cost',
+                    fieldset: {
+                        legend: {
+                            text: 'Can you pay the remaining costs of ' + remainingCosts | inPounds + '?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+    
+                    items: [
+                    {
+                        text: 'Yes',
+                        value: 'Yes',
+                        checked: true if data['remaining-cost'] == 'Yes',
+                        attributes: {
+                            'data-next': 'abstraction-licence'
+                        }
+                    },
+                    {
+                        text: 'No',
+                        value: 'No',
+                        checked: true if data['remaining-cost'] == 'No',
+                        attributes: {
+                            'data-next': 'elim-remaining-cost'
+                        }
+                    }
+                    ]
+                }) }}
+
+                <input type="hidden" name="from-scoring" value="false">
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You cannot use public money (for example, grant funding from government or local authorities) towards the project costs.
+                </p>
+
+             <!--   <p>
+                    You also cannot use money from a producer organisation under the Fresh Fruit and Vegetable Aid Scheme.
+                </p> -->
+
+                <p>
+                    For example, you can use:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>loans</li>
+                    <li>overdrafts</li>
+                    <li>delinked payments</li>
+                </ul>
+            
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}
