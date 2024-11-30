@@ -1,0 +1,191 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    Agent details
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <form method="post" action="applicant-details">
+
+            <h1 class="govuk-heading-l">
+                Agent's details
+            </h1>
+
+            {{ govukInput ({
+                id: 'agent-firstname',
+                name: 'agent-firstname',
+                classes: 'govuk-!-width-one-half',
+                value: data['agent-firstname'] if data['agent-firstname'] else '',
+                label: {
+                    text: 'First name'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'agent-lastname',
+                name: 'agent-lastname',
+                classes: 'govuk-!-width-one-half',
+                value: data['agent-lastname'] if data['agent-lastname'] else '',
+                label: {
+                    text: 'Last name'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'agent-business',
+                name: 'agent-business',
+                classes: 'govuk-!-width-one-half',
+                value: data['agent-business'] if data['agent-business'] else '',
+                label: {
+                    text: 'Business name'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'agent-email',
+                name: 'agent-email',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['agent-email'] if data['agent-email'] else '',
+                hint: {
+                    text: 'We will only use this to send you a confirmation'
+                },
+                label: {
+                    text: 'Email address'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'confirm-email',
+                name: 'confirm-email',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['confirm-email'] if data['confirm-email'] else '',
+                label: {
+                    text: 'Confirm email address'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'agent-landline',
+                name: 'agent-landline',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['agent-landline'] if data['agent-landline'] else '',
+                hint: {
+                    text: 'We will only use this to contact you about your application'
+                },
+                label: {
+                    text: 'Landline number'
+                }
+            }) }}
+
+            {{ govukInput ({
+                id: 'agent-mobile',
+                name: 'agent-mobile',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['agent-mobile'] if data['agent-mobile'] else '',
+                hint: {
+                    text: 'We will only use this to contact you about your application'
+                },
+                label: {
+                    text: 'Mobile number'
+                }
+            }) }}
+
+            {% call govukFieldset({
+              legend: {
+                text: 'Business address',
+                classes: 'govuk-fieldset__legend--m',
+                isPageHeading: true
+              }
+            }) %}
+
+              {{ govukInput({
+                label: {
+                  text: 'Address line 1'
+                },
+                id: 'agnet-address1',
+                name: 'agent-address1',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['agent-address1'] if data['agent-address1'] else '',
+                autocomplete: 'address-line1'
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Address line 2 (optional)'
+                },
+                id: 'agent-address2',
+                name: 'agent-address2',
+                classes: 'govuk-!-width-two-thirds',
+                value: data['agent-address2'] if data['agent-address2'] else '',
+                autocomplete: 'agent-line2'
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Town'
+                },
+                id: 'agent-town',
+                name: 'agent-town',
+                classes: 'govuk-!-width-one-half',
+                value: data['agent-town'] if data['agent-town'] else '',
+                autocomplete: 'address-town'
+              }) }}
+
+              
+              {{ govukSelect({
+                id: 'agent-county',
+                name: 'agent-county',
+                label: {
+                  text: 'County'
+                },
+                items: [
+                  {
+                    value: 'greater-london',
+                    text: 'Greater London'
+                  },
+                  {
+                    value: 'west-midlands',
+                    text: 'West Midlands',
+                    selected: true
+                  },
+                  {
+                    value: 'greater-manchester',
+                    text: 'Greater Manchester'
+                  },
+                  {
+                    value: 'west-yorkshire',
+                    text: 'West Yorkshire'
+                  }
+                ]
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Postcode'
+                },
+                id: 'agent-postcode',
+                name: 'agent-postcode',
+                classes: 'govuk-!-width-one-quarter',
+                value: data['agent-postcode'] if data['agent-postcode'] else '',
+                autocomplete: 'address-business-postcode'
+              }) }}
+
+            {% endcall %}
+
+            {{ govukButton ({
+                html: 'Continue'
+            }) }}
+
+        </form>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

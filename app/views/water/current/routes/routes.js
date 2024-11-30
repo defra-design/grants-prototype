@@ -229,7 +229,7 @@ router.get('/project-items', function (req, res) {
 router.get('/planning-permission', function (req, res) {
   // var planningPermission = req.session.data['planning-permission']
   var backUrl = 'country'
-  var nextUrl = 'planning-permission-answer'
+  var nextUrl = 'project-start'
   var completedUrl = 'answers'
 
   res.render('./' + req.originalUrl, {
@@ -347,7 +347,7 @@ router.get('/water-SSSI', function (req, res) {
 
 // ABSTRACTION LICENCE COMPLETED
 
-router.post('/abstraction-licence-answer-completed', function (req, res) {
+router.post('/abstraction-licence', function (req, res) {
   var abstractionLicence = req.session.data['abstraction-licence']
 
   if (abstractionLicence === 'Not needed' || abstractionLicence === 'Secured') {

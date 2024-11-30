@@ -1,0 +1,160 @@
+{% extends 'end-to-end/layout-account.html' %}
+
+{% block pageTitle %}
+    Irrigated systems
+{% endblock %}
+
+{% block content %}
+
+   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="irrigated-crops" method="post">
+
+        <h1 class="govuk-heading-l">Irrigation Systems</h1>
+
+        {{ govukCheckboxes ({
+          classes: 'govuk-checkboxes',
+          idPrefix: 'irrigation-systems-current',
+          name: 'irrigation-systems-current',
+          fieldset: {
+                      legend: {
+                        html: '<h2 class="govuk-heading-m">What systems are currently used to irrigate?</h2>',
+                        isPageHeading: false
+                        
+                      }
+                    },
+          hint: {
+            text: 'Select up to 2 options'
+          },
+          items: [
+            {
+              text: 'Trickle',
+              value: 'Trickle',
+              checked: true if data['irrigation-systems-current'] == 'Trickle'
+            },
+            {
+              text: 'Boom',
+              value: 'Boom',
+              checked: true if data['irrigation-systems-current'] == 'Boom'
+            },
+            {
+              text: 'Ebb and flow',
+              value: 'Ebb and flow',
+              checked: true if data['irrigation-systems-current'] == 'Ebb and flow'
+            },
+            {
+              text: 'Capillary bed',
+              value: 'Capillary bed',
+              checked: true if data['irrigation-systems-current'] == 'Capillary bed'
+            },
+            {
+              text: 'Sprinklers',
+              value: 'Sprinklers',
+              checked: true if data['irrigation-systems-current'] == 'Sprinklers'
+            },
+            {
+              text: 'Mist',
+              value: 'Mist',
+              checked: true if data['irrigation-systems-current'] == 'Mist'
+            },
+            {
+              text: 'Rain gun',
+              value: 'Rain gun',
+              checked: true if data['irrigation-systems-current'] == 'Rain gun'
+            }
+          ]
+        }) }}
+
+      {{ govukCheckboxes ({
+          classes: 'govuk-checkboxes',
+          idPrefix: 'irrigation-systems-target',
+          name: 'irrigation-systems-target',
+          fieldset: {
+                      legend: {
+                        html: '<h2 class="govuk-heading-m">What systems will be used to irrigate?</h2>',
+                        isPageHeading: false
+                        
+                      }
+                    },
+          hint: {
+            text: 'Select up to 2 options'
+          },
+          items: [
+            {
+              text: 'Trickle',
+              value: 'Trickle',
+              checked: true if data['irrigation-systems-target'] == 'Trickle'
+            },
+            {
+              text: 'Boom',
+              value: 'Boom',
+              checked: true if data['irrigation-systems-target'] == 'Boom'
+            },
+            {
+              text: 'Ebb and flow',
+              value: 'Ebb and flow',
+              checked: true if data['irrigation-systems-target'] == 'Ebb and flow'
+            },
+            {
+              text: 'Capillary bed',
+              value: 'Capillary bed',
+              checked: true if data['irrigation-systems-target'] == 'Capillary bed'
+            },
+            {
+              text: 'Sprinklers',
+              value: 'Sprinklers',
+              checked: true if data['irrigation-systems-target'] == 'Sprinklers'
+            },
+            {
+              text: 'Mist',
+              value: 'Mist',
+              checked: true if data['irrigation-systems-target'] == 'Mist'
+            },
+            {
+              text: 'Rain gun',
+              value: 'Rain gun',
+              checked: true if data['irrigation-systems-target'] == 'Rain gun'
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+              id: 'Continue',
+              name: 'continue',
+              text: "Continue"
+          }) }}   
+  
+      </form>
+  
+      <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+        {{ govukButton({
+              id: 'nosignin',
+              name: 'nosignin',
+              text: "Save and come back later",
+              classes: "govuk-button--secondary"
+          }) }}
+      </form>
+
+        {% if data['COMPLETED'] == true %}
+          {{ govukButton({
+            text: "Back to score",
+            classes: "govuk-button--secondary",
+            url: completedUrl
+          }) }}
+        {% endif %}
+
+        </div>
+    </div>
+
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-s"> Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">
+          <p>RPA wants to fund projects that move from less efficient irrigation systems to more efficient ones. <br><br>For example, moving from rain gun to trickle.</p>
+        </div>
+      </aside>
+    </div>
+
+{% endblock %}

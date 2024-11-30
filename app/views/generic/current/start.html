@@ -1,0 +1,135 @@
+{% set hideBackButton = true %}
+
+{% extends 'generic/layout.html' %}
+
+{% block pageTitle %}
+ Generic checker screens
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Generic checker screens
+      </h1>
+
+      <p>
+        Use this service to check:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          if you are eligible to apply for a grant for your project (takes about x minutes)
+        </li>
+        <li>
+          how well your project scores against the funding priorities (takes about xx minutes if you have all the project details)
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        Who can apply
+      </h2>
+
+      <p>
+        You can apply if you either:
+      </p>
+        
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          item 1
+        </li>
+        <li>
+          item 2
+        </li>
+        <li>
+          item 3
+        </li>
+      </ul>
+
+      <p>
+        You must do the grant-funded work in England.
+      </p>
+
+      <p>
+        You can apply for up to x% of the estimated cost of project items.
+      </p>
+
+      <p>
+        The minimum grant for project items is £xxx (x% of £xx,000). The maximum grant you can apply for is £xxx. 
+      </p>
+
+      {{ govukInsetText ({
+        text: 'Highlighted content here'
+      }) }}
+
+      {{ govukButton({
+        text: "Start now",
+        href: "eligibility/common/country",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+      <p>
+        To  use the checker, you need:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          item 1
+        </li>
+        <li>
+          item 2
+        </li>
+        <li>
+          item 3
+        </li>
+        <li>
+            item 4
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">
+        Problems using the online service
+      </h2>
+
+      <p>
+        If you have any problems using the online service, contact xxx
+      </p>
+
+      <h3 class="govuk-heading-s">
+        Telephone
+      </h3>
+
+      <p>
+        Telephone: xxxx xxxx xx
+      </p>
+
+      <p>
+        Monday to Friday, 9am to 5pm (except public holidays)
+      </p>
+
+      <p>
+        <a href="https://www.gov.uk/call-charges">
+          Find out about call charges
+        </a>
+      </p>
+
+      <h3 class="govuk-heading-s">
+        Email
+      </h3>
+
+      <p>
+        <a href="mailto:FTF@rpa.gov.uk">
+          xxx@xxx.gov.uk
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+{% endblock %}

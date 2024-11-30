@@ -1,0 +1,70 @@
+{% extends 'adding-value-2024/layout.html' %}
+
+{% block pageTitle %}
+    Do you have a tenancy agreement for 5 years after the final grant payment?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="../adding-value/smaller-abattoir" method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'tenancy-agreement',
+                    name: 'tenancy-agreement',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you have a tenancy agreement for 5 years after the final grant payment?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['tenancy-agreement'] == 'Yes',
+                            attributes: {
+                                'data-next': '../adding-value/smaller-abattoir'
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['tenancy-agreement'] == 'No',
+                            attributes: {
+                                'data-next': 'elim-tenancy-agreement'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You must own the land or have a tenancy in place for 5 years after the final grant payment.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

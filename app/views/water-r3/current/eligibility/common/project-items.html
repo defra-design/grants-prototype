@@ -1,0 +1,151 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+     Which items eligible for grant funding are included in the project?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">What eligible items do you need for your project?</h1>
+            <p id="project-items-hint" class="govuk-hint">
+              Select all the items your project needs
+            </p>
+
+              <form method="post" action="../funding/cost">
+
+               {{ govukCheckboxes({
+                  idPrefix: 'items-needed',
+                  name: 'items-needed',
+                  fieldset: {
+                    legend: {
+                      text: "Reservoir construction and infrastructure",
+                      classes: "govuk-fieldset__legend--m govuk-!-margin-top-6"
+                    }
+                  },
+                  items: [
+                    {
+                      value: "Construction of reservoir walls",
+                      text: "Construction of reservoir walls",
+                      checked: true if 'Construction of reservoir walls' | isIn(data['items-needed'])
+                    },
+                    {
+                      value: "Overflow/spillway",
+                      text: "Overflow/spillway",
+                      checked: true if 'Overflow/spillway' | isIn(data['items-needed'])
+                    }, {
+                      value: "Synthetic liner",
+                      text: "Synthetic liner",
+                      checked: true if 'Synthetic liner' | isIn(data['items-needed'])
+                    }, {
+                      value: "Abstraction point including pump",
+                      text: "Absraction point including pump",
+                      checked: true if 'Absraction point including pump' | isIn(data['items-needed'])
+                    }, {
+                      value: "Fencing for synthetically lined reservoir",
+                      text: "Fencing for synthetically lined reservoir",
+                      checked: true if 'Fencing for synthetically lined reservoir' | isIn(data['items-needed'])
+                    }, {
+                      value: "Filtration equipment",
+                      text: "Filtration equipment",
+                      checked: true if 'Filtration equipment' | isIn(data['items-needed'])
+                    }, {
+                      value: "Irrigation pumps and controls",
+                      text: "Irrigation pumps and controls",
+                      checked: true if 'Irrigation pumps and controls' | isIn(data['items-needed'])
+                    }, {
+                      value: "Pipework to fill the reservoir",
+                      text: "Pipework to fill the reservoir",
+                      checked: true if 'Pipework to fill the reservoir' | isIn(data['items-needed'])
+                    }, {
+                      value: "Pumphouse",
+                      text: "Pumphouse",
+                      checked: true if 'Pumphouse' | isIn(data['items-needed'])
+                    }, {
+                      value: "Underground water distribution main and hydrants",
+                      text: "Underground water distribution main and hydrants",
+                      checked: true if 'Underground water distribution main and hydrants' | isIn(data['items-needed'])
+                    }, {
+                      value: "Electricity installation for pumphouse ",
+                      text: "Electricity installation for pumphouse ",
+                      checked: true if 'Electricity installation for pumphouse' | isIn(data['items-needed'])
+                    },{
+                      value: "Water meter",
+                      text: "Water meter",
+                      checked: true if 'Water meter' | isIn(data['items-needed'])
+                    }
+                  ]
+                }) }}
+
+                 {{ govukCheckboxes({
+                  name: "Irrigation equipment",
+                  fieldset: {
+                    legend: {
+                      text: "Irrigation equipment",
+                      classes: "govuk-fieldset__legend--m govuk-!-margin-top-2"
+                    }
+                  },
+                  items: [
+                    {
+                      value: "Boom",
+                      text: "Boom",
+                      checked: true if 'Boom' | isIn(data['items-needed'])
+                    },
+                    {
+                      value: "Trickle",
+                      text: "Trickle",
+                      checked: true if 'Trickle' | isIn(data['items-needed'])
+                    }, {
+                      value: "Ebb and flow",
+                      text: "Ebb and flow",
+                      checked: true if 'Ebb and flow' | isIn(data['items-needed'])
+                    }, {
+                      value: "Capillary bed",
+                      text: "Capillary bed",
+                      checked: true if 'Capillary bed' | isIn(data['items-needed'])
+                    }, {
+                      value: "Sprinklers",
+                      text: "Sprinklers",
+                      checked: true if 'Sprinklers' | isIn(data['items-needed'])
+                    }, {
+                      value: "Mist",
+                      text: "Mist",
+                      checked: true if 'Mist' | isIn(data['items-needed'])
+                    }
+                  ]
+                }) }}
+
+                 {{ govukCheckboxes({
+                  name: "Technology",
+                  fieldset: {
+                    legend: {
+                      text: "Technology",
+                      classes: "govuk-fieldset__legend--m govuk-!-margin-top-2"
+                    }
+                  },
+                  items: [
+                    {
+                      value: "Equipment to monitor soil moisture levels and schedule irrigation",
+                      text: "Equipment to monitor soil moisture levels and schedule irrigation",
+                      checked: true if 'Equipment to monitor soil moisture levels and schedule irrigation' | isIn(data['items-needed'])
+                    },
+                    {
+                      value: "Equipment such as sensors to optimise water application",
+                      text: "Equipment such as sensors to optimise water application",
+                      checked: true if 'Equipment such as sensors to optimise water application' | isIn(data['items-needed'])
+                    }
+                  ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

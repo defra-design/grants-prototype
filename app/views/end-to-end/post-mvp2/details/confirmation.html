@@ -1,0 +1,91 @@
+{% set hideBackButton = true %}
+
+{% extends 'end-to-end/layout-account.html' %}
+
+{% block pageTitle %}
+  Confirmation
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+       <h1 class="govuk-panel__title">
+        Details submitted
+       </h1>
+    <div class="govuk-panel__body">
+      Your reference number<br><strong>AV-VMA-A54</strong>
+    </div>
+   </div>
+
+
+      <p>
+        We have sent you a confirmation email with a record of your answers.
+      </p>
+      
+      <p>
+        If you do not get an email within 72 hours, call the RPA helpline and follow the options for the Farming Transformation Fund scheme.
+      </p>
+
+      {% if data['top-fruit-storage'] == 'Yes' %}
+        <p>
+          You can <a href="#">check if you can apply for another Adding Value project</a> in addition to top fruit storage.
+        </p>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">RPA helpline</h2>
+
+      <h3 class="govuk-heading-s">Telephone</h3>
+
+      <ul class="govuk-list">
+  <li>Telephone: 03000 200 301</li>
+  <li>Monday to Friday, 9am to 5pm (except public holidays)</li>
+</ul>
+<p class="govuk-body">
+  <a class="govuk-link" href="#">Find out about call charges</a>
+</p>
+
+<h3 class="govuk-heading-s">Email</h3>
+
+<ul class="govuk-list">
+  <li><a class="govuk-link" href="#">FTF@rpa.gov.uk</a></li>
+
+</ul>
+
+<p class="govuk-heading-m">What happens next</p>
+<ol class="govuk-list govuk-list--number govuk-list--spaced">
+  <li>
+    The RPA will contact you when the full application period opens. They will tell you if your project scored well enough to get the full application form.
+  </li>
+  <li>
+    If you submit an application, the RPA will assess it against other projects and value for money. You will not automatically get a grant. The grant is expected to be highly competitive and you are competing against other projects.
+  </li>
+  <li>
+    If your application is successful, you'll be sent a funding agreement and can begin work on the project.
+  </li>
+</ol>
+
+{{ govukWarningText({
+    text: 'You must not start the project',
+    iconFallbackText: 'Warning'
+}) }}
+
+<p>
+  Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement will invalidate your application.
+</p>
+      <p class="govuk-body">Before you start the project, you can:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>get quotes from suppliers</li>
+          <li>apply for planning permission</li>
+        </ul>
+
+      {% if data['tenancy'] == 'No' %}
+      <div class="govuk-inset-text">
+          If you want your landlord to underwrite your project, you will need them to sign a letter of assurance. This letter will say your landlord agrees to take over your project, including conditions in the Grant Funding Agreement, if your tenancy ends. You should discuss and agree this with your landlord before you begin your full application.
+        </div>
+      {% endif %}
+
+      <p><a href="#" class="govuk-link">What do you think of this service?</a></p>
+
+{% endblock %}

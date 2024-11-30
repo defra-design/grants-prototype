@@ -1,0 +1,88 @@
+{% extends 'end-to-end/layout-account.html' %}
+
+{% block pageTitle %}
+    Will this project use any mechanisation instead of manual labour?
+{% endblock %}
+
+{% block content %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing range of added-value products' | isIn(data['scoring-impact']) and 'Increasing volume of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasBothError=true' | redirect | safe }}
+{% endif %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing volume of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasVolumeError=true' | redirect | safe }}
+{% endif %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing range of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasRangeError=true' | redirect | safe }}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+                {% set nextPageOnNo = 'customers' %}
+                {% if data['from-scoring'] == 'true' %}
+                    {% set nextPageOnNo = 'results' %}
+                {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-mechanisation',
+                    name: 'scoring-mechanisation',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will this project use any mechanisation instead of manual labour?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'For example, a fruit grading and sorting machine'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['scoring-mechanisation'] == 'Yes',
+                            attributes: {
+                                'data-next': 'manual-labour-amount'
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['scoring-mechanisation'] == 'No',
+                            attributes: {
+                                'data-next': nextPageOnNo
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA wants to fund projects that increase the use of mechanisation due to the manual labour shortage.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

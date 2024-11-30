@@ -1,0 +1,72 @@
+{% extends 'new/layout.html' %}
+
+{% block pageTitle %}
+    Will this abattoir provide services to other farmers?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'smaller-abattoir-other',
+                    name: 'smaller-abattoir-other',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Will this abattoir provide services to other farmers?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'For example, farmers pay you to slaughter their livestock'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['smaller-abattoir-other'] == 'Yes',
+                            attributes: {
+                                'data-next': 'items-needed'
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['smaller-abattoir-other'] == 'No',
+                            attributes: {
+                                'data-next': 'elim-smaller-abattoir-other'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You must provide some abattoir services to other farmers.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,327 @@
+{% extends 'new/layout.html' %}
+
+{% block pageTitle %}
+    Score results
+{% endblock %}
+
+{% block content %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing range of added-value products' | isIn(data['scoring-impact']) and 'Increasing volume of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasBothError=true' | redirect | safe }}
+{% endif %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing volume of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasVolumeError=true' | redirect | safe }}
+{% endif %}
+
+{% if 'Creating added-value products for the first time' | isIn(data['scoring-impact']) and 'Increasing range of added-value products' | isIn(data['scoring-impact']) %}
+    {{ 'impact?hasRangeError=true' | redirect | safe }}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-xl">Score results</h1>
+
+            <p class="govuk-!-font-size-24">
+                Based on your answers, your project’s score is:
+            </p>
+
+            {% set insetHtml %}
+
+                <span class="govuk-heading-m govuk-!-margin-bottom-2">
+                    Average
+                </span>
+
+                <p>
+                    This means your project might be successful.
+                </p>
+
+            {% endset %}
+
+            {{ govukInsetText ({
+                html: insetHtml
+            }) }}
+
+            {{ govukSummaryList ({
+                rows: [
+                    {
+                        key: {
+                            text: 'Strong'
+                        },
+                        value: {
+                            text: 'Based on your answers, a grant application is likely to be successful.'
+                        }
+                    },
+                    {
+                        key: {
+                            text: 'Average'
+                        },
+                        value: {
+                            text: 'Based on your answers, a grant application might be successful.'
+                        }
+                    },
+                    {
+                        key: {
+                            text: 'Weak'
+                        },
+                        value: {
+                            text: 'Based on your answers, a grant application is unlikely to be successful.'
+                        }
+                    }
+                }
+            }) }}
+
+            {{ govukWarningText ({
+                text: 'The likelihood of a full application being successful will also depend on the number and value of applications we receive.',
+                iconFallbackText: 'Warning'
+            }) }}
+
+            <p>
+               Value for money will be assessed alongside the funding priorities at full application stage and this may impact your overall project score. 
+            </p>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+            <h2 class="govuk-heading-l">
+                Your answers
+            </h2>
+
+            <p>
+                You can go back to change scoring questions as many times as you like but you can only submit your details once.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+    
+
+            <table class="govuk-table">
+                <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">
+                    Scoring results
+                </caption>
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">
+                            Answers
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Your score
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Funding priorities
+                        </th>
+                        <th scope="col" class="govuk-table__header">
+                            Change
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody class="govuk-table__body">
+
+                    {% if data['top-fruit-storage'] != 'Yes' %}
+
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                    Produce processed
+                                </p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>
+                                        {{ data['scoring-produce'] }}
+                                    </li>
+                                </ul>
+                            </th>
+                            <td class="govuk-table__cell">
+                                Average
+                            </td>
+                            <td class="govuk-table__cell">
+                                Create and expand processing capacity to provide more English-grown food for consumers to buy
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link govuk-link--no-visited-state" href="produce?from-scoring=true">
+                                    Change
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                    Adding value
+                                </p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>
+                                        {{ data['scoring-value'] }}
+                                    </li>
+                                </ul>
+                            </th>
+                            <td class="govuk-table__cell">
+                                Average
+                            </td>
+                            <td class="govuk-table__cell">
+                                Improve processing and supply chains<br><br>
+                                Grow your business
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link govuk-link--no-visited-state" href="value?from-scoring=true">
+                                    Change
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                    Project impact
+                                </p>
+                                {{ data['scoring-impact'] | checkboxAnswersToList | safe }}
+                            </th>
+                            <td class="govuk-table__cell">
+                                Average
+                            </td>
+                            <td class="govuk-table__cell">
+                                Improve processing and supply chains<br><br>
+                                Grow your business
+                            </td>
+                            <td class="govuk-table__cell">
+                                <a class="govuk-link govuk-link--no-visited-state" href="impact?from-scoring=true">
+                                    Change
+                                </a>
+                            </td>
+                        </tr>
+
+                    {% endif %}
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Mechanisation
+                            </p>
+                        {% if data['scoring-mechanisation'] == 'Yes'%}
+                            <li>
+                            Yes, {{  data['scoring-manual-labour-amount'] | lowerCase }}
+                            </li>
+                        {% else %}
+                            <li>
+                            No, this project will not use mechanisation
+                            </li>
+                        {% endif %}
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Increase the use of mechanisation due to the current manual labour shortage
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="mechanisation?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                New customers
+                            </p>
+                            {{ data['scoring-customers'] | checkboxAnswersToList | safe }}
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Improve processing and supply chains<br><br>
+                            Grow your business
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="customers?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Collaboration
+                            </p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>
+                                    {{ data['scoring-collaboration'] }}
+                                </li>
+                            </ul>
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Improve processing and supply chains<br><br>
+                            Encourage collaboration and partnerships
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="collaboration?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">
+                                Environmental impact
+                            </p>
+                            {{ data['scoring-environment'] | checkboxAnswersToList | safe }}
+                        </th>
+                        <td class="govuk-table__cell">
+                            Average
+                        </td>
+                        <td class="govuk-table__cell">
+                            Improve the environment
+                        </td>
+                        <td class="govuk-table__cell">
+                            <a class="govuk-link govuk-link--no-visited-state" href="environment?from-scoring=true">
+                                Change
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+            
+            <h2 class="govuk-heading-l">
+                Next steps
+            </h2>
+
+            <p>
+                You can go back to change scoring questions as many times as you like but you can only submit your details once.
+            </p>
+
+            <p>
+                You’ll get an email with your score and answers, and a reference number.
+            </p>
+
+            {{ govukButton ({
+                text: 'Continue',
+                href: '../details/business-details'
+            }) }}
+
+        </div>
+
+</div>
+
+{% endblock %}

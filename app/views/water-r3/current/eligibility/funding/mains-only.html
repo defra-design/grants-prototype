@@ -1,0 +1,69 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    How will your use of mains change?
+{% endblock %}
+
+{% block content %}
+
+  <form action="irrigation-systems" method="post">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {{ govukRadios({
+          name: "mains-only",
+          fieldset: {
+            legend: {
+              text: "How will your use of mains change?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+          {
+            value: "decrease",
+            text: "Decrease",
+            checked: checked("mains-only", "decrease")
+          },
+            {
+              value: "no",
+              text: "No change",
+              checked: checked("mains-only", "no")
+            }
+
+          ]
+        }) }}
+
+
+        <br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to score
+          </button>
+        {% endif %}
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+          <h3 class="govuk-heading-s">Funding priorities </h3>
+          <div class="govuk-body">
+
+            <p>RPA wants to fund projects that use more sustainable water sources, such as:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>winter peak-flow abstraction</li>
+              <li>rain water harvesting</li>
+              <li>bore hole/aquifer</li>
+              </ul>
+          </div>
+      </aside>
+    </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends 'end-to-end/layout-account.html' %}
+
+{% block pageTitle %}
+    Water source
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" action="change-summerabs">
+
+        <h1 class="govuk-heading-l">Water source</h1>
+          
+           {{ govukCheckboxes ({ 
+            classes: 'govuk-checkboxes',
+            idPrefix: 'water-source-2-current',
+            name: 'water-source-2-current',
+            fieldset: {
+                        legend: {
+                          html: '<h2 class="govuk-heading-m">What is your current main water source?</h2>',
+                          isPageHeading: false
+                        }
+                      },
+            hint: {
+              text: 'Select all that apply'
+            },
+            items: [
+              {
+                text: 'Summer water surface abstraction',
+                value: 'Summer abstraction',
+                checked: true if ['water-source-2-current'] == 'Summer abstraction'
+              },
+              {
+                text: 'Mains',
+                value: 'Mains',
+                checked: true if ['water-source-2-current'] == 'Mains'
+              },
+              {
+                text: 'Winter peak-flow abstraction',
+                value: 'Peak flow',
+                checked: true if ['water-source-2-current'] == 'Peak flow'
+              },
+              {
+                text: 'Rain water harvesting',
+                value: 'Rain water harvesting',
+                checked: true if ['water-source-2-current'] == 'Rain water harvesting'
+              },
+              {
+                text: 'Bore hole/aquifer',
+                value: 'Bore hole',
+                checked: true if ['water-source-2-current'] == 'Bore hole'
+              }
+            ]
+          }) }}
+
+          {{ govukCheckboxes ({ 
+            classes: 'govuk-checkboxes',
+            idPrefix: 'water-source-2-target',
+            name: 'water-source-2-target',
+            fieldset: {
+              legend: {
+                          html: '<h2 class="govuk-heading-m">What will the irrigated water come from?</h2>',
+                          isPageHeading: false
+                        }
+            },
+            hint: {
+              text: 'Select all that apply'
+            },
+            items: [
+              {
+                text: 'Summer water surface abstraction',
+                value: 'Summer abstraction',
+                checked: true if ['water-source-2-target'] == 'Summer abstraction'
+              },
+             {
+                text: 'Mains',
+                value: 'Mains',
+                checked: true if ['water-source-2-target'] == 'Mains'
+              },
+              {
+                text: 'Winter peak-flow abstraction',
+                value: 'Peak flow',
+                checked: true if ['water-source-2-target'] == 'Peak flow'
+              },
+              {
+                text: 'Rain water harvesting',
+                value: 'Rain water harvesting',
+                checked: true if ['water-source-2-target'] == 'Rain water harvesting'
+              },
+              {
+                text: 'Bore hole/aquifer',
+                value: 'Bore hole',
+                checked: true if ['water-source-2-target'] == 'Bore hole'
+              }
+            ]
+          }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {% if data['COMPLETED'] == true %}
+          {{ govukButton({
+            text: "Back to score",
+            classes: "govuk-button--secondary",
+            url: completedUrl
+          }) }}
+        {% endif %}
+          
+      </form>
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-s"> Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">
+          <p>RPA wants to fund projects that use more sustainable water sources, such as:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>winter peak-flow abstraction</li>
+            <li>rain water harvesting</li>
+            <li>bore hole/aquifer</li>
+            </ul>
+            <p>RPA will not fund projects that increase water usage from:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>summer water surface abstraction</li>
+              <li>mains</li>
+              </ul>
+        </div>
+      </aside>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var mainsCheckbox = document.getElementById('mains-checkbox');
+    if (mainsCheckbox) {
+      mainsCheckbox.addEventListener('change', function() {
+        if (mainsCheckbox.checked) {
+          window.location.href = 'mains-only.html';
+        }
+      });
+    }
+  });
+</script>
+
+{% endblock %}

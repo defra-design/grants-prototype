@@ -1,0 +1,107 @@
+{% extends 'end-to-end/layout-account.html' %}
+
+{% block pageTitle %}
+    How will your use of summer abstraction and mains change?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form action="irrigation-systems" method="post">
+
+        <h1 class="govuk-heading-l">
+          How will your use of summer abstraction and mains change?
+        </h1>
+
+          {{ govukRadios({
+            name: "summerabs2-only",
+            fieldset: {
+              legend: {
+                text: "Summer water surface abstraction",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+            {
+              value: "decrease",
+              text: "Decrease",
+              checked: checked("summerabs2-only", "decrease")
+            },
+              {
+                value: "no",
+                text: "No change",
+                checked: checked("summerabs2-only", "no")
+              }
+
+            ]
+          }) }}
+
+          {{ govukRadios({
+            name: "mains2-only",
+            fieldset: {
+              legend: {
+                text: "Mains",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+            {
+              value: "decrease",
+              text: "Decrease",
+              checked: checked("mains2-only", "decrease")
+            },
+              {
+                value: "no",
+                text: "No change",
+                checked: checked("mains2-only", "no")
+              }
+
+            ]
+          }) }}
+        
+        {{ govukButton({
+          text: "Continue",
+          type: "submit"
+        }) }}
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to score
+          </button>
+        {% endif %}
+
+        {% if data['COMPLETED'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1" data-module="govuk-button"
+          >
+            Back to score
+          </button>
+        {% endif %}
+
+      </form>
+    </div>
+    
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+          <h3 class="govuk-heading-s"> Funding priorities </h3>
+          <div class="govuk-body">
+
+            <p>RPA wants to fund projects that use more sustainable water sources, such as:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>winter peak-flow abstraction</li>
+              <li>rain water harvesting</li>
+              <li>bore hole/aquifer</li>
+              </ul>
+          </div>
+      </aside>
+    </div>
+  </div>
+
+
+{% endblock %}
