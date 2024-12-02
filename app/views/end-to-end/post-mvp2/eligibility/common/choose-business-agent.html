@@ -1,7 +1,7 @@
-{% extends 'end-to-end/layout-account.html' %}
+{% extends 'end-to-end/layout.html' %}
 
 {% block pageTitle %}
-   Which business are you applying for?
+   Which client are you applying for?
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-            <form method="post" action="name-project">
+            <form method="post">
 
                 {{ govukRadios ({
                     idPrefix: 'business-applying',
@@ -22,12 +22,15 @@
                     classes: 'govuk-radios',
                     fieldset: {
                         legend: {
-                            text: 'Which business are you applying for?',
+                            text: 'Which client are you applying for?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
-                       items: [
+                    hint: {
+                        text: 'The client you are applying on behalf of'
+                    },
+                    items: [
                         {
                             text: 'Imaginary Farms Ltd',
                             value: 'Imaginary Farms Ltd',
