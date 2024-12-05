@@ -1,0 +1,114 @@
+{% extends "layouts/logged-in-nav-v5.html" %}
+
+{% set pageName="Your account" %}
+{% set serviceName="Manage your land and farm businesses" %}
+
+{% set yourMessages = "Active" %}
+
+
+{%- block beforeContent -%}
+
+
+<div class="govuk-width-container">
+
+
+
+  <!-- ACCOUNT MENU -->
+  <nav id="secondary-nav" class="hmrc-account-menu hmrc-account-menu_sfd" aria-label="Account" data-module="hmrc-account-menu">
+
+    <nav class="govuk-breadcrumbs" style="display: inline-block;" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/to-be/v5/landing/business-page">Home</a>
+        </li>
+      </ol>
+    </nav>
+
+
+    <a href="#" class="hmrc-account-menu__link hmrc-account-menu__link--menu js-hidden js-visible" tabindex="-1" aria-hidden="true" aria-expanded="false">
+      Account menu </a>
+
+      <ul class="hmrc-account-menu__main js-hidden">
+      <li class="hmrc-account-menu__link--back hidden" aria-hidden="true">
+        <a href="#" tabindex="-1" class="hmrc-account-menu__link">
+          Back </a>
+      </li>
+
+
+      <li>
+        <a href="/to-be/v5/landing/your-account" class="hmrc-account-menu__link hmrc-account-menu__link_sfd hmrc-account-menu__link--active hmrc-account-menu__link--active_sfd">
+          Your account </a>
+      </li>
+
+      <li>
+        <a href="../../../_common/not-testing.html" class="hmrc-account-menu__link hmrc-account-menu__link_sfd">
+          Sign out </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- END ACCOUNT MENU -->
+
+
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+      <span class="govuk-caption-l">Alfred Waldron</span>
+      Your account
+    </h1>
+    <p class="govuk-caption-m govuk-!-margin-bottom-7">Customer reference number (CRN): 1101996862</p>
+
+
+    <div class="gem-c-cards card-page">
+      <ul class="gem-c-cards__list">
+
+        
+
+        <li class="gem-c-cards__list-item-variant">
+          <a class="govuk-link govuk-link--no-visited-state" href="/to-be/v5/details/personal-details">
+            <div class="gem-c-cards__list-item-wrapper-variant">
+              <h2 class="gem-c-cards__sub-heading govuk-heading-s link-style govuk-link">Your personal details</h2> 
+              <p class="govuk-body-s gem-c-cards__description p-link-style">View and update your personal details</p>          
+            </div>
+          </a> 
+        </li>
+
+
+        <li class="gem-c-cards__list-item-variant">
+          <a class="govuk-link govuk-link--no-visited-state" href="/to-be/v5/start/your-businesses-list">
+            <div class="gem-c-cards__list-item-wrapper-variant">
+              <h2 class="gem-c-cards__sub-heading govuk-heading-s link-style govuk-link">Your businesses</h2> 
+              <p class="govuk-body-s gem-c-cards__description p-link-style">View a list of your businesses</p>          
+            </div>
+          </a> 
+        </li>
+
+        <li class="gem-c-cards__list-item-variant">
+          <a class="govuk-link govuk-link--no-visited-state" href="../../../_common/not-testing.html">
+            <div class="gem-c-cards__list-item-wrapper-variant">
+              <h2 class="gem-c-cards__sub-heading govuk-heading-s link-style govuk-link">Register a business</h2>
+              <p class="govuk-body-s gem-c-cards__description p-link-style">Enter details for a new business</p>          
+            </div>
+          </a>  
+        </li>
+      
+      </ul>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
