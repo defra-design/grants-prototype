@@ -24,32 +24,32 @@
                     },
                     items: [
                         {
-                            text: 'Not needed',
-                            value: 'Not needed',
-                            checked: true if data['planning-permission'] == 'Not needed',
-                            attributes: {
-                                    'data-next': 'project-start'
-                                }
-                        },
-                        {
-                            text: 'Secured',
-                            value: 'Secured',
+                            text: 'Yes, it is secured',
+                            value: 'Yes, it is secured',
                             checked: true if data['planning-permission'] == 'Secured',
                             attributes: {
                                     'data-next': 'project-start'
                                 }
                         },
                         {
-                            text: 'Should be in place by the time I make my full application',
-                            value: 'Should be',
+                            text: 'No, it is not needed',
+                            value: 'No, it is not needed',
+                            checked: true if data['planning-permission'] == 'Not needed',
+                            attributes: {
+                                    'data-next': 'project-start'
+                                }
+                        },
+                        {
+                            text: 'No, but it should be in place by the time I make my full application',
+                            value: 'No, but it should be in place by the time I make my full application',
                             checked: true if data['planning-permission'] == 'Should be',
                             attributes: {
                                     'data-next': 'project-start'
                                 }
                         },
                         {
-                            text: 'Will not be in place by the time I make my full application',
-                            value: 'Will not be',
+                            text: 'No, it will not be in place by the time I make my full application',
+                            value: 'No, it will not be in place by the time I make my full application',
                             checked: true if data['planning-permission'] == 'Will not be',
                             attributes: {
                                     'data-next': 'elim-planning-permission'

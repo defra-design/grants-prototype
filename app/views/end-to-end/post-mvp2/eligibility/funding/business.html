@@ -12,7 +12,7 @@
       <form action="../../task-list2/list-1-1" method="post">
 
         <h1 class="govuk-heading-l">
-          Business details
+          Organisation details
         </h1>
 
 
@@ -23,10 +23,10 @@
           classes: 'govuk-input--width-10',
           type: 'text',
           hint: {
-            text: "Full-time employees, including the owner"
+            text: "Including the owner"
           },
           label: {
-            text: 'Number of employees'
+            text: 'Number of permanent employees'
           }
         }) }}
 
@@ -37,40 +37,16 @@
           classes: 'govuk-input--width-10',
           type: 'text',
           hint: {
-            text: "Business turnover (£)"
+            text: "Turnover (£)"
           },
           label: {
-            text: 'Business turnover'
+            text: 'Business turnover for last financial year'
           }
         }) }}
 
-         {{ govukInput ({
-            id: 'project-name',
-            name: 'project-name',
-            value: data['project-name'] if data['project-name'] else '',
-            classes: 'govuk-input--width-20',
-            type: 'text',
-            hint: {
-              text: "For example, Brown Hill Farm reservoir"
-            },
-            label: {
-              text: 'Project name'
-            }
-          }) }}
+          
 
-          {{ govukInput ({
-            id: 'project-postcode',
-            name: 'project-postcode',
-            value: data['project-postcode'] if data['project-postcode'] else '',
-            classes: 'govuk-input--width-10',
-            type: 'project-postcode',
-            hint: {
-              text: 'The site postcode where the work will happen'
-            },
-            label: {
-              text: 'Project postcode'
-            }
-          }) }}  
+          
        
               <div class="govuk-button-group">
                     {{ govukButton({
@@ -81,7 +57,7 @@
 
                 </form>
 
-                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
                     {{ govukButton({
                         id: 'nosignin',
                         name: 'nosignin',
@@ -119,7 +95,7 @@
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="employees">
-              Number of employees
+              Number of permanent employees
           </label>
           <div id="employees-hint" class="govuk-hint">Full-time employees, including the owner</div>
           <input class="govuk-input govuk-input--width-10" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">

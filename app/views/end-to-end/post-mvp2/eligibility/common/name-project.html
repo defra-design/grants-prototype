@@ -16,15 +16,23 @@
 
             <form method="post" action="../../task-list2/list-1-0">
 
+                <h1 class="govuk-heading-l">
+        Give your project a name
+      </h1>
+
+      <p>This name will be used:</p>
+
+                <ul class="govuk-list govuk-list--bullet">
+            <li>on your Rural Payments service home page</li>
+            <li>when we contact you about your application</li>
+          
+          </ul>
+
                     {{ govukInput({
                         label: {
-                          text: "What is the name of your project?",
-                          classes: "govuk-label--l",
-                          isPageHeading: true
+                          text: "Project name"
                         },
-                        hint: {
-                          text: "This will help you find it easily in the future"
-                        },
+                        
                         id: "event-name",
                         name: "eventName",
                         classes: "govuk-input--width-20"

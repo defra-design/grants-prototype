@@ -29,18 +29,18 @@
                     },
                        items: [
                         {
-                            text: 'Imaginary Farms Ltd',
-                            value: 'Imaginary Farms Ltd',
+                            text: 'Your Farm Food Ltd',
+                            value: 'Your Farm Camping Ltd',
                             checked: true if data['business-applying'] == 'Imaginary Farms Ltd'
                         },
                         {
-                            text: 'Browns Farms',
-                            value: 'Browns Farms',
+                            text: 'Your Farm Camping Ltd',
+                            value: 'Your Farm Camping Ltd',
                             checked: true if data['business-applying'] == 'Browns Farms'
                         },
                         {
-                            text: 'Robert Harris',
-                            value: 'Robert Harris',
+                            text: 'Your Farm Residential Ltd',
+                            value: 'Your Farm Residential Ltd',
                             checked: true if data['business-applying'] == 'Robert Harris'
                         }
                     ]
@@ -55,33 +55,14 @@
 
                 </form>
 
-                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
-                    {{ govukButton({
-                        id: 'nosignin',
-                        name: 'nosignin',
-                        text: "Save and come back later",
-                        classes: "govuk-button--secondary"
-                    }) }}
-                </form>
+                
 
             </div>
 
         </div>
 
 
-        <div class="govuk-grid-column-one-third">
-
-            <div class="app-step-nav-related app-step-nav-related--singular">
-                <h2 class="app-step-nav-related__heading">
-                <span class="app-step-nav-related__pretitle">Eligibility</span>
-                </h2>
-                <p>
-                    This grant is only for projects in England.
-                </p>
-                <p>
-                    Scotland, Wales and Northern Ireland have other grants available.
-                </p>
-            </div>
+        
 
         </div>
 
