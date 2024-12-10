@@ -2,7 +2,7 @@
 
 {% if nosignin == 'true' %}
 
-    {% extends 'end-to-end/layout.html' %}  
+    {% extends 'end-to-end/layout2.html' %}  
 
 {% else %}     
 
@@ -19,7 +19,7 @@
 <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-           <span class="govuk-caption-xl">Browns Hill Farm reservoir</span>
+           <span class="govuk-caption-xl">{{ data['project-name'] or 'Browns Hill Farm reservoir' }} (WM-VMA-1234)</span>
             <h1 class="govuk-heading-xl">Apply for a Water Management grant</h1>
 
             <ol class="govuk-prototype-kit-task-list">

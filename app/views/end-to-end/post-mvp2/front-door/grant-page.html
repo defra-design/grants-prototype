@@ -25,8 +25,8 @@
       <caption class="govuk-table__caption govuk-table__caption--m"></caption>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">App. Number</th>
-          <th scope="col" class="govuk-table__header">Type</th>
+          <th scope="col" class="govuk-table__header">Name</th>
+          <th scope="col" class="govuk-table__header">Application</th>
           {# <th scope="col" class="govuk-table__header">Active</th> #}
           <th scope="col" class="govuk-table__header">Application start</th>
           <th scope="col" class="govuk-table__header">Status</th>
@@ -35,15 +35,15 @@
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">1657308</td>
-          <td class="govuk-table__cell">FTF Grants</td>
+          <td class="govuk-table__cell">{{ data['project-name'] or 'Browns Hill Farm reservoir' }}</td>
+          <td class="govuk-table__cell">WM-VMA-1234</td>
           {# <td class="govuk-table__cell">No</td> #}
           <td class="govuk-table__cell">06/03/2024</td>
           <td class="govuk-table__cell">Need to submit expression of interest</td>
           <td class="govuk-table__cell">
             <form action="../task-list2/list-1-1" method="get">
             <button type="submit" class="govuk-button govuk-!-margin-bottom-0 govuk-button-custom" data-module="govuk-button">
-              Continue application
+              Continue
             </button>
             </form>
           </td>
