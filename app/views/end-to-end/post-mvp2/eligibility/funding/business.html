@@ -22,11 +22,8 @@
           value: data['employees'] if data['employees'] else '',
           classes: 'govuk-input--width-10',
           type: 'text',
-          hint: {
-            text: "Including the owner"
-          },
           label: {
-            text: 'Number of permanent employees'
+            text: 'Number of permanent employees (including owner)'
           }
         }) }}
 
@@ -36,11 +33,8 @@
           value: data['turnover'] if data['turnover'] else '',
           classes: 'govuk-input--width-10',
           type: 'text',
-          hint: {
-            text: "Turnover (£)"
-          },
           label: {
-            text: 'Business turnover for last financial year'
+            text: 'Turnover for last financial year (£)'
           }
         }) }}
 
