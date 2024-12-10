@@ -22,24 +22,24 @@
                     classes: 'govuk-radios',
                     fieldset: {
                         legend: {
-                            text: 'Which business are you applying for?',
+                            text: 'Which business is applying for this grant?',
                             isPageHeading: true,
                             classes: 'govuk-fieldset__legend--l'
                         }
                     },
                        items: [
                         {
-                            text: 'Your Farm Food Ltd',
+                            text: 'Imaginary Farms Ltd',
                             value: 'Your Farm Camping Ltd',
                             checked: true if data['business-applying'] == 'Imaginary Farms Ltd'
                         },
                         {
-                            text: 'Your Farm Camping Ltd',
+                            text: 'Imaginary Camping Ltd',
                             value: 'Your Farm Camping Ltd',
                             checked: true if data['business-applying'] == 'Browns Farms'
                         },
                         {
-                            text: 'Your Farm Residential Ltd',
+                            text: 'Imaginary Residential Ltd',
                             value: 'Your Farm Residential Ltd',
                             checked: true if data['business-applying'] == 'Robert Harris'
                         }
