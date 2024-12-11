@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Separator options
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+    text: "Prototype",
+    classes: "govuk-tag--pink"
+    },
+      html: 'This is not a full service. It is not production code and you might experience problems  .'
+  }) }}
+
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" method="post">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Separators
+          </h1>
+        </legend>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="covertype-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h3 class="govuk-fieldset__heading">
+                What type of separator will you have?
+              </h3>
+
+            </legend>
+
+            <div id="covertype-hint" class="govuk-hint">
+              A screen or a screw press is capable of processing 3m3 or 10m3 of slurry per hour to produce at least 20% dry matter suitable for stores up to 3500 m3.
+
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+
+              {% for item, properties in separatorTypeCost %}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input"
+                    name="sepOpt" type="radio" value="{{item}}"
+                    aria-describedby="sepOpt-item-hint"
+                    {{ checked("sepOpt", item) }}
+                  >
+                  <label class="govuk-label govuk-radios__label">
+                  {{properties.text}}
+                  </label>
+                  <div class="govuk-hint govuk-radios__hint">
+
+                    ({{properties.hint2 | safe}})
+                  </div>
+
+                </div>
+              {% endfor %}
+
+          <p>  <br/><button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button></p>
+
+
+      </form>
+    </div>
+
+   </div>
+
+{% endblock %}

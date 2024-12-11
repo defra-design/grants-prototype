@@ -1,0 +1,71 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    What crops are you growing?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="legal-status" method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'farming-type',
+                    name: 'farming-type',
+                    fieldset: {
+                        legend: {
+                            text: 'What crops are you growing?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Crops for the food industry',
+                            value: 'Crops for the food industry',
+                            checked: true if data['farming-type'] == 'Crops for the food industry'
+                        },
+                        {
+                            text: 'Horticulture',
+                            value: 'Horticulture',
+                            checked: true if data['farming-type'] == 'Horticulture'
+                        },                     
+                        {
+                            text: 'Something else',
+                            value: 'Something else',
+                            checked: true if data['farming-type'] == 'Something else',
+                            attributes: {
+                                'data-next': 'elim-legal-status'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    Public organisations and local authorities cannot apply for this grant.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

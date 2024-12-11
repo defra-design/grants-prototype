@@ -1,0 +1,102 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    How will the project improve productivity?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="collaboration" method="post">
+
+        {{ govukCheckboxes({
+          classes: 'govuk-checkboxes',
+          idPrefix: 'productivity',
+          name: 'productivity',
+          fieldset: {
+            legend: {
+              text: 'How will the project improve productivity?',
+              classes: 'govuk-fieldset__legend--l',
+              isPageHeading: true
+            }
+          },
+          hint: {
+            html: '<p>Productivity is about how much is produced relative to inputs (for example increased yield for the same inputs or the same yield with lower inputs).</p>
+            <p class="govuk-hint">Select up to 2 options</p>'
+          },
+          items: [
+            {
+              value: 'Introduce or expand high-value crops',
+              text: 'Introduce or expand high-value crops',
+              checked: true if 'Introduce or expand high-value crops' | isIn(data['productivity'])
+            },
+            {
+              value: 'Introduce or expand protected crops',
+              text: 'Introduce or expand protected crops',
+              checked: true if 'Introduce or expand protected crops' | isIn(data['productivity'])
+            },
+            {
+              value: 'Increase yield per hectare',
+              text: 'Increase yield per hectare',
+              checked: true if 'Increase yield per hectare' | isIn(data['productivity'])
+            },
+            {
+              value: 'Improve quality',
+              text: 'Improve quality',
+              checked: true if 'Improve quality' | isIn(data['productivity'])
+            },
+            {
+              value: 'Maintain productivity',
+              text: 'Maintain productivity',
+              checked: true if 'Maintain productivity' | isIn(data['productivity'])
+            }
+          ]
+        })
+      }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+            id: 'Continue',
+            name: 'continue',
+            text: "Continue"
+        }) }}   
+
+    </form>
+
+    <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+      {{ govukButton({
+            id: 'nosignin',
+            name: 'nosignin',
+            text: "Save and come back later",
+            classes: "govuk-button--secondary"
+        }) }}
+    </form>
+
+      {% if data['COMPLETED'] == true %}
+      <button
+        onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+        class="govuk-button govuk-button--secondary"
+        data-module="govuk-button"
+      >
+        Back to score
+      </button>
+      {% endif %}
+
+    </div>
+  </div>
+  
+<div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+        <h3 class="govuk-heading-s"> Funding  priorities</h3>
+        <div class="govuk-body govuk-!-font-size-19">
+           RPA wants to fund projects that:
+                   <ul>
+                    <li>improve productivity </li>
+                   </ul>
+        </div>
+      </aside>
+</div>
+</div>
+
+{% endblock %}

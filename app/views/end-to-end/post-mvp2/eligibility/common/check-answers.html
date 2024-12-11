@@ -1,0 +1,167 @@
+{% extends 'end-to-end/layout2.html' %}
+
+ {% set remainingCosts = data['cost'] * 0.6 %}
+
+{% block pageTitle %}
+    Check your answers
+{% endblock %}
+
+{% block content %}
+ 
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+
+        <h1 class="govuk-heading-l">Check your answers</h1>
+        <h2 class="govuk-heading-m">Project details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+       
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Legal status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['legal-status'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> legal status</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Project in England?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['country'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> project in England</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Project have planning permission?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['planning-permission'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> planning permission</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Already started work on the project?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['project-start'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+            </dd>
+          </div>
+          {# <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Is the planned project on land the business owns?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['tenancy'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+            </dd>
+          </div> #}
+         
+        </dl>
+        
+        {# <h2 class="govuk-heading-m">Application details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Previous application number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              502135326
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              For personal use
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              72 Guild Street<br>London<br>SE23 6FH
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> home address</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence period
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Valid for 6 months
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence period</span></a>
+            </dd>
+          </div>
+        </dl> #}
+
+        <!-- Moved from consent.html to align with best practice - user can see what they're agreeing to on same page as per GDS pattern -->
+        <h2 class="govuk-heading-m">Before you continue</h2>
+          <p class="govuk-body">Confirm you understand that:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>the answers shown here will be used in your full application</li>
+            <li>any future changes to this information may affect your eligibility for this grant</li>
+          </ul>
+          {# 
+          
+          <p class="govuk-body">I am aware that the information I submit will be:</p>  
+            <ul class="govuk-list govuk-list--bullet">
+              <li>checked by the RPA</li>
+              <li>shared with the Environment Agency so that they can check the details of my planned project</li>
+            </ul>
+           
+          <p class="govuk-body">I am happy to be contacted by Defra and RPA (or a third-party on their behalf) about my application.</p> #}
+          
+            {# <div class="govuk-checkboxes__item govuk-!-margin-top-6">
+              <input class="govuk-checkboxes__input" id="consent-to-terms-hint" name="consent-to-terms-hint" type="checkbox" value="{{ data['confirmation'] }}">
+                <label class="govuk-label govuk-checkboxes__label" for="consent-to-terms-hint">
+                  (Optional)   I consent to being contacted about improving services
+                </label>
+            </div> #}
+
+            {# {{ govukWarningText({
+              text: "You can only submit your details once.",
+              iconFallbackText: "Warning",
+              classes: "govuk-!-margin-top-6"
+            }) }} #}
+
+          <!-- End consent copy -->
+
+        <form action="confirmation" method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Confirm and continue
+          </button>
+        </form>
+        
+  </main>
+</div>
+
+{% endblock %}

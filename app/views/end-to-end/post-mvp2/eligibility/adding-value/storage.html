@@ -1,0 +1,90 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    Does your project also need storage facilities?
+{% endblock %}
+
+{% block content %}
+
+{% if data['items-needed'] == 'None' %}
+    {{ 'elim-items-needed' | redirect | safe }}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="../funding/solar-pv">
+
+                {{ govukRadios ({
+                    idPrefix: 'storage',
+                    name: 'storage',
+                    fieldset: {
+                        legend: {
+                            text: 'Does your project also need storage facilities?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'For example, cold stores or controlled atmosphere storage'
+                    },
+                    items: [
+                        {
+                            text: 'Yes, we will need storage facilities',
+                            value: 'Yes',
+                            checked: true if data['storage'] == 'Yes'
+                        },
+                        {
+                            text: 'No, we do not need storage facilities',
+                            value: 'No',
+                            checked: true if data['storage'] == 'No'
+                        }
+                    ]
+                }) }}
+
+                {{ govukWarningText ({
+                    text: 'Storage facilities cannot be more than 50% of the total grant funding.',
+                    iconFallbackText: 'Warning'
+                }) }}
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                    <span class="app-step-nav-related__pretitle">
+                        Selected items
+                    </span>
+                </h2>
+                
+                {{ data['items-needed'] | checkboxAnswersToList | safe }}
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'end-to-end/layout-account.html' %}
+
+{% block pageTitle %}
+     Does the project need an abstraction licence or a variation of one?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" action="current-irrigating">
+
+        {{ govukRadios ({
+          idPrefix: 'abstraction-licence',
+          name: 'abstraction-licence',
+          fieldset: {
+            legend: {
+              text: 'Does the project need an abstraction licence or a variation of one?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--l'
+            }
+          },
+          items: [
+            {
+              value: "Not needed",
+              text: "Not needed",
+              checked: true if 'Not needed' | isIn(data['abstraction-licence'])
+            },
+            {
+              value: "Secured",
+              text: "Secured",
+              checked: true if 'Secured' | isIn(data['abstraction-licence'])
+            },
+            {
+              value: "Should be in place by 31 January 2024",
+              text: "Should be in place by 31 January 2024",
+              checked: true if 'Should be in place by 31 January 2024' | isIn(data['abstraction-licence']),
+              attributes: {'data-next': 'abstraction-required-condition'}
+            },
+            {
+              value: "Will not be in place by 31 January 2024",
+              text: "Will not be in place by 31 January 2024",
+              checked: true if 'Will not be in place by 31 January 2024' | isIn(data['abstraction-licence']),
+              attributes: {'data-next': 'abstraction-license-fail'}
+            }
+          ]
+        }) }}
+
+          {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+        </form>
+    </div>
+
+    <div class="govuk-grid-column-one-third govuk-!-padding-top-5">
+      <aside class="app-related-items">
+          <h3 class="govuk-heading-s"> Eligibility </h3>
+          <p> You must have secured abstraction licences or variations before you submit a full application.<br><br>
+              Any abstraction licences or variations must be in place by 31 January 2024.
+          </p>
+      </aside>
+    </div>
+  </div>
+
+{% endblock %}

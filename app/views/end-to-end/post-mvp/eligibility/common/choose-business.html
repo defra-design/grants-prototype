@@ -1,0 +1,93 @@
+{% extends 'end-to-end/layout.html' %}
+
+{% block pageTitle %}
+   Which client are you applying for?
+{% endblock %}
+
+{% block content %}
+
+{% if data['legal-status'] == 'None' %}
+    {{ 'elim-legal-status' | redirect | safe }}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'business-applying',
+                    name: 'business-applying',
+                    classes: 'govuk-radios',
+                    fieldset: {
+                        legend: {
+                            text: 'Which client are you applying for?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'The client you are applying on behalf of'
+                    },
+                    items: [
+                        {
+                            text: 'Imaginary Farms Ltd',
+                            value: 'Imaginary Farms Ltd',
+                            checked: true if data['business-applying'] == 'Imaginary Farms Ltd'
+                        },
+                        {
+                            text: 'Browns Farms',
+                            value: 'Browns Farms',
+                            checked: true if data['business-applying'] == 'Browns Farms'
+                        },
+                        {
+                            text: 'Robert Harris',
+                            value: 'Robert Harris',
+                            checked: true if data['business-applying'] == 'Robert Harris'
+                        }
+                    ]
+                }) }}
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    This grant is only for projects in England.
+                </p>
+                <p>
+                    Scotland, Wales and Northern Ireland have other grants available.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

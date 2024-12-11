@@ -1,0 +1,126 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    Who will your new customers be after this project?
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form method="post" action="collaboration">
+            {% endif %}
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        For example, you will now sell directly to retailers
+                    </p>
+
+                    <p class="govuk-hint app-hint">
+                        Select all that apply
+                    </p>
+
+                {% endset %}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-customers',
+                    name: 'scoring-customers',
+                    fieldset: {
+                        legend: {
+                            text: 'Who will your new customers be after this project?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Processors',
+                            value: 'Processors',
+                            checked: true if 'Processors' | isIn(data['scoring-customers'])
+                        },
+                        {
+                            text: 'Wholesalers',
+                            value: 'Wholesalers',
+                            checked: true if 'Wholesalers' | isIn(data['scoring-customers'])
+                        },
+                        {
+                            text: 'Retailers',
+                            value: 'Retailers',
+                            checked: true if 'Retailers' | isIn(data['scoring-customers'])
+                        },
+                        {
+                            text: 'Selling direct to consumers',
+                            value: 'Selling direct to consumers',
+                            checked: true if 'Selling direct to consumers' | isIn(data['scoring-customers'])
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'No change',
+                            value: 'No change',
+                            checked: true if 'No change' | isIn(data['scoring-customers'])
+                        }
+                    ]
+                }) }}
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                
+                <p>
+                    RPA wants to fund projects that:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        improve processing and supply chains
+                    </li>
+                    <li>
+                        grow your business
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

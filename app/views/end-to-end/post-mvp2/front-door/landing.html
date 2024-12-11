@@ -1,0 +1,138 @@
+{% extends "end-to-end/logged-in-nav-v3.html" %}
+
+{% set pageName="Home" %}
+
+{%- block beforeContent -%}
+
+
+{# <a href="/to-be/v3/start/your-businesses-list" class="govuk-back-link">Back to your businesses</a>  #}
+
+{% endblock %} 
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data['valleySFD'] == 'True' %}  
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+      <span class="govuk-caption-l">John Smith</span>
+      Valley Farm
+    </h1>
+    <p class="govuk-caption-m govuk-!-margin-bottom-2">Single Business Identifier (SBI): 192846125</p>
+    {% elif data['agileSFD'] == 'True' %}  
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+      <span class="govuk-caption-l govuk-!-margin-bottom-2">John Smith</span>
+      Imaginary Farms Ltd
+    </h1>
+    <p class="govuk-caption-m govuk-!-margin-bottom-2">Single Business Identifier (SBI): 123456789</p>
+    {% else %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+      <span class="govuk-caption-l">John Smith</span>
+      Imaginary Farms Ltd
+    </h1>
+    <p class="govuk-caption-m govuk-!-margin-bottom-2">Single Business Identifier (SBI): 123456789</p>
+  {% endif %}
+
+  {# <p class="govuk-!-margin-bottom-7"><a href="#" class="govuk-link--no-visited-state">Choose another business</a></p> #}
+
+  </div>
+</div>
+<br>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+        <div class="gem-c-cards card-page">
+          <ul class="gem-c-cards__list" style="grid-template-columns:1fr 1fr;">
+
+            <li class="gem-c-cards__list-item-variant">
+              <a class="govuk-link govuk-link--no-visited-state link-style" href="#">
+                <div class="gem-c-cards__list-item-wrapper-variant">
+                  <h3 class="gem-c-cards__sub-heading govuk-heading-s link-style govuk-link">Animal Health and Welfare scheme</h3> 
+                  <p class="govuk-body-s gem-c-cards__description p-link-style">Manage your claims</p>          
+                </div>
+              </a> 
+            </li>
+
+            <li class="gem-c-cards__list-item-variant">
+              <a class="govuk-link govuk-link--no-visited-state" href="grant-page">
+                <div class="gem-c-cards__list-item-wrapper-variant">
+                  <h3 class="gem-c-cards__sub-heading govuk-heading-s link-style govuk-link">Water Management grant</h3>
+                  <p class="govuk-body-s gem-c-cards__description p-link-style">Manage {{ data['project-name'] or 'Browns Hill Farm reservoir' }} (WM-VMA-1234) application</p>          
+                </div>
+              </a>  
+            </li>
+
+            <li class="gem-c-cards__list-item-variant">
+              <a class="govuk-link govuk-link--no-visited-state" href="#">
+                <div class="gem-c-cards__list-item-wrapper-variant">
+                  <h3 class="gem-c-cards__sub-heading govuk-heading-s link-style govuk-link">Sustainable Farming Incentive (SFI)</h3>
+                  <p class="govuk-body-s gem-c-cards__description p-link-style">View your applications and agreements</p>          
+                </div>
+              </a>  
+            </li>
+
+          
+          </ul>
+        </div>
+
+
+        {# <hr class="grey-border"> #}
+
+        {# <h2 class="govuk-heading-m">
+          Manage other business tasks
+        </h2>
+
+        {% if data['rpsFirst'] == 'True' %}  
+        <p>You'll need to <a class="govuk-link govuk-link--no-visited-state" href="/to-be/v3/rps/business-overview">
+        sign in to the Rural Payments service</a> to view and update:</p>
+        {% elif data['sfdFirst'] == 'True' %}  
+        <p>You'll need to <a class="govuk-link govuk-link--no-visited-state" href="/to-be/v3/rps/sign-in">
+          sign in to the Rural Payments service</a> to view and update:</p>
+        {% else %}
+        <p>You'll need to <a class="govuk-link govuk-link--no-visited-state" href="/to-be/v3/rps/sign-in">
+          sign in to the Rural Payments service</a> to view and update:</p>
+        {% endif %} #}
+
+
+      
+        {# <ul class="govuk-list govuk-list--bullet govuk-!-margin-top-1">
+          <li>land and maps</li>
+          <li>Countryside Stewardship (CS)</li>
+          <li>who has permission to act on behalf of your business</li>
+        </ul> #}
+
+      
+          
+    
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+
+          <h2 class="govuk-heading-m">
+            Messages
+          </h2>
+      
+          <p><a class="govuk-link--no-visited-state" href="/to-be/v3/messages/message-history">View messages</a></p>
+
+          <h2 class="govuk-heading-m">
+            Business details
+          </h2>
+
+          <p><a class="govuk-link--no-visited-state" href="/to-be/v3/start/your-businesses-list">View your businesses</a></p>
+
+          <p><a class="govuk-link--no-visited-state" href="../../../_common/not-testing.html">View and update your business details</a></p>
+
+          <p><a class="govuk-link--no-visited-state" href="../../../_common/not-testing.html">Register a business</a></p>
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+{% endblock %}

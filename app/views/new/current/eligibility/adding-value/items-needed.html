@@ -1,0 +1,89 @@
+{% extends 'new/layout.html' %}
+
+{% block pageTitle %}
+    What eligible items does your project need?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="../funding/cost">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        Housing facilities will only be funded as part of a bigger project and cannot be more than 50% of the total grant funding.
+                    </p>
+
+                    <p class="govuk-hint">
+                        Select all the items your project needs
+                    </p>
+
+                {% endset %}
+
+                {{ govukCheckboxes ({
+                    idPrefix: 'items-needed',
+                    name: 'items-needed',
+                    fieldset: {
+                        legend: {
+                            text: 'What eligible items does your project need?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Constructing or improving buildings for housing',
+                            value: 'Constructing or improving buildings for housing',
+                            checked: true if 'Constructing or improving buildings for processing' | isIn(data['items-needed']),
+                            hint: {
+                                text: 'For example, extending an existing building  to house more cattle'
+                            }
+                        },
+                        {
+                            text: 'Processing equipment or machinery',
+                            value: 'Processing equipment or machinery',
+                            checked: true if 'Processing equipment or machinery' | isIn(data['items-needed']),
+                            hint: {
+                                text: 'For example, equipment and machinery for pasteurising and bottling milk, a meat cutting and packing line or vegetable washing and packing'
+                            }
+                        },
+                        {
+                            text: 'Retail facilities',
+                            value: 'Retail facilities',
+                            checked: true if 'Retail facilities' | isIn(data['items-needed']),
+                            hint: {
+                                text: 'For example, shops or display cabinets'
+                            }
+                        },
+                        {
+                            divider: 'or'
+                        },
+                        {
+                            text: 'None of the above',
+                            value: 'None',
+                            checked: true if 'None' | isIn(data['items-needed']),
+                            attributes: {
+                                'data-behaviour': 'exclusive'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

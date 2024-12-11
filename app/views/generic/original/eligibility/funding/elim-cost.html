@@ -1,0 +1,43 @@
+{% extends 'new/layout.html' %}
+
+{% block pageTitle %}
+    You cannot apply for a grant from this scheme - Project cost
+{% endblock %}
+
+{% block content %}
+
+{% set grantAmount = data['cost'] | float | percent(40) %}
+
+{% if grantAmount >= 25000 %}
+    
+    {{ 'potential-funding' | redirect | safe }}    
+
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                <h1 class="govuk-heading-l">
+                    You cannot apply for a grant from this scheme
+                </h1>
+
+                <p>
+                    The minimum grant you can apply for is £25,000 (40% of £62,500).
+                </p>
+
+                <p>
+                    <a href="https://www.gov.uk/topic/farming-food-grants-payments/rural-grants-payments">
+                        See other grants you may be eligible for.
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

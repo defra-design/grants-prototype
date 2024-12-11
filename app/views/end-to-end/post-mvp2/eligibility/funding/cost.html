@@ -1,0 +1,85 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    What is the total estimated cost of the items?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="elim-cost">
+            
+                <h1 class="govuk-heading-l">
+                    What is the total estimated cost of the items?
+                </h1>
+
+                    <p class="govuk-hint">
+                      You can only apply for a grant of up to 40% of the estimated costs. 
+                      The minimum grant you can apply for this project is £35,000 (40% of £87,500). 
+                      The maximum grant is £500,000.</p>
+
+                    <p class="govuk-hint">Do not include VAT.</p>
+     
+                {{ govukInput ({
+                    id: 'cost',
+                    name: 'cost',
+                    value: data['cost'] if data['cost'] else '',
+                    classes: 'govuk-input--width-10',
+                    type: 'number',
+                    prefix: { text: '£' },
+                    hint: {
+                       text: "Enter cost of items, for example 95,000"
+                    },
+                    label: {
+                        text: 'Total estimated project cost',
+                        classes: 'govuk-visually-hidden'
+                    }
+                }) }}
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+             <aside class="app-related-items" role="complementary">
+                <h2 class="govuk-heading-s" id="subsection-title">
+                Items selected
+                </h2>
+                <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16 govuk-list--bullet">
+                    {% for item in data['project-items'] %}
+                    <li>
+                        {{ item | capitalize }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                </nav>
+            </aside>
+
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    Name your project
+{% endblock %}
+
+{% block content %}
+
+{% if data['legal-status'] == 'None' %}
+    {{ 'elim-legal-status' | redirect | safe }}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="../../task-list2/list-1-0">
+
+                <h1 class="govuk-heading-l">
+        Give your project a name
+      </h1>
+
+      <p>This name will be used:</p>
+
+                <ul class="govuk-list govuk-list--bullet">
+            <li>on your Rural Payments service home page</li>
+            <li>when we contact you about your application</li>
+          
+          </ul>
+
+                    {{ govukInput({
+                        label: {
+                          text: "Project name"
+                        },
+                        value: data['project-name'] if data['project-name'] else '',
+                        id: "project-name",
+                        name: "project-name",
+                        classes: "govuk-input--width-20"
+                      }) }}
+
+                   
+                            {{ govukButton({
+                                id: 'continue',
+                                name: 'continue',
+                                value: data['continue'] if data['continue'] else '',
+                                text: "Continue"
+                            }) }}
+
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            {# <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    This grant is only for projects in England.
+                </p>
+                <p>
+                    Scotland, Wales and Northern Ireland have other grants available.
+                </p>
+            </div> #}
+
+        </div>
+
+</div>
+
+{% endblock %}

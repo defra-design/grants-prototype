@@ -1,0 +1,54 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    Who is applying for this grant?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="farmer-details" method="post">
+
+      {{ govukRadios ({
+        classes: 'govuk-radios--inline',
+        idPrefix: 'applicant',
+        name: 'applicant',
+        fieldset: {
+          legend: {
+            text: 'Who is applying for this grant?',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--l'
+          }
+        },
+        items: [
+          {
+            value: 'Farmer',
+            text: 'Farmer',
+            checked: true if 'Farmer' | isIn(data['applying']),
+             attributes: {
+                   'data-next': 'farmer-details'
+             }
+          },
+          {
+            value: 'Agent',
+            text: 'Agent',
+            checked: true if 'Agent' | isIn(data['applying']),
+            attributes: {
+                   'data-next': 'agent-details'
+             }
+          }
+        ]
+      }) }}
+
+      {{ govukButton ({
+        html: 'Continue'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

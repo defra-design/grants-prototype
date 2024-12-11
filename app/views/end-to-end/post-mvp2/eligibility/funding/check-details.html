@@ -1,0 +1,264 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    Check your details
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Check your details</h1>
+
+             {# applicant details - data pre-populated from RPS account data if logged in #}
+
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <div class="govuk-summary-list__row--no-border">
+                            <dt class="govuk-summary-list__key">
+                                <p class="govuk-body govuk-!-font-size-24"><strong>Applicant details</strong></p>
+                            </dt>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="farmer-details">
+                                    Change<span class="govuk-visually-hidden">applicant details</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </tr>
+                    <hr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Title</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                           {{ data['farmer-title'] or 'Mr' }} 
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>First name</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                           {{ data['farmer-firstname'] or 'John' }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Last name</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                          {{ data['farmer-lastname'] or 'Smith'}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong> Email address</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                           {{ data['farmer-email'] or 'john.smith@imaginary.co.uk' }} 
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong> Mobile number</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['farmer-mobile'] or '07421 589 658'  }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong> Landline number</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['farmer-landline'] or '01295 544 778'  }}
+                        </td>
+                    </tr>
+  
+                    {# <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Project postcode</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                           {{ data['project-postcode'] or 'BO12 0LN' }}
+                        </td>
+                    </tr> #}
+
+                </tbody>
+            </table>
+
+            {# applicant details - data pre-populated from RPS account data if logged in #}
+
+
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <div class="govuk-summary-list__row--no-border">
+                            <dt class="govuk-summary-list__key">
+                                <p class="govuk-body govuk-!-font-size-24"><strong>Organisation details</strong></p>
+                            </dt>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="farmer-details">
+                                    Change<span class="govuk-visually-hidden">business details</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </tr>
+                    <hr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Name</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                           {{ data['farmer-title'] or 'Imaginary Farms Ltd' }} 
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Single Business<br>Identifier (SBI)</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['sbi']  or '1234567898' }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Address</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['farmer-address1'] }} {{ data['farmer-address2'] or '2 Lane Road, Farm Valley'}}<br>
+                            {{ data['farmer-town'] or 'Boston Spa' }}<br>
+                            {{ data['farmer-county'] or 'West Yorkshire' }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Postcode</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['farmer-postcode'] or 'BO12 0LN' }}
+                        </td>
+                    </tr>
+                    {# <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong> Mobile number</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['farmer-mobile'] or '07421 589 658'  }}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong> Landline number</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            {{ data['farmer-landline'] or '01295 544 778'  }}
+                        </td>
+                    </tr>
+  
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Project postcode</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                           {{ data['project-postcode'] or 'BO12 0LN' }}
+                        </td>
+                    </tr> #}
+
+                </tbody>
+            </table>
+
+            {# include agent details only if applicant is Agent  #}
+
+            {% if (data['applicant'] == "Agent") %}
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <div class="govuk-summary-list__row--no-border">
+                            <dt class="govuk-summary-list__key">
+                                <p class="govuk-body govuk-!-font-size-24"><strong>Agent's details</strong></p>
+                            </dt>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="agent-details">
+                                        Change<span class="govuk-visually-hidden">agent's details</span>
+                                </a>
+                            </dd>
+                        </div>
+                    </tr>
+                    <hr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Name</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            <p>{{ data['agent-firstname'] }} {{ data['agent-firstname'] }}</p>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row--no-border">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Business name</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            <p>{{data['business-name']}}</p>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">
+                            <strong> Contact details</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                            <p>{{ data['agent-email'] }}</p>
+                            <p>{{ data['agent-mobile'] }}</p>
+                            <p>{{ data['agent-landline'] }}</p>
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <th  scope="row" class="govuk-table__header">
+                            <strong>Business address</strong>
+                        </th>
+                        <td class="govuk-table__cell">
+                           <p>{{ data['agent-address1'] }}</p>
+                           <p>{{ data['agent-address2'] }}</p>
+                           <p>{{ data['agent-postcode'] }}</p>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <br><br>
+            {% endif %}
+
+        </div>
+     </div>
+    <div class="govuk-grid-row govuk-!-padding-top-8">
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="business" method="post">
+                <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+            
+                </form>
+            
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
+                  {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+            
+        </div>
+    </div>
+
+{% endblock %}

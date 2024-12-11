@@ -1,0 +1,77 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Apply for a Water Management grant",
+    serviceUrl: "/end-to-end/post-mvp2/start-page"
+    }) }}
+{% endblock %}
+
+
+{% block beforeContent %}
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+
+    
+             {{ govukPhaseBanner({
+            tag: {
+            text: "Prototype",
+            classes: "govuk-tag--pink"
+             },
+            html: 'This is not a full service. It is not production code and you might experience problems .'
+            }) }}
+
+            <div class="govuk-grid-row" style="padding-top:16px;">
+                <div class="govuk-grid-column-two-thirds">
+                    <h3 class="govuk-heading-m" style="margin-bottom: 8px;">Imaginary Farms Ltd</h3>
+                    <p class="govuk-body sbi-number" style="margin-bottom: 8px;">SBI: 357951123</p>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                     <h4 class="govuk-heading-m" style="float:right; margin-bottom: 8px;">John Smith</h4><br>
+                    <p class="govuk-body" style="clear:right; float:right; margin-bottom: 8px;"><a href="/end-to-end/post-mvp2/eligibility/common/sign-out">Sign out</a></p>
+                </div>
+            </div>
+            <hr>
+
+            {% if not hideBackButton %}
+
+                {{ govukBackLink ({
+                    text: 'Back',
+                    href: 'javascript:history.back()'
+                }) }}
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+        meta: {
+            items: [
+                {
+                    text: "Give feedback",
+                    href: "/adding-value-2024"
+                },
+                {
+                    text: "Manage prototype",
+                    href: "/manage-prototype"
+                }
+            ]
+        }
+    }) }}
+{% endblock %}
+
+

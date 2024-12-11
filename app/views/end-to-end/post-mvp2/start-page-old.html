@@ -1,0 +1,72 @@
+{% set hideBackButton = true %}
+
+{% extends 'end-to-end/layout2.html' %}
+
+{% block pageTitle %}
+  Check if you can apply for a Water Management Grant
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Check if you can apply for a Water Management Grant
+      </h1>
+
+      <p>Use this service to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>check if you can apply for a grant for your project (takes about 5 minutes)</li>
+          <li>check how well your project fits the funding priorities (takes about 15 minutes if you have all the project details)</li>
+        </ul>
+
+          <h2 class="govuk-heading-m">Who can apply</h2>
+          <p>You can apply if you:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>grow crops for the food industry, are a nursery growing ornamentals or are a forestry nursery</li>
+            <li>will do the grant-funded work in England</li>
+            <li>an estimate the project costs will be over £87,500</li>
+          </ul>
+
+        <div class="govuk-inset-text">
+          If your project is eligible, you can submit your answers to the Rural Payments Agency (RPA) to request the full application form.
+        </div>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "eligibility/common/login",
+        isStartButton: true
+      }) }}
+
+        <h2 class="govuk-heading-m">Before you start</h2>
+          <p>You need:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>information about your business (for example, number of employees and turnover)</li>
+            <li>information about the project (for example, irrigated land in hectares)</li>
+            <li>estimated total cost of the items you need</li>
+          </ul>
+          <p class="govuk-body govuk-!-margin-bottom-8">If you do not enter any information for more than 20 minutes, your
+          application will time out and you will have to start again. </p>
+          
+          <h3 class="govuk-heading-m govuk-!-margin-top-2">Problems using the online service</h3>
+          <p class="govuk-body">If you have any problems with the service, contact the RPA.</p>
+         
+          <h3 class="govuk-heading-s">Telephone</h3>
+          <ul class="govuk-list">
+            <li>Telephone: 03000 200 301</li>
+            <li>Monday to Friday, 9am to 5pm (except public holidays)</li>
+          </ul>
+
+          <p class="govuk-body">
+            <a class="govuk-link" href="https://www.gov.uk/call-charges">Find out about call charges</a>
+          </p>
+
+          <h3 class="govuk-heading-s">Email</h3>
+          <ul class="govuk-list">
+            <li><a class="govuk-link" href="mailto:FTF@rpa.gov.uk">FTF@rpa.gov.uk</a></li>
+          </ul>
+
+    </div>
+  </div>
+{% endblock %}

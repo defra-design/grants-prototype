@@ -1,0 +1,61 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    Do you have a tenancy in place for 5 years after the final grant payment?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+
+     {{ govukRadios ({
+                    idPrefix: 'tenancy-length',
+                    name: 'tenancy-length',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you have a tenancy in place for 5 years after the final grant payment?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'The location of the project'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['tenancy-length'] == 'Yes',
+                            attributes: {
+                                    'data-next': 'tenancy-maybe'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['tenancy-length'] == 'No',
+                            attributes: {
+                                    'data-next': 'tenancy-maybe'
+                                }
+                        }
+                    ]
+                }) }}
+        
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+          <h3 class="govuk-heading-s"> Eligibility </h3>
+          <p>You must own the land or have a tenancy in place for 5 years after the final grant payment.</p>
+      </aside>
+  </div>
+  </div>
+
+{% endblock %}

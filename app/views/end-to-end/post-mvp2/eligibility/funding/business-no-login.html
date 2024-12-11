@@ -1,0 +1,176 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+   Business details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="applying" method="post">
+
+        <h1 class="govuk-heading-l">
+          Business details
+        </h1>
+
+         {{ govukInput ({
+            id: 'project-name',
+            name: 'project-name',
+            value: data['project-name'] if data['project-name'] else '',
+            classes: 'govuk-input--width-20',
+            type: 'text',
+            hint: {
+              text: "For example, Brown Hill Farm reservoir"
+            },
+            label: {
+              text: 'Project name'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'business-name',
+            name: 'business-name',
+            value: data['business-name'] if data['business-name'] else '',
+            classes: 'govuk-input--width-20',
+            type: 'text',
+            hint: {
+              text: "If you’re registered on the Rural Payments system, enter business name as registered"
+            },
+            label: {
+              text: 'Business name'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'employees',
+            name: 'employees',
+            value: data['employees'] if data['employees'] else '',
+            classes: 'govuk-input--width-10',
+            type: 'text',
+            hint: {
+              text: "Full-time employees, including the owner"
+            },
+            label: {
+              text: 'Number of employees'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'turnover',
+            name: 'turnover',
+            value: data['turnover'] if data['turnover'] else '',
+            classes: 'govuk-input--width-10',
+            type: 'text',
+            hint: {
+              text: "Business turnover (£)"
+            },
+            label: {
+              text: 'Business turnover'
+            }
+          }) }}
+
+          {{ govukInput ({
+            id: 'sbi',
+            name: 'sbi',
+            value: data['sbi'] if data['sbi'] else '',
+            classes: 'govuk-input--width-10',
+            type: 'text',
+            hint: {
+              text: "If you do not have an SBI, you will need to get one for full application"
+            },
+            label: {
+              text: 'Single Business Identifier (SBI)'
+            }
+          }) }}
+
+       
+              <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+        {# {% if data['DETAILS'] == true %}
+           {{ govukButton ({
+            html: 'Back to details',
+            url: detailsUrl, 
+            class: 'govuk-button--secondary'
+           }) }}
+        {% endif %} #}
+
+      </form>
+        
+
+        {# <div class="govuk-form-group">
+          <label class="govuk-label" for="project-name">
+              Project name
+          </label>
+          <div id="project-name-hint" class="govuk-hint">For example, Brown Hill Farm reservoir</div>
+          <input class="govuk-input" id="project-name" name="project-name" type="text" value="{{ data['project-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="business-name">
+              Business name
+          </label>
+          <div id="business-name-hint" class="govuk-hint">If you’re registered on the Rural Payments system, enter business name as registered</div>
+          <input class="govuk-input" id="business-name" name="business-name" type="text" value="{{ data['business-name'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="employees">
+              Number of employees
+          </label>
+          <div id="employees-hint" class="govuk-hint">Full-time employees, including the owner</div>
+          <input class="govuk-input govuk-input--width-10" id="employees" name="employees" type="text" spellcheck="false" aria-describedby="employees-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['employees'] }}">
+        </div>
+        <br>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="turnover">
+              Business turnover (£)
+          </label>
+          <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-input--width-5" id="turnover" name="turnover" type="text" spellcheck="false" aria-describedby="turnover-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['turnover'] }}">
+          </div>
+        </div>
+        <br>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sbi">
+              Single Business Identifier (SBI)
+          </label>
+          <div id="sbi-hint" class="govuk-hint">If you do not have an SBI, you will need to get one for full application</div>
+          <input class="govuk-input govuk-input--width-10" id="sbi" name="sbi" type="text" spellcheck="false" aria-describedby="sbi-hint" pattern="[0-9]*" inputmode="numeric" value="{{ data['sbi'] }}">
+        </div>
+        <br><br>
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+          Continue
+        </button>
+
+        {% if data['DETAILS'] == true %}
+          <button onclick="document.getElementById('mainForm').action='{{ detailsUrl }}'"
+            class="govuk-button govuk-button--secondary govuk-!-margin-right-1 govuk" data-module="govuk-button"
+          >
+            Back to details
+          </button>
+        {% endif %}
+      </form> #}
+
+    </div>
+  </div>
+
+{% endblock %}

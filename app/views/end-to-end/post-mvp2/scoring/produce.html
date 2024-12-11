@@ -1,0 +1,131 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    What type of produce is being processed?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form method="post" action="value">
+            {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-produce',
+                    name: 'scoring-produce',
+                    fieldset: {
+                        legend: {
+                            text: 'What type of produce is being processed?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Select one option'
+                    },
+                    items: [
+                        {
+                            text: 'Arable produce',
+                            value: 'Arable produce',
+                            checked: true if data['scoring-produce'] == 'Arable produce',
+                            hint: {
+                                text: 'For example, crushing of oilseeds, rolling or flaking of grains as food ingredients'
+                            }
+                        },
+                        {
+                            text: 'Wild venison meat produce',
+                            value: 'Wild venison meat produce',
+                            checked: true if data['scoring-produce'] == 'Wild venison meat produce',
+                            hint: {
+                                text: 'For example, culling, processing and packing wild venison meat'
+                            }
+                        },
+                        {
+                            text: 'Dairy or meat produce',
+                            value: 'Dairy or meat produce',
+                            checked: true if data['scoring-produce'] == 'Dairy or meat produce',
+                            hint: {
+                                text: 'For example, processing and bottling milk or slaughtering, cutting, processing and packing meat'
+                            }
+                        },
+                        {
+                            text: 'Fibre produce',
+                            value: 'Fibre produce',
+                            checked: true if data['scoring-produce'] == 'Fibre produce',
+                            hint: {
+                                text: 'For example, processing animal hides and leather, processing fibres such as wool, flax and hemp'
+                            }
+                        },
+                        {
+                            text: 'Fodder produce',
+                            value: 'Fodder produce',
+                            checked: true if data['scoring-produce'] == 'Fodder produce',
+                            hint: {
+                                text: 'For example, processing and repacking hay and straw for specialist markets or retail sale'
+                            }
+                        },
+                        {
+                            text: 'Horticultural produce',
+                            value: 'Horticultural produce',
+                            checked: true if data['scoring-produce'] == 'Horticultural produce',
+                            hint: {
+                                text: 'For example, grading and packing of soft fruit, washing and packing vegetables, packing salad crops'
+                            }
+                        },
+                        {
+                            text: 'Non-edible produce',
+                            value: 'Non-edible produce',
+                            checked: true if data['scoring-produce'] == 'Non-edible produce',
+                            hint: {
+                                text: 'For example, processing and packing ornamental flowers and bulbs after harvesting'
+                            }
+                        }
+                    ]
+                }) }}
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                
+                <p>
+                    RPA wants to fund projects that create and expand processing capacity to provide more English-grown food and products for consumers to buy.
+                </p>
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

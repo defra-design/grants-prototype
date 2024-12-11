@@ -1,0 +1,68 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    Application saved
+{% endblock %}
+
+{% block content %}
+
+{% if data['legal-status'] == 'None' %}
+    {{ 'elim-legal-status' | redirect | safe }}
+{% endif %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post" action="sign-out">
+
+                <h1 class="govuk-heading-l">
+                    Your application has been saved
+                </h1>
+
+        
+
+                <p>Any information you entered has been saved.</p>
+                
+                <p>You can return to your application through:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>the <a href="../../start-page">Apply for a Water Management grant service</a></li>
+                    <li>the <a href="../../front-door/login">Rural Payments service</a></li>
+                    <li>the <a href="email">email</a> we sent when you signed in to this service</li>
+                </ul>
+
+               
+
+                <br>   
+                 {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        value: data['nosignin'] if data['nosignin'] else '',
+                        text: "Sign out",
+                        classes: "govuk-button"
+                    }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            {# <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    This grant is only for projects in England.
+                </p>
+                <p>
+                    Scotland, Wales and Northern Ireland have other grants available.
+                </p>
+            </div> #}
+
+        </div>
+
+</div>
+
+{% endblock %}

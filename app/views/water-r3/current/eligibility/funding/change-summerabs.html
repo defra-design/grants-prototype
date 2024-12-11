@@ -1,0 +1,150 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    Use of water during the summer
+{% endblock %}
+
+{% block content %}
+
+{% set selected_sources = data['water-source-2-target'] %}
+{% if selected_sources and selected_sources is iterable and 'Mains' in selected_sources and 'Summer abstraction' in selected_sources %}
+    {{ 'unsustainable-watersource' | redirect | safe }}
+{% endif %}
+
+{% if selected_sources and 'Mains' in selected_sources %}
+    {{ 'mains-only' | redirect | safe }}
+{% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="mainForm" class="form" action="{{ nextUrl }}" method="post">
+      
+      {% if data['current-irrigating'] == 'No' %}
+
+       {{ govukRadios ({
+        classes: 'govuk-radios--inline',
+        idPrefix: 'change-summerabs', 
+        name: 'change-summerabs', 
+  
+        fieldset: {
+          legend: {
+            text: 'Will you increase your use of summer abstraction or mains?',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--l'
+          }
+        },
+
+        items: [
+          {
+            value: 'Yes',
+            text: 'Yes',
+            checked: true if 'Yes' | isIn(data['change-summerabs']),
+            attributes: {
+                   'data-next': 'summerabs-fail'
+             }
+          },
+          {
+            value: 'No',
+            text: 'No',
+            checked: true if 'No' | isIn(data['change-summerabs']),
+            attributes: {
+                    'data-next': 'water-source'
+             }
+          }
+        ]
+      }) }}
+
+      {% else %}
+
+      {{ govukRadios ({
+        classes: 'govuk-radios--inline',
+        idPrefix: 'change-summerabs', 
+        name: 'change-summerabs', 
+  
+        fieldset: {
+          legend: {
+            text: 'Will you use water from summer abstraction or mains?',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--l'
+          }
+        },
+
+        items: [
+          {
+            value: 'Yes',
+            text: 'Yes',
+            checked: true if 'Yes' | isIn(data['change-summerabs']),
+            attributes: {
+                   'data-next': 'summerabs-fail'
+             }
+          },
+          {
+            value: 'No',
+            text: 'No',
+            checked: true if 'No' | isIn(data['change-summerabs']),
+            attributes: {
+                   'data-next': 'water-source-2'
+             }
+          }
+        ]
+      }) }}
+
+      {% endif %}
+
+        {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+        {# <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              {% if data['current-irrigating'] == 'Yes' %}
+               <h1 class="govuk-fieldset__heading">
+                 Will you increase your use of summer abstraction or mains?
+               </h1>
+               {% else %}
+             <h1 class="govuk-fieldset__heading">
+               Will you use water from summer abstraction or mains?
+             </h1>
+             {% endif %}
+            </legend>
+            <br>
+            <div class="govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="change-summerabs" name="change-summerabs" type="radio" value="yes" {{ checked("change-summerabs", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="change-summerabs">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="change-summerabs-2" name="change-summerabs" type="radio" value="no" {{ checked("change-summerabs", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="change-summerabs-2">
+                  No
+                </label>
+              </div>
+            </div>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">Continue</button> #}
+
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related app-step-nav-related--singular">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Eligibility</span>
+          </h2>
+          <p>Your project cannot increase water use from summer abstraction or mains.</p>
+          <p>RPA wants to fund projects that use more sustainable water sources, such as:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>winter peak-flow abstraction</li>
+            <li>rain water harvesting</li>
+            <li>bore hole/aquifer</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

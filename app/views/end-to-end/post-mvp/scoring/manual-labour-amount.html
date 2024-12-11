@@ -1,0 +1,89 @@
+{% extends 'end-to-end/layout-account.html' %}
+
+{% block pageTitle %}
+    How much manual labour will the mechanisation be equal to?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form method="post" action="customers">
+            {% endif %}
+
+                {{ govukRadios ({
+                    idPrefix: 'scoring-manual-labour-amount',
+                    name: 'scoring-manual-labour-amount',
+                    fieldset: {
+                        legend: {
+                            text: 'How much manual labour will the mechanisation be equal to?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'Based on your current staff numbers'
+                    },
+                    items: [
+                        {
+                            text: 'Up to 5% of workforce',
+                            value: 'Up to 5%',
+                            checked: true if data['scoring-manual-labour-amount'] == 'Up to 5%'
+                        },
+                        {
+                            text: 'Between 5% and 10%',
+                            value: 'Between 5% and 10%',
+                            checked: true if data['scoring-manual-labour-amount'] == 'Between 5% and 10%'
+                        },
+                        {
+                            text: 'More than 10%',
+                            value: 'More than 10%',
+                            checked: true if data['scoring-manual-labour-amount'] == 'More than 10%'
+                        }
+                    ]
+                }) }}
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                <p>
+                    RPA wants to fund projects that increase the use of mechanisation due to the shortage of manual labour.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

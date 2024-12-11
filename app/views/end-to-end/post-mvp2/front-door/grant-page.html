@@ -1,0 +1,68 @@
+{% extends "end-to-end/logged-in-nav-v3.html" %}
+
+{% set pageName="Home" %}
+
+{%- block beforeContent -%}
+
+{# {% include "to-be/v3/components/sub-header/include.html" %} #}
+
+<a href="#" class="govuk-back-link govuk-!-margin-bottom-0">Back to your business</a>
+
+{% endblock %} 
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">
+      Water Management grant applications and agreements
+    </h1>
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m"></caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Name</th>
+          <th scope="col" class="govuk-table__header">Application</th>
+          {# <th scope="col" class="govuk-table__header">Active</th> #}
+          <th scope="col" class="govuk-table__header">Application start</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header"></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ data['project-name'] or 'Browns Hill Farm reservoir' }}</td>
+          <td class="govuk-table__cell">WM-VMA-1234</td>
+          {# <td class="govuk-table__cell">No</td> #}
+          <td class="govuk-table__cell">10 December 24</td>
+          <td class="govuk-table__cell">Need to register interest</td>
+          <td class="govuk-table__cell">
+            <form action="../task-list2/list-1-1" method="get">
+            <button type="submit" class="govuk-button govuk-!-margin-bottom-0 govuk-button-custom" data-module="govuk-button">
+              Continue
+            </button>
+            </form>
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+    {# <h2 class="govuk-heading-m">If interested in starting a common land application, please email RPA at <a href="../../../_common/not-testing.html" class="govuk-link--no-visited-state">ruralpayments@defra.gov.uk</a>, with 'SFI Commons/Shared Grazing Agreements' in your subject line. Once started your SFI application will remain available for 2 months for you to continue. If you have not submitted your SFI application by then we will delete it.</h2>
+
+    <button type="submit" class="govuk-button" style="float: right;" data-module="govuk-button">
+      Apply for SFI Actions
+    </button> #}
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

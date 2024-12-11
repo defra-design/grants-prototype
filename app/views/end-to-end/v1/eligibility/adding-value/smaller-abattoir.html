@@ -1,0 +1,76 @@
+{% extends 'water-r3/layout.html' %}
+
+{% block pageTitle %}
+    Do you want to build a new smaller abattoir?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        A smaller abattoir is a:
+                    </p>
+
+                    <ul class="govuk-list govuk-list--bullet govuk-hint">
+                        <li>
+                            red meat abattoir that processes up to 10,000 livestock units each year
+                        </li>
+                        <li>
+                            poultry abattoir that slaughters up to 500,000 birds each year
+                        </li>
+                    </ul>
+
+                {% endset %}
+
+                {{ govukRadios ({
+                    idPrefix: 'smaller-abattoir',
+                    name: 'smaller-abattoir',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Do you want to build a new smaller abattoir?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['smaller-abattoir'] == 'Yes',
+                            attributes: {
+                                'data-next': 'smaller-abattoir-other'
+                            }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['smaller-abattoir'] == 'No',
+                            attributes: {
+                                'data-next': 'items-needed'
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+</div>
+
+{% endblock %}

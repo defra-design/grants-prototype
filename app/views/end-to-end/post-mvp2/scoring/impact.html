@@ -1,0 +1,177 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    What impact will this project have?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if data['from-scoring'] == 'true' %}
+                <form action="results">
+            {% else %}
+                <form action="../details/check-details">
+            {% endif %}
+
+            {% set hintHtml %}
+
+                    <p class="govuk-hint">
+                        Select all that apply
+                    </p>
+
+                {% endset %}
+
+        
+            {% set errorMessageHtml %}
+
+                 {% if data['hasBothError'] == 'true' %}
+                    <p class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select either 'Creating added-value products for the first time' or 'Increasing volume' and 'Increasing range'.
+                    </p>
+
+                {% elif data['hasRangeError'] == 'true' %}
+                    <p class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select either 'Creating added-value products for the first time' or 'Increasing range'.
+                    </p>
+            
+                {% elif data['hasVolumeError'] == 'true' %}
+                    <p class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select either 'Creating added-value products for the first time' or 'Increasing volume'.
+                    </p>
+                {% endif %}
+
+            {% endset %}
+
+            {% if data['hasBothError'] == 'true'%}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                        text: "Select either 'Creating added-value products for the first time' or 'Increasing volume' and 'Increasing range'.",
+                        href: "#scoring-impact"
+                    }
+                    ]
+            }) }}
+            
+            {% elif data['hasVolumeError'] == 'true'%}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                        text: "Select either 'Creating added-value products for the first time' or 'Increasing volume'.",
+                        href: "#scoring-impact"
+                    }
+                    ]
+            }) }}
+        
+            {% elif data['hasRangeError'] == 'true' %}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                        text: "Select either 'Creating added-value products for the first time' or 'Increasing range'.",
+                        href: "#scoring-impact"
+                    }
+                    ]
+            }) }}
+            {% endif %}
+            
+                {{ govukCheckboxes ({
+                    idPrefix: 'scoring-impact',
+                    name: 'scoring-impact',
+                    fieldset: {
+                        legend: {
+                            text: 'What impact will this project have?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        html: hintHtml
+                    },
+                    errorMessage: {
+                        html: errorMessageHtml
+                    } if data['hasBothError'] == 'true' or data['hasVolumeError'] == 'true' or data['hasRangeError'] == 'true' else null,
+                    items: [
+                        {
+                            text: 'Increasing range of added-value products',
+                            value: 'Increasing range of added-value products',
+                            checked: true if 'Increasing range of added-value products' | isIn(data['scoring-impact'])
+                        },
+                        {
+                            text: 'Increasing volume of added-value products',
+                            value: 'Increasing volume of added-value products',
+                            checked: true if 'Increasing volume of added-value products' | isIn(data['scoring-impact'])
+                        },
+                        {
+                            text: 'Allow selling direct to consumer',
+                            value: 'Allow selling direct to consumer',
+                            hint: {
+                                text: 'For example, retail and internet sales'
+                            },
+                            checked: true if 'Allow selling direct to consumer' | isIn(data['scoring-impact'])
+                        },
+                        {
+                            text: 'Creating added-value products for the first time',
+                            value: 'Creating added-value products for the first time',
+                            checked: true if 'Creating added-value products for the first time' | isIn(data['scoring-impact'])
+                        }
+                    ]
+                }) }}
+
+                <input type="hidden" name="hasVolumeError" value="false">
+                <input type="hidden" name="hasRangeError" value="false">
+                <input type="hidden" name="hasBothError" value="false">
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Funding priorities</span>
+                </h2>
+                
+                <p>
+                    RPA wants to fund projects that:
+                </p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        improve processing and supply chains
+                    </li>
+                    <li>
+                        grow your business
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

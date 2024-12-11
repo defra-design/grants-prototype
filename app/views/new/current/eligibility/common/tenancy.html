@@ -1,0 +1,74 @@
+{% extends 'new/layout.html' %}
+
+{% block pageTitle %}
+    Is the planned project on land the business owns?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'tenancy',
+                    name: 'tenancy',
+                    classes: 'govuk-radios--inline',
+                    fieldset: {
+                        legend: {
+                            text: 'Is the planned project on land the business owns?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    hint: {
+                        text: 'The site where the work will happen'
+                    },
+                    items: [
+                        {
+                            text: 'Yes',
+                            value: 'Yes',
+                            checked: true if data['tenancy'] == 'Yes',
+                            attributes: {
+                                    'data-next': '../adding-value/smaller-abattoir'
+                                }
+                        },
+                        {
+                            text: 'No',
+                            value: 'No',
+                            checked: true if data['tenancy'] == 'No',
+                            attributes: {
+                                    'data-next': 'project-responsibility'
+                                }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton ({
+                    html: 'Continue'
+                }) }}
+
+            </form>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    If you are a tenant farmer, you have the option to ask your landlord to underwrite your agreement.
+                </p>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,123 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    Irrigated land
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="productivity" method="post">
+
+        <h1 class="govuk-heading-l">Irrigated land</h1>
+
+         {% if data['current-irrigating'] == 'Yes' %}
+        
+          {{ govukInput({
+            id: "irrigated-land-current",
+            name: "irrigated-land-current",
+            value: data['irrigated-land-current'] if data['irrigated-land-current'] else '',
+            label: {
+              text: "How much land is currently irrigated per year?",
+              classes: "govuk-label--m",
+              isPageHeading: false
+            },
+            hint: {
+              text: "Enter figure in hectares (ha), for example 543.5",
+              classes: "govuk-hint"
+            },
+            suffix: {
+              text: "ha"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+          }) }}
+
+          {{ govukInput({
+            id: "irrigated-land-target",
+            name: "irrigated-land-target",
+            value: data['irrigated-land-target'] if data['irrigated-land-target'] else '',
+            label: {
+              text: "How much land will be irrigated per year after the project?",
+              classes: "govuk-label--m",
+              isPageHeading: false
+            },
+            hint: {
+              text: "Enter figure in hectares (ha), for example 543.5",
+              classes: "govuk-hint"
+            },
+            suffix: {
+              text: "ha"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+          }) }}
+
+        {% else %}
+
+          {{ govukInput({
+            id: "irrigated-land-target",
+            name: "irrigated-land-target",
+            value: data['irrigated-land-target'] if data['irrigated-land-target'] else '',
+            label: {
+              text: "How much land will be irrigated per year after the project?",
+              classes: "govuk-label--m",
+              isPageHeading: false
+            },
+            hint: {
+              text: "Enter figure in hectares (ha), for example 543.5",
+              classes: "govuk-hint"
+            },
+            suffix: {
+              text: "ha"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false
+          }) }}
+
+        {% endif %}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+              id: 'Continue',
+              name: 'continue',
+              text: "Continue"
+          }) }}   
+  
+      </form>
+  
+      <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+        {{ govukButton({
+              id: 'nosignin',
+              name: 'nosignin',
+              text: "Save and come back later",
+              classes: "govuk-button--secondary"
+          }) }}
+      </form>
+
+              {% if data['COMPLETED'] == true %}
+                <button onclick="document.getElementById('mainForm').action='{{ completedUrl }}'"
+                  class="govuk-button govuk-button--secondary " data-module="govuk-button"
+                >
+                  Back to score
+                </button>
+              {% endif %}
+           
+              </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items">
+        <h2 class="govuk-heading-s"> Funding  priorities</h2>
+        <div class="govuk-body govuk-!-font-size-19">
+            RPA wants to fund projects that:
+                   <ul>
+                      <li>improve productivity</li>
+                   </ul>
+        </div>
+      </aside>
+  </div>
+
+
+{% endblock %}

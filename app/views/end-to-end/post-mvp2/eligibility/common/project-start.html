@@ -1,0 +1,108 @@
+{% extends 'end-to-end/layout2.html' %}
+
+{% block pageTitle %}
+    Does the project have planning permission?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+                {{ govukRadios ({
+                    idPrefix: 'project-start',
+                    name: 'project-start',
+                    fieldset: {
+                        legend: {
+                            text: 'Have you started work on the project?',
+                            isPageHeading: true,
+                            classes: 'govuk-fieldset__legend--l'
+                        }
+                    },
+                    items: [
+                        {
+                            text: 'Yes, preparatory work',
+                            value: 'Yes, preparatory work',
+                            checked: true if data['project-start'] == 'Yes, preparatory work',
+                            hint: {
+                                text: 'For example, quotes from suppliers, applying for planning permission'
+                            },
+                            attributes: {
+                                    'data-next': 'check-answers'
+                                }
+                        },
+                        {
+                            text: 'Yes, we have begun project work',
+                            value: 'Yes, we have begun project work',
+                            checked: true if data['project-start'] == 'Yes, we have begun project work',
+                            hint: {
+                                text: 'For example, started construction work, signing contracts, placing orders'
+                            },
+                            attributes: {
+                                    'data-next': 'elim-project-start'
+                                }
+                        },
+                        {
+                            text: 'No, we have not done any work on this project yet',
+                            value: 'No, we have not done any work on this project yet',
+                            checked: true if data['project-start'] == 'No, we have not done any work on this project yet',
+                            attributes: {
+                                    'data-next': 'check-answers'
+                                }
+                        }
+                    ]
+                }) }}
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                {# <form class="signout" style="display:flex;" action="/end-to-end/post-mvp/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form> #}
+
+            </div>
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="app-step-nav-related app-step-nav-related--singular">
+                <h2 class="app-step-nav-related__heading">
+                <span class="app-step-nav-related__pretitle">Eligibility</span>
+                </h2>
+                <p>
+                    You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.
+                </p>
+                <p>
+                    Before you start the project you can:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        get quotes from suppliers
+                    </li>
+                    <li>
+                        apply for planning permissions (this can take a long time)
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock %}

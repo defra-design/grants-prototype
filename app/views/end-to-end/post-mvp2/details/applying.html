@@ -1,0 +1,71 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    Who is applying for this grant?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+            <form method="post">
+
+            {{ govukRadios ({
+                idPrefix: 'applying',
+                name: 'applying',
+                fieldset: {
+                    legend: {
+                        text: 'Who is applying for this grant?',
+                        isPageHeading: true,
+                        classes: 'govuk-fieldset__legend--l'
+                    }
+                },
+                items: [
+                    {
+                        text: 'Applicant',
+                        value: 'Applicant',
+                        checked: true if data['applying'] == 'Applicant',
+                        attributes: {
+                                'data-next': 'applicant-details'
+                            }
+                    },
+                     {
+                        text: 'Agent',
+                        value: 'Agent',
+                        checked: true if data['applying'] == 'Agent',
+                        attributes: {
+                                'data-next': 'agent-details'
+                            }
+                    }
+                ]
+            }) }}
+
+                     <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+            </div>
+
+        </div>
+
+        
+
+</div>
+
+{% endblock %}

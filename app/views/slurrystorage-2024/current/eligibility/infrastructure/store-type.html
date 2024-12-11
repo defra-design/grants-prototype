@@ -1,0 +1,55 @@
+{% extends "layout.html" %} {% block pageTitle %} What type of cover will you
+have? {% endblock %} {% block beforeContent %} {% from
+"govuk/components/phase-banner/macro.njk" import govukPhaseBanner %} {{
+govukPhaseBanner({ tag: { text: "Prototype", classes: "govuk-tag--pink" }, html:
+'This is not a full service. It is not production code and you might experience
+problems .' }) }}
+
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form
+      id="mainForm"
+      class="form"
+      action="storage-capacity-increase"
+      method="post"
+    >
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="storetype-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What type of store do you want?
+            </h1>
+          </legend>
+          <div id="storetype-hint" class="govuk-hint">Select one option</div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            {% set storeTypeCost = data.storeTypeCost %} {% for item, properties
+            in storeTypeCost %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" name="storetype" type="radio"
+              value="{{item}}" aria-describedby="storetype-item-hint" {{
+              checked("storetype", item) }} >
+              <label class="govuk-label govuk-radios__label">
+                {{properties.text}}
+              </label>
+              <div class="govuk-hint govuk-radios__hint">
+                {{properties.hint | safe}}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+      <p>
+        <button
+          class="govuk-button govuk-!-margin-right-1"
+          data-module="govuk-button"
+        >
+          Continue
+        </button>
+      </p>
+    </form>
+  </div>
+</div>
+{% endblock %}

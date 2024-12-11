@@ -1,0 +1,65 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "Check if you can apply for a Water Management Grant",
+    serviceUrl: "/waterr3/current/start-page"
+    }) }}
+{% endblock %}
+
+
+{% block beforeContent %}
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+
+    
+             {{ govukPhaseBanner({
+            tag: {
+            text: "Prototype",
+            classes: "govuk-tag--pink"
+             },
+            html: 'This is not a full service. It is not production code and you might experience problems .'
+            }) }}
+
+            {% if not hideBackButton %}
+
+                {{ govukBackLink ({
+                    text: 'Back',
+                    href: 'javascript:history.back()'
+                }) }}
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ govukFooter({
+        meta: {
+            items: [
+                {
+                    text: "Give feedback",
+                    href: "/adding-value-2024"
+                },
+                {
+                    text: "Manage prototype",
+                    href: "/manage-prototype"
+                }
+            ]
+        }
+    }) }}
+{% endblock %}
+
+

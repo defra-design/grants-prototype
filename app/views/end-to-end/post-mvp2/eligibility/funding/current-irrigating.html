@@ -1,0 +1,67 @@
+{% extends 'end-to-end/layout-account-2.html' %}
+
+{% block pageTitle %}
+    Are you currently irrigating?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="change-summerabs" method="post">
+
+       {{ govukRadios ({
+        classes: 'govuk-radios--inline',
+        idPrefix: 'current-irrigating', 
+        name: 'current-irrigating', 
+        fieldset: {
+          legend: {
+            text: 'Are you currently irrigating?',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--l'
+          }
+        },
+
+        items: [
+          {
+            value: 'Yes',
+            text: 'Yes',
+            checked: true if 'Yes' | isIn(data['current-irrigating']),
+             attributes: {
+                   'data-next': 'change-summerabs'
+             }
+          },
+          {
+            value: 'No',
+            text: 'No',
+            checked: true if 'No' | isIn(data['current-irrigating']),
+             attributes: {
+                   'data-next': 'change-summerabs'
+             }
+          }
+        ]
+      }) }}
+
+              <div class="govuk-button-group">
+                    {{ govukButton({
+                        id: 'Continue',
+                        name: 'continue',
+                        text: "Continue"
+                    }) }}   
+
+                </form>
+
+                <form class="signout" style="display:flex;" action="/end-to-end/post-mvp2/eligibility/common/application-saved" method="post">
+                    {{ govukButton({
+                        id: 'nosignin',
+                        name: 'nosignin',
+                        text: "Save and come back later",
+                        classes: "govuk-button--secondary"
+                    }) }}
+                </form>
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
